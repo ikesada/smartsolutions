@@ -14,6 +14,7 @@ public class Diaketas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println("JA");
         // TODO code application logic here
     }
 }
