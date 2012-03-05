@@ -17,4 +17,8 @@ public class Diaketas {
         System.out.println("Cambios Alex y Quesada");
         // TODO code application logic here
     }
+    
+    public void Alex(){
+        System.out.println("Funcion Alex");
+    }
 }
