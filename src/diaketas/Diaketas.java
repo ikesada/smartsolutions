@@ -18,9 +18,7 @@ public class Diaketas {
         // TODO code application logic here
     }
     
-    public void Alex(){
-        System.out.println("Funcion Alex");
-        System.out.println("Acaba");
+    public void funcion_kesada(){
         
     }
 }
