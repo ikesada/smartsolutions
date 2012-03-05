@@ -14,7 +14,7 @@ public class Diaketas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Cambios Alex");
+        System.out.println("Cambios Alex y Quesada");
         // TODO code application logic here
     }
 }
