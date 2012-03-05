@@ -20,5 +20,7 @@ public class Diaketas {
     
     public void Alex(){
         System.out.println("Funcion Alex");
+        System.out.println("Acaba");
+        
     }
 }
