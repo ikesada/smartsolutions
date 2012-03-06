@@ -19,7 +19,7 @@ public class Diaketas {
     }
     
     public void funcion_kesada(){
-        
+        System.out.println("Prueba 2");   
     }
     
     public void funcion_alex(){
