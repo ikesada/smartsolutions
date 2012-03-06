@@ -21,4 +21,8 @@ public class Diaketas {
     public void funcion_kesada(){
         
     }
+    
+    public void funcion_kesada_2(){
+        
+    }
 }
