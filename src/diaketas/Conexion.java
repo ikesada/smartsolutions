@@ -13,7 +13,7 @@ public class Conexion{
     public String bd = "diaketas";
     public String login = "smartsolutions";
     public String password = "solutions";
-    public String url = "jdbc:mysql://http://sql09.freemysql.net:3306/"+bd;
+    public String url = "jdbc:mysql://sql09.freemysql.net:3306/"+bd;
     public void conectar() {
         Connection conn = null;
         try {
