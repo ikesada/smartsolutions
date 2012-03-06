@@ -31,5 +31,19 @@ public class Conexion{
         catch(ClassNotFoundException ex) {
             System.out.println(ex);
         }
+        
+        
+        
+        try {
+            //Crear objeto Statement para realizar queries a la base de datos
+            Statement instruccion = conn.createStatement();
+            //Un objeto ResultSet, almacena los datos de resultados de una consulta
+            ResultSet tabla = instruccion.executeQuery("SELECT cod , nombre FROM datos");
+            System.out.println("Codigo\tNombre");
+            while(tabla.next())
+            System.out.println(tabla.getInt(1)+"\t"+tabla.getString(2));
+            }
+            catch(SQLException e){ System.out.println(e); }
+            catch(Exception e){ System.out.println(e); }
     }
 }
