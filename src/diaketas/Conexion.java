@@ -22,7 +22,6 @@ public class Conexion{
             if (conn != null)
             {
                 System.out.println("Conexión a base de datos "+url+" ... Ok");
-                conn.close();
             }
         }
         catch(SQLException ex) {
@@ -33,12 +32,14 @@ public class Conexion{
         }
         
         
+        Statement instruccion;
+        ResultSet tabla;
         
         try {
             //Crear objeto Statement para realizar queries a la base de datos
-            Statement instruccion = conn.createStatement();
+            instruccion = conn.createStatement();
             //Un objeto ResultSet, almacena los datos de resultados de una consulta
-            ResultSet tabla = instruccion.executeQuery("SELECT cod , nombre FROM datos");
+            tabla = instruccion.executeQuery("SELECT cod , nombre FROM datos");
             System.out.println("Codigo\tNombre");
             while(tabla.next())
             System.out.println(tabla.getInt(1)+"\t"+tabla.getString(2));
