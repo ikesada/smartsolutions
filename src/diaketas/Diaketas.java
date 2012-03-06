@@ -23,6 +23,6 @@ public class Diaketas {
     }
     
     public void funcion_alex(){
-        
+        System.out.println("Prueba");
     }
 }
