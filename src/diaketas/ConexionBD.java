@@ -9,13 +9,14 @@ package diaketas;
  * @author kesada
  */
 import java.sql.*;
-public class Conexion{
+public class ConexionBD{
     public String bd = "diaketas";
     public String login = "smartsolutions";
     public String password = "solutions";
     public String url = "jdbc:mysql://sql09.freemysql.net:3306/"+bd;
-    public void conectar() {
-        Connection conn = null;
+    private static Connection conn = null;
+    
+    public void conectarBD() {
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
             conn = DriverManager.getConnection(url, login, password);
@@ -30,21 +31,21 @@ public class Conexion{
         catch(ClassNotFoundException ex) {
             System.out.println(ex);
         }
-        
-        
-        Statement instruccion;
-        ResultSet tabla;
-        
-        try {
-            //Crear objeto Statement para realizar queries a la base de datos
-            instruccion = conn.createStatement();
-            //Un objeto ResultSet, almacena los datos de resultados de una consulta
-            tabla = instruccion.executeQuery("SELECT cod , nombre FROM datos");
-            System.out.println("Codigo\tNombre");
-            while(tabla.next())
-            System.out.println(tabla.getInt(1)+"\t"+tabla.getString(2));
-            }
-            catch(SQLException e){ System.out.println(e); }
-            catch(Exception e){ System.out.println(e); }
+    }
+    
+    public void desconectarBD() throws SQLException{
+        conn.close();
+    }
+    
+    public Connection conexion()
+    {       
+        return(conn);
+    }
+    
+    public boolean hayConexionBD(){
+       if(conn!=null)
+          return true;
+       else
+          return false;        
     }
 }
