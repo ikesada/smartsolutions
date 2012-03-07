@@ -25,4 +25,8 @@ public class Diaketas {
     public void funcion_alex(){
         System.out.println("Prueba");
     }
+    
+    public void funcion_cesar(){
+        System.out.println("Prueba");
+    }
 }
