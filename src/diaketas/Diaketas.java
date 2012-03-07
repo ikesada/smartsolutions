@@ -4,29 +4,30 @@
  */
 package diaketas;
 
-/**
- *
- * @author kesada
- */
-public class Diaketas {
+import java.sql.*;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("Cambios Alex y Quesada");
-        // TODO code application logic here
-    }
-    
-    public void funcion_kesada(){
-        System.out.println("Prueba version local");   
-    }
-    
-    public void funcion_alex(){
-        System.out.println("Prueba");
-    }
-    
-    public void funcion_cesar(){
-        System.out.println("Prueba");
+/*prueba*/
+
+public class Diaketas {
+    public static void main(String args[]){
+        /*Conexión*/
+       ConexionBD con = new ConexionBD();
+       con.conectarBD();
+       
+        Statement instruccion;
+        ResultSet tabla;
+        try {
+            //Crear objeto Statement para realizar queries a la base de datos
+            instruccion = con.conexion().createStatement();
+            //Un objeto ResultSet, almacena los datos de resultados de una consulta
+            tabla = instruccion.executeQuery("SELECT cod , nombre FROM datos");
+            System.out.println("Codigo\tNombre");
+            while(tabla.next())
+                System.out.println(tabla.getInt(1)+"\t"+tabla.getString(2));
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+       
+       
     }
 }
