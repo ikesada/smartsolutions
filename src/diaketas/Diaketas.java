@@ -28,6 +28,6 @@ public class Diaketas {
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }
        
-       
+      
     }
 }
