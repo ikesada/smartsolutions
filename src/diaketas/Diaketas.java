@@ -6,6 +6,8 @@ package diaketas;
 
 import java.sql.*;
 
+/*prueba*/
+
 public class Diaketas {
     public static void main(String args[]){
         /*Conexión*/
