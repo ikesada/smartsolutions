@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas;
+package diaketas.JFrameWithJPanel;
 
+import diaketas.Pruebas;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
