@@ -25,8 +25,7 @@ public class UI_Escritorio extends javax.swing.JFrame {
 
         //Colocamos el nuevo tipo de layout que queremos que tenga nuestro JFrame
         this.setLayout(new FlowLayout());
-        
-        
+                
     }
 
     /**
@@ -38,6 +37,8 @@ public class UI_Escritorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Consulta = new javax.swing.JMenuItem();
@@ -47,6 +48,10 @@ public class UI_Escritorio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pruebas");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         jMenu1.setText("File");
 
@@ -86,11 +91,16 @@ public class UI_Escritorio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 763, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(406, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 357, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,8 +130,8 @@ public class UI_Escritorio extends javax.swing.JFrame {
         hs = new panelHijoSuma();
         //hs.setVisible(true);
         //Agregamos la instancia al JFrame, con un layout al centro
-        this.add(hs, BorderLayout.CENTER);
-
+        this.add(hs, BorderLayout.SOUTH);
+        
         //Hacemos que el JFrame tenga el tamaño de todos sus elementos
         this.pack();
 
@@ -151,7 +161,7 @@ public class UI_Escritorio extends javax.swing.JFrame {
         hr = new panelHijoResta();
         //hr.setVisible(true);
         //Agregamos la instancia al JFrame, con un layout al centro
-        this.add(hr, BorderLayout.CENTER);
+        this.add(hr, BorderLayout.WEST);
 
         //Hacemos que el JFrame tenga el tamaño de todos sus elementos
         this.pack();
@@ -239,5 +249,7 @@ public class UI_Escritorio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
