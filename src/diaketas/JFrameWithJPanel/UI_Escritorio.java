@@ -4,7 +4,6 @@
  */
 package diaketas.JFrameWithJPanel;
 
-import diaketas.Pruebas;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -191,7 +190,7 @@ public class UI_Escritorio extends javax.swing.JFrame {
         prueba = new Pruebas();
         //hr.setVisible(true);
         //Agregamos la instancia al JFrame, con un layout al centro
-        this.add(prueba, BorderLayout.CENTER);
+        this.add(prueba, BorderLayout.SOUTH);
 
         //Hacemos que el JFrame tenga el tamaño de todos sus elementos
         this.pack();
