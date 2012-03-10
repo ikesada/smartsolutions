@@ -5,6 +5,7 @@
 package diaketas;
 
 import java.sql.*;
+import diaketas.UI.UI;
 
 public class Diaketas {
     public static void main(String args[]){
@@ -27,5 +28,8 @@ public class Diaketas {
         catch(Exception e){ System.out.println(e); }
        
       
+        UI ui = new UI();
+        ui.setVisible(true);
+        
     }
 }

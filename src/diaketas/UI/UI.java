@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI_Pruebas;
+package diaketas.UI;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -13,20 +13,29 @@ import javax.swing.JPanel;
  *
  * @author kesada
  */
-public class Main extends javax.swing.JFrame {
+public class UI extends javax.swing.JFrame {
      
     /**
      * Creates new form Main
      */
-    public Main() {
+    public UI() {
         initComponents();
         Container contentPane = getContentPane();
         
+        /*Paneles acciones */
         JPanel crear_usuario = new crearUsuario();
         JPanel dar_baja_usuario = new darBajaUsuario();
+        /*Paneles menus*/
+        JPanel menu_otro = new menuOtro();
+        JPanel menu_usuario = new menuUsuario();
         
-        cards.add("Crear Usuario", crear_usuario);
-        cards.add("Dar baja Usuario", dar_baja_usuario);
+        /*JPrincipal*/
+        jPrincipal.add("Crear Usuario", crear_usuario);
+        jPrincipal.add("Dar baja Usuario", dar_baja_usuario);
+        
+        /*JMenu*/
+        jMenuLateral.add("Menu Usuario", menu_usuario);
+        jMenuLateral.add("Menu Otro", menu_otro);        
     }
 
     /**
@@ -43,29 +52,19 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        cards = new javax.swing.JPanel();
+        jPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenuLateral.setBackground(new java.awt.Color(102, 0, 102));
         jMenuLateral.setPreferredSize(new java.awt.Dimension(100, 275));
-
-        javax.swing.GroupLayout jMenuLateralLayout = new javax.swing.GroupLayout(jMenuLateral);
-        jMenuLateral.setLayout(jMenuLateralLayout);
-        jMenuLateralLayout.setHorizontalGroup(
-            jMenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jMenuLateralLayout.setVerticalGroup(
-            jMenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
-        );
-
+        jMenuLateral.setLayout(new java.awt.CardLayout());
         getContentPane().add(jMenuLateral, java.awt.BorderLayout.WEST);
 
-        jMenuBotones.setLayout(new java.awt.GridLayout());
+        jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton1.setText("Beneficiario");
+        jButton1.setPreferredSize(new java.awt.Dimension(118, 50));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -86,20 +85,28 @@ public class Main extends javax.swing.JFrame {
 
         getContentPane().add(jMenuBotones, java.awt.BorderLayout.NORTH);
 
-        cards.setLayout(new java.awt.CardLayout());
-        getContentPane().add(cards, java.awt.BorderLayout.CENTER);
+        jPrincipal.setLayout(new java.awt.CardLayout());
+        getContentPane().add(jPrincipal, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CardLayout cl = (CardLayout)(cards.getLayout());
-        cl.show(cards, "Crear Usuario");
+        /*Modificamos zona principal*/
+        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
+        cl.show(jPrincipal, "Crear Usuario");
+        /*Modificamos menu*/
+        cl = (CardLayout)(jMenuLateral.getLayout());
+        cl.show(jMenuLateral, "Menu Usuario");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CardLayout cl = (CardLayout)(cards.getLayout());
-        cl.show(cards, "Dar baja Usuario");
+        /*Modificamos zona principal*/
+        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
+        cl.show(jPrincipal, "Dar baja Usuario");
+        /*Modificamos menu*/
+        cl = (CardLayout)(jMenuLateral.getLayout());
+        cl.show(jMenuLateral, "Menu Otro");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -123,13 +130,13 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -139,16 +146,16 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new Main().setVisible(true);
+                new UI().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel cards;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jMenuBotones;
     private javax.swing.JPanel jMenuLateral;
+    private javax.swing.JPanel jPrincipal;
     // End of variables declaration//GEN-END:variables
 }
