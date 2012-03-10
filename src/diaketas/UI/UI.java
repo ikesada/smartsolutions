@@ -32,10 +32,7 @@ public class UI extends javax.swing.JFrame {
         /*JPrincipal*/
         jPrincipal.add("Crear Usuario", crear_usuario);
         jPrincipal.add("Dar baja Usuario", dar_baja_usuario);
-        
-        /*JMenu*/
-        jMenuLateral.add("Menu Usuario", menu_usuario);
-        jMenuLateral.add("Menu Otro", menu_otro);        
+    
     }
 
     /**
@@ -47,25 +44,28 @@ public class UI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuLateral = new javax.swing.JPanel();
         jMenuBotones = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPrincipal = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(550, 400));
         setPreferredSize(new java.awt.Dimension(550, 400));
 
-        jMenuLateral.setBackground(new java.awt.Color(102, 0, 102));
-        jMenuLateral.setPreferredSize(new java.awt.Dimension(100, 275));
-        jMenuLateral.setLayout(new java.awt.CardLayout());
-        getContentPane().add(jMenuLateral, java.awt.BorderLayout.WEST);
-
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton1.setText("Beneficiario");
+        jButton1.setText("Socios");
+        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.setPreferredSize(new java.awt.Dimension(118, 50));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +74,7 @@ public class UI extends javax.swing.JFrame {
         });
         jMenuBotones.add(jButton1);
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Beneficiarios");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -82,13 +82,36 @@ public class UI extends javax.swing.JFrame {
         });
         jMenuBotones.add(jButton2);
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Donaciones");
         jMenuBotones.add(jButton3);
+
+        jButton4.setText("Empleo");
+        jMenuBotones.add(jButton4);
 
         getContentPane().add(jMenuBotones, java.awt.BorderLayout.NORTH);
 
         jPrincipal.setLayout(new java.awt.CardLayout());
         getContentPane().add(jPrincipal, java.awt.BorderLayout.CENTER);
+
+        jMenu1.setText("Archivo");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Socios");
+        jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Beneficiarios");
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Donaciones");
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Empleo");
+        jMenuBar1.add(jMenu7);
+
+        jMenu8.setText("Ayuda");
+        jMenuBar1.add(jMenu8);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -97,18 +120,14 @@ public class UI extends javax.swing.JFrame {
         /*Modificamos zona principal*/
         CardLayout cl = (CardLayout)(jPrincipal.getLayout());
         cl.show(jPrincipal, "Crear Usuario");
-        /*Modificamos menu*/
-        cl = (CardLayout)(jMenuLateral.getLayout());
-        cl.show(jMenuLateral, "Menu Usuario");
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /*Modificamos zona principal*/
         CardLayout cl = (CardLayout)(jPrincipal.getLayout());
         cl.show(jPrincipal, "Dar baja Usuario");
-        /*Modificamos menu*/
-        cl = (CardLayout)(jMenuLateral.getLayout());
-        cl.show(jMenuLateral, "Menu Otro");
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -156,8 +175,15 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jMenuBotones;
-    private javax.swing.JPanel jMenuLateral;
     private javax.swing.JPanel jPrincipal;
     // End of variables declaration//GEN-END:variables
 }

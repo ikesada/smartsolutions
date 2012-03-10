@@ -28,6 +28,8 @@ public class crearUsuario extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -35,11 +37,19 @@ public class crearUsuario extends javax.swing.JPanel {
         jButton1.setText("jButton1");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 195, -1, -1));
 
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 121, -1, -1));
+        jLabel1.setText("ICONO VISTOSO ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, -1, -1));
+
+        jLabel2.setText("ICONO VISTOSO ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+
+        jLabel3.setText("ICONO VISTOSO ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 10));
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
