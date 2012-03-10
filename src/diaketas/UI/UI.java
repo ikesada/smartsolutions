@@ -45,6 +45,7 @@ public class UI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBotones = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -64,6 +65,14 @@ public class UI extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(550, 400));
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
+
+        jButton5.setText("Diaketas");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jMenuBotones.add(jButton5);
 
         jButton1.setText("Socios");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -98,7 +107,7 @@ public class UI extends javax.swing.JFrame {
 
         getContentPane().add(jPrincipal, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("Archivo");
+        jMenu1.setText("Diaketas");
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Socios");
@@ -134,6 +143,10 @@ public class UI extends javax.swing.JFrame {
         cl.show(jPrincipal, "Dar baja Usuario");
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +194,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
