@@ -50,6 +50,7 @@ public class UI extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPrincipal = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -91,6 +92,10 @@ public class UI extends javax.swing.JFrame {
         getContentPane().add(jMenuBotones, java.awt.BorderLayout.NORTH);
 
         jPrincipal.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setText("LOGOTIPO GRANDE / ESTADISTICAS / NOSE");
+        jPrincipal.add(jLabel1, "card2");
+
         getContentPane().add(jPrincipal, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("Archivo");
@@ -176,6 +181,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
