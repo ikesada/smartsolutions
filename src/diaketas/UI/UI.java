@@ -23,15 +23,20 @@ public class UI extends javax.swing.JFrame {
         Container contentPane = getContentPane();
         
         /*Paneles acciones */
-        JPanel crear_usuario = new crearUsuario();
-        JPanel dar_baja_usuario = new darBajaUsuario();
-        /*Paneles menus*/
-        JPanel menu_otro = new menuOtro();
-        JPanel menu_usuario = new menuUsuario();
+        JPanel beneficiarios = new jBeneficiarios();
+        JPanel diaketas = new jDiaketas();
+        JPanel donaciones = new jDonaciones();
+        JPanel empleo = new jEmpleo();
+        JPanel socios = new jSocios();
+        
         
         /*JPrincipal*/
-        jPrincipal.add("Crear Usuario", crear_usuario);
-        jPrincipal.add("Dar baja Usuario", dar_baja_usuario);
+        jPrincipal.add("Socios", socios);
+        jPrincipal.add("Empleo", empleo);
+        jPrincipal.add("Donaciones", donaciones);
+        jPrincipal.add("Diaketas", diaketas);
+        jPrincipal.add("Beneficiarios", beneficiarios);
+        
     
     }
 
@@ -93,9 +98,19 @@ public class UI extends javax.swing.JFrame {
         jMenuBotones.add(jButton2);
 
         jButton3.setText("Donaciones");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jMenuBotones.add(jButton3);
 
         jButton4.setText("Empleo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jMenuBotones.add(jButton4);
 
         getContentPane().add(jMenuBotones, java.awt.BorderLayout.NORTH);
@@ -133,20 +148,34 @@ public class UI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         /*Modificamos zona principal*/
         CardLayout cl = (CardLayout)(jPrincipal.getLayout());
-        cl.show(jPrincipal, "Crear Usuario");
+        cl.show(jPrincipal, "Socios");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /*Modificamos zona principal*/
         CardLayout cl = (CardLayout)(jPrincipal.getLayout());
-        cl.show(jPrincipal, "Dar baja Usuario");
+        cl.show(jPrincipal, "Beneficiarios");
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        /*Modificamos zona principal*/
+        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
+        cl.show(jPrincipal, "Diaketas");
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        /*Modificamos zona principal*/
+        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
+        cl.show(jPrincipal, "Donaciones");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+            /*Modificamos zona principal*/
+        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
+        cl.show(jPrincipal, "Empleo");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

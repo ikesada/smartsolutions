@@ -8,12 +8,12 @@ package diaketas.UI;
  *
  * @author kesada
  */
-public class menuUsuario extends javax.swing.JPanel {
+public class jBeneficiarios extends javax.swing.JPanel {
 
     /**
-     * Creates new form menuUsuario
+     * Creates new form jBeneficiarios
      */
-    public menuUsuario() {
+    public jBeneficiarios() {
         initComponents();
     }
 
@@ -27,14 +27,9 @@ public class menuUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        jLabel1.setText("Accion usuario 3");
-
-        jLabel2.setText("Accion usuario 2");
-
-        jLabel3.setText("Accion usuario 1");
+        jLabel1.setText("Beneficiarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -42,27 +37,22 @@ public class menuUsuario extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addContainerGap(296, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(257, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
