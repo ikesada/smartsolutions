@@ -55,6 +55,8 @@ public class UI extends javax.swing.JFrame {
         jPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(550, 400));
+        setPreferredSize(new java.awt.Dimension(550, 400));
 
         jMenuLateral.setBackground(new java.awt.Color(102, 0, 102));
         jMenuLateral.setPreferredSize(new java.awt.Dimension(100, 275));
