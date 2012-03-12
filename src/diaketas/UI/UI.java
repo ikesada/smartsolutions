@@ -71,6 +71,7 @@ public class UI extends javax.swing.JFrame {
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/UI/Home.png"))); // NOI18N
         jButton5.setText("Diaketas");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +80,7 @@ public class UI extends javax.swing.JFrame {
         });
         jMenuBotones.add(jButton5);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/UI/Socios.gif"))); // NOI18N
         jButton1.setText("Socios");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.setPreferredSize(new java.awt.Dimension(118, 50));
@@ -97,6 +99,7 @@ public class UI extends javax.swing.JFrame {
         });
         jMenuBotones.add(jButton2);
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/UI/Donaciones.png"))); // NOI18N
         jButton3.setText("Donaciones");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +108,7 @@ public class UI extends javax.swing.JFrame {
         });
         jMenuBotones.add(jButton3);
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/UI/empleo.png"))); // NOI18N
         jButton4.setText("Empleo");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

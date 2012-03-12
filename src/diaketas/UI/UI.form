@@ -79,6 +79,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/UI/Home.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Diaketas"/>
           </Properties>
           <Events>
@@ -87,6 +90,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/UI/Socios.gif"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Socios"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -111,6 +117,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/UI/Donaciones.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Donaciones"/>
           </Properties>
           <Events>
@@ -119,6 +128,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/UI/empleo.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Empleo"/>
           </Properties>
           <Events>
