@@ -80,7 +80,7 @@
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/UI/Home.png"/>
+              <Image iconType="3" name="/diaketas/Iconos/Home.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Diaketas"/>
           </Properties>
@@ -91,7 +91,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/UI/Socios.gif"/>
+              <Image iconType="3" name="/diaketas/Iconos/Socios.gif"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Socios"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -110,7 +110,7 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/UI/beneficiarios.png"/>
+              <Image iconType="3" name="/diaketas/Iconos/beneficiarios.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Beneficiarios"/>
           </Properties>
@@ -121,7 +121,7 @@
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/UI/Donaciones.png"/>
+              <Image iconType="3" name="/diaketas/Iconos/Donaciones.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Donaciones"/>
           </Properties>
@@ -132,7 +132,7 @@
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/UI/empleo.png"/>
+              <Image iconType="3" name="/diaketas/Iconos/empleo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Empleo"/>
           </Properties>
