@@ -91,6 +91,7 @@ public class UI extends javax.swing.JFrame {
         });
         jMenuBotones.add(jButton1);
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/UI/beneficiarios.png"))); // NOI18N
         jButton2.setText("Beneficiarios");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
