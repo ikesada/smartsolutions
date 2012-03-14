@@ -80,7 +80,7 @@
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/Iconos/Home.png"/>
+              <Image iconType="2" name="C:\Users\Alex\Dropbox\ISIII\Documentos del proyecto\Implementaci&#xf3;n\Iconos\pruebas\Home.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Diaketas"/>
           </Properties>
@@ -91,7 +91,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/Iconos/Socios.gif"/>
+              <Image iconType="2" name="C:\Users\Alex\Dropbox\ISIII\Documentos del proyecto\Implementaci&#xf3;n\Iconos\pruebas\Socios.gif"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Socios"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

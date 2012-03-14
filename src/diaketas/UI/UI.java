@@ -4,10 +4,11 @@
  */
 package diaketas.UI;
 
-import java.awt.BorderLayout;
+import de.javasoft.plaf.synthetica.*;
 import java.awt.CardLayout;
 import java.awt.Container;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 /**
  *
@@ -71,7 +72,7 @@ public class UI extends javax.swing.JFrame {
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Home.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alex\\Dropbox\\ISIII\\Documentos del proyecto\\Implementación\\Iconos\\pruebas\\Home.png")); // NOI18N
         jButton5.setText("Diaketas");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +81,7 @@ public class UI extends javax.swing.JFrame {
         });
         jMenuBotones.add(jButton5);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alex\\Dropbox\\ISIII\\Documentos del proyecto\\Implementación\\Iconos\\pruebas\\Socios.gif")); // NOI18N
         jButton1.setText("Socios");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.setPreferredSize(new java.awt.Dimension(118, 50));
@@ -195,7 +196,62 @@ public class UI extends javax.swing.JFrame {
          * default look and feel. For details see
          * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
-        try {
+       /* try {
+    UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+} catch (Exception e) {
+    e.printStackTrace();
+}*/
+       /* try {
+                    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());                
+
+                    } catch (Exception e) {
+                    }
+        */
+        /*try{
+        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");                
+        } catch (Exception e) {
+                    }
+        */
+        
+        
+        try{
+                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");        } catch (Exception e) {
+        }
+        
+       /* try{
+                     UIManager.setLookAndFeel(new SyntheticaBlackMoonLookAndFeel());
+        } catch (Exception e) {
+        }*//*
+        try{
+                     UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
+        } catch (Exception e) {
+        }*/
+       /* try{
+                     UIManager.setLookAndFeel(new SyntheticaBlackStarLookAndFeel());
+        } catch (Exception e) {
+        }*/
+  /*      try{
+                     UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
+        } catch (Exception e) {
+        }
+*/  /*
+        try{
+                     UIManager.setLookAndFeel(new SyntheticaBlueIceLookAndFeel());
+        } catch (Exception e) {
+        }*/
+        /*
+        try{
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");                
+        } catch (Exception e) {
+                    }
+        */
+        /*
+        try{
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");                
+        } catch (Exception e) {
+                    }*/
+        
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -210,7 +266,7 @@ public class UI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /*
