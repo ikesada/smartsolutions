@@ -54,7 +54,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
 
         NIF_CIF.setColumns(9);
 
-        botonOK.setText("Borrar");
+        botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOKActionPerformed(evt);
