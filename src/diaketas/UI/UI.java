@@ -28,7 +28,7 @@ public class UI extends javax.swing.JFrame {
      */
     public UI() {
         initComponents();
-        Container contentPane = getContentPane();
+        jPrincipalScroll.getViewport().setView(jPrincipal);
         cl = (CardLayout)(jPrincipal.getLayout());
         
         /*Paneles acciones */
@@ -67,6 +67,7 @@ public class UI extends javax.swing.JFrame {
         botonEmpleo = new javax.swing.JButton();
         jPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPrincipalScroll = new javax.swing.JScrollPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -130,10 +131,11 @@ public class UI extends javax.swing.JFrame {
 
         jPrincipal.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setText("LOGOTIPO GRANDE / ESTADISTICAS / NOSE");
+        jLabel1.setText("Pantalla de presentacion estadisticas? logo? que?");
         jPrincipal.add(jLabel1, "card2");
 
         getContentPane().add(jPrincipal, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPrincipalScroll, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("Diaketas");
         jMenuBar1.add(jMenu1);
@@ -296,5 +298,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jMenuBotones;
     public static javax.swing.JPanel jPrincipal;
+    private javax.swing.JScrollPane jPrincipalScroll;
     // End of variables declaration//GEN-END:variables
 }
