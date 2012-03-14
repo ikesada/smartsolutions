@@ -4,6 +4,11 @@
  */
 package diaketas.UI;
 
+import diaketas.UI.Socios.jSocios;
+import diaketas.UI.Empleo.jEmpleo;
+import diaketas.UI.Donaciones.jDonaciones;
+import diaketas.UI.Diaketas.jDiaketas;
+import diaketas.UI.Beneficiarios.*;
 import de.javasoft.plaf.synthetica.*;
 import java.awt.CardLayout;
 import java.awt.Container;
@@ -15,6 +20,8 @@ import javax.swing.UIManager;
  * @author kesada
  */
 public class UI extends javax.swing.JFrame {
+    
+    public static CardLayout cl;
      
     /**
      * Creates new form Main
@@ -22,13 +29,20 @@ public class UI extends javax.swing.JFrame {
     public UI() {
         initComponents();
         Container contentPane = getContentPane();
+        cl = (CardLayout)(jPrincipal.getLayout());
         
         /*Paneles acciones */
-        JPanel beneficiarios = new jBeneficiarios();
+        /*Categorias principales jPrincipal*/
+        JPanel beneficiarios = new jBeneficiario();
         JPanel diaketas = new jDiaketas();
         JPanel donaciones = new jDonaciones();
         JPanel empleo = new jEmpleo();
         JPanel socios = new jSocios();
+        /*Beneficiarios*/
+        JPanel altaBeneficiario = new jAltaBeneficiario();
+        JPanel bajaBeneficiario = new jBajaBeneficiario();
+        JPanel consultarBeneficiario = new jConsultarBeneficiario();
+        JPanel modificarBeneficiario = new jModificarBeneficiario();
         
         
         /*JPrincipal*/
@@ -38,7 +52,11 @@ public class UI extends javax.swing.JFrame {
         jPrincipal.add("Diaketas", diaketas);
         jPrincipal.add("Beneficiarios", beneficiarios);
         
-    
+        /*Beneficiarios*/
+        jPrincipal.add("AltaBeneficiario", altaBeneficiario);
+        jPrincipal.add("BajaBeneficiario", bajaBeneficiario);
+        jPrincipal.add("ConsultarBeneficiario", consultarBeneficiario);
+        jPrincipal.add("ModificarBeneficiario", modificarBeneficiario);
     }
 
     /**
@@ -51,11 +69,11 @@ public class UI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBotones = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botonDiaketas = new javax.swing.JButton();
+        botonSocios = new javax.swing.JButton();
+        botonBeneficiarios = new javax.swing.JButton();
+        botonDonaciones = new javax.swing.JButton();
+        botonEmpleo = new javax.swing.JButton();
         jPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -67,57 +85,55 @@ public class UI extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(550, 400));
-        setPreferredSize(new java.awt.Dimension(550, 400));
+        setMinimumSize(new java.awt.Dimension(600, 640));
+        setPreferredSize(new java.awt.Dimension(600, 640));
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alex\\Dropbox\\ISIII\\Documentos del proyecto\\Implementación\\Iconos\\pruebas\\Home.png")); // NOI18N
-        jButton5.setText("Diaketas");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botonDiaketas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Home.png"))); // NOI18N
+        botonDiaketas.setText("Diaketas");
+        botonDiaketas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botonDiaketasActionPerformed(evt);
             }
         });
-        jMenuBotones.add(jButton5);
+        jMenuBotones.add(botonDiaketas);
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alex\\Dropbox\\ISIII\\Documentos del proyecto\\Implementación\\Iconos\\pruebas\\Socios.gif")); // NOI18N
-        jButton1.setText("Socios");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton1.setPreferredSize(new java.awt.Dimension(118, 50));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
+        botonSocios.setText("Socios");
+        botonSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonSociosActionPerformed(evt);
             }
         });
-        jMenuBotones.add(jButton1);
+        jMenuBotones.add(botonSocios);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
-        jButton2.setText("Beneficiarios");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonBeneficiarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
+        botonBeneficiarios.setText("Beneficiarios");
+        botonBeneficiarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonBeneficiariosActionPerformed(evt);
             }
         });
-        jMenuBotones.add(jButton2);
+        jMenuBotones.add(botonBeneficiarios);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
-        jButton3.setText("Donaciones");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonDonaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
+        botonDonaciones.setText("Donaciones");
+        botonDonaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonDonacionesActionPerformed(evt);
             }
         });
-        jMenuBotones.add(jButton3);
+        jMenuBotones.add(botonDonaciones);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
-        jButton4.setText("Empleo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonEmpleo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
+        botonEmpleo.setText("Empleo");
+        botonEmpleo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonEmpleoActionPerformed(evt);
             }
         });
-        jMenuBotones.add(jButton4);
+        jMenuBotones.add(botonEmpleo);
 
         getContentPane().add(jMenuBotones, java.awt.BorderLayout.NORTH);
 
@@ -151,37 +167,31 @@ public class UI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonBeneficiariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBeneficiariosActionPerformed
         /*Modificamos zona principal*/
-        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
-        cl.show(jPrincipal, "Socios");
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*Modificamos zona principal*/
-        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
         cl.show(jPrincipal, "Beneficiarios");
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonBeneficiariosActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void botonDiaketasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDiaketasActionPerformed
         /*Modificamos zona principal*/
-        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
         cl.show(jPrincipal, "Diaketas");
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_botonDiaketasActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonDonacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDonacionesActionPerformed
         /*Modificamos zona principal*/
-        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
         cl.show(jPrincipal, "Donaciones");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonDonacionesActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-            /*Modificamos zona principal*/
-        CardLayout cl = (CardLayout)(jPrincipal.getLayout());
+    private void botonEmpleoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEmpleoActionPerformed
+        /*Modificamos zona principal*/
         cl.show(jPrincipal, "Empleo");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonEmpleoActionPerformed
+
+    private void botonSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSociosActionPerformed
+        /*Modificamos zona principal*/
+        cl.show(jPrincipal, "Socios");
+    }//GEN-LAST:event_botonSociosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,20 +222,20 @@ public class UI extends javax.swing.JFrame {
         } catch (Exception e) {
                     }
         */
-        
+        /*
         
         try{
                      UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");        } catch (Exception e) {
-        }
+        }*/
         
        /* try{
                      UIManager.setLookAndFeel(new SyntheticaBlackMoonLookAndFeel());
         } catch (Exception e) {
-        }*//*
+        }*/
         try{
                      UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
         } catch (Exception e) {
-        }*/
+        }
        /* try{
                      UIManager.setLookAndFeel(new SyntheticaBlackStarLookAndFeel());
         } catch (Exception e) {
@@ -280,11 +290,11 @@ public class UI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton botonBeneficiarios;
+    private javax.swing.JButton botonDiaketas;
+    private javax.swing.JButton botonDonaciones;
+    private javax.swing.JButton botonEmpleo;
+    private javax.swing.JButton botonSocios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -294,6 +304,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jMenuBotones;
-    private javax.swing.JPanel jPrincipal;
+    public static javax.swing.JPanel jPrincipal;
     // End of variables declaration//GEN-END:variables
 }
