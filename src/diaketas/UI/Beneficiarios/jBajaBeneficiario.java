@@ -4,6 +4,8 @@
  */
 package diaketas.UI.Beneficiarios;
 
+import diaketas.UI.UI;
+
 /**
  *
  * @author kesada
@@ -139,11 +141,21 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             
             fase = 1;
             
-        }
+        }else if (fase ==1){
+            botonCancel.setVisible(false);
+            NIF_CIF_Voluntario.setVisible(false);
+            jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
+            jLabel4.setVisible(false);
+            botonOK.setText("Regresar");
+            fase = 2;
+        }else
+            UI.cl.show(UI.jPrincipal, "Beneficiarios");
+    
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-        // TODO add your handling code here:
+            UI.cl.show(UI.jPrincipal, "Beneficiarios");
+            // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

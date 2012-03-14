@@ -6,6 +6,7 @@ package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.Diaketas.*;
 import diaketas.UI.UI;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,11 +14,21 @@ import diaketas.UI.UI;
  */
 public class jBeneficiario extends javax.swing.JPanel {
 
+    JPanel altaBeneficiario;
+    JPanel bajaBeneficiario;
+    JPanel consultarBeneficiario;
+    JPanel modificarBeneficiario;
+    
     /**
      * Creates new form jDiaketas
      */
     public jBeneficiario() {
         initComponents();
+                /*Beneficiarios*/
+        
+        
+        
+        
     }
 
     /**
@@ -129,19 +140,35 @@ public class jBeneficiario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
+        altaBeneficiario = null;
+        altaBeneficiario = new jAltaBeneficiario();
+        UI.jPrincipal.remove(altaBeneficiario);
+        UI.jPrincipal.add("AltaBeneficiario", altaBeneficiario);
         UI.cl.show(UI.jPrincipal, "AltaBeneficiario");
     }//GEN-LAST:event_botonAltaActionPerformed
 
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
+        bajaBeneficiario = null;
+        bajaBeneficiario = new jBajaBeneficiario();
+        UI.jPrincipal.remove(bajaBeneficiario);
+        UI.jPrincipal.add("BajaBeneficiario", bajaBeneficiario);
         UI.cl.show(UI.jPrincipal, "BajaBeneficiario");
     }//GEN-LAST:event_botonBajaActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
+        consultarBeneficiario = null;
+        consultarBeneficiario = new jConsultarBeneficiario();
+        UI.jPrincipal.remove(consultarBeneficiario);
+        UI.jPrincipal.add("ConsultarBeneficiario", consultarBeneficiario);
         UI.cl.show(UI.jPrincipal, "ConsultarBeneficiario");
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-         UI.cl.show(UI.jPrincipal, "ModificarBeneficiario");
+        modificarBeneficiario = null;
+        modificarBeneficiario = new jModificarBeneficiario();
+        UI.jPrincipal.remove(modificarBeneficiario);
+        UI.jPrincipal.add("ModificarBeneficiario", modificarBeneficiario); 
+        UI.cl.show(UI.jPrincipal, "ModificarBeneficiario");
     }//GEN-LAST:event_botonModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

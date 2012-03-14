@@ -38,12 +38,7 @@ public class UI extends javax.swing.JFrame {
         JPanel donaciones = new jDonaciones();
         JPanel empleo = new jEmpleo();
         JPanel socios = new jSocios();
-        /*Beneficiarios*/
-        JPanel altaBeneficiario = new jAltaBeneficiario();
-        JPanel bajaBeneficiario = new jBajaBeneficiario();
-        JPanel consultarBeneficiario = new jConsultarBeneficiario();
-        JPanel modificarBeneficiario = new jModificarBeneficiario();
-        
+       
         
         /*JPrincipal*/
         jPrincipal.add("Socios", socios);
@@ -52,11 +47,7 @@ public class UI extends javax.swing.JFrame {
         jPrincipal.add("Diaketas", diaketas);
         jPrincipal.add("Beneficiarios", beneficiarios);
         
-        /*Beneficiarios*/
-        jPrincipal.add("AltaBeneficiario", altaBeneficiario);
-        jPrincipal.add("BajaBeneficiario", bajaBeneficiario);
-        jPrincipal.add("ConsultarBeneficiario", consultarBeneficiario);
-        jPrincipal.add("ModificarBeneficiario", modificarBeneficiario);
+
     }
 
     /**
