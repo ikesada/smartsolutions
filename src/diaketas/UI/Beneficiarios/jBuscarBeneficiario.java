@@ -114,7 +114,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                                         .addComponent(jSeparator4))
                                     .addComponent(jLabel6)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(239, 239, 239)
+                                .addGap(248, 248, 248)
                                 .addComponent(jButton1)))
                         .addGap(0, 166, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -146,9 +146,9 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

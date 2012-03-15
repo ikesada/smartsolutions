@@ -14,8 +14,7 @@ import javax.swing.JPanel;
  */
 public class jBeneficiario extends javax.swing.JPanel {
 
-    JPanel altaBeneficiario;
-    JPanel bajaBeneficiario;
+    JPanel panel;
     jBuscarBeneficiario buscarBeneficiario;
     
     /**
@@ -134,16 +133,16 @@ public class jBeneficiario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
-        altaBeneficiario = new jAltaBeneficiario();
+        panel = new jAltaBeneficiario();
 
-        UI.jPrincipal.add("AltaBeneficiario", altaBeneficiario);
+        UI.jPrincipal.add("AltaBeneficiario", panel);
         UI.cl.show(UI.jPrincipal, "AltaBeneficiario");
     }//GEN-LAST:event_botonAltaActionPerformed
 
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
-        bajaBeneficiario = new jBajaBeneficiario();
+        panel = new jBajaBeneficiario();
 
-        UI.jPrincipal.add("BajaBeneficiario", bajaBeneficiario);
+        UI.jPrincipal.add("BajaBeneficiario", panel);
         UI.cl.show(UI.jPrincipal, "BajaBeneficiario");
     }//GEN-LAST:event_botonBajaActionPerformed
 
