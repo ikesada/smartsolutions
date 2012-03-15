@@ -275,10 +275,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        panel = new jAltaBeneficiarioFamiliar();
-
-        UI.jPrincipal.add("AltaBeneficiarioFamiliar", panel);
-        UI.cl.show(UI.jPrincipal, "AltaBeneficiarioFamiliar");
+        UI.cl.show(UI.jPrincipal, "Beneficiarios");
     }//GEN-LAST:event_botonOKActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
