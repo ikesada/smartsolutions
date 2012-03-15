@@ -13,10 +13,13 @@ import diaketas.UI.UI;
 public class jBajaFamiliar extends javax.swing.JPanel {
 
     public int fase;
+    String padre;
+    
     /**
-     * Creates new form jAltaBeneficiario
+     * Creates new form jAltaFamiliar
      */
-    public jBajaFamiliar() {
+    public jBajaFamiliar(String padre) {
+        this.padre = padre;
         initComponents();
     }
 
@@ -102,11 +105,11 @@ public class jBajaFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-            UI.cl.show(UI.jPrincipal, "AltaBeneficiario");
+            UI.cl.show(UI.jPrincipal, padre);
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-            UI.cl.show(UI.jPrincipal, "AltaBeneficiario");
+            UI.cl.show(UI.jPrincipal, padre);
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 

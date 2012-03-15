@@ -12,10 +12,12 @@ import diaketas.UI.UI;
  */
 public class jConsultarFamiliar extends javax.swing.JPanel {
 
+    String padre;
     /**
-     * Creates new form jConsultarFamiliar
+     * Creates new form jAltaFamiliar
      */
-    public jConsultarFamiliar() {
+    public jConsultarFamiliar(String padre) {
+        this.padre = padre;
         initComponents();
     }
 
@@ -137,7 +139,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        UI.cl.show(UI.jPrincipal, "AltaBeneficiario");
+        UI.cl.show(UI.jPrincipal, padre);
         // TODO add your handling code here:
     }//GEN-LAST:event_botonOKActionPerformed
 

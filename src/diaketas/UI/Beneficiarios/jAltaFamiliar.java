@@ -12,10 +12,12 @@ import diaketas.UI.UI;
  */
 public class jAltaFamiliar extends javax.swing.JPanel {
 
+    String padre;
     /**
      * Creates new form jAltaFamiliar
      */
-    public jAltaFamiliar() {
+    public jAltaFamiliar(String padre) {
+        this.padre = padre;
         initComponents();
     }
 
@@ -135,7 +137,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        UI.cl.show(UI.jPrincipal, "AltaBeneficiario");
+        UI.cl.show(UI.jPrincipal, padre);
     }//GEN-LAST:event_botonOKActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

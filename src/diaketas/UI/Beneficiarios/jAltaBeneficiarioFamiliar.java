@@ -180,31 +180,31 @@ public class jAltaBeneficiarioFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirActionPerformed
-        panel = new jAltaFamiliar();
+        panel = new jAltaFamiliar("AltaBeneficiarioFamiliar");
 
         UI.jPrincipal.add("AltaFamiliar", panel);
         UI.cl.show(UI.jPrincipal, "AltaFamiliar");
     }//GEN-LAST:event_botonAniadirActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        panel = new jBajaFamiliar();
+        panel = new jBajaFamiliar("AltaBeneficiarioFamiliar");
 
-        UI.jPrincipal.add("BajaBeneficiario", panel);
-        UI.cl.show(UI.jPrincipal, "BajaBeneficiario");
+        UI.jPrincipal.add("BajaFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "BajaFamiliar");
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        panel = new jConsultarFamiliar();
+        panel = new jConsultarFamiliar("AltaBeneficiarioFamiliar");
 
-        UI.jPrincipal.add("ConsultarBeneficiario", panel);
-        UI.cl.show(UI.jPrincipal, "ConsultarBeneficiario");
+        UI.jPrincipal.add("ConsultarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ConsultarFamiliar");
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        panel = new jModificarFamiliar();
+        panel = new jModificarFamiliar("AltaBeneficiarioFamiliar");
 
-        UI.jPrincipal.add("ModificarBeneficiario", panel);
-        UI.cl.show(UI.jPrincipal, "ModificarBeneficiario");
+        UI.jPrincipal.add("ModificarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ModificarFamiliar");
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed

@@ -86,6 +86,11 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton3.setText("Consultar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3);
 
         jListaFamiliares.setModel(new javax.swing.AbstractListModel() {
@@ -277,6 +282,14 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         UI.cl.show(UI.jPrincipal, "Beneficiarios");
     }//GEN-LAST:event_botonOKActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        panel = new jConsultarFamiliar("ConsultarBeneficiario");
+
+        UI.jPrincipal.add("ConsultarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ConsultarFamiliar");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellidos;
