@@ -4,12 +4,21 @@
  */
 package diaketas.UI.Diaketas;
 
+import diaketas.UI.UI;
+import javax.swing.JPanel;
 /**
  *
  * @author kesada
  */
 public class jDiaketas extends javax.swing.JPanel {
 
+    
+    JPanel altaVoluntario;
+    JPanel bajaVoluntario;
+    jBuscarVoluntario buscarVoluntario;
+    
+
+    
     /**
      * Creates new form jDiaketas
      */
@@ -49,22 +58,42 @@ public class jDiaketas extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("ONG");
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         botonAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir.png"))); // NOI18N
         botonAlta.setText("Alta");
+        botonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAltaActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonAlta);
 
         botonBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/borrar.png"))); // NOI18N
         botonBaja.setText("Baja");
+        botonBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBajaActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonBaja);
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
+        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonConsultar);
 
         botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/editar.png"))); // NOI18N
         botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonModificar);
 
         botonConsultar1.setText("Operacion");
@@ -121,6 +150,49 @@ public class jDiaketas extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
+        // TODO add your handling code here:
+
+        altaVoluntario = new jAltaVoluntario();
+
+        UI.jPrincipal.add("AltaVoluntario", altaVoluntario);
+        UI.cl.show(UI.jPrincipal, "AltaVoluntario");
+        
+    }//GEN-LAST:event_botonAltaActionPerformed
+
+    private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
+        // TODO add your handling code here:
+
+        bajaVoluntario = new jBajaVoluntario();
+
+        UI.jPrincipal.add("BajaVoluntario", bajaVoluntario);
+        UI.cl.show(UI.jPrincipal, "BajaVoluntario");
+            
+
+    }//GEN-LAST:event_botonBajaActionPerformed
+
+    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
+        // TODO add your handling code here:
+        
+        buscarVoluntario = new jBuscarVoluntario();
+        buscarVoluntario.consultar();
+
+        UI.jPrincipal.add("ConsultarVoluntario", buscarVoluntario);
+        UI.cl.show(UI.jPrincipal, "ConsultarVoluntario");
+    }//GEN-LAST:event_botonConsultarActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        // TODO add your handling code here:
+        
+        buscarVoluntario = new jBuscarVoluntario();
+        buscarVoluntario.modificar();
+
+        UI.jPrincipal.add("ModificarVoluntario", buscarVoluntario); 
+        UI.cl.show(UI.jPrincipal, "ModificarVoluntario");
+        
+    }//GEN-LAST:event_botonModificarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;
     private javax.swing.JButton botonBaja;
