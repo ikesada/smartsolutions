@@ -49,7 +49,6 @@ public class jSocios extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        botonAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir.png"))); // NOI18N
         botonAlta.setText("Alta");
         botonAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,15 +57,12 @@ public class jSocios extends javax.swing.JPanel {
         });
         jPanel2.add(botonAlta);
 
-        botonBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/borrar.png"))); // NOI18N
         botonBaja.setText("Baja");
         jPanel2.add(botonBaja);
 
-        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
         jPanel2.add(botonConsultar);
 
-        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/editar.png"))); // NOI18N
         botonModificar.setText("Modificar");
         jPanel2.add(botonModificar);
 
@@ -82,7 +78,7 @@ public class jSocios extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap())
+                .addContainerGap(284, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

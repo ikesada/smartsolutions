@@ -49,21 +49,17 @@ public class jDiaketas extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("ONG");
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        botonAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir.png"))); // NOI18N
         botonAlta.setText("Alta");
         jPanel2.add(botonAlta);
 
-        botonBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/borrar.png"))); // NOI18N
         botonBaja.setText("Baja");
         jPanel2.add(botonBaja);
 
-        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
         jPanel2.add(botonConsultar);
 
-        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/editar.png"))); // NOI18N
         botonModificar.setText("Modificar");
         jPanel2.add(botonModificar);
 
@@ -84,7 +80,7 @@ public class jDiaketas extends javax.swing.JPanel {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonConsultar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap())
+                .addContainerGap(284, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
