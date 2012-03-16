@@ -196,19 +196,19 @@ public class UI extends javax.swing.JFrame {
          * If Nimbus (introduced in Java SE 6) is not available, stay with the
          * default look and feel. For details see
          * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-       /* try {
+         *//*
+        try {
     UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
 } catch (Exception e) {
     e.printStackTrace();
-}*/
-       /* try {
+}/*
+        try {
                     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());                
 
                     } catch (Exception e) {
                     }
-        */
-        /*try{
+        *//*
+        try{
         UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");                
         } catch (Exception e) {
                     }
@@ -219,10 +219,10 @@ public class UI extends javax.swing.JFrame {
                      UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");        } catch (Exception e) {
         }*/
         
-       /* try{
+        try{
                      UIManager.setLookAndFeel(new SyntheticaBlackMoonLookAndFeel());
         } catch (Exception e) {
-        }*//*
+        }/*
         try{
                      UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
         } catch (Exception e) {
@@ -235,11 +235,11 @@ public class UI extends javax.swing.JFrame {
                      UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
-*/  
+*/  /*
         try{
                      UIManager.setLookAndFeel(new SyntheticaBlueIceLookAndFeel());
         } catch (Exception e) {
-        }
+        }*/
         /*
         try{
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");                
