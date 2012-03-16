@@ -88,6 +88,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         jLabel8.setText("Estado civil");
 
+        Estado_Civil.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Estado_Civil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Casado", "Divorciado", "Soltero", "Viudo" }));
 
         jLabel9.setText("Domicilio");

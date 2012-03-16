@@ -75,40 +75,30 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setText("Situación economica");
 
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
         jLabel15.setText("Motivo");
 
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel16.setText("Vivienda");
 
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Domicilio");
 
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("Estado civil");
 
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
         jLabel10.setText("Codigo Postal");
 
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText("Localidad");
 
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setText("Telefono");
 
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Nacimiento");
 
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Nombre");
 
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Apellidos");
 
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Nacionalidad");
 
-        jBotones.setLayout(new java.awt.GridLayout());
+        jBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar_familiar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
@@ -132,40 +122,28 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Modificar a un beneficiario");
 
-        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
         jLabel18.setText("NIF");
 
-        NIF.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         NIF.setText("NIF");
 
-        Nombre.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Nombre.setText("Nombre");
 
-        Apellidos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Apellidos.setText("Apellidos");
 
-        Fecha_Nacimiento.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Fecha_Nacimiento.setText("Nacimiento");
 
-        Nacionalidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Nacionalidad.setText("Nacionalidad");
 
-        Estado_Civil.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Estado_Civil.setText("Estado_Civil");
 
-        Domicilio.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Domicilio.setText("Domicilio");
 
-        Codigo_Postal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Codigo_Postal.setText("Codigo_Postal");
 
-        Localidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Localidad.setText("Localidad");
 
-        Telefono.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Telefono.setText("Telefono");
 
-        Motivo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Motivo.setText("Motivo");
         Motivo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
@@ -216,9 +194,8 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel13)
                             .addComponent(jLabel15)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jBotones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator5)
                             .addComponent(jSeparator8)
                             .addComponent(Motivo, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)))))

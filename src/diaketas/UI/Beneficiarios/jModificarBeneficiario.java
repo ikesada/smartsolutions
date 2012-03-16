@@ -76,25 +76,19 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel16.setText("Vivienda");
 
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
         jLabel15.setText("Motivo");
 
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setText("Telefono");
 
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText("Localidad");
 
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
         jLabel10.setText("Codigo Postal");
 
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Domicilio");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
 
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("NIF");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -151,24 +145,20 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Fecha_Nacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         Fecha_Nacimiento.setText("d/mm/aa");
 
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Nacimiento");
 
         Localidad.setColumns(20);
 
         Codigo_Postal.setColumns(9);
 
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Nombre");
 
         NIF.setColumns(9);
 
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Apellidos");
 
         Nombre.setColumns(20);
 
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Nacionalidad");
 
         Telefono.setColumns(9);
@@ -178,7 +168,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("Familiares");
 
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("Estado civil");
 
         Estado_Civil.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
