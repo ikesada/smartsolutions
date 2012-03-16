@@ -147,16 +147,15 @@ public class jBeneficiario extends javax.swing.JPanel {
     }//GEN-LAST:event_botonBajaActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        buscarBeneficiario = new jBuscarBeneficiario();
-        buscarBeneficiario.consultar();
+        buscarBeneficiario = new jBuscarBeneficiario("ConsultarBeneficiario");
+        
 
         UI.jPrincipal.add("ConsultarBeneficiario", buscarBeneficiario);
         UI.cl.show(UI.jPrincipal, "ConsultarBeneficiario");
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        buscarBeneficiario = new jBuscarBeneficiario();
-        buscarBeneficiario.modificar();
+        buscarBeneficiario = new jBuscarBeneficiario("ModificarBeneficiario");
 
         UI.jPrincipal.add("ModificarBeneficiario", buscarBeneficiario); 
         UI.cl.show(UI.jPrincipal, "ModificarBeneficiario");

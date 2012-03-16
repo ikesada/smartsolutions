@@ -33,8 +33,9 @@
                               <Component id="Ocupacion" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="Parentesco" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="botonOK" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="botonCancel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -79,7 +80,10 @@
                   <Component id="Ocupacion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="botonOK" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonOK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="80" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -165,6 +169,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonOKActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonCancel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

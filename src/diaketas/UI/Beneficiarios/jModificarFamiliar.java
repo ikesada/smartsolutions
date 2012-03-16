@@ -12,12 +12,12 @@ import diaketas.UI.UI;
  */
 public class jModificarFamiliar extends javax.swing.JPanel {
 
-    String padre;
+    String jPanelSiguiente;
     /**
      * Creates new form jAltaFamiliar
      */
-    public jModificarFamiliar(String padre) {
-        this.padre = padre;
+    public jModificarFamiliar(String jPanelSiguiente) {
+        this.jPanelSiguiente = jPanelSiguiente;
         initComponents();
     }
 
@@ -43,6 +43,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         Parentesco = new javax.swing.JComboBox();
         botonOK = new javax.swing.JButton();
+        botonCancel = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -75,6 +76,13 @@ public class jModificarFamiliar extends javax.swing.JPanel {
             }
         });
 
+        botonCancel.setText("Cancelar");
+        botonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,8 +104,9 @@ public class jModificarFamiliar extends javax.swing.JPanel {
                                 .addComponent(Ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Parentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(35, 35, 35)
-                                    .addComponent(botonOK)))))
+                                    .addComponent(botonOK)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(botonCancel)))))
                     .addComponent(jLabel6)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
@@ -131,21 +140,28 @@ public class jModificarFamiliar extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(Ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(botonOK)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonOK)
+                    .addComponent(botonCancel))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        UI.cl.show(UI.jPrincipal, padre);
-        // TODO add your handling code here:
+        /*Modificar familiar*/
+        UI.cl.show(UI.jPrincipal, jPanelSiguiente);
     }//GEN-LAST:event_botonOKActionPerformed
+
+    private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
+        UI.cl.show(UI.jPrincipal, jPanelSiguiente);
+    }//GEN-LAST:event_botonCancelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField Fecha_Nacimiento;
     private javax.swing.JTextField Nombre_Apellidos;
     private javax.swing.JTextField Ocupacion;
     private javax.swing.JComboBox Parentesco;
+    private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

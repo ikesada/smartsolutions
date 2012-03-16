@@ -5,6 +5,7 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import javax.swing.JPanel;
 
 /**
  *
@@ -12,27 +13,18 @@ import diaketas.UI.UI;
  */
 public class jBuscarBeneficiario extends javax.swing.JPanel {
 
-    /*Si true, redirige a consultar
-     * Si false, redirige a modificar
-     */
-    private boolean consultar_modificar;
-    jConsultarBeneficiario consultarBeneficiario;
+    JPanel panel;
     jModificarBeneficiario modificarBeneficiario;
+    String jPanelSiguiente;
     
     /**
      * Creates new form jBuscarBeneficiario
      */
-    public jBuscarBeneficiario() {
+    public jBuscarBeneficiario(String jPanelSiguiente) {
+        this.jPanelSiguiente = jPanelSiguiente;
         initComponents();
     }
 
-    public void modificar(){
-        consultar_modificar = false;
-    }
-    
-    public void consultar(){
-        consultar_modificar = true;
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +41,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         NIF = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botonConsultar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -61,10 +53,10 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
 
         NIF.setColumns(9);
 
-        jButton1.setText("Consultar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonConsultar.setText("Consultar");
+        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonConsultarActionPerformed(evt);
             }
         });
 
@@ -92,7 +84,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                                         .addGap(198, 198, 198))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(176, 176, 176)
-                                .addComponent(jButton1)))
+                                .addComponent(botonConsultar)))
                         .addGap(0, 166, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -112,30 +104,27 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(botonConsultar)
                 .addContainerGap(270, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (consultar_modificar)
+    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
+        if (jPanelSiguiente.compareTo("ConsultarBeneficiario") ==0)
         {
-            consultarBeneficiario = new jConsultarBeneficiario();
-            UI.jPrincipal.remove(consultarBeneficiario);
-            UI.jPrincipal.add("ConsultarBeneficiario", consultarBeneficiario); 
-            UI.cl.show(UI.jPrincipal, "ConsultarBeneficiario");
+            panel = new jConsultarBeneficiario();
+            UI.jPrincipal.add(jPanelSiguiente, panel); 
+            UI.cl.show(UI.jPrincipal, jPanelSiguiente);
         }else{
-            modificarBeneficiario = new jModificarBeneficiario();
-            UI.jPrincipal.remove(modificarBeneficiario);
-            UI.jPrincipal.add("ModificarBeneficiario", modificarBeneficiario); 
-            UI.cl.show(UI.jPrincipal, "ModificarBeneficiario");  
+            panel = new jModificarBeneficiario();
+            UI.jPrincipal.add(jPanelSiguiente, panel); 
+            UI.cl.show(UI.jPrincipal, jPanelSiguiente);  
         }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonConsultarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonConsultar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
