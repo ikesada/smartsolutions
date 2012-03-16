@@ -29,16 +29,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
 
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-
-    }
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-
-    }
-
-
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -83,6 +73,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         Motivo = new javax.swing.JTextArea();
         Apellidos = new javax.swing.JTextField();
+        botonCancel = new javax.swing.JButton();
 
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel16.setText("Vivienda");
@@ -113,6 +104,11 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel3.setText("Modificar a un beneficiario");
 
         botonOK.setText("Ok");
+        botonOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonOKActionPerformed(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -190,6 +186,13 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
 
         Apellidos.setColumns(30);
 
+        botonCancel.setText("Cancelar");
+        botonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -228,18 +231,23 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                     .addComponent(jLabel11)
                     .addComponent(jLabel12)
                     .addComponent(botonOK, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14)
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16)
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(botonCancel)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -316,7 +324,9 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonOK)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonOK)
+                    .addComponent(botonCancel))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -349,6 +359,14 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "ModificarFamiliar");
     }//GEN-LAST:event_botonModificarActionPerformed
 
+    private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+        UI.cl.show(UI.jPrincipal, "Beneficiarios");
+    }//GEN-LAST:event_botonOKActionPerformed
+
+    private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
+        UI.cl.show(UI.jPrincipal, "Beneficiarios");
+    }//GEN-LAST:event_botonCancelActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Codigo_Postal;
@@ -362,6 +380,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField Telefono;
     private javax.swing.JButton botonAniadir;
+    private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonModificar;

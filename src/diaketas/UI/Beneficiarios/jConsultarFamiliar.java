@@ -51,7 +51,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         jLabel8.setText("Parentesco");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Añadir familiar");
+        jLabel3.setText("Consultar familiar");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
