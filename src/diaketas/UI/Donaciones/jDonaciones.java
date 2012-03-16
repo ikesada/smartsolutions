@@ -41,23 +41,6 @@ public class jDonaciones extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Donaciones");
 
-<<<<<<< HEAD
-        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
-
-        botonAlta.setText("Alta");
-        jPanel2.add(botonAlta);
-
-        botonBaja.setText("Baja");
-        jPanel2.add(botonBaja);
-
-        botonConsultar.setText("Consultar");
-        jPanel2.add(botonConsultar);
-
-        botonModificar.setText("Modificar");
-        jPanel2.add(botonModificar);
-
-=======
->>>>>>> b1d4bf1751b969e7d10dd598c0bd28efa736cfa5
         botonConsultar1.setText("Operacion");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -71,13 +54,8 @@ public class jDonaciones extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonConsultar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(284, Short.MAX_VALUE))
-=======
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
->>>>>>> b1d4bf1751b969e7d10dd598c0bd28efa736cfa5
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
