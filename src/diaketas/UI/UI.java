@@ -222,24 +222,24 @@ public class UI extends javax.swing.JFrame {
        /* try{
                      UIManager.setLookAndFeel(new SyntheticaBlackMoonLookAndFeel());
         } catch (Exception e) {
-        }*/
+        }*//*
         try{
                      UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
         } catch (Exception e) {
-        }
+        }*/
        /* try{
                      UIManager.setLookAndFeel(new SyntheticaBlackStarLookAndFeel());
         } catch (Exception e) {
-        }*/
+        }
   /*      try{
                      UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
-*/  /*
+*/  
         try{
                      UIManager.setLookAndFeel(new SyntheticaBlueIceLookAndFeel());
         } catch (Exception e) {
-        }*/
+        }
         /*
         try{
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");                
