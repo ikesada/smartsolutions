@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Beneficiarios;
+package diaketas.UI.Socios;
 
+import diaketas.UI.Beneficiarios.*;
 import diaketas.UI.UI;
 import javax.swing.JOptionPane;
 
@@ -11,13 +12,13 @@ import javax.swing.JOptionPane;
  *
  * @author kesada
  */
-public class jBajaBeneficiario extends javax.swing.JPanel {
+public class jBajaSocio extends javax.swing.JPanel {
 
     public int fase;
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jBajaBeneficiario() {
+    public jBajaSocio() {
         initComponents();
         fase = 0;
         botonCancel.setVisible(false);
@@ -135,7 +136,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             
             //si se encuentra
             NIF_CIF.setVisible(false);
-            jLabel2.setText("¿Desea borrar el beneficiario con NIF-CIF " + NIF_CIF.getText()+ "?");
+            jLabel2.setText("¿Desea borrar el socio con NIF-CIF " + NIF_CIF.getText()+ "?");
             botonCancel.setVisible(true);
             jLabel4.setVisible(true);
             NIF_Voluntario.setVisible(true);
@@ -148,16 +149,16 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             }else{
                 botonCancel.setVisible(false);
                 NIF_Voluntario.setVisible(false);
-                jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
+                jLabel2.setText("El socio ha sido dado de baja correctamente.");
                 jLabel4.setVisible(false);
                 fase = 2;
             }
         }else
-            UI.cl.show(UI.jPrincipal, "Beneficiarios");
+            UI.cl.show(UI.jPrincipal, "Socios");
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-            UI.cl.show(UI.jPrincipal, "Beneficiarios");
+            UI.cl.show(UI.jPrincipal, "Socios");
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 

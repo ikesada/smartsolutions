@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Beneficiarios;
+package diaketas.UI.Socios;
 
+import diaketas.UI.Beneficiarios.*;
 import diaketas.UI.UI;
 import javax.swing.JPanel;
 
@@ -11,20 +12,19 @@ import javax.swing.JPanel;
  *
  * @author kesada
  */
-public class jBuscarBeneficiario extends javax.swing.JPanel {
+public class jBuscarSocio extends javax.swing.JPanel {
 
     JPanel panel;
-    jModificarBeneficiario modificarBeneficiario;
+    jModificarSocio modificarSocio;
     String jPanelSiguiente;
     
     /**
-     * Creates new form jBuscarBeneficiario
+     * Creates new form jBuscarSocio
      */
-    public jBuscarBeneficiario(String jPanelSiguiente) {
+    public jBuscarSocio(String jPanelSiguiente) {
         this.jPanelSiguiente = jPanelSiguiente;
         initComponents();
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,10 +44,10 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         botonConsultar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Beneficiarios");
+        jLabel1.setText("Socios");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Buscar Beneficiario por NIF");
+        jLabel3.setText("Buscar Socios por NIF");
 
         jLabel2.setText("NIF");
 
@@ -85,7 +85,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(176, 176, 176)
                                 .addComponent(botonConsultar)))
-                        .addGap(0, 166, Short.MAX_VALUE)))
+                        .addGap(0, 180, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -110,13 +110,13 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        if (jPanelSiguiente.compareTo("ConsultarBeneficiario") ==0)
+        if (jPanelSiguiente.compareTo("ConsultarSocio") ==0)
         {
-            panel = new jConsultarBeneficiario();
+            panel = new jConsultarSocio();
             UI.jPrincipal.add(jPanelSiguiente, panel); 
             UI.cl.show(UI.jPrincipal, jPanelSiguiente);
         }else{
-            panel = new jModificarBeneficiario();
+            panel = new jModificarSocio();
             UI.jPrincipal.add(jPanelSiguiente, panel); 
             UI.cl.show(UI.jPrincipal, jPanelSiguiente);  
         }

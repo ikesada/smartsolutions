@@ -4,15 +4,16 @@
  */
 package diaketas.UI.Socios;
 
-import diaketas.UI.Beneficiarios.*;
-import diaketas.UI.Diaketas.*;
 import diaketas.UI.UI;
+import javax.swing.JPanel;
 
 /**
  *
  * @author kesada
  */
 public class jSocios extends javax.swing.JPanel {
+    JPanel panel;
+    jBuscarSocio BuscarSocio;
 
     /**
      * Creates new form jDiaketas
@@ -49,6 +50,7 @@ public class jSocios extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
+        botonAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir.png"))); // NOI18N
         botonAlta.setText("Alta");
         botonAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,13 +59,31 @@ public class jSocios extends javax.swing.JPanel {
         });
         jPanel2.add(botonAlta);
 
+        botonBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/borrar.png"))); // NOI18N
         botonBaja.setText("Baja");
+        botonBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBajaActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonBaja);
 
+        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
+        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonConsultar);
 
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/editar.png"))); // NOI18N
         botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonModificar);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -78,7 +98,7 @@ public class jSocios extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +132,34 @@ public class jSocios extends javax.swing.JPanel {
 
     private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
 
+        panel = new jAltaSocio();
+        
+        UI.jPrincipal.add("AltaSocio", panel);
+        UI.cl.show(UI.jPrincipal, "AltaSocio");
     }//GEN-LAST:event_botonAltaActionPerformed
+
+    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
+       
+        panel = new jBuscarSocio("ConsultarSocio");
+        
+        UI.jPrincipal.add("ConsultarSocio", panel);
+        UI.cl.show(UI.jPrincipal, "ConsultarSocio");
+    }//GEN-LAST:event_botonConsultarActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+      
+        panel = new jBuscarSocio("ModificarSocio");
+        
+        UI.jPrincipal.add("ModificarSocio", panel);
+        UI.cl.show(UI.jPrincipal, "ModificarSocio");
+    }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
+        panel = new jBajaSocio();
+        
+        UI.jPrincipal.add("BajaSocio", panel);
+        UI.cl.show(UI.jPrincipal, "BajaSocio");
+    }//GEN-LAST:event_botonBajaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;

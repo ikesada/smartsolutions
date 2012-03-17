@@ -43,7 +43,7 @@
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="284" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,6 +95,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="botonAlta">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/diaketas/Iconos/aniadir.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Alta"/>
               </Properties>
               <Events>
@@ -103,18 +106,36 @@
             </Component>
             <Component class="javax.swing.JButton" name="botonBaja">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/diaketas/Iconos/borrar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Baja"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonBajaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonConsultar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/diaketas/Iconos/consultar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConsultarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonModificar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/diaketas/Iconos/editar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Modificar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
