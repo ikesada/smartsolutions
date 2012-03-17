@@ -5,6 +5,7 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -37,7 +38,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         Nombre1 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         Fecha_Nacimiento = new javax.swing.JFormattedTextField();
-        NIF2 = new javax.swing.JTextField();
+        NIF_Voluntario = new javax.swing.JTextField();
         Domicilio = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         Telefono = new javax.swing.JTextField();
@@ -87,8 +88,13 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         Fecha_Nacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         Fecha_Nacimiento.setText("d/mm/aa");
 
-        NIF2.setBackground(new java.awt.Color(255, 255, 153));
-        NIF2.setColumns(9);
+        NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
+        NIF_Voluntario.setColumns(9);
+        NIF_Voluntario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NIF_VoluntarioActionPerformed(evt);
+            }
+        });
 
         Domicilio.setColumns(30);
 
@@ -226,7 +232,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                                 .addComponent(botonOK)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NIF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonCancel))))
                 .addContainerGap())
         );
@@ -305,7 +311,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NIF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -320,11 +326,20 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     }//GEN-LAST:event_botonCancelActionPerformed
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        panel = new jFamiliar();
 
-        UI.jPrincipal.add("Familiar", panel);
-        UI.cl.show(UI.jPrincipal, "Familiar");
+        if (NIF_Voluntario.getText().compareTo("") == 0){
+            JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+        }else{
+            panel = new jFamiliar();
+
+            UI.jPrincipal.add("Familiar", panel);
+            UI.cl.show(UI.jPrincipal, "Familiar");
+        }
     }//GEN-LAST:event_botonOKActionPerformed
+
+    private void NIF_VoluntarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NIF_VoluntarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NIF_VoluntarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
@@ -335,7 +350,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField Localidad;
     private javax.swing.JTextArea Motivo;
     private javax.swing.JTextField NIF;
-    private javax.swing.JTextField NIF2;
+    private javax.swing.JTextField NIF_Voluntario;
     private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField Nombre1;

@@ -5,6 +5,7 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -46,7 +47,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         botonCancel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        NIF2 = new javax.swing.JTextField();
+        NIF_Voluntario = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         Apellidos = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
@@ -110,8 +111,8 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
 
         jLabel15.setText("Motivo");
 
-        NIF2.setBackground(new java.awt.Color(255, 255, 153));
-        NIF2.setColumns(9);
+        NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
+        NIF_Voluntario.setColumns(9);
 
         jLabel20.setText("NIF Voluntario");
 
@@ -228,7 +229,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                 .addComponent(botonOK)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NIF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonCancel))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -307,7 +308,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NIF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -318,10 +319,14 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        panel = new jFamiliar();
+        if (NIF_Voluntario.getText().compareTo("") == 0){
+            JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+        }else{
+            panel = new jFamiliar();
 
-        UI.jPrincipal.add("Familiar", panel);
-        UI.cl.show(UI.jPrincipal, "Familiar");
+            UI.jPrincipal.add("Familiar", panel);
+            UI.cl.show(UI.jPrincipal, "Familiar");
+        }
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
@@ -337,7 +342,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField Localidad;
     private javax.swing.JTextArea Motivo;
     private javax.swing.JTextField NIF;
-    private javax.swing.JTextField NIF2;
+    private javax.swing.JTextField NIF_Voluntario;
     private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField Nombre1;

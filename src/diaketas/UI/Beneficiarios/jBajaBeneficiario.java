@@ -5,6 +5,7 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +22,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
         fase = 0;
         botonCancel.setVisible(false);
         jLabel4.setVisible(false);
-        NIF_CIF_Voluntario.setVisible(false);
+        NIF_Voluntario.setVisible(false);
     }
 
     /**
@@ -42,7 +43,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
         botonOK = new javax.swing.JButton();
         botonCancel = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        NIF_CIF_Voluntario = new javax.swing.JTextField();
+        NIF_Voluntario = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -70,8 +71,8 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
 
         jLabel4.setText("DNI voluntario");
 
-        NIF_CIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
-        NIF_CIF_Voluntario.setColumns(9);
+        NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
+        NIF_Voluntario.setColumns(9);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -92,7 +93,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NIF_CIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(NIF_CIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
@@ -119,7 +120,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(NIF_CIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
@@ -137,16 +138,20 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             jLabel2.setText("¿Desea borrar el beneficiario con NIF-CIF " + NIF_CIF.getText()+ "?");
             botonCancel.setVisible(true);
             jLabel4.setVisible(true);
-            NIF_CIF_Voluntario.setVisible(true);
+            NIF_Voluntario.setVisible(true);
             
             fase = 1;
             
         }else if (fase ==1){
-            botonCancel.setVisible(false);
-            NIF_CIF_Voluntario.setVisible(false);
-            jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
-            jLabel4.setVisible(false);
-            fase = 2;
+            if (NIF_Voluntario.getText().compareTo("") == 0){
+                JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+            }else{
+                botonCancel.setVisible(false);
+                NIF_Voluntario.setVisible(false);
+                jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
+                jLabel4.setVisible(false);
+                fase = 2;
+            }
         }else
             UI.cl.show(UI.jPrincipal, "Beneficiarios");
     }//GEN-LAST:event_botonOKActionPerformed
@@ -158,7 +163,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_CIF;
-    private javax.swing.JTextField NIF_CIF_Voluntario;
+    private javax.swing.JTextField NIF_Voluntario;
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;

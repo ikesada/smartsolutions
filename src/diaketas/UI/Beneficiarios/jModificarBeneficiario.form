@@ -94,7 +94,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="NIF2" min="-2" max="-2" attributes="0"/>
+                          <Component id="NIF_Voluntario" min="-2" max="-2" attributes="0"/>
                           <Component id="botonCancel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -195,7 +195,7 @@
               </Group>
               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NIF2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="NIF_Voluntario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -298,7 +298,7 @@
         <Property name="text" type="java.lang.String" value="Motivo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="NIF2">
+    <Component class="javax.swing.JTextField" name="NIF_Voluntario">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="ff" red="ff" type="rgb"/>
