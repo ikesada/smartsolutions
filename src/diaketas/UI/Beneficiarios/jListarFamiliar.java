@@ -131,15 +131,15 @@ public class jListarFamiliar extends javax.swing.JPanel {
         if (jPanelSiguiente.compareTo("BajaFamiliar") ==0){
             panel = new jBajaFamiliar(jPanelAnterior);
             UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, jPanelSiguiente);
+            UI.cl.show(UI.jPrincipal, "BajaFamiliar");
         }else if (jPanelSiguiente.compareTo("ConsultarFamiliar") ==0){
             panel = new jConsultarFamiliar(jPanelAnterior);
             UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, jPanelSiguiente);  
+            UI.cl.show(UI.jPrincipal, "ConsultarFamiliar");  
         }else{
             panel = new jModificarFamiliar(jPanelAnterior);
             UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, jPanelSiguiente);              
+            UI.cl.show(UI.jPrincipal, "ModificarFamiliar");              
         }
     }//GEN-LAST:event_botonOKActionPerformed
 

@@ -11,13 +11,14 @@ import javax.swing.JPanel;
  *
  * @author kesada
  */
-public class jAltaBeneficiarioFamiliar extends javax.swing.JPanel {
+public class jFamiliar extends javax.swing.JPanel {
 
     JPanel panel;
+    
     /**
-     * Creates new form jAltaBeneficiario
+     * Creates new form jFamiliar
      */
-    public jAltaBeneficiarioFamiliar() {
+    public jFamiliar() {
         initComponents();
     }
 
@@ -30,43 +31,16 @@ public class jAltaBeneficiarioFamiliar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel13 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Motivo = new javax.swing.JTextArea();
-        jLabel15 = new javax.swing.JLabel();
-        botonOK = new javax.swing.JButton();
         jBotones = new javax.swing.JPanel();
         botonAniadir = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Beneficiarios");
-
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel13.setText("Familiares");
-
-        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel14.setText("Situación economica");
-
-        Motivo.setColumns(20);
-        Motivo.setRows(5);
-        jScrollPane2.setViewportView(Motivo);
-
-        jLabel15.setText("Motivo");
-
-        botonOK.setText("Ok");
-        botonOK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonOKActionPerformed(evt);
-            }
-        });
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        botonOK = new javax.swing.JButton();
 
         jBotones.setLayout(new java.awt.GridLayout());
 
@@ -106,6 +80,19 @@ public class jAltaBeneficiarioFamiliar extends javax.swing.JPanel {
         });
         jBotones.add(botonModificar);
 
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel13.setText("Familiares");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("Beneficiarios");
+
+        botonOK.setText("OK");
+        botonOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonOKActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,24 +102,22 @@ public class jAltaBeneficiarioFamiliar extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel13))
-                        .addContainerGap(528, Short.MAX_VALUE))
+                        .addComponent(jBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jSeparator4)
-                                .addComponent(jBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
-                                .addComponent(jLabel14)
-                                .addComponent(jLabel15)
-                                .addComponent(jSeparator5)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel1))
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGap(304, 304, 304)
-                .addComponent(botonOK)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(botonOK))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,54 +132,45 @@ public class jAltaBeneficiarioFamiliar extends javax.swing.JPanel {
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonOK)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        UI.cl.show(UI.jPrincipal, "Beneficiarios");
-    }//GEN-LAST:event_botonOKActionPerformed
-
     private void botonAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirActionPerformed
-        panel = new jAltaFamiliar("AltaBeneficiarioFamiliar");
+        panel = new jAltaFamiliar();
 
         UI.jPrincipal.add("AltaFamiliar", panel);
         UI.cl.show(UI.jPrincipal, "AltaFamiliar");
     }//GEN-LAST:event_botonAniadirActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        panel = new jListarFamiliar("AltaBeneficiarioFamiliar","BajaFamiliar");
+        panel = new jListarFamiliar("Familiar", "BajaFamiliar");
 
-        UI.jPrincipal.add("ListaFamiliar", panel);
-        UI.cl.show(UI.jPrincipal, "ListaFamiliar");
+        UI.jPrincipal.add("ListarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ListarFamiliar");
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        panel = new jListarFamiliar("AltaBeneficiarioFamiliar","ConsultarFamiliar");
+        panel = new jListarFamiliar("Familiar", "ConsultarFamiliar");
 
-        UI.jPrincipal.add("ListaFamiliar", panel);
-        UI.cl.show(UI.jPrincipal, "ListaFamiliar");
+        UI.jPrincipal.add("ListarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ListarFamiliar");
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        panel = new jListarFamiliar("AltaBeneficiarioFamiliar","ModificarFamiliar");
+        panel = new jListarFamiliar("Familiar", "ModificarFamiliar");
 
-        UI.jPrincipal.add("ListaFamiliar", panel);
-        UI.cl.show(UI.jPrincipal, "ListaFamiliar");
+        UI.jPrincipal.add("ListarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ListarFamiliar");
     }//GEN-LAST:event_botonModificarActionPerformed
 
+    private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+        UI.cl.show(UI.jPrincipal, "Beneficiarios");
+    }//GEN-LAST:event_botonOKActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea Motivo;
     private javax.swing.JButton botonAniadir;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JButton botonEliminar;
@@ -203,11 +179,7 @@ public class jAltaBeneficiarioFamiliar extends javax.swing.JPanel {
     private javax.swing.JPanel jBotones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     // End of variables declaration//GEN-END:variables
 }

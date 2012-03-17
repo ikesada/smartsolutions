@@ -70,6 +70,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
 
         jLabel4.setText("DNI voluntario");
 
+        NIF_CIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_CIF_Voluntario.setColumns(9);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
