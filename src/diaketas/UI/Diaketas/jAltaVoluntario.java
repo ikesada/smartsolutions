@@ -5,26 +5,22 @@
 package diaketas.UI.Diaketas;
 
 import diaketas.UI.UI;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author kesada
+ * @author cesar
  */
 public class jAltaVoluntario extends javax.swing.JPanel {
 
-    
-     public int fase;
-     
+
+     jConfirmarAlta confirmarAlta;
      
     /**
      * Creates new form jAltaBeneficiario
      */
     public jAltaVoluntario() {
         initComponents();
-        
-        fase = 0;
-        
-        jLabel6.setVisible(false);
         
     }
 
@@ -60,7 +56,6 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         botonOK = new javax.swing.JButton();
         NIF1 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -106,11 +101,10 @@ public class jAltaVoluntario extends javax.swing.JPanel {
             }
         });
 
+        NIF1.setBackground(new java.awt.Color(255, 255, 153));
         NIF1.setColumns(9);
 
         jLabel17.setText("DNI del voluntario actual");
-
-        jLabel6.setText("El voluntario ha sido dado de alta correctamente.");
 
         botonCancelar.setLabel("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -174,10 +168,6 @@ public class jAltaVoluntario extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,9 +184,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -241,42 +229,21 @@ public class jAltaVoluntario extends javax.swing.JPanel {
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         // TODO add your handling code here:       
-        
-        if (fase == 0){
- 
-            //ALTA VOLUNTARIO REALIZADA
-            jLabel2.setVisible(false);
-            jLabel4.setVisible(false);
-            jLabel5.setVisible(false);
-            jLabel9.setVisible(false);
-            jLabel12.setVisible(false);
-            jLabel10.setVisible(false);
-            jLabel11.setVisible(false);
-            jLabel17.setVisible(false);
-            
-            NIF.setVisible(false);
-            Nombre.setVisible(false);
-            Apellidos.setVisible(false);
-            Telefono.setVisible(false);
-            Domicilio.setVisible(false);
-            Poblacion.setVisible(false);
-            Provincia.setVisible(false);
-            NIF1.setVisible(false);
-            
-            botonCancelar.setVisible(false);
-            
-            botonOK.setVisible(true);
-            jLabel6.setVisible(true);
-            fase = 1;
-            
-        }else if (fase ==1){
-            
-            //FASE DE CONFIRMACION
-            
-            UI.cl.show(UI.jPrincipal, "Diaketas");
-            
-        }   
 
+            if (NIF1.getText().compareTo("") == 0){
+                        JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+                    }
+            
+            else
+            {
+
+                //ALTA VOLUNTARIO REALIZADA
+                confirmarAlta = new jConfirmarAlta();
+                UI.jPrincipal.remove(confirmarAlta);
+                UI.jPrincipal.add("ConfirmarAlta", confirmarAlta); 
+                UI.cl.show(UI.jPrincipal, "ConfirmarAlta");
+            
+            }
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
@@ -305,7 +272,6 @@ public class jAltaVoluntario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

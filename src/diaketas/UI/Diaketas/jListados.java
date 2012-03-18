@@ -5,24 +5,27 @@
 package diaketas.UI.Diaketas;
 
 import diaketas.UI.UI;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author cesar
  */
-public class jBajaVoluntario extends javax.swing.JPanel {
+public class jListados extends javax.swing.JPanel {
 
-    public int fase;
+
+    jListadoVoluntarios listadoVoluntarios;
+    jListadoBeneficiarios listadoBeneficiarios;
+    jListadoDonantes listadoDonantes;
+    String valor_combo; 
+
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jBajaVoluntario() {
+    public jListados() {
         initComponents();
-        fase = 0;
-        botonCancel.setVisible(false);
-        jLabel4.setVisible(false);
-        NIF_CIF_Voluntario.setVisible(false);
+        
+        botonCancel.setVisible(true);
+
     }
 
     /**
@@ -39,21 +42,17 @@ public class jBajaVoluntario extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        NIF_CIF = new javax.swing.JTextField();
         botonOK = new javax.swing.JButton();
         botonCancel = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        NIF_CIF_Voluntario = new javax.swing.JTextField();
+        listaDespleg = new javax.swing.JComboBox();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Voluntarios");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Dar de baja a un voluntario");
+        jLabel3.setText("Listados");
 
-        jLabel2.setText("DNI/NIF del voluntario a eliminar");
-
-        NIF_CIF.setColumns(9);
+        jLabel2.setText("Tipo de listado");
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -69,10 +68,12 @@ public class jBajaVoluntario extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setText("DNI voluntario actual");
-
-        NIF_CIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
-        NIF_CIF_Voluntario.setColumns(9);
+        listaDespleg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Voluntarios", "Donantes", "Beneficiarios" }));
+        listaDespleg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDesplegActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,12 +90,8 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NIF_CIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(NIF_CIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(listaDespleg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(botonOK)
@@ -116,12 +113,8 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(NIF_CIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(NIF_CIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(listaDespleg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
                     .addComponent(botonCancel))
@@ -130,41 +123,30 @@ public class jBajaVoluntario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        if (fase == 0){
-            //Buscar el dni
-            
-            if (NIF_CIF.getText().compareTo("") == 0){
-                JOptionPane.showMessageDialog(this, "El NIF del voluntario a eliminar no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-            }
-            else
-            {
-                //si ha rellenado el campo del dni del voluntario acutal
-                NIF_CIF.setVisible(false);
-                jLabel2.setText("¿Desea borrar el voluntario con NIF-CIF " + NIF_CIF.getText()+ "?");
-                botonOK.setText("Confirmar");
-                botonCancel.setVisible(true);
-                jLabel4.setVisible(true);
-                NIF_CIF_Voluntario.setVisible(true);
-
-                fase = 1;
-           }
-            
-        }else if (fase ==1){
-            
-            if (NIF_CIF_Voluntario.getText().compareTo("") == 0){
-                JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-            }
-            else
-            {
-                botonCancel.setVisible(false);
-                NIF_CIF_Voluntario.setVisible(false);
-                jLabel2.setText("El voluntario ha sido dado de baja correctamente.");
-                jLabel4.setVisible(false);
-                botonOK.setText("Regresar");
-                fase = 2;
-            }
-        }else
-            UI.cl.show(UI.jPrincipal, "Diaketas");
+        
+        valor_combo  = (String)listaDespleg.getSelectedItem();
+        
+        if ( valor_combo.equals("Voluntarios") )
+        {       
+            listadoVoluntarios = new jListadoVoluntarios();
+            UI.jPrincipal.remove(listadoVoluntarios);
+            UI.jPrincipal.add("ListadoVoluntarios", listadoVoluntarios); 
+            UI.cl.show(UI.jPrincipal, "ListadoVoluntarios");
+        }
+        else if ( valor_combo.equals("Donantes") )
+        {
+            listadoDonantes = new jListadoDonantes();
+            UI.jPrincipal.remove(listadoDonantes);
+            UI.jPrincipal.add("ListadoDonantes", listadoDonantes); 
+            UI.cl.show(UI.jPrincipal, "ListadoDonantes");
+        }
+        else if ( valor_combo.equals("Beneficiarios") )
+        {
+            listadoBeneficiarios = new jListadoBeneficiarios();
+            UI.jPrincipal.remove(listadoBeneficiarios);
+            UI.jPrincipal.add("ListadoBeneficiarios", listadoBeneficiarios); 
+            UI.cl.show(UI.jPrincipal, "ListadoBeneficiarios");
+        }
     
     }//GEN-LAST:event_botonOKActionPerformed
 
@@ -173,16 +155,18 @@ public class jBajaVoluntario extends javax.swing.JPanel {
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 
+    private void listaDesplegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDesplegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaDesplegActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField NIF_CIF;
-    private javax.swing.JTextField NIF_CIF_Voluntario;
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JComboBox listaDespleg;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,7 +8,7 @@ import diaketas.UI.UI;
 
 /**
  *
- * @author kesada
+ * @author cesar
  */
 public class jConsultarVoluntario extends javax.swing.JPanel {
 

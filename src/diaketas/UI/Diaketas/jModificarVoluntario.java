@@ -5,26 +5,22 @@
 package diaketas.UI.Diaketas;
 
 import diaketas.UI.UI;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author kesada
+ * @author cesar
  */
 public class jModificarVoluntario extends javax.swing.JPanel {
 
-    
-    public int fase;
-    
+    jConfirmarModificacion confirmarModificacion;
     
     /**
      * Creates new form jAltaBeneficiario
      */
     public jModificarVoluntario() {
         initComponents();
-        
-        fase = 0;
-        
-        jLabel6.setVisible(false);
+
     }
 
     /**
@@ -58,7 +54,6 @@ public class jModificarVoluntario extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         NIF1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
 
         jLabel12.setText("Telefono");
@@ -104,14 +99,12 @@ public class jModificarVoluntario extends javax.swing.JPanel {
 
         jLabel13.setText("Provincia");
 
+        NIF1.setBackground(new java.awt.Color(255, 255, 153));
         NIF1.setColumns(20);
 
         jLabel14.setText("DNI del voluntario actual");
 
-        jLabel6.setText("Voluntario modificado con éxito.");
-
         botonCancelar.setText("Cancelar");
-        botonCancelar.setActionCommand("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
@@ -150,12 +143,9 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                                     .addComponent(Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(129, 129, 129)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(162, 162, 162)
-                                .addComponent(jLabel6))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel3))
@@ -213,8 +203,7 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                             .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(89, 89, 89)
+                        .addGap(103, 103, 103)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -234,46 +223,18 @@ public class jModificarVoluntario extends javax.swing.JPanel {
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         // TODO add your handling code here:
-
-        if (fase == 0){
-
-            //INTRODUCIR DATOS VOLUNTARIO
-            
-            jLabel2.setVisible(false);
-            jLabel4.setVisible(false);
-            jLabel5.setVisible(false);
-            jLabel9.setVisible(false);
-            jLabel12.setVisible(false);
-            jLabel11.setVisible(false);
-            jLabel13.setVisible(false);
-            jLabel14.setVisible(false);
-
-
-            NIF.setVisible(false);
-            Nombre.setVisible(false);
-            Apellidos.setVisible(false);
-            Telefono.setVisible(false);
-            Domicilio.setVisible(false);
-            Localidad.setVisible(false);
-            Provincia.setVisible(false);
-            NIF1.setVisible(false);
-            
-            botonCancelar.setVisible(false);    //ya no se puede cancelar la modificacion
-            
-            botonOK.setVisible(true);
-            jLabel6.setVisible(true);
+   
         
-            fase = 1;
-            
-        }
-        else if (fase ==1){ //cuando pulse el OK, lo mando al jPanel Diaketas
-            
-            //FASE DE CONFIRMACION
-            
-            UI.cl.show(UI.jPrincipal, "Diaketas");
-            
-        }  
-        
+       if (NIF1.getText().compareTo("") == 0){
+                JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+       }
+       else
+       {
+            confirmarModificacion = new jConfirmarModificacion();
+            UI.jPrincipal.remove(confirmarModificacion);
+            UI.jPrincipal.add("ConfirmarModificacion", confirmarModificacion); 
+            UI.cl.show(UI.jPrincipal, "ConfirmarModificacion");
+       }
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
@@ -303,7 +264,6 @@ public class jModificarVoluntario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

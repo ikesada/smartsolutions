@@ -8,15 +8,16 @@ import diaketas.UI.UI;
 import javax.swing.JPanel;
 /**
  *
- * @author kesada
+ * @author cesar
  */
 public class jDiaketas extends javax.swing.JPanel {
 
     
     JPanel altaVoluntario;
     JPanel bajaVoluntario;
+    JPanel listados;
     jBuscarVoluntario buscarVoluntario;
-    
+    JPanel tiposHistoriales;
 
     
     /**
@@ -35,6 +36,7 @@ public class jDiaketas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -47,7 +49,10 @@ public class jDiaketas extends javax.swing.JPanel {
         botonBaja = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
-        botonConsultar1 = new javax.swing.JButton();
+        Listados = new javax.swing.JButton();
+        Historiales = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Diaketas");
@@ -60,6 +65,7 @@ public class jDiaketas extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
+        botonAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir.png"))); // NOI18N
         botonAlta.setText("Alta");
         botonAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +74,7 @@ public class jDiaketas extends javax.swing.JPanel {
         });
         jPanel2.add(botonAlta);
 
+        botonBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/borrar.png"))); // NOI18N
         botonBaja.setText("Baja");
         botonBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +83,7 @@ public class jDiaketas extends javax.swing.JPanel {
         });
         jPanel2.add(botonBaja);
 
+        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +92,7 @@ public class jDiaketas extends javax.swing.JPanel {
         });
         jPanel2.add(botonConsultar);
 
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/editar.png"))); // NOI18N
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +101,21 @@ public class jDiaketas extends javax.swing.JPanel {
         });
         jPanel2.add(botonModificar);
 
-        botonConsultar1.setText("Operacion");
+        Listados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/listados.png"))); // NOI18N
+        Listados.setText("Listados");
+        Listados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadosActionPerformed(evt);
+            }
+        });
+
+        Historiales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/historial.png"))); // NOI18N
+        Historiales.setText("Historial");
+        Historiales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HistorialesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,15 +124,21 @@ public class jDiaketas extends javax.swing.JPanel {
             .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jSeparator4)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonConsultar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Listados, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Historiales, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator4)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(498, 498, 498))))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,8 +152,10 @@ public class jDiaketas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonConsultar1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Listados)
+                    .addComponent(Historiales))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,12 +220,33 @@ public class jDiaketas extends javax.swing.JPanel {
         
     }//GEN-LAST:event_botonModificarActionPerformed
 
+    private void ListadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadosActionPerformed
+        // TODO add your handling code here:
+        
+        listados = new jListados();
+
+        UI.jPrincipal.add("Listados", listados);
+        UI.cl.show(UI.jPrincipal, "Listados");
+        
+    }//GEN-LAST:event_ListadosActionPerformed
+
+    private void HistorialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialesActionPerformed
+        // TODO add your handling code here:
+        
+        tiposHistoriales = new jTiposHistoriales();
+
+        UI.jPrincipal.add("TiposHistoriales", tiposHistoriales);
+        UI.cl.show(UI.jPrincipal, "TiposHistoriales");
+    }//GEN-LAST:event_HistorialesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Historiales;
+    private javax.swing.JButton Listados;
     private javax.swing.JButton botonAlta;
     private javax.swing.JButton botonBaja;
     private javax.swing.JButton botonConsultar;
-    private javax.swing.JButton botonConsultar1;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
