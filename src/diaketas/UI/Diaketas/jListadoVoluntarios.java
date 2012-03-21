@@ -45,7 +45,6 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 //Un objeto ResultSet, almacena los datos de resultados de una consulta
                 ResultSet rs = s.executeQuery("select * from Voluntario");
                 
-                
                 //Obteniendo la informacion de las columnas que estan siendo consultadas
                 ResultSetMetaData rsMd = rs.getMetaData();
                 
@@ -55,9 +54,8 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 
                 //Establecer como cabezeras el nombre de las colimnas
                 for (int i = 1; i <= cantidadColumnas; i++) {
-                modelo.addColumn(rsMd.getColumnLabel(i));
+                    modelo.addColumn(rsMd.getColumnLabel(i));
                 }
-                
                 
                 
                 //Creando las filas para el JTable
@@ -74,10 +72,10 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                             java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
                             String fecha = sdf.format(date);
                             
-                            fila[i] = fecha;
+                            fila[i] = fecha;                  
                         }
                         else{
-                            fila[i]=rs.getObject(i+1);
+                            fila[i]=rs.getObject(i+1);      
                         }
                         
                     }
