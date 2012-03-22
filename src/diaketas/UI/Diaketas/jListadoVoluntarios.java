@@ -10,13 +10,14 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
 
+
 /**
  *
  * @author cesar
  */
 public class jListadoVoluntarios extends javax.swing.JPanel {
 
-     
+          
     /**
      * Creates new form jAltaBeneficiario
      */
