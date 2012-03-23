@@ -168,18 +168,51 @@ public class Gestor_de_voluntarios {
     {
         
         boolean exito=true;
-        //realizo dos insert, uno en la tabla Voluntario y otro en la tabla Usuario 
+        
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(v.FechaNac.getTime());
+        java.sql.Timestamp fecha_Inicio = new java.sql.Timestamp(v.Fecha_Inicio.getTime());
+        java.sql.Timestamp fecha_Desactivacion = new java.sql.Timestamp(v.FechaDesac.getTime());
+        
+        
+        
+        
+        //realizo dos insert, uno en la tabla Usuario y otro en la tabla Voluntario 
         
         
         //primero nos conectamos a la BD
         con.conectarBD();
+        
+        
+        
+        //INSERT EN USUARIO:
+        try {
+        instruccion = (Statement) con.conexion().createStatement();
+
+        //inserto tupla en la tabla Usuario
+        instruccion.executeUpdate("INSERT INTO Usuario( NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Fecha_Desactivacion, Email, Telefono  ) VALUES (\""
+                                    + v.NIF_CIF + "\",\"" + v.Nombre + "\",\"" + v.Apellidos+"\",\"" +fecha_Nacimiento+ "\",\"" +v.Localidad+ "\",\"" +v.Activo+ "\",\"" +fecha_Desactivacion+ "\",\"" +v.Email+ "\",\"" +v.Telefono+"\")");
+        }
+        /*Captura de errores*/
+        catch(SQLException e){ 
+            System.out.println(e); 
+            exito=false;
+        }
+        catch(Exception e){ 
+            System.out.println(e);
+            exito=false;
+        }
+        
+        
+        
+        
         
         try {
         instruccion = (Statement) con.conexion().createStatement();
 
         //inserto tupla en la tabla Voluntario
         instruccion.executeUpdate("INSERT INTO Voluntario( NIF_CIF, Nacionalidad, Domicilio, Codigo_Postal, Fecha_Inicio, Observaciones  ) VALUES (\""
-                                    + v.NIF_CIF + "\",\"" + v.Nacionalidad + "\",\"" + v.Domicilio+"\",\""+v.Codigo_Postal+ "\",\"" +v.Fecha_Inicio+ "\",\"" +v.Observaciones+"\")");
+                                    + v.NIF_CIF + "\",\"" + v.Nacionalidad + "\",\"" + v.Domicilio+"\",\""+v.Codigo_Postal+ "\",\"" +fecha_Inicio+ "\",\"" +v.Observaciones+"\")");
         }
         /*Captura de errores*/
         catch(SQLException e){ 
@@ -194,23 +227,7 @@ public class Gestor_de_voluntarios {
         
         ////////////////////
         
-        //ahora hago el otro insert, esta vez en la tabla Usuario
-        try {
-        instruccion = (Statement) con.conexion().createStatement();
-
-        //inserto tupla en la tabla Usuario
-        instruccion.executeUpdate("INSERT INTO Usuario( NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Fecha_Desactivacion, Email, Telefono  ) VALUES (\""
-                                    + v.NIF_CIF + "\",\"" + v.Nombre + "\",\"" + v.Apellidos+"\",\"" +v.FechaNac+ "\",\"" +v.Localidad+ "\",\"" +v.Activo+ "\",\"" +v.FechaDesac+ "\",\"" +v.Email+ "\",\"" +v.Telefono+"\")");
-        }
-        /*Captura de errores*/
-        catch(SQLException e){ 
-            System.out.println(e); 
-            exito=false;
-        }
-        catch(Exception e){ 
-            System.out.println(e);
-            exito=false;
-        }
+        
         
         
         
