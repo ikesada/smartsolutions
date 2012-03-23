@@ -4,8 +4,6 @@
  */
 package diaketas.Usuarios.Beneficiario;
 
-import diaketas.Usuarios.Email;
-import diaketas.Usuarios.Telefono;
 import diaketas.Usuarios.Usuarios;
 import java.util.Date;
 import java.util.Vector;
@@ -25,12 +23,6 @@ public class Beneficiario extends Usuarios{
     public String Motivo;
     public String Tipo_Vivienda;
     public Double Precio_Vivienda;
-    
-    //BORRAR
-    public int Telefono;
-    public String Email;
-    
-    
     
     public Beneficiario (String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo, Date FechaDesac, String Email, int Telefono,
                                         String Nacionalidad, String Estado_civil, String Domicilio, int Codigo_Postal, String Observaciones, Date Fecha_Inscripcion, String Expediente,
@@ -64,4 +56,5 @@ public class Beneficiario extends Usuarios{
         return (new Beneficiario (NIF_CIF, Nombre, Apellidos, FechaNac, Localidad, 1, new Date(), Email, Telefono, Nacionalidad,
                                     Estado_civil, Domicilio, Codigo_Postal, "", Fecha_Inscripcion, "", Motivo, Precio_Vivienda, Tipo_Vivienda));
     }   
+
 }

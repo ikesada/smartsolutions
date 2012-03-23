@@ -9,11 +9,13 @@ package diaketas.Usuarios.Beneficiario;
  * @author kesada
  */
 public class Parentesco {
+    public int Cod_Familiar;
     public String Parentesc;
-    public String Nombre_Apellidos;
     public String DNI_Beneficiario;
     
-    Parentesco (String Parentesc){
+    Parentesco (int Cod_Familiar, String DNI_Beneficiario, String Parentesc){
+        this.Cod_Familiar = Cod_Familiar;
+        this.DNI_Beneficiario = DNI_Beneficiario;
         this.Parentesc = Parentesc;
     }
     
