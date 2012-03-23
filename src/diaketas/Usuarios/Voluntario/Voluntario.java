@@ -53,23 +53,7 @@ public class Voluntario extends Usuarios{
     }
 
 
-    public static boolean crearVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs)
-    {
-
-        
-        boolean confirma;
-        
-        
-        //pongo por defecto los campos: Activo=1, FechaDesac=0/0/0, FechaInicio=fecha_actual
-        Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, 1, new Date(0,0,0), email, telf, 
-                                        nacionalidad, direccion, codPost, new Date(), obs );
-        
-        confirma = Gestor_de_voluntarios.añadirVoluntario();
-       
-        return confirma;
     
-    
-    }   
     
     
     

@@ -53,11 +53,9 @@ public class Gestor_de_voluntarios {
         
         return v;
     }
-    
-    
     static public boolean comprobarExistenciaVoluntario(String DNI){
         Voluntario vol = buscarVoluntario(DNI);
-        return (vol != null);           //si ha encontrado al voluntario con ese DNI, devuelve true
+        return (vol != null);
     }
     
     
@@ -120,7 +118,7 @@ public class Gestor_de_voluntarios {
             if(!existe1)
             {
                 //el constructor Date() nos devuelve la fecha actual    
-                confirma = Voluntario.crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
+                confirma = crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
 
                 registrarOperacion(DNI, voluntarioDNI, "alta voluntario", new Date());  //le paso la fecha actual
             }
@@ -137,6 +135,24 @@ public class Gestor_de_voluntarios {
     
     
     
+    public static boolean crearVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs)
+    {
+
+        
+        boolean confirma;
+        
+        
+        //pongo por defecto los campos: Activo=1, FechaDesac=0/0/0, FechaInicio=fecha_actual
+        Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, 1, new Date(0,0,0), email, telf, 
+                                        nacionalidad, direccion, codPost, new Date(), obs );
+        
+        confirma = Gestor_de_voluntarios.añadirVoluntario(v);
+       
+        return confirma;
+    
+    
+    }   
+    
             
             
     static public void registrarOperacion(String DNI, String voluntarioDNI, String tipoOperacion, Date fecha)
@@ -148,10 +164,11 @@ public class Gestor_de_voluntarios {
     
     
     
-    public static boolean añadirVoluntario()
+    public static boolean añadirVoluntario(Voluntario v)
     {
         
-        //realizo un insert en la tabla Voluntario de la BD
+        boolean exito=true;
+        //realizo dos insert, uno en la tabla Voluntario y otro en la tabla Usuario 
         
         
         //primero nos conectamos a la BD
@@ -159,13 +176,44 @@ public class Gestor_de_voluntarios {
         
         try {
         instruccion = (Statement) con.conexion().createStatement();
-        instruccion.executeUpdate("INSERT INTO Voluntario(Nombre, Fecha,"
-                                    + "NIF_CIF_Voluntario, NIF_CIF_Usuario) VALUES (\""
-                                    + ac.tipo + "\",\"" + fecha + "\",\"" + ac.DNI_Voluntario+"\",\""+ac.DNI_Usuario+"\")");
+
+        //inserto tupla en la tabla Voluntario
+        instruccion.executeUpdate("INSERT INTO Voluntario( NIF_CIF, Nacionalidad, Domicilio, Codigo_Postal, Fecha_Inicio, Observaciones  ) VALUES (\""
+                                    + v.NIF_CIF + "\",\"" + v.Nacionalidad + "\",\"" + v.Domicilio+"\",\""+v.Codigo_Postal+ "\",\"" +v.Fecha_Inicio+ "\",\"" +v.Observaciones+"\")");
         }
         /*Captura de errores*/
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e);}
+        catch(SQLException e){ 
+            System.out.println(e); 
+            exito=false;
+        }
+        catch(Exception e){ 
+            System.out.println(e);
+            exito=false;
+        }
+
+        
+        ////////////////////
+        
+        //ahora hago el otro insert, esta vez en la tabla Usuario
+        try {
+        instruccion = (Statement) con.conexion().createStatement();
+
+        //inserto tupla en la tabla Usuario
+        instruccion.executeUpdate("INSERT INTO Usuario( NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Fecha_Desactivacion, Email, Telefono  ) VALUES (\""
+                                    + v.NIF_CIF + "\",\"" + v.Nombre + "\",\"" + v.Apellidos+"\",\"" +v.FechaNac+ "\",\"" +v.Localidad+ "\",\"" +v.Activo+ "\",\"" +v.FechaDesac+ "\",\"" +v.Email+ "\",\"" +v.Telefono+"\")");
+        }
+        /*Captura de errores*/
+        catch(SQLException e){ 
+            System.out.println(e); 
+            exito=false;
+        }
+        catch(Exception e){ 
+            System.out.println(e);
+            exito=false;
+        }
+        
+        
+        
         /*Desconexión de la BD*/
         finally {
             if (con.hayConexionBD()) {
@@ -177,12 +225,8 @@ public class Gestor_de_voluntarios {
             }
         }
         
-        
-        
-        
-        
-        
-        return true;
+     
+        return exito;
             
     }
 }
