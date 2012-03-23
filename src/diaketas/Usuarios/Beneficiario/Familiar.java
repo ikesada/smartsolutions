@@ -4,7 +4,14 @@
  */
 package diaketas.Usuarios.Beneficiario;
 
+import com.mysql.jdbc.Statement;
+import diaketas.ConexionBD;
+import diaketas.Usuarios.ONG;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,10 +31,73 @@ public class Familiar {
         this.Cod_Familiar = 0;
     }
     
-    void cambiarDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion){
+    void cambiarDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion, String Parentesco){
         this.Nombre_Apellidos = Nombre_Apellidos;
         this.Fecha_Nacimiento = Fecha_Nacimiento;
         this.Ocupacion = Ocupacion;
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(Fecha_Nacimiento.getTime());
+
+        ConexionBD con = new ConexionBD();
+        con.conectarBD();
+
+        //REVISAR
+         try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            /*Actualizamos Familiar*/
+            instruccion.executeUpdate("UPDATE  Familiar SET Nombre_Apellidos = \""
+                    + Nombre_Apellidos + "\", Fecha_Nacimiento = \""+fecha_Nacimiento+"\", Ocupacion = \""
+                    + Ocupacion + "\" WHERE Cod_Familiar = " + Cod_Familiar);
+            
+            /*Actualizamos Parentesco*/
+            instruccion.executeUpdate("UPDATE  Parentesco SET Parentesco = \""
+                    + Parentesco + "\" WHERE Cod_Familiar = " + Cod_Familiar + " and "
+                    + "DNI_CIF = \""+Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF+"\"");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+    public Parentesco obtenerDatosFamiliar(){
+        ConexionBD con = new ConexionBD();
+        con.conectarBD();
+        Parentesco parentesco = null;
+
+        //REVISAR
+         try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            ResultSet rs = instruccion.executeQuery("Select p.Parentesco from Parentesco p WHERE "
+                    + "DNI_CIF = \""+Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF+"\" and "
+                    + " Cod_Familiar="+this.Cod_Familiar);
+         
+            if (rs.next()){
+                parentesco = new Parentesco(Cod_Familiar, Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF,rs.getString(1));
+            }
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return parentesco;
     }
     
 }

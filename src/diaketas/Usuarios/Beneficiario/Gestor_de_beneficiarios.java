@@ -6,6 +6,7 @@ package diaketas.Usuarios.Beneficiario;
 
 import diaketas.Usuarios.Accion;
 import diaketas.Usuarios.ONG;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
@@ -81,5 +82,51 @@ public class Gestor_de_beneficiarios {
     static public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
         datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
         parentesco = Parentesco;
+    }
+    
+    static public ArrayList consultarFamiliar(String Nombre_Apellidos){
+        /*Obtenemos el beneficiario*/
+        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);  
+        
+        /*Buscamos el familiar cuyo nombre se indica*/
+        Familiar familiar = beneficiario.buscarFamiliar(Nombre_Apellidos);
+        
+        /*Obtenemos los datos que faltan*/
+        Parentesco parentescoFamiliar = familiar.obtenerDatosFamiliar();
+        
+        /*Agrupamos los datos del familiar para proceder al envio*/
+        ArrayList datos_Familiar = new ArrayList();
+        datos_Familiar.add(familiar);
+        datos_Familiar.add(parentescoFamiliar);
+        
+        return datos_Familiar;
+    }
+    
+    static public void modificarDatosFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
+        actualizarFamiliar(Nombre_Apellidos, nuevosDatosFamiliar, parentesco);
+    }
+    
+    static private void actualizarFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
+        /* Buscamos Beneficiario en el sistema */
+        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        
+        /*Buscamos el familiar*/
+        Familiar familiar = beneficiario.buscarFamiliar(Nombre_Apellidos);
+        
+        /*Cambiar datos Familiar */
+        familiar.cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
+                nuevosDatosFamiliar.Ocupacion, parentesco);
+    }
+    static public ArrayList<Familiar> iniciarMostrarFamiliar()
+    {
+        ArrayList<Familiar> familiares;
+
+        /*Obtenemos el beneficiario*/
+        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+
+        /*Obtenemos la lista de familiares*/
+        familiares = beneficiario.consultarFamiliares();
+        
+        return familiares;
     }
 }
