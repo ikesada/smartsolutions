@@ -34,7 +34,6 @@ public class jFamiliar extends javax.swing.JPanel {
         jBotones = new javax.swing.JPanel();
         botonAniadir = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
-        botonConsultar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
@@ -42,7 +41,7 @@ public class jFamiliar extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         botonOK = new javax.swing.JButton();
 
-        jBotones.setLayout(new java.awt.GridLayout());
+        jBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         botonAniadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir_familiar.png"))); // NOI18N
         botonAniadir.setText("Añadir");
@@ -61,15 +60,6 @@ public class jFamiliar extends javax.swing.JPanel {
             }
         });
         jBotones.add(botonEliminar);
-
-        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar_familiar.png"))); // NOI18N
-        botonConsultar.setText("Consultar");
-        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonConsultarActionPerformed(evt);
-            }
-        });
-        jBotones.add(botonConsultar);
 
         botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/modificar_familiar.png"))); // NOI18N
         botonModificar.setText("Modificar");
@@ -152,12 +142,9 @@ public class jFamiliar extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "ListarFamiliar");
     }//GEN-LAST:event_botonEliminarActionPerformed
 
-    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        panel = new jListarFamiliar("Familiar", "ConsultarFamiliar");
-
-        UI.jPrincipal.add("ListarFamiliar", panel);
-        UI.cl.show(UI.jPrincipal, "ListarFamiliar");
-    }//GEN-LAST:event_botonConsultarActionPerformed
+    private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+        UI.cl.show(UI.jPrincipal, "Beneficiarios");
+    }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         panel = new jListarFamiliar("Familiar", "ModificarFamiliar");
@@ -166,13 +153,8 @@ public class jFamiliar extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "ListarFamiliar");
     }//GEN-LAST:event_botonModificarActionPerformed
 
-    private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        UI.cl.show(UI.jPrincipal, "Beneficiarios");
-    }//GEN-LAST:event_botonOKActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAniadir;
-    private javax.swing.JButton botonConsultar;
     private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonOK;

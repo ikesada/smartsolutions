@@ -17,10 +17,10 @@ public abstract class Usuarios {
     public String Apellidos;
     public Date FechaNac;
     public String Localidad;
-    public Boolean Activo;
+    public int Activo;
     public Date FechaDesac;
-    public Email Email;
-    public Telefono Telefono;
+    public String Email;
+    public int Telefono;
 
     /*
     public Usuarios(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, Boolean Activo, Date FechaDesac, Email Email, Telefono Telefono) {

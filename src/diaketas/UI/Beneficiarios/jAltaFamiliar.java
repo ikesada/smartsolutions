@@ -5,6 +5,13 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,6 +48,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         Parentesco = new javax.swing.JComboBox();
         botonOK = new javax.swing.JButton();
+        botonCancel = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -74,6 +82,13 @@ public class jAltaFamiliar extends javax.swing.JPanel {
             }
         });
 
+        botonCancel.setText("Cancelar");
+        botonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,8 +110,10 @@ public class jAltaFamiliar extends javax.swing.JPanel {
                                 .addComponent(Ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Parentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(54, 54, 54)
-                                    .addComponent(botonOK)))))
+                                    .addGap(12, 12, 12)
+                                    .addComponent(botonOK)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(botonCancel)))))
                     .addComponent(jLabel6)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
@@ -130,20 +147,48 @@ public class jAltaFamiliar extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(Ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(botonOK)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonOK)
+                    .addComponent(botonCancel))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+        /*Convertimos la fecha de String a Date*/
+        Date Fecha_Nac = null;
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+        try {
+            Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        /*Introducimos los datos del familiar*/
+        System.out.println(Nombre_Apellidos.getText() + "> "+ Fecha_Nac + "> "+ (String) Parentesco.getSelectedItem() + "> "+ Ocupacion.getText());
+        Gestor_de_beneficiarios.introducirDatosFamiliar(Nombre_Apellidos.getText(), Fecha_Nac, (String) Parentesco.getSelectedItem(), Ocupacion.getText());
+        
+        /*Confirmams datos del familiar */
+        /*ConfirmarInsercion()*/
+        Gestor_de_beneficiarios.confirmarAltaFamiliar();
+        
+        /*Cambia parte principal de la aplicacion*/
         UI.cl.show(UI.jPrincipal, "Familiar");
     }//GEN-LAST:event_botonOKActionPerformed
+
+    private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
+        /*Cambia parte principal de la aplicacion*/
+        UI.cl.show(UI.jPrincipal, "Familiar");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonCancelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField Fecha_Nacimiento;
     private javax.swing.JTextField Nombre_Apellidos;
     private javax.swing.JTextField Ocupacion;
     private javax.swing.JComboBox Parentesco;
+    private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -4,15 +4,23 @@
  */
 package diaketas;
 
+import de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel;
 import java.sql.*;
 import diaketas.UI.UI;
+import javax.swing.UIManager;
 
 public class Diaketas {
     public static void main(String args[]){
-        /*Conexión*/
+        /*Look & Feel*/
+        try{
+           UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
+        } catch (Exception e) {
+        }
+        /*Conexión BBDD*/
        ConexionBD con = new ConexionBD();
        con.conectarBD();
        
+       /*EJEMPLO CONEXION
         Statement instruccion;
         ResultSet tabla;
         try {
@@ -26,6 +34,7 @@ public class Diaketas {
         }
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }
+        */
        
       
         UI ui = new UI();
