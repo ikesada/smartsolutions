@@ -24,9 +24,6 @@ import javax.swing.JPanel;
 public class jAltaSocio extends javax.swing.JPanel {
 
     JPanel panel;
-    ConexionBD con;
-    Statement s;
-    ResultSet rs;
     private String NIF_VOLUNTARIO;
 
     /**
@@ -35,6 +32,10 @@ public class jAltaSocio extends javax.swing.JPanel {
     public jAltaSocio() {
         initComponents();
 
+        ConexionBD con;
+        Statement s;
+        ResultSet rs;
+        
         //Me conecto a la BD
         con = new ConexionBD();
         con.conectarBD();
@@ -400,29 +401,7 @@ public class jAltaSocio extends javax.swing.JPanel {
              * Actualizamos la pantalla principal
              */
             UI.cl.show(UI.jPrincipal, "Socios");
-
-
-            /*
-             * try { s = con.conexion().createStatement();
-             *
-             *
-             * rs = s.executeQuery("select * from Voluntario where NIF_CIF = '"
-             * + NIF_Voluntario.getText() + "'"); if (rs.next()) {
-             * JOptionPane.showMessageDialog(this, "El Alta ha sido realizada
-             * con exito.", "Informacion", JOptionPane.CLOSED_OPTION);
-             * UI.cl.show(UI.jPrincipal, "Socios");
-             *
-             * } else { JOptionPane.showMessageDialog(this, "El DNI del
-             * Voluntario no es correcto. Introduzca un DNI correcto", "Error",
-             * JOptionPane.ERROR_MESSAGE); }
-             *
-             * } catch (SQLException ex) {
-             * Logger.getLogger(jAltaSocio.class.getName()).log(Level.SEVERE,
-             * null, ex);
-            }
-             */
-
-
+        
         }
     }//GEN-LAST:event_botonOKActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
