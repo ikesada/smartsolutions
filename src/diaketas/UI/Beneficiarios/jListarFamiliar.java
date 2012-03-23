@@ -34,21 +34,25 @@ public class jListarFamiliar extends javax.swing.JPanel {
         /* inicioModificarFamiliar()*/
         /* inicioEliminarFamiliar()*/
         /*Mostramos inicioMostrarFamiliar*/
-        familiares = Gestor_de_beneficiarios.iniciarMostrarFamiliar();
-        
-        if(familiares.size()==0){
-            JOptionPane.showMessageDialog(this, "No se ha encontrado ningún familiar para este beneficiario.",
-                    "No se han encontrado familiares", JOptionPane.INFORMATION_MESSAGE);
-            botonOK.setEnabled(false);
+        if (jPanelAnterior.compareTo("Familiar") == 0){
+            familiares = Gestor_de_beneficiarios.iniciarMostrarFamiliar();
+
+            if(familiares.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún familiar para este beneficiario.",
+                        "No se han encontrado familiares", JOptionPane.INFORMATION_MESSAGE);
+                botonOK.setEnabled(false);
+            }else{
+                /*Mostramos los familiares*/
+                DefaultListModel modelo = new DefaultListModel();
+                for (int i = 0; i < familiares.size();i++){
+                    System.out.println(familiares.get(i).Nombre_Apellidos);
+                    modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
+                listaFamiliares.setModel(modelo);
+            }           
         }else{
-            /*Mostramos los familiares*/
-            System.out.println("->"+familiares.size());
-            DefaultListModel modelo = new DefaultListModel();
-            for (int i = 0; i < familiares.size();i++){
-                System.out.println(familiares.get(i).Nombre_Apellidos);
-                modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
-            listaFamiliares.setModel(modelo);
+            
         }
+
     }
 
     /**
@@ -150,7 +154,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
     
         if (listaFamiliares.getSelectedIndex() != -1){
             if (jPanelSiguiente.compareTo("BajaFamiliar") ==0){
-                panel = new jBajaFamiliar(jPanelAnterior);
+                panel = new jBajaFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                Gestor_de_beneficiarios.seleccionarFamiliar((String)listaFamiliares.getSelectedValue());
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "BajaFamiliar");
             }else if (jPanelSiguiente.compareTo("ConsultarFamiliar") ==0){

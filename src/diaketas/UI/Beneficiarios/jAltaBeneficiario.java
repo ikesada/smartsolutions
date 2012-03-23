@@ -377,13 +377,15 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             //REVISAR Coreecto = true, aun no esta implementado buscarVOluntario
             correcto = true;
             if (correcto = false)
-                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
+                        "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
 
             /*Confirmar alta beneficiario*/
             Gestor_de_beneficiarios.confirmarAltaBeneficiario();
             
             
             /*Actualizamos la pantalla principal*/
+            panel = new jFamiliar();
             UI.jPrincipal.add("Familiar", panel);
             UI.cl.show(UI.jPrincipal, "Familiar");
         }
