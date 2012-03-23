@@ -8,7 +8,6 @@ import diaketas.Usuarios.Accion;
 import diaketas.Usuarios.ONG;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Vector;
 
 /**
  *
@@ -19,7 +18,9 @@ public class Gestor_de_beneficiarios {
     
     static Beneficiario datosBeneficiario;
     static String NIF_Voluntario;
+    static String NIF_Beneficiario;
     static Familiar datosFamiliar;
+    static String NombreApellidosFamiliar;
     static String parentesco;
     
 
@@ -34,11 +35,45 @@ public class Gestor_de_beneficiarios {
         return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 
+    static public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
+        
+        NIF_Beneficiario = DNI_Beneficiario;
+        
+        /*Comprobamos si el Beneficiario existe */
+        return ONG.comprobarExistenciaBeneficiario(DNI_Beneficiario);        
+    }
+    
+    static public boolean introducirDNIVoluntario(String DNI_Voluntario){
+        
+        NIF_Voluntario = DNI_Voluntario;
+        
+        /*Comprobamos si el Voluntario existe */
+        return true;
+    }
     static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
         Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
         ONG.agregarAccion(ac);
     }
 
+    static public ArrayList consultarBeneficiario (String DNI){
+        ArrayList lista = new ArrayList();
+        
+        NIF_Beneficiario = DNI;
+        
+        /* Comprobamos si existe el beneficiario */
+        boolean correcto = ONG.comprobarExistenciaBeneficiario(DNI);
+        lista.add(new Boolean(correcto));
+        
+        /*Si es correcto obtenemos los datos del beneficiario y la lista de familiares*/
+        if (correcto){
+            Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);
+            ArrayList<Familiar> listaFamiliares = beneficiario.consultarFamiliares();   
+            /*Incluimos los datos en la lista de devolucion*/
+            lista.add(beneficiario);
+            lista.add(listaFamiliares);
+        }
+        return lista;
+    }
     static public void confirmarAltaBeneficiario(){
         /*Crear beneficiario*/
         Beneficiario nuevoBeneficiario = Beneficiario.crearBeneficiario(datosBeneficiario.NIF_CIF, datosBeneficiario.Nombre,
@@ -52,9 +87,25 @@ public class Gestor_de_beneficiarios {
         ONG.agregarNuevoBeneficiario(nuevoBeneficiario);
         
         /*Registrar Operacion*/
-        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta_Beneficiario");
+        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
     }
-
+    static public void confirmarModificacionBeneficiario(){
+         /*Registrar Operacion*/
+        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
+    
+        /*Modificar beneficiario*/
+        modificarBeneficiario();
+    }
+    //REVISAR
+    static private void modificarBeneficiario(){
+        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        beneficiario.cambiarDatosBeneficiario(datosBeneficiario.NIF_CIF, datosBeneficiario.Nombre,
+                datosBeneficiario.Apellidos, datosBeneficiario.FechaNac, datosBeneficiario.Localidad,  datosBeneficiario.Email,
+                datosBeneficiario.Telefono, datosBeneficiario.Nacionalidad, datosBeneficiario.Estado_civil,
+                datosBeneficiario.Domicilio, datosBeneficiario.Codigo_Postal, 
+                datosBeneficiario.Fecha_Inscripcion, datosBeneficiario.Motivo,
+                datosBeneficiario.Precio_Vivienda, datosBeneficiario.Tipo_Vivienda);
+    }
     /*AKA ConfirmarInsercion()*/
     static public void confirmarAltaFamiliar(){   
         Familiar familiar;
@@ -77,6 +128,23 @@ public class Gestor_de_beneficiarios {
 
         /*Se busca el Beneficiario*/
         ONG.asociarParentesco(relacion_familiar);            System.out.println("A4");
+    }
+
+    static public void confirmarBajaBeneficiario(){
+        /*Registrar Operacion*/
+        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
+        
+        /*Eliminar beneficiario*/
+        Gestor_de_beneficiarios.eliminarBeneficiario(NIF_Beneficiario);
+    }
+    static private void eliminarBeneficiario(String DNI){
+        
+        /*Obtenemos el beneficiario*/
+        Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);  
+        
+        /*Desactivamos al usuario*/
+        beneficiario.desactivarUsuario(new Date());
+        
     }
     
     static public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
@@ -117,6 +185,7 @@ public class Gestor_de_beneficiarios {
         familiar.cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
                 nuevosDatosFamiliar.Ocupacion, parentesco);
     }
+  
     static public ArrayList<Familiar> iniciarMostrarFamiliar()
     {
         ArrayList<Familiar> familiares;
@@ -128,5 +197,21 @@ public class Gestor_de_beneficiarios {
         familiares = beneficiario.consultarFamiliares();
         
         return familiares;
+    }
+
+    static public void seleccionarFamiliar(String Nombre_Apellidos){
+        NombreApellidosFamiliar = Nombre_Apellidos;
+    }
+    
+    static public void confirmarEliminacionFamiliar(){
+        
+        /* Buscamos Beneficiario en el sistema */
+        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        
+        /* Buscamos el familiar del beneficiario*/
+        Familiar familiar = beneficiario.buscarFamiliar(NombreApellidosFamiliar);
+        
+        /*Eliminamos Familiar*/
+        familiar.eliminarFamiliar();
     }
 }

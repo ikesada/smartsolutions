@@ -100,4 +100,48 @@ public class Familiar {
         return parentesco;
     }
     
+    public void eliminarFamiliar (){
+        ConexionBD con = new ConexionBD();
+        con.conectarBD();
+        Familiar familiar = null;
+        //RETOCAR DNI_CIF
+        
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            //REVISAR DNI_CIF
+            System.out.println("DELETE FROM Parentesco p WHERE"
+                    + " p.Cod_Familiar = " + Cod_Familiar + " and p.DNI_CIF= \""
+                    +Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF+"\"");
+            /*Eliminamos el parentesco que guarda con el familiar*/
+            instruccion.executeUpdate("DELETE FROM Parentesco WHERE"
+                    + " Cod_Familiar = " + Cod_Familiar + " and DNI_CIF= \""
+                    +Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF+"\"");
+            /*Comprobamos si guarda más parentescos con el resto*/
+            ResultSet rs = instruccion.executeQuery("SELECT COUNT(*) FROM Parentesco WHERE"
+                    + " Cod_Familiar = " + Cod_Familiar);
+            if (rs.next()){
+                int HayRelacionesParentesco = rs.getInt(1);
+                
+                if (HayRelacionesParentesco == 0)
+                {
+                    /*Ese familiar no es pariente de ningun otro beneficiario y se borra*/
+                        instruccion.executeUpdate("DELETE FROM Familiar WHERE"
+                            + " Cod_Familiar = "+Cod_Familiar);                   
+                }
+            }
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }         
+    }
 }
