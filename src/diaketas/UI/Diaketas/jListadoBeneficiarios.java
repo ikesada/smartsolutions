@@ -67,8 +67,11 @@ public class jListadoBeneficiarios extends javax.swing.JPanel {
                     for (int i = 0; i < cantidadColumnas; i++) 
                     {
                         
-                        //si la columna guarda datos de tipo fecha, los paso a string para mostrarlos en la tabla
-                        if( rs.getMetaData().getColumnType(i+1) == 91 ) 
+                        /*El elemento jTable no permite mostrar datos del tipo Date, por ello, antes de mostrar el dato
+                        se comprueba si es de tipo Date, y si es asi, se pasa a string para mostrarlo en la tabla.
+                        Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
+                        */
+                        if( rs.getMetaData().getColumnType(i+1) == 91 ) //TIPO_DATE = 91
                         {
                             java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
                             java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
