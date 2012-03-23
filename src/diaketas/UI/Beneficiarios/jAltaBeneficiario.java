@@ -5,6 +5,14 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Beneficiario;
+import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import diaketas.Usuarios.ONG;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -32,10 +40,10 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        Tipo_Vivienda = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         Apellidos = new javax.swing.JTextField();
-        Nombre1 = new javax.swing.JTextField();
+        Precio_Vivienda = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         Fecha_Nacimiento = new javax.swing.JFormattedTextField();
         NIF_Voluntario = new javax.swing.JTextField();
@@ -70,17 +78,19 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        Email = new javax.swing.JTextField();
 
         jLabel9.setText("Domicilio");
 
-        jComboBox1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Tipo_Vivienda.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Tipo_Vivienda.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo1", "Tipo2" }));
 
         jLabel7.setText("Nacionalidad");
 
         Apellidos.setColumns(30);
 
-        Nombre1.setColumns(9);
+        Precio_Vivienda.setColumns(9);
 
         jLabel20.setText("NIF Voluntario");
 
@@ -154,7 +164,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             }
         });
 
-        jLabel18.setText("Coste Mensual");
+        jLabel18.setText("Precio Vivienda");
 
         Nombre.setColumns(20);
 
@@ -164,6 +174,10 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         jLabel5.setText("Apellidos");
 
         jLabel17.setText("Tipo");
+
+        jLabel16.setText("Email");
+
+        Email.setColumns(20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -175,24 +189,24 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel5))
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel7)
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jLabel2)
+                                                    .addComponent(jLabel4)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(jLabel5))
+                                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,34 +216,34 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                                                 .addComponent(Estado_Civil, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Codigo_Postal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(87, 87, 87))
-                                        .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(jSeparator5)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                            .addComponent(jLabel13)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jSeparator4)))
+                                                .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(87, 87, 87)))
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12))
+                                .addGap(42, 42, 42)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jSeparator5)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                                    .addComponent(jLabel13)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel18))
+                                        .addGap(27, 27, 27)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jSeparator4)))
+                            .addComponent(jLabel16)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(428, 428, 428)
+                        .addGap(344, 344, 344)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonOK)))
+                            .addComponent(botonOK, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,11 +310,11 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -309,7 +323,11 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
@@ -317,7 +335,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
                     .addComponent(botonCancel))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -331,7 +349,40 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         }else{
             panel = new jFamiliar();
+            
+            /*---------Introducir datos del familiar---------------*/
+            /*Si no se introducen los campos Telefono, Codigo_Postal o Precio, se rellenan a 0-Null*/
+            if (Telefono.getText().compareTo("") == 0)
+                Telefono.setText("0");
+            if (Codigo_Postal.getText().compareTo("") == 0)
+                Codigo_Postal.setText("0");
+            if (Precio_Vivienda.getText().compareTo("") == 0)
+                Precio_Vivienda.setText("0.0");
+            /*Conversion de la fecha*/
+            Date Fecha_Nac = null;
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+            try {
+                Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
+            }
 
+            /*IntroducirDatosBeneficiario*/
+            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(NIF.getText(),Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
+               Email.getText(), Integer.parseInt(Telefono.getText()), Nacionalidad.getText(), (String)Estado_Civil.getSelectedItem(), Domicilio.getText(), Integer.parseInt(Codigo_Postal.getText()),
+               new Date(), Motivo.getText(), Double.parseDouble(Precio_Vivienda.getText()), (String)Tipo_Vivienda.getSelectedItem(), NIF_Voluntario.getText());
+ 
+            //REVISAR Coreecto = true, aun no esta implementado buscarVOluntario
+            correcto = true;
+            if (correcto = false)
+                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+
+            /*Confirmar alta beneficiario*/
+            Gestor_de_beneficiarios.confirmarAltaBeneficiario();
+            
+            
+            /*Actualizamos la pantalla principal*/
             UI.jPrincipal.add("Familiar", panel);
             UI.cl.show(UI.jPrincipal, "Familiar");
         }
@@ -345,6 +396,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Codigo_Postal;
     private javax.swing.JTextField Domicilio;
+    private javax.swing.JTextField Email;
     private javax.swing.JComboBox Estado_Civil;
     private javax.swing.JFormattedTextField Fecha_Nacimiento;
     private javax.swing.JTextField Localidad;
@@ -353,11 +405,11 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField NIF_Voluntario;
     private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Nombre;
-    private javax.swing.JTextField Nombre1;
+    private javax.swing.JTextField Precio_Vivienda;
     private javax.swing.JTextField Telefono;
+    private javax.swing.JComboBox Tipo_Vivienda;
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -365,6 +417,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;

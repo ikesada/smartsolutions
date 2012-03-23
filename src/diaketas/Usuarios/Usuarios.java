@@ -17,7 +17,7 @@ public abstract class Usuarios {
     public String Apellidos;
     public Date FechaNac;
     public String Localidad;
-    public Boolean Activo;
+    public int Activo;
     public Date FechaDesac;
     public Email Email;
     public Telefono Telefono;

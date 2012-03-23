@@ -66,13 +66,6 @@ public class UI extends javax.swing.JFrame {
         jPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPrincipalScroll = new javax.swing.JScrollPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 640));
@@ -136,26 +129,6 @@ public class UI extends javax.swing.JFrame {
 
         getContentPane().add(jPrincipal, java.awt.BorderLayout.CENTER);
         getContentPane().add(jPrincipalScroll, java.awt.BorderLayout.CENTER);
-
-        jMenu1.setText("Diaketas");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Socios");
-        jMenuBar1.add(jMenu2);
-
-        jMenu5.setText("Beneficiarios");
-        jMenuBar1.add(jMenu5);
-
-        jMenu6.setText("Donaciones");
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setText("Empleo");
-        jMenuBar1.add(jMenu7);
-
-        jMenu8.setText("Ayuda");
-        jMenuBar1.add(jMenu8);
-
-        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -289,13 +262,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton botonEmpleo;
     private javax.swing.JButton botonSocios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jMenuBotones;
     public static javax.swing.JPanel jPrincipal;
     private javax.swing.JScrollPane jPrincipalScroll;
