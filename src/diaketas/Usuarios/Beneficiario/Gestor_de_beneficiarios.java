@@ -5,9 +5,7 @@
 package diaketas.Usuarios.Beneficiario;
 
 import diaketas.Usuarios.Accion;
-import diaketas.Usuarios.Email;
 import diaketas.Usuarios.ONG;
-import diaketas.Usuarios.Telefono;
 import java.util.Date;
 import java.util.Vector;
 
@@ -20,6 +18,9 @@ public class Gestor_de_beneficiarios {
     
     static Beneficiario datosBeneficiario;
     static String NIF_Voluntario;
+    static Familiar datosFamiliar;
+    static String parentesco;
+    
 
     static public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
                                         String Nacionalidad, String Estado_civil, String Domicilio, int Codigo_Postal, Date Fecha_Inscripcion, 
@@ -51,7 +52,34 @@ public class Gestor_de_beneficiarios {
         
         /*Registrar Operacion*/
         Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta_Beneficiario");
-        
+    }
 
+    /*AKA ConfirmarInsercion()*/
+    static public void confirmarAltaFamiliar(){   
+        Familiar familiar;
+        
+        /*Se busca si el familiar ya existe*/
+        familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento);
+        System.out.println("A1");
+        /*Si No existe, se crea el nuevo familiar y se añade*/
+        if (familiar == null){
+            familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion);
+            ONG.agregarNuevoFamiliar(familiar);
+                    System.out.println("A2");
+            /*Obtenemos el Codigo_Familiar asignado*/
+            familiar.Cod_Familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento).Cod_Familiar;
+             System.out.println("A3");
+        }
+
+        /*Se crea relacion familiar*/
+        Parentesco relacion_familiar = new Parentesco(familiar.Cod_Familiar, datosBeneficiario.NIF_CIF, parentesco);
+
+        /*Se busca el Beneficiario*/
+        ONG.asociarParentesco(relacion_familiar);            System.out.println("A4");
+    }
+    
+    static public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
+        datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
+        parentesco = Parentesco;
     }
 }
