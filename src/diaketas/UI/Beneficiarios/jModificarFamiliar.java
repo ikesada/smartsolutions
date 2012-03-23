@@ -5,6 +5,16 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Familiar;
+import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import diaketas.Usuarios.Beneficiario.Parentesco;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,12 +23,29 @@ import diaketas.UI.UI;
 public class jModificarFamiliar extends javax.swing.JPanel {
 
     String jPanelSiguiente;
+    String NombreApellidos;
     /**
      * Creates new form jAltaFamiliar
      */
-    public jModificarFamiliar(String jPanelSiguiente) {
+    public jModificarFamiliar(String jPanelSiguiente, String Nombre_Apellidos) {
         this.jPanelSiguiente = jPanelSiguiente;
+        this.NombreApellidos = Nombre_Apellidos;
+        
         initComponents();
+        
+        /*Inicializamos los datos*/
+        ArrayList datosFamiliar = Gestor_de_beneficiarios.consultarFamiliar(Nombre_Apellidos);
+        Familiar familiar = (Familiar) datosFamiliar.get(0);
+        Parentesco parentesco = (Parentesco) datosFamiliar.get(1);
+        
+        /*Actualizamos los valores del formulario*/
+        this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);
+        this.Ocupacion.setText(familiar.Ocupacion);
+        this.Parentesco.setSelectedItem(parentesco.Parentesc);
+        
+        /* Representamos la fecha*/
+        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yyy");
+        this.Fecha_Nacimiento.setText(formatoFecha.format(familiar.Fecha_Nacimiento));
     }
 
     /**
@@ -149,7 +176,24 @@ public class jModificarFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        /*Modificar familiar*/
+        /*Conversion de la fecha*/
+        Date Fecha_Nac = null;
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+        try {
+            Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        /*Dato modificados de familiar*/
+        Familiar nuevosDatosFamiliar = new Familiar(Nombre_Apellidos.getText(),
+                Fecha_Nac, Ocupacion.getText());
+        
+        /*Modificar datos familiar*/
+        Gestor_de_beneficiarios.modificarDatosFamiliar(NombreApellidos,
+                nuevosDatosFamiliar, (String) Parentesco.getSelectedItem());
+        
         UI.cl.show(UI.jPrincipal, jPanelSiguiente);
     }//GEN-LAST:event_botonOKActionPerformed
 

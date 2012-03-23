@@ -100,6 +100,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_Voluntario.setColumns(9);
+        NIF_Voluntario.setText("11111111D");
         NIF_Voluntario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NIF_VoluntarioActionPerformed(evt);
@@ -369,7 +370,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             }
 
             /*IntroducirDatosBeneficiario*/
-            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(NIF.getText(),Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
+            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(NIF.getText().toUpperCase(),Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
                Email.getText(), Integer.parseInt(Telefono.getText()), Nacionalidad.getText(), (String)Estado_Civil.getSelectedItem(), Domicilio.getText(), Integer.parseInt(Codigo_Postal.getText()),
                new Date(), Motivo.getText(), Double.parseDouble(Precio_Vivienda.getText()), (String)Tipo_Vivienda.getSelectedItem(), NIF_Voluntario.getText());
  

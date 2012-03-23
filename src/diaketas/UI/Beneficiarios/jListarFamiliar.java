@@ -5,6 +5,12 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Familiar;
+import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -15,6 +21,7 @@ public class jListarFamiliar extends javax.swing.JPanel {
 
     JPanel panel;
     String jPanelAnterior, jPanelSiguiente;
+    ArrayList <Familiar> familiares;
     
     /**
      * Creates new form jAltaFamiliar
@@ -23,9 +30,27 @@ public class jListarFamiliar extends javax.swing.JPanel {
         this.jPanelAnterior = jPanelAnterior;
         this.jPanelSiguiente = jPanelSiguiente;
         initComponents();
+        
+        /* inicioModificarFamiliar()*/
+        /* inicioEliminarFamiliar()*/
+        /*Mostramos inicioMostrarFamiliar*/
+        familiares = Gestor_de_beneficiarios.iniciarMostrarFamiliar();
+        
+        if(familiares.size()==0){
+            JOptionPane.showMessageDialog(this, "No se ha encontrado ningún familiar para este beneficiario.",
+                    "No se han encontrado familiares", JOptionPane.INFORMATION_MESSAGE);
+            botonOK.setEnabled(false);
+        }else{
+            /*Mostramos los familiares*/
+            System.out.println("->"+familiares.size());
+            DefaultListModel modelo = new DefaultListModel();
+            for (int i = 0; i < familiares.size();i++){
+                System.out.println(familiares.get(i).Nombre_Apellidos);
+                modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
+            listaFamiliares.setModel(modelo);
+        }
     }
 
-    public void lee(){}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,7 +68,7 @@ public class jListarFamiliar extends javax.swing.JPanel {
         botonOK = new javax.swing.JButton();
         botonCancel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listaFamiliares = new javax.swing.JList();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -67,12 +92,7 @@ public class jListarFamiliar extends javax.swing.JPanel {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaFamiliares);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,16 +107,15 @@ public class jListarFamiliar extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel1))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel2))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel3)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(botonOK)
@@ -128,19 +147,25 @@ public class jListarFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        if (jPanelSiguiente.compareTo("BajaFamiliar") ==0){
-            panel = new jBajaFamiliar(jPanelAnterior);
-            UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, "BajaFamiliar");
-        }else if (jPanelSiguiente.compareTo("ConsultarFamiliar") ==0){
-            panel = new jConsultarFamiliar(jPanelAnterior);
-            UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, "ConsultarFamiliar");  
+    
+        if (listaFamiliares.getSelectedIndex() != -1){
+            if (jPanelSiguiente.compareTo("BajaFamiliar") ==0){
+                panel = new jBajaFamiliar(jPanelAnterior);
+                UI.jPrincipal.add(jPanelSiguiente, panel); 
+                UI.cl.show(UI.jPrincipal, "BajaFamiliar");
+            }else if (jPanelSiguiente.compareTo("ConsultarFamiliar") ==0){
+                panel = new jConsultarFamiliar(jPanelAnterior);
+                UI.jPrincipal.add(jPanelSiguiente, panel); 
+                UI.cl.show(UI.jPrincipal, "ConsultarFamiliar");  
+            }else{
+                panel = new jModificarFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                UI.jPrincipal.add(jPanelSiguiente, panel); 
+                UI.cl.show(UI.jPrincipal, "ModificarFamiliar");              
+            }
         }else{
-            panel = new jModificarFamiliar(jPanelAnterior);
-            UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, "ModificarFamiliar");              
-        }
+            JOptionPane.showMessageDialog(this, "Seleccione un familiar.", "Familiar", JOptionPane.ERROR_MESSAGE);
+
+        }    
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
@@ -154,9 +179,9 @@ public class jListarFamiliar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JList listaFamiliares;
     // End of variables declaration//GEN-END:variables
 }

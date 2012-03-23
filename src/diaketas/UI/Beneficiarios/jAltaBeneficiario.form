@@ -266,6 +266,7 @@
           <Color blue="99" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="columns" type="int" value="9"/>
+        <Property name="text" type="java.lang.String" value="11111111D"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NIF_VoluntarioActionPerformed"/>
