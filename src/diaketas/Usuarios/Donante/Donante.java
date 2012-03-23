@@ -4,8 +4,7 @@
  */
 package diaketas.Usuarios.Donante;
 
-import diaketas.Usuarios.Email;
-import diaketas.Usuarios.Telefono;
+
 import diaketas.Usuarios.Usuarios;
 import java.util.Date;
 
@@ -25,7 +24,7 @@ public class Donante extends Usuarios{
     public Donante() {
     }
         
-    public Donante(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, Boolean Activo, Date FechaDesac, /*Email Email, Telefono Telefono,*/
+    public Donante(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo, Date FechaDesac, /*Email Email, Telefono Telefono,*/
             String TipoDonante, Date FechaInscrip, String Observaciones, int Periodicidad, double Cuantia, String TipoPeriodicidad) {
        
         this.NIF_CIF = NIF_CIF;
