@@ -5,8 +5,6 @@
 package diaketas.Usuarios.Voluntario;
 
 
-import diaketas.Usuarios.Email;
-import diaketas.Usuarios.Telefono;
 import diaketas.Usuarios.Usuarios;
 import java.util.Date;
 import java.util.Vector;
@@ -33,7 +31,7 @@ public class Voluntario extends Usuarios{
     
     
     //Constructor
-    public Voluntario ( String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, Boolean Activo,
+    public Voluntario ( String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo,
                         Date FechaDesac, String Email, int Telefono, String Nacionalidad, String Domicilio, 
                         int Codigo_Postal, Date Fecha_Inicio, String Observaciones )
     {
@@ -61,8 +59,10 @@ public class Voluntario extends Usuarios{
         
         boolean confirma;
         
-        Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, true, new Date(), email, telf, nacionalidad, direccion, 
-                        codPost, new Date(), obs );
+        
+        //pongo por defecto los campos: Activo=1, FechaDesac=0/0/0, FechaInicio=fecha_actual
+        Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, 1, new Date(0,0,0), email, telf, 
+                                        nacionalidad, direccion, codPost, new Date(), obs );
         
         confirma = Gestor_de_voluntarios.añadirVoluntario();
        

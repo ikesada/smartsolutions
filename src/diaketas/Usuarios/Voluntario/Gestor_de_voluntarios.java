@@ -8,9 +8,7 @@ import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import diaketas.Usuarios.Accion;
-import diaketas.Usuarios.Email;
 import diaketas.Usuarios.ONG;
-import diaketas.Usuarios.Telefono;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
@@ -59,7 +57,7 @@ public class Gestor_de_voluntarios {
     
     static public boolean comprobarExistenciaVoluntario(String DNI){
         Voluntario vol = buscarVoluntario(DNI);
-        return (vol != null);
+        return (vol != null);           //si ha encontrado al voluntario con ese DNI, devuelve true
     }
     
     
@@ -104,14 +102,7 @@ public class Gestor_de_voluntarios {
     
     
 
-    public static boolean añadirVoluntario()
-    {
-        
-        //realizo un insert en la tabla Voluntario de la BD
-        
-        return true;
-            
-    }
+    
     
     
     static public boolean altaVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs, String voluntarioDNI )
@@ -153,5 +144,45 @@ public class Gestor_de_voluntarios {
     
         
         
+    }
+    
+    
+    
+    public static boolean añadirVoluntario()
+    {
+        
+        //realizo un insert en la tabla Voluntario de la BD
+        
+        
+        //primero nos conectamos a la BD
+        con.conectarBD();
+        
+        try {
+        instruccion = (Statement) con.conexion().createStatement();
+        instruccion.executeUpdate("INSERT INTO Voluntario(Nombre, Fecha,"
+                                    + "NIF_CIF_Voluntario, NIF_CIF_Usuario) VALUES (\""
+                                    + ac.tipo + "\",\"" + fecha + "\",\"" + ac.DNI_Voluntario+"\",\""+ac.DNI_Usuario+"\")");
+        }
+        /*Captura de errores*/
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e);}
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        return true;
+            
     }
 }
