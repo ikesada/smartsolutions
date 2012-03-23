@@ -22,6 +22,10 @@ public class Donante extends Usuarios{
 
     public Donante() {
     }
+    
+    public Donante(String NIF_CIF){
+        this.NIF_CIF = NIF_CIF;
+    }
         
     public Donante(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo, Date FechaDesac, String Email, int Telefono,
             String Tipo_Donante, Date Fecha_Inscripcion, String Observaciones, int Periodicidad_Donaciones, double Cuantia_Donaciones, String Tipo_Periodicidad) {

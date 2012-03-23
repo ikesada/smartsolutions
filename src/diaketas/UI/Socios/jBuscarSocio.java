@@ -6,6 +6,9 @@ package diaketas.UI.Socios;
 
 import diaketas.UI.Beneficiarios.*;
 import diaketas.UI.UI;
+import diaketas.Usuarios.Donante.Donante;
+import diaketas.Usuarios.Donante.Gestor_de_donantes;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -40,7 +43,7 @@ public class jBuscarSocio extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        NIF = new javax.swing.JTextField();
+        NIF_CIF = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -51,7 +54,7 @@ public class jBuscarSocio extends javax.swing.JPanel {
 
         jLabel2.setText("NIF");
 
-        NIF.setColumns(9);
+        NIF_CIF.setColumns(9);
 
         botonConsultar.setText("Consultar");
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +83,7 @@ public class jBuscarSocio extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
                                                 .addGap(55, 55, 55)
-                                                .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(NIF_CIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(198, 198, 198))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(176, 176, 176)
@@ -102,7 +105,7 @@ public class jBuscarSocio extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NIF_CIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(botonConsultar)
                 .addContainerGap(270, Short.MAX_VALUE))
@@ -112,10 +115,21 @@ public class jBuscarSocio extends javax.swing.JPanel {
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         if (jPanelSiguiente.compareTo("ConsultarSocio") ==0)
         {
-            panel = new jConsultarSocio();
-            UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, jPanelSiguiente);
-        }else{
+            
+            if(Gestor_de_donantes.introducirDniDonante(NIF_CIF.getText())){
+                
+                //Pasamos el donante devuelto al nuevo panel
+                
+                panel = new jConsultarSocio(Gestor_de_donantes.confimarConsulta());
+                UI.jPrincipal.add(jPanelSiguiente, panel); 
+                UI.cl.show(UI.jPrincipal, jPanelSiguiente);
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "No existe ningun donante con dicho DNI", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            
+         }else{
             panel = new jModificarSocio();
             UI.jPrincipal.add(jPanelSiguiente, panel); 
             UI.cl.show(UI.jPrincipal, jPanelSiguiente);  
@@ -123,7 +137,7 @@ public class jBuscarSocio extends javax.swing.JPanel {
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField NIF;
+    private javax.swing.JTextField NIF_CIF;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
