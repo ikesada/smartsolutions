@@ -58,7 +58,7 @@ public class ONG {
     
     /**************************BENEFICIARIO*************************************/
     
-    static Beneficiario buscarBeneficiario(String dni){
+    static public Beneficiario buscarBeneficiario(String dni){
         Beneficiario beneficiario = null;
         con.conectarBD();
 
@@ -109,8 +109,7 @@ public class ONG {
 
             instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
                     + nuevoBeneficiario.Nombre + "\",\"" + nuevoBeneficiario.Apellidos + "\",\""  + fecha_Nacimiento
-                    + "\",\"" + nuevoBeneficiario.Localidad + "\",\""   + nuevoBeneficiario.Activo + "\",\"" + "0/0/0"
-                    + "\",\"" + nuevoBeneficiario.Email + "\",\"" + nuevoBeneficiario.Telefono + "\")");
+                    + "\",\"" + nuevoBeneficiario.Localidad + "\",\""   + nuevoBeneficiario.Activo + "\", NULL, \"" + nuevoBeneficiario.Email + "\",\"" + nuevoBeneficiario.Telefono + "\")");
             /*Introducimos la parte de Beneficiario*/
              instruccion.executeUpdate("INSERT INTO Beneficiario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
                     + nuevoBeneficiario.Nacionalidad + "\",\"" + nuevoBeneficiario.Estado_civil + "\",\""  + nuevoBeneficiario.Domicilio
