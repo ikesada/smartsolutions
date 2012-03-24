@@ -38,6 +38,7 @@ public class Gestor_de_beneficiarios {
                                         String Nacionalidad, String Estado_civil, String Domicilio, int Codigo_Postal, Date Fecha_Inscripcion, 
                                         String Motivo, Double Precio_Vivienda, String Tipo_Vivienda,
                                         String NIF_Vol){
+        NIF_Beneficiario = NIF_CIF;
         
         /*Se almacenan los datos del beneficiario y NIF_Voluntario en el sistema */
         datosBeneficiario = new Beneficiario (NIF_CIF, Nombre, Apellidos, FechaNac, Localidad, 1, new Date(), Email, Telefono, Nacionalidad,
@@ -94,12 +95,12 @@ public class Gestor_de_beneficiarios {
                 datosBeneficiario.Domicilio, datosBeneficiario.Codigo_Postal, 
                 datosBeneficiario.Fecha_Inscripcion, datosBeneficiario.Motivo,
                 datosBeneficiario.Precio_Vivienda, datosBeneficiario.Tipo_Vivienda);
-
-        /*Registrar Operacion*/
-        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
         
         /*Registrar Beneficiario*/
         ONG.agregarNuevoBeneficiario(nuevoBeneficiario);
+        
+        /*Registrar Operacion*/
+        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
     }
     
     static public void confirmarBajaBeneficiario(){
