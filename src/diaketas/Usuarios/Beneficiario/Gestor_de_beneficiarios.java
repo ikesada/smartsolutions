@@ -51,8 +51,6 @@ public class Gestor_de_beneficiarios {
 
     static public Beneficiario consultarBeneficiario (String DNI){
         
-        Beneficiario datos_Beneficiario = null;
-        
         /*Actualimos NIF*/
         NIF_Beneficiario = DNI;
 
@@ -60,10 +58,10 @@ public class Gestor_de_beneficiarios {
         if (ONG.comprobarExistenciaBeneficiario(DNI)){
             
             /*Obtenemos los datos del beneficiario*/
-            datos_Beneficiario = ONG.buscarBeneficiario(DNI);
+            datosBeneficiario = ONG.buscarBeneficiario(DNI);
         }
         
-        return datos_Beneficiario;
+        return datosBeneficiario;
     }
   
     static private void eliminarBeneficiario(String DNI){
@@ -171,7 +169,7 @@ public class Gestor_de_beneficiarios {
         ArrayList<Familiar> familiares;
 
         /*Obtenemos el beneficiario*/
-        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        Beneficiario beneficiario = ONG.buscarBeneficiario(NIF_Beneficiario);
 
         /*Obtenemos la lista de familiares*/
         familiares = beneficiario.consultarFamiliares();
@@ -182,9 +180,9 @@ public class Gestor_de_beneficiarios {
     static public ArrayList consultarFamiliar(String Nombre_Apellidos){
 
         /*Obtenemos el beneficiario*/
-        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);  
+        Beneficiario beneficiario = ONG.buscarBeneficiario(NIF_Beneficiario);  
 
-        /*Buscamos el familiar cuyo nombre se indica*/
+         /*Buscamos el familiar cuyo nombre se indica*/
         Familiar familiar = beneficiario.buscarFamiliar(Nombre_Apellidos);
 
         /*Obtenemos los datos que faltan, parentesco*/
