@@ -63,23 +63,25 @@
                               </Group>
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane2" alignment="0" pref="477" max="32767" attributes="0"/>
-                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="Precio_Vivienda" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Tipo_Vivienda" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="Tipo_Vivienda" pref="128" max="32767" attributes="0"/>
+                                              <Component id="Precio_Vivienda" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -241,11 +243,6 @@
         <Property name="columns" type="int" value="30"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Precio_Vivienda">
-      <Properties>
-        <Property name="columns" type="int" value="9"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel20">
       <Properties>
         <Property name="text" type="java.lang.String" value="NIF Voluntario"/>
@@ -266,7 +263,6 @@
           <Color blue="99" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="columns" type="int" value="9"/>
-        <Property name="text" type="java.lang.String" value="11111111D"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NIF_VoluntarioActionPerformed"/>
@@ -456,6 +452,13 @@
     <Component class="javax.swing.JTextField" name="Email">
       <Properties>
         <Property name="columns" type="int" value="20"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="Precio_Vivienda">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="#0.00" subtype="-1" type="0"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

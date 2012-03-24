@@ -5,6 +5,7 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +21,6 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
     public jBajaBeneficiario() {
         initComponents();
         fase = 0;
-        botonCancel.setVisible(false);
         jLabel4.setVisible(false);
         NIF_Voluntario.setVisible(false);
     }
@@ -54,6 +54,11 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
         jLabel2.setText("DNI/NIF del beneficiario");
 
         NIF_CIF.setColumns(9);
+        NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_CIFKeyTyped(evt);
+            }
+        });
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +78,16 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
 
         NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_Voluntario.setColumns(9);
+        NIF_Voluntario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NIF_VoluntarioActionPerformed(evt);
+            }
+        });
+        NIF_Voluntario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_VoluntarioKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,27 +145,56 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+        boolean correcto;
+        
         if (fase == 0){
-            //Buscar el dni
-            
-            //si se encuentra
-            NIF_CIF.setVisible(false);
-            jLabel2.setText("¿Desea borrar el beneficiario con NIF-CIF " + NIF_CIF.getText()+ "?");
-            botonCancel.setVisible(true);
-            jLabel4.setVisible(true);
-            NIF_Voluntario.setVisible(true);
-            
-            fase = 1;
-            
-        }else if (fase ==1){
-            if (NIF_Voluntario.getText().compareTo("") == 0){
-                JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+            if (NIF_CIF.getText().compareTo("") != 0){
+                
+                /*Introducir DNI Beneficiario*/
+                correcto = Gestor_de_beneficiarios.introducirDNIBeneficiario(NIF_CIF.getText());
+
+                /*Beneficiario correcto*/
+                if (correcto == true){
+                    
+                    /*Cambios esteticos*/
+                    NIF_CIF.setVisible(false);
+                    jLabel2.setText("¿Desea borrar el beneficiario con NIF-CIF " + NIF_CIF.getText()+ "?");
+                    jLabel4.setVisible(true);
+                    NIF_Voluntario.setVisible(true);
+                    fase = 1;
+                    
+                }else   /*No se encuentra el beneficiario*/
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún beneficiario con ese NIF.",
+                            "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
+                
             }else{
-                botonCancel.setVisible(false);
-                NIF_Voluntario.setVisible(false);
-                jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
-                jLabel4.setVisible(false);
-                fase = 2;
+                    JOptionPane.showMessageDialog(this, "El NIF del beneficiario no se ha introducido.",
+                            "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
+            }
+        }else if (fase ==1){
+            if (NIF_Voluntario.getText().compareTo("") != 0){
+                
+                /*IntroducirDNIVoluntario*/
+                correcto = Gestor_de_beneficiarios.introducirDNIVoluntario(NIF_Voluntario.getText());
+                
+                if (correcto == true){
+                    
+                    /* ConfirmarBajaBeneficiario*/
+                    Gestor_de_beneficiarios.confirmarBajaBeneficiario();
+                    
+                    /*Cambios esteticos*/
+                    NIF_Voluntario.setVisible(false);
+                    jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
+                    jLabel4.setVisible(false);
+                    fase = 2;
+                    
+                }else{
+                     JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
+                            "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.",
+                        "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
             }
         }else
             UI.cl.show(UI.jPrincipal, "Beneficiarios");
@@ -160,6 +204,23 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             UI.cl.show(UI.jPrincipal, "Beneficiarios");
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
+
+    private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyTyped
+        if (NIF_CIF.getText().length()>=9){
+            evt.consume();
+        } 
+// TODO add your handling code here:
+    }//GEN-LAST:event_NIF_CIFKeyTyped
+
+    private void NIF_VoluntarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NIF_VoluntarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NIF_VoluntarioActionPerformed
+
+    private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
+        if (NIF_Voluntario.getText().length()>=9){
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIF_VoluntarioKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_CIF;

@@ -5,6 +5,10 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Beneficiario;
+import diaketas.Usuarios.Beneficiario.Familiar;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -14,11 +18,42 @@ import javax.swing.JPanel;
 public class jConsultarBeneficiario extends javax.swing.JPanel {
 
     JPanel panel;
+    Beneficiario datosBeneficiario;
+
+    
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jConsultarBeneficiario() {
+    public jConsultarBeneficiario(Beneficiario datosBeneficiario) {
+        this.datosBeneficiario = datosBeneficiario;
+
+        
+        /*Iniciamos la interfaz*/
         initComponents();
+        
+        /*Mostramos los datos de beneficiario*/
+        NIF.setText(datosBeneficiario.NIF_CIF);
+        Nombre.setText(datosBeneficiario.Nombre);
+        Apellidos.setText(datosBeneficiario.Apellidos);
+        Nacionalidad.setText(datosBeneficiario.Nacionalidad);
+        Estado_Civil.setText(datosBeneficiario.Estado_civil);
+        Domicilio.setText(datosBeneficiario.Domicilio);
+        Motivo.setText(datosBeneficiario.Motivo);
+        Localidad.setText(datosBeneficiario.Localidad);
+        Tipo_Vivienda.setText(datosBeneficiario.Tipo_Vivienda);
+        Email.setText(datosBeneficiario.Email);
+        if (datosBeneficiario.Codigo_Postal != 0)
+            Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
+
+        if (datosBeneficiario.Telefono != 0)
+            Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
+
+        if (datosBeneficiario.Precio_Vivienda != 0)
+            Coste_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
+        
+        /* Representamos la fecha*/
+        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
+        Fecha_Nacimiento.setText(formatoFecha.format(datosBeneficiario.FechaNac));
     }
 
     /**
@@ -62,11 +97,14 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         botonConsultar = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        Tipo = new javax.swing.JLabel();
-        Coste = new javax.swing.JLabel();
+        Tipo_Vivienda = new javax.swing.JLabel();
+        Coste_Vivienda = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel21 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        Motivo = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        Email = new javax.swing.JLabel();
 
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
@@ -111,26 +149,6 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
 
         jLabel18.setText("NIF");
 
-        NIF.setText("NIF");
-
-        Nombre.setText("Nombre");
-
-        Apellidos.setText("Apellidos");
-
-        Fecha_Nacimiento.setText("Nacimiento");
-
-        Nacionalidad.setText("Nacionalidad");
-
-        Estado_Civil.setText("Estado_Civil");
-
-        Domicilio.setText("Domicilio");
-
-        Codigo_Postal.setText("Codigo_Postal");
-
-        Localidad.setText("Localidad");
-
-        Telefono.setText("Telefono");
-
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar_familiar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -143,14 +161,14 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
 
         jLabel19.setText("Coste Mensual");
 
-        Tipo.setText("Tipo");
-
-        Coste.setText("Coste mensual");
-
         jLabel21.setText("Motivo");
 
         jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel20.setText("Vivienda");
+
+        Motivo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel15.setText("Email");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -185,35 +203,36 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel11)
-                                    .addComponent(jLabel9))
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel15))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Email)
+                                    .addComponent(Telefono)
                                     .addComponent(Domicilio)
                                     .addComponent(Codigo_Postal)
-                                    .addComponent(Localidad)))
-                            .addComponent(jLabel12)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(116, 116, 116)
-                                .addComponent(Telefono)))
+                                    .addComponent(Localidad))))
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel14)
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(botonConsultar)
+                                .addComponent(jLabel21)
+                                .addComponent(jLabel14)
+                                .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                                 .addComponent(jLabel13)
-                                .addComponent(jSeparator8, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(93, 93, 93)
-                                .addComponent(Tipo))
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addGap(18, 18, 18)
-                                .addComponent(Coste))
-                            .addComponent(jLabel20))
+                                .addComponent(jSeparator8, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel17)
+                                    .addGap(93, 93, 93)
+                                    .addComponent(Tipo_Vivienda))
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel19)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Coste_Vivienda))
+                                .addComponent(jLabel20)
+                                .addComponent(Motivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(botonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +243,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(562, 562, 562)
                         .addComponent(botonOK)))
-                .addGap(0, 69, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,35 +272,8 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                                 .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Apellidos))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                                .addComponent(Apellidos)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(Tipo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(Coste))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Fecha_Nacimiento)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -306,20 +298,50 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                             .addComponent(Localidad)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(Telefono))))
-                .addGap(48, 48, 48)
+                            .addComponent(Telefono))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(Email)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonConsultar)
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(Tipo_Vivienda))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(Coste_Vivienda))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Motivo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonOK)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        panel = new jListarFamiliar("ConsultarBeneficiario", "ConsultarFamiliar");
+       panel = new jListarFamiliar("ConsultarBeneficiario", "ConsultarFamiliar");
 
-        UI.jPrincipal.add("ListarFamiliar", panel);
-        UI.cl.show(UI.jPrincipal, "ListarFamiliar");
+       UI.jPrincipal.add("ListarFamiliar", panel);
+       UI.cl.show(UI.jPrincipal, "ListarFamiliar");
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
@@ -329,16 +351,18 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellidos;
     private javax.swing.JLabel Codigo_Postal;
-    private javax.swing.JLabel Coste;
+    private javax.swing.JLabel Coste_Vivienda;
     private javax.swing.JLabel Domicilio;
+    private javax.swing.JLabel Email;
     private javax.swing.JLabel Estado_Civil;
     private javax.swing.JLabel Fecha_Nacimiento;
     private javax.swing.JLabel Localidad;
+    private javax.swing.JLabel Motivo;
     private javax.swing.JLabel NIF;
     private javax.swing.JLabel Nacionalidad;
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel Telefono;
-    private javax.swing.JLabel Tipo;
+    private javax.swing.JLabel Tipo_Vivienda;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
@@ -347,6 +371,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;

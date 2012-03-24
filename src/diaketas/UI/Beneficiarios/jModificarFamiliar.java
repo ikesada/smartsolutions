@@ -31,6 +31,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         this.jPanelSiguiente = jPanelSiguiente;
         this.NombreApellidos = Nombre_Apellidos;
         
+        /*Inicializamos*/
         initComponents();
         
         /*Inicializamos los datos*/
@@ -44,7 +45,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         this.Parentesco.setSelectedItem(parentesco.Parentesc);
         
         /* Representamos la fecha*/
-        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yyy");
+        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
         this.Fecha_Nacimiento.setText(formatoFecha.format(familiar.Fecha_Nacimiento));
     }
 

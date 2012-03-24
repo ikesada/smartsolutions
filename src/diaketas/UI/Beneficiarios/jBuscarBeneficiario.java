@@ -5,6 +5,11 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Beneficiario;
+import diaketas.Usuarios.Beneficiario.Familiar;
+import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -42,6 +47,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         NIF = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
+        botonCancel = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -57,6 +63,13 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConsultarActionPerformed(evt);
+            }
+        });
+
+        botonCancel.setText("Cancelar");
+        botonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelActionPerformed(evt);
             }
         });
 
@@ -83,8 +96,10 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                                                 .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(198, 198, 198))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(176, 176, 176)
-                                .addComponent(botonConsultar)))
+                                .addGap(102, 102, 102)
+                                .addComponent(botonConsultar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonCancel)))
                         .addGap(0, 166, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -104,26 +119,49 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(botonConsultar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonConsultar)
+                    .addComponent(botonCancel))
                 .addContainerGap(270, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        if (jPanelSiguiente.compareTo("ConsultarBeneficiario") ==0)
-        {
-            panel = new jConsultarBeneficiario();
-            UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, jPanelSiguiente);
+
+        if (NIF.getText().compareTo("") != 0){
+            
+            /*Consultamos el beneficiario*/
+            Beneficiario datosBeneficiario = Gestor_de_beneficiarios.consultarBeneficiario(NIF.getText());
+
+            /*Si datos != null existe*/
+            if (datosBeneficiario != null){
+
+                if (jPanelSiguiente.compareTo("ConsultarBeneficiario") ==0){
+                    panel = new jConsultarBeneficiario(datosBeneficiario);
+                    UI.jPrincipal.add(jPanelSiguiente, panel); 
+                    UI.cl.show(UI.jPrincipal, jPanelSiguiente); 
+                }else{
+                    panel = new jModificarBeneficiario(datosBeneficiario);
+                    UI.jPrincipal.add(jPanelSiguiente, panel); 
+                    UI.cl.show(UI.jPrincipal, jPanelSiguiente); 
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún beneficiario con ese NIF.",
+                    "NIF Beneficiario", JOptionPane.ERROR_MESSAGE); 
+            }
         }else{
-            panel = new jModificarBeneficiario();
-            UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, jPanelSiguiente);  
+                JOptionPane.showMessageDialog(this, "No se ha introducido el NIF de beneficiario.",
+                    "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
 
+    private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
+        UI.cl.show(UI.jPrincipal, "Beneficiarios");
+    }//GEN-LAST:event_botonCancelActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF;
+    private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

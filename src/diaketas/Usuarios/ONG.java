@@ -6,7 +6,6 @@ package diaketas.Usuarios;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.UI.Beneficiarios.jAltaBeneficiario;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
 import diaketas.Usuarios.Beneficiario.Familiar;
 import diaketas.Usuarios.Beneficiario.Parentesco;
@@ -14,12 +13,9 @@ import diaketas.Usuarios.Donante.Donante;
 import diaketas.Usuarios.Voluntario.Voluntario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,18 +53,18 @@ public class ONG {
         }
     }
     
-    /**************************BENEFICIARIO*************************************/
-    
-    static public Beneficiario buscarBeneficiario(String dni){
+    /**************************BENEFICIARIO*************************************/    
+    static public Beneficiario buscarBeneficiario(String DNI){
         Beneficiario beneficiario = null;
         con.conectarBD();
 
          try {
             instruccion = (Statement) con.conexion().createStatement();
-            ResultSet rs = instruccion.executeQuery("Select * From Usuario u ,Beneficiario b WHERE u.NIF_CIF = b.NIF_CIF and u.NIF_CIF = \""+ dni+"\"");
-            
+            ResultSet rs = instruccion.executeQuery("Select * From Usuario u ,Beneficiario b WHERE u.NIF_CIF = b.NIF_CIF and u.NIF_CIF = \""+ DNI+"\"");
+
             /*Si se ha encontrado una tubla*/
             if (rs.next()){
+
                 beneficiario = new Beneficiario(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getInt(6),
                                                 rs.getDate(7), rs.getString(8), rs.getInt(9),rs.getString(11), rs.getString(12), rs.getString(13),
                                                 rs.getInt(14), rs.getString(15), rs.getDate(16), rs.getString(17), rs.getString(18), 
@@ -92,10 +88,12 @@ public class ONG {
          return beneficiario;
     }
     
-    static public Boolean comprobarExistenciaBeneficiario(String dni){
+    static public Boolean comprobarExistenciaBeneficiario(String DNI){
         
-        
-        return true;
+        /*Buscamos el beneficiario*/
+        Beneficiario beneficiario = buscarBeneficiario(DNI);
+  
+        return (beneficiario != null);
     }
     
     static public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
@@ -106,11 +104,12 @@ public class ONG {
         
          try {
             instruccion = (Statement) con.conexion().createStatement();
+            
             /*Introducimos la parte de Usuario*/
-
             instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
                     + nuevoBeneficiario.Nombre + "\",\"" + nuevoBeneficiario.Apellidos + "\",\""  + fecha_Nacimiento
                     + "\",\"" + nuevoBeneficiario.Localidad + "\",\""   + nuevoBeneficiario.Activo + "\", NULL, \"" + nuevoBeneficiario.Email + "\",\"" + nuevoBeneficiario.Telefono + "\")");
+            
             /*Introducimos la parte de Beneficiario*/
              instruccion.executeUpdate("INSERT INTO Beneficiario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
                     + nuevoBeneficiario.Nacionalidad + "\",\"" + nuevoBeneficiario.Estado_civil + "\",\""  + nuevoBeneficiario.Domicilio
@@ -256,27 +255,90 @@ public class ONG {
             }
         }              
     }
-    /**************************VOLUNTARIO*************************************/
-    static Voluntario buscarVoluntario(String DNI){
+    
+    
+    
+    
+    /******************************VOLUNTARIO**************************/
+    
+    
+    static public Voluntario buscarVoluntario(String DNI){
         Voluntario v = null;
+        
         try {
+            
+            
             instruccion = (Statement) con.conexion().createStatement();
-            tabla = instruccion.executeQuery("SELECT COUNT(v.NIF_CIF) FROM Usuario u, Voluntario v"
+            //System.out.println("DNI del voluntario buscado: "+DNI);
+            
+            tabla = (ResultSet) instruccion.executeQuery("SELECT * FROM Usuario u, Voluntario v"
                     + " WHERE u.NIF_CIF = v.NIF_CIF and v.NIF_CIF = \""+DNI+"\"");
-            if(tabla.next()){
-                //Crear Voluntario
-                
+            
+            //rs = (ResultSet) instruccion.executeQuery("SELECT * FROM Usuario u, Voluntario v"
+            //        + " WHERE u.NIF_CIF = v.NIF_CIF and v.NIF_CIF = \""+(String)DNI+"\"");
+    
+            
+ 
+            if(tabla.next())
+            {
+                //desde el 1-9 son datos del usuario, y el 10 vuelve a ser el NIF_DNI pero de la tabla voluntario
+                System.out.println("Los datos obtenidos son: \n"+tabla.getString(1)+" "+ tabla.getString(2)+" "+ tabla.getString(3)+" "+ tabla.getDate(4)+" "+ tabla.getString(5)+" "+ tabla.getInt(6)+" "+ tabla.getDate(7)+" "+ tabla.getString(8)+" "+ tabla.getInt(9)+" "+tabla.getString(11)+" "+ tabla.getString(12)+" "+ tabla.getInt(13)+" "+ tabla.getDate(14)+" "+ tabla.getString(15));
+            
+                //creo un nuevo voluntario v con esos datos
+                v = new Voluntario(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getDate(4), tabla.getString(5), tabla.getInt(6), tabla.getDate(7), tabla.getString(8), tabla.getInt(9),tabla.getString(11), tabla.getString(12), tabla.getInt(13), tabla.getDate(14), tabla.getString(15));
+                                
             }
-                
+      
         }
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }        
         
         return v;
     }
+    
+    
     static public boolean comprobarExistenciaVoluntario(String DNI){
         Voluntario vol = buscarVoluntario(DNI);
+        
+        System.out.println("nombre del voluntario encontrado: "+vol.Nombre);
         return (vol != null);
     }
     
+    
+    
+    
+    static public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
+        con.conectarBD();
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoVoluntario.FechaNac.getTime());
+        java.sql.Timestamp fecha_Inicio = new java.sql.Timestamp(nuevoVoluntario.Fecha_Inicio.getTime());
+        
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            
+            /*Introducimos la parte de Usuario*/
+            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoVoluntario.NIF_CIF + "\",\""
+                    + nuevoVoluntario.Nombre + "\",\"" + nuevoVoluntario.Apellidos + "\",\""  + fecha_Nacimiento
+                    + "\",\"" + nuevoVoluntario.Localidad + "\",\""   + nuevoVoluntario.Activo + "\", NULL, \"" + nuevoVoluntario.Email + "\",\"" + nuevoVoluntario.Telefono + "\")");
+            
+            /*Introducimos la parte de Voluntario*/
+             instruccion.executeUpdate("INSERT INTO Voluntario VALUES (\""+nuevoVoluntario.NIF_CIF + "\",\""
+                    + nuevoVoluntario.Nacionalidad + "\",\"" + nuevoVoluntario.Domicilio + "\",\""  + nuevoVoluntario.Codigo_Postal + "\",\""   + fecha_Inicio + "\",\"" + nuevoVoluntario.Observaciones +"\")");           
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
+    }
+    
+   
 }

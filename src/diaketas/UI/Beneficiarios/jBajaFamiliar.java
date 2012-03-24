@@ -5,6 +5,7 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
 
 /**
  *
@@ -14,13 +15,22 @@ public class jBajaFamiliar extends javax.swing.JPanel {
 
     public int fase;
     String jPanelAnterior;
+    String NombreApellidos;
     
     /**
      * Creates new form jAltaFamiliar
      */
-    public jBajaFamiliar(String jPanelAnterior) {
+    public jBajaFamiliar(String jPanelAnterior, String Nombre_Apellidos) {
+        
+        /*Nombre & Apellidos del familiar que se da de baja*/
         this.jPanelAnterior = jPanelAnterior;
+        this.NombreApellidos = Nombre_Apellidos;
+        
+        /* Iniciamos componentes */
         initComponents();
+        
+        /*Mostramos texto informativo */
+        jLabelInformativo.setText("¿Desea eliminar el familiar «"+ Nombre_Apellidos + "»?");
     }
 
     /**
@@ -36,7 +46,7 @@ public class jBajaFamiliar extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelInformativo = new javax.swing.JLabel();
         botonOK = new javax.swing.JButton();
         botonCancel = new javax.swing.JButton();
 
@@ -46,7 +56,7 @@ public class jBajaFamiliar extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Eliminar un familiar");
 
-        jLabel2.setText("¿Desea eliminar el familiar?");
+        jLabelInformativo.setText("¿Desea eliminar el familiar?");
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +85,7 @@ public class jBajaFamiliar extends javax.swing.JPanel {
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
+                            .addComponent(jLabelInformativo)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(botonOK)
@@ -95,7 +105,7 @@ public class jBajaFamiliar extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabelInformativo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
@@ -105,7 +115,10 @@ public class jBajaFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        //Eliminar familiar 
+        
+        /*Confirmar eleiminar familiar*/
+        Gestor_de_beneficiarios.confirmarEliminacionFamiliar();
+        
         UI.cl.show(UI.jPrincipal, jPanelAnterior);
     }//GEN-LAST:event_botonOKActionPerformed
 
@@ -117,8 +130,8 @@ public class jBajaFamiliar extends javax.swing.JPanel {
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelInformativo;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
