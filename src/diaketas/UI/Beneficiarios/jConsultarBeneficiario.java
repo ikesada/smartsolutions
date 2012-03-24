@@ -35,22 +35,21 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         NIF.setText(datosBeneficiario.NIF_CIF);
         Nombre.setText(datosBeneficiario.Nombre);
         Apellidos.setText(datosBeneficiario.Apellidos);
-        if (datosBeneficiario.Nacionalidad != null)
-            Nacionalidad.setText(datosBeneficiario.Nacionalidad);
+        Nacionalidad.setText(datosBeneficiario.Nacionalidad);
         Estado_Civil.setText(datosBeneficiario.Estado_civil);
-        if (datosBeneficiario.Domicilio != null)
-            Domicilio.setText(datosBeneficiario.Domicilio);
+        Domicilio.setText(datosBeneficiario.Domicilio);
+        Motivo.setText(datosBeneficiario.Motivo);
+        Localidad.setText(datosBeneficiario.Localidad);
+        Tipo_Vivienda.setText(datosBeneficiario.Tipo_Vivienda);
+        Email.setText(datosBeneficiario.Email);
         if (datosBeneficiario.Codigo_Postal != 0)
             Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
-        if (datosBeneficiario.Localidad != null)
-            Localidad.setText(datosBeneficiario.Localidad);
+
         if (datosBeneficiario.Telefono != 0)
             Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
-        Tipo_Vivienda.setText(datosBeneficiario.Tipo_Vivienda);
+
         if (datosBeneficiario.Precio_Vivienda != 0)
             Coste_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
-        if (datosBeneficiario.Motivo != null)
-            Motivo.setText(datosBeneficiario.Motivo);
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
@@ -104,6 +103,8 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         Motivo = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        Email = new javax.swing.JLabel();
 
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
@@ -167,6 +168,8 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
 
         Motivo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        jLabel15.setText("Email");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -200,16 +203,16 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel11)
-                                    .addComponent(jLabel9))
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel15))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Email)
+                                    .addComponent(Telefono)
                                     .addComponent(Domicilio)
                                     .addComponent(Codigo_Postal)
-                                    .addComponent(Localidad)))
-                            .addComponent(jLabel12)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(116, 116, 116)
-                                .addComponent(Telefono)))
+                                    .addComponent(Localidad))))
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -240,7 +243,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(562, 562, 562)
                         .addComponent(botonOK)))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,9 +298,13 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                             .addComponent(Localidad)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(Telefono)))
+                            .addComponent(Telefono))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(Email)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -346,6 +353,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel Codigo_Postal;
     private javax.swing.JLabel Coste_Vivienda;
     private javax.swing.JLabel Domicilio;
+    private javax.swing.JLabel Email;
     private javax.swing.JLabel Estado_Civil;
     private javax.swing.JLabel Fecha_Nacimiento;
     private javax.swing.JLabel Localidad;
@@ -363,6 +371,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;

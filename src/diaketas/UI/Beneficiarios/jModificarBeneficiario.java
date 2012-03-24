@@ -33,26 +33,20 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         /*Iniciamos la interfaz*/
         initComponents();
         
-                /*Mostramos los datos de beneficiario*/
+        /*Mostramos los datos de beneficiario*/
         NIF.setText(datosBeneficiario.NIF_CIF);
         Nombre.setText(datosBeneficiario.Nombre);
+        Email.setText(datosBeneficiario.Email);
         Apellidos.setText(datosBeneficiario.Apellidos);
-        if (datosBeneficiario.Nacionalidad != null)
-            Nacionalidad.setText(datosBeneficiario.Nacionalidad);
+        Nacionalidad.setText(datosBeneficiario.Nacionalidad);
         Estado_Civil.setSelectedItem(datosBeneficiario.Estado_civil);
-        if (datosBeneficiario.Domicilio != null)
-            Domicilio.setText(datosBeneficiario.Domicilio);
-        if (datosBeneficiario.Codigo_Postal != 0)
-            Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
-        if (datosBeneficiario.Localidad != null)
-            Localidad.setText(datosBeneficiario.Localidad);
-        if (datosBeneficiario.Telefono != 0)
-            Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
+        Domicilio.setText(datosBeneficiario.Domicilio);
+        Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
+        Localidad.setText(datosBeneficiario.Localidad);
+        Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
         Tipo_Vivienda.setSelectedItem(datosBeneficiario.Tipo_Vivienda);
-        if (datosBeneficiario.Precio_Vivienda != 0)
-            Precio_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
-        if (datosBeneficiario.Motivo != null)
-            Motivo.setText(datosBeneficiario.Motivo);
+        Precio_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
+        Motivo.setText(datosBeneficiario.Motivo);
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");

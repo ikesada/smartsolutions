@@ -43,7 +43,6 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         Tipo_Vivienda = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         Apellidos = new javax.swing.JTextField();
-        Precio_Vivienda = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         Fecha_Nacimiento = new javax.swing.JFormattedTextField();
         NIF_Voluntario = new javax.swing.JTextField();
@@ -80,6 +79,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
+        Precio_Vivienda = new javax.swing.JFormattedTextField();
 
         jLabel9.setText("Domicilio");
 
@@ -90,8 +90,6 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         Apellidos.setColumns(30);
 
-        Precio_Vivienda.setColumns(9);
-
         jLabel20.setText("NIF Voluntario");
 
         Fecha_Nacimiento.setColumns(9);
@@ -100,7 +98,6 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_Voluntario.setColumns(9);
-        NIF_Voluntario.setText("11111111D");
         NIF_Voluntario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NIF_VoluntarioActionPerformed(evt);
@@ -180,6 +177,8 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         Email.setColumns(20);
 
+        Precio_Vivienda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,20 +224,21 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                                     .addComponent(jLabel12))
                                 .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15)
                                     .addComponent(jSeparator5)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                                    .addComponent(jLabel13)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel18))
-                                        .addGap(27, 27, 27)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jSeparator4)))
+                                    .addComponent(jSeparator4)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel14)
+                                        .addComponent(jLabel15)
+                                        .addComponent(jLabel13)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel17)
+                                                .addComponent(jLabel18))
+                                            .addGap(27, 27, 27)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(Tipo_Vivienda, 0, 128, Short.MAX_VALUE)
+                                                .addComponent(Precio_Vivienda))))))
                             .addComponent(jLabel16)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(344, 344, 344)
@@ -408,7 +408,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField NIF_Voluntario;
     private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Nombre;
-    private javax.swing.JTextField Precio_Vivienda;
+    private javax.swing.JFormattedTextField Precio_Vivienda;
     private javax.swing.JTextField Telefono;
     private javax.swing.JComboBox Tipo_Vivienda;
     private javax.swing.JButton botonCancel;

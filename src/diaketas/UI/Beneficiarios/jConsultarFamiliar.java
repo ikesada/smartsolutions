@@ -32,7 +32,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         /*Inicializamos UI*/
         initComponents();
         
-                /*Inicializamos los datos*/
+        /*Inicializamos los datos*/
         ArrayList datosFamiliar = Gestor_de_beneficiarios.consultarFamiliar(Nombre_Apellidos);
         Familiar familiar = (Familiar) datosFamiliar.get(0);
         Parentesco parentesco = (Parentesco) datosFamiliar.get(1);
