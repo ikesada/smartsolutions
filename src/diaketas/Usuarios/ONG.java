@@ -60,10 +60,10 @@ public class ONG {
          try {
             instruccion = (Statement) con.conexion().createStatement();
             ResultSet rs = instruccion.executeQuery("Select * From Usuario u ,Beneficiario b WHERE u.NIF_CIF = b.NIF_CIF and u.NIF_CIF = \""+ DNI+"\"");
-            System.out.println("aaaaaaaaaaaaaaa!");
+
             /*Si se ha encontrado una tubla*/
             if (rs.next()){
-                System.out.println("Hay datos!");
+
                 beneficiario = new Beneficiario(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getInt(6),
                                                 rs.getDate(7), rs.getString(8), rs.getInt(9),rs.getString(11), rs.getString(12), rs.getString(13),
                                                 rs.getInt(14), rs.getString(15), rs.getDate(16), rs.getString(17), rs.getString(18), 
