@@ -241,7 +241,7 @@ public class ONG {
             //rs = (ResultSet) instruccion.executeQuery("SELECT * FROM Usuario u, Voluntario v"
             //        + " WHERE u.NIF_CIF = v.NIF_CIF and v.NIF_CIF = \""+(String)DNI+"\"");
     
-            System.out.println("DNI del voluntario buscado: "+DNI);
+            
  
             if(tabla.next())
             {
@@ -266,6 +266,42 @@ public class ONG {
         
         System.out.println("nombre del voluntario encontrado: "+vol.Nombre);
         return (vol != null);
+    }
+    
+    
+    
+    
+    static public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
+        con.conectarBD();
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoVoluntario.FechaNac.getTime());
+        java.sql.Timestamp fecha_Inicio = new java.sql.Timestamp(nuevoVoluntario.Fecha_Inicio.getTime());
+        
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            
+            /*Introducimos la parte de Usuario*/
+            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoVoluntario.NIF_CIF + "\",\""
+                    + nuevoVoluntario.Nombre + "\",\"" + nuevoVoluntario.Apellidos + "\",\""  + fecha_Nacimiento
+                    + "\",\"" + nuevoVoluntario.Localidad + "\",\""   + nuevoVoluntario.Activo + "\", NULL, \"" + nuevoVoluntario.Email + "\",\"" + nuevoVoluntario.Telefono + "\")");
+            
+            /*Introducimos la parte de Voluntario*/
+             instruccion.executeUpdate("INSERT INTO Voluntario VALUES (\""+nuevoVoluntario.NIF_CIF + "\",\""
+                    + nuevoVoluntario.Nacionalidad + "\",\"" + nuevoVoluntario.Domicilio + "\",\""  + nuevoVoluntario.Codigo_Postal + "\",\""   + fecha_Inicio + "\",\"" + nuevoVoluntario.Observaciones +"\")");           
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
     }
     
    

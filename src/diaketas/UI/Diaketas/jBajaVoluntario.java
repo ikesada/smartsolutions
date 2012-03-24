@@ -129,8 +129,8 @@ public class jBajaVoluntario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        //GEN-FIRST:event_botonOKActionPerformed
+    private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {                                        
+//GEN-FIRST:event_botonOKActionPerformed
         if (fase == 0){
             //Buscar el dni
             
@@ -141,6 +141,10 @@ public class jBajaVoluntario extends javax.swing.JPanel {
             {
                 
                 //
+                
+                
+                
+                
                 
                 
                 //si ha rellenado el campo del dni del voluntario actual
