@@ -6,9 +6,6 @@ package diaketas.Usuarios;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Usuarios.Beneficiario.Familiar;
-import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -30,6 +27,7 @@ public abstract class Usuarios {
     public String Email;
     public int Telefono;
 
+    /*----------------------------Constructores--------------------------------*/
     /*
     public Usuarios(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, Boolean Activo, Date FechaDesac, Email Email, Telefono Telefono) {
         this.NIF_CIF = NIF_CIF;
@@ -44,7 +42,9 @@ public abstract class Usuarios {
     }
     */
     
+    /*-----------------------------Desactivar----------------------------------*/
     public void desactivarUsuario(Date fecha_desactivacion){
+        /*Modificamos los datos del objeto*/
         this.Activo = 0;
         this.FechaDesac = fecha_desactivacion;
         
@@ -74,5 +74,4 @@ public abstract class Usuarios {
             }
         }         
     }
-
 }

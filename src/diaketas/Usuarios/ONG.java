@@ -52,8 +52,7 @@ public class ONG {
         }
     }
     
-    /**************************BENEFICIARIO*************************************/
-    
+    /**************************BENEFICIARIO*************************************/    
     static public Beneficiario buscarBeneficiario(String DNI){
         Beneficiario beneficiario = null;
         con.conectarBD();
