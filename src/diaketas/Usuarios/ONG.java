@@ -6,19 +6,14 @@ package diaketas.Usuarios;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.UI.Beneficiarios.jAltaBeneficiario;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
 import diaketas.Usuarios.Beneficiario.Familiar;
 import diaketas.Usuarios.Beneficiario.Parentesco;
-import diaketas.Usuarios.Voluntario.Voluntario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -108,11 +103,12 @@ public class ONG {
         
          try {
             instruccion = (Statement) con.conexion().createStatement();
+            
             /*Introducimos la parte de Usuario*/
-
             instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
                     + nuevoBeneficiario.Nombre + "\",\"" + nuevoBeneficiario.Apellidos + "\",\""  + fecha_Nacimiento
                     + "\",\"" + nuevoBeneficiario.Localidad + "\",\""   + nuevoBeneficiario.Activo + "\", NULL, \"" + nuevoBeneficiario.Email + "\",\"" + nuevoBeneficiario.Telefono + "\")");
+            
             /*Introducimos la parte de Beneficiario*/
              instruccion.executeUpdate("INSERT INTO Beneficiario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
                     + nuevoBeneficiario.Nacionalidad + "\",\"" + nuevoBeneficiario.Estado_civil + "\",\""  + nuevoBeneficiario.Domicilio
@@ -223,27 +219,5 @@ public class ONG {
             }
         }              
     }
-    /**************************VOLUNTARIO*************************************/
-    static Voluntario buscarVoluntario(String DNI){
-        Voluntario v = null;
-        try {
-            instruccion = (Statement) con.conexion().createStatement();
-            tabla = instruccion.executeQuery("SELECT COUNT(v.NIF_CIF) FROM Usuario u, Voluntario v"
-                    + " WHERE u.NIF_CIF = v.NIF_CIF and v.NIF_CIF = \""+DNI+"\"");
-            if(tabla.next()){
-                //Crear Voluntario
-                
-            }
-                
-        }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }        
-        
-        return v;
-    }
-    static public boolean comprobarExistenciaVoluntario(String DNI){
-        Voluntario vol = buscarVoluntario(DNI);
-        return (vol != null);
-    }
-    
+   
 }
