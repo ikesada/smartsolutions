@@ -162,12 +162,12 @@ public class jAltaFamiliar extends javax.swing.JPanel {
             Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
         } catch (ParseException ex) {
             Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(this, "Fecha de nacimiento de familiar incorrecta utilice formato dd/MM/yy.", "Fecha de Nacimiento de familiar", JOptionPane.ERROR_MESSAGE);
         }
         
         /*Introducimos los datos del familiar*/
-        System.out.println(Nombre_Apellidos.getText() + "> "+ Fecha_Nac + "> "+ (String) Parentesco.getSelectedItem() + "> "+ Ocupacion.getText());
-        Gestor_de_beneficiarios.introducirDatosFamiliar(Nombre_Apellidos.getText(), Fecha_Nac, (String) Parentesco.getSelectedItem(), Ocupacion.getText());
+        Gestor_de_beneficiarios.introducirDatosFamiliar(Nombre_Apellidos.getText(), Fecha_Nac,
+                (String) Parentesco.getSelectedItem(), Ocupacion.getText());
         
         /*Confirmams datos del familiar */
         /*ConfirmarInsercion()*/

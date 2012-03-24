@@ -369,20 +369,20 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
             }
 
-            /*IntroducirDatosBeneficiario*/
+            /*1. IntroducirDatosBeneficiario(datosBeneficiario, dniVoluntario)*/
             boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(NIF.getText().toUpperCase(),Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
                Email.getText(), Integer.parseInt(Telefono.getText()), Nacionalidad.getText(), (String)Estado_Civil.getSelectedItem(), Domicilio.getText(), Integer.parseInt(Codigo_Postal.getText()),
                new Date(), Motivo.getText(), Double.parseDouble(Precio_Vivienda.getText()), (String)Tipo_Vivienda.getSelectedItem(), NIF_Voluntario.getText());
  
-            //REVISAR Coreecto = true, aun no esta implementado buscarVOluntario
+            //REVISAR CORRECTO DEBE FUNCIONAR
             correcto = true;
+            /* 2. finalizar() */
             if (correcto = false)
                 JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
                         "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
 
-            /*Confirmar alta beneficiario*/
+            /* 3. ConfirmarAltaBeneficiario()*/
             Gestor_de_beneficiarios.confirmarAltaBeneficiario();
-            
             
             /*Actualizamos la pantalla principal*/
             panel = new jFamiliar();
