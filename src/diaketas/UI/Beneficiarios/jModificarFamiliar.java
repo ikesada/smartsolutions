@@ -136,7 +136,6 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         jLabel8.setText("Parentesco");
 
         Parentesco.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        Parentesco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Padre", "Madre", "Marido", "Mujer", "Hermano", "Hijo" }));
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
