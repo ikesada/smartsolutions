@@ -137,7 +137,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
             
             /*Consultamos el beneficiario*/
             Beneficiario datosBeneficiario = Gestor_de_beneficiarios.consultarBeneficiario(NIF.getText());
-
+System.out.println(NIF.getText());
             /*Si datos != null existe*/
             if (datosBeneficiario != null){
 
