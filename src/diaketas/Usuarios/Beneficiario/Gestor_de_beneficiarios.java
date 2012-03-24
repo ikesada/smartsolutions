@@ -45,7 +45,8 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
-        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
+        //return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return true;
     }
 
     static public Beneficiario consultarBeneficiario (String DNI){
