@@ -9,6 +9,7 @@ import diaketas.ConexionBD;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
 import diaketas.Usuarios.Beneficiario.Familiar;
 import diaketas.Usuarios.Beneficiario.Parentesco;
+import diaketas.Usuarios.Voluntario.Voluntario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -219,5 +220,54 @@ public class ONG {
             }
         }              
     }
+    
+    
+    
+    
+    /******************************VOLUNTARIO**************************/
+    
+    
+    static public Voluntario buscarVoluntario(String DNI){
+        Voluntario v = null;
+        
+        try {
+            
+            
+            instruccion = (Statement) con.conexion().createStatement();
+            //System.out.println("DNI del voluntario buscado: "+DNI);
+            
+            tabla = (ResultSet) instruccion.executeQuery("SELECT * FROM Usuario u, Voluntario v"
+                    + " WHERE u.NIF_CIF = v.NIF_CIF and v.NIF_CIF = \""+DNI+"\"");
+            
+            //rs = (ResultSet) instruccion.executeQuery("SELECT * FROM Usuario u, Voluntario v"
+            //        + " WHERE u.NIF_CIF = v.NIF_CIF and v.NIF_CIF = \""+(String)DNI+"\"");
+    
+            System.out.println("DNI del voluntario buscado: "+DNI);
+ 
+            if(tabla.next())
+            {
+                //desde el 1-9 son datos del usuario, y el 10 vuelve a ser el NIF_DNI pero de la tabla voluntario
+                System.out.println("Los datos obtenidos son: \n"+tabla.getString(1)+" "+ tabla.getString(2)+" "+ tabla.getString(3)+" "+ tabla.getDate(4)+" "+ tabla.getString(5)+" "+ tabla.getInt(6)+" "+ tabla.getDate(7)+" "+ tabla.getString(8)+" "+ tabla.getInt(9)+" "+tabla.getString(11)+" "+ tabla.getString(12)+" "+ tabla.getInt(13)+" "+ tabla.getDate(14)+" "+ tabla.getString(15));
+            
+                //creo un nuevo voluntario v con esos datos
+                v = new Voluntario(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getDate(4), tabla.getString(5), tabla.getInt(6), tabla.getDate(7), tabla.getString(8), tabla.getInt(9),tabla.getString(11), tabla.getString(12), tabla.getInt(13), tabla.getDate(14), tabla.getString(15));
+                                
+            }
+      
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }        
+        
+        return v;
+    }
+    
+    
+    static public boolean comprobarExistenciaVoluntario(String DNI){
+        Voluntario vol = buscarVoluntario(DNI);
+        
+        System.out.println("nombre del voluntario encontrado: "+vol.Nombre);
+        return (vol != null);
+    }
+    
    
 }

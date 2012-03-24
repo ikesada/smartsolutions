@@ -30,8 +30,7 @@ public class Gestor_de_voluntarios {
    
     
     
-    //////////////////////////////////////////////////////////////////////////////////////
-                            /*IMPORTADO DE LA CLASE ONG*/
+
     
     
     static Statement instruccion;
