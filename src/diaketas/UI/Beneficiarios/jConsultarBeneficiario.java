@@ -19,14 +19,14 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
 
     JPanel panel;
     Beneficiario datosBeneficiario;
-    ArrayList<Familiar> listaFamiliar;
+
     
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jConsultarBeneficiario(Beneficiario datosBeneficiario, ArrayList<Familiar> listaFamiliares) {
+    public jConsultarBeneficiario(Beneficiario datosBeneficiario) {
         this.datosBeneficiario = datosBeneficiario;
-        this.listaFamiliar = listaFamiliares;
+
         
         /*Iniciamos la interfaz*/
         initComponents();

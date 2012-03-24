@@ -5,6 +5,11 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Beneficiario.Familiar;
+import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import diaketas.Usuarios.Beneficiario.Parentesco;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,12 +18,33 @@ import diaketas.UI.UI;
 public class jConsultarFamiliar extends javax.swing.JPanel {
 
     String jPanelSiguiente;
+    String NombreApellidos;
+    
     /**
      * Creates new form jAltaFamiliar
      */
-    public jConsultarFamiliar(String jPanelSiguiente) {
+    public jConsultarFamiliar(String jPanelSiguiente, String Nombre_Apellidos) {
+        
         this.jPanelSiguiente = jPanelSiguiente;
+        
+        this.NombreApellidos = Nombre_Apellidos;
+        
+        /*Inicializamos UI*/
         initComponents();
+        
+                /*Inicializamos los datos*/
+        ArrayList datosFamiliar = Gestor_de_beneficiarios.consultarFamiliar(Nombre_Apellidos);
+        Familiar familiar = (Familiar) datosFamiliar.get(0);
+        Parentesco parentesco = (Parentesco) datosFamiliar.get(1);
+        
+        /*Actualizamos los valores del formulario*/
+        this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);
+        this.Ocupacion.setText(familiar.Ocupacion);
+        this.Parentesco.setText(parentesco.Parentesc);
+        
+        /* Representamos la fecha*/
+        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
+        this.Fecha_Nacimiento.setText(formatoFecha.format(familiar.Fecha_Nacimiento));
     }
 
     /**
@@ -38,7 +64,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         Nombre_Apellidos = new javax.swing.JLabel();
-        Nacimiento = new javax.swing.JLabel();
+        Fecha_Nacimiento = new javax.swing.JLabel();
         Parentesco = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Ocupacion = new javax.swing.JLabel();
@@ -56,15 +82,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
 
-        Nombre_Apellidos.setText("Nombre y apellidos");
-
-        Nacimiento.setText("Nacimiento");
-
-        Parentesco.setText("Parentesco");
-
         jLabel7.setText("Ocupacion");
-
-        Ocupacion.setText("Ocupacion");
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -96,14 +114,14 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(Nombre_Apellidos)
-                                        .addComponent(Nacimiento)
+                                        .addComponent(Fecha_Nacimiento)
                                         .addComponent(Parentesco)
                                         .addComponent(Ocupacion)
                                         .addComponent(botonOK))
                                     .addGap(198, 198, 198)))
                             .addComponent(jLabel6)
                             .addComponent(jLabel1))
-                        .addContainerGap())))
+                        .addContainerGap(95, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +141,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(Nacimiento))
+                    .addComponent(Fecha_Nacimiento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -143,7 +161,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
     }//GEN-LAST:event_botonOKActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Nacimiento;
+    private javax.swing.JLabel Fecha_Nacimiento;
     private javax.swing.JLabel Nombre_Apellidos;
     private javax.swing.JLabel Ocupacion;
     private javax.swing.JLabel Parentesco;

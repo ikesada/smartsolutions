@@ -156,16 +156,19 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
 
                 /*Beneficiario correcto*/
                 if (correcto == true){
-                    //si se encuentra
+                    
+                    /*Cambios esteticos*/
                     NIF_CIF.setVisible(false);
                     jLabel2.setText("¿Desea borrar el beneficiario con NIF-CIF " + NIF_CIF.getText()+ "?");
                     botonCancel.setVisible(true);
                     jLabel4.setVisible(true);
                     NIF_Voluntario.setVisible(true);
                     fase = 1;
+                    
                 }else   /*No se encuentra el beneficiario*/
                     JOptionPane.showMessageDialog(this, "No se ha encontrado ningún beneficiario con ese NIF.",
                             "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
+                
             }else{
                     JOptionPane.showMessageDialog(this, "El NIF del beneficiario no se ha introducido.",
                             "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
@@ -174,17 +177,20 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             if (NIF_Voluntario.getText().compareTo("") != 0){
                 
                 /*IntroducirDNIVoluntario*/
-                //correcto =
+                correcto = Gestor_de_beneficiarios.introducirDNIVoluntario(NIF_Voluntario.getText());
                 
-                correcto = true;
                 if (correcto == true){
-                    System.out.println("ssss");
+                    
+                    /* ConfirmarBajaBeneficiario*/
                     Gestor_de_beneficiarios.confirmarBajaBeneficiario();
+                    
+                    /*Cambios esteticos*/
                     botonCancel.setVisible(false);
                     NIF_Voluntario.setVisible(false);
                     jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
                     jLabel4.setVisible(false);
-                    fase = 2;    
+                    fase = 2;
+                    
                 }else{
                      JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
                             "NIF Voluntario", JOptionPane.ERROR_MESSAGE);

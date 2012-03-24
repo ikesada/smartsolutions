@@ -37,7 +37,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="Nombre_Apellidos" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Fecha_Nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="Parentesco" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="Ocupacion" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="botonOK" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -48,7 +48,7 @@
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="95" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -73,7 +73,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Nacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Fecha_Nacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -129,19 +129,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Nombre_Apellidos">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre y apellidos"/>
-      </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Nacimiento">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nacimiento"/>
-      </Properties>
+    <Component class="javax.swing.JLabel" name="Fecha_Nacimiento">
     </Component>
     <Component class="javax.swing.JLabel" name="Parentesco">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Parentesco"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -149,9 +140,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Ocupacion">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ocupacion"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botonOK">
       <Properties>

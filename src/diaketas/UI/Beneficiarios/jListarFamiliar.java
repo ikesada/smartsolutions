@@ -29,13 +29,15 @@ public class jListarFamiliar extends javax.swing.JPanel {
     public jListarFamiliar(String jPanelAnterior, String jPanelSiguiente) {
         this.jPanelAnterior = jPanelAnterior;
         this.jPanelSiguiente = jPanelSiguiente;
+        
+        /*Inicializamos*/
         initComponents();
         
         /* inicioModificarFamiliar()*/
-        /* inicioEliminarFamiliar()*/
+        /* inicioConsultarFamiliar()*/
         /*Mostramos inicioMostrarFamiliar*/
         if (jPanelAnterior.compareTo("Familiar") == 0){
-            familiares = Gestor_de_beneficiarios.iniciarMostrarFamiliar();
+            familiares = Gestor_de_beneficiarios.iniciarConsultarFamiliar();
 
             if(familiares.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No se ha encontrado ningún familiar para este beneficiario.",
@@ -49,10 +51,7 @@ public class jListarFamiliar extends javax.swing.JPanel {
                     modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
                 listaFamiliares.setModel(modelo);
             }           
-        }else{
-            
         }
-
     }
 
     /**
@@ -154,18 +153,31 @@ public class jListarFamiliar extends javax.swing.JPanel {
     
         if (listaFamiliares.getSelectedIndex() != -1){
             if (jPanelSiguiente.compareTo("BajaFamiliar") ==0){
+                
+                /*Pasamos al formulario de Baja el nombre del familiar*/
                 panel = new jBajaFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                
                 Gestor_de_beneficiarios.seleccionarFamiliar((String)listaFamiliares.getSelectedValue());
+                
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "BajaFamiliar");
+                
             }else if (jPanelSiguiente.compareTo("ConsultarFamiliar") ==0){
-                panel = new jConsultarFamiliar(jPanelAnterior);
+ 
+                /*Pasamos al formulario de Modificar el nombre del familiar*/
+                panel = new jConsultarFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "ConsultarFamiliar");  
+                
             }else{
+                
+                /*Pasamos al formulario de Modificar el nombre del familiar*/
                 panel = new jModificarFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
-                UI.cl.show(UI.jPrincipal, "ModificarFamiliar");              
+                UI.cl.show(UI.jPrincipal, "ModificarFamiliar");  
+                
             }
         }else{
             JOptionPane.showMessageDialog(this, "Seleccione un familiar.", "Familiar", JOptionPane.ERROR_MESSAGE);

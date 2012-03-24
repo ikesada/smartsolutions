@@ -31,6 +31,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         this.jPanelSiguiente = jPanelSiguiente;
         this.NombreApellidos = Nombre_Apellidos;
         
+        /*Inicializamos*/
         initComponents();
         
         /*Inicializamos los datos*/

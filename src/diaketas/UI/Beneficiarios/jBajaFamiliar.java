@@ -21,6 +21,8 @@ public class jBajaFamiliar extends javax.swing.JPanel {
      * Creates new form jAltaFamiliar
      */
     public jBajaFamiliar(String jPanelAnterior, String Nombre_Apellidos) {
+        
+        /*Nombre & Apellidos del familiar que se da de baja*/
         this.jPanelAnterior = jPanelAnterior;
         this.NombreApellidos = Nombre_Apellidos;
         
@@ -28,7 +30,7 @@ public class jBajaFamiliar extends javax.swing.JPanel {
         initComponents();
         
         /*Mostramos texto informativo */
-        jLabelInformativo.setText("¿Desea eliminar el familiar «"+ Nombre_Apellidos + "» ?");
+        jLabelInformativo.setText("¿Desea eliminar el familiar «"+ Nombre_Apellidos + "»?");
     }
 
     /**
@@ -113,8 +115,10 @@ public class jBajaFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        //Eliminar familiar 
+        
+        /*Confirmar eleiminar familiar*/
         Gestor_de_beneficiarios.confirmarEliminacionFamiliar();
+        
         UI.cl.show(UI.jPrincipal, jPanelAnterior);
     }//GEN-LAST:event_botonOKActionPerformed
 

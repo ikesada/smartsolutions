@@ -169,7 +169,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
         Gestor_de_beneficiarios.introducirDatosFamiliar(Nombre_Apellidos.getText(), Fecha_Nac,
                 (String) Parentesco.getSelectedItem(), Ocupacion.getText());
         
-        /*Confirmams datos del familiar */
+        /*Confirmamos datos del familiar */
         /*ConfirmarInsercion()*/
         Gestor_de_beneficiarios.confirmarAltaFamiliar();
         

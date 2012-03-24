@@ -129,21 +129,19 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
 
         if (NIF.getText().compareTo("") != 0){
-            ArrayList lista = Gestor_de_beneficiarios.consultarBeneficiario(NIF.getText());
+            
+            /*Consultamos el beneficiario*/
+            Beneficiario datosBeneficiario = Gestor_de_beneficiarios.consultarBeneficiario(NIF.getText());
 
-            Boolean correcto = (Boolean) lista.get(0);
-
-
-            if (correcto.booleanValue()){
-                Beneficiario beneficiario = (Beneficiario) lista.get(1);
-                ArrayList<Familiar> listaFamiliares = (ArrayList<Familiar>) lista.get(2);
+            /*Si datos != null existe*/
+            if (datosBeneficiario != null){
 
                 if (jPanelSiguiente.compareTo("ConsultarBeneficiario") ==0){
-                    panel = new jConsultarBeneficiario(beneficiario, listaFamiliares);
+                    panel = new jConsultarBeneficiario(datosBeneficiario);
                     UI.jPrincipal.add(jPanelSiguiente, panel); 
                     UI.cl.show(UI.jPrincipal, jPanelSiguiente); 
                 }else{
-                    panel = new jModificarBeneficiario(beneficiario);
+                    panel = new jModificarBeneficiario(datosBeneficiario);
                     UI.jPrincipal.add(jPanelSiguiente, panel); 
                     UI.cl.show(UI.jPrincipal, jPanelSiguiente); 
                 }
