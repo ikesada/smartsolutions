@@ -4,7 +4,12 @@
  */
 package diaketas.Usuarios.Voluntario;
 
-import com.mysql.jdbc.ResultSet;
+//antes tenia este: import com.mysql.jdbc.ResultSet;
+
+//sustituido por estos dos:
+import java.sql.ResultSet;
+//import com.mysql.jdbc.ResultSet;
+
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import diaketas.Usuarios.Accion;
