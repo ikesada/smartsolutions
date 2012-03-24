@@ -4,9 +4,7 @@
  */
 package diaketas.UI.Socios;
 
-import diaketas.UI.Beneficiarios.*;
 import diaketas.UI.UI;
-import diaketas.Usuarios.Donante.Donante;
 import diaketas.Usuarios.Donante.Gestor_de_donantes;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -127,12 +125,17 @@ public class jBuscarSocio extends javax.swing.JPanel {
             }else{
                 JOptionPane.showMessageDialog(this, "No existe ningun donante con dicho DNI", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-            
-            
          }else{
-            panel = new jModificarSocio();
-            UI.jPrincipal.add(jPanelSiguiente, panel); 
-            UI.cl.show(UI.jPrincipal, jPanelSiguiente);  
+            
+            if(Gestor_de_donantes.introducirDniDonante(NIF_CIF.getText())){
+
+                panel = new jModificarSocio(Gestor_de_donantes.confimarConsulta());
+                UI.jPrincipal.add(jPanelSiguiente, panel); 
+                UI.cl.show(UI.jPrincipal, jPanelSiguiente); 
+
+            }else{
+                JOptionPane.showMessageDialog(this, "No existe ningun donante con dicho DNI", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
 

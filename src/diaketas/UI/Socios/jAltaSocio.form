@@ -34,7 +34,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="NIF" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="NIF_CIF" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Nombre" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Apellidos" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Fecha_Nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -118,7 +118,7 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="NIF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NIF_CIF" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Tipo_Donante" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -292,7 +292,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="NIF">
+    <Component class="javax.swing.JTextField" name="NIF_CIF">
       <Properties>
         <Property name="columns" type="int" value="9"/>
       </Properties>

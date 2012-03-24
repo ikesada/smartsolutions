@@ -8,6 +8,7 @@ import diaketas.ConexionBD;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Donante.Gestor_de_donantes;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,51 +43,51 @@ public class jAltaSocio extends javax.swing.JPanel {
 
         //Para ejecutar la consulta
 
-        try {
+         try {
             //Crear objeto Statement para realizar queries a la base de datos
             s = con.conexion().createStatement();
 
             rs = s.executeQuery("SHOW COLUMNS FROM Donante where Field = 'Tipo_Periodicidad'");
 
             while (rs.next()) {
-                System.out.println(rs.getObject(2));
                 Object[] fila = new Object[3];
                 fila[0] = rs.getObject(2);
                 String[] tokens = (fila[0].toString()).split("'");
                 for (int i = 0; i < tokens.length; i++) {
-                    System.out.println(tokens[i]);
                     if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
                         Tipo_Periodicidad.addItem(tokens[i]);
                     }
                 }
 
             }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        try {
-            //Crear objeto Statement para realizar queries a la base de datos
-            s = con.conexion().createStatement();
 
             rs = s.executeQuery("SHOW COLUMNS FROM Donante where Field = 'Tipo_Donante'");
 
             while (rs.next()) {
-                //  System.out.println(rs.getObject(2));
                 Object[] fila = new Object[3];
                 fila[0] = rs.getObject(2);
                 String[] tokens = (fila[0].toString()).split("'");
                 for (int i = 0; i < tokens.length; i++) {
-                    //   System.out.println(tokens[i]);
                     if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
                         Tipo_Donante.addItem(tokens[i]);
                     }
                 }
 
             }
+
+
         } catch (Exception e) {
             System.out.println(e);
         }
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(jAltaSocio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+         }
 
 
 
@@ -117,7 +118,7 @@ public class jAltaSocio extends javax.swing.JPanel {
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         Observaciones = new javax.swing.JTextArea();
-        NIF = new javax.swing.JTextField();
+        NIF_CIF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -174,7 +175,7 @@ public class jAltaSocio extends javax.swing.JPanel {
         Observaciones.setRows(5);
         jScrollPane2.setViewportView(Observaciones);
 
-        NIF.setColumns(9);
+        NIF_CIF.setColumns(9);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Dar de alta a un socio");
@@ -228,7 +229,7 @@ public class jAltaSocio extends javax.swing.JPanel {
                                     .addComponent(jLabel5))
                                 .addGap(36, 36, 36)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NIF_CIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Fecha_Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -291,7 +292,7 @@ public class jAltaSocio extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NIF_CIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7)
                         .addComponent(Tipo_Donante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -359,10 +360,8 @@ public class jAltaSocio extends javax.swing.JPanel {
         if (NIF_Voluntario.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         } else {
-
-
             /*
-             * Si no se introducen los campos Telefono, Codigo_Postal o Precio,
+             * Si no se introducen los campos Telefono o el Tipo_Periodicidad es ninguno,
              * se rellenan a 0-Null
              */
             if (Telefono.getText().compareTo("") == 0) {
@@ -390,14 +389,16 @@ public class jAltaSocio extends javax.swing.JPanel {
             /*
              * IntroducirDatosDonante
              */
-            boolean correcto = Gestor_de_donantes.introducirDatosDonante(NIF.getText().toUpperCase(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
+            boolean correcto = Gestor_de_donantes.introducirDatosDonante(NIF_CIF.getText().toUpperCase(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
                     Email.getText(), Integer.parseInt(Telefono.getText()), (String) Tipo_Donante.getSelectedItem(), new Date(), Observaciones.getText(), Integer.parseInt(Periodicidad_Donaciones.getText()),
                     Double.parseDouble(Cuantia_Donaciones.getText()), (String) Tipo_Periodicidad.getSelectedItem(), NIF_Voluntario.getText());
 
-            Gestor_de_donantes.confirmarFinAlta();
-
-
-            /*
+            if(correcto){
+                Gestor_de_donantes.confirmarFinAlta();
+            }else{
+                 JOptionPane.showMessageDialog(this, "No se han podido realizar la inserccion de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+                /*
              * Actualizamos la pantalla principal
              */
             UI.cl.show(UI.jPrincipal, "Socios");
@@ -410,7 +411,7 @@ public class jAltaSocio extends javax.swing.JPanel {
     private javax.swing.JTextField Email;
     private javax.swing.JFormattedTextField Fecha_Nacimiento;
     private javax.swing.JTextField Localidad;
-    private javax.swing.JTextField NIF;
+    private javax.swing.JTextField NIF_CIF;
     private javax.swing.JTextField NIF_Voluntario;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextArea Observaciones;

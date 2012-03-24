@@ -8,7 +8,6 @@ import diaketas.ConexionBD;
 import diaketas.Usuarios.Accion;
 import diaketas.Usuarios.ONG;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
@@ -40,20 +39,22 @@ public class Gestor_de_donantes {
         return true;
     }
 
-    static public boolean introducirDniDonante(String NIF_CIF) {
+    static public Boolean introducirDniDonante(String NIF_CIF) {
 
         datosDonante = new Donante(NIF_CIF);
 
         return comprobarDniDonante(NIF_CIF);
     }
-
+   
     static public Donante confimarConsulta() {
 
+        con.conectarBD();
+        
         try {
             instruccion = con.conexion().createStatement();
 
-            tabla = instruccion.executeQuery("select * from Usuario where NIF_CIF = '"
-                    + datosDonante.NIF_CIF + "'");
+            tabla = instruccion.executeQuery("select NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Email, Telefono from Usuario where NIF_CIF = '"
+                    + datosDonante.NIF_CIF + "' LIMIT 1");
             tabla.next();
 
             datosDonante.NIF_CIF = (String) tabla.getObject("NIF_CIF");
@@ -66,13 +67,12 @@ public class Gestor_de_donantes {
             } else {
                 datosDonante.Activo = 0;
             }
-            datosDonante.FechaDesac = (Date) tabla.getObject("Fecha_Desactivacion");
+            //datosDonante.FechaDesac = (Date) tabla.getObject("Fecha_Desactivacion");
             datosDonante.Email = (String) tabla.getObject("Email");
-
             datosDonante.Telefono = (Integer) tabla.getObject("Telefono");
 
-            tabla = instruccion.executeQuery("select * from Donante where NIF_CIF = '"
-                    + datosDonante.NIF_CIF + "'");
+            tabla = instruccion.executeQuery("select Tipo_donante, Fecha_Inscripcion, Observaciones, Periodicidad_Donaciones, Cuantia_Donaciones, Tipo_Periodicidad from Donante where NIF_CIF = '"
+                    + datosDonante.NIF_CIF + "' LIMIT 1");
             tabla.next();
 
 
@@ -86,6 +86,16 @@ public class Gestor_de_donantes {
 
         } catch (SQLException ex) {
             Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
 
         return new Donante(datosDonante.NIF_CIF, datosDonante.Nombre,
@@ -103,7 +113,7 @@ public class Gestor_de_donantes {
     public static void confirmarFinAlta() {
 
         /*
-         * Crear beneficiario
+         * Crear Donante
          */
         Donante nuevoDonante = Donante.crearDonante(datosDonante.NIF_CIF, datosDonante.Nombre,
                 datosDonante.Apellidos, datosDonante.FechaNac, datosDonante.Localidad, datosDonante.Email,
@@ -112,7 +122,7 @@ public class Gestor_de_donantes {
                 datosDonante.Cuantia_Donaciones, datosDonante.Tipo_Periodicidad);
 
         /*
-         * Registrar Beneficiario
+         * Registrar Donante
          */
         ONG.agregarNuevoDonante(nuevoDonante);
 
@@ -126,16 +136,78 @@ public class Gestor_de_donantes {
 
         Boolean existe = false;
 
+        con.conectarBD();
+        
         try {
             instruccion = con.conexion().createStatement();
-            tabla = instruccion.executeQuery("select * from Donante where NIF_CIF = '"
-                    + NIF_CIF + "'");
+            tabla = instruccion.executeQuery("select NIF_CIF from Donante where NIF_CIF = '"
+                    + NIF_CIF + "' LIMIT 1");
             if (tabla.next()) {
                 existe = true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
         return existe;
+    }
+
+    public static void confirmarFinModificacion() {
+
+        /*
+         * Modificar Donante
+         */
+/*        Donante nuevoDonante = Donante.crearDonante(datosDonante.NIF_CIF, datosDonante.Nombre,
+                datosDonante.Apellidos, datosDonante.FechaNac, datosDonante.Localidad, datosDonante.Email,
+                datosDonante.Telefono, datosDonante.Tipo_Donante, datosDonante.Fecha_Inscripcion,
+                datosDonante.Observaciones, datosDonante.Periodicidad_Donaciones,
+                datosDonante.Cuantia_Donaciones, datosDonante.Tipo_Periodicidad);
+*/
+        
+        con.conectarBD();
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(datosDonante.FechaNac.getTime());
+        
+         try {
+            instruccion = (com.mysql.jdbc.Statement) con.conexion().createStatement();
+    
+            /*Actualizamos la parte de Usuario*/
+            instruccion.executeUpdate("UPDATE Usuario SET Nombre = \"" + datosDonante.Nombre + "\", Apellidos = \"" + datosDonante.Apellidos + "\", Fecha_Nacimiento_Fundacion = \""  + fecha_Nacimiento
+                    + "\", Localidad = \"" + datosDonante.Localidad + "\", Email = \"" + datosDonante.Email + "\", Telefono = " + datosDonante.Telefono + " WHERE NIF_CIF = \"" + datosDonante.NIF_CIF+"\" LIMIT 1");
+            /*Introducimos la parte de Donante*/
+            instruccion.executeUpdate("UPDATE Donante SET Tipo_Donante = \"" + datosDonante.Tipo_Donante + "\", Observaciones = \""  + datosDonante.Observaciones
+                    + "\", Periodicidad_Donaciones = \"" + datosDonante.Periodicidad_Donaciones + "\", Cuantia_Donaciones = \""   + datosDonante.Cuantia_Donaciones
+                    + "\", Tipo_Periodicidad = \"" + datosDonante.Tipo_Periodicidad+"\" WHERE NIF_CIF = \"" + datosDonante.NIF_CIF + "\"  LIMIT 1");           
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
+        
+        /*
+         * Registrar Operacion
+         */
+        Gestor_de_donantes.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
+        
     }
 }
