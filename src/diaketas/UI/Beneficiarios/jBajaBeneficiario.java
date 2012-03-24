@@ -21,7 +21,6 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
     public jBajaBeneficiario() {
         initComponents();
         fase = 0;
-        botonCancel.setVisible(false);
         jLabel4.setVisible(false);
         NIF_Voluntario.setVisible(false);
     }
@@ -160,7 +159,6 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
                     /*Cambios esteticos*/
                     NIF_CIF.setVisible(false);
                     jLabel2.setText("¿Desea borrar el beneficiario con NIF-CIF " + NIF_CIF.getText()+ "?");
-                    botonCancel.setVisible(true);
                     jLabel4.setVisible(true);
                     NIF_Voluntario.setVisible(true);
                     fase = 1;
@@ -185,7 +183,6 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
                     Gestor_de_beneficiarios.confirmarBajaBeneficiario();
                     
                     /*Cambios esteticos*/
-                    botonCancel.setVisible(false);
                     NIF_Voluntario.setVisible(false);
                     jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
                     jLabel4.setVisible(false);

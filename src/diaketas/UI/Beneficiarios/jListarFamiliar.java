@@ -36,21 +36,20 @@ public class jListarFamiliar extends javax.swing.JPanel {
         /* inicioModificarFamiliar()*/
         /* inicioConsultarFamiliar()*/
         /*Mostramos inicioMostrarFamiliar*/
-        if (jPanelAnterior.compareTo("Familiar") == 0){
-            familiares = Gestor_de_beneficiarios.iniciarConsultarFamiliar();
 
-            if(familiares.isEmpty()){
-                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún familiar para este beneficiario.",
-                        "No se han encontrado familiares", JOptionPane.INFORMATION_MESSAGE);
-                botonOK.setEnabled(false);
-            }else{
-                /*Mostramos los familiares*/
-                DefaultListModel modelo = new DefaultListModel();
-                for (int i = 0; i < familiares.size();i++){
-                    System.out.println(familiares.get(i).Nombre_Apellidos);
-                    modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
-                listaFamiliares.setModel(modelo);
-            }           
+        familiares = Gestor_de_beneficiarios.iniciarConsultarFamiliar();
+
+        if(familiares.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No se ha encontrado ningún familiar para este beneficiario.",
+                    "No se han encontrado familiares", JOptionPane.INFORMATION_MESSAGE);
+            botonOK.setEnabled(false);
+        }else{
+            /*Mostramos los familiares*/
+            DefaultListModel modelo = new DefaultListModel();
+            for (int i = 0; i < familiares.size();i++){
+                System.out.println(familiares.get(i).Nombre_Apellidos);
+                modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
+            listaFamiliares.setModel(modelo);
         }
     }
 
