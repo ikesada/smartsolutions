@@ -13,6 +13,7 @@ public class Parentesco {
     public String Parentesc;
     public String DNI_Beneficiario;
     
+    /*---------------------------Constructores---------------------------------*/
     Parentesco (int Cod_Familiar, String DNI_Beneficiario, String Parentesc){
         this.Cod_Familiar = Cod_Familiar;
         this.DNI_Beneficiario = DNI_Beneficiario;

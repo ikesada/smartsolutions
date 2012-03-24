@@ -31,6 +31,8 @@ public class Beneficiario extends Usuarios{
     public String Tipo_Vivienda;
     public Double Precio_Vivienda;
     
+    ConexionBD con = new ConexionBD();
+    
     /*-----------------------------Constructores-------------------------------*/
     public Beneficiario (String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo, Date FechaDesac, String Email, int Telefono,
                                         String Nacionalidad, String Estado_civil, String Domicilio, int Codigo_Postal, String Observaciones, Date Fecha_Inscripcion, String Expediente,
@@ -88,7 +90,6 @@ public class Beneficiario extends Usuarios{
         this.Tipo_Vivienda = Tipo_Vivienda;
         
         /* Actualizamos los datos */
-        ConexionBD con = new ConexionBD();
         con.conectarBD();
 
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(this.FechaNac.getTime());
@@ -137,7 +138,6 @@ public class Beneficiario extends Usuarios{
     
     /*----------------------------Familiares-----------------------------------*/
     public Familiar buscarFamiliar(String Nombre_Apellidos){
-        ConexionBD con = new ConexionBD();
         con.conectarBD();
         Familiar familiar = null;
         //RETOCAR DNI_CIF
@@ -173,7 +173,6 @@ public class Beneficiario extends Usuarios{
     }
     
     public ArrayList<Familiar> consultarFamiliares(){
-        ConexionBD con = new ConexionBD();
         con.conectarBD();
         ArrayList<Familiar> familiares = new ArrayList<Familiar>();
         //RETOCAR DNI_CIF
