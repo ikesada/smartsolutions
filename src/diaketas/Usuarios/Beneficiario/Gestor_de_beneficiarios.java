@@ -26,10 +26,14 @@ public class Gestor_de_beneficiarios {
     
 
     /*---------------------------Beneficiario----------------------------------*/
-    /*
-     * sd DS_Dar_de_alta_beneficiario
-     * introducirDatosBeneficiario(datosBeneficiario, dniVoluntario)
-     */
+    static public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
+        
+        NIF_Beneficiario = DNI_Beneficiario;
+        
+        /*Comprobamos si el Beneficiario existe */
+        return ONG.comprobarExistenciaBeneficiario(DNI_Beneficiario);        
+    }
+
     static public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
                                         String Nacionalidad, String Estado_civil, String Domicilio, int Codigo_Postal, Date Fecha_Inscripcion, 
                                         String Motivo, Double Precio_Vivienda, String Tipo_Vivienda,
@@ -44,14 +48,44 @@ public class Gestor_de_beneficiarios {
         return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 
-    static public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
+    static public Beneficiario consultarBeneficiario (String DNI){
         
-        NIF_Beneficiario = DNI_Beneficiario;
+        Beneficiario datos_Beneficiario = null;
         
-        /*Comprobamos si el Beneficiario existe */
-        return ONG.comprobarExistenciaBeneficiario(DNI_Beneficiario);        
-    }
+        /*Actualimos NIF*/
+        NIF_Beneficiario = DNI;
 
+        /*Si existe el beneficiario obtenemos los datos del beneficiario y la lista de familiares*/
+        if (ONG.comprobarExistenciaBeneficiario(DNI)){
+            
+            /*Obtenemos los datos del beneficiario*/
+            datos_Beneficiario = ONG.buscarBeneficiario(DNI);
+        }
+        
+        return datos_Beneficiario;
+    }
+  
+    static private void eliminarBeneficiario(String DNI){
+
+        /*Obtenemos el beneficiario*/
+        Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);  
+
+        /*Desactivamos al usuario*/
+        beneficiario.desactivarUsuario(new Date());
+    }
+  
+    static private void modificarBeneficiario(){
+        
+        /*Buscamos beneficiario*/
+        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+
+        beneficiario.cambiarDatosBeneficiario(datosBeneficiario.NIF_CIF, datosBeneficiario.Nombre,
+                datosBeneficiario.Apellidos, datosBeneficiario.FechaNac, datosBeneficiario.Localidad,  datosBeneficiario.Email,
+                datosBeneficiario.Telefono, datosBeneficiario.Nacionalidad, datosBeneficiario.Estado_civil,
+                datosBeneficiario.Domicilio, datosBeneficiario.Codigo_Postal, 
+                datosBeneficiario.Fecha_Inscripcion, datosBeneficiario.Motivo,
+                datosBeneficiario.Precio_Vivienda, datosBeneficiario.Tipo_Vivienda);
+    }
     static public void confirmarAltaBeneficiario(){
         
         /*Crear beneficiario*/
@@ -69,7 +103,27 @@ public class Gestor_de_beneficiarios {
         ONG.agregarNuevoBeneficiario(nuevoBeneficiario);
     }
     
+    static public void confirmarBajaBeneficiario(){
+        /*Registrar Operacion*/
+        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
+        
+        /*Eliminar beneficiario*/
+        Gestor_de_beneficiarios.eliminarBeneficiario(NIF_Beneficiario);
+    }
+    
+    static public void confirmarModificacionBeneficiario(){
+         /*Registrar Operacion*/
+        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
+    
+        /*Modificar beneficiario*/
+        modificarBeneficiario();
+    }
+   
     /*--------------------------------Familiar---------------------------------*/
+    
+    static public void seleccionarFamiliar(String Nombre_Apellidos){
+        NombreApellidosFamiliar = Nombre_Apellidos;
+    }
     /*
      * ConfirmarAltaFamiliar // ConfirmarInsercion
      */
@@ -82,116 +136,67 @@ public class Gestor_de_beneficiarios {
         /*Si No existe, se crea el nuevo familiar y se añade*/
         if (familiar == null){
             familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion);
+            
+            /*Agregamos el nuevo familiar al sistema*/
             ONG.agregarNuevoFamiliar(familiar);
 
             /*Obtenemos el Codigo_Familiar asignado*/
             familiar.Cod_Familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento).Cod_Familiar;
-
         }
 
         /*Se crea relacion familiar*/
         Parentesco relacion_familiar = new Parentesco(familiar.Cod_Familiar, datosBeneficiario.NIF_CIF, parentesco);
 
-        /*Se busca el Beneficiario*/
+        /*Se agrega la relación familiar al sistema*/
         ONG.asociarParentesco(relacion_familiar);
     }    
-    /*----------------------------------Otros----------------------------------*/
-
-    static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
-  
-        /*Nueva acción con Dni de voluntario y beneficiario asociado, junto con fecha actual*/
-        Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
-        
-        /*Se guarda la accion en el sistema*/
-        ONG.agregarAccion(ac);
-    }
     
-    static public boolean introducirDNIVoluntario(String DNI_Voluntario){
-        
-        NIF_Voluntario = DNI_Voluntario;
-        
-        /*Comprobamos si el Voluntario existe */
-        return true;
-    }
-    static public ArrayList consultarBeneficiario (String DNI){
-        ArrayList lista = new ArrayList();
-        
-        NIF_Beneficiario = DNI;
-        
-        /* Comprobamos si existe el beneficiario */
-        boolean correcto = ONG.comprobarExistenciaBeneficiario(DNI);
-        lista.add(new Boolean(correcto));
-        
-        /*Si es correcto obtenemos los datos del beneficiario y la lista de familiares*/
-        if (correcto){
-            Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);
-            ArrayList<Familiar> listaFamiliares = beneficiario.consultarFamiliares();   
-            /*Incluimos los datos en la lista de devolucion*/
-            lista.add(beneficiario);
-            lista.add(listaFamiliares);
-        }
-        return lista;
-    }
+    /*
+     * ConfirmarEliminacionFamiliar // ConfirmarEliminacion
+     */
+    static public void confirmarEliminacionFamiliar(){
 
-    static public void confirmarModificacionBeneficiario(){
-         /*Registrar Operacion*/
-        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
-    
-        /*Modificar beneficiario*/
-        modificarBeneficiario();
-    }
-    //REVISAR
-    static private void modificarBeneficiario(){
+        /* Buscamos Beneficiario en el sistema */
         Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
-        beneficiario.cambiarDatosBeneficiario(datosBeneficiario.NIF_CIF, datosBeneficiario.Nombre,
-                datosBeneficiario.Apellidos, datosBeneficiario.FechaNac, datosBeneficiario.Localidad,  datosBeneficiario.Email,
-                datosBeneficiario.Telefono, datosBeneficiario.Nacionalidad, datosBeneficiario.Estado_civil,
-                datosBeneficiario.Domicilio, datosBeneficiario.Codigo_Postal, 
-                datosBeneficiario.Fecha_Inscripcion, datosBeneficiario.Motivo,
-                datosBeneficiario.Precio_Vivienda, datosBeneficiario.Tipo_Vivienda);
+
+        /* Buscamos el familiar del beneficiario*/
+        Familiar familiar = beneficiario.buscarFamiliar(NombreApellidosFamiliar);
+
+        /*Eliminamos Familiar*/
+        familiar.eliminarFamiliar();
     }
  
-    /*AKA ConfirmarInsercion()*/
-    /*------------------------------Familiar-----------------------------------*/
+    static public ArrayList<Familiar> iniciarConsultarFamiliar(){
+        ArrayList<Familiar> familiares;
 
-
-    static public void confirmarBajaBeneficiario(){
-        /*Registrar Operacion*/
-        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
-        
-        /*Eliminar beneficiario*/
-        Gestor_de_beneficiarios.eliminarBeneficiario(NIF_Beneficiario);
-    }
-    static private void eliminarBeneficiario(String DNI){
-        
         /*Obtenemos el beneficiario*/
-        Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);  
+        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+
+        /*Obtenemos la lista de familiares*/
+        familiares = beneficiario.consultarFamiliares();
         
-        /*Desactivamos al usuario*/
-        beneficiario.desactivarUsuario(new Date());
-        
-    }
-    
-    static public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
-        datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
-        parentesco = Parentesco;
+        return familiares;
     }
     
     static public ArrayList consultarFamiliar(String Nombre_Apellidos){
+
         /*Obtenemos el beneficiario*/
         Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);  
-        
+
         /*Buscamos el familiar cuyo nombre se indica*/
         Familiar familiar = beneficiario.buscarFamiliar(Nombre_Apellidos);
-        
-        /*Obtenemos los datos que faltan*/
+
+        /*Obtenemos los datos que faltan, parentesco*/
         Parentesco parentescoFamiliar = familiar.obtenerDatosFamiliar();
-        
-        /*Agrupamos los datos del familiar para proceder al envio*/
+
+        /*Agrupamos los datos del familiar para proceder al envio
+            1. Fatos del familiar
+            2. Parentesco con el beneficiario
+            */
         ArrayList datos_Familiar = new ArrayList();
         datos_Familiar.add(familiar);
         datos_Familiar.add(parentescoFamiliar);
-        
+
         return datos_Familiar;
     }
     
@@ -210,33 +215,31 @@ public class Gestor_de_beneficiarios {
         familiar.cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
                 nuevosDatosFamiliar.Ocupacion, parentesco);
     }
-  
-    static public ArrayList<Familiar> iniciarMostrarFamiliar()
-    {
-        ArrayList<Familiar> familiares;
 
-        /*Obtenemos el beneficiario*/
-        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
-
-        /*Obtenemos la lista de familiares*/
-        familiares = beneficiario.consultarFamiliares();
-        
-        return familiares;
-    }
-
-    static public void seleccionarFamiliar(String Nombre_Apellidos){
-        NombreApellidosFamiliar = Nombre_Apellidos;
+    static public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
+        datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
+        parentesco = Parentesco;
     }
     
-    static public void confirmarEliminacionFamiliar(){
+    /*----------------------------------Otros----------------------------------*/
+
+    static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
+  
+        /*Nueva acción con Dni de voluntario y beneficiario asociado, junto con fecha actual*/
+        Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
         
-        /* Buscamos Beneficiario en el sistema */
-        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
-        
-        /* Buscamos el familiar del beneficiario*/
-        Familiar familiar = beneficiario.buscarFamiliar(NombreApellidosFamiliar);
-        
-        /*Eliminamos Familiar*/
-        familiar.eliminarFamiliar();
+        /*Se guarda la accion en el sistema*/
+        ONG.agregarAccion(ac);
     }
+    
+    static public boolean introducirDNIVoluntario(String DNI_Voluntario){
+        
+        NIF_Voluntario = DNI_Voluntario;
+        
+        /*Comprobamos si el Voluntario existe */
+        //return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
+        
+        return true;
+    }
+    
 }
