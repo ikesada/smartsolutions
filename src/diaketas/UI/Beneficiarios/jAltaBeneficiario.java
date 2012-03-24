@@ -4,10 +4,14 @@
  */
 package diaketas.UI.Beneficiarios;
 
+import diaketas.ConexionBD;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
 import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
 import diaketas.Usuarios.ONG;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +31,60 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
      * Creates new form jAltaBeneficiario
      */
     public jAltaBeneficiario() {
+        
+        /*Inicialiamos UI*/
         initComponents();
+        
+        /*Rellenamos las listas de opciones de forma dinamica*/
+        ConexionBD con = new ConexionBD();
+        Statement s;
+        ResultSet rs;
+        try {
+
+            con.conectarBD();
+            
+            //Crear objeto Statement para realizar queries a la base de datos
+            s = con.conexion().createStatement();
+
+            rs = s.executeQuery("SHOW COLUMNS FROM Beneficiario where Field = 'Estado_Civil'");
+
+            while (rs.next()) {
+                Object[] fila = new Object[3];
+                fila[0] = rs.getObject(2);
+                String[] tokens = (fila[0].toString()).split("'");
+                for (int i = 0; i < tokens.length; i++) {
+                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
+                        Estado_Civil.addItem(tokens[i]);
+                    }
+                }
+
+            }
+
+            rs = s.executeQuery("SHOW COLUMNS FROM Beneficiario where Field = 'Tipo_Vivienda'");
+
+            while (rs.next()) {
+                Object[] fila = new Object[3];
+                fila[0] = rs.getObject(2);
+                String[] tokens = (fila[0].toString()).split("'");
+                for (int i = 0; i < tokens.length; i++) {
+                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
+                        Tipo_Vivienda.addItem(tokens[i]);
+                    }
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+         }
     }
 
     /**
@@ -48,10 +105,8 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         NIF_Voluntario = new javax.swing.JTextField();
         Domicilio = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        Telefono = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        Codigo_Postal = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Nacionalidad = new javax.swing.JTextField();
@@ -80,15 +135,21 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
         Precio_Vivienda = new javax.swing.JFormattedTextField();
+        Telefono = new javax.swing.JFormattedTextField();
+        Codigo_Postal = new javax.swing.JFormattedTextField();
 
         jLabel9.setText("Domicilio");
 
         Tipo_Vivienda.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        Tipo_Vivienda.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo1", "Tipo2" }));
 
         jLabel7.setText("Nacionalidad");
 
         Apellidos.setColumns(30);
+        Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApellidosKeyTyped(evt);
+            }
+        });
 
         jLabel20.setText("NIF Voluntario");
 
@@ -98,31 +159,42 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_Voluntario.setColumns(9);
-        NIF_Voluntario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NIF_VoluntarioActionPerformed(evt);
+        NIF_Voluntario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_VoluntarioKeyTyped(evt);
             }
         });
 
         Domicilio.setColumns(30);
+        Domicilio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DomicilioKeyTyped(evt);
+            }
+        });
 
         jLabel10.setText("Codigo Postal");
 
-        Telefono.setColumns(9);
-
         jLabel4.setText("Nombre");
-
-        Codigo_Postal.setColumns(9);
 
         jLabel8.setText("Estado civil");
 
         jLabel6.setText("Nacimiento");
 
         Nacionalidad.setColumns(20);
+        Nacionalidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NacionalidadKeyTyped(evt);
+            }
+        });
 
         jLabel15.setText("Motivo");
 
         Localidad.setColumns(20);
+        Localidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                LocalidadKeyTyped(evt);
+            }
+        });
 
         botonCancel.setText("Cancelar");
         botonCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -133,15 +205,24 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         Motivo.setColumns(20);
         Motivo.setRows(5);
+        Motivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MotivoKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(Motivo);
 
         NIF.setColumns(9);
+        NIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIFKeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Dar de alta a un beneficiario");
 
         Estado_Civil.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        Estado_Civil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Casado", "Divorciado", "Soltero", "Viudo" }));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -165,6 +246,11 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         jLabel18.setText("Precio Vivienda");
 
         Nombre.setColumns(20);
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreKeyTyped(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("Vivienda");
@@ -176,8 +262,27 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         jLabel16.setText("Email");
 
         Email.setColumns(20);
+        Email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EmailKeyTyped(evt);
+            }
+        });
 
         Precio_Vivienda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+
+        Telefono.setColumns(9);
+        try {
+            Telefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        Codigo_Postal.setColumns(9);
+        try {
+            Codigo_Postal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -215,10 +320,10 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                                                 .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Estado_Civil, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(Codigo_Postal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(Codigo_Postal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGap(87, 87, 87)))
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel12))
@@ -227,18 +332,17 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                                     .addComponent(jSeparator5)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                                     .addComponent(jSeparator4)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel14)
-                                        .addComponent(jLabel15)
-                                        .addComponent(jLabel13)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel17)
-                                                .addComponent(jLabel18))
-                                            .addGap(27, 27, 27)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(Tipo_Vivienda, 0, 128, Short.MAX_VALUE)
-                                                .addComponent(Precio_Vivienda))))))
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel13)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel18))
+                                        .addGap(27, 27, 27)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(Tipo_Vivienda, 0, 128, Short.MAX_VALUE)
+                                            .addComponent(Precio_Vivienda)))))
                             .addComponent(jLabel16)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(344, 344, 344)
@@ -304,7 +408,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                             .addComponent(jLabel11)
                             .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel12)
                             .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -352,13 +456,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             panel = new jFamiliar();
             
             /*---------Introducir datos del familiar---------------*/
-            /*Si no se introducen los campos Telefono, Codigo_Postal o Precio, se rellenan a 0-Null*/
-            if (Telefono.getText().compareTo("") == 0)
-                Telefono.setText("0");
-            if (Codigo_Postal.getText().compareTo("") == 0)
-                Codigo_Postal.setText("0");
-            if (Precio_Vivienda.getText().compareTo("") == 0)
-                Precio_Vivienda.setText("0.0");
+            
             /*Conversion de la fecha*/
             Date Fecha_Nac = null;
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
@@ -370,9 +468,21 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             }
 
             /*1. IntroducirDatosBeneficiario(datosBeneficiario, dniVoluntario)*/
-            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(NIF.getText().toUpperCase(),Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
-               Email.getText(), Integer.parseInt(Telefono.getText()), Nacionalidad.getText(), (String)Estado_Civil.getSelectedItem(), Domicilio.getText(), Integer.parseInt(Codigo_Postal.getText()),
-               new Date(), Motivo.getText(), Double.parseDouble(Precio_Vivienda.getText()), (String)Tipo_Vivienda.getSelectedItem(), NIF_Voluntario.getText());
+            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(NIF.getText().toUpperCase(),
+                    Nombre.getText(),
+                    Apellidos.getText(),
+                    Fecha_Nac, Localidad.getText(),
+                    Email.getText(),
+                    (Telefono.getText().compareTo("         ")==0? 0 : Integer.parseInt(Telefono.getText())),
+                    Nacionalidad.getText(),
+                    (String)Estado_Civil.getSelectedItem(),
+                    Domicilio.getText(),
+                    (Codigo_Postal.getText().compareTo("     ")==0? 0 : Integer.parseInt(Codigo_Postal.getText())),
+                    new Date(),
+                    Motivo.getText(),
+                    (Precio_Vivienda.getText().compareTo("")==0? 0.0 : Double.parseDouble(Precio_Vivienda.getText())),
+                    (String)Tipo_Vivienda.getSelectedItem(),
+                    NIF_Voluntario.getText());
  
             //REVISAR CORRECTO DEBE FUNCIONAR
             correcto = true;
@@ -391,13 +501,54 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_botonOKActionPerformed
 
-    private void NIF_VoluntarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NIF_VoluntarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NIF_VoluntarioActionPerformed
+    private void NIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIFKeyTyped
+        if (NIF.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_NIFKeyTyped
+
+    private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
+        if (Nombre.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_NombreKeyTyped
+
+    private void ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosKeyTyped
+        if (Apellidos.getText().length()==30)
+            evt.consume();
+    }//GEN-LAST:event_ApellidosKeyTyped
+
+    private void LocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LocalidadKeyTyped
+        if (Localidad.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_LocalidadKeyTyped
+
+    private void EmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyTyped
+        if (Email.getText().length()==30)
+            evt.consume();
+    }//GEN-LAST:event_EmailKeyTyped
+
+    private void NacionalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NacionalidadKeyTyped
+        if (Nacionalidad.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_NacionalidadKeyTyped
+
+    private void MotivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MotivoKeyTyped
+        if (Motivo.getText().length()==250)
+            evt.consume();
+    }//GEN-LAST:event_MotivoKeyTyped
+
+    private void DomicilioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DomicilioKeyTyped
+        if (Domicilio.getText().length()==50)
+            evt.consume();
+    }//GEN-LAST:event_DomicilioKeyTyped
+
+    private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
+        if (NIF_Voluntario.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_NIF_VoluntarioKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
-    private javax.swing.JTextField Codigo_Postal;
+    private javax.swing.JFormattedTextField Codigo_Postal;
     private javax.swing.JTextField Domicilio;
     private javax.swing.JTextField Email;
     private javax.swing.JComboBox Estado_Civil;
@@ -409,7 +560,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Nombre;
     private javax.swing.JFormattedTextField Precio_Vivienda;
-    private javax.swing.JTextField Telefono;
+    private javax.swing.JFormattedTextField Telefono;
     private javax.swing.JComboBox Tipo_Vivienda;
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;

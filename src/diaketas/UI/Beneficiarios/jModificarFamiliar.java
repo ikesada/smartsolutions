@@ -4,10 +4,14 @@
  */
 package diaketas.UI.Beneficiarios;
 
+import diaketas.ConexionBD;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Beneficiario.Familiar;
 import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
 import diaketas.Usuarios.Beneficiario.Parentesco;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +37,42 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         
         /*Inicializamos*/
         initComponents();
+               /*Rellenamos las listas de opciones de forma dinamica*/
+        ConexionBD con = new ConexionBD();
+        Statement s;
+        ResultSet rs;
+        try {
+
+            con.conectarBD();
+            
+            //Crear objeto Statement para realizar queries a la base de datos
+            s = con.conexion().createStatement();
+
+            rs = s.executeQuery("SHOW COLUMNS FROM Parentesco where Field = 'Parentesco'");
+
+            while (rs.next()) {
+                Object[] fila = new Object[3];
+                fila[0] = rs.getObject(2);
+                String[] tokens = (fila[0].toString()).split("'");
+                for (int i = 0; i < tokens.length; i++) {
+                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
+                        Parentesco.addItem(tokens[i]);
+                    }
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+         }
         
         /*Inicializamos los datos*/
         ArrayList datosFamiliar = Gestor_de_beneficiarios.consultarFamiliar(Nombre_Apellidos);

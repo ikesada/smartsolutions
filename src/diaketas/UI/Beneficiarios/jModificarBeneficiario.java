@@ -4,9 +4,13 @@
  */
 package diaketas.UI.Beneficiarios;
 
+import diaketas.ConexionBD;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
 import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,6 +37,59 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         /*Iniciamos la interfaz*/
         initComponents();
         
+        /*Rellenamos las listas de opciones de forma dinamica*/
+        ConexionBD con = new ConexionBD();
+        Statement s;
+        ResultSet rs;
+        try {
+
+            con.conectarBD();
+            
+            //Crear objeto Statement para realizar queries a la base de datos
+            s = con.conexion().createStatement();
+
+            rs = s.executeQuery("SHOW COLUMNS FROM Beneficiario where Field = 'Estado_Civil'");
+
+            while (rs.next()) {
+                Object[] fila = new Object[3];
+                fila[0] = rs.getObject(2);
+                String[] tokens = (fila[0].toString()).split("'");
+                for (int i = 0; i < tokens.length; i++) {
+                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
+                        Estado_Civil.addItem(tokens[i]);
+                    }
+                }
+
+            }
+
+            rs = s.executeQuery("SHOW COLUMNS FROM Beneficiario where Field = 'Tipo_Vivienda'");
+
+            while (rs.next()) {
+                Object[] fila = new Object[3];
+                fila[0] = rs.getObject(2);
+                String[] tokens = (fila[0].toString()).split("'");
+                for (int i = 0; i < tokens.length; i++) {
+                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
+                        Tipo_Vivienda.addItem(tokens[i]);
+                    }
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+         }
+        
+        
+        
         /*Mostramos los datos de beneficiario*/
         NIF.setText(datosBeneficiario.NIF_CIF);
         Nombre.setText(datosBeneficiario.Nombre);
@@ -41,11 +98,14 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Nacionalidad.setText(datosBeneficiario.Nacionalidad);
         Estado_Civil.setSelectedItem(datosBeneficiario.Estado_civil);
         Domicilio.setText(datosBeneficiario.Domicilio);
-        Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
+        if (datosBeneficiario.Codigo_Postal != 0)
+            Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
         Localidad.setText(datosBeneficiario.Localidad);
-        Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
+        if (datosBeneficiario.Telefono != 0)
+            Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
         Tipo_Vivienda.setSelectedItem(datosBeneficiario.Tipo_Vivienda);
-        Precio_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
+        if (datosBeneficiario.Precio_Vivienda != 0.0)
+            Precio_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
         Motivo.setText(datosBeneficiario.Motivo);
         
         /* Representamos la fecha*/
@@ -215,15 +275,17 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel5))
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel8)
+                                                .addComponent(jLabel6)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jLabel4)
+                                                .addComponent(jLabel10)
+                                                .addComponent(jLabel5))
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,7 +297,8 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                         .addComponent(Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Codigo_Postal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(129, 129, 129)))
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
@@ -265,11 +328,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                             .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonCancel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel16))
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -335,9 +394,9 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                     .addComponent(jLabel12)
                                     .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel16)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -355,7 +414,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
                             .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

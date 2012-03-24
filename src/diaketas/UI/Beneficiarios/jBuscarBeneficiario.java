@@ -58,6 +58,11 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         jLabel2.setText("NIF");
 
         NIF.setColumns(9);
+        NIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIFKeyTyped(evt);
+            }
+        });
 
         botonConsultar.setText("Consultar");
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +163,11 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
         UI.cl.show(UI.jPrincipal, "Beneficiarios");
     }//GEN-LAST:event_botonCancelActionPerformed
+
+    private void NIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIFKeyTyped
+        if (NIF.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_NIFKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF;
