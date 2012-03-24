@@ -20,7 +20,7 @@ public class jBajaVoluntario extends javax.swing.JPanel {
     public jBajaVoluntario() {
         initComponents();
         fase = 0;
-        botonCancel.setVisible(false);
+        botonCancel.setVisible(true);
         jLabel4.setVisible(false);
         NIF_CIF_Voluntario.setVisible(false);
     }
@@ -130,6 +130,7 @@ public class jBajaVoluntario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+        //GEN-FIRST:event_botonOKActionPerformed
         if (fase == 0){
             //Buscar el dni
             
@@ -138,9 +139,13 @@ public class jBajaVoluntario extends javax.swing.JPanel {
             }
             else
             {
-                //si ha rellenado el campo del dni del voluntario acutal
+                
+                //
+                
+                
+                //si ha rellenado el campo del dni del voluntario actual
                 NIF_CIF.setVisible(false);
-                jLabel2.setText("¿Desea borrar el voluntario con NIF-CIF " + NIF_CIF.getText()+ "?");
+                jLabel2.setText("Â¿Desea borrar el voluntario con NIF-CIF " + NIF_CIF.getText()+ "?");
                 botonOK.setText("Confirmar");
                 botonCancel.setVisible(true);
                 jLabel4.setVisible(true);

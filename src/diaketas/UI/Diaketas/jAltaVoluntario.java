@@ -287,47 +287,97 @@ public class jAltaVoluntario extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         // TODO add your handling code here:       
 
-            if (NIF1.getText().compareTo("") == 0){
-                        JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-                    }
             
-            else
-            {
+        
+        //compruebo los campos introducidos
+/*
+        if (NIF1.getText().compareTo("") == 0)
+        {
+            JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (NIF.getText().compareTo("") == 0)
+        {
+            JOptionPane.showMessageDialog(this, "El NIF del nuevo voluntarioa no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (Nacionalidad.getText().compareTo("") == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No se ha introducido la nacionalidad.", "Nacionalidad", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (Domicilio.getText().compareTo("") == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el domicilio.", "Domicilio", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (CodPost.getText().compareTo("") == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el codigo postal.", "Codigo postal", JOptionPane.ERROR_MESSAGE);
+        }
+*/
 
-                
-                //compruebo los campos introducidos
-                
+        
+        
+/*        
+        //Conversion de la fecha
+        
+        Date Fecha_Nac = null;
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
 
-                /*Conversion de la fecha*/
-                Date Fecha_Nac = null;
-                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
-                try {
-                    Fecha_Nac = formatoFecha.parse(FechaNac.getText());
-                } catch (ParseException ex) {
-                    Logger.getLogger(jAltaVoluntario.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecta, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
-                }
-                
-                
-                //llamo a la funcion que se va a encargar de hacer el alta del voluntario
-                boolean exito = Gestor_de_voluntarios.altaVoluntario( NIF.getText(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Poblacion.getText(), Email.getText(), Integer.parseInt(Telefono.getText()), Nacionalidad.getText(), Domicilio.getText(), Integer.parseInt(CodPost.getText()), Obs.getText(),  NIF1.getText() );
-
-                
-                if(exito)
-                {
-                    //ALTA VOLUNTARIO REALIZADA
-                    confirmarAlta = new jConfirmarAlta();
-                    UI.jPrincipal.remove(confirmarAlta);
-                    UI.jPrincipal.add("ConfirmarAlta", confirmarAlta); 
-                    UI.cl.show(UI.jPrincipal, "ConfirmarAlta");
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(this, "No se ha podido realizar correctamente el alta.", "Error alta", JOptionPane.ERROR_MESSAGE);
-                }
+               
+        if(FechaNac.getText().compareTo("") == 0)
+        {
+            
+        }
+        else
+        {
+            try {
+                Fecha_Nac = formatoFecha.parse(FechaNac.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(jAltaVoluntario.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecta, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
             }
+        }
+
+        System.out.println("Fecha de nacimiento introducida: "+Fecha_Nac);        
+*/
+        
+        //llamo a la funcion que se va a encargar de hacer el alta del voluntario
+       
+        Gestor_de_voluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
+        
+        Gestor_de_voluntarios.buscarVoluntario((String)NIF1.getText().toUpperCase());
+ 
+        
+        //voy a insertar un nuevo voluntario
+ 
+        System.out.println("Voy a insertar un nuevo voluntario\n");        
+        Voluntario v = new Voluntario( "Adios", "Adios", "Adios", new Date(), "Adios", 1, new Date(), "Adios", 123, "Adios", "Adios", 23400, new Date(), "Adios" );
+        Gestor_de_voluntarios.añadirVoluntario(v);
+ 
+        //boolean exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), null, (String)Poblacion.getText(), (String)Email.getText(), Integer.parseInt(Telefono.getText()), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
+
+        //System.out.println("Exito: "+exito);
+
+        
+        /*
+        if(exito)
+        {
+            //ALTA VOLUNTARIO REALIZADA
+            confirmarAlta = new jConfirmarAlta();
+            UI.jPrincipal.remove(confirmarAlta);
+            UI.jPrincipal.add("ConfirmarAlta", confirmarAlta); 
+            UI.cl.show(UI.jPrincipal, "ConfirmarAlta");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "No se ha podido realizar correctamente el alta.", "Error alta", JOptionPane.ERROR_MESSAGE);
+        }
+*/
+        
     }//GEN-LAST:event_botonOKActionPerformed
 
+    
+    
+    
+    
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // TODO add your handling code here:
         

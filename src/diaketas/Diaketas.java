@@ -12,10 +12,13 @@ import javax.swing.UIManager;
 public class Diaketas {
     public static void main(String args[]){
         /*Look & Feel*/
+        
+/*
         try{
            UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
+*/
         /*Conexión BBDD*/
        ConexionBD con = new ConexionBD();
        con.conectarBD();
