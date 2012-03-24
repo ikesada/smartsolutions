@@ -31,6 +31,7 @@ public class Beneficiario extends Usuarios{
     public String Tipo_Vivienda;
     public Double Precio_Vivienda;
     
+    /*-----------------------------Constructores-------------------------------*/
     public Beneficiario (String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo, Date FechaDesac, String Email, int Telefono,
                                         String Nacionalidad, String Estado_civil, String Domicilio, int Codigo_Postal, String Observaciones, Date Fecha_Inscripcion, String Expediente,
                                         String Motivo, Double Precio_Vivienda, String Tipo_Vivienda){
@@ -64,6 +65,8 @@ public class Beneficiario extends Usuarios{
                                     Estado_civil, Domicilio, Codigo_Postal, "", Fecha_Inscripcion, "", Motivo, Precio_Vivienda, Tipo_Vivienda));
     }   
 
+    
+    /*--------------------Modificadores Beneficiario---------------------------*/
     public void cambiarDatosBeneficiario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
                                         String Nacionalidad, String Estado_civil, String Domicilio, int Codigo_Postal, Date Fecha_Inscripcion, 
                                         String Motivo, Double Precio_Vivienda, String Tipo_Vivienda){
@@ -130,6 +133,45 @@ public class Beneficiario extends Usuarios{
         }     
         
     }
+    
+    
+    /*----------------------------Familiares-----------------------------------*/
+    public Familiar buscarFamiliar(String Nombre_Apellidos){
+        ConexionBD con = new ConexionBD();
+        con.conectarBD();
+        Familiar familiar = null;
+        //RETOCAR DNI_CIF
+        
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            ResultSet rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p "
+                    + "WHERE p.Cod_Familiar = f.Cod_Familiar and p.DNI_CIF = \""
+                    + this.NIF_CIF+"\" and f.Nombre_Apellidos =\""+Nombre_Apellidos+"\"");
+         
+            if (rs.next()){
+                /*Creamos un familiar con los datos*/
+                familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
+                /*Indicamos su Codigo Interno*/
+                familiar.Cod_Familiar = rs.getInt(1);
+            }
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }     
+        
+        return familiar;        
+    }
+    
     public ArrayList<Familiar> consultarFamiliares(){
         ConexionBD con = new ConexionBD();
         con.conectarBD();
@@ -165,42 +207,6 @@ public class Beneficiario extends Usuarios{
         }     
         
         return familiares;
-    }
-
-    public Familiar buscarFamiliar(String Nombre_Apellidos){
-        ConexionBD con = new ConexionBD();
-        con.conectarBD();
-        Familiar familiar = null;
-        //RETOCAR DNI_CIF
-        
-        try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
-            ResultSet rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p "
-                    + "WHERE p.Cod_Familiar = f.Cod_Familiar and p.DNI_CIF = \""
-                    + this.NIF_CIF+"\" and f.Nombre_Apellidos =\""+Nombre_Apellidos+"\"");
-         
-            if (rs.next()){
-                /*Creamos un familiar con los datos*/
-                familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
-                /*Indicamos su Codigo Interno*/
-                familiar.Cod_Familiar = rs.getInt(1);
-            }
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }     
-        
-        return familiar;        
     }
 
 }
