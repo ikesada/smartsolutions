@@ -51,10 +51,10 @@
                                       <Component id="Nacionalidad" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="Estado_Civil" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                                       <Component id="Domicilio" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Codigo_Postal" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="Localidad" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Telefono" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="Email" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Codigo_Postal" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Telefono" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                               </Group>
@@ -284,15 +284,13 @@
         <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Codigo_Postal">
-      <Properties>
-        <Property name="columns" type="int" value="9"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="Localidad">
       <Properties>
         <Property name="columns" type="int" value="20"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LocalidadKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonCancel">
       <Properties>
@@ -329,6 +327,9 @@
       <Properties>
         <Property name="columns" type="int" value="30"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ApellidosKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="Tipo_Vivienda">
       <Properties>
@@ -362,6 +363,9 @@
       <Properties>
         <Property name="columns" type="int" value="20"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NombreKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
@@ -385,6 +389,9 @@
       <Properties>
         <Property name="columns" type="int" value="9"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NIFKeyTyped"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
@@ -398,6 +405,9 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MotivoKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -410,13 +420,11 @@
       <Properties>
         <Property name="columns" type="int" value="30"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DomicilioKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator5">
-    </Component>
-    <Component class="javax.swing.JTextField" name="Telefono">
-      <Properties>
-        <Property name="columns" type="int" value="9"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -451,6 +459,9 @@
       <Properties>
         <Property name="columns" type="int" value="20"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NacionalidadKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator4">
     </Component>
@@ -458,6 +469,9 @@
       <Properties>
         <Property name="columns" type="int" value="20"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EmailKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel16">
       <Properties>
@@ -473,6 +487,22 @@
       <AuxValues>
         <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalGlue"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="Telefono">
+      <Properties>
+        <Property name="columns" type="int" value="9"/>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="#########" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="Codigo_Postal">
+      <Properties>
+        <Property name="columns" type="int" value="9"/>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="#####" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

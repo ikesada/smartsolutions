@@ -468,7 +468,8 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             }
 
             /*1. IntroducirDatosBeneficiario(datosBeneficiario, dniVoluntario)*/
-            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(NIF.getText().toUpperCase(),
+            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(
+                    NIF.getText().toUpperCase(),
                     Nombre.getText(),
                     Apellidos.getText(),
                     Fecha_Nac, Localidad.getText(),

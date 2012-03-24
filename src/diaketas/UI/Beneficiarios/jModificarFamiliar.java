@@ -122,6 +122,11 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         jLabel2.setText("Nombre y Apellidos");
 
         Nombre_Apellidos.setColumns(30);
+        Nombre_Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Nombre_ApellidosKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("Nacimiento");
 
@@ -132,6 +137,11 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         jLabel7.setText("Ocupacion");
 
         Ocupacion.setColumns(20);
+        Ocupacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                OcupacionKeyTyped(evt);
+            }
+        });
 
         jLabel8.setText("Parentesco");
 
@@ -240,6 +250,16 @@ public class jModificarFamiliar extends javax.swing.JPanel {
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
         UI.cl.show(UI.jPrincipal, jPanelSiguiente);
     }//GEN-LAST:event_botonCancelActionPerformed
+
+    private void Nombre_ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nombre_ApellidosKeyTyped
+        if (Nombre_Apellidos.getText().length()==50)
+            evt.consume();
+    }//GEN-LAST:event_Nombre_ApellidosKeyTyped
+
+    private void OcupacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OcupacionKeyTyped
+        if (Ocupacion.getText().length()==50)
+            evt.consume();
+    }//GEN-LAST:event_OcupacionKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField Fecha_Nacimiento;
