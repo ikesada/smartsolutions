@@ -41,7 +41,7 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
-        return Gestor_de_voluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 
     static public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
@@ -69,8 +69,33 @@ public class Gestor_de_beneficiarios {
         ONG.agregarNuevoBeneficiario(nuevoBeneficiario);
     }
     
-    
-    /*----------------------------------Otros-----------------------------------*/
+    /*--------------------------------Familiar---------------------------------*/
+    /*
+     * ConfirmarAltaFamiliar // ConfirmarInsercion
+     */
+    static public void confirmarAltaFamiliar(){   
+        Familiar familiar;
+        
+        /*Se busca si el familiar ya existe*/
+        familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento);
+
+        /*Si No existe, se crea el nuevo familiar y se añade*/
+        if (familiar == null){
+            familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion);
+            ONG.agregarNuevoFamiliar(familiar);
+
+            /*Obtenemos el Codigo_Familiar asignado*/
+            familiar.Cod_Familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento).Cod_Familiar;
+
+        }
+
+        /*Se crea relacion familiar*/
+        Parentesco relacion_familiar = new Parentesco(familiar.Cod_Familiar, datosBeneficiario.NIF_CIF, parentesco);
+
+        /*Se busca el Beneficiario*/
+        ONG.asociarParentesco(relacion_familiar);
+    }    
+    /*----------------------------------Otros----------------------------------*/
 
     static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
   
@@ -128,28 +153,7 @@ public class Gestor_de_beneficiarios {
  
     /*AKA ConfirmarInsercion()*/
     /*------------------------------Familiar-----------------------------------*/
-    static public void confirmarAltaFamiliar(){   
-        Familiar familiar;
-        
-        /*Se busca si el familiar ya existe*/
-        familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento);
-        System.out.println("A1");
-        /*Si No existe, se crea el nuevo familiar y se añade*/
-        if (familiar == null){
-            familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion);
-            ONG.agregarNuevoFamiliar(familiar);
-                    System.out.println("A2");
-            /*Obtenemos el Codigo_Familiar asignado*/
-            familiar.Cod_Familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento).Cod_Familiar;
-             System.out.println("A3");
-        }
 
-        /*Se crea relacion familiar*/
-        Parentesco relacion_familiar = new Parentesco(familiar.Cod_Familiar, datosBeneficiario.NIF_CIF, parentesco);
-
-        /*Se busca el Beneficiario*/
-        ONG.asociarParentesco(relacion_familiar);            System.out.println("A4");
-    }
 
     static public void confirmarBajaBeneficiario(){
         /*Registrar Operacion*/
