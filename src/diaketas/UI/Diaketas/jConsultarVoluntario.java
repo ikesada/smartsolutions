@@ -34,13 +34,12 @@ public class jConsultarVoluntario extends javax.swing.JPanel {
         Nacionalidad.setText(v.Nacionalidad);
         Obs.setText(v.Observaciones);
         
-        
-        //ME DA FALLO AL INTENTAR MOSTRAR LA FECHA!!
-
-// Representamos la fecha, pasandola de tipo Date a String
-        //SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
-        //FechaNac.setText(formatoFecha.format(v.FechaNac));
-        //FechaInic.setText(formatoFecha.format(v.FechaNac));
+               
+// Representamos la fecha, pasandola de tipo Date a String, como Fecha_Inicio y FechaDesac no pueden ser null, no tendremos problemas
+        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
+               
+        FechaInic.setText(formatoFecha.format(v.Fecha_Inicio));
+        FechaNac.setText(formatoFecha.format(v.FechaNac));
         
     }
 

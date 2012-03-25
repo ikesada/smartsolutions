@@ -166,6 +166,7 @@ public class jModificarVoluntario extends javax.swing.JPanel {
         Telefono.setColumns(9);
 
         NIF.setColumns(9);
+        NIF.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
