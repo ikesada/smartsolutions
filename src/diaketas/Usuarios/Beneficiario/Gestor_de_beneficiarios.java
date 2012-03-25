@@ -4,9 +4,8 @@
  */
 package diaketas.Usuarios.Beneficiario;
 
-import diaketas.Usuarios.Accion;
+import diaketas.Usuarios.Historial.Gestor_de_historiales;
 import diaketas.Usuarios.ONG;
-import diaketas.Usuarios.Voluntario.Gestor_de_voluntarios;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -92,6 +91,7 @@ public class Gestor_de_beneficiarios {
         /*Modificamos sus datos*/
         beneficiario.cambiarDatosBeneficiario(datosBeneficiario);
     }
+    
     static public void confirmarAltaBeneficiario(){
         
         /*Crear beneficiario*/
@@ -101,12 +101,12 @@ public class Gestor_de_beneficiarios {
         ONG.agregarNuevoBeneficiario(nuevoBeneficiario);
         
         /*Registrar Operacion*/
-        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
+        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
     }
     
     static public void confirmarBajaBeneficiario(){
         /*Registrar Operacion*/
-        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
+        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
         
         /*Eliminar beneficiario*/
         Gestor_de_beneficiarios.eliminarBeneficiario(NIF_Beneficiario);
@@ -114,7 +114,7 @@ public class Gestor_de_beneficiarios {
     
     static public void confirmarModificacionBeneficiario(){
          /*Registrar Operacion*/
-        Gestor_de_beneficiarios.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
+        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
     
         /*Modificar beneficiario*/
         modificarBeneficiario();
@@ -161,6 +161,7 @@ public class Gestor_de_beneficiarios {
         Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /* Buscamos el familiar del beneficiario*/
+        /* buscarFamiliar  == buscarParentesco */
         Familiar familiar = beneficiario.buscarFamiliar(NombreApellidosFamiliar);
 
         /*Eliminamos Familiar*/
@@ -223,15 +224,6 @@ public class Gestor_de_beneficiarios {
     }
     
     /*----------------------------------Otros----------------------------------*/
-
-    static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
-  
-        /*Nueva acción con Dni de voluntario y beneficiario asociado, junto con fecha actual*/
-        Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
-        
-        /*Se guarda la accion en el sistema*/
-        ONG.agregarAccion(ac);
-    }
     
     static public boolean introducirDNIVoluntario(String DNI_Voluntario){
         
