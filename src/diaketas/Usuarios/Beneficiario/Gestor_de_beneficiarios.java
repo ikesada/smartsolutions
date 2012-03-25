@@ -34,15 +34,23 @@ public class Gestor_de_beneficiarios {
         return ONG.comprobarExistenciaBeneficiario(DNI_Beneficiario);        
     }
 
-    static public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
-                                        String Nacionalidad, String Estado_civil, String Domicilio, int Codigo_Postal, Date Fecha_Inscripcion, 
-                                        String Motivo, Double Precio_Vivienda, String Tipo_Vivienda,
-                                        String NIF_Vol){
+    static public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre,
+            String Apellidos, Date FechaNac, String Localidad,  String Email, int Telefono, String Nacionalidad,
+            String Estado_civil, String Domicilio, int Codigo_Postal,
+            Date Fecha_Inscripcion, int Expediente, String Motivo,
+            Double Precio_Vivienda, String Tipo_Vivienda, String Observaciones_Datos_Personales,
+            String Observaciones_Familiares, String Observaciones_Vivienda,
+            String Ciudad_Nacimiento, String Situacion_Economica, String Nivel_Estudios,
+            String Profesion, String Experiencia_Laboral, String NIF_Vol){
         NIF_Beneficiario = NIF_CIF;
         
         /*Se almacenan los datos del beneficiario y NIF_Voluntario en el sistema */
-        datosBeneficiario = new Beneficiario (NIF_CIF, Nombre, Apellidos, FechaNac, Localidad, 1, new Date(), Email, Telefono, Nacionalidad,
-                                    Estado_civil, Domicilio, Codigo_Postal, "", Fecha_Inscripcion, "", Motivo, Precio_Vivienda, Tipo_Vivienda);
+        datosBeneficiario = new Beneficiario (NIF_CIF, Nombre, Apellidos, FechaNac,
+                Localidad, 1, null, Email, Telefono, Nacionalidad, Estado_civil,
+                Domicilio, Codigo_Postal, Fecha_Inscripcion, Expediente, Motivo,
+                Precio_Vivienda, Tipo_Vivienda, Observaciones_Datos_Personales,
+                Observaciones_Familiares, Observaciones_Vivienda, Ciudad_Nacimiento,
+                Situacion_Economica, Nivel_Estudios,Profesion, Experiencia_Laboral);
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
@@ -54,6 +62,8 @@ public class Gestor_de_beneficiarios {
         
         /*Actualimos NIF*/
         NIF_Beneficiario = DNI;
+        
+        datosBeneficiario = null;
 
         /*Si existe el beneficiario obtenemos los datos del beneficiario y la lista de familiares*/
         if (ONG.comprobarExistenciaBeneficiario(DNI)){
@@ -79,22 +89,13 @@ public class Gestor_de_beneficiarios {
         /*Buscamos beneficiario*/
         Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
-        beneficiario.cambiarDatosBeneficiario(datosBeneficiario.NIF_CIF, datosBeneficiario.Nombre,
-                datosBeneficiario.Apellidos, datosBeneficiario.FechaNac, datosBeneficiario.Localidad,  datosBeneficiario.Email,
-                datosBeneficiario.Telefono, datosBeneficiario.Nacionalidad, datosBeneficiario.Estado_civil,
-                datosBeneficiario.Domicilio, datosBeneficiario.Codigo_Postal, 
-                datosBeneficiario.Fecha_Inscripcion, datosBeneficiario.Motivo,
-                datosBeneficiario.Precio_Vivienda, datosBeneficiario.Tipo_Vivienda);
+        /*Modificamos sus datos*/
+        beneficiario.cambiarDatosBeneficiario(datosBeneficiario);
     }
     static public void confirmarAltaBeneficiario(){
         
         /*Crear beneficiario*/
-        Beneficiario nuevoBeneficiario = Beneficiario.crearBeneficiario(datosBeneficiario.NIF_CIF, datosBeneficiario.Nombre,
-                datosBeneficiario.Apellidos, datosBeneficiario.FechaNac, datosBeneficiario.Localidad,  datosBeneficiario.Email,
-                datosBeneficiario.Telefono, datosBeneficiario.Nacionalidad, datosBeneficiario.Estado_civil,
-                datosBeneficiario.Domicilio, datosBeneficiario.Codigo_Postal, 
-                datosBeneficiario.Fecha_Inscripcion, datosBeneficiario.Motivo,
-                datosBeneficiario.Precio_Vivienda, datosBeneficiario.Tipo_Vivienda);
+        Beneficiario nuevoBeneficiario =  new Beneficiario(datosBeneficiario);
         
         /*Registrar Beneficiario*/
         ONG.agregarNuevoBeneficiario(nuevoBeneficiario);

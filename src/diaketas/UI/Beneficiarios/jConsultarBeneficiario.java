@@ -6,9 +6,7 @@ package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
-import diaketas.Usuarios.Beneficiario.Familiar;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -34,22 +32,31 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         /*Mostramos los datos de beneficiario*/
         NIF.setText(datosBeneficiario.NIF_CIF);
         Nombre.setText(datosBeneficiario.Nombre);
+        Email.setText(datosBeneficiario.Email);
         Apellidos.setText(datosBeneficiario.Apellidos);
+        
         Nacionalidad.setText(datosBeneficiario.Nacionalidad);
         Estado_Civil.setText(datosBeneficiario.Estado_civil);
         Domicilio.setText(datosBeneficiario.Domicilio);
-        Motivo.setText(datosBeneficiario.Motivo);
-        Localidad.setText(datosBeneficiario.Localidad);
-        Tipo_Vivienda.setText(datosBeneficiario.Tipo_Vivienda);
-        Email.setText(datosBeneficiario.Email);
+        if (datosBeneficiario.Expediente != 0)
+            Expediente.setText(Integer.toString(datosBeneficiario.Expediente));
         if (datosBeneficiario.Codigo_Postal != 0)
             Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
-
+        Localidad.setText(datosBeneficiario.Localidad);
         if (datosBeneficiario.Telefono != 0)
             Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
-
-        if (datosBeneficiario.Precio_Vivienda != 0)
-            Coste_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
+        Tipo_Vivienda.setText(datosBeneficiario.Tipo_Vivienda);
+        if (datosBeneficiario.Precio_Vivienda != 0.0)
+            Precio_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
+        Motivo.setText(datosBeneficiario.Motivo);
+        Tipo_Vivienda.setText(datosBeneficiario.Observaciones_Datos_Personales);
+        Observaciones_Familiares.setText(datosBeneficiario.Observaciones_Familiares);        
+        Observaciones_Vivienda.setText(datosBeneficiario.Observaciones_Vivienda);
+        Ciudad_Nacimiento.setText(datosBeneficiario.Ciudad_Nacimiento);
+        Situacion_Economica.setText(datosBeneficiario.Situacion_Economica);
+        Nivel_Estudios.setText(datosBeneficiario.Nivel_Estudios);
+        Profesion.setText(datosBeneficiario.Profesion);
+        Tipo_Vivienda.setText(datosBeneficiario.Experiencia_Laboral);
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
@@ -65,89 +72,72 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        botonConsultar = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        botonOK = new javax.swing.JButton();
-        jSeparator6 = new javax.swing.JSeparator();
-        jLabel13 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        Observaciones_Datos_Personales_SB = new javax.swing.JScrollPane();
+        Observaciones_Datos_Personales = new javax.swing.JTextArea();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        Observaciones_Familiares_SB = new javax.swing.JScrollPane();
+        Observaciones_Familiares = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel27 = new javax.swing.JLabel();
+        Experiencia_Laboral_SB = new javax.swing.JScrollPane();
+        Experiencia_Laboral = new javax.swing.JTextArea();
+        Observaciones_Vivienda_SB = new javax.swing.JScrollPane();
+        Observaciones_Vivienda = new javax.swing.JTextArea();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        botonOK = new javax.swing.JButton();
         NIF = new javax.swing.JLabel();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
+        Expediente = new javax.swing.JLabel();
+        Motivo = new javax.swing.JLabel();
         Nombre = new javax.swing.JLabel();
         Apellidos = new javax.swing.JLabel();
         Fecha_Nacimiento = new javax.swing.JLabel();
+        Ciudad_Nacimiento = new javax.swing.JLabel();
         Nacionalidad = new javax.swing.JLabel();
         Estado_Civil = new javax.swing.JLabel();
         Domicilio = new javax.swing.JLabel();
         Codigo_Postal = new javax.swing.JLabel();
-        Localidad = new javax.swing.JLabel();
         Telefono = new javax.swing.JLabel();
-        botonConsultar = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        Tipo_Vivienda = new javax.swing.JLabel();
-        Coste_Vivienda = new javax.swing.JLabel();
-        jSeparator9 = new javax.swing.JSeparator();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        Motivo = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        Nivel_Estudios = new javax.swing.JLabel();
+        Localidad = new javax.swing.JLabel();
         Email = new javax.swing.JLabel();
+        Profesion = new javax.swing.JLabel();
+        Tipo_Vivienda = new javax.swing.JLabel();
+        Precio_Vivienda = new javax.swing.JLabel();
+        Situacion_Economica = new javax.swing.JLabel();
 
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
         setPreferredSize(new java.awt.Dimension(1100, 518));
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Beneficiarios");
-
-        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel14.setText("Situación economica");
-
-        jLabel9.setText("Domicilio");
-
-        jLabel8.setText("Estado civil");
-
-        jLabel10.setText("Codigo Postal");
-
-        jLabel11.setText("Localidad");
-
-        jLabel12.setText("Telefono");
-
-        jLabel6.setText("Nacimiento");
-
-        jLabel4.setText("Nombre");
-
-        jLabel5.setText("Apellidos");
-
-        jLabel7.setText("Nacionalidad");
-
-        botonOK.setText("Ok");
-        botonOK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonOKActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel13.setText("Familiares");
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Consultar a un beneficiario");
-
-        jLabel18.setText("NIF");
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar_familiar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
@@ -157,18 +147,96 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
             }
         });
 
-        jLabel17.setText("Tipo");
+        jLabel21.setText("Observaciones de los datos personales");
 
-        jLabel19.setText("Coste Mensual");
+        jLabel15.setText("Situacion");
 
-        jLabel21.setText("Motivo");
+        jLabel6.setText("Nacimiento");
 
-        jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel20.setText("Vivienda");
+        jLabel40.setText("Expediente");
 
-        Motivo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel19.setText("en");
 
-        jLabel15.setText("Email");
+        jLabel16.setText("Email");
+
+        jLabel8.setText("Estado civil");
+
+        jLabel4.setText("Nombre");
+
+        jLabel24.setText("Motivo");
+
+        Observaciones_Datos_Personales.setColumns(20);
+        Observaciones_Datos_Personales.setRows(5);
+        Observaciones_Datos_Personales.setEnabled(false);
+        Observaciones_Datos_Personales_SB.setViewportView(Observaciones_Datos_Personales);
+
+        jLabel23.setText("Profesión");
+
+        jLabel25.setText("Observaciones de la vivienda");
+
+        jLabel22.setText("Estudios");
+
+        jLabel26.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel26.setText("Familiares");
+
+        jLabel10.setText("Codigo Postal");
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel14.setText("Situación economica");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("Beneficiarios");
+
+        jLabel29.setText("Observaciones de los familiares");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText("Dar de alta a un beneficiario");
+
+        jLabel28.setText("Tipo");
+
+        Observaciones_Familiares.setColumns(20);
+        Observaciones_Familiares.setRows(5);
+        Observaciones_Familiares.setEnabled(false);
+        Observaciones_Familiares_SB.setViewportView(Observaciones_Familiares);
+
+        jLabel5.setText("Apellidos");
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel13.setText("Vivienda");
+
+        jLabel7.setText("Nacionalidad");
+
+        jLabel9.setText("Domicilio");
+
+        jLabel27.setText("Experiencia laboral");
+
+        Experiencia_Laboral_SB.setEnabled(false);
+
+        Experiencia_Laboral.setColumns(20);
+        Experiencia_Laboral.setRows(5);
+        Experiencia_Laboral_SB.setViewportView(Experiencia_Laboral);
+
+        Observaciones_Vivienda.setColumns(20);
+        Observaciones_Vivienda.setRows(5);
+        Observaciones_Vivienda.setEnabled(false);
+        Observaciones_Vivienda_SB.setViewportView(Observaciones_Vivienda);
+
+        jLabel11.setText("Localidad");
+
+        jLabel18.setText("Precio Vivienda");
+
+        jLabel12.setText("Telefono");
+
+        jLabel2.setText("NIF");
+
+        botonOK.setText("Ok");
+        botonOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonOKActionPerformed(evt);
+            }
+        });
+
+        Ciudad_Nacimiento.setText("ssss");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -177,73 +245,109 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel24)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel8)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Estado_Civil)
-                                    .addComponent(Nacionalidad)
-                                    .addComponent(Fecha_Nacimiento)
-                                    .addComponent(NIF)
-                                    .addComponent(Nombre)
-                                    .addComponent(Apellidos)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
                                     .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
                                     .addComponent(jLabel12)
-                                    .addComponent(jLabel15))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Email)
-                                    .addComponent(Telefono)
-                                    .addComponent(Domicilio)
-                                    .addComponent(Codigo_Postal)
-                                    .addComponent(Localidad))))
-                        .addGap(52, 52, 52)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel6))
+                                .addGap(6, 6, 6)
+                                .addComponent(Nivel_Estudios)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Telefono)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(NIF)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(Fecha_Nacimiento)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel40)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel19)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(Profesion)
+                                                            .addComponent(Ciudad_Nacimiento))))))
+                                        .addComponent(Expediente)
+                                        .addGap(68, 68, 68))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(Codigo_Postal)
+                                                .addGap(127, 127, 127)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel11)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(Localidad))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jLabel23)
+                                                            .addComponent(jLabel16))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(Email))))
+                                            .addComponent(Motivo)
+                                            .addComponent(Nombre)
+                                            .addComponent(Apellidos)
+                                            .addComponent(Nacionalidad)
+                                            .addComponent(Estado_Civil)
+                                            .addComponent(Domicilio))
+                                        .addGap(141, 141, 141))))
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel27)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Observaciones_Datos_Personales_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Experiencia_Laboral_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(449, 449, 449)
+                                .addComponent(botonOK)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel21)
-                                .addComponent(jLabel14)
-                                .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
-                                .addComponent(jLabel13)
-                                .addComponent(jSeparator8, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel17)
-                                    .addGap(93, 93, 93)
-                                    .addComponent(Tipo_Vivienda))
-                                .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel19)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Coste_Vivienda))
-                                .addComponent(jLabel20)
-                                .addComponent(Motivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(botonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(562, 562, 562)
-                        .addComponent(botonOK)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(400, 400, 400)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel18)
+                                            .addComponent(jLabel28))
+                                        .addGap(12, 12, 12)
+                                        .addComponent(Precio_Vivienda)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Tipo_Vivienda))
+                                    .addComponent(Observaciones_Vivienda_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel25)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Situacion_Economica))
+                                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel26)
+                                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel29)
+                                    .addComponent(Observaciones_Familiares_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 43, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,36 +356,52 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel2)
+                            .addComponent(NIF)
+                            .addComponent(Expediente))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(Motivo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(Tipo_Vivienda))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(NIF))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Precio_Vivienda))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(Nombre))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Apellidos)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(Apellidos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel19)
                             .addComponent(Fecha_Nacimiento)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(Ciudad_Nacimiento))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Nacionalidad)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel7)
+                            .addComponent(Nacionalidad, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(Estado_Civil))
@@ -291,76 +411,100 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                             .addComponent(Domicilio))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
                             .addComponent(jLabel10)
-                            .addComponent(Codigo_Postal))
+                            .addComponent(Codigo_Postal)
+                            .addComponent(Localidad))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Localidad)
-                            .addComponent(jLabel11))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel16)
+                                .addComponent(Email))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(Telefono)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(Telefono))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel23)
+                                .addComponent(Profesion))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel22)
+                                .addComponent(Nivel_Estudios)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(Email)))
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Experiencia_Laboral_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Observaciones_Datos_Personales_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(botonOK))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonConsultar)
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(Tipo_Vivienda))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(Coste_Vivienda))
+                        .addComponent(Observaciones_Vivienda_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Motivo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonOK)
-                .addContainerGap(95, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(Situacion_Economica))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Observaciones_Familiares_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-       panel = new jListarFamiliar("ConsultarBeneficiario", "ConsultarFamiliar");
+        panel = new jListarFamiliar("ConsultarBeneficiario", "ConsultarFamiliar");
 
-       UI.jPrincipal.add("ListarFamiliar", panel);
-       UI.cl.show(UI.jPrincipal, "ListarFamiliar");
+        UI.jPrincipal.add("ListarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ListarFamiliar");
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        UI.cl.show(UI.jPrincipal, "Beneficiarios");
+        UI.cl.show(UI.jPrincipal, "Beneficiarios"); 
     }//GEN-LAST:event_botonOKActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellidos;
+    private javax.swing.JLabel Ciudad_Nacimiento;
     private javax.swing.JLabel Codigo_Postal;
-    private javax.swing.JLabel Coste_Vivienda;
     private javax.swing.JLabel Domicilio;
     private javax.swing.JLabel Email;
     private javax.swing.JLabel Estado_Civil;
+    private javax.swing.JLabel Expediente;
+    private javax.swing.JTextArea Experiencia_Laboral;
+    private javax.swing.JScrollPane Experiencia_Laboral_SB;
     private javax.swing.JLabel Fecha_Nacimiento;
     private javax.swing.JLabel Localidad;
     private javax.swing.JLabel Motivo;
     private javax.swing.JLabel NIF;
     private javax.swing.JLabel Nacionalidad;
+    private javax.swing.JLabel Nivel_Estudios;
     private javax.swing.JLabel Nombre;
+    private javax.swing.JTextArea Observaciones_Datos_Personales;
+    private javax.swing.JScrollPane Observaciones_Datos_Personales_SB;
+    private javax.swing.JTextArea Observaciones_Familiares;
+    private javax.swing.JScrollPane Observaciones_Familiares_SB;
+    private javax.swing.JTextArea Observaciones_Vivienda;
+    private javax.swing.JScrollPane Observaciones_Vivienda_SB;
+    private javax.swing.JLabel Precio_Vivienda;
+    private javax.swing.JLabel Profesion;
+    private javax.swing.JLabel Situacion_Economica;
     private javax.swing.JLabel Telefono;
     private javax.swing.JLabel Tipo_Vivienda;
     private javax.swing.JButton botonConsultar;
@@ -372,22 +516,31 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
 }

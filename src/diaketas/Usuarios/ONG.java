@@ -67,8 +67,9 @@ public class ONG {
 
                 beneficiario = new Beneficiario(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getInt(6),
                                                 rs.getDate(7), rs.getString(8), rs.getInt(9),rs.getString(11), rs.getString(12), rs.getString(13),
-                                                rs.getInt(14), rs.getString(15), rs.getDate(16), rs.getString(17), rs.getString(18), 
-                                                rs.getDouble(19), rs.getString(20));
+                                                rs.getInt(14), rs.getDate(15), rs.getInt(16), rs.getString(17), rs.getDouble(18), rs.getString(19),
+                                                rs.getString(20), rs.getString(21), rs.getString(22), rs.getString(23), rs.getString(24), rs.getString(25),
+                                                rs.getString(26), rs.getString(27));
             }
          }
          /*Captura de errores*/
@@ -113,9 +114,12 @@ public class ONG {
             /*Introducimos la parte de Beneficiario*/
              instruccion.executeUpdate("INSERT INTO Beneficiario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
                     + nuevoBeneficiario.Nacionalidad + "\",\"" + nuevoBeneficiario.Estado_civil + "\",\""  + nuevoBeneficiario.Domicilio
-                    + "\",\"" + nuevoBeneficiario.Codigo_Postal + "\",\""   + nuevoBeneficiario.Observaciones
-                    + "\",\"" + fecha_Activacion + "\",\"" + nuevoBeneficiario.Expediente + "\",\"" + nuevoBeneficiario.Motivo
-                    + "\",\"" + nuevoBeneficiario.Precio_Vivienda + "\",\"" + nuevoBeneficiario.Tipo_Vivienda+"\")");           
+                    + "\",\"" + nuevoBeneficiario.Codigo_Postal + "\",\""  + fecha_Activacion + "\",\"" +  nuevoBeneficiario.Expediente
+                    + "\",\"" + nuevoBeneficiario.Motivo + "\",\"" + nuevoBeneficiario.Precio_Vivienda + "\",\"" + nuevoBeneficiario.Tipo_Vivienda
+                    + "\",\"" + nuevoBeneficiario.Observaciones_Datos_Personales + "\",\"" + nuevoBeneficiario.Observaciones_Familiares
+                    + "\",\"" + nuevoBeneficiario.Observaciones_Vivienda + "\",\"" + nuevoBeneficiario.Ciudad_Nacimiento
+                    + "\",\"" + nuevoBeneficiario.Situacion_Economica + "\",\"" + nuevoBeneficiario.Nivel_Estudios
+                    + "\",\"" + nuevoBeneficiario.Profesion + "\",\"" + nuevoBeneficiario.Experiencia_Laboral +"\")");           
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
