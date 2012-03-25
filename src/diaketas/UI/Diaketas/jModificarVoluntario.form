@@ -17,51 +17,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="jSeparator3" max="32767" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="NIF" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Apellidos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Nombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Nacionalidad" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
-                          <Component id="FechaNac" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Telefono" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                          <Component id="Domicilio" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Poblacion" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                          <Component id="Email" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
-                          <Component id="CodPost" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="Obs" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" pref="525" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -72,18 +29,65 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="NIF1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="NIF" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Apellidos" min="-2" pref="179" max="-2" attributes="0"/>
+                                          <Component id="Nombre" min="-2" pref="124" max="-2" attributes="0"/>
+                                          <Component id="FechaNac" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Nacionalidad" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                                          <Component id="FechaInicio" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="NIF1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Component id="botonOK" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="botonCancelar" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Telefono" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="Domicilio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Poblacion" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="Obs" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Email" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
+                                  <Component id="CodPost" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                              <Component id="jPanel1" min="-2" pref="525" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
-              <Component id="botonOK" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="botonCancelar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -96,54 +100,74 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="103" max="32767" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="NIF" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Poblacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="NIF" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Nombre" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="Apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FechaNac" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Nacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FechaInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Poblacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Domicilio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Email" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="FechaNac" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Telefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Telefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Nacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="CodPost" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -152,19 +176,23 @@
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Obs" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="NIF1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="botonOK" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonOK" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -177,8 +205,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Voluntarios"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator3">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -339,6 +365,20 @@
       <Properties>
         <Property name="columns" type="int" value="9"/>
         <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel11">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha inicio"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="FechaInicio">
+      <Properties>
+        <Property name="columns" type="int" value="9"/>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format subtype="1" type="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="d/mm/aa"/>
       </Properties>
     </Component>
   </SubComponents>

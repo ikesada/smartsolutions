@@ -306,9 +306,11 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         //CodPost:NOT NULL
         //Obs:NULL
         
-        //Faltaria por comprobar las fechas
+        //Fecha_Nacimiento: NOT NULL
+        //Fecha_Inicio: 
         
-/*        
+        
+        
         if (NIF1.getText().compareTo("") == 0)
         {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
@@ -368,7 +370,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         }
 
         
-*/        
+        
         
 
 //        System.out.println("Fecha de nacimiento introducida: "+Fecha_Nac);        
