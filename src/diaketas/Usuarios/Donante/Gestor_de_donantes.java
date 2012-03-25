@@ -51,7 +51,7 @@ public class Gestor_de_donantes {
 
         NIF_Voluntario = NIF_CIF;
 
-        return comprobarDniVoluntario(NIF_Voluntario);
+        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
     static public Boolean comprobarDniVoluntario(String NIF_CIF){

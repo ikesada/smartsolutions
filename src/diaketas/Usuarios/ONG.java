@@ -271,13 +271,13 @@ public class ONG {
         try {
             instruccion = (Statement) con.conexion().createStatement();
 
-            tabla = instruccion.executeQuery("Select * From Usuario u ,Beneficiario b WHERE u.NIF_CIF = b.NIF_CIF and u.NIF_CIF = \""+ DNI+"\" ' LIMIT 1");
+            tabla = instruccion.executeQuery("Select * From Usuario u ,Donante d WHERE u.NIF_CIF = d.NIF_CIF and u.NIF_CIF = \""+ DNI+"\" LIMIT 1");
             
             if(tabla.next()){
                 donante = new Donante((String)tabla.getObject("NIF_CIF"), (String)tabla.getObject("Nombre"), (String)tabla.getObject("Apellidos"), (Date)tabla.getObject("Fecha_Nacimiento_Fundacion"),
                         (String)tabla.getObject("Localidad"), (Integer)tabla.getInt("Activo"), (Date)tabla.getDate("Fecha_Desactivacion"), (String)tabla.getString("Email"), (Integer)tabla.getInt("Telefono"), 
                         (String)tabla.getString("Tipo_Donante"), tabla.getDate("Fecha_Inscripcion"), (String)tabla.getString("Observaciones"), (Integer)tabla.getInt("Periodicidad_Donaciones"),
-                        (Double)tabla.getDouble("Cuantia_Donaciones"), (String)tabla.getString("Tipo_Periodicidad)"));
+                        (Double)tabla.getDouble("Cuantia_Donaciones"), (String)tabla.getString("Tipo_Periodicidad"));
             }
 
         } catch (SQLException ex) {
@@ -304,6 +304,8 @@ public class ONG {
     
     static public Voluntario buscarVoluntario(String DNI){
         Voluntario v = null;
+        
+        con.conectarBD();
         
         try {
             System.out.println("Hola\n");
@@ -334,6 +336,16 @@ public class ONG {
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }        
         
+        /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
         return v;
     }
     
