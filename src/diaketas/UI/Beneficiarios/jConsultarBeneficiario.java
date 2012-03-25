@@ -32,7 +32,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         initComponents();
         
         /*Mostramos los datos de beneficiario*/
-        jLabel17.setText(datosBeneficiario.NIF_CIF);
+        NIF.setText(datosBeneficiario.NIF_CIF);
         Nombre.setText(datosBeneficiario.Nombre);
         Email.setText(datosBeneficiario.Email);
         Apellidos.setText(datosBeneficiario.Apellidos);
