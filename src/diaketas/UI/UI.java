@@ -83,7 +83,7 @@ public class UI extends javax.swing.JFrame {
         jMenuBotones.add(botonDiaketas);
 
         botonSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
-        botonSocios.setText("Socios");
+        botonSocios.setText("Donantes");
         botonSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSociosActionPerformed(evt);
