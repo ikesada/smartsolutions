@@ -9,6 +9,7 @@ import diaketas.ConexionBD;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
 import diaketas.Usuarios.Beneficiario.Familiar;
 import diaketas.Usuarios.Beneficiario.Parentesco;
+import diaketas.Usuarios.Donante.Donante;
 import diaketas.Usuarios.Voluntario.Voluntario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -60,10 +61,10 @@ public class ONG {
          try {
             instruccion = (Statement) con.conexion().createStatement();
             ResultSet rs = instruccion.executeQuery("Select * From Usuario u ,Beneficiario b WHERE u.NIF_CIF = b.NIF_CIF and u.NIF_CIF = \""+ DNI+"\"");
-            System.out.println("aaaaaaaaaaaaaaa!");
+
             /*Si se ha encontrado una tubla*/
             if (rs.next()){
-                System.out.println("Hay datos!");
+
                 beneficiario = new Beneficiario(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getInt(6),
                                                 rs.getDate(7), rs.getString(8), rs.getInt(9),rs.getString(11), rs.getString(12), rs.getString(13),
                                                 rs.getInt(14), rs.getString(15), rs.getDate(16), rs.getString(17), rs.getString(18), 
@@ -115,6 +116,41 @@ public class ONG {
                     + "\",\"" + nuevoBeneficiario.Codigo_Postal + "\",\""   + nuevoBeneficiario.Observaciones
                     + "\",\"" + fecha_Activacion + "\",\"" + nuevoBeneficiario.Expediente + "\",\"" + nuevoBeneficiario.Motivo
                     + "\",\"" + nuevoBeneficiario.Precio_Vivienda + "\",\"" + nuevoBeneficiario.Tipo_Vivienda+"\")");           
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
+    }
+    
+    static public void agregarNuevoDonante(Donante nuevoDonante){
+        con.conectarBD();
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoDonante.FechaNac.getTime());
+        java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoDonante.Fecha_Inscripcion.getTime());
+        
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            /*Introducimos la parte de Usuario*/
+
+            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoDonante.NIF_CIF + "\",\""
+                    + nuevoDonante.Nombre + "\",\"" + nuevoDonante.Apellidos + "\",\""  + fecha_Nacimiento
+                    + "\",\"" + nuevoDonante.Localidad + "\",\""   + nuevoDonante.Activo + "\", NULL, \"" + nuevoDonante.Email + "\",\"" + nuevoDonante.Telefono + "\")");
+            
+            /*Introducimos la parte de Donante*/
+             instruccion.executeUpdate("INSERT INTO Donante VALUES (\""+nuevoDonante.NIF_CIF + "\",\""
+                    + nuevoDonante.Tipo_Donante + "\",\"" + fecha_Activacion + "\",\""  + nuevoDonante.Observaciones
+                    + "\",\"" + nuevoDonante.Periodicidad_Donaciones + "\",\""   + nuevoDonante.Cuantia_Donaciones
+                    + "\",\"" + nuevoDonante.Tipo_Periodicidad+"\")");           
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }

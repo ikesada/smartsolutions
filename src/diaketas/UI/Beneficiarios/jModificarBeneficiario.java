@@ -4,9 +4,13 @@
  */
 package diaketas.UI.Beneficiarios;
 
+import diaketas.ConexionBD;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
 import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,6 +37,59 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         /*Iniciamos la interfaz*/
         initComponents();
         
+        /*Rellenamos las listas de opciones de forma dinamica*/
+        ConexionBD con = new ConexionBD();
+        Statement s;
+        ResultSet rs;
+        try {
+
+            con.conectarBD();
+            
+            //Crear objeto Statement para realizar queries a la base de datos
+            s = con.conexion().createStatement();
+
+            rs = s.executeQuery("SHOW COLUMNS FROM Beneficiario where Field = 'Estado_Civil'");
+
+            while (rs.next()) {
+                Object[] fila = new Object[3];
+                fila[0] = rs.getObject(2);
+                String[] tokens = (fila[0].toString()).split("'");
+                for (int i = 0; i < tokens.length; i++) {
+                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
+                        Estado_Civil.addItem(tokens[i]);
+                    }
+                }
+
+            }
+
+            rs = s.executeQuery("SHOW COLUMNS FROM Beneficiario where Field = 'Tipo_Vivienda'");
+
+            while (rs.next()) {
+                Object[] fila = new Object[3];
+                fila[0] = rs.getObject(2);
+                String[] tokens = (fila[0].toString()).split("'");
+                for (int i = 0; i < tokens.length; i++) {
+                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
+                        Tipo_Vivienda.addItem(tokens[i]);
+                    }
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+         }
+        
+        
+        
         /*Mostramos los datos de beneficiario*/
         NIF.setText(datosBeneficiario.NIF_CIF);
         Nombre.setText(datosBeneficiario.Nombre);
@@ -41,11 +98,14 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Nacionalidad.setText(datosBeneficiario.Nacionalidad);
         Estado_Civil.setSelectedItem(datosBeneficiario.Estado_civil);
         Domicilio.setText(datosBeneficiario.Domicilio);
-        Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
+        if (datosBeneficiario.Codigo_Postal != 0)
+            Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
         Localidad.setText(datosBeneficiario.Localidad);
-        Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
+        if (datosBeneficiario.Telefono != 0)
+            Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
         Tipo_Vivienda.setSelectedItem(datosBeneficiario.Tipo_Vivienda);
-        Precio_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
+        if (datosBeneficiario.Precio_Vivienda != 0.0)
+            Precio_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
         Motivo.setText(datosBeneficiario.Motivo);
         
         /* Representamos la fecha*/
@@ -72,7 +132,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Codigo_Postal = new javax.swing.JTextField();
         Localidad = new javax.swing.JTextField();
         botonCancel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -94,7 +153,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         Domicilio = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        Telefono = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         Fecha_Nacimiento = new javax.swing.JFormattedTextField();
@@ -105,6 +163,8 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Email = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        Telefono = new javax.swing.JFormattedTextField();
+        Codigo_Postal = new javax.swing.JFormattedTextField();
 
         jLabel2.setText("NIF");
 
@@ -129,9 +189,12 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
 
         jLabel4.setText("Nombre");
 
-        Codigo_Postal.setColumns(9);
-
         Localidad.setColumns(20);
+        Localidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                LocalidadKeyTyped(evt);
+            }
+        });
 
         botonCancel.setText("Cancelar");
         botonCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +213,11 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel20.setText("NIF Voluntario");
 
         Apellidos.setColumns(30);
+        Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApellidosKeyTyped(evt);
+            }
+        });
 
         Tipo_Vivienda.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Tipo_Vivienda.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo1", "Tipo2" }));
@@ -161,6 +229,11 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel18.setText("Coste Mensual");
 
         Nombre.setColumns(20);
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreKeyTyped(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("Vivienda");
@@ -170,16 +243,29 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel17.setText("Tipo");
 
         NIF.setColumns(9);
+        NIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIFKeyTyped(evt);
+            }
+        });
 
         Motivo.setColumns(20);
         Motivo.setRows(5);
+        Motivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MotivoKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(Motivo);
 
         jLabel10.setText("Codigo Postal");
 
         Domicilio.setColumns(30);
-
-        Telefono.setColumns(9);
+        Domicilio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DomicilioKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("Nacionalidad");
 
@@ -194,10 +280,34 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel8.setText("Estado civil");
 
         Nacionalidad.setColumns(20);
+        Nacionalidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NacionalidadKeyTyped(evt);
+            }
+        });
 
         Email.setColumns(20);
+        Email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EmailKeyTyped(evt);
+            }
+        });
 
         jLabel16.setText("Email");
+
+        Telefono.setColumns(9);
+        try {
+            Telefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        Codigo_Postal.setColumns(9);
+        try {
+            Codigo_Postal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -215,15 +325,17 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel5))
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel8)
+                                                .addComponent(jLabel6)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jLabel4)
+                                                .addComponent(jLabel10)
+                                                .addComponent(jLabel5))
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,8 +345,9 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                         .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Estado_Civil, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Codigo_Postal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Codigo_Postal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(129, 129, 129)))
                             .addComponent(jLabel11)
@@ -265,11 +378,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                             .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonCancel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel16))
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -335,9 +444,9 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                     .addComponent(jLabel12)
                                     .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel16)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -355,7 +464,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
                             .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -373,13 +482,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         }else{
             /*---------Introducir datos del familiar---------------*/
-            /*Si no se introducen los campos Telefono, Codigo_Postal o Precio, se rellenan a 0-Null*/
-            if (Telefono.getText().compareTo("") == 0)
-                Telefono.setText("0");
-            if (Codigo_Postal.getText().compareTo("") == 0)
-                Codigo_Postal.setText("0");
-            if (Precio_Vivienda.getText().compareTo("") == 0)
-                Precio_Vivienda.setText("0.0");
+
             /*Conversion de la fecha*/
             Date Fecha_Nac = null;
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
@@ -391,10 +494,23 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
             }
 
             /*IntroducirDatosBeneficiario*/
-            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(NIF.getText().toUpperCase(),Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
-               Email.getText(), Integer.parseInt(Telefono.getText()), Nacionalidad.getText(), (String)Estado_Civil.getSelectedItem(), Domicilio.getText(), Integer.parseInt(Codigo_Postal.getText()),
-               new Date(), Motivo.getText(), Double.parseDouble(Precio_Vivienda.getText()), (String)Tipo_Vivienda.getSelectedItem(), NIF_Voluntario.getText());
- 
+            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(
+                    NIF.getText().toUpperCase(),
+                    Nombre.getText(),
+                    Apellidos.getText(),
+                    Fecha_Nac, Localidad.getText(),
+                    Email.getText(),
+                    (Telefono.getText().compareTo("         ")==0? 0 : Integer.parseInt(Telefono.getText())),
+                    Nacionalidad.getText(),
+                    (String)Estado_Civil.getSelectedItem(),
+                    Domicilio.getText(),
+                    (Codigo_Postal.getText().compareTo("     ")==0? 0 : Integer.parseInt(Codigo_Postal.getText())),
+                    new Date(),
+                    Motivo.getText(),
+                    (Precio_Vivienda.getText().compareTo("")==0? 0.0 : Double.parseDouble(Precio_Vivienda.getText())),
+                    (String)Tipo_Vivienda.getSelectedItem(),
+                    NIF_Voluntario.getText());
+                    
             /*confirmarModificacionBeneficiario*/
             Gestor_de_beneficiarios.confirmarModificacionBeneficiario();
             
@@ -409,9 +525,49 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "Beneficiarios");
     }//GEN-LAST:event_botonCancelActionPerformed
 
+    private void NIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIFKeyTyped
+        if (NIF.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_NIFKeyTyped
+
+    private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
+        if (Nombre.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_NombreKeyTyped
+
+    private void ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosKeyTyped
+        if (Apellidos.getText().length()==30)
+            evt.consume();
+    }//GEN-LAST:event_ApellidosKeyTyped
+
+    private void NacionalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NacionalidadKeyTyped
+        if (Nacionalidad.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_NacionalidadKeyTyped
+
+    private void DomicilioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DomicilioKeyTyped
+        if (Domicilio.getText().length()==50)
+            evt.consume();
+    }//GEN-LAST:event_DomicilioKeyTyped
+
+    private void LocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LocalidadKeyTyped
+        if (Localidad.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_LocalidadKeyTyped
+
+    private void EmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyTyped
+        if (Email.getText().length()==30)
+            evt.consume();
+    }//GEN-LAST:event_EmailKeyTyped
+
+    private void MotivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MotivoKeyTyped
+        if (Motivo.getText().length()==250)
+            evt.consume();
+    }//GEN-LAST:event_MotivoKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
-    private javax.swing.JTextField Codigo_Postal;
+    private javax.swing.JFormattedTextField Codigo_Postal;
     private javax.swing.JTextField Domicilio;
     private javax.swing.JTextField Email;
     private javax.swing.JComboBox Estado_Civil;
@@ -423,7 +579,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField Precio_Vivienda;
-    private javax.swing.JTextField Telefono;
+    private javax.swing.JFormattedTextField Telefono;
     private javax.swing.JComboBox Tipo_Vivienda;
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;

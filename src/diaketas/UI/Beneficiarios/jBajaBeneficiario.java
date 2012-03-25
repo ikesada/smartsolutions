@@ -78,11 +78,6 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
 
         NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_Voluntario.setColumns(9);
-        NIF_Voluntario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NIF_VoluntarioActionPerformed(evt);
-            }
-        });
         NIF_Voluntario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NIF_VoluntarioKeyTyped(evt);
@@ -211,10 +206,6 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
         } 
 // TODO add your handling code here:
     }//GEN-LAST:event_NIF_CIFKeyTyped
-
-    private void NIF_VoluntarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NIF_VoluntarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NIF_VoluntarioActionPerformed
 
     private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
         if (NIF_Voluntario.getText().length()>=9){
