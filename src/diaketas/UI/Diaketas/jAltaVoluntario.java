@@ -308,7 +308,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         
         //Faltaria por comprobar las fechas
         
-        
+/*        
         if (NIF1.getText().compareTo("") == 0)
         {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
@@ -368,7 +368,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         }
 
         
-        
+*/        
         
 
 //        System.out.println("Fecha de nacimiento introducida: "+Fecha_Nac);        
@@ -376,8 +376,8 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         
         //llamo a la funcion que se va a encargar de hacer el alta del voluntario
        
-        boolean exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), Integer.parseInt(Telefono.getText()), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
-        System.out.println("Exito: "+exito);
+//        boolean exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), Integer.parseInt(Telefono.getText()), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
+//        System.out.println("Exito: "+exito);
         
         
         
@@ -385,8 +385,8 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         //System.out.println("Voy a comprobar la existencia de un voluntario\n"); 
         //Gestor_de_voluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
         
-        //System.out.println("Voy a insertar un nuevo voluntario\n");        
-        //Gestor_de_voluntarios.crearVoluntario( "Adiosas", "Adios", "Adios", new Date(), "Adios", "Adios", 123, "Adios", "Adios", 123, "Adios" );
+        System.out.println("Voy a insertar un nuevo voluntario\n");        
+        Gestor_de_voluntarios.crearVoluntario( "123456778", "Adios", "Adios", new Date(), "Adios", "Adios", 123, "Adios", "Adios", 123, "Adios" );
 
         //System.out.println("Voy a registar una nueva accion en el historial\n"); 
         //Gestor_de_voluntarios.RegistrarOperacion((String)NIF1.getText().toUpperCase(), (String)NIF1.getText().toUpperCase(), "de pruebas");

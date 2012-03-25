@@ -5,6 +5,14 @@
 package diaketas.UI.Diaketas;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.ONG;
+import diaketas.Usuarios.Voluntario.Gestor_de_voluntarios;
+import diaketas.Usuarios.Voluntario.Voluntario;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +26,30 @@ public class jModificarVoluntario extends javax.swing.JPanel {
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jModificarVoluntario() {
+    public jModificarVoluntario(Voluntario v) {
         initComponents();
+        
+        //Ponemos por defecto los datos del voluntario a modificar
+        
+        NIF.setText(v.NIF_CIF);
+        Nombre.setText(v.Nombre);
+        Apellidos.setText(v.Apellidos);        
+        Nacionalidad.setText(v.Nacionalidad);
+        
+        Poblacion.setText(v.Domicilio);
+        Domicilio.setText(v.Domicilio);
+        Email.setText(v.Email);
+        Obs.setText(v.Observaciones);
+        
+        CodPost.setText( Integer.toString(v.Codigo_Postal) );
+        Telefono.setText(Integer.toString(v.Telefono));
+        
+        //ME DA FALLO AL INTENTAR MOSTRAR LA FECHA!!
+
+// Representamos la fecha, pasandola de tipo Date a String
+//        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
+//        FechaNac.setText(formatoFecha.format(v.FechaNac));
+        
 
     }
 
@@ -32,40 +62,40 @@ public class jModificarVoluntario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         botonOK = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        Domicilio = new javax.swing.JTextField();
-        Localidad = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        NIF = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        Nombre = new javax.swing.JTextField();
-        Telefono = new javax.swing.JTextField();
-        Apellidos = new javax.swing.JTextField();
-        Provincia = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         NIF1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
-
-        jLabel12.setText("Telefono");
-
-        jLabel11.setText("Localidad");
-
-        jLabel9.setText("Domicilio");
+        jLabel5 = new javax.swing.JLabel();
+        Nombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        Apellidos = new javax.swing.JTextField();
+        FechaNac = new javax.swing.JFormattedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        CodPost = new javax.swing.JTextField();
+        Domicilio = new javax.swing.JTextField();
+        Obs = new javax.swing.JTextField();
+        Poblacion = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        Nacionalidad = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        Email = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Telefono = new javax.swing.JTextField();
+        NIF = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Voluntarios");
-
-        jLabel2.setText("NIF");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Modificar a un voluntario");
@@ -79,26 +109,6 @@ public class jModificarVoluntario extends javax.swing.JPanel {
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        Domicilio.setColumns(30);
-
-        Localidad.setColumns(20);
-
-        jLabel4.setText("Nombre");
-
-        NIF.setColumns(9);
-
-        jLabel5.setText("Apellidos");
-
-        Nombre.setColumns(20);
-
-        Telefono.setColumns(9);
-
-        Apellidos.setColumns(30);
-
-        Provincia.setColumns(20);
-
-        jLabel13.setText("Provincia");
-
         NIF1.setBackground(new java.awt.Color(255, 255, 153));
         NIF1.setColumns(20);
 
@@ -110,6 +120,52 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                 botonCancelarActionPerformed(evt);
             }
         });
+
+        jLabel5.setText("Apellidos");
+
+        Nombre.setColumns(20);
+
+        jLabel4.setText("Nombre");
+
+        jLabel10.setText("Población");
+
+        jLabel12.setText("Teléfono");
+
+        Apellidos.setColumns(30);
+
+        FechaNac.setColumns(9);
+        FechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        FechaNac.setText("d/mm/aa");
+
+        jLabel9.setText("Domicilio");
+
+        jLabel8.setText("Email");
+
+        CodPost.setColumns(9);
+
+        Domicilio.setColumns(30);
+
+        Obs.setColumns(30);
+
+        Poblacion.setColumns(9);
+
+        jLabel16.setText("Observaciones");
+
+        Nacionalidad.setColumns(30);
+
+        jLabel7.setText("Nacionalidad");
+
+        Email.setColumns(20);
+
+        jLabel13.setText("Codigo postal");
+
+        jLabel6.setText("Fecha nacimiento");
+
+        jLabel2.setText("NIF");
+
+        Telefono.setColumns(9);
+
+        NIF.setColumns(9);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,26 +182,35 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel13))
-                        .addGap(25, 25, 25)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(129, 129, 129)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Poblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CodPost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel3))
@@ -176,44 +241,54 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(194, 194, 194))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10)
+                                .addComponent(Poblacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addComponent(Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(FechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel7)
+                            .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)
+                            .addComponent(CodPost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NIF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(35, 35, 35)
+                            .addComponent(jLabel16)
+                            .addComponent(Obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NIF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
                     .addComponent(botonCancelar))
@@ -230,6 +305,96 @@ public class jModificarVoluntario extends javax.swing.JPanel {
        }
        else
        {
+           
+/*           
+            //compruebo los campos introducidos: 
+            //->en los campos NOT NULL se pide que se introduzca el dato
+            //->en los campos que pueden ser NULL, se introduce un 0 si es un int y "" si es un String
+            //NIF1:NOT NULL 
+            //NIF:NOT NULL
+            //Nombre:NOT NULL
+            //Apellidos:NULL
+            //Poblacion:NULL
+            //Email:NULL
+            //Telefono:NULL
+            //Nacionalidad:NOT NULL
+            //Domicilio:NOT NULL
+            //CodPost:NOT NULL
+            //Obs:NULL
+
+            //Faltaria por comprobar las fechas
+
+            
+            if (NIF1.getText().compareTo("") == 0)
+            {
+                JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+            }
+            else if (NIF.getText().compareTo("") == 0)
+            {
+                JOptionPane.showMessageDialog(this, "El NIF del nuevo voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+            }
+            else if (Nombre.getText().compareTo("") == 0)
+            {
+                JOptionPane.showMessageDialog(this, "El nombre del nuevo voluntario no se ha introducido.", "Nombre Voluntario", JOptionPane.ERROR_MESSAGE);
+            }
+            else if (Apellidos.getText().compareTo("") == 0)
+            {
+                Apellidos.setText("");
+            }
+            else if (Poblacion.getText().compareTo("") == 0)
+            {
+                Poblacion.setText("");
+            }
+            else if (Email.getText().compareTo("") == 0)
+            {
+                Email.setText("");
+            }
+            else if (Telefono.getText().compareTo("") == 0)
+            {
+                Poblacion.setText("0");
+            }
+            else if (Nacionalidad.getText().compareTo("") == 0)
+            {
+                JOptionPane.showMessageDialog(this, "No se ha introducido la nacionalidad.", "Nacionalidad", JOptionPane.ERROR_MESSAGE);
+            }
+            else if (Domicilio.getText().compareTo("") == 0)
+            {
+                JOptionPane.showMessageDialog(this, "No se ha introducido el domicilio.", "Domicilio", JOptionPane.ERROR_MESSAGE);
+            }
+            else if (CodPost.getText().compareTo("") == 0)
+            {
+                JOptionPane.showMessageDialog(this, "No se ha introducido el codigo postal.", "Codigo postal", JOptionPane.ERROR_MESSAGE);
+            }
+            else if (Obs.getText().compareTo("") == 0)
+            {
+                Obs.setText("");
+            }
+
+
+
+*/
+            //Conversion de la fecha
+            Date Fecha_Nac = null;
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+            try {
+                Fecha_Nac = formatoFecha.parse(FechaNac.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(jAltaVoluntario.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
+            }
+           
+
+            
+            //Una vez que se han comprobado todos los datos, se llama a la funcion modificarVoluntario
+
+           
+           //boolean exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), Integer.parseInt(Telefono.getText()), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
+
+            boolean exito = Gestor_de_voluntarios.modificarVoluntario( (String)Nombre.getText(), (String)Apellidos.getText(), (String)NIF.getText().toUpperCase(), Integer.parseInt(Telefono.getText()), (String)Domicilio.getText(), (String)Poblacion.getText(), (String)Email.getText(), (String)Nacionalidad.getText(), Fecha_Nac, Integer.parseInt(CodPost.getText()), (String)Obs.getText(), (String)NIF1.getText().toUpperCase() );
+
+           
+           
+           
             confirmarModificacion = new jConfirmarModificacion();
             UI.jPrincipal.remove(confirmarModificacion);
             UI.jPrincipal.add("ConfirmarModificacion", confirmarModificacion); 
@@ -246,24 +411,32 @@ public class jModificarVoluntario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
+    private javax.swing.JTextField CodPost;
     private javax.swing.JTextField Domicilio;
-    private javax.swing.JTextField Localidad;
+    private javax.swing.JTextField Email;
+    private javax.swing.JFormattedTextField FechaNac;
     private javax.swing.JTextField NIF;
     private javax.swing.JTextField NIF1;
+    private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Nombre;
-    private javax.swing.JTextField Provincia;
+    private javax.swing.JTextField Obs;
+    private javax.swing.JTextField Poblacion;
     private javax.swing.JTextField Telefono;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

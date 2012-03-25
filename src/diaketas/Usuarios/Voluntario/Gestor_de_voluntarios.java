@@ -140,7 +140,7 @@ public class Gestor_de_voluntarios {
             if(existe1)
             {
                 
-                eliminarVoluntario(DNI);
+                Gestor_de_voluntarios.eliminarVoluntario(DNI);
                 
                 Gestor_de_voluntarios.RegistrarOperacion(voluntarioDNI, DNI, "baja voluntario");
                
@@ -166,6 +166,48 @@ public class Gestor_de_voluntarios {
     }
     
     
+    
+    
+    static public boolean modificarVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs, String voluntarioDNI )
+    {
+        
+        boolean confirma=false;
+        
+        
+        
+        boolean existe = ONG.comprobarExistenciaVoluntario(DNI);
+        
+        if(existe)
+        {
+            boolean existe1 = ONG.comprobarExistenciaVoluntario(voluntarioDNI);
+            
+            if(existe1)
+            {
+                
+            
+                confirma = Gestor_de_voluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
+            
+                Gestor_de_voluntarios.RegistrarOperacion(voluntarioDNI, DNI, "modificacion voluntario");
+            }
+        }
+        
+        
+        return confirma;
+            
+    }
+    
+    
+    
+    static public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
+    {
+        
+        Voluntario v = ONG.buscarVoluntario(DNI);
+        
+        boolean exito = v.cambiarDatosVoluntario( DNI, nombre, apellidos, fechaNac, poblacion, email, telf, nacionalidad, dir, codPost, obs);
+        
+        return exito;
+       
+    }
     
     
 }

@@ -5,6 +5,7 @@
 package diaketas.UI.Diaketas;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.Voluntario.Gestor_de_voluntarios;
 import javax.swing.JOptionPane;
 
 /**
@@ -140,22 +141,33 @@ public class jBajaVoluntario extends javax.swing.JPanel {
             else
             {
                 
-                //
+                //compruebo que el voluntario que se quiere eliminar ya existe en el sistema
+                
+                boolean correcto = Gestor_de_voluntarios.comprobarExistenciaVoluntario( (String)NIF_CIF.getText().toUpperCase() );
+                
+                System.out.println("Correcto:"+correcto);
+                
+                //Se ha encontrado al voluntario a eliminar
+                if (correcto == true)
+                {
+                    
+                    //Cambios esteticos
+                    NIF_CIF.setVisible(false);
+                    jLabel2.setText("¿Desea borrar el voluntario con NIF-CIF " + NIF_CIF.getText()+ "?");
+                    botonOK.setText("Confirmar");
+                    botonCancel.setVisible(true);
+                    jLabel4.setVisible(true);
+                    NIF_CIF_Voluntario.setVisible(true);
+                    
+                    fase = 1;
+                    
+                }else   //No se encuentra al voluntario...
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
+                            "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
                 
                 
                 
                 
-                
-                
-                //si ha rellenado el campo del dni del voluntario actual
-                NIF_CIF.setVisible(false);
-                jLabel2.setText("Â¿Desea borrar el voluntario con NIF-CIF " + NIF_CIF.getText()+ "?");
-                botonOK.setText("Confirmar");
-                botonCancel.setVisible(true);
-                jLabel4.setVisible(true);
-                NIF_CIF_Voluntario.setVisible(true);
-
-                fase = 1;
            }
             
         }else if (fase ==1){
@@ -165,12 +177,32 @@ public class jBajaVoluntario extends javax.swing.JPanel {
             }
             else
             {
-                botonCancel.setVisible(false);
-                NIF_CIF_Voluntario.setVisible(false);
-                jLabel2.setText("El voluntario ha sido dado de baja correctamente.");
-                jLabel4.setVisible(false);
-                botonOK.setText("Regresar");
-                fase = 2;
+                
+                //compruebo que el voluntario actual existe en el sistema
+                
+                boolean correcto2 = Gestor_de_voluntarios.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
+                
+                //Se ha encontrado al voluntario actual en el sistema
+                if (correcto2 == true)
+                {
+                    
+                    
+                    //llamo a la funcion que se encarga de dar de baja al voluntario
+                    Gestor_de_voluntarios.bajaVoluntario(NIF_CIF.getText().toUpperCase(), NIF_CIF_Voluntario.getText().toUpperCase());
+                    
+                    
+                    //Cambios esteticos
+                    botonCancel.setVisible(false);
+                    NIF_CIF_Voluntario.setVisible(false);
+                    jLabel2.setText("El voluntario ha sido dado de baja correctamente.");
+                    jLabel4.setVisible(false);
+                    botonOK.setText("Regresar");
+                    fase = 2;
+
+                    
+                   
+                }
+                
             }
         }else
             UI.cl.show(UI.jPrincipal, "Diaketas");

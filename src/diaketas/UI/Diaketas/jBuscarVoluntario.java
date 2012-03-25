@@ -5,6 +5,8 @@
 package diaketas.UI.Diaketas;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.ONG;
+import diaketas.Usuarios.Voluntario.Voluntario;
 import javax.swing.JOptionPane;
 
 /**
@@ -124,20 +126,39 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         else
         {
 
-
-            if (consultar_modificar)
+            //Busco al voluntario introducido
+            Voluntario v = ONG.buscarVoluntario(NIF.getText().toUpperCase());
+            
+            if(v==null)
             {
-                consultarVoluntario = new jConsultarVoluntario();
-                UI.jPrincipal.remove(consultarVoluntario);
-                UI.jPrincipal.add("ConsultarVoluntario", consultarVoluntario); 
-                UI.cl.show(UI.jPrincipal, "ConsultarVoluntario");
-            }else{
-                modificarVoluntario = new jModificarVoluntario();
-                UI.jPrincipal.remove(modificarVoluntario);
-                UI.jPrincipal.add("ModificarVoluntario", modificarVoluntario); 
-                UI.cl.show(UI.jPrincipal, "ModificarVoluntario");  
+                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
+                    "NIF Voluntario", JOptionPane.ERROR_MESSAGE); 
             }
-            // TODO add your handling code here:
+            else
+            {
+                //si ha encontrado un voluntario con ese NIF...
+
+                if (consultar_modificar)    //Si habia pulsado la opcion de consultar voluntario...
+                {
+                    consultarVoluntario = new jConsultarVoluntario( v );
+                    UI.jPrincipal.remove(consultarVoluntario);
+                    UI.jPrincipal.add("ConsultarVoluntario", consultarVoluntario); 
+                    UI.cl.show(UI.jPrincipal, "ConsultarVoluntario");
+                }
+                else    //Si habia pulsado la opcion de modificar voluntario...
+                {
+                    //llamo al jPanel de modificarVoluntario pasandole como argumento el objeto voluntario encontrado
+                    modificarVoluntario = new jModificarVoluntario( v );
+                    
+                    UI.jPrincipal.remove(modificarVoluntario);
+                    UI.jPrincipal.add("ModificarVoluntario", modificarVoluntario); 
+
+                    
+
+                    UI.cl.show(UI.jPrincipal, "ModificarVoluntario");  
+                }
+                // TODO add your handling code here:
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     
