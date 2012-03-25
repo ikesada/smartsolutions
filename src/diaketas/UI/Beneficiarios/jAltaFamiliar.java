@@ -241,7 +241,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
     }//GEN-LAST:event_Nombre_ApellidosKeyTyped
 
     private void OcupacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OcupacionKeyTyped
-        if (Ocupacion.getText().length()==50)
+        if (Ocupacion.getText().length()==20)
             evt.consume();
     }//GEN-LAST:event_OcupacionKeyTyped
 

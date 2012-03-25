@@ -303,6 +303,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="Tipo_Vivienda">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Tipo_ViviendaKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>
@@ -326,6 +329,9 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Observaciones_Datos_PersonalesKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -345,6 +351,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Motivo">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MotivoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel23">
       <Properties>
@@ -352,11 +361,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Profesion">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ProfesionKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Situacion_Economica">
       <Properties>
         <Property name="columns" type="int" value="30"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Situacion_EconomicaKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel25">
       <Properties>
@@ -410,6 +425,7 @@
     <Component class="javax.swing.JTextField" name="NIF">
       <Properties>
         <Property name="columns" type="int" value="9"/>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NIFKeyTyped"/>
@@ -445,6 +461,9 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Observaciones_FamiliaresKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -477,10 +496,16 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Experiencia_LaboralKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="Observaciones_Vivienda_SB">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Observaciones_Vivienda_SBKeyTyped"/>
+      </Events>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -552,6 +577,9 @@
     <Component class="javax.swing.JSeparator" name="jSeparator5">
     </Component>
     <Component class="javax.swing.JTextField" name="Nivel_Estudios">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Nivel_EstudiosKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel22">
       <Properties>
@@ -564,6 +592,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Ciudad_Nacimiento">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Ciudad_NacimientoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel19">
       <Properties>
@@ -586,8 +617,8 @@
     <Component class="javax.swing.JFormattedTextField" name="Expediente">
       <Properties>
         <Property name="columns" type="int" value="9"/>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="#########" subtype="-1" type="5"/>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format subtype="1" type="0"/>
         </Property>
       </Properties>
     </Component>
@@ -607,7 +638,7 @@
     <Component class="javax.swing.JFormattedTextField" name="Precio_Vivienda">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="#0.00" subtype="-1" type="0"/>
+          <Format subtype="0" type="0"/>
         </Property>
       </Properties>
     </Component>

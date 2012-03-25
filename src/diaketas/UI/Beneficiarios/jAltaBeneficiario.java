@@ -260,7 +260,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             }
         });
 
-        Precio_Vivienda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        Precio_Vivienda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         Telefono.setColumns(9);
         try {
@@ -280,21 +280,61 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         jLabel19.setText("en");
 
+        Ciudad_Nacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Ciudad_NacimientoKeyTyped(evt);
+            }
+        });
+
         jLabel21.setText("Observaciones de los datos personales");
 
         jLabel22.setText("Estudios");
 
+        Nivel_Estudios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Nivel_EstudiosKeyTyped(evt);
+            }
+        });
+
         jLabel23.setText("Profesión");
+
+        Profesion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ProfesionKeyTyped(evt);
+            }
+        });
 
         jLabel24.setText("Motivo");
 
+        Motivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MotivoKeyTyped(evt);
+            }
+        });
+
         Observaciones_Datos_Personales.setColumns(20);
         Observaciones_Datos_Personales.setRows(5);
+        Observaciones_Datos_Personales.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Observaciones_Datos_PersonalesKeyTyped(evt);
+            }
+        });
         Observaciones_Datos_Personales_SB.setViewportView(Observaciones_Datos_Personales);
+
+        Tipo_Vivienda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Tipo_ViviendaKeyTyped(evt);
+            }
+        });
 
         jLabel15.setText("Situacion");
 
         Situacion_Economica.setColumns(30);
+        Situacion_Economica.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Situacion_EconomicaKeyTyped(evt);
+            }
+        });
 
         jLabel25.setText("Observaciones de la vivienda");
 
@@ -305,6 +345,11 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         Experiencia_Laboral.setColumns(20);
         Experiencia_Laboral.setRows(5);
+        Experiencia_Laboral.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Experiencia_LaboralKeyTyped(evt);
+            }
+        });
         Experiencia_Laboral_SB.setViewportView(Experiencia_Laboral);
 
         jLabel28.setText("Tipo");
@@ -313,18 +358,24 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         Observaciones_Familiares.setColumns(20);
         Observaciones_Familiares.setRows(5);
+        Observaciones_Familiares.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Observaciones_FamiliaresKeyTyped(evt);
+            }
+        });
         Observaciones_Familiares_SB.setViewportView(Observaciones_Familiares);
 
         Observaciones_Vivienda.setColumns(20);
         Observaciones_Vivienda.setRows(5);
+        Observaciones_Vivienda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Observaciones_ViviendaKeyTyped(evt);
+            }
+        });
         Observaciones_Vivienda_SB.setViewportView(Observaciones_Vivienda);
 
         Expediente.setColumns(9);
-        try {
-            Expediente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        Expediente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -669,6 +720,56 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         if (NIF_Voluntario.getText().length()==9)
             evt.consume();
     }//GEN-LAST:event_NIF_VoluntarioKeyTyped
+
+    private void MotivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MotivoKeyTyped
+        if (Motivo.getText().length()==50)
+            evt.consume();
+    }//GEN-LAST:event_MotivoKeyTyped
+
+    private void Ciudad_NacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ciudad_NacimientoKeyTyped
+        if (Ciudad_Nacimiento.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_Ciudad_NacimientoKeyTyped
+
+    private void Nivel_EstudiosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nivel_EstudiosKeyTyped
+        if (Nivel_Estudios.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_Nivel_EstudiosKeyTyped
+
+    private void ProfesionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProfesionKeyTyped
+        if (Profesion.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_ProfesionKeyTyped
+
+    private void Observaciones_Datos_PersonalesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Observaciones_Datos_PersonalesKeyTyped
+        if (Observaciones_Datos_Personales.getText().length()==100)
+            evt.consume();
+    }//GEN-LAST:event_Observaciones_Datos_PersonalesKeyTyped
+
+    private void Experiencia_LaboralKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Experiencia_LaboralKeyTyped
+        if (Experiencia_Laboral.getText().length()==100)
+            evt.consume();
+    }//GEN-LAST:event_Experiencia_LaboralKeyTyped
+
+    private void Observaciones_ViviendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Observaciones_ViviendaKeyTyped
+        if (Observaciones_Vivienda.getText().length()==100)
+            evt.consume();
+    }//GEN-LAST:event_Observaciones_ViviendaKeyTyped
+
+    private void Observaciones_FamiliaresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Observaciones_FamiliaresKeyTyped
+        if (Observaciones_Familiares.getText().length()==100)
+            evt.consume();
+    }//GEN-LAST:event_Observaciones_FamiliaresKeyTyped
+
+    private void Tipo_ViviendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tipo_ViviendaKeyTyped
+        if (Tipo_Vivienda.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_Tipo_ViviendaKeyTyped
+
+    private void Situacion_EconomicaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Situacion_EconomicaKeyTyped
+        if (Situacion_Economica.getText().length()==50)
+            evt.consume();
+    }//GEN-LAST:event_Situacion_EconomicaKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
