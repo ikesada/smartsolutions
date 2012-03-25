@@ -136,41 +136,6 @@ public class ONG {
         }        
     }
     
-    static public void agregarNuevoDonante(Donante nuevoDonante){
-        con.conectarBD();
-        /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoDonante.FechaNac.getTime());
-        java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoDonante.Fecha_Inscripcion.getTime());
-        
-         try {
-            instruccion = (Statement) con.conexion().createStatement();
-            /*Introducimos la parte de Usuario*/
-
-            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoDonante.NIF_CIF + "\",\""
-                    + nuevoDonante.Nombre + "\",\"" + nuevoDonante.Apellidos + "\",\""  + fecha_Nacimiento
-                    + "\",\"" + nuevoDonante.Localidad + "\",\""   + nuevoDonante.Activo + "\", NULL, \"" + nuevoDonante.Email + "\",\"" + nuevoDonante.Telefono + "\")");
-            
-            /*Introducimos la parte de Donante*/
-             instruccion.executeUpdate("INSERT INTO Donante VALUES (\""+nuevoDonante.NIF_CIF + "\",\""
-                    + nuevoDonante.Tipo_Donante + "\",\"" + fecha_Activacion + "\",\""  + nuevoDonante.Observaciones
-                    + "\",\"" + nuevoDonante.Periodicidad_Donaciones + "\",\""   + nuevoDonante.Cuantia_Donaciones
-                    + "\",\"" + nuevoDonante.Tipo_Periodicidad+"\")");           
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }        
-    }
-            
     /*****************************FAMILIAR************************************/
     static public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac){
         Familiar familiar = null;
@@ -261,6 +226,77 @@ public class ONG {
     }
     
     
+    /*****************************DONANTE************************************/
+    
+        static public void agregarNuevoDonante(Donante nuevoDonante){
+        con.conectarBD();
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoDonante.FechaNac.getTime());
+        java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoDonante.Fecha_Inscripcion.getTime());
+        
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            /*Introducimos la parte de Usuario*/
+
+            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoDonante.NIF_CIF + "\",\""
+                    + nuevoDonante.Nombre + "\",\"" + nuevoDonante.Apellidos + "\",\""  + fecha_Nacimiento
+                    + "\",\"" + nuevoDonante.Localidad + "\",\""   + nuevoDonante.Activo + "\", NULL, \"" + nuevoDonante.Email + "\",\"" + nuevoDonante.Telefono + "\")");
+            
+            /*Introducimos la parte de Donante*/
+             instruccion.executeUpdate("INSERT INTO Donante VALUES (\""+nuevoDonante.NIF_CIF + "\",\""
+                    + nuevoDonante.Tipo_Donante + "\",\"" + fecha_Activacion + "\",\""  + nuevoDonante.Observaciones
+                    + "\",\"" + nuevoDonante.Periodicidad_Donaciones + "\",\""   + nuevoDonante.Cuantia_Donaciones
+                    + "\",\"" + nuevoDonante.Tipo_Periodicidad+"\")");           
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
+    }
+        
+        static public Donante buscarDonante(String DNI){
+            
+            Donante donante = null;
+            con.conectarBD();
+        
+        try {
+            instruccion = (Statement) con.conexion().createStatement();
+
+            tabla = instruccion.executeQuery("Select * From Usuario u ,Beneficiario b WHERE u.NIF_CIF = b.NIF_CIF and u.NIF_CIF = \""+ DNI+"\" ' LIMIT 1");
+            
+            if(tabla.next()){
+                donante = new Donante((String)tabla.getObject("NIF_CIF"), (String)tabla.getObject("Nombre"), (String)tabla.getObject("Apellidos"), (Date)tabla.getObject("Fecha_Nacimiento_Fundacion"),
+                        (String)tabla.getObject("Localidad"), (Integer)tabla.getInt("Activo"), (Date)tabla.getDate("Fecha_Desactivacion"), (String)tabla.getString("Email"), (Integer)tabla.getInt("Telefono"), 
+                        (String)tabla.getString("Tipo_Donante"), tabla.getDate("Fecha_Inscripcion"), (String)tabla.getString("Observaciones"), (Integer)tabla.getInt("Periodicidad_Donaciones"),
+                        (Double)tabla.getDouble("Cuantia_Donaciones"), (String)tabla.getString("Tipo_Periodicidad)"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        return donante;
+        }
+            
     
     
     /******************************VOLUNTARIO**************************/

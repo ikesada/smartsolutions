@@ -2,23 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Socios;
+package diaketas.UI.Donantes;
 
-import diaketas.UI.Beneficiarios.*;
 import diaketas.UI.UI;
+import diaketas.Usuarios.Donante.Gestor_de_donantes;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author kesada
  */
-public class jBajaSocio extends javax.swing.JPanel {
+public class jBajaDonante extends javax.swing.JPanel {
 
     public int fase;
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jBajaSocio() {
+    public jBajaDonante() {
         initComponents();
         fase = 0;
         botonCancel.setVisible(false);
@@ -47,12 +47,12 @@ public class jBajaSocio extends javax.swing.JPanel {
         NIF_Voluntario = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Beneficiarios");
+        jLabel1.setText("Donantes");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Dar de baja a un beneficiario");
+        jLabel3.setText("Dar de baja a un donante");
 
-        jLabel2.setText("DNI/NIF del beneficiario");
+        jLabel2.setText("DNI/NIF del donante");
 
         NIF_CIF.setColumns(9);
 
@@ -133,25 +133,33 @@ public class jBajaSocio extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         if (fase == 0){
             //Buscar el dni
-            
-            //si se encuentra
-            NIF_CIF.setVisible(false);
-            jLabel2.setText("¿Desea borrar el socio con NIF-CIF " + NIF_CIF.getText()+ "?");
-            botonCancel.setVisible(true);
-            jLabel4.setVisible(true);
-            NIF_Voluntario.setVisible(true);
-            
-            fase = 1;
-            
+            if(Gestor_de_donantes.introducirDniDonante(NIF_CIF.getText())){
+                
+                NIF_CIF.setVisible(false);
+                jLabel2.setText("¿Desea borrar el donante con NIF-CIF " + NIF_CIF.getText()+ "?");
+                botonCancel.setVisible(true);
+                jLabel4.setVisible(true);
+                NIF_Voluntario.setVisible(true);
+
+                fase = 1;
+            }else{
+                JOptionPane.showMessageDialog(this, "No existe ningun donante con dicho DNI.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         }else if (fase ==1){
             if (NIF_Voluntario.getText().compareTo("") == 0){
                 JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
             }else{
-                botonCancel.setVisible(false);
-                NIF_Voluntario.setVisible(false);
-                jLabel2.setText("El socio ha sido dado de baja correctamente.");
-                jLabel4.setVisible(false);
-                fase = 2;
+                
+                if(Gestor_de_donantes.introducirDniVoluntario(NIF_Voluntario.getText())){
+                    
+                    botonCancel.setVisible(false);
+                    NIF_Voluntario.setVisible(false);
+                    jLabel4.setVisible(false);
+                    fase = 2;
+                    botonCancel.setVisible(false);
+                    
+                    Gestor_de_donantes.confirmarFinBaja();
+                }
             }
         }else
             UI.cl.show(UI.jPrincipal, "Socios");

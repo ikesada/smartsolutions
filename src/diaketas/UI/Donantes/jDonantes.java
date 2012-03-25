@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Socios;
+package diaketas.UI.Donantes;
 
 import diaketas.UI.UI;
 import javax.swing.JPanel;
@@ -11,14 +11,14 @@ import javax.swing.JPanel;
  *
  * @author kesada
  */
-public class jSocios extends javax.swing.JPanel {
+public class jDonantes extends javax.swing.JPanel {
     JPanel panel;
-    jBuscarSocio BuscarSocio;
+    jBuscarDonante BuscarSocio;
 
     /**
      * Creates new form jDiaketas
      */
-    public jSocios() {
+    public jDonantes() {
         initComponents();
     }
 
@@ -43,10 +43,10 @@ public class jSocios extends javax.swing.JPanel {
         botonModificar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Socios");
+        jLabel1.setText("Donantes");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Socios");
+        jLabel3.setText("Donantes");
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -132,7 +132,7 @@ public class jSocios extends javax.swing.JPanel {
 
     private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
 
-        panel = new jAltaSocio();
+        panel = new jAltaDonante();
         
         UI.jPrincipal.add("AltaSocio", panel);
         UI.cl.show(UI.jPrincipal, "AltaSocio");
@@ -140,7 +140,7 @@ public class jSocios extends javax.swing.JPanel {
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
        
-        panel = new jBuscarSocio("ConsultarSocio");
+        panel = new jBuscarDonante("ConsultarSocio");
         
         UI.jPrincipal.add("ConsultarSocio", panel);
         UI.cl.show(UI.jPrincipal, "ConsultarSocio");
@@ -148,14 +148,14 @@ public class jSocios extends javax.swing.JPanel {
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
       
-        panel = new jBuscarSocio("ModificarSocio");
+        panel = new jBuscarDonante("ModificarSocio");
         
         UI.jPrincipal.add("ModificarSocio", panel);
         UI.cl.show(UI.jPrincipal, "ModificarSocio");
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
-        panel = new jBajaSocio();
+        panel = new jBajaDonante();
         
         UI.jPrincipal.add("BajaSocio", panel);
         UI.cl.show(UI.jPrincipal, "BajaSocio");

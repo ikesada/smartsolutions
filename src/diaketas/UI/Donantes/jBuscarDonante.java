@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Socios;
+package diaketas.UI.Donantes;
 
 import diaketas.UI.UI;
 import diaketas.Usuarios.Donante.Gestor_de_donantes;
@@ -13,16 +13,16 @@ import javax.swing.JPanel;
  *
  * @author kesada
  */
-public class jBuscarSocio extends javax.swing.JPanel {
+public class jBuscarDonante extends javax.swing.JPanel {
 
     JPanel panel;
-    jModificarSocio modificarSocio;
+    jModificarDonante modificarSocio;
     String jPanelSiguiente;
     
     /**
-     * Creates new form jBuscarSocio
+     * Creates new form jBuscarDonante
      */
-    public jBuscarSocio(String jPanelSiguiente) {
+    public jBuscarDonante(String jPanelSiguiente) {
         this.jPanelSiguiente = jPanelSiguiente;
         initComponents();
     }
@@ -45,10 +45,10 @@ public class jBuscarSocio extends javax.swing.JPanel {
         botonConsultar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Socios");
+        jLabel1.setText("Donantes");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Buscar Socios por NIF");
+        jLabel3.setText("Buscar Donantes por NIF");
 
         jLabel2.setText("NIF");
 
@@ -118,7 +118,7 @@ public class jBuscarSocio extends javax.swing.JPanel {
                 
                 //Pasamos el donante devuelto al nuevo panel
                 
-                panel = new jConsultarSocio(Gestor_de_donantes.confimarConsulta());
+                panel = new jConsultarDonante(Gestor_de_donantes.confimarConsulta());
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, jPanelSiguiente);
             
@@ -129,7 +129,7 @@ public class jBuscarSocio extends javax.swing.JPanel {
             
             if(Gestor_de_donantes.introducirDniDonante(NIF_CIF.getText())){
 
-                panel = new jModificarSocio(Gestor_de_donantes.confimarConsulta());
+                panel = new jModificarDonante(Gestor_de_donantes.confimarConsulta());
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, jPanelSiguiente); 
 

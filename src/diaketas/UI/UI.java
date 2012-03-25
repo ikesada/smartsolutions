@@ -4,7 +4,7 @@
  */
 package diaketas.UI;
 
-import diaketas.UI.Socios.jSocios;
+import diaketas.UI.Donantes.jDonantes;
 import diaketas.UI.Empleo.jEmpleo;
 import diaketas.UI.Donaciones.jDonaciones;
 import diaketas.UI.Diaketas.jDiaketas;
@@ -37,7 +37,7 @@ public class UI extends javax.swing.JFrame {
         JPanel diaketas = new jDiaketas();
         JPanel donaciones = new jDonaciones();
         JPanel empleo = new jEmpleo();
-        JPanel socios = new jSocios();
+        JPanel socios = new jDonantes();
        
         
         /*JPrincipal*/

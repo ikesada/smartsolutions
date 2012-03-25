@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Socios;
+package diaketas.UI.Donantes;
 
 import diaketas.ConexionBD;
 import diaketas.UI.UI;
@@ -23,18 +23,18 @@ import javax.swing.JPanel;
  *
  * @author kesada
  */
-public class jModificarSocio extends javax.swing.JPanel {
+public class jModificarDonante extends javax.swing.JPanel {
 
     JPanel panel;
 
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jModificarSocio() {
+    public jModificarDonante() {
         initComponents();
     }
 
-    public jModificarSocio(Donante donante) {
+    public jModificarDonante(Donante donante) {
         initComponents();
 
         java.text.SimpleDateFormat formatoFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
@@ -91,7 +91,7 @@ public class jModificarSocio extends javax.swing.JPanel {
                 try {
                     con.desconectarBD();
                 } catch (SQLException ex) {
-                    Logger.getLogger(jModificarSocio.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(jModificarDonante.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -165,10 +165,10 @@ public class jModificarSocio extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Socios");
+        jLabel1.setText("Donantes");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Modificar a un socio");
+        jLabel3.setText("Modificar a un donante");
 
         jLabel4.setText("Nombre");
 
@@ -410,7 +410,7 @@ public class jModificarSocio extends javax.swing.JPanel {
             try {
                 Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
             } catch (ParseException ex) {
-                Logger.getLogger(jAltaSocio.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(jAltaDonante.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
             }
 

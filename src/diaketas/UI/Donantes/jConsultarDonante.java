@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Socios;
+package diaketas.UI.Donantes;
 
-import diaketas.UI.Beneficiarios.*;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Donante.Donante;
 import javax.swing.JPanel;
@@ -13,17 +12,17 @@ import javax.swing.JPanel;
  *
  * @author kesada
  */
-public class jConsultarSocio extends javax.swing.JPanel {
+public class jConsultarDonante extends javax.swing.JPanel {
 
     JPanel panel;
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jConsultarSocio() {
+    public jConsultarDonante() {
         initComponents();
     }
     
-    public jConsultarSocio(Donante donante) {
+    public jConsultarDonante(Donante donante) {
         initComponents();
         
         java.text.SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yyyy");
@@ -33,10 +32,13 @@ public class jConsultarSocio extends javax.swing.JPanel {
         Apellidos.setText(donante.Apellidos);
         Fecha_Nacimiento.setText(formatoFecha.format(donante.FechaNac));
         Localidad.setText(donante.Localidad);
-        if(String.valueOf(donante.Activo).compareTo("1")==0)
+       /** if(String.valueOf(donante.Activo).compareTo("1")==0)
             Activo.setText("Si");
         else
             Activo.setText("No");
+        */
+        System.out.println(donante.Activo);
+        Activo.setText(Integer.toString(donante.Activo));
         Email.setText(donante.Email);
         Telefono.setText(String.valueOf(donante.Telefono));
         
@@ -120,7 +122,7 @@ public class jConsultarSocio extends javax.swing.JPanel {
         });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Consultar a un socio");
+        jLabel3.setText("Consultar a un donante");
 
         jLabel18.setText("NIF");
 

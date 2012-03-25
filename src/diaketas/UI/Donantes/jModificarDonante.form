@@ -226,7 +226,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Socios"/>
+        <Property name="text" type="java.lang.String" value="Donantes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -236,7 +236,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Modificar a un socio"/>
+        <Property name="text" type="java.lang.String" value="Modificar a un donante"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">

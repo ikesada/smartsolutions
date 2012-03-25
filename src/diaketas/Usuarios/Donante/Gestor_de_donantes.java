@@ -35,6 +35,7 @@ public class Gestor_de_donantes {
 
 
         NIF_Voluntario = NIF_Vol;
+        
         //return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
         return true;
     }
@@ -45,10 +46,22 @@ public class Gestor_de_donantes {
 
         return comprobarDniDonante(NIF_CIF);
     }
+    
+    static public Boolean introducirDniVoluntario(String NIF_CIF) {
+
+        NIF_Voluntario = NIF_CIF;
+
+        return comprobarDniVoluntario(NIF_Voluntario);
+    }
+    
+    static public Boolean comprobarDniVoluntario(String NIF_CIF){
+        
+        return true;
+    }
    
     static public Donante confimarConsulta() {
 
-        con.conectarBD();
+       /* con.conectarBD();
         
         try {
             instruccion = con.conexion().createStatement();
@@ -62,7 +75,7 @@ public class Gestor_de_donantes {
             datosDonante.Apellidos = (String) tabla.getObject("Apellidos");
             datosDonante.FechaNac = (Date) tabla.getObject("Fecha_Nacimiento_Fundacion");
             datosDonante.Localidad = (String) tabla.getObject("Localidad");
-            if ((Boolean) tabla.getObject("Activo") == true) {
+            if ((Boolean)tabla.getObject("Activo") == true) {
                 datosDonante.Activo = 1;
             } else {
                 datosDonante.Activo = 0;
@@ -97,12 +110,15 @@ public class Gestor_de_donantes {
                 }
             }
         }
-
+        * 
+        * 
         return new Donante(datosDonante.NIF_CIF, datosDonante.Nombre,
                 datosDonante.Apellidos, datosDonante.FechaNac, datosDonante.Localidad, 1, new Date(), datosDonante.Email,
                 datosDonante.Telefono, datosDonante.Tipo_Donante, datosDonante.Fecha_Inscripcion,
                 datosDonante.Observaciones, datosDonante.Periodicidad_Donaciones,
                 datosDonante.Cuantia_Donaciones, datosDonante.Tipo_Periodicidad);
+*/
+        return ONG.buscarDonante(datosDonante.NIF_CIF);
     }
 
     static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo) {
@@ -135,8 +151,11 @@ public class Gestor_de_donantes {
     public static Boolean comprobarDniDonante(String NIF_CIF) {
 
         Boolean existe = false;
+        
+        if(ONG.buscarDonante(NIF_CIF) != null)
+            existe = true;
 
-        con.conectarBD();
+        /*con.conectarBD();
         
         try {
             instruccion = con.conexion().createStatement();
@@ -158,22 +177,15 @@ public class Gestor_de_donantes {
                     Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }
+        }*/
         
         return existe;
     }
 
     public static void confirmarFinModificacion() {
 
-        /*
-         * Modificar Donante
-         */
-/*        Donante nuevoDonante = Donante.crearDonante(datosDonante.NIF_CIF, datosDonante.Nombre,
-                datosDonante.Apellidos, datosDonante.FechaNac, datosDonante.Localidad, datosDonante.Email,
-                datosDonante.Telefono, datosDonante.Tipo_Donante, datosDonante.Fecha_Inscripcion,
-                datosDonante.Observaciones, datosDonante.Periodicidad_Donaciones,
-                datosDonante.Cuantia_Donaciones, datosDonante.Tipo_Periodicidad);
-*/
+        
+        datosDonante = ONG.buscarDonante(datosDonante.NIF_CIF);
         
         con.conectarBD();
         /*Convertimos Date para trabajar*/
@@ -192,7 +204,7 @@ public class Gestor_de_donantes {
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
+         
          /*Desconexión de la BD*/
          finally {
             if (con.hayConexionBD()) {
@@ -204,10 +216,75 @@ public class Gestor_de_donantes {
             }
         }        
         
+        
         /*
          * Registrar Operacion
          */
         Gestor_de_donantes.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
         
+    }
+    
+    public static void confirmarFinBaja(){
+        
+        datosDonante = ONG.buscarDonante(datosDonante.NIF_CIF);
+        
+        datosDonante.Activo = 0;
+        datosDonante.FechaDesac = new Date();
+        
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(datosDonante.FechaDesac.getTime());
+
+        ConexionBD con = new ConexionBD();
+        con.conectarBD();
+        try {
+            com.mysql.jdbc.Statement instruccion = (com.mysql.jdbc.Statement) con.conexion().createStatement();
+            
+            /* Desactivamos el usuario y actualizamos fecha de Baja*/
+            instruccion.executeUpdate("UPDATE Usuario SET Activo = " + datosDonante.Activo + ", Fecha_Desactivacion = \""
+                    +fecha_Desac+"\" WHERE NIF_CIF = \"" + datosDonante.NIF_CIF + "\" LIMIT 1");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }         
+    
+        
+        /*
+         * Registrar Operacion
+         */
+        Gestor_de_donantes.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
+        
+        //datosDonante.desactivarUsuario(new Date());
+        
+        /* try {
+            instruccion = (com.mysql.jdbc.Statement) con.conexion().createStatement();
+    
+            /*Actualizamos la parte de Usuario*/
+         /*   instruccion.executeUpdate("UPDATE Usuario Set Activo = "+ datosDonante.Activo + ", Fecha_Desactivacion = '" + Fecha_Desactivacion + "' WHERE NIF_CIF = \"" + datosDonante.NIF_CIF + "\"  LIMIT 1"); 
+            
+         }
+         /*Captura de errores*/
+        /*catch(SQLException e){ System.out.println(e); }
+         
+         /*Desconexión de la BD*/
+         /*finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }*/
+         
     }
 }

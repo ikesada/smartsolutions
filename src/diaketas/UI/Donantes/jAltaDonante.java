@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Socios;
+package diaketas.UI.Donantes;
 
 import diaketas.ConexionBD;
 import diaketas.UI.UI;
@@ -22,7 +22,7 @@ import javax.swing.JPanel;
  *
  * @author kesada
  */
-public class jAltaSocio extends javax.swing.JPanel {
+public class jAltaDonante extends javax.swing.JPanel {
 
     JPanel panel;
     private String NIF_VOLUNTARIO;
@@ -30,7 +30,7 @@ public class jAltaSocio extends javax.swing.JPanel {
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jAltaSocio() {
+    public jAltaDonante() {
         initComponents();
 
         ConexionBD con;
@@ -84,7 +84,7 @@ public class jAltaSocio extends javax.swing.JPanel {
                 try {
                     con.desconectarBD();
                 } catch (SQLException ex) {
-                    Logger.getLogger(jAltaSocio.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(jAltaDonante.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
          }
@@ -178,10 +178,10 @@ public class jAltaSocio extends javax.swing.JPanel {
         NIF_CIF.setColumns(9);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Dar de alta a un socio");
+        jLabel3.setText("Dar de alta a un donante");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Socios");
+        jLabel1.setText("Donantes");
 
         jLabel11.setText("Localidad");
 
@@ -382,7 +382,7 @@ public class jAltaSocio extends javax.swing.JPanel {
             try {
                 Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
             } catch (ParseException ex) {
-                Logger.getLogger(jAltaSocio.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(jAltaDonante.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
             }
 
