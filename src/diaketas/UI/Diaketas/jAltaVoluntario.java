@@ -74,6 +74,8 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         Obs = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         FechaNac = new javax.swing.JFormattedTextField();
+        jLabel11 = new javax.swing.JLabel();
+        FechaInicio = new javax.swing.JFormattedTextField();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Voluntarios");
@@ -148,6 +150,12 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         FechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         FechaNac.setText("d/mm/aa");
 
+        jLabel11.setText("Fecha inicio");
+
+        FechaInicio.setColumns(9);
+        FechaInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        FechaInicio.setText("d/mm/aa");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,18 +170,24 @@ public class jAltaVoluntario extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(33, 33, 33)
+                                .addComponent(FechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -270,11 +284,19 @@ public class jAltaVoluntario extends javax.swing.JPanel {
                             .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
                             .addComponent(CodPost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(Obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel16)
+                                    .addComponent(Obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(FechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
                             .addComponent(NIF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -337,7 +359,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         }
         else if (Telefono.getText().compareTo("") == 0)
         {
-            Poblacion.setText("0");
+            Telefono.setText("0");
         }
         else if (Nacionalidad.getText().compareTo("") == 0)
         {
@@ -358,28 +380,41 @@ public class jAltaVoluntario extends javax.swing.JPanel {
 
 
         
+      
         
-        //Conversion de la fecha
-        Date Fecha_Nac = null;
+        
+        //Conversion de las fechas, hay que transformar FechaInicio y FechaNac
+        
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+        
+        Date Fecha_Nac = null;
         try {
             Fecha_Nac = formatoFecha.parse(FechaNac.getText());
+            
         } catch (ParseException ex) {
             Logger.getLogger(jAltaVoluntario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecta, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
         }
 
         
+        Date Fecha_Inic = null;
+        try {
+            Fecha_Inic = formatoFecha.parse(FechaInicio.getText());
+        
+        } catch (ParseException ex) {
+            Logger.getLogger(jAltaVoluntario.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Fecha de inicio incorrecta, utilice formato dd/MM/yy.", "Fecha de Inicio", JOptionPane.ERROR_MESSAGE);
+        }
         
         
 
-//        System.out.println("Fecha de nacimiento introducida: "+Fecha_Nac);        
+        //System.out.println("Fecha de nacimiento introducida: "+Fecha_Nac);        
 
         
         //llamo a la funcion que se va a encargar de hacer el alta del voluntario
        
-//        boolean exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), Integer.parseInt(Telefono.getText()), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
-//        System.out.println("Exito: "+exito);
+        boolean exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), Integer.parseInt(Telefono.getText()), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
+        System.out.println("Exito: "+exito);
         
         
         
@@ -429,6 +464,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
     private javax.swing.JTextField CodPost;
     private javax.swing.JTextField Domicilio;
     private javax.swing.JTextField Email;
+    private javax.swing.JFormattedTextField FechaInicio;
     private javax.swing.JFormattedTextField FechaNac;
     private javax.swing.JTextField NIF;
     private javax.swing.JTextField NIF1;
@@ -441,6 +477,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
