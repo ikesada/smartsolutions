@@ -329,7 +329,6 @@ public class jModificarVoluntario extends javax.swing.JPanel {
        else
        {
            
-/*           
             //compruebo los campos introducidos: 
             //->en los campos NOT NULL se pide que se introduzca el dato
             //->en los campos que pueden ser NULL, se introduce un 0 si es un int y "" si es un String
@@ -345,9 +344,11 @@ public class jModificarVoluntario extends javax.swing.JPanel {
             //CodPost:NOT NULL
             //Obs:NULL
 
-            //Faltaria por comprobar las fechas
+            //Fecha_Nacimiento: NOT NULL
+            //Fecha_Inicio: NOT NULL
 
-            
+
+
             if (NIF1.getText().compareTo("") == 0)
             {
                 JOptionPane.showMessageDialog(this, "El NIF del voluntario actual no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
@@ -374,7 +375,7 @@ public class jModificarVoluntario extends javax.swing.JPanel {
             }
             else if (Telefono.getText().compareTo("") == 0)
             {
-                Poblacion.setText("0");
+                Telefono.setText("0");
             }
             else if (Nacionalidad.getText().compareTo("") == 0)
             {
@@ -395,24 +396,37 @@ public class jModificarVoluntario extends javax.swing.JPanel {
 
 
 
-*/
-            //Conversion de la fecha
-            Date Fecha_Nac = null;
+
+
+
+            //Conversion de las fechas, hay que transformar FechaInicio y FechaNac
+
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+            Date Fecha_Nac = null;
             try {
                 Fecha_Nac = formatoFecha.parse(FechaNac.getText());
+
             } catch (ParseException ex) {
                 Logger.getLogger(jAltaVoluntario.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecta, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
             }
-           
+
+
+            Date Fecha_Inic = null;
+            try {
+                Fecha_Inic = formatoFecha.parse(FechaInicio.getText());
+
+            } catch (ParseException ex) {
+                Logger.getLogger(jAltaVoluntario.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Fecha de inicio incorrecta, utilice formato dd/MM/yy.", "Fecha de Inicio", JOptionPane.ERROR_MESSAGE);
+            }
+
 
             
             //Una vez que se han comprobado todos los datos, se llama a la funcion modificarVoluntario
 
            
-           //boolean exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), Integer.parseInt(Telefono.getText()), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
-
             boolean exito = Gestor_de_voluntarios.modificarVoluntario( (String)Nombre.getText(), (String)Apellidos.getText(), (String)NIF.getText().toUpperCase(), Integer.parseInt(Telefono.getText()), (String)Domicilio.getText(), (String)Poblacion.getText(), (String)Email.getText(), (String)Nacionalidad.getText(), Fecha_Nac, Integer.parseInt(CodPost.getText()), (String)Obs.getText(), (String)NIF1.getText().toUpperCase() );
 
            
