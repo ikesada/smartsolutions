@@ -417,9 +417,17 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         }
 
         //el telefono, lo comprobare a la hora de pasarselo como parametro a la funcion, si el campo esta vacio
-        //le pasare un int 0 y si tiene algo, lo transormo a int
+        //le pasare un int 0 y si tiene algo, lo transformo a int
 
-        
+        int telefonoPasado;
+        if( Telefono.getText().compareTo("")==0 )   //si me pasan una cadena vacia le paso un int=0
+        {
+            telefonoPasado = 0;
+        }
+        else
+        {
+            telefonoPasado = Integer.parseInt(Telefono.getText());
+        }
       
         if(continuar)   //si todos los datos se han introducido correctamente...
         {
@@ -462,7 +470,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
 
                 if(existe_vol)
                 {
-                    exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), (Telefono.getText().compareTo("         ")==0? 0 : Integer.parseInt(Telefono.getText())), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
+                    exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), telefonoPasado, (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
                 }
                 else
                 {
@@ -481,9 +489,9 @@ public class jAltaVoluntario extends javax.swing.JPanel {
                 UI.jPrincipal.add("ConfirmarAlta", confirmarAlta); 
                 UI.cl.show(UI.jPrincipal, "ConfirmarAlta");
             }
-            else
+            else if(!exito)
             {
-                //JOptionPane.showMessageDialog(this, "No se ha podido realizar correctamente el alta.", "Error alta", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se ha podido realizar correctamente el alta.", "Error alta", JOptionPane.ERROR_MESSAGE);
             }
         
         }//continuar
