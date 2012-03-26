@@ -4,6 +4,7 @@
  */
 package diaketas.UI.Donantes;
 
+import ValidarCampos.ValidarCampos;
 import diaketas.ConexionBD;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Donante.Donante;
@@ -237,6 +238,11 @@ public class jModificarDonante extends javax.swing.JPanel {
         jScrollPane2.setViewportView(Observaciones);
 
         Telefono.setColumns(9);
+        Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TelefonoKeyReleased(evt);
+            }
+        });
 
         Fecha_Nacimiento.setColumns(9);
         Fecha_Nacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
@@ -268,6 +274,9 @@ public class jModificarDonante extends javax.swing.JPanel {
 
         Cuantia_Donaciones.setColumns(9);
         Cuantia_Donaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Cuantia_DonacionesKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Cuantia_DonacionesKeyTyped(evt);
             }
@@ -525,8 +534,19 @@ public class jModificarDonante extends javax.swing.JPanel {
         if (Observaciones.getText().length()==100)
             evt.consume();
     }//GEN-LAST:event_ObservacionesKeyTyped
+
+    private void TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyReleased
+        if(!ValidarCampos.isInteger(Cuantia_Donaciones.getText())){
+            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_TelefonoKeyReleased
+
+    private void Cuantia_DonacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cuantia_DonacionesKeyReleased
+        if(!ValidarCampos.isDouble(Cuantia_Donaciones.getText())){
+            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_Cuantia_DonacionesKeyReleased
         
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Cuantia_Donaciones;
