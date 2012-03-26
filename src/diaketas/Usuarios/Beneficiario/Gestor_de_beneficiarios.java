@@ -4,10 +4,16 @@
  */
 package diaketas.Usuarios.Beneficiario;
 
+import com.mysql.jdbc.Statement;
+import diaketas.ConexionBD;
 import diaketas.Usuarios.Historial.Gestor_de_historiales;
 import diaketas.Usuarios.ONG;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +29,9 @@ public class Gestor_de_beneficiarios {
     static String NombreApellidosFamiliar;
     static String parentesco;
     
-
+    static ConexionBD con = new ConexionBD();
+    static Statement instruccion;
+    
     /*---------------------------Beneficiario----------------------------------*/
     static public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
         
@@ -53,8 +61,7 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
-        //return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
-        return true;
+        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 
     static public Beneficiario consultarBeneficiario (String DNI){
@@ -83,14 +90,72 @@ public class Gestor_de_beneficiarios {
         beneficiario.desactivarUsuario(new Date());
     }
   
-    static private void modificarBeneficiario(){
+    static private void modificarBeneficiario(Beneficiario datosBeneficiario){
         
         /*Buscamos beneficiario*/
         Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /*Modificamos sus datos*/
-        beneficiario.cambiarDatosBeneficiario(datosBeneficiario);
+        cambiarDatosBeneficiario(datosBeneficiario);
     }
+
+    static public void cambiarDatosBeneficiario (Beneficiario datosBeneficiario){
+    
+      
+        /* Actualizamos los datos */
+        con.conectarBD();
+
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(datosBeneficiario.FechaNac.getTime());
+        
+        try {
+            instruccion = (Statement) con.conexion().createStatement();
+
+            instruccion.executeUpdate("Update Usuario SET "
+                    + "NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\", "
+                    + "Nombre = \"" + datosBeneficiario.Nombre + "\", "                    
+                    + "Apellidos = \"" + datosBeneficiario.Apellidos + "\", "                    
+                    + "Fecha_Nacimiento_Fundacion = \"" + fecha_Nacimiento + "\", "                    
+                    + "Localidad = \"" + datosBeneficiario.Localidad + "\", "
+                    + "Email = \"" + datosBeneficiario.Email + "\", "
+                    + "Telefono = \"" + datosBeneficiario.Telefono + "\""
+                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
+         
+            instruccion.executeUpdate("Update Beneficiario SET "
+                    + "NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\", "
+                    + "Nacionalidad = \"" + datosBeneficiario.Nacionalidad + "\", "                    
+                    + "Estado_Civil = \"" + datosBeneficiario.Estado_civil + "\", "                    
+                    + "Domicilio = \"" + datosBeneficiario.Domicilio + "\", "                    
+                    + "Codigo_Postal = " + datosBeneficiario.Codigo_Postal + ", "
+                    + "Expediente = " + datosBeneficiario.Expediente + ", "
+                    + "Motivo = \"" + datosBeneficiario.Motivo + "\", "                  
+                    + "Precio_Vivienda = " + datosBeneficiario.Precio_Vivienda + ", "
+                    + "Tipo_Vivienda = \"" + datosBeneficiario.Tipo_Vivienda + "\""
+                    + "Observaciones_Datos_Personales = \"" + datosBeneficiario.Observaciones_Datos_Personales + "\""
+                    + "Observaciones_Familiares = \"" + datosBeneficiario.Observaciones_Familiares + "\""
+                    + "Observaciones_Vivienda = \"" + datosBeneficiario.Observaciones_Vivienda + "\""
+                    + "Ciudad_Nacimiento = \"" + datosBeneficiario.Ciudad_Nacimiento + "\""
+                    + "Situacion_Economica = \"" + datosBeneficiario.Situacion_Economica + "\""
+                    + "Nivel_Estudios = \"" + datosBeneficiario.Nivel_Estudios + "\""
+                    + "Profesion = \"" + datosBeneficiario.Profesion + "\""
+                    + "Experiencia_Laboral = \"" + datosBeneficiario.Experiencia_Laboral + "\""
+                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }     
+        
+    }
+    
     
     static public void confirmarAltaBeneficiario(){
         
@@ -102,6 +167,9 @@ public class Gestor_de_beneficiarios {
         
         /*Registrar Operacion*/
         Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
+        
+        /*Registrar beneficiario*/
+        /*Beneficiario ya tiene asociado Vivienda, email y telefono*/
     }
     
     static public void confirmarBajaBeneficiario(){
@@ -117,7 +185,7 @@ public class Gestor_de_beneficiarios {
         Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
     
         /*Modificar beneficiario*/
-        modificarBeneficiario();
+        modificarBeneficiario(datosBeneficiario);
     }
    
     /*--------------------------------Familiar---------------------------------*/
@@ -128,7 +196,7 @@ public class Gestor_de_beneficiarios {
     /*
      * ConfirmarAltaFamiliar // ConfirmarInsercion
      */
-    static public void confirmarAltaFamiliar(){   
+    static public void confirmarInsercion(){   
         Familiar familiar;
         
         /*Se busca si el familiar ya existe*/
@@ -139,7 +207,31 @@ public class Gestor_de_beneficiarios {
             familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion);
             
             /*Agregamos el nuevo familiar al sistema*/
-            ONG.agregarNuevoFamiliar(familiar);
+            con.conectarBD();
+            /*Convertimos Date para trabajar*/
+            java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(familiar.Fecha_Nacimiento.getTime());
+
+            try {
+                instruccion = (Statement) con.conexion().createStatement();
+
+                /*Introducimos al nuevo Familiar en el sistema*/
+                instruccion.executeUpdate("INSERT INTO Familiar (Nombre_Apellidos, Fecha_Nacimiento, Ocupacion)"
+                        + " VALUES (\""+familiar.Nombre_Apellidos + "\",\"" + fecha_Nacimiento + "\",\"" 
+                        + familiar.Ocupacion + "\")");
+            }
+            /*Captura de errores*/
+            catch(SQLException e){ System.out.println(e); }
+            catch(Exception e){ System.out.println(e);}
+            /*Desconexión de la BD*/
+            finally {
+                if (con.hayConexionBD()) {
+                    try {
+                        con.desconectarBD();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }         
 
             /*Obtenemos el Codigo_Familiar asignado*/
             familiar.Cod_Familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento).Cod_Familiar;
@@ -149,23 +241,67 @@ public class Gestor_de_beneficiarios {
         Parentesco relacion_familiar = new Parentesco(familiar.Cod_Familiar, datosBeneficiario.NIF_CIF, parentesco);
 
         /*Se agrega la relación familiar al sistema*/
-        ONG.asociarParentesco(relacion_familiar);
+        con.conectarBD();
+        try {
+            instruccion = (Statement) con.conexion().createStatement();
+            
+            /*Introducimos al nuevo Familiar en el sistema*/
+            instruccion.executeUpdate("INSERT INTO Parentesco "
+                    + " VALUES (\""+relacion_familiar.Cod_Familiar  + "\",\"" + relacion_familiar.DNI_Beneficiario + "\",\"" 
+                    + relacion_familiar.Parentesc + "\")");
+          }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }    
     
     /*
      * ConfirmarEliminacionFamiliar // ConfirmarEliminacion
      */
-    static public void confirmarEliminacionFamiliar(){
+    static public void confirmarEliminacion(){
 
         /* Buscamos Beneficiario en el sistema */
         Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /* Buscamos el familiar del beneficiario*/
         /* buscarFamiliar  == buscarParentesco */
-        Familiar familiar = beneficiario.buscarFamiliar(NombreApellidosFamiliar);
+        Parentesco parentesc = beneficiario.buscarParentesco(NombreApellidosFamiliar);
 
-        /*Eliminamos Familiar*/
-        familiar.eliminarFamiliar();
+        /*Eliminamos el parentesco*/
+        con.conectarBD();
+        
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+
+            /*Eliminamos el parentesco que guarda con el familiar*/
+            instruccion.executeUpdate("DELETE FROM Parentesco WHERE"
+                    + " Cod_Familiar = " + parentesc.Cod_Familiar + " and DNI_CIF= \""
+                    + parentesc.DNI_Beneficiario+"\"");
+        }
+        /*Captura de errores*/
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e);}
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }         
+        
     }
  
     static public ArrayList<Familiar> iniciarConsultarFamiliar(){
@@ -230,9 +366,7 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = DNI_Voluntario;
         
         /*Comprobamos si el Voluntario existe */
-        //return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
-        
-        return true;
+        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
 }
