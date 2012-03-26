@@ -171,7 +171,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Expediente = new javax.swing.JFormattedTextField();
         Telefono = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
-        Precio_Vivienda = new javax.swing.JFormattedTextField();
         Email = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -184,6 +183,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
+        Precio_Vivienda = new javax.swing.JTextField();
 
         Tipo_Vivienda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -380,8 +380,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
 
         jLabel16.setText("Email");
 
-        Precio_Vivienda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-
         Email.setColumns(20);
         Email.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -506,17 +504,17 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                     .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addComponent(jLabel13)
+                                .addComponent(jLabel25)
+                                .addComponent(jLabel29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel28)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel18)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jLabel25)
-                                .addComponent(jLabel29))
+                                        .addComponent(Precio_Vivienda))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel28)
+                                        .addGap(96, 96, 96)
+                                        .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(Observaciones_Familiares_SB))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -856,7 +854,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JScrollPane Observaciones_Familiares_SB;
     private javax.swing.JTextArea Observaciones_Vivienda;
     private javax.swing.JScrollPane Observaciones_Vivienda_SB;
-    private javax.swing.JFormattedTextField Precio_Vivienda;
+    private javax.swing.JTextField Precio_Vivienda;
     private javax.swing.JTextField Profesion;
     private javax.swing.JTextField Situacion_Economica;
     private javax.swing.JFormattedTextField Telefono;
