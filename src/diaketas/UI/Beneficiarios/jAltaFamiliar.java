@@ -223,7 +223,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
         
         /*Confirmamos datos del familiar */
         /*ConfirmarInsercion()*/
-        Gestor_de_beneficiarios.confirmarAltaFamiliar();
+        Gestor_de_beneficiarios.confirmarInsercion();
         
         /*Cambia parte principal de la aplicacion*/
         UI.cl.show(UI.jPrincipal, "Familiar");

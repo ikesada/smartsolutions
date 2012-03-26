@@ -733,6 +733,8 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                     Apellidos.getText(),
                     Fecha_Nac,
                     Localidad.getText(),
+                    datosBeneficiario.Activo,
+                    datosBeneficiario.FechaDesac,
                     Email.getText(),
                     (Telefono.getText().compareTo("         ")==0? 0 : Integer.parseInt(Telefono.getText())),
                     Nacionalidad.getText(),
@@ -754,9 +756,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                     Experiencia_Laboral.getText(),
                     NIF_Voluntario.getText());
                     
-            //REVISAR CORRECTO DEBE FUNCIONAR
-            correcto = true;
-            /* 2. finalizar() */
+            /*finalizar() */
             if (correcto == true){
                 /*confirmarModificacionBeneficiario*/
                 Gestor_de_beneficiarios.confirmarModificacionBeneficiario();

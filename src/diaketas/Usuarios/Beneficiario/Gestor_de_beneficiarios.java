@@ -42,7 +42,8 @@ public class Gestor_de_beneficiarios {
     }
 
     static public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre,
-            String Apellidos, Date FechaNac, String Localidad,  String Email, int Telefono, String Nacionalidad,
+            String Apellidos, Date FechaNac, String Localidad, int Activo, Date Fecha_Desac,
+            String Email, int Telefono, String Nacionalidad,
             String Estado_civil, String Domicilio, int Codigo_Postal,
             Date Fecha_Inscripcion, int Expediente, String Motivo,
             Double Precio_Vivienda, String Tipo_Vivienda, String Observaciones_Datos_Personales,
@@ -53,7 +54,7 @@ public class Gestor_de_beneficiarios {
         
         /*Se almacenan los datos del beneficiario y NIF_Voluntario en el sistema */
         datosBeneficiario = new Beneficiario (NIF_CIF, Nombre, Apellidos, FechaNac,
-                Localidad, 1, null, Email, Telefono, Nacionalidad, Estado_civil,
+                Localidad, Activo, Fecha_Desac, Email, Telefono, Nacionalidad, Estado_civil,
                 Domicilio, Codigo_Postal, Fecha_Inscripcion, Expediente, Motivo,
                 Precio_Vivienda, Tipo_Vivienda, Observaciones_Datos_Personales,
                 Observaciones_Familiares, Observaciones_Vivienda, Ciudad_Nacimiento,
