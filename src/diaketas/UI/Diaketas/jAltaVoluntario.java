@@ -72,9 +72,10 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         Nacionalidad = new javax.swing.JTextField();
         CodPost = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        Obs = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         FechaNac = new javax.swing.JFormattedTextField();
+        Observaciones_Datos_Personales_SB = new javax.swing.JScrollPane();
+        Obs = new javax.swing.JTextArea();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Voluntarios");
@@ -85,14 +86,29 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         jLabel2.setText("NIF");
 
         NIF.setColumns(9);
+        NIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIFKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Nombre");
 
         Nombre.setColumns(20);
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Apellidos");
 
         Apellidos.setColumns(30);
+        Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApellidosKeyTyped(evt);
+            }
+        });
 
         jLabel9.setText("Domicilio");
 
@@ -103,10 +119,25 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         Domicilio.setColumns(30);
+        Domicilio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DomicilioKeyTyped(evt);
+            }
+        });
 
         Poblacion.setColumns(9);
+        Poblacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PoblacionKeyTyped(evt);
+            }
+        });
 
         Telefono.setColumns(9);
+        Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoKeyTyped(evt);
+            }
+        });
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -132,22 +163,44 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         jLabel13.setText("Codigo postal");
 
         Email.setColumns(20);
+        Email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EmailKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("Nacionalidad");
 
         Nacionalidad.setColumns(30);
+        Nacionalidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NacionalidadKeyTyped(evt);
+            }
+        });
 
         CodPost.setColumns(9);
+        CodPost.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CodPostKeyTyped(evt);
+            }
+        });
 
         jLabel16.setText("Observaciones");
-
-        Obs.setColumns(30);
 
         jLabel8.setText("Email");
 
         FechaNac.setColumns(9);
         FechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         FechaNac.setText("d/mm/aa");
+
+        Obs.setColumns(20);
+        Obs.setRows(5);
+        Obs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ObsKeyTyped(evt);
+            }
+        });
+        Observaciones_Datos_Personales_SB.setViewportView(Obs);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -203,7 +256,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addGap(18, 18, 18)
-                                .addComponent(Obs, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(Observaciones_Datos_Personales_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel3))
@@ -214,13 +267,11 @@ public class jAltaVoluntario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(NIF1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(243, 243, 243)
+                .addGap(36, 36, 36)
                 .addComponent(botonOK)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonCancelar)
                 .addContainerGap())
         );
@@ -275,19 +326,17 @@ public class jAltaVoluntario extends javax.swing.JPanel {
                             .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
                             .addComponent(CodPost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
-                            .addComponent(Obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(NIF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(30, 30, 30)
+                            .addComponent(Observaciones_Datos_Personales_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
-                    .addComponent(botonCancelar))
-                .addContainerGap(195, Short.MAX_VALUE))
+                    .addComponent(botonCancelar)
+                    .addComponent(NIF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -362,15 +411,13 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         {
             Email.setText("");
         }
-        if (Telefono.getText().compareTo("") == 0)
-        {
-            Telefono.setText("0");
-        }
         if (Obs.getText().compareTo("") == 0)
         {
             Obs.setText("");
         }
 
+        //el telefono, lo comprobare a la hora de pasarselo como parametro a la funcion, si el campo esta vacio
+        //le pasare un int 0 y si tiene algo, lo transormo a int
 
         
       
@@ -415,7 +462,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
 
                 if(existe_vol)
                 {
-                    exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), Integer.parseInt(Telefono.getText()), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
+                    exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), (Telefono.getText().compareTo("         ")==0? 0 : Integer.parseInt(Telefono.getText())), (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
                 }
                 else
                 {
@@ -453,6 +500,82 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "Diaketas");
     }//GEN-LAST:event_botonCancelarActionPerformed
 
+    private void NIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIFKeyTyped
+        // TODO add your handling code here:
+        
+        if (NIF.getText().length()>=9){
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIFKeyTyped
+
+    private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
+        // TODO add your handling code here:
+        if (Nombre.getText().length()>=20)
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NombreKeyTyped
+
+    private void ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosKeyTyped
+        // TODO add your handling code here:
+        if (Apellidos.getText().length()>=30)
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ApellidosKeyTyped
+
+    private void NacionalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NacionalidadKeyTyped
+        // TODO add your handling code here:
+
+        if (Nacionalidad.getText().length()>=20)
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NacionalidadKeyTyped
+
+    private void ObsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObsKeyTyped
+        if (Obs.getText().length() == 250) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ObsKeyTyped
+
+    private void PoblacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PoblacionKeyTyped
+        // TODO add your handling code here:
+        if (Poblacion.getText().length() == 20) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_PoblacionKeyTyped
+
+    private void DomicilioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DomicilioKeyTyped
+        // TODO add your handling code here:
+        if (Domicilio.getText().length() == 50) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_DomicilioKeyTyped
+
+    private void EmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyTyped
+        // TODO add your handling code here:
+        if (Email.getText().length() == 30) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_EmailKeyTyped
+
+    private void TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyTyped
+        // TODO add your handling code here:
+        if (Telefono.getText().length() == 9) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TelefonoKeyTyped
+
+    private void CodPostKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodPostKeyTyped
+        // TODO add your handling code here:
+        if (CodPost.getText().length() == 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CodPostKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField CodPost;
@@ -463,7 +586,8 @@ public class jAltaVoluntario extends javax.swing.JPanel {
     private javax.swing.JTextField NIF1;
     private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField Nombre;
-    private javax.swing.JTextField Obs;
+    private javax.swing.JTextArea Obs;
+    private javax.swing.JScrollPane Observaciones_Datos_Personales_SB;
     private javax.swing.JTextField Poblacion;
     private javax.swing.JTextField Telefono;
     private javax.swing.JButton botonCancelar;
