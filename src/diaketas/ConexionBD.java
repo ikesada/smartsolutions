@@ -13,7 +13,7 @@ public class ConexionBD{
     public String bd = "diaketas";
     public String login = "smartsolutions";
     public String password = "solutions";
-    public String url = "jdbc:mysql://sql09.freemysql.net:3306/"+bd;
+    public String url = "jdbc:mysql://localhost:3306/"+bd;
     
   
     //public String url = "jdbc:mysql://localhost:3306/"+bd;
@@ -23,10 +23,6 @@ public class ConexionBD{
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
             conn = DriverManager.getConnection(url, login, password);
-            if (conn != null)
-            {
-                System.out.println("Conexión a base de datos "+url+" ... Ok");
-            }
         }
         catch(SQLException ex) {
             System.out.println("Hubo un problema al intentar conectarse con la base de datos "+url);
