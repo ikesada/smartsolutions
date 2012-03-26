@@ -353,7 +353,7 @@ public class ONG {
     static public boolean comprobarExistenciaVoluntario(String DNI){
         Voluntario vol = buscarVoluntario(DNI);
         
-        System.out.println("nombre del voluntario encontrado: "+vol.Nombre);
+        
         return (vol != null);
     }
     
