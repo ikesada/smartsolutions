@@ -5,6 +5,7 @@
 package diaketas.UI.Diaketas;
 
 import diaketas.UI.UI;
+import diaketas.Usuarios.ONG;
 import diaketas.Usuarios.Voluntario.Gestor_de_voluntarios;
 import javax.swing.JOptionPane;
 
@@ -143,10 +144,9 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 
                 //compruebo que el voluntario que se quiere eliminar ya existe en el sistema
                 
-                boolean correcto = Gestor_de_voluntarios.comprobarExistenciaVoluntario( (String)NIF_CIF.getText().toUpperCase() );
+                boolean correcto = ONG.comprobarExistenciaVoluntario( (String)NIF_CIF.getText().toUpperCase() );
                 
-                System.out.println("Correcto:"+correcto);
-                
+               
                 //Se ha encontrado al voluntario a eliminar
                 if (correcto == true)
                 {
@@ -164,10 +164,7 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 }else   //No se encuentra al voluntario...
                     JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
                             "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-                
-                
-                
-                
+
            }
             
         }else if (fase ==1){
@@ -180,7 +177,7 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 
                 //compruebo que el voluntario actual existe en el sistema
                 
-                boolean correcto2 = Gestor_de_voluntarios.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
+                boolean correcto2 = ONG.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
                 
                 //Se ha encontrado al voluntario actual en el sistema
                 if (correcto2 == true)
@@ -198,10 +195,11 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                     jLabel4.setVisible(false);
                     botonOK.setText("Regresar");
                     fase = 2;
-
-                    
-                   
+    
                 }
+                else   //No se encuentra al voluntario...
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
+                            "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
                 
             }
         }else

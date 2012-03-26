@@ -41,7 +41,7 @@ public class Gestor_de_voluntarios {
 
         Voluntario vol = ONG.buscarVoluntario(DNI);
         
-        
+
         return (vol != null);
     }
     
@@ -60,10 +60,10 @@ public class Gestor_de_voluntarios {
        
         boolean confirma=false;
         
-        System.out.println("Voy a ver si existe el voluntario con dni:"+voluntarioDNI);
+        
         
         boolean existe = Gestor_de_voluntarios.comprobarExistenciaVoluntario( (String)voluntarioDNI );
-        System.out.println("Exite:"+existe);
+        
         if(existe)
         {
             boolean existe1 = comprobarExistenciaVoluntario(DNI);
@@ -100,7 +100,7 @@ public class Gestor_de_voluntarios {
         //pongo por defecto los campos: Activo=1, FechaDesac=0/0/0, FechaInicio=fecha_actual
         
         
-        Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, 1, new Date(0,0,0), email, telf, 
+        Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, 1, null, email, telf, 
                                         nacionalidad, direccion, codPost, new Date(), obs );
         
         ONG.agregarNuevoVoluntario(v);
