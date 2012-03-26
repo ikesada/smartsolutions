@@ -41,37 +41,4 @@ public abstract class Usuarios {
         this.Telefono = Telefono;
     }
     */
-    
-    /*-----------------------------Desactivar----------------------------------*/
-    public void desactivarUsuario(Date fecha_desactivacion){
-        /*Modificamos los datos del objeto*/
-        this.Activo = 0;
-        this.FechaDesac = fecha_desactivacion;
-        
-        /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(FechaDesac.getTime());
-
-        ConexionBD con = new ConexionBD();
-        con.conectarBD();
-        try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
-            
-            /* Desactivamos el usuario y actualizamos fecha de Baja*/
-            instruccion.executeUpdate("UPDATE Usuario SET Activo = " + Activo + ", Fecha_Desactivacion = \""
-                    +fecha_Desac+"\" WHERE NIF_CIF = \"" + NIF_CIF + "\"");
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
-    }
 }
