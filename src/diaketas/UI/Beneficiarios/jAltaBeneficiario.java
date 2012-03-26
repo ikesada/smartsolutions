@@ -642,6 +642,8 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                     Apellidos.getText(),
                     Fecha_Nac,
                     Localidad.getText(),
+                    1,
+                    null,
                     Email.getText(),
                     (Telefono.getText().compareTo("         ")==0? 0 : Integer.parseInt(Telefono.getText())),
                     Nacionalidad.getText(),
