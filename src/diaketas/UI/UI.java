@@ -68,8 +68,7 @@ public class UI extends javax.swing.JFrame {
         jPrincipalScroll = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(600, 640));
-        setPreferredSize(new java.awt.Dimension(600, 640));
+        setMinimumSize(new java.awt.Dimension(800, 900));
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 

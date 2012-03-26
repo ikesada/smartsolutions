@@ -358,8 +358,6 @@ public class ONG {
     }
     
     
-    
-    
     static public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
