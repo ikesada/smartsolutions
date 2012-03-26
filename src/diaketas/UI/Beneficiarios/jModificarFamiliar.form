@@ -28,14 +28,19 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Nombre_Apellidos" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Fecha_Nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Ocupacion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Parentesco" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="botonOK" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="botonCancel" min="-2" max="-2" attributes="0"/>
+                              <Component id="Nombre_Apellidos" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Fecha_Nacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Ocupacion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Parentesco" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="botonOK" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="botonCancel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -118,6 +123,7 @@
     <Component class="javax.swing.JTextField" name="Nombre_Apellidos">
       <Properties>
         <Property name="columns" type="int" value="30"/>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Nombre_ApellidosKeyTyped"/>
