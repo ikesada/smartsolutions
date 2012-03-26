@@ -323,17 +323,17 @@ public class Gestor_de_beneficiarios {
         datosBeneficiario = ONG.buscarBeneficiario(NIF_Beneficiario);  
 
          /*Buscamos el familiar cuyo nombre se indica*/
-        Familiar familiar = buscarFamiliar(Nombre_Apellidos);
+        datosFamiliar = buscarFamiliar(Nombre_Apellidos);
 
         /*Obtenemos los datos que faltan, parentesco*/
-        Parentesco parentescoFamiliar = familiar.obtenerDatosFamiliar();
+        Parentesco parentescoFamiliar = obtenerDatosFamiliar();
 
         /*Agrupamos los datos del familiar para proceder al envio
             1. Fatos del familiar
             2. Parentesco con el beneficiario
             */
         ArrayList datos_Familiar = new ArrayList();
-        datos_Familiar.add(familiar);
+        datos_Familiar.add(datosFamiliar);
         datos_Familiar.add(parentescoFamiliar);
 
         return datos_Familiar;
@@ -348,10 +348,10 @@ public class Gestor_de_beneficiarios {
         datosBeneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
         
         /*Buscamos el familiar*/
-        Familiar familiar = buscarFamiliar(Nombre_Apellidos);
+        datosFamiliar = buscarFamiliar(Nombre_Apellidos);
         
         /*Cambiar datos Familiar */
-        familiar.cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
+        cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
                 nuevosDatosFamiliar.Ocupacion, parentesco);
     }
 
@@ -359,7 +359,85 @@ public class Gestor_de_beneficiarios {
         datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
         parentesco = Parentesco;
     }
- 
+
+        /*------------------------------Modificadores------------------------------*/
+    static private void cambiarDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion, String Parentesco){
+        /*Modificamos los datos del objeto*/
+        datosFamiliar.Nombre_Apellidos = Nombre_Apellidos;
+        datosFamiliar.Fecha_Nacimiento = Fecha_Nacimiento;
+        datosFamiliar.Ocupacion = Ocupacion;
+        
+        /*Convertimos fecha*/
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(Fecha_Nacimiento.getTime());
+
+        con.conectarBD();
+
+        //REVISAR
+         try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            
+            /*Actualizamos Familiar*/
+            instruccion.executeUpdate("UPDATE  Familiar SET Nombre_Apellidos = \""
+                    + Nombre_Apellidos + "\", Fecha_Nacimiento = \""+fecha_Nacimiento+"\", Ocupacion = \""
+                    + Ocupacion + "\" WHERE Cod_Familiar = " + datosFamiliar.Cod_Familiar);
+            
+            /*Actualizamos Parentesco*/
+            instruccion.executeUpdate("UPDATE  Parentesco SET Parentesco = \""
+                    + Parentesco + "\" WHERE Cod_Familiar = " + datosFamiliar.Cod_Familiar + " and "
+                    + "DNI_CIF = \""+Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF+"\"");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+        /*------------------------------Acceso-------------------------------------*/
+    static private Parentesco obtenerDatosFamiliar(){
+        con.conectarBD();
+        
+        Parentesco parentesco = null;
+
+        //REVISAR
+         try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            
+            /*Obtenemos el parentesco del familiar con respecto al beneficiario*/
+            ResultSet rs = instruccion.executeQuery("Select p.Parentesco from Parentesco p WHERE "
+                    + "DNI_CIF = \""+Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF+"\" and "
+                    + " Cod_Familiar="+datosFamiliar.Cod_Familiar);
+         
+            if (rs.next()){
+                parentesco = new Parentesco(datosFamiliar.Cod_Familiar,
+                        Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF,rs.getString(1));
+            }
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return parentesco;
+    }
+    
+    
     static public Familiar buscarFamiliar(String Nombre_Apellidos){
         con.conectarBD();
         Familiar familiar = null;
