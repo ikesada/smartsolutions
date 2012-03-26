@@ -8,7 +8,6 @@ import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import diaketas.Usuarios.Beneficiario.Beneficiario;
 import diaketas.Usuarios.Beneficiario.Familiar;
-import diaketas.Usuarios.Beneficiario.Parentesco;
 import diaketas.Usuarios.Donante.Donante;
 import diaketas.Usuarios.Voluntario.Voluntario;
 import java.sql.ResultSet;
