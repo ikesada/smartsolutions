@@ -248,6 +248,9 @@
       <Properties>
         <Property name="columns" type="int" value="20"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LocalidadKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonCancel">
       <Properties>
@@ -274,6 +277,9 @@
         </Property>
         <Property name="columns" type="int" value="9"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NIF_VoluntarioKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel20">
       <Properties>
@@ -284,6 +290,9 @@
       <Properties>
         <Property name="columns" type="int" value="30"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ApellidosKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
@@ -299,6 +308,9 @@
       <Properties>
         <Property name="columns" type="int" value="20"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NombreKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -309,6 +321,9 @@
       <Properties>
         <Property name="columns" type="int" value="9"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NIF_CIFKeyTyped"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
@@ -322,6 +337,9 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ObservacionesKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -329,6 +347,9 @@
       <Properties>
         <Property name="columns" type="int" value="9"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TelefonoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="Fecha_Nacimiento">
       <Properties>
@@ -351,7 +372,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EmailKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
@@ -372,6 +393,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Periodicidad_Donaciones">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Periodicidad_DonacionesKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
@@ -394,6 +418,10 @@
       <Properties>
         <Property name="columns" type="int" value="9"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Cuantia_DonacionesKeyReleased"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Cuantia_DonacionesKeyTyped"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
