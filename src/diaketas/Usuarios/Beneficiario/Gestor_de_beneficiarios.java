@@ -85,16 +85,47 @@ public class Gestor_de_beneficiarios {
     static private void eliminarBeneficiario(String DNI){
 
         /*Obtenemos el beneficiario*/
-        Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);  
+        datosBeneficiario = ONG.buscarBeneficiario(DNI);  
 
         /*Desactivamos al usuario*/
-        beneficiario.desactivarUsuario(new Date());
+        desactivarUsuario(new Date());
     }
   
+    static private void desactivarUsuario(Date fecha_desactivacion){
+        /*Modificamos los datos del objeto*/
+        datosBeneficiario.Activo = 0;
+        datosBeneficiario.FechaDesac = fecha_desactivacion;
+        
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(datosBeneficiario.FechaDesac.getTime());
+
+        con.conectarBD();
+        try {
+            instruccion = (Statement) con.conexion().createStatement();
+            
+            /* Desactivamos el usuario y actualizamos fecha de Baja*/
+            instruccion.executeUpdate("UPDATE Usuario SET Activo = " + datosBeneficiario.Activo + ", Fecha_Desactivacion = \""
+                    +fecha_Desac+"\" WHERE NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\"");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }         
+    }
+        
     static private void modificarBeneficiario(Beneficiario datosBeneficiario){
         
         /*Buscamos beneficiario*/
-        Beneficiario beneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        datosBeneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /*Modificamos sus datos*/
         cambiarDatosBeneficiario(datosBeneficiario);
@@ -360,7 +391,6 @@ public class Gestor_de_beneficiarios {
         parentesco = Parentesco;
     }
 
-        /*------------------------------Modificadores------------------------------*/
     static private void cambiarDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion, String Parentesco){
         /*Modificamos los datos del objeto*/
         datosFamiliar.Nombre_Apellidos = Nombre_Apellidos;
@@ -374,7 +404,7 @@ public class Gestor_de_beneficiarios {
 
         //REVISAR
          try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
+            instruccion = (Statement) con.conexion().createStatement();
             
             /*Actualizamos Familiar*/
             instruccion.executeUpdate("UPDATE  Familiar SET Nombre_Apellidos = \""
@@ -409,7 +439,7 @@ public class Gestor_de_beneficiarios {
 
         //REVISAR
          try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
+            instruccion = (Statement) con.conexion().createStatement();
             
             /*Obtenemos el parentesco del familiar con respecto al beneficiario*/
             ResultSet rs = instruccion.executeQuery("Select p.Parentesco from Parentesco p WHERE "
@@ -444,7 +474,7 @@ public class Gestor_de_beneficiarios {
 
         
         try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
+            instruccion = (Statement) con.conexion().createStatement();
             ResultSet rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p "
                     + "WHERE p.Cod_Familiar = f.Cod_Familiar and p.DNI_CIF = \""
                     + datosBeneficiario.NIF_CIF+"\" and f.Nombre_Apellidos =\""+Nombre_Apellidos+"\"");
@@ -479,7 +509,7 @@ public class Gestor_de_beneficiarios {
         Familiar familiar = buscarFamiliar(Nombre_Apellidos);
         con.conectarBD();
         try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
+            instruccion = (Statement) con.conexion().createStatement();
             ResultSet rs = instruccion.executeQuery("Select Parentesco From Parentesco p "
                     + "WHERE p.Cod_Familiar = \""+ familiar.Cod_Familiar+"\" and p.DNI_CIF = \""
                     + datosBeneficiario.NIF_CIF+"\"");
@@ -512,7 +542,7 @@ public class Gestor_de_beneficiarios {
 
         
         try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
+            instruccion = (Statement) con.conexion().createStatement();
             ResultSet rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p"
                     + " WHERE f.Cod_Familiar = p.Cod_Familiar and DNI_CIF = \""+ datosBeneficiario.NIF_CIF+"\"");
          
