@@ -119,7 +119,7 @@ public class Gestor_de_voluntarios {
         Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
         
         //Se guarda la accion en el sistema
-        ONG.agregarAccion(ac);
+     //   ONG.agregarAccion(ac);
     }
     
     
