@@ -37,14 +37,14 @@ public class jAltaDonante extends javax.swing.JPanel {
         ConexionBD con;
         Statement s;
         ResultSet rs;
-        
+
         //Me conecto a la BD
         con = new ConexionBD();
         con.conectarBD();
 
         //Para ejecutar la consulta
 
-         try {
+        try {
             //Crear objeto Statement para realizar queries a la base de datos
             s = con.conexion().createStatement();
 
@@ -79,8 +79,7 @@ public class jAltaDonante extends javax.swing.JPanel {
 
         } catch (Exception e) {
             System.out.println(e);
-        }
-         finally {
+        } finally {
             if (con.hayConexionBD()) {
                 try {
                     con.desconectarBD();
@@ -88,7 +87,7 @@ public class jAltaDonante extends javax.swing.JPanel {
                     Logger.getLogger(jAltaDonante.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-         }
+        }
 
 
 
@@ -413,20 +412,22 @@ public class jAltaDonante extends javax.swing.JPanel {
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
 
-        if (NIF_CIF.getText().compareTo("") == 0)
+        if (NIF_CIF.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del donante no se ha introducido.", "NIF Donante", JOptionPane.ERROR_MESSAGE);
-        else if (Nombre.getText().compareTo("") == 0)
+        } else if (Nombre.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El nombre del donante no se ha introducido.", "Nombre Donante", JOptionPane.ERROR_MESSAGE);
-        else if (Apellidos.getText().compareTo("") == 0)
+        } else if (Apellidos.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Los apellidos del donante no se han introducido.", "Apellidos Donante", JOptionPane.ERROR_MESSAGE);
-        else if (NIF_Voluntario.getText().compareTo("") == 0){
+        } else if (NIF_Voluntario.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-       } else {
+        } else if (!ValidarCampos.isEmail(Email.getText())) {
+            JOptionPane.showMessageDialog(this, "El Email no es correcto", "Error en el Email", JOptionPane.ERROR_MESSAGE);
+        } else {
             /*
-             * Si no se introducen los campos Telefono o el Tipo_Periodicidad es ninguno,
-             * se rellenan a 0-Null
+             * Si no se introducen los campos Telefono o el Tipo_Periodicidad es
+             * ninguno, se rellenan a 0-Null
              */
-            if (Telefono.getText().compareTo("         ")==0) {
+            if (Telefono.getText().compareTo("         ") == 0) {
                 Telefono.setText("0");
             }
             //Si la periodicidad es ninguna, no nos interesan la cuantia y el tiempo
@@ -434,8 +435,8 @@ public class jAltaDonante extends javax.swing.JPanel {
                 Cuantia_Donaciones.setText("0");
                 Periodicidad_Donaciones.setText("0");
             }
-            
-            
+
+
 
             /*
              * Conversion de la fecha
@@ -456,81 +457,84 @@ public class jAltaDonante extends javax.swing.JPanel {
                     Email.getText(), Integer.parseInt(Telefono.getText()), (String) Tipo_Donante.getSelectedItem(), new Date(), Observaciones.getText(), Integer.parseInt(Periodicidad_Donaciones.getText()),
                     Double.parseDouble(Cuantia_Donaciones.getText()), (String) Tipo_Periodicidad.getSelectedItem(), NIF_Voluntario.getText());
 
-            if(correcto){
+            if (correcto) {
                 Gestor_de_donantes.confirmarFinAlta();
-            }else{
-                 JOptionPane.showMessageDialog(this, "No se han podido realizar la inserccion de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se han podido realizar la inserccion de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-                /*
+            /*
              * Actualizamos la pantalla principal
              */
             UI.cl.show(UI.jPrincipal, "Socios");
-        
+
         }
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyTyped
-        if (NIF_CIF.getText().length()==9)
+        if (NIF_CIF.getText().length() == 9) {
             evt.consume();
+        }
     }//GEN-LAST:event_NIF_CIFKeyTyped
 
     private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
-        if (Nombre.getText().length()==20)
+        if (Nombre.getText().length() == 20) {
             evt.consume();
+        }
     }//GEN-LAST:event_NombreKeyTyped
 
     private void ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosKeyTyped
-        if (Apellidos.getText().length()==30)
+        if (Apellidos.getText().length() == 30) {
             evt.consume();
+        }
     }//GEN-LAST:event_ApellidosKeyTyped
 
     private void EmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyTyped
-        if (Email.getText().length()==30)
+        if (Email.getText().length() == 30) {
             evt.consume();
+        }
     }//GEN-LAST:event_EmailKeyTyped
 
     private void LocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LocalidadKeyTyped
-        if (Localidad.getText().length()==20)
+        if (Localidad.getText().length() == 20) {
             evt.consume();
+        }
     }//GEN-LAST:event_LocalidadKeyTyped
 
     private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
-        if (NIF_Voluntario.getText().length()==9)
+        if (NIF_Voluntario.getText().length() == 9) {
             evt.consume();
+        }
     }//GEN-LAST:event_NIF_VoluntarioKeyTyped
 
     private void Periodicidad_DonacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Periodicidad_DonacionesKeyTyped
-        if (Periodicidad_Donaciones.getText().length()==5)
+        if (Periodicidad_Donaciones.getText().length() == 5) {
             evt.consume();
+        }
     }//GEN-LAST:event_Periodicidad_DonacionesKeyTyped
 
     private void Cuantia_DonacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cuantia_DonacionesKeyTyped
-        if (Cuantia_Donaciones.getText().length()==9)
+        if (Cuantia_Donaciones.getText().length() == 9) {
             evt.consume();
+        }
     }//GEN-LAST:event_Cuantia_DonacionesKeyTyped
 
     private void ObservacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObservacionesKeyTyped
-        if (Observaciones.getText().length()==100)
+        if (Observaciones.getText().length() == 100) {
             evt.consume();
+        }
     }//GEN-LAST:event_ObservacionesKeyTyped
 
-    
-    
     private void Cuantia_DonacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cuantia_DonacionesKeyReleased
-        if(!ValidarCampos.isDouble(Cuantia_Donaciones.getText())){
+        if (!ValidarCampos.isDouble(Cuantia_Donaciones.getText())) {
             JOptionPane.showMessageDialog(this, "La cantidad debe ser un numero", "Error en la cantidad", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_Cuantia_DonacionesKeyReleased
 
     private void TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyReleased
-        if(!ValidarCampos.isInteger(Cuantia_Donaciones.getText())){
+        if (!ValidarCampos.isInteger(Cuantia_Donaciones.getText())) {
             JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_TelefonoKeyReleased
-
-   
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Cuantia_Donaciones;
