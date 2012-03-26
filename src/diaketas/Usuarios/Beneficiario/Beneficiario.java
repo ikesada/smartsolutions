@@ -109,96 +109,13 @@ public class Beneficiario extends Usuarios{
         this.Profesion = datosBeneficiario.Profesion;
         this.Experiencia_Laboral = datosBeneficiario.Experiencia_Laboral;
      }
-    /*--------------------Modificadores Beneficiario---------------------------*/
-    public void cambiarDatosBeneficiario (Beneficiario datosBeneficiario){
-    
-        this.Nacionalidad = datosBeneficiario.Nacionalidad;
-        this.Estado_civil = datosBeneficiario.Estado_civil;
-        this.Domicilio = datosBeneficiario.Domicilio;
-        this.Codigo_Postal = datosBeneficiario.Codigo_Postal;
-        this.Fecha_Inscripcion = datosBeneficiario.Fecha_Inscripcion;
-        this.Expediente = datosBeneficiario.Expediente;
-        this.Motivo = datosBeneficiario.Motivo;
-        this.NIF_CIF = datosBeneficiario.NIF_CIF;
-        this.Nombre = datosBeneficiario.Nombre;
-        this.Apellidos = datosBeneficiario.Apellidos;
-        this.FechaNac = datosBeneficiario.FechaNac;
-        this.Localidad = datosBeneficiario.Localidad;
-        this.Activo = datosBeneficiario.Activo;
-        this.FechaDesac = datosBeneficiario.FechaDesac;
-        this.Email = datosBeneficiario.Email;
-        this.Telefono = datosBeneficiario.Telefono;
-        this.Precio_Vivienda = datosBeneficiario.Precio_Vivienda;
-        this.Tipo_Vivienda = datosBeneficiario.Tipo_Vivienda;
-        this.Observaciones_Datos_Personales = datosBeneficiario.Observaciones_Datos_Personales;
-        this.Observaciones_Familiares = datosBeneficiario.Observaciones_Familiares;
-        this.Observaciones_Vivienda = datosBeneficiario.Observaciones_Vivienda;
-        this.Ciudad_Nacimiento = datosBeneficiario.Ciudad_Nacimiento;
-        this.Situacion_Economica = datosBeneficiario.Situacion_Economica;
-        this.Nivel_Estudios = datosBeneficiario.Nivel_Estudios;
-        this.Profesion = datosBeneficiario.Profesion;
-        this.Experiencia_Laboral = datosBeneficiario.Experiencia_Laboral;
-        
-        /* Actualizamos los datos */
-        con.conectarBD();
-
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(this.FechaNac.getTime());
-        
-        try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
-
-            instruccion.executeUpdate("Update Usuario SET "
-                    + "NIF_CIF = \"" + this.NIF_CIF + "\", "
-                    + "Nombre = \"" + this.Nombre + "\", "                    
-                    + "Apellidos = \"" + this.Apellidos + "\", "                    
-                    + "Fecha_Nacimiento_Fundacion = \"" + fecha_Nacimiento + "\", "                    
-                    + "Localidad = \"" + this.Localidad + "\", "
-                    + "Email = \"" + this.Email + "\", "
-                    + "Telefono = \"" + this.Telefono + "\""
-                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
-         
-            instruccion.executeUpdate("Update Beneficiario SET "
-                    + "NIF_CIF = \"" + this.NIF_CIF + "\", "
-                    + "Nacionalidad = \"" + this.Nacionalidad + "\", "                    
-                    + "Estado_Civil = \"" + this.Estado_civil + "\", "                    
-                    + "Domicilio = \"" + this.Domicilio + "\", "                    
-                    + "Codigo_Postal = " + this.Codigo_Postal + ", "
-                    + "Expediente = " + this.Expediente + ", "
-                    + "Motivo = \"" + this.Motivo + "\", "                  
-                    + "Precio_Vivienda = " + this.Precio_Vivienda + ", "
-                    + "Tipo_Vivienda = \"" + this.Tipo_Vivienda + "\""
-                    + "Observaciones_Datos_Personales = \"" + this.Observaciones_Datos_Personales + "\""
-                    + "Observaciones_Familiares = \"" + this.Observaciones_Familiares + "\""
-                    + "Observaciones_Vivienda = \"" + this.Observaciones_Vivienda + "\""
-                    + "Ciudad_Nacimiento = \"" + this.Ciudad_Nacimiento + "\""
-                    + "Situacion_Economica = \"" + this.Situacion_Economica + "\""
-                    + "Nivel_Estudios = \"" + this.Nivel_Estudios + "\""
-                    + "Profesion = \"" + this.Profesion + "\""
-                    + "Experiencia_Laboral = \"" + this.Experiencia_Laboral + "\""
-                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }     
-        
-    }
     
     
     /*----------------------------Familiares-----------------------------------*/
     public Familiar buscarFamiliar(String Nombre_Apellidos){
         con.conectarBD();
         Familiar familiar = null;
-        //RETOCAR DNI_CIF
+
         
         try {
             Statement instruccion = (Statement) con.conexion().createStatement();
@@ -228,6 +145,39 @@ public class Beneficiario extends Usuarios{
         }     
         
         return familiar;        
+    }
+    
+    public Parentesco buscarParentesco(String Nombre_Apellidos){
+        Parentesco parentesco = null;
+        
+        Familiar familiar = buscarFamiliar(Nombre_Apellidos);
+        con.conectarBD();
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            ResultSet rs = instruccion.executeQuery("Select Parentesco From Parentesco p "
+                    + "WHERE p.Cod_Familiar = \""+ familiar.Cod_Familiar+"\" and p.DNI_CIF = \""
+                    + this.NIF_CIF+"\"");
+         
+            if (rs.next()){
+                /*Creamos un familiar con los datos*/
+                parentesco = new Parentesco (familiar.Cod_Familiar,this.NIF_CIF,rs.getString(1));
+            }
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        return parentesco;
     }
     
     public ArrayList<Familiar> consultarFamiliares(){
