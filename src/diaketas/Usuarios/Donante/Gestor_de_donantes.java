@@ -6,6 +6,7 @@ package diaketas.Usuarios.Donante;
 
 import diaketas.ConexionBD;
 import diaketas.Usuarios.Accion;
+import diaketas.Usuarios.Historial.Gestor_de_historiales;
 import diaketas.Usuarios.ONG;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -121,12 +122,7 @@ public class Gestor_de_donantes {
         return ONG.buscarDonante(datosDonante.NIF_CIF);
     }
 
-    static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo) {
-        Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
-        ONG.agregarAccion(ac);
-    }
-
-    public static void confirmarFinAlta() {
+        public static void confirmarFinAlta() {
 
         /*
          * Crear Donante
@@ -145,7 +141,7 @@ public class Gestor_de_donantes {
         /*
          * Registrar Operacion
          */
-        Gestor_de_donantes.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
+        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
     }
 
     public static Boolean comprobarDniDonante(String NIF_CIF) {
@@ -220,7 +216,7 @@ public class Gestor_de_donantes {
         /*
          * Registrar Operacion
          */
-        Gestor_de_donantes.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
+        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
         
     }
     
@@ -261,7 +257,7 @@ public class Gestor_de_donantes {
         /*
          * Registrar Operacion
          */
-        Gestor_de_donantes.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
+        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
         
         //datosDonante.desactivarUsuario(new Date());
         

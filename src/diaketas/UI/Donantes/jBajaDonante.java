@@ -154,9 +154,10 @@ public class jBajaDonante extends javax.swing.JPanel {
                     
                     botonCancel.setVisible(false);
                     NIF_Voluntario.setVisible(false);
+                    jLabel2.setText("El beneficiario ha sido dado de baja correctamente.");
                     jLabel4.setVisible(false);
                     fase = 2;
-                    botonCancel.setVisible(false);
+       
                     
                     Gestor_de_donantes.confirmarFinBaja();
                 }
