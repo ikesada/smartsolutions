@@ -4,6 +4,7 @@
  */
 package diaketas.UI.Beneficiarios;
 
+import ValidarCampos.ValidarCampos;
 import diaketas.ConexionBD;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
@@ -113,9 +114,9 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
-        Precio_Vivienda = new javax.swing.JFormattedTextField();
-        Telefono = new javax.swing.JFormattedTextField();
-        Codigo_Postal = new javax.swing.JFormattedTextField();
+        Precio_Vivienda = new javax.swing.JTextField();
+        Telefono = new javax.swing.JTextField();
+        Codigo_Postal = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         Ciudad_Nacimiento = new javax.swing.JTextField();
@@ -143,7 +144,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         Observaciones_Familiares = new javax.swing.JTextArea();
         Observaciones_Vivienda_SB = new javax.swing.JScrollPane();
         Observaciones_Vivienda = new javax.swing.JTextArea();
-        Expediente = new javax.swing.JFormattedTextField();
+        Expediente = new javax.swing.JTextField();
 
         jLabel9.setText("Domicilio");
 
@@ -260,21 +261,31 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             }
         });
 
-        Precio_Vivienda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        Precio_Vivienda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Precio_ViviendaKeyReleased(evt);
+            }
+        });
 
         Telefono.setColumns(9);
-        try {
-            Telefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TelefonoKeyReleased(evt);
+            }
+        });
 
         Codigo_Postal.setColumns(9);
-        try {
-            Codigo_Postal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        Codigo_Postal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Codigo_PostalKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Codigo_PostalKeyReleased(evt);
+            }
+        });
 
         jLabel40.setText("Expediente");
 
@@ -375,7 +386,14 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         Observaciones_Vivienda_SB.setViewportView(Observaciones_Vivienda);
 
         Expediente.setColumns(9);
-        Expediente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        Expediente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ExpedienteKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ExpedienteKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -621,9 +639,11 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El NIF del beneficiario no se ha introducido.", "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
         else if (Nombre.getText().compareTo("") == 0)
             JOptionPane.showMessageDialog(this, "El nombre del beneficiario no se ha introducido.", "Nombre Beneficiario", JOptionPane.ERROR_MESSAGE);
-        else if (NIF_Voluntario.getText().compareTo("") == 0){
+        else if (NIF_Voluntario.getText().compareTo("") == 0)
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-        }else{
+        else if (Email.getText().compareTo("") != 0 && !ValidarCampos.isEmail(Email.getText()))
+            JOptionPane.showMessageDialog(this, "El Email del beneficiario no es correcto.", "Email Beneficiario", JOptionPane.ERROR_MESSAGE);
+        else{
             
             /*Conversion de la fecha*/
             Date Fecha_Nac = null;
@@ -645,13 +665,13 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                     1,
                     null,
                     Email.getText(),
-                    (Telefono.getText().compareTo("         ")==0? 0 : Integer.parseInt(Telefono.getText())),
+                    (Telefono.getText().compareTo("")==0? 0 : Integer.parseInt(Telefono.getText())),
                     Nacionalidad.getText(),
                     (String)Estado_Civil.getSelectedItem(),
                     Domicilio.getText(),
-                    (Codigo_Postal.getText().compareTo("     ")==0? 0 : Integer.parseInt(Codigo_Postal.getText())),
+                    (Codigo_Postal.getText().compareTo("")==0? 0 : Integer.parseInt(Codigo_Postal.getText())),
                     new Date(),
-                    (Expediente.getText().compareTo("         ")==0? 0 : Integer.parseInt(Expediente.getText())),
+                    (Expediente.getText().compareTo("")==0? 0 : Integer.parseInt(Expediente.getText())),
                     Motivo.getText(),
                     (Precio_Vivienda.getText().compareTo("")==0? 0.0 : Double.parseDouble(Precio_Vivienda.getText())),
                     Tipo_Vivienda.getText(),
@@ -665,8 +685,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                     Experiencia_Laboral.getText(),
                     NIF_Voluntario.getText());
  
-            //REVISAR CORRECTO DEBE FUNCIONAR
-            correcto = true;
+
             /* 2. finalizar() */
             if (correcto == true){
                 /* 3. ConfirmarAltaBeneficiario()*/
@@ -773,14 +792,53 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
             evt.consume();
     }//GEN-LAST:event_Situacion_EconomicaKeyTyped
 
+    private void TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyReleased
+        if (!ValidarCampos.isInteger(Telefono.getText())) {
+            JOptionPane.showMessageDialog(this, "El telefono debe de ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_TelefonoKeyReleased
+
+    private void Codigo_PostalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Codigo_PostalKeyReleased
+        if (!ValidarCampos.isInteger(Codigo_Postal.getText())) {
+            JOptionPane.showMessageDialog(this, "El codigo postal debe de ser un numero", "Error en el codigo postal", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_Codigo_PostalKeyReleased
+
+    private void Codigo_PostalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Codigo_PostalKeyTyped
+        if (Codigo_Postal.getText().length()==5)
+            evt.consume();
+    }//GEN-LAST:event_Codigo_PostalKeyTyped
+
+    private void TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyTyped
+        if (Telefono.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_TelefonoKeyTyped
+
+    private void ExpedienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ExpedienteKeyTyped
+        if (Expediente.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_ExpedienteKeyTyped
+
+    private void ExpedienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ExpedienteKeyReleased
+        if (!ValidarCampos.isInteger(Expediente.getText())) {
+            JOptionPane.showMessageDialog(this, "El expediente debe de ser un numero", "Error en el expediente", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_ExpedienteKeyReleased
+
+    private void Precio_ViviendaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Precio_ViviendaKeyReleased
+        if (!ValidarCampos.isDouble(Precio_Vivienda.getText())) {
+            JOptionPane.showMessageDialog(this, "El precio de la vivienda debe de ser un numero", "Error en el precio de la vivienda", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_Precio_ViviendaKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Ciudad_Nacimiento;
-    private javax.swing.JFormattedTextField Codigo_Postal;
+    private javax.swing.JTextField Codigo_Postal;
     private javax.swing.JTextField Domicilio;
     private javax.swing.JTextField Email;
     private javax.swing.JComboBox Estado_Civil;
-    private javax.swing.JFormattedTextField Expediente;
+    private javax.swing.JTextField Expediente;
     private javax.swing.JTextArea Experiencia_Laboral;
     private javax.swing.JScrollPane Experiencia_Laboral_SB;
     private javax.swing.JFormattedTextField Fecha_Nacimiento;
@@ -797,10 +855,10 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
     private javax.swing.JScrollPane Observaciones_Familiares_SB;
     private javax.swing.JTextArea Observaciones_Vivienda;
     private javax.swing.JScrollPane Observaciones_Vivienda_SB;
-    private javax.swing.JFormattedTextField Precio_Vivienda;
+    private javax.swing.JTextField Precio_Vivienda;
     private javax.swing.JTextField Profesion;
     private javax.swing.JTextField Situacion_Economica;
-    private javax.swing.JFormattedTextField Telefono;
+    private javax.swing.JTextField Telefono;
     private javax.swing.JTextField Tipo_Vivienda;
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
