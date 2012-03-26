@@ -55,6 +55,11 @@ public class jBajaDonante extends javax.swing.JPanel {
         jLabel2.setText("DNI/NIF del donante");
 
         NIF_CIF.setColumns(9);
+        NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_CIFKeyTyped(evt);
+            }
+        });
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +79,11 @@ public class jBajaDonante extends javax.swing.JPanel {
 
         NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_Voluntario.setColumns(9);
+        NIF_Voluntario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_VoluntarioKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -170,6 +180,16 @@ public class jBajaDonante extends javax.swing.JPanel {
             UI.cl.show(UI.jPrincipal, "Socios");
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
+
+    private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyTyped
+        if (NIF_CIF.getText().length()==9)
+            evt.consume();        
+    }//GEN-LAST:event_NIF_CIFKeyTyped
+
+    private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
+        if (NIF_CIF.getText().length()==9)
+            evt.consume(); 
+    }//GEN-LAST:event_NIF_VoluntarioKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_CIF;

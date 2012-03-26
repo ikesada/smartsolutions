@@ -53,6 +53,11 @@ public class jBuscarDonante extends javax.swing.JPanel {
         jLabel2.setText("NIF");
 
         NIF_CIF.setColumns(9);
+        NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_CIFKeyTyped(evt);
+            }
+        });
 
         botonConsultar.setText("Consultar");
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +143,11 @@ public class jBuscarDonante extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
+
+    private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyTyped
+        if (NIF_CIF.getText().length()==9)
+            evt.consume(); 
+    }//GEN-LAST:event_NIF_CIFKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_CIF;

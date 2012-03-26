@@ -111,7 +111,7 @@ public class Beneficiario extends Usuarios{
      }
     
     
-    /*----------------------------Familiares-----------------------------------*/
+    /*----------------------------Familiares-----------------------------------
     public Familiar buscarFamiliar(String Nombre_Apellidos){
         con.conectarBD();
         Familiar familiar = null;
@@ -124,16 +124,16 @@ public class Beneficiario extends Usuarios{
                     + this.NIF_CIF+"\" and f.Nombre_Apellidos =\""+Nombre_Apellidos+"\"");
          
             if (rs.next()){
-                /*Creamos un familiar con los datos*/
+                /*Creamos un familiar con los datos
                 familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
-                /*Indicamos su Codigo Interno*/
+                /*Indicamos su Codigo Interno
                 familiar.Cod_Familiar = rs.getInt(1);
             }
          }
-         /*Captura de errores*/
+         /*Captura de errores
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
+         /*Desconexión de la BD
          finally {
             if (con.hayConexionBD()) {
                 try {
@@ -159,14 +159,14 @@ public class Beneficiario extends Usuarios{
                     + this.NIF_CIF+"\"");
          
             if (rs.next()){
-                /*Creamos un familiar con los datos*/
+                /*Creamos un familiar con los datos
                 parentesco = new Parentesco (familiar.Cod_Familiar,this.NIF_CIF,rs.getString(1));
             }
          }
-         /*Captura de errores*/
+         /*Captura de errores
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
+         /*Desconexión de la BD
          finally {
             if (con.hayConexionBD()) {
                 try {
@@ -191,18 +191,18 @@ public class Beneficiario extends Usuarios{
                     + " WHERE f.Cod_Familiar = p.Cod_Familiar and DNI_CIF = \""+ this.NIF_CIF+"\"");
          
             while (rs.next()){
-                /*Creamos un familiar con los datos*/
+                /*Creamos un familiar con los datos
                 Familiar familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
-                /*Indicamos su Codigo Interno*/
+                /*Indicamos su Codigo Interno
                 familiar.Cod_Familiar = rs.getInt(1);
-                /*Agregamos a la lista*/
+                /*Agregamos a la lista
                 familiares.add(familiar);
             }
          }
-         /*Captura de errores*/
+         /*Captura de errores
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
+         /*Desconexión de la BD
          finally {
             if (con.hayConexionBD()) {
                 try {
@@ -214,6 +214,6 @@ public class Beneficiario extends Usuarios{
         }     
         
         return familiares;
-    }
+    }*/
 
 }

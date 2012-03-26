@@ -4,6 +4,7 @@
  */
 package diaketas.UI.Donantes;
 
+import ValidarCampos.ValidarCampos;
 import diaketas.ConexionBD;
 import diaketas.UI.UI;
 import diaketas.Usuarios.Donante.Donante;
@@ -173,6 +174,11 @@ public class jModificarDonante extends javax.swing.JPanel {
         jLabel4.setText("Nombre");
 
         Localidad.setColumns(20);
+        Localidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                LocalidadKeyTyped(evt);
+            }
+        });
 
         botonCancel.setText("Cancelar");
         botonCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -187,26 +193,56 @@ public class jModificarDonante extends javax.swing.JPanel {
 
         NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_Voluntario.setColumns(9);
+        NIF_Voluntario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_VoluntarioKeyTyped(evt);
+            }
+        });
 
         jLabel20.setText("NIF Voluntario");
 
         Apellidos.setColumns(30);
+        Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApellidosKeyTyped(evt);
+            }
+        });
 
         jLabel11.setText("Localidad");
 
         jLabel12.setText("Telefono");
 
         Nombre.setColumns(20);
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Apellidos");
 
         NIF_CIF.setColumns(9);
+        NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_CIFKeyTyped(evt);
+            }
+        });
 
         Observaciones.setColumns(20);
         Observaciones.setRows(5);
+        Observaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ObservacionesKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(Observaciones);
 
         Telefono.setColumns(9);
+        Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TelefonoKeyReleased(evt);
+            }
+        });
 
         Fecha_Nacimiento.setColumns(9);
         Fecha_Nacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
@@ -214,15 +250,21 @@ public class jModificarDonante extends javax.swing.JPanel {
 
         jLabel8.setText("Email");
 
-        Email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailActionPerformed(evt);
+        Email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EmailKeyTyped(evt);
             }
         });
 
         jLabel7.setText("Tipo Donante");
 
         jLabel13.setText("Periodicidad Donaciones");
+
+        Periodicidad_Donaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Periodicidad_DonacionesKeyTyped(evt);
+            }
+        });
 
         jLabel17.setText("Tipo Periodicidad");
 
@@ -231,6 +273,14 @@ public class jModificarDonante extends javax.swing.JPanel {
         jLabel18.setText("Cuantia Donaciones");
 
         Cuantia_Donaciones.setColumns(9);
+        Cuantia_Donaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Cuantia_DonacionesKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Cuantia_DonacionesKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -440,9 +490,63 @@ public class jModificarDonante extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "Socios");
     }//GEN-LAST:event_botonCancelActionPerformed
 
-    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EmailActionPerformed
+    private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyTyped
+        if (NIF_CIF.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_NIF_CIFKeyTyped
+
+    private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
+        if (Nombre.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_NombreKeyTyped
+
+    private void ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosKeyTyped
+        if (Apellidos.getText().length()==30)
+            evt.consume();
+    }//GEN-LAST:event_ApellidosKeyTyped
+
+    private void EmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyTyped
+        if (Email.getText().length()==30)
+            evt.consume();
+    }//GEN-LAST:event_EmailKeyTyped
+
+    private void LocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LocalidadKeyTyped
+        if (Localidad.getText().length()==20)
+            evt.consume();
+    }//GEN-LAST:event_LocalidadKeyTyped
+
+    private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
+        if (NIF_Voluntario.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_NIF_VoluntarioKeyTyped
+
+    private void Periodicidad_DonacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Periodicidad_DonacionesKeyTyped
+         if (Periodicidad_Donaciones.getText().length()==5)
+            evt.consume();
+    }//GEN-LAST:event_Periodicidad_DonacionesKeyTyped
+
+    private void Cuantia_DonacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cuantia_DonacionesKeyTyped
+        if (Cuantia_Donaciones.getText().length()==9)
+            evt.consume();
+    }//GEN-LAST:event_Cuantia_DonacionesKeyTyped
+
+    private void ObservacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObservacionesKeyTyped
+        if (Observaciones.getText().length()==100)
+            evt.consume();
+    }//GEN-LAST:event_ObservacionesKeyTyped
+
+    private void TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyReleased
+        if(!ValidarCampos.isInteger(Cuantia_Donaciones.getText())){
+            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_TelefonoKeyReleased
+
+    private void Cuantia_DonacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cuantia_DonacionesKeyReleased
+        if(!ValidarCampos.isDouble(Cuantia_Donaciones.getText())){
+            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_Cuantia_DonacionesKeyReleased
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Cuantia_Donaciones;
