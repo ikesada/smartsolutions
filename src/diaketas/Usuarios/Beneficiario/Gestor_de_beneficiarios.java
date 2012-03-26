@@ -122,13 +122,13 @@ public class Gestor_de_beneficiarios {
         }         
     }
         
-    static private void modificarBeneficiario(Beneficiario datosBeneficiario){
+    static private void modificarBeneficiario(Beneficiario nuevosDatosBeneficiario){
         
         /*Buscamos beneficiario*/
         datosBeneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /*Modificamos sus datos*/
-        cambiarDatosBeneficiario(datosBeneficiario);
+        cambiarDatosBeneficiario(nuevosDatosBeneficiario);
     }
 
     static public void cambiarDatosBeneficiario (Beneficiario datosBeneficiario){
