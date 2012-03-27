@@ -168,11 +168,11 @@ public class UI extends javax.swing.JFrame {
         /*
          * Set the Nimbus look and feel
          */
-        try{
+/*        try{
            UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
-        
+*/        
         /*
          * Create and display the form
          */

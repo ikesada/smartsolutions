@@ -4,6 +4,7 @@
  */
 package diaketas.UI.Diaketas;
 
+import ValidarCampos.ValidarCampos;
 import diaketas.UI.UI;
 import javax.swing.JOptionPane;
 
@@ -419,16 +420,47 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         //el telefono, lo comprobare a la hora de pasarselo como parametro a la funcion, si el campo esta vacio
         //le pasare un int 0 y si tiene algo, lo transformo a int
 
-        int telefonoPasado;
-        if( Telefono.getText().compareTo("")==0 )   //si me pasan una cadena vacia le paso un int=0
+            
+        
+        //ahora compruebo si el formato del email, codigoPostal y telefono es el correcto
+        if(continuar)
         {
-            telefonoPasado = 0;
+            if ( !ValidarCampos.isInteger(CodPost.getText()) )
+            {
+                System.out.println("Codigo postal incorrecto\n");
+                JOptionPane.showMessageDialog(this, "Formato incorrecto para el codigo postal.", "Codigo postal incorrecto", JOptionPane.ERROR_MESSAGE);
+                continuar = false;
+            }
+            else if( !ValidarCampos.isEmail(Email.getText()) )
+            {
+                System.out.println("Email incorrecto\n");
+                JOptionPane.showMessageDialog(this, "Formato incorrecto para el email.", "Email incorrecto", JOptionPane.ERROR_MESSAGE);
+                continuar = false;
+            }
+            
+            else if( !ValidarCampos.isInteger(Telefono.getText()) )
+            {
+                System.out.println("Telefono incorrecto\n");
+                JOptionPane.showMessageDialog(this, "Formato incorrecto para el telefono.", "Telefono incorrecto", JOptionPane.ERROR_MESSAGE);
+                continuar = false;
+            }
         }
-        else
+        
+        int telefonoPasado=0;
+        
+        if(continuar)
         {
-            telefonoPasado = Integer.parseInt(Telefono.getText());
+            
+            if( Telefono.getText().compareTo("")==0 )   //si me pasan una cadena vacia le paso un int=0
+            {
+                telefonoPasado = 0;
+            }
+            else
+            {
+                telefonoPasado = Integer.parseInt(Telefono.getText());
+            }
         }
-      
+        
         if(continuar)   //si todos los datos se han introducido correctamente...
         {
         
