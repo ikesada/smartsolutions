@@ -66,11 +66,11 @@ public class Voluntario extends Usuarios{
     //Modificador de voluntario
     
     //activo, fechaDesac no se pueden modificar, 
-    public boolean cambiarDatosVoluntario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
+    public void cambiarDatosVoluntario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
                                         String Nacionalidad, String Domicilio, int Codigo_Postal, String Obs)
     {
     
-        boolean exito=true;
+//        boolean exito=true;
         
         this.NIF_CIF = NIF_CIF;
         this.Nombre = Nombre;
@@ -98,7 +98,7 @@ public class Voluntario extends Usuarios{
 
             //Primero actualizo la tabla de Usuario
             instruccion.executeUpdate("Update Usuario SET "
-                    + "NIF_CIF = \"" + this.NIF_CIF + "\", "
+                    /*+ "NIF_CIF = \"" + this.NIF_CIF + "\", "*/
                     + "Nombre = \"" + this.Nombre + "\", "                    
                     + "Apellidos = \"" + this.Apellidos + "\", "                    
                     + "Fecha_Nacimiento_Fundacion = \"" + fecha_Nacimiento + "\", "                    
@@ -109,7 +109,7 @@ public class Voluntario extends Usuarios{
          
             //Ahora actualizo la tabla de Voluntario
             instruccion.executeUpdate("Update Voluntario SET "
-                    + "NIF_CIF = \"" + this.NIF_CIF + "\", "
+                    /*+ "NIF_CIF = \"" + this.NIF_CIF + "\", "*/
                     + "Nacionalidad = \"" + this.Nacionalidad + "\", "                    
                                    
                     + "Domicilio = \"" + this.Domicilio + "\", "                    
@@ -117,16 +117,18 @@ public class Voluntario extends Usuarios{
                     + "Observaciones = \"" + this.Observaciones + "\", "
                    
                     + " WHERE NIF_CIF = \""+NIF_CIF+"\"");
+//            exito=true;
+//            System.out.println("Exito:"+exito);
          }
          //Captura de errores
          catch(SQLException e)
          { 
-             exito=false;
+//             exito=false;
              System.out.println(e); 
          }
          catch(Exception e)
          { 
-             exito=false;
+//             exito=false;
              System.out.println(e);
          }
          //Desconexión de la BD
@@ -140,7 +142,7 @@ public class Voluntario extends Usuarios{
             }
         }
         
-        return exito;
+//        return exito;
         
     }
     
