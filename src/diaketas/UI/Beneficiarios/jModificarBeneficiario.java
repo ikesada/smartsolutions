@@ -37,45 +37,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         
         /*Iniciamos la interfaz*/
         initComponents();
-        
-        /*Rellenamos las listas de opciones de forma dinamica*/
-        ConexionBD con = new ConexionBD();
-        Statement s;
-        ResultSet rs;
-        try {
-
-            con.conectarBD();
-            
-            //Crear objeto Statement para realizar queries a la base de datos
-            s = con.conexion().createStatement();
-
-            rs = s.executeQuery("SHOW COLUMNS FROM Beneficiario where Field = 'Estado_Civil'");
-
-            while (rs.next()) {
-                Object[] fila = new Object[3];
-                fila[0] = rs.getObject(2);
-                String[] tokens = (fila[0].toString()).split("'");
-                for (int i = 0; i < tokens.length; i++) {
-                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
-                        Estado_Civil.addItem(tokens[i]);
-                    }
-                }
-
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-         }
-        
-        
+               
         
         /*Mostramos los datos de beneficiario*/
         NIF.setText(datosBeneficiario.NIF_CIF);
@@ -256,6 +218,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         });
 
         Estado_Civil.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Estado_Civil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Casado", "Divorciado", "Soltero", "Viudo" }));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -363,13 +326,9 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel40.setText("Expediente");
 
         Codigo_Postal.setColumns(9);
-
         Codigo_Postal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Codigo_PostalKeyTyped(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Codigo_PostalKeyReleased(evt);
             }
         });
 
@@ -377,9 +336,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TelefonoKeyTyped(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                TelefonoKeyReleased(evt);
             }
         });
 
@@ -422,9 +378,9 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setText("Situación economica");
 
-        Precio_Vivienda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Precio_ViviendaKeyReleased(evt);
+        Expediente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ExpedienteKeyTyped(evt);
             }
         });
 
@@ -724,6 +680,14 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         else if (Email.getText().compareTo("") != 0 && !ValidarCampos.isEmail(Email.getText()))
             JOptionPane.showMessageDialog(this, "El Email del beneficiario no es correcto.", "Email Beneficiario", JOptionPane.ERROR_MESSAGE);
+        else if (Codigo_Postal.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Codigo_Postal.getText()))
+            JOptionPane.showMessageDialog(this, "El codigo postal del beneficiario no es correcto.", "Codigo postal Beneficiario", JOptionPane.ERROR_MESSAGE);
+        else if (Expediente.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Expediente.getText()))
+            JOptionPane.showMessageDialog(this, "El expediente del beneficiario no es correcto.", "Expediente Beneficiario", JOptionPane.ERROR_MESSAGE);
+        else if (Telefono.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Telefono.getText()))
+            JOptionPane.showMessageDialog(this, "El telefono del beneficiario no es correcto.", "Telefono Beneficiario", JOptionPane.ERROR_MESSAGE);
+        else if (Precio_Vivienda.getText().compareTo("") != 0 && !ValidarCampos.isDouble(Precio_Vivienda.getText()))
+             JOptionPane.showMessageDialog(this, "El precio de la vivienda del beneficiario no es correcto.", "Precio de la vivienda Beneficiario", JOptionPane.ERROR_MESSAGE);
         else{
             
             /*---------Introducir datos del familiar---------------*/
@@ -733,53 +697,53 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
             try {
                 Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
+
+                /*IntroducirDatosBeneficiario*/
+                boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(
+                        NIF.getText().toUpperCase(),
+                        Nombre.getText(),
+                        Apellidos.getText(),
+                        Fecha_Nac,
+                        Localidad.getText(),
+                        datosBeneficiario.Activo,
+                        datosBeneficiario.FechaDesac,
+                        Email.getText(),
+                        (Telefono.getText().compareTo("")==0? 0 : Integer.parseInt(Telefono.getText())),
+                        Nacionalidad.getText(),
+                        (String)Estado_Civil.getSelectedItem(),
+                        Domicilio.getText(),
+                        (Codigo_Postal.getText().compareTo("")==0? 0 : Integer.parseInt(Codigo_Postal.getText())),
+                        new Date(),
+                        (Expediente.getText().compareTo("")==0? 0 : Integer.parseInt(Expediente.getText())),
+                        Motivo.getText(),
+                        (Precio_Vivienda.getText().compareTo("")==0? 0.0 : Double.parseDouble(Precio_Vivienda.getText())),
+                        Tipo_Vivienda.getText(),
+                        Observaciones_Datos_Personales.getText(),
+                        Observaciones_Familiares.getText(),
+                        Observaciones_Vivienda.getText(),
+                        Ciudad_Nacimiento.getText(),
+                        Situacion_Economica.getText(),
+                        Nivel_Estudios.getText(),
+                        Profesion.getText(),
+                        Experiencia_Laboral.getText(),
+                        NIF_Voluntario.getText());
+
+                /*finalizar() */
+                if (correcto == true){
+                    /*confirmarModificacionBeneficiario*/
+                    Gestor_de_beneficiarios.confirmarModificacionBeneficiario();
+
+                    /*Actualizamos la pantalla principal*/           
+                    panel = new jFamiliar();
+                    UI.jPrincipal.add("Familiar", panel);
+                    UI.cl.show(UI.jPrincipal, "Familiar");               
+                }else{
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
+                            "NIF Voluntario", JOptionPane.ERROR_MESSAGE);               
+                }
             } catch (ParseException ex) {
                 Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
-            }
-
-            /*IntroducirDatosBeneficiario*/
-            boolean correcto = Gestor_de_beneficiarios.introducirDatosBeneficiario(
-                    NIF.getText().toUpperCase(),
-                    Nombre.getText(),
-                    Apellidos.getText(),
-                    Fecha_Nac,
-                    Localidad.getText(),
-                    datosBeneficiario.Activo,
-                    datosBeneficiario.FechaDesac,
-                    Email.getText(),
-                    (Telefono.getText().compareTo("")==0? 0 : Integer.parseInt(Telefono.getText())),
-                    Nacionalidad.getText(),
-                    (String)Estado_Civil.getSelectedItem(),
-                    Domicilio.getText(),
-                    (Codigo_Postal.getText().compareTo("")==0? 0 : Integer.parseInt(Codigo_Postal.getText())),
-                    new Date(),
-                    (Expediente.getText().compareTo("")==0? 0 : Integer.parseInt(Expediente.getText())),
-                    Motivo.getText(),
-                    (Precio_Vivienda.getText().compareTo("")==0? 0.0 : Double.parseDouble(Precio_Vivienda.getText())),
-                    Tipo_Vivienda.getText(),
-                    Observaciones_Datos_Personales.getText(),
-                    Observaciones_Familiares.getText(),
-                    Observaciones_Vivienda.getText(),
-                    Ciudad_Nacimiento.getText(),
-                    Situacion_Economica.getText(),
-                    Nivel_Estudios.getText(),
-                    Profesion.getText(),
-                    Experiencia_Laboral.getText(),
-                    NIF_Voluntario.getText());
-                    
-            /*finalizar() */
-            if (correcto == true){
-                /*confirmarModificacionBeneficiario*/
-                Gestor_de_beneficiarios.confirmarModificacionBeneficiario();
-
-                /*Actualizamos la pantalla principal*/           
-                panel = new jFamiliar();
-                UI.jPrincipal.add("Familiar", panel);
-                UI.cl.show(UI.jPrincipal, "Familiar");               
-            }else{
-                 JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
-                        "NIF Voluntario", JOptionPane.ERROR_MESSAGE);               
             }
         }
     }//GEN-LAST:event_botonOKActionPerformed
@@ -844,24 +808,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         } 
     }//GEN-LAST:event_Observaciones_FamiliaresKeyTyped
 
-    private void Precio_ViviendaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Precio_ViviendaKeyReleased
-        if(!ValidarCampos.isDouble(Precio_Vivienda.getText())){
-            JOptionPane.showMessageDialog(this, "El precio de la vivienda debe de ser un numero", "Error en el precio de la vivienda", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_Precio_ViviendaKeyReleased
-
-    private void Codigo_PostalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Codigo_PostalKeyReleased
-        if(!ValidarCampos.isInteger(Codigo_Postal.getText())){
-            JOptionPane.showMessageDialog(this, "El codigo postal debe de ser un numero", "Error en el codigo postal", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_Codigo_PostalKeyReleased
-
-    private void TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyReleased
-        if(!ValidarCampos.isInteger(Telefono.getText())){
-            JOptionPane.showMessageDialog(this, "El telefono debe de ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_TelefonoKeyReleased
-
     private void Codigo_PostalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Codigo_PostalKeyTyped
         if (Codigo_Postal.getText().length() == 5) {
             evt.consume();
@@ -873,6 +819,12 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
             evt.consume();
         } 
     }//GEN-LAST:event_TelefonoKeyTyped
+
+    private void ExpedienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ExpedienteKeyTyped
+        if (Expediente.getText().length() == 9) {
+            evt.consume();
+        } 
+    }//GEN-LAST:event_ExpedienteKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;

@@ -423,7 +423,12 @@
           <Font name="Dialog" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Casado"/>
+            <StringItem index="1" value="Divorciado"/>
+            <StringItem index="2" value="Soltero"/>
+            <StringItem index="3" value="Viudo"/>
+          </StringArray>
         </Property>
       </Properties>
     </Component>
@@ -510,9 +515,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Precio_Vivienda">
-      <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Precio_ViviendaKeyReleased"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Telefono">
       <Properties>
@@ -520,7 +522,6 @@
       </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TelefonoKeyTyped"/>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TelefonoKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Codigo_Postal">
@@ -529,7 +530,6 @@
       </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Codigo_PostalKeyTyped"/>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Codigo_PostalKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel40">
@@ -708,7 +708,6 @@
       </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ExpedienteKeyTyped"/>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ExpedienteKeyReleased"/>
       </Events>
     </Component>
   </SubComponents>

@@ -12,6 +12,8 @@ import diaketas.UI.Beneficiarios.*;
 import de.javasoft.plaf.synthetica.*;
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -67,11 +69,12 @@ public class UI extends javax.swing.JFrame {
         botonDonaciones = new javax.swing.JButton();
         botonEmpleo = new javax.swing.JButton();
         jPrincipal = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPrincipalScroll = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 900));
+        setTitle("Diaketas");
+        setIconImage(getIconImage());
+        setPreferredSize(new java.awt.Dimension(1310, 609));
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -125,10 +128,6 @@ public class UI extends javax.swing.JFrame {
         getContentPane().add(jMenuBotones, java.awt.BorderLayout.NORTH);
 
         jPrincipal.setLayout(new java.awt.CardLayout());
-
-        jLabel1.setText("Pantalla de presentacion estadisticas? logo? que?");
-        jPrincipal.add(jLabel1, "card2");
-
         getContentPane().add(jPrincipal, java.awt.BorderLayout.CENTER);
         getContentPane().add(jPrincipalScroll, java.awt.BorderLayout.CENTER);
 
@@ -183,13 +182,21 @@ public class UI extends javax.swing.JFrame {
             }
         });
     }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("diaketas/Iconos/diaketas.png"));
+
+
+        return retValue;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBeneficiarios;
     private javax.swing.JButton botonDiaketas;
     private javax.swing.JButton botonDonaciones;
     private javax.swing.JButton botonEmpleo;
     private javax.swing.JButton botonSocios;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jMenuBotones;
     public static javax.swing.JPanel jPrincipal;
     private javax.swing.JScrollPane jPrincipalScroll;

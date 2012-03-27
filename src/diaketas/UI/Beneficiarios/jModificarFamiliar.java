@@ -37,42 +37,6 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         
         /*Inicializamos*/
         initComponents();
-               /*Rellenamos las listas de opciones de forma dinamica*/
-        ConexionBD con = new ConexionBD();
-        Statement s;
-        ResultSet rs;
-        try {
-
-            con.conectarBD();
-            
-            //Crear objeto Statement para realizar queries a la base de datos
-            s = con.conexion().createStatement();
-
-            rs = s.executeQuery("SHOW COLUMNS FROM Parentesco where Field = 'Parentesco'");
-
-            while (rs.next()) {
-                Object[] fila = new Object[3];
-                fila[0] = rs.getObject(2);
-                String[] tokens = (fila[0].toString()).split("'");
-                for (int i = 0; i < tokens.length; i++) {
-                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
-                        Parentesco.addItem(tokens[i]);
-                    }
-                }
-
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-         }
         
         /*Inicializamos los datos*/
         ArrayList datosFamiliar = Gestor_de_beneficiarios.consultarFamiliar(Nombre_Apellidos);
@@ -147,6 +111,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         jLabel8.setText("Parentesco");
 
         Parentesco.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Parentesco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Padre", "Madre", "Marido", "Mujer", "Hermano", "Hijo" }));
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -235,20 +200,19 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         try {
             Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
+            /*Dato modificados de familiar*/
+            Familiar nuevosDatosFamiliar = new Familiar(Nombre_Apellidos.getText(),
+                    Fecha_Nac, Ocupacion.getText());
+
+            /*Modificar datos familiar*/
+            Gestor_de_beneficiarios.modificarDatosFamiliar(NombreApellidos,
+                    nuevosDatosFamiliar, (String) Parentesco.getSelectedItem());
+
+            UI.cl.show(UI.jPrincipal, jPanelSiguiente);
         } catch (ParseException ex) {
             Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
         }
-        
-        /*Dato modificados de familiar*/
-        Familiar nuevosDatosFamiliar = new Familiar(Nombre_Apellidos.getText(),
-                Fecha_Nac, Ocupacion.getText());
-        
-        /*Modificar datos familiar*/
-        Gestor_de_beneficiarios.modificarDatosFamiliar(NombreApellidos,
-                nuevosDatosFamiliar, (String) Parentesco.getSelectedItem());
-        
-        UI.cl.show(UI.jPrincipal, jPanelSiguiente);
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
