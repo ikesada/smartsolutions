@@ -12,6 +12,8 @@ import diaketas.UI.Beneficiarios.*;
 import de.javasoft.plaf.synthetica.*;
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -71,6 +73,7 @@ public class UI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diaketas");
+        setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(1310, 609));
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
@@ -178,6 +181,15 @@ public class UI extends javax.swing.JFrame {
                 new UI().setVisible(true);
             }
         });
+    }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("diaketas/Iconos/diaketas.png"));
+
+
+        return retValue;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBeneficiarios;
