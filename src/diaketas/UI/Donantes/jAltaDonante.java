@@ -148,9 +148,6 @@ public class jAltaDonante extends javax.swing.JPanel {
 
         Cuantia_Donaciones.setColumns(9);
         Cuantia_Donaciones.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Cuantia_DonacionesKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Cuantia_DonacionesKeyTyped(evt);
             }
@@ -171,11 +168,6 @@ public class jAltaDonante extends javax.swing.JPanel {
         });
 
         Telefono.setColumns(9);
-        Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                TelefonoKeyReleased(evt);
-            }
-        });
 
         jLabel4.setText("Nombre");
 
@@ -421,8 +413,12 @@ public class jAltaDonante extends javax.swing.JPanel {
         } else if (NIF_Voluntario.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         } else if (!ValidarCampos.isEmail(Email.getText())) {
-            JOptionPane.showMessageDialog(this, "El Email no es correcto", "Error en el Email", JOptionPane.ERROR_MESSAGE);
-        } else {
+            JOptionPane.showMessageDialog(this, "El Email no es correcto", "Email Donante", JOptionPane.ERROR_MESSAGE);
+        } else if (!ValidarCampos.isInteger(Telefono.getText())) {
+            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Telefono Donante", JOptionPane.ERROR_MESSAGE);
+        }else if (!ValidarCampos.isDouble(Cuantia_Donaciones.getText())) {
+            JOptionPane.showMessageDialog(this, "La cantidad debe ser un numero", "Cuantia Donaciones Donante", JOptionPane.ERROR_MESSAGE);
+        }else{
             /*
              * Si no se introducen los campos Telefono o el Tipo_Periodicidad es
              * ninguno, se rellenan a 0-Null
@@ -524,17 +520,6 @@ public class jAltaDonante extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_ObservacionesKeyTyped
 
-    private void Cuantia_DonacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cuantia_DonacionesKeyReleased
-        if (!ValidarCampos.isDouble(Cuantia_Donaciones.getText())) {
-            JOptionPane.showMessageDialog(this, "La cantidad debe ser un numero", "Error en la cantidad", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_Cuantia_DonacionesKeyReleased
-
-    private void TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyReleased
-        if (!ValidarCampos.isInteger(Cuantia_Donaciones.getText())) {
-            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_TelefonoKeyReleased
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Cuantia_Donaciones;

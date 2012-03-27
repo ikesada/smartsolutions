@@ -218,7 +218,6 @@
         <Property name="columns" type="int" value="9"/>
       </Properties>
       <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Cuantia_DonacionesKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Cuantia_DonacionesKeyTyped"/>
       </Events>
     </Component>
@@ -251,9 +250,6 @@
       <Properties>
         <Property name="columns" type="int" value="9"/>
       </Properties>
-      <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TelefonoKeyReleased"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>

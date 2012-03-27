@@ -442,21 +442,24 @@ public class jModificarDonante extends javax.swing.JPanel {
         } else if (NIF_Voluntario.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         } else if (!ValidarCampos.isEmail(Email.getText())) {
-            JOptionPane.showMessageDialog(this, "El Email no es correcto", "Error en el Email", JOptionPane.ERROR_MESSAGE);
-        } else {
+            JOptionPane.showMessageDialog(this, "El Email no es correcto", "Email Donante", JOptionPane.ERROR_MESSAGE);
+        } else if (!ValidarCampos.isInteger(Telefono.getText())) {
+            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Telefono Donante", JOptionPane.ERROR_MESSAGE);
+        }else if (!ValidarCampos.isDouble(Cuantia_Donaciones.getText())) {
+            JOptionPane.showMessageDialog(this, "La cantidad debe ser un numero", "Cuantia Donaciones Donante", JOptionPane.ERROR_MESSAGE);
+        }else {
             /*
              * Si no se introducen los campos Telefono o el Tipo_Periodicidad es
              * ninguno, se rellenan a 0-Null
              */
-            if (Telefono.getText().compareTo("") == 0) {
+            if (Telefono.getText().compareTo("         ") == 0) {
                 Telefono.setText("0");
             }
+            //Si la periodicidad es ninguna, no nos interesan la cuantia y el tiempo
             if (((String) Tipo_Periodicidad.getSelectedItem()).compareTo("Ninguna") == 0) {
-
                 Cuantia_Donaciones.setText("0");
                 Periodicidad_Donaciones.setText("0");
-
-            }
+            }   
 
             /*
              * Conversion de la fecha
