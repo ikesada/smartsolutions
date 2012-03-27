@@ -234,6 +234,7 @@ public class Gestor_de_beneficiarios {
     static public void seleccionarFamiliar(String Nombre_Apellidos){
         NombreApellidosFamiliar = Nombre_Apellidos;
     }
+   
     /*
      * ConfirmarAltaFamiliar // ConfirmarInsercion
      */
@@ -474,7 +475,6 @@ public class Gestor_de_beneficiarios {
         }
         return parentesco;
     }
-    
     
     static public Familiar buscarFamiliar(String Nombre_Apellidos){
         con.conectarBD();
