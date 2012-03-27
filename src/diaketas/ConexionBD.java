@@ -24,10 +24,6 @@ public class ConexionBD{
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
             conn = DriverManager.getConnection(url, login, password);
-            if (conn != null)
-            {
-                System.out.println("Conexión a base de datos "+url+" ... Ok");
-            }
         }
         catch(SQLException ex) {
             System.out.println("Hubo un problema al intentar conectarse con la base de datos "+url);

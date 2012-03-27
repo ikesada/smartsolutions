@@ -46,6 +46,9 @@ public class UI extends javax.swing.JFrame {
         jPrincipal.add("Donaciones", donaciones);
         jPrincipal.add("Diaketas", diaketas);
         jPrincipal.add("Beneficiarios", beneficiarios);
+        
+        /*Mostramos Diaketas*/
+        cl.show(jPrincipal, "Diaketas");
     }
 
     /**
