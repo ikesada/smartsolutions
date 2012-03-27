@@ -86,15 +86,7 @@ public class ONG {
          
          return beneficiario;
     }
-    
-    static public Boolean comprobarExistenciaBeneficiario(String DNI){
-        
-        /*Buscamos el beneficiario*/
-        Beneficiario beneficiario = buscarBeneficiario(DNI);
-  
-        return (beneficiario != null);
-    }
-    
+       
     static public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/

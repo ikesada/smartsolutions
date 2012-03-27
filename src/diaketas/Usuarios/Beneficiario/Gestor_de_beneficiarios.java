@@ -38,7 +38,7 @@ public class Gestor_de_beneficiarios {
         NIF_Beneficiario = DNI_Beneficiario;
         
         /*Comprobamos si el Beneficiario existe */
-        return ONG.comprobarExistenciaBeneficiario(DNI_Beneficiario);        
+        return comprobarExistenciaBeneficiario(DNI_Beneficiario);        
     }
 
     static public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre,
@@ -64,7 +64,15 @@ public class Gestor_de_beneficiarios {
         /*Devuelve la existencia del voluntario*/
         return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
-
+    
+    static public Boolean comprobarExistenciaBeneficiario(String DNI){
+        
+        /*Buscamos el beneficiario*/
+        Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);
+  
+        return (beneficiario != null);
+    }
+    
     static public Beneficiario consultarBeneficiario (String DNI){
         
         /*Actualimos NIF*/
@@ -73,7 +81,7 @@ public class Gestor_de_beneficiarios {
         datosBeneficiario = null;
 
         /*Si existe el beneficiario obtenemos los datos del beneficiario y la lista de familiares*/
-        if (ONG.comprobarExistenciaBeneficiario(DNI)){
+        if (comprobarExistenciaBeneficiario(DNI)){
             
             /*Obtenemos los datos del beneficiario*/
             datosBeneficiario = ONG.buscarBeneficiario(DNI);
@@ -131,6 +139,7 @@ public class Gestor_de_beneficiarios {
         cambiarDatosBeneficiario(nuevosDatosBeneficiario);
     }
 
+    
     static public void cambiarDatosBeneficiario (Beneficiario datosBeneficiario){
     
 
@@ -431,7 +440,6 @@ public class Gestor_de_beneficiarios {
         }
     }
     
-        /*------------------------------Acceso-------------------------------------*/
     static private Parentesco obtenerDatosFamiliar(){
         con.conectarBD();
         
@@ -571,6 +579,7 @@ public class Gestor_de_beneficiarios {
         
         return familiares;
     }
+   
     /*----------------------------------Otros----------------------------------*/
     
     static public boolean introducirDNIVoluntario(String DNI_Voluntario){
