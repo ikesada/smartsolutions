@@ -14,6 +14,7 @@ public class ConexionBD{
     public String login = "smartsolutions";
     public String password = "solutions";
     public String url = "jdbc:mysql://sql09.freemysql.net:3306/"+bd;
+    //public String url = "jdbc:mysql://192.168.1.1:3306/"+bd;
     
   
     //public String url = "jdbc:mysql://localhost:3306/"+bd;
