@@ -21,7 +21,7 @@ public class jBajaDonante extends javax.swing.JPanel {
     public jBajaDonante() {
         initComponents();
         fase = 0;
-        botonCancel.setVisible(false);
+        botonCancel.setVisible(true);
         jLabel4.setVisible(false);
         NIF_Voluntario.setVisible(false);
     }

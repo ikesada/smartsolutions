@@ -47,7 +47,6 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         NIF = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
-        botonCancel = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -68,13 +67,6 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConsultarActionPerformed(evt);
-            }
-        });
-
-        botonCancel.setText("Cancelar");
-        botonCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelActionPerformed(evt);
             }
         });
 
@@ -102,9 +94,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                                         .addGap(198, 198, 198))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(102, 102, 102)
-                                .addComponent(botonConsultar)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonCancel)))
+                                .addComponent(botonConsultar)))
                         .addGap(0, 166, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -124,9 +114,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonConsultar)
-                    .addComponent(botonCancel))
+                .addComponent(botonConsultar)
                 .addContainerGap(270, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -160,10 +148,6 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
 
-    private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-        UI.cl.show(UI.jPrincipal, "Beneficiarios");
-    }//GEN-LAST:event_botonCancelActionPerformed
-
     private void NIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIFKeyTyped
         if (NIF.getText().length()==9)
             evt.consume();
@@ -171,7 +155,6 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF;
-    private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -42,8 +42,6 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                               <Component id="botonConsultar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="botonCancel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="166" max="32767" attributes="0"/>
@@ -70,10 +68,7 @@
                   <Component id="NIF" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="botonConsultar" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="270" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -119,14 +114,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConsultarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonCancel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
