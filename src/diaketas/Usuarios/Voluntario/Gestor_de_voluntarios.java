@@ -12,9 +12,9 @@ import java.sql.ResultSet;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Usuarios.Accion;
+import diaketas.Modelo.ONG.Accion;
 import diaketas.Usuarios.Historial.Gestor_de_historiales;
-import diaketas.Usuarios.ONG;
+import diaketas.Modelo.ONG.ONG;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;

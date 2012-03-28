@@ -4,7 +4,7 @@
  */
 package diaketas.Usuarios.Donante;
 
-import diaketas.Usuarios.Usuarios;
+import diaketas.Modelo.ONG.Usuarios;
 import java.util.Date;
 
 /**

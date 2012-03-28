@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 import diaketas.Usuarios.Voluntario.Voluntario;
 import diaketas.Usuarios.Voluntario.Gestor_de_voluntarios;
-import diaketas.Usuarios.ONG;
+import diaketas.Modelo.ONG.ONG;
 import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

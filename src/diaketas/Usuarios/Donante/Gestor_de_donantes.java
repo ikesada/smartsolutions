@@ -5,9 +5,9 @@
 package diaketas.Usuarios.Donante;
 
 import diaketas.ConexionBD;
-import diaketas.Usuarios.Accion;
+import diaketas.Modelo.ONG.Accion;
 import diaketas.Usuarios.Historial.Gestor_de_historiales;
-import diaketas.Usuarios.ONG;
+import diaketas.Modelo.ONG.ONG;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

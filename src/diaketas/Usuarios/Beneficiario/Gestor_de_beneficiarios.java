@@ -7,7 +7,7 @@ package diaketas.Usuarios.Beneficiario;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import diaketas.Usuarios.Historial.Gestor_de_historiales;
-import diaketas.Usuarios.ONG;
+import diaketas.Modelo.ONG.ONG;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

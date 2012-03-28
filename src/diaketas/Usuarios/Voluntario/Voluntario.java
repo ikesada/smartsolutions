@@ -7,8 +7,8 @@ package diaketas.Usuarios.Voluntario;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Usuarios.ONG;
-import diaketas.Usuarios.Usuarios;
+import diaketas.Modelo.ONG.ONG;
+import diaketas.Modelo.ONG.Usuarios;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;

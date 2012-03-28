@@ -5,8 +5,8 @@
 package diaketas.Usuarios.Historial;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Usuarios.Accion;
-import diaketas.Usuarios.ONG;
+import diaketas.Modelo.ONG.Accion;
+import diaketas.Modelo.ONG.ONG;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;

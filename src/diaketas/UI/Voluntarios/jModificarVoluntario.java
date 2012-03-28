@@ -6,7 +6,7 @@ package diaketas.UI.Voluntarios;
 
 import ValidarCampos.ValidarCampos;
 import diaketas.UI.UI;
-import diaketas.Usuarios.ONG;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.Usuarios.Voluntario.Gestor_de_voluntarios;
 import diaketas.Usuarios.Voluntario.Voluntario;
 import java.text.ParseException;
