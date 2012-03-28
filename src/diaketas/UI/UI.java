@@ -37,12 +37,12 @@ public class UI extends javax.swing.JFrame {
         JPanel diaketas = new jVoluntarios();
         JPanel donaciones = new jDonaciones();
         JPanel empleo = new jEmpleo();
-        JPanel socios = new jDonantes();
+        JPanel donantes = new jDonantes();
         JPanel historialyacciones = new jHistorialyAcciones();
        
         
         /*JPrincipal*/
-        jPrincipal.add("Socios", socios);
+        jPrincipal.add("Donantes", donantes);
         jPrincipal.add("Empleo", empleo);
         jPrincipal.add("Donaciones", donaciones);
         jPrincipal.add("Diaketas", diaketas);
@@ -167,7 +167,7 @@ public class UI extends javax.swing.JFrame {
 
     private void botonSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSociosActionPerformed
         /*Modificamos zona principal*/
-        cl.show(jPrincipal, "Socios");
+        cl.show(jPrincipal, "Donantes");
     }//GEN-LAST:event_botonSociosActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -4,13 +4,13 @@
  */
 package diaketas.UI.Donantes;
 
-import diaketas.UI.UI;
 import diaketas.Modelo.Gestores.Gestor_de_donantes;
+import diaketas.UI.UI;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public class jBajaDonante extends javax.swing.JPanel {
 
@@ -173,11 +173,11 @@ public class jBajaDonante extends javax.swing.JPanel {
                 }
             }
         }else
-            UI.cl.show(UI.jPrincipal, "Socios");
+            UI.cl.show(UI.jPrincipal, "Donantes");
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-            UI.cl.show(UI.jPrincipal, "Socios");
+            UI.cl.show(UI.jPrincipal, "Donantes");
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 

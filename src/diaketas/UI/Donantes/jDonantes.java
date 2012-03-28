@@ -9,11 +9,11 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public class jDonantes extends javax.swing.JPanel {
     JPanel panel;
-    jBuscarDonante BuscarSocio;
+    jBuscarDonante BuscarDonante;
 
     /**
      * Creates new form jDiaketas
@@ -134,31 +134,31 @@ public class jDonantes extends javax.swing.JPanel {
 
         panel = new jAltaDonante();
         
-        UI.jPrincipal.add("AltaSocio", panel);
-        UI.cl.show(UI.jPrincipal, "AltaSocio");
+        UI.jPrincipal.add("AltaDonante", panel);
+        UI.cl.show(UI.jPrincipal, "AltaDonante");
     }//GEN-LAST:event_botonAltaActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
        
-        panel = new jBuscarDonante("ConsultarSocio");
+        panel = new jBuscarDonante("ConsultarDonante");
         
-        UI.jPrincipal.add("ConsultarSocio", panel);
-        UI.cl.show(UI.jPrincipal, "ConsultarSocio");
+        UI.jPrincipal.add("ConsultarDonante", panel);
+        UI.cl.show(UI.jPrincipal, "ConsultarDonante");
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
       
-        panel = new jBuscarDonante("ModificarSocio");
+        panel = new jBuscarDonante("ModificarDonante");
         
-        UI.jPrincipal.add("ModificarSocio", panel);
-        UI.cl.show(UI.jPrincipal, "ModificarSocio");
+        UI.jPrincipal.add("ModificarDonante", panel);
+        UI.cl.show(UI.jPrincipal, "ModificarDonante");
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
         panel = new jBajaDonante();
         
-        UI.jPrincipal.add("BajaSocio", panel);
-        UI.cl.show(UI.jPrincipal, "BajaSocio");
+        UI.jPrincipal.add("BajaDonante", panel);
+        UI.cl.show(UI.jPrincipal, "BajaDonante");
     }//GEN-LAST:event_botonBajaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

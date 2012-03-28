@@ -373,27 +373,27 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         }
         else if (NIF.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "El NIF del nuevo voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El NIF del Voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
             continuar = false;
         }
         else if (Nombre.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "El nombre del nuevo voluntario no se ha introducido.", "Nombre Voluntario", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El nombre del Voluntario no se ha introducido.", "Nombre Voluntario", JOptionPane.ERROR_MESSAGE);
             continuar = false;        
         }
         else if (Nacionalidad.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "No se ha introducido la nacionalidad.", "Nacionalidad", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La nacionalidad del Voluntario no se ha introducido.", "Nacionalidad Voluntario", JOptionPane.ERROR_MESSAGE);
             continuar = false;
         }
         else if (Domicilio.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "No se ha introducido el domicilio.", "Domicilio", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El domicilio de Voluntario no se ha introducido.", "Domicilio Voluntario", JOptionPane.ERROR_MESSAGE);
             continuar = false;
         }
         else if (CodPost.getText().compareTo("") == 0)
         {
-            JOptionPane.showMessageDialog(this, "No se ha introducido el codigo postal.", "Codigo postal", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El codigo postal de Voluntario no se ha introducido.", "Codigo postal Voluntario", JOptionPane.ERROR_MESSAGE);
             continuar = false;
         }
         
@@ -428,20 +428,20 @@ public class jAltaVoluntario extends javax.swing.JPanel {
             if ( !ValidarCampos.isInteger(CodPost.getText()) )
             {
                 System.out.println("Codigo postal incorrecto\n");
-                JOptionPane.showMessageDialog(this, "Formato incorrecto para el codigo postal.", "Codigo postal incorrecto", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El codigo postal no es correcto. Debe ser un numero.", "Codigo postal Invalido", JOptionPane.ERROR_MESSAGE);
                 continuar = false;
             }
             else if( !ValidarCampos.isEmail(Email.getText()) )
             {
                 System.out.println("Email incorrecto\n");
-                JOptionPane.showMessageDialog(this, "Formato incorrecto para el email.", "Email incorrecto", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El email no es correcto.", "Email Invalido", JOptionPane.ERROR_MESSAGE);
                 continuar = false;
             }
             
             else if( !ValidarCampos.isInteger(Telefono.getText()) )
             {
                 System.out.println("Telefono incorrecto\n");
-                JOptionPane.showMessageDialog(this, "Formato incorrecto para el telefono.", "Telefono incorrecto", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser un numero.", "Telefono Invalido", JOptionPane.ERROR_MESSAGE);
                 continuar = false;
             }
         }
