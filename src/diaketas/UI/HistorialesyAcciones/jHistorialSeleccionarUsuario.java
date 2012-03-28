@@ -121,7 +121,7 @@ public class jHistorialSeleccionarUsuario extends javax.swing.JPanel {
         }
         else
         {
-            historialUsuarios = new jHistorialUsuarios();
+            historialUsuarios = new jHistorialUsuarios( NIF_CIF.getText().toUpperCase() );
             UI.jPrincipal.remove(historialUsuarios);
             UI.jPrincipal.add("HistorialUsuarios", historialUsuarios); 
             UI.cl.show(UI.jPrincipal, "HistorialUsuarios");
