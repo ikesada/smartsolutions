@@ -520,7 +520,7 @@ public class jModificarVoluntario extends javax.swing.JPanel {
             {
 
                 //primero compruebo si el dni del voluntario actual existe en el sistema
-                existe_vol = ONG.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
+                existe_vol = Gestor_de_voluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
 
                 if(existe_vol)
                 {
