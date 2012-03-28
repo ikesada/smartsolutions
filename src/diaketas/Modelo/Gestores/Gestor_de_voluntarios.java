@@ -40,10 +40,25 @@ public class Gestor_de_voluntarios {
     
     static public boolean comprobarExistenciaVoluntario(String DNI){
 
-        Voluntario vol = ONG.buscarVoluntario(DNI);
+        Voluntario v = ONG.buscarVoluntario(DNI);
         
-        //cambiar lo del campo activo!!
-        return (vol != null);
+        
+        if(v!=null)
+        {
+            if( v.Activo==1 )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
     }
     
     
@@ -67,7 +82,7 @@ public class Gestor_de_voluntarios {
         
         if(existe)
         {
-            boolean existe1 = comprobarExistenciaVoluntario(DNI);
+            boolean existe1 = Gestor_de_voluntarios.comprobarExistenciaVoluntario(DNI);
             
             if(!existe1)
             {
@@ -207,44 +222,44 @@ public class Gestor_de_voluntarios {
     
     
     
-    static public void modificarVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs, String voluntarioDNI )
+    static public boolean modificarVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs, String voluntarioDNI )
     {
         
-//        boolean confirma=false;
+        boolean confirma=false;
         
         
         
-        boolean existe = ONG.comprobarExistenciaVoluntario(DNI);
+        boolean existe = Gestor_de_voluntarios.comprobarExistenciaVoluntario(DNI);
         
         if(existe)
         {
-            boolean existe1 = ONG.comprobarExistenciaVoluntario(voluntarioDNI);
+            boolean existe1 = Gestor_de_voluntarios.comprobarExistenciaVoluntario(voluntarioDNI);
             
             if(existe1)
             {
                 
             
-                /*confirma = */Gestor_de_voluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
+                confirma = Gestor_de_voluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
             
                 Gestor_de_historiales.RegistrarOperacion(voluntarioDNI, DNI, "modificacion voluntario");
             }
         }
         
         
-//        return confirma;
+        return confirma;
             
     }
     
     
     
-    static public void modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
+    static public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
     {
         
         Voluntario v = ONG.buscarVoluntario(DNI);
         
-        /*boolean exito = */v.introducirDatosVoluntario( DNI, nombre, apellidos, fechaNac, poblacion, email, telf, nacionalidad, dir, codPost, obs);
+        boolean exito = v.introducirDatosVoluntario( DNI, nombre, apellidos, fechaNac, poblacion, email, telf, nacionalidad, dir, codPost, obs);
         
-//        return exito;
+        return exito;
        
     }
     
