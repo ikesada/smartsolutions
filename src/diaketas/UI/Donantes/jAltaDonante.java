@@ -461,7 +461,7 @@ public class jAltaDonante extends javax.swing.JPanel {
             /*
              * Actualizamos la pantalla principal
              */
-            UI.cl.show(UI.jPrincipal, "Socios");
+            UI.cl.show(UI.jPrincipal, "Donantes");
 
         }
     }//GEN-LAST:event_botonOKActionPerformed

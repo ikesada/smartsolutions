@@ -64,7 +64,7 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
-        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return Gestor_de_voluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
     static public Boolean comprobarExistenciaBeneficiario(String DNI){
@@ -592,7 +592,7 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = DNI_Voluntario;
         
         /*Comprobamos si el Voluntario existe */
-        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return Gestor_de_voluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
 }
