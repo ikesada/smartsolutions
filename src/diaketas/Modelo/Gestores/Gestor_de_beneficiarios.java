@@ -165,9 +165,6 @@ public class Gestor_de_beneficiarios {
             
             /*Agregar familiar*/
             datosBeneficiario.agregarFamiliar(familiar);
-            
-            /*Obtenemos el Codigo_Familiar asignado*/
-            familiar.Cod_Familiar = datosBeneficiario.buscarFamiliar(datosFamiliar.Nombre_Apellidos).Cod_Familiar;
         }
 
         /*Se crea relacion familiar*/
