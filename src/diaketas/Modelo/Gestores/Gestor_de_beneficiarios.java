@@ -217,6 +217,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         
     }
  
+
     public ArrayList<Familiar> iniciarConsultarFamiliar(){
         ArrayList<Familiar> familiares;
 
@@ -229,6 +230,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         return familiares;
     }
     
+
     public ArrayList<Familiar> inicioModificarFamiliar(){
         ArrayList<Familiar> familiares;
 
