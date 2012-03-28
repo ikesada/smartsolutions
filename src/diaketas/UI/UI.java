@@ -64,7 +64,7 @@ public class UI extends javax.swing.JFrame {
 
         jMenuBotones = new javax.swing.JPanel();
         botonDiaketas = new javax.swing.JButton();
-        botonSocios = new javax.swing.JButton();
+        botonDonantes = new javax.swing.JButton();
         botonBeneficiarios = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         botonDonaciones = new javax.swing.JButton();
@@ -88,14 +88,14 @@ public class UI extends javax.swing.JFrame {
         });
         jMenuBotones.add(botonDiaketas);
 
-        botonSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
-        botonSocios.setText("Donantes");
-        botonSocios.addActionListener(new java.awt.event.ActionListener() {
+        botonDonantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
+        botonDonantes.setText("Donantes");
+        botonDonantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSociosActionPerformed(evt);
+                botonDonantesActionPerformed(evt);
             }
         });
-        jMenuBotones.add(botonSocios);
+        jMenuBotones.add(botonDonantes);
 
         botonBeneficiarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
         botonBeneficiarios.setText("Beneficiarios");
@@ -165,10 +165,10 @@ public class UI extends javax.swing.JFrame {
         cl.show(jPrincipal, "Empleo");
     }//GEN-LAST:event_botonEmpleoActionPerformed
 
-    private void botonSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSociosActionPerformed
+    private void botonDonantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDonantesActionPerformed
         /*Modificamos zona principal*/
         cl.show(jPrincipal, "Donantes");
-    }//GEN-LAST:event_botonSociosActionPerformed
+    }//GEN-LAST:event_botonDonantesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cl.show(jPrincipal, "HistorialyAcciones");
@@ -209,8 +209,8 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton botonBeneficiarios;
     private javax.swing.JButton botonDiaketas;
     private javax.swing.JButton botonDonaciones;
+    private javax.swing.JButton botonDonantes;
     private javax.swing.JButton botonEmpleo;
-    private javax.swing.JButton botonSocios;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jMenuBotones;
     public static javax.swing.JPanel jPrincipal;
