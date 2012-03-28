@@ -81,7 +81,7 @@ public class UI extends javax.swing.JFrame {
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
-        botonDiaketas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Home.png"))); // NOI18N
+        botonDiaketas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Voluntario.png"))); // NOI18N
         botonDiaketas.setText("Voluntarios");
         botonDiaketas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
