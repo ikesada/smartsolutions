@@ -114,7 +114,7 @@ public class Voluntario extends Usuarios{
                                    
                     + "Domicilio = \"" + this.Domicilio + "\", "                    
                     + "Codigo_Postal = \"" + this.Codigo_Postal + "\", "
-                    + "Observaciones = \"" + this.Observaciones + "\", "
+                    + "Observaciones = \"" + this.Observaciones + "\" "
                    
                     + " WHERE NIF_CIF = \""+NIF_CIF+"\"");
 //            exito=true;
