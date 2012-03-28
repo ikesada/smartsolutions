@@ -46,7 +46,8 @@ public class jListadoBeneficiarios extends javax.swing.JPanel {
                 Statement s = con.conexion().createStatement();
 
                 //Un objeto ResultSet, almacena los datos de resultados de una consulta
-                ResultSet rs = s.executeQuery("select * from Beneficiario");
+                //ResultSet rs = s.executeQuery("select * from Usuario u, Beneficiario b where u.NIF_CIF=b.NIF_CIF");
+                ResultSet rs = s.executeQuery("select u.NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Fecha_Desactivacion, Email, Telefono, Nacionalidad, Nacionalidad, Estado_Civil, Domicilio, Codigo_Postal, Fecha_Inscripcion, Expediente, Motivo, Precio_Vivienda, Tipo_Vivienda, Observaciones_Datos_Personales, Observaciones_Familiares, Observaciones_Vivienda, Ciudad_Nacimiento, Situacion_Economica, Nivel_Estudios, Profesion, Experiencia_Laboral from Usuario u, Beneficiario b where u.NIF_CIF=b.NIF_CIF");
                 
                 
                 //Obteniendo la informacion de las columnas que estan siendo consultadas
@@ -76,11 +77,19 @@ public class jListadoBeneficiarios extends javax.swing.JPanel {
                         */
                         if( rs.getMetaData().getColumnType(i+1) == 91 ) //TIPO_DATE = 91
                         {
-                            java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
-                            java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-                            String fecha = sdf.format(date);
-                            
-                            fila[i] = fecha;
+                            if(rs.getObject(i+1)!=null  )
+                            {
+                                java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
+                                java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
+                                String fecha = sdf.format(date);
+
+                                fila[i] = fecha;
+                            }
+                            else
+                            {
+                                fila[i] = "";
+                                                               
+                            }
                         }
                         else{
                             fila[i]=rs.getObject(i+1);

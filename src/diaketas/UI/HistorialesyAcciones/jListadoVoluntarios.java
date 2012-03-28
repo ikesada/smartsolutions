@@ -47,7 +47,8 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 Statement s = con.conexion().createStatement();
 
                 //Un objeto ResultSet, almacena los datos de resultados de una consulta
-                ResultSet rs = s.executeQuery("select * from Usuario u, Voluntario v where u.NIF_CIF=v.NIF_CIF");
+                //ResultSet rs = s.executeQuery("select * from Usuario u, Voluntario v where u.NIF_CIF=v.NIF_CIF");
+                ResultSet rs = s.executeQuery("select u.NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Fecha_Desactivacion, Email, Telefono, Nacionalidad, Domicilio, Codigo_Postal, Fecha_Inicio, Observaciones from Usuario u, Voluntario v where u.NIF_CIF=v.NIF_CIF");
                 
                 //Obteniendo la informacion de las columnas que estan siendo consultadas
                 ResultSetMetaData rsMd = rs.getMetaData();
@@ -61,7 +62,7 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                     modelo.addColumn(rsMd.getColumnLabel(i));
                 }
                 
-                int cont=0;
+                
                 //Creando las filas para el JTable
                 while (rs.next()) 
                 { 

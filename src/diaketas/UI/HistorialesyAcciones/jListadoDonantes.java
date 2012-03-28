@@ -46,7 +46,8 @@ public class jListadoDonantes extends javax.swing.JPanel {
                 Statement s = con.conexion().createStatement();
 
                 //Un objeto ResultSet, almacena los datos de resultados de una consulta
-                ResultSet rs = s.executeQuery("select * from Donante");
+                //ResultSet rs = s.executeQuery("select * from Usuario u, Donante d where u.NIF_CIF=d.NIF_CIF");
+                ResultSet rs = s.executeQuery("select u.NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Fecha_Desactivacion, Email, Telefono, Tipo_Donante, Fecha_Inscripcion, Observaciones, Periodicidad_Donaciones, Cuantia_Donaciones, Tipo_Periodicidad from Usuario u, Donante d where u.NIF_CIF=d.NIF_CIF");
                 
                 
                 //Obteniendo la informacion de las columnas que estan siendo consultadas
@@ -77,11 +78,19 @@ public class jListadoDonantes extends javax.swing.JPanel {
                         */
                         if( rs.getMetaData().getColumnType(i+1) == 91 ) //TIPO_DATE = 91
                         {
-                            java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
-                            java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-                            String fecha = sdf.format(date);
-                            
-                            fila[i] = fecha;
+                            if(rs.getObject(i+1)!=null  )
+                            {
+                                java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
+                                java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
+                                String fecha = sdf.format(date);
+
+                                fila[i] = fecha;
+                            }
+                            else
+                            {
+                                fila[i] = "";
+                                                               
+                            }
                         }
                         else{
                             fila[i]=rs.getObject(i+1);
