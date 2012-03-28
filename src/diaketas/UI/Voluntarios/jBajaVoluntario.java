@@ -144,7 +144,7 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 
                 //compruebo que el voluntario que se quiere eliminar ya existe en el sistema
                 
-                boolean correcto = Gestor_de_voluntarios.comprobarExistenciaVoluntario( (String)NIF_CIF.getText().toUpperCase() );
+                boolean correcto = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario( (String)NIF_CIF.getText().toUpperCase() );
                 
                
                 //Se ha encontrado al voluntario a eliminar
@@ -177,7 +177,7 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 
                 //compruebo que el voluntario actual existe en el sistema
                 
-                boolean correcto2 = Gestor_de_voluntarios.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
+                boolean correcto2 = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
                 
                 //Se ha encontrado al voluntario actual en el sistema
                 if (correcto2 == true)
@@ -185,7 +185,7 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                     
                     
                     //llamo a la funcion que se encarga de dar de baja al voluntario
-                    Gestor_de_voluntarios.bajaVoluntario(NIF_CIF.getText().toUpperCase(), NIF_CIF_Voluntario.getText().toUpperCase());
+                    diaketas.diaketas.gestorVoluntarios.bajaVoluntario(NIF_CIF.getText().toUpperCase(), NIF_CIF_Voluntario.getText().toUpperCase());
                     
                     
                     //Cambios esteticos

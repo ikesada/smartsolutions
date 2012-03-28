@@ -498,11 +498,11 @@ public class jAltaVoluntario extends javax.swing.JPanel {
             {
 
                 //primero compruebo si el dni del voluntario actual existe en el sistema
-                boolean existe_vol = Gestor_de_voluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
+                boolean existe_vol = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
 
                 if(existe_vol)
                 {
-                    exito = Gestor_de_voluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), telefonoPasado, (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
+                    exito = diaketas.diaketas.gestorVoluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), telefonoPasado, (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
                 }
                 else
                 {
