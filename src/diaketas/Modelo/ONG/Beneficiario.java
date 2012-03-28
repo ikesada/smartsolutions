@@ -6,6 +6,7 @@ package diaketas.Modelo.ONG;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
+import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Usuarios;
 import java.sql.ResultSet;
@@ -38,10 +39,7 @@ public class Beneficiario extends Usuarios{
     public String Experiencia_Laboral;
     public String Ciudad_Nacimiento;
     
-    
-    
-    ConexionBD con = new ConexionBD();
-    
+   
     /*-----------------------------Constructores-------------------------------*/
     public Beneficiario (String NIF_CIF, String Nombre,
             String Apellidos, Date FechaNac, String Localidad, int Activo,
@@ -110,7 +108,96 @@ public class Beneficiario extends Usuarios{
         this.Experiencia_Laboral = datosBeneficiario.Experiencia_Laboral;
      }
     
+    /*---------------------------Beneficiario----------------------------------*/
+    public void desactivarUsuario(Date fecha_desactivacion){
+        ConexionBD con = new ConexionBD();
     
+        /*Modificamos los datos del objeto*/
+        Activo = 0;
+        FechaDesac = fecha_desactivacion;
+        
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(FechaDesac.getTime());
+
+        con.conectarBD();
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            
+            /* Desactivamos el usuario y actualizamos fecha de Baja*/
+            instruccion.executeUpdate("UPDATE Usuario SET Activo = " + Activo + ", Fecha_Desactivacion = \""
+                    +fecha_Desac+"\" WHERE NIF_CIF = \"" + NIF_CIF + "\"");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }         
+    }
+    
+    public void cambiarDatosBeneficiario (Beneficiario datosBeneficiario){
+    
+        ConexionBD con = new ConexionBD();
+        
+        /* Actualizamos los datos */
+        con.conectarBD();
+
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(datosBeneficiario.FechaNac.getTime());
+        
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+
+            instruccion.executeUpdate("Update Usuario SET "
+                    + "NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\", "
+                    + "Nombre = \"" + datosBeneficiario.Nombre + "\", "                    
+                    + "Apellidos = \"" + datosBeneficiario.Apellidos + "\", "                    
+                    + "Fecha_Nacimiento_Fundacion = \"" + fecha_Nacimiento + "\", "                    
+                    + "Localidad = \"" + datosBeneficiario.Localidad + "\", "
+                    + "Email = \"" + datosBeneficiario.Email + "\", "
+                    + "Telefono = \"" + datosBeneficiario.Telefono + "\""
+                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
+         
+            instruccion.executeUpdate("Update Beneficiario SET "
+                    + "NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\", "
+                    + "Nacionalidad = \"" + datosBeneficiario.Nacionalidad + "\", "                    
+                    + "Estado_Civil = \"" + datosBeneficiario.Estado_civil + "\", "                    
+                    + "Domicilio = \"" + datosBeneficiario.Domicilio + "\", "                    
+                    + "Codigo_Postal = " + datosBeneficiario.Codigo_Postal + ", "
+                    + "Expediente = " + datosBeneficiario.Expediente + ", "
+                    + "Motivo = \"" + datosBeneficiario.Motivo + "\", "                  
+                    + "Precio_Vivienda = " + datosBeneficiario.Precio_Vivienda + ", "
+                    + "Tipo_Vivienda = \"" + datosBeneficiario.Tipo_Vivienda + "\", "
+                    + "Observaciones_Datos_Personales = \"" + datosBeneficiario.Observaciones_Datos_Personales + "\", "
+                    + "Observaciones_Familiares = \"" + datosBeneficiario.Observaciones_Familiares + "\", "
+                    + "Observaciones_Vivienda = \"" + datosBeneficiario.Observaciones_Vivienda + "\", "
+                    + "Ciudad_Nacimiento = \"" + datosBeneficiario.Ciudad_Nacimiento + "\", "
+                    + "Situacion_Economica = \"" + datosBeneficiario.Situacion_Economica + "\", "
+                    + "Nivel_Estudios = \"" + datosBeneficiario.Nivel_Estudios + "\", "
+                    + "Profesion = \"" + datosBeneficiario.Profesion + "\", "
+                    + "Experiencia_Laboral = \"" + datosBeneficiario.Experiencia_Laboral + "\" "
+                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
     /*----------------------------Familiares-----------------------------------
     public Familiar buscarFamiliar(String Nombre_Apellidos){
         con.conectarBD();
