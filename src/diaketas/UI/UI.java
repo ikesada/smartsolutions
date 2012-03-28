@@ -75,7 +75,9 @@ public class UI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diaketas");
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(1310, 609));
+        setMinimumSize(new java.awt.Dimension(1262, 628));
+        setName("Principal");
+        setPreferredSize(new java.awt.Dimension(1262, 109));
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -176,7 +178,7 @@ public class UI extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
-     */
+     
     public static void main(String args[]) {
         /*
          * Set the Nimbus look and feel
@@ -185,17 +187,18 @@ public class UI extends javax.swing.JFrame {
            UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
-*/        
+*   
         /*
          * Create and display the form
-         */
+         
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
                 new UI().setVisible(true);
             }
         });
-    }
+    }*/
     
     @Override
     public Image getIconImage() {
