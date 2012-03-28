@@ -179,12 +179,12 @@ public class jAltaFamiliar extends javax.swing.JPanel {
             Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
             
             /*Introducimos los datos del familiar*/
-            Gestor_de_beneficiarios.introducirDatosFamiliar(Nombre_Apellidos.getText(), Fecha_Nac,
+            diaketas.diaketas.gestorBeneficiarios.introducirDatosFamiliar(Nombre_Apellidos.getText(), Fecha_Nac,
                     (String) Parentesco.getSelectedItem(), Ocupacion.getText());
 
             /*Confirmamos datos del familiar */
             /*ConfirmarInsercion()*/
-            Gestor_de_beneficiarios.confirmarInsercion();
+            diaketas.diaketas.gestorBeneficiarios.confirmarInsercion();
 
             /*Cambia parte principal de la aplicacion*/
             UI.cl.show(UI.jPrincipal, "Familiar");
