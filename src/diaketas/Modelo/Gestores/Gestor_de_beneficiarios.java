@@ -163,63 +163,17 @@ public class Gestor_de_beneficiarios {
         if (familiar == null){
             familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion);
             
-            /*Agregamos el nuevo familiar al sistema*/
-            con.conectarBD();
-            /*Convertimos Date para trabajar*/
-            java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(familiar.Fecha_Nacimiento.getTime());
-
-            try {
-                instruccion = (Statement) con.conexion().createStatement();
-
-                /*Introducimos al nuevo Familiar en el sistema*/
-                instruccion.executeUpdate("INSERT INTO Familiar (Nombre_Apellidos, Fecha_Nacimiento, Ocupacion)"
-                        + " VALUES (\""+familiar.Nombre_Apellidos + "\",\"" + fecha_Nacimiento + "\",\"" 
-                        + familiar.Ocupacion + "\")");
-            }
-            /*Captura de errores*/
-            catch(SQLException e){ System.out.println(e); }
-            catch(Exception e){ System.out.println(e);}
-            /*Desconexión de la BD*/
-            finally {
-                if (con.hayConexionBD()) {
-                    try {
-                        con.desconectarBD();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }         
-
+            /*Agregar familiar*/
+            datosBeneficiario.agregarFamiliar(familiar);
+            
             /*Obtenemos el Codigo_Familiar asignado*/
-            familiar.Cod_Familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento).Cod_Familiar;
+            familiar.Cod_Familiar = datosBeneficiario.buscarFamiliar(datosFamiliar.Nombre_Apellidos).Cod_Familiar;
         }
 
         /*Se crea relacion familiar*/
         Parentesco relacion_familiar = new Parentesco(familiar.Cod_Familiar, datosBeneficiario.NIF_CIF, parentesco);
 
-        /*Se agrega la relación familiar al sistema*/
-        con.conectarBD();
-        try {
-            instruccion = (Statement) con.conexion().createStatement();
-            
-            /*Introducimos al nuevo Familiar en el sistema*/
-            instruccion.executeUpdate("INSERT INTO Parentesco "
-                    + " VALUES (\""+relacion_familiar.Cod_Familiar  + "\",\"" + relacion_familiar.DNI_Beneficiario + "\",\"" 
-                    + relacion_familiar.Parentesc + "\")");
-          }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+        familiar.agregarParentesco(relacion_familiar);
     }    
     
     /*
@@ -232,7 +186,7 @@ public class Gestor_de_beneficiarios {
 
         /* Buscamos el familiar del beneficiario*/
         /* buscarFamiliar  == buscarParentesco */
-        Parentesco parentesc = buscarParentesco(NombreApellidosFamiliar);
+        Parentesco parentesc = datosBeneficiario.buscarParentesco(NombreApellidosFamiliar);
 
         /*Eliminamos el parentesco*/
         con.conectarBD();
@@ -273,7 +227,7 @@ public class Gestor_de_beneficiarios {
         return familiares;
     }
     
-    static public ArrayList<Familiar> iniciarModificarFamiliar(){
+    static public ArrayList<Familiar> inicioModificarFamiliar(){
         ArrayList<Familiar> familiares;
 
         /*Obtenemos el beneficiario*/
@@ -285,14 +239,13 @@ public class Gestor_de_beneficiarios {
         return familiares;
     }
     
-    
     static public ArrayList consultarFamiliar(String Nombre_Apellidos){
 
         /*Obtenemos el beneficiario*/
         datosBeneficiario = ONG.buscarBeneficiario(NIF_Beneficiario);  
 
          /*Buscamos el familiar cuyo nombre se indica*/
-        datosFamiliar = buscarFamiliar(Nombre_Apellidos);
+        datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
 
         /*Obtenemos los datos que faltan, parentesco*/
         Parentesco parentescoFamiliar = obtenerDatosFamiliar();
@@ -317,10 +270,10 @@ public class Gestor_de_beneficiarios {
         datosBeneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
         
         /*Buscamos el familiar*/
-        datosFamiliar = buscarFamiliar(Nombre_Apellidos);
+        datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
         
         /*Cambiar datos Familiar */
-        cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
+        datosFamiliar.cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
                 nuevosDatosFamiliar.Ocupacion, parentesco);
     }
 
@@ -329,46 +282,6 @@ public class Gestor_de_beneficiarios {
         parentesco = Parentesco;
     }
 
-    static private void cambiarDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion, String Parentesco){
-        /*Modificamos los datos del objeto*/
-        datosFamiliar.Nombre_Apellidos = Nombre_Apellidos;
-        datosFamiliar.Fecha_Nacimiento = Fecha_Nacimiento;
-        datosFamiliar.Ocupacion = Ocupacion;
-        
-        /*Convertimos fecha*/
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(Fecha_Nacimiento.getTime());
-
-        con.conectarBD();
-
-        //REVISAR
-         try {
-            instruccion = (Statement) con.conexion().createStatement();
-            
-            /*Actualizamos Familiar*/
-            instruccion.executeUpdate("UPDATE  Familiar SET Nombre_Apellidos = \""
-                    + Nombre_Apellidos + "\", Fecha_Nacimiento = \""+fecha_Nacimiento+"\", Ocupacion = \""
-                    + Ocupacion + "\" WHERE Cod_Familiar = " + datosFamiliar.Cod_Familiar);
-            
-            /*Actualizamos Parentesco*/
-            instruccion.executeUpdate("UPDATE  Parentesco SET Parentesco = \""
-                    + Parentesco + "\" WHERE Cod_Familiar = " + datosFamiliar.Cod_Familiar + " and "
-                    + "DNI_CIF = \""+Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF+"\"");
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
-    
     static private Parentesco obtenerDatosFamiliar(){
         con.conectarBD();
         
@@ -402,74 +315,6 @@ public class Gestor_de_beneficiarios {
             }
         }
         return parentesco;
-    }
-    
-    static public Familiar buscarFamiliar(String Nombre_Apellidos){
-        con.conectarBD();
-        Familiar familiar = null;
-
-        
-        try {
-            instruccion = (Statement) con.conexion().createStatement();
-            ResultSet rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p "
-                    + "WHERE p.Cod_Familiar = f.Cod_Familiar and p.DNI_CIF = \""
-                    + datosBeneficiario.NIF_CIF+"\" and f.Nombre_Apellidos =\""+Nombre_Apellidos+"\"");
-         
-            if (rs.next()){
-                /*Creamos un familiar con los datos*/
-                familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
-                /*Indicamos su Codigo Interno*/
-                familiar.Cod_Familiar = rs.getInt(1);
-            }
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }     
-        
-        return familiar;        
-    }
-    
-    static public Parentesco buscarParentesco(String Nombre_Apellidos){
-        Parentesco parentesc = null;
-        
-        Familiar familiar = buscarFamiliar(Nombre_Apellidos);
-        con.conectarBD();
-        try {
-            instruccion = (Statement) con.conexion().createStatement();
-            ResultSet rs = instruccion.executeQuery("Select Parentesco From Parentesco p "
-                    + "WHERE p.Cod_Familiar = \""+ familiar.Cod_Familiar+"\" and p.DNI_CIF = \""
-                    + datosBeneficiario.NIF_CIF+"\"");
-         
-            if (rs.next()){
-                /*Creamos un familiar con los datos*/
-                parentesc = new Parentesco (familiar.Cod_Familiar,datosBeneficiario.NIF_CIF,rs.getString(1));
-            }
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        
-        return parentesc;
     }
     
     static public ArrayList<Familiar> consultarFamiliares(){
