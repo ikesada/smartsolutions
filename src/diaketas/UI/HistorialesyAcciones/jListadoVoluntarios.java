@@ -61,7 +61,7 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                     modelo.addColumn(rsMd.getColumnLabel(i));
                 }
                 
-                int cont=0;
+                
                 //Creando las filas para el JTable
                 while (rs.next()) 
                 { 

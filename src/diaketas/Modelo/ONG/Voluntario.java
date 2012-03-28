@@ -147,4 +147,52 @@ public class Voluntario extends Usuarios{
     
     
     
+    public static boolean desactivarVoluntario(Voluntario v, Date fecha_desactivacion)
+    {
+        
+        boolean exito = true;
+
+        /*Modificamos los datos del objeto*/
+        v.Activo = 0;
+        v.FechaDesac = fecha_desactivacion;
+        
+        //Convertimos Date para trabajar
+        java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(v.FechaDesac.getTime());
+
+        ConexionBD con = new ConexionBD();
+        con.conectarBD();
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            
+            /* Desactivamos el usuario y actualizamos fecha de Baja*/
+            instruccion.executeUpdate("UPDATE Usuario SET Activo = " + v.Activo + ", Fecha_Desactivacion = \""
+                    +fecha_Desac+"\" WHERE NIF_CIF = \"" + v.NIF_CIF + "\"");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ 
+             System.out.println(e); 
+             exito = false;
+         }
+         catch(Exception e){ 
+             System.out.println(e);
+             exito = false;
+         }
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                    exito = false;
+                }
+            }
+        }         
+    
+        return exito;
+        
+    }
+    
+    
+    
 }
