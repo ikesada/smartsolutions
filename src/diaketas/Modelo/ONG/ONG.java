@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Alex
  */
-public class ONG {
+public class ONG implements iONG{
       static Statement instruccion;
       static ResultSet tabla;
       static ConexionBD con = new ConexionBD();
@@ -278,9 +278,7 @@ public class ONG {
         }  
         return v;
     }
-    
-    
-    
+
     public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
