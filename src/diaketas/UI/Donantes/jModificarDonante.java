@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public class jModificarDonante extends javax.swing.JPanel {
 
@@ -442,12 +442,12 @@ public class jModificarDonante extends javax.swing.JPanel {
         } else if (NIF_Voluntario.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         } else if (!ValidarCampos.isEmail(Email.getText())) {
-            JOptionPane.showMessageDialog(this, "El Email no es correcto", "Email Donante", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El Email no es correcto. Debe ser valido", "Email Invalido", JOptionPane.ERROR_MESSAGE);
         } else if (!ValidarCampos.isInteger(Telefono.getText())) {
-            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Telefono Donante", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser un numero", "Telefono Invalido", JOptionPane.ERROR_MESSAGE);
         }else if (!ValidarCampos.isDouble(Cuantia_Donaciones.getText())) {
-            JOptionPane.showMessageDialog(this, "La cantidad debe ser un numero", "Cuantia Donaciones Donante", JOptionPane.ERROR_MESSAGE);
-        }else {
+            JOptionPane.showMessageDialog(this, "La cantidad no es correcto. Debe ser un numero", "Cuantia Donaciones Invalido", JOptionPane.ERROR_MESSAGE);
+        }else{
             /*
              * Si no se introducen los campos Telefono o el Tipo_Periodicidad es
              * ninguno, se rellenan a 0-Null
@@ -490,13 +490,13 @@ public class jModificarDonante extends javax.swing.JPanel {
             /*
              * Actualizamos la pantalla principal
              */
-            UI.cl.show(UI.jPrincipal, "Socios");
+            UI.cl.show(UI.jPrincipal, "Donantes");
 
         }
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-        UI.cl.show(UI.jPrincipal, "Socios");
+        UI.cl.show(UI.jPrincipal, "Donantes");
     }//GEN-LAST:event_botonCancelActionPerformed
 
     private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyTyped

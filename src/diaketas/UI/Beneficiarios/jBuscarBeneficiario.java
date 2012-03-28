@@ -143,7 +143,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                     "NIF Beneficiario", JOptionPane.ERROR_MESSAGE); 
             }
         }else{
-                JOptionPane.showMessageDialog(this, "No se ha introducido el NIF de beneficiario.",
+                JOptionPane.showMessageDialog(this, "El NIF de Beneficiario no se ha introducido.",
                     "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
