@@ -4,7 +4,6 @@
  */
 package diaketas.UI.Beneficiarios;
 
-import diaketas.UI.Diaketas.*;
 import diaketas.UI.UI;
 import javax.swing.JPanel;
 
@@ -50,7 +49,7 @@ public class jBeneficiario extends javax.swing.JPanel {
         jLabel1.setText("Beneficiarios");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Beneficiarios");
+        jLabel3.setText("Acciones");
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Diaketas;
+package diaketas.UI.Voluntarios;
 
 import diaketas.UI.UI;
 import diaketas.Usuarios.ONG;

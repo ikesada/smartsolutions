@@ -75,7 +75,7 @@
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="108" max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,7 +86,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Historial"/>
+        <Property name="text" type="java.lang.String" value="Historial y Acciones"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -96,7 +96,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Historial voluntarios"/>
+        <Property name="text" type="java.lang.String" value="Listado voluntarios"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator3">
@@ -128,40 +128,22 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="14" rowCount="1">
+              <Table columnCount="11" rowCount="1">
                 <Column editable="false" title="NIF" type="java.lang.String"/>
                 <Column editable="false" title="Nombre" type="java.lang.String"/>
                 <Column editable="false" title="Apellidos" type="java.lang.String"/>
                 <Column editable="false" title="Fecha nacimiento" type="java.lang.Object"/>
                 <Column editable="false" title="Nacionalidad" type="java.lang.String"/>
-                <Column editable="false" title="Estado civil" type="java.lang.String"/>
-                <Column editable="false" title="Domicilio" type="java.lang.Integer"/>
-                <Column editable="false" title="Codigo postal" type="java.lang.String"/>
-                <Column editable="false" title="Localidad" type="java.lang.Integer"/>
-                <Column editable="false" title="Telefono" type="java.lang.Object"/>
+                <Column editable="false" title="Domicilio" type="java.lang.String"/>
+                <Column editable="false" title="Codigo postal" type="java.lang.Integer"/>
+                <Column editable="false" title="Localidad" type="java.lang.String"/>
+                <Column editable="false" title="Telefono" type="java.lang.Integer"/>
+                <Column editable="false" title="Fecha inicio" type="java.lang.Object"/>
                 <Column editable="false" title="Observaciones" type="java.lang.String"/>
-                <Column editable="false" title="Fecha inscripcion" type="java.lang.Object"/>
-                <Column editable="false" title="Expediente" type="java.lang.Object"/>
-                <Column editable="false" title="Motivo" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>

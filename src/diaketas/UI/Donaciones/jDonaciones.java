@@ -4,8 +4,6 @@
  */
 package diaketas.UI.Donaciones;
 
-import diaketas.UI.Diaketas.*;
-
 /**
  *
  * @author kesada

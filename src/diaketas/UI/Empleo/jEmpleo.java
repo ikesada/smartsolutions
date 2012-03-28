@@ -5,7 +5,6 @@
 package diaketas.UI.Empleo;
 
 import diaketas.UI.Donaciones.*;
-import diaketas.UI.Diaketas.*;
 
 /**
  *

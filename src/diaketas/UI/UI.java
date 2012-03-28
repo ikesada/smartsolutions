@@ -4,18 +4,16 @@
  */
 package diaketas.UI;
 
+import diaketas.UI.Beneficiarios.jBeneficiario;
+import diaketas.UI.Voluntarios.jVoluntarios;
+import diaketas.UI.Donaciones.jDonaciones;
 import diaketas.UI.Donantes.jDonantes;
 import diaketas.UI.Empleo.jEmpleo;
-import diaketas.UI.Donaciones.jDonaciones;
-import diaketas.UI.Diaketas.jDiaketas;
-import diaketas.UI.Beneficiarios.*;
-import de.javasoft.plaf.synthetica.*;
+import diaketas.UI.HistorialesyAcciones.jHistorialyAcciones;
 import java.awt.CardLayout;
-import java.awt.Container;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 
 /**
  *
@@ -36,10 +34,11 @@ public class UI extends javax.swing.JFrame {
         /*Paneles acciones */
         /*Categorias principales jPrincipal*/
         JPanel beneficiarios = new jBeneficiario();
-        JPanel diaketas = new jDiaketas();
+        JPanel diaketas = new jVoluntarios();
         JPanel donaciones = new jDonaciones();
         JPanel empleo = new jEmpleo();
         JPanel socios = new jDonantes();
+        JPanel historialyacciones = new jHistorialyAcciones();
        
         
         /*JPrincipal*/
@@ -48,6 +47,7 @@ public class UI extends javax.swing.JFrame {
         jPrincipal.add("Donaciones", donaciones);
         jPrincipal.add("Diaketas", diaketas);
         jPrincipal.add("Beneficiarios", beneficiarios);
+        jPrincipal.add("HistorialyAcciones", historialyacciones);
         
         /*Mostramos Diaketas*/
         cl.show(jPrincipal, "Diaketas");
@@ -64,9 +64,9 @@ public class UI extends javax.swing.JFrame {
 
         jMenuBotones = new javax.swing.JPanel();
         botonDiaketas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         botonSocios = new javax.swing.JButton();
         botonBeneficiarios = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         botonDonaciones = new javax.swing.JButton();
         botonEmpleo = new javax.swing.JButton();
         jPrincipal = new javax.swing.JPanel();
@@ -80,17 +80,13 @@ public class UI extends javax.swing.JFrame {
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         botonDiaketas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Home.png"))); // NOI18N
-        botonDiaketas.setText("Diaketas");
+        botonDiaketas.setText("Voluntarios");
         botonDiaketas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDiaketasActionPerformed(evt);
             }
         });
         jMenuBotones.add(botonDiaketas);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/historiales.png"))); // NOI18N
-        jButton1.setText("Historiales");
-        jMenuBotones.add(jButton1);
 
         botonSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
         botonSocios.setText("Donantes");
@@ -109,6 +105,15 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonBeneficiarios);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/historiales.png"))); // NOI18N
+        jButton1.setText("Historiales");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jMenuBotones.add(jButton1);
 
         botonDonaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
         botonDonaciones.setText("Donaciones");
@@ -164,6 +169,10 @@ public class UI extends javax.swing.JFrame {
         /*Modificamos zona principal*/
         cl.show(jPrincipal, "Socios");
     }//GEN-LAST:event_botonSociosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cl.show(jPrincipal, "HistorialyAcciones");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Diaketas;
+package diaketas.UI.Voluntarios;
 
 import diaketas.UI.UI;
 
@@ -10,12 +10,12 @@ import diaketas.UI.UI;
  *
  * @author cesar
  */
-public class jConfirmarModificacion extends javax.swing.JPanel {
+public class jConfirmarAlta extends javax.swing.JPanel {
 
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jConfirmarModificacion() {
+    public jConfirmarAlta() {
         initComponents();
         
         
@@ -32,15 +32,18 @@ public class jConfirmarModificacion extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jSeparator4 = new javax.swing.JSeparator();
         botonOK = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Voluntarios");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText("Dar de alta a un voluntario");
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -51,10 +54,7 @@ public class jConfirmarModificacion extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("El voluntario ha sido modificado correctamente.");
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setText("Modificar a un voluntario");
+        jLabel2.setText("El voluntario ha sido dado de alta correctamente.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,6 +74,9 @@ public class jConfirmarModificacion extends javax.swing.JPanel {
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel1)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -81,11 +84,7 @@ public class jConfirmarModificacion extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(78, 78, 78)
                 .addComponent(botonOK, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -96,9 +95,9 @@ public class jConfirmarModificacion extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(7, 7, 7)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -123,7 +122,7 @@ public class jConfirmarModificacion extends javax.swing.JPanel {
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;

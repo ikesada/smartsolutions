@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Diaketas;
+package diaketas.UI.HistorialesyAcciones;
 
 import diaketas.UI.UI;
 
@@ -47,7 +47,7 @@ public class jListados extends javax.swing.JPanel {
         listaDespleg = new javax.swing.JComboBox();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Voluntarios");
+        jLabel1.setText("Historial y Acciones");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Listados");
@@ -151,7 +151,7 @@ public class jListados extends javax.swing.JPanel {
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-            UI.cl.show(UI.jPrincipal, "Diaketas");
+            UI.cl.show(UI.jPrincipal, "HistorialyAcciones");
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 

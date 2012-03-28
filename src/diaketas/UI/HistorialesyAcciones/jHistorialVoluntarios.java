@@ -2,26 +2,28 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Diaketas;
+package diaketas.UI.HistorialesyAcciones;
 
 import diaketas.ConexionBD;
 import diaketas.UI.UI;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
-
 
 
 /**
  *
  * @author cesar
  */
-public class jListadoVoluntarios extends javax.swing.JPanel {
+public class jHistorialVoluntarios extends javax.swing.JPanel {
 
-          
+     
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jListadoVoluntarios() {
+    public jHistorialVoluntarios() {
         
         initComponents();
         
@@ -44,7 +46,8 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 Statement s = con.conexion().createStatement();
 
                 //Un objeto ResultSet, almacena los datos de resultados de una consulta
-                ResultSet rs = s.executeQuery("select * from Usuario u, Voluntario v where u.NIF_CIF=v.NIF_CIF");
+                ResultSet rs = s.executeQuery("select * from Beneficiario");
+                
                 
                 //Obteniendo la informacion de las columnas que estan siendo consultadas
                 ResultSetMetaData rsMd = rs.getMetaData();
@@ -55,13 +58,14 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 
                 //Establecer como cabezeras el nombre de las colimnas
                 for (int i = 1; i <= cantidadColumnas; i++) {
-                    modelo.addColumn(rsMd.getColumnLabel(i));
+                modelo.addColumn(rsMd.getColumnLabel(i));
                 }
                 
-                int cont=0;
+                
+                
                 //Creando las filas para el JTable
                 while (rs.next()) 
-                { 
+                {
                     Object[] fila = new Object[cantidadColumnas];
                     for (int i = 0; i < cantidadColumnas; i++) 
                     {
@@ -73,27 +77,18 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                         */
                         if( rs.getMetaData().getColumnType(i+1) == 91 ) //TIPO_DATE = 91
                         {
-                            if(rs.getObject(i+1)!=null  )
-                            {
-                                java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
-                                java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-                                String fecha = sdf.format(date);
-                                fila[i] = fecha;                
-                            }
-                            else
-                            {
-                                fila[i] = "";
-                                                               
-                            }
-                                                           
+                            java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
+                            java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
+                            String fecha = sdf.format(date);
+                            
+                            fila[i] = fecha;
                         }
                         else{
-                            fila[i]=rs.getObject(i+1);      
+                            fila[i]=rs.getObject(i+1);
                         }
                         
                     }
                     modelo.addRow(fila);
-
                 }
             
             }
@@ -125,10 +120,10 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Voluntarios");
+        jLabel1.setText("Historial y Acciones");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Listado voluntarios");
+        jLabel3.setText("Historial voluntarios");
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -141,17 +136,17 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "NIF", "Nombre", "Apellidos", "Fecha nacimiento", "Nacionalidad", "Domicilio", "Codigo postal", "Localidad", "Telefono", "Fecha inicio", "Observaciones"
+                "NIF", "Nombre", "Apellidos", "Fecha nacimiento", "Nacionalidad", "Estado civil", "Domicilio", "Codigo postal", "Localidad", "Telefono", "Observaciones", "Fecha inscripcion", "Expediente", "Motivo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -214,14 +209,14 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         // TODO add your handling code here:       
             
-            UI.cl.show(UI.jPrincipal, "Diaketas");
+            UI.cl.show(UI.jPrincipal, "HistorialyAcciones");
        
     }//GEN-LAST:event_botonOKActionPerformed
 

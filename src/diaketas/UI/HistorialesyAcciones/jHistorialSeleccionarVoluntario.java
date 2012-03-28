@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.UI.Diaketas;
+package diaketas.UI.HistorialesyAcciones;
 
 import diaketas.UI.UI;
 import javax.swing.JOptionPane;
@@ -11,16 +11,16 @@ import javax.swing.JOptionPane;
  *
  * @author cesar
  */
-public class jHistorialSeleccionarUsuario extends javax.swing.JPanel {
+public class jHistorialSeleccionarVoluntario extends javax.swing.JPanel {
 
 
     
-    jHistorialUsuarios historialUsuarios;
+    jHistorialVoluntarios historialVoluntarios;
     
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jHistorialSeleccionarUsuario() {
+    public jHistorialSeleccionarVoluntario() {
         initComponents();
         
        
@@ -45,12 +45,12 @@ public class jHistorialSeleccionarUsuario extends javax.swing.JPanel {
         botonCancel = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Historial");
+        jLabel1.setText("Historial y Acciones");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Historial usuarios");
+        jLabel3.setText("Historial voluntarios");
 
-        jLabel2.setText("DNI/NIF del usuario a consultar");
+        jLabel2.setText("DNI/NIF del voluntario a consultar");
 
         NIF_CIF.setColumns(9);
 
@@ -117,19 +117,19 @@ public class jHistorialSeleccionarUsuario extends javax.swing.JPanel {
        
         
         if (NIF_CIF.getText().compareTo("") == 0){
-                JOptionPane.showMessageDialog(this, "El NIF del usuario a consultar no se ha introducido.", "NIF Usuario", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El NIF del voluntario a buscar no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
-            historialUsuarios = new jHistorialUsuarios();
-            UI.jPrincipal.remove(historialUsuarios);
-            UI.jPrincipal.add("HistorialUsuarios", historialUsuarios); 
-            UI.cl.show(UI.jPrincipal, "HistorialUsuarios");
+            historialVoluntarios = new jHistorialVoluntarios();
+            UI.jPrincipal.remove(historialVoluntarios);
+            UI.jPrincipal.add("HistorialVoluntarios", historialVoluntarios); 
+            UI.cl.show(UI.jPrincipal, "HistorialVoluntarios");
         }
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-            UI.cl.show(UI.jPrincipal, "Diaketas");
+            UI.cl.show(UI.jPrincipal, "HistorialyAcciones");
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 

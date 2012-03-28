@@ -46,7 +46,7 @@ public class jDonantes extends javax.swing.JPanel {
         jLabel1.setText("Donantes");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Donantes");
+        jLabel3.setText("Acciones");
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
