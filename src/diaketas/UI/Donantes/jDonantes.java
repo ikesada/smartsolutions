@@ -16,7 +16,7 @@ public class jDonantes extends javax.swing.JPanel {
     jBuscarDonante BuscarDonante;
 
     /**
-     * Creates new form jDiaketas
+     * Creates new form jDonantes
      */
     public jDonantes() {
         initComponents();

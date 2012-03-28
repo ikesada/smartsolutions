@@ -121,7 +121,7 @@ public class jHistorialSeleccionarVoluntario extends javax.swing.JPanel {
         }
         else
         {
-            historialVoluntarios = new jHistorialVoluntarios();
+            historialVoluntarios = new jHistorialVoluntarios( NIF_CIF.getText().toUpperCase() );
             UI.jPrincipal.remove(historialVoluntarios);
             UI.jPrincipal.add("HistorialVoluntarios", historialVoluntarios); 
             UI.cl.show(UI.jPrincipal, "HistorialVoluntarios");
