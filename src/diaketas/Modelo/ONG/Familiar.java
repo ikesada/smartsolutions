@@ -85,6 +85,7 @@ public class Familiar {
             instruccion.executeUpdate("INSERT INTO Parentesco "
                     + " VALUES (\""+parentesco.Cod_Familiar  + "\",\"" + parentesco.DNI_Beneficiario + "\",\"" 
                     + parentesco.Parentesc + "\")");
+           
           }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }

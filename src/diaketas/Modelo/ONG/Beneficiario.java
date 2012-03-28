@@ -214,6 +214,10 @@ public class Beneficiario extends Usuarios{
             instruccion.executeUpdate("INSERT INTO Familiar (Nombre_Apellidos, Fecha_Nacimiento, Ocupacion)"
                     + " VALUES (\""+familiar.Nombre_Apellidos + "\",\"" + fecha_Nacimiento + "\",\"" 
                     + familiar.Ocupacion + "\")");
+            
+            ResultSet rs =instruccion.executeQuery("SELECT MAX(Cod_Familiar) AS Cod_Familiar FROM Familiar");
+            if (rs.next())
+                familiar.Cod_Familiar = rs.getInt(1);
         }
         /*Captura de errores*/
         catch(SQLException e){ System.out.println(e); }
