@@ -16,7 +16,7 @@ public class jBajaDonante extends javax.swing.JPanel {
 
     public int fase;
     /**
-     * Creates new form jAltaBeneficiario
+     * Creates new form jBajaDonante
      */
     public jBajaDonante() {
         initComponents();

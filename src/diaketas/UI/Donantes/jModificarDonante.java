@@ -29,7 +29,7 @@ public class jModificarDonante extends javax.swing.JPanel {
     JPanel panel;
 
     /**
-     * Creates new form jAltaBeneficiario
+     * Creates new form jModificarDonante
      */
     public jModificarDonante() {
         initComponents();
@@ -433,6 +433,21 @@ public class jModificarDonante extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+
+        /*
+         * Si no se introducen los campos Telefono o el Tipo_Periodicidad es
+         * ninguno, se rellenan a 0-Null
+         */
+        //Si la periodicidad es ninguna, no nos interesan la cuantia y el tiempo
+        if (((String) Tipo_Periodicidad.getSelectedItem()).compareTo("Ninguna") == 0) {
+            Cuantia_Donaciones.setText("0");
+            Periodicidad_Donaciones.setText("0");
+        }
+        if (Telefono.getText().compareTo(" ") == 0) {
+            Telefono.setText("0");
+        }
+
+
         if (NIF_CIF.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del donante no se ha introducido.", "NIF Donante", JOptionPane.ERROR_MESSAGE);
         } else if (Nombre.getText().compareTo("") == 0) {
@@ -441,25 +456,16 @@ public class jModificarDonante extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Los apellidos del donante no se han introducido.", "Apellidos Donante", JOptionPane.ERROR_MESSAGE);
         } else if (NIF_Voluntario.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+        } else if (Telefono.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Telefono.getText())) {
+            JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser de tipo numerico", "Telefono Beneficiario", JOptionPane.ERROR_MESSAGE);
         } else if (!ValidarCampos.isEmail(Email.getText())) {
             JOptionPane.showMessageDialog(this, "El Email no es correcto. Debe ser valido", "Email Invalido", JOptionPane.ERROR_MESSAGE);
-        } else if (!ValidarCampos.isInteger(Telefono.getText())) {
-            JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser un numero", "Telefono Invalido", JOptionPane.ERROR_MESSAGE);
-        }else if (!ValidarCampos.isDouble(Cuantia_Donaciones.getText())) {
-            JOptionPane.showMessageDialog(this, "La cantidad no es correcto. Debe ser un numero", "Cuantia Donaciones Invalido", JOptionPane.ERROR_MESSAGE);
-        }else{
-            /*
-             * Si no se introducen los campos Telefono o el Tipo_Periodicidad es
-             * ninguno, se rellenan a 0-Null
-             */
-            if (Telefono.getText().compareTo("         ") == 0) {
-                Telefono.setText("0");
-            }
-            //Si la periodicidad es ninguna, no nos interesan la cuantia y el tiempo
-            if (((String) Tipo_Periodicidad.getSelectedItem()).compareTo("Ninguna") == 0) {
-                Cuantia_Donaciones.setText("0");
-                Periodicidad_Donaciones.setText("0");
-            }   
+        } else if (!ValidarCampos.isDouble(Cuantia_Donaciones.getText())) {
+            JOptionPane.showMessageDialog(this, "La cantidad no es correcta. Debe ser un numero", "Cuantia Donaciones Invalido", JOptionPane.ERROR_MESSAGE);
+        } else if (!ValidarCampos.isInteger(Periodicidad_Donaciones.getText())) {
+            JOptionPane.showMessageDialog(this, "La Periodicidad de Donaciones no es correcta. Debe ser un numero", "Cuantia Donaciones Invalido", JOptionPane.ERROR_MESSAGE);
+        } else {
+
 
             /*
              * Conversion de la fecha

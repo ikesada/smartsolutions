@@ -37,7 +37,6 @@ public class ValidarCampos {
         pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
         mat = pat.matcher(email);
         if (mat.find()) {
-            System.out.println("[" + mat.group() + "]");
             return true;
         }else{
             return false;
