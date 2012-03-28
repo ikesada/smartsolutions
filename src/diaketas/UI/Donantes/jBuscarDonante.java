@@ -11,12 +11,12 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public class jBuscarDonante extends javax.swing.JPanel {
 
     JPanel panel;
-    jModificarDonante modificarSocio;
+    jModificarDonante modificarDonante;
     String jPanelSiguiente;
     
     /**
@@ -116,7 +116,7 @@ public class jBuscarDonante extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        if (jPanelSiguiente.compareTo("ConsultarSocio") ==0)
+        if (jPanelSiguiente.compareTo("ConsultarDonante") ==0)
         {
             
             if(Gestor_de_donantes.introducirDniDonante(NIF_CIF.getText())){

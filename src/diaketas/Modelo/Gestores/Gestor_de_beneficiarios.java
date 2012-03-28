@@ -25,8 +25,8 @@ public class Gestor_de_beneficiarios {
     
     
     static Beneficiario datosBeneficiario;
-    static String NIF_Voluntario;
-    static String NIF_Beneficiario;
+    static public String NIF_Voluntario;
+    static public String NIF_Beneficiario;
     static Familiar datosFamiliar;
     static String NombreApellidosFamiliar;
     static String parentesco;
@@ -64,7 +64,7 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
-        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return Gestor_de_voluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
     static public Boolean comprobarExistenciaBeneficiario(String DNI){
@@ -101,108 +101,18 @@ public class Gestor_de_beneficiarios {
         datosBeneficiario = ONG.buscarBeneficiario(DNI);  
 
         /*Desactivamos al usuario*/
-        desactivarUsuario(new Date());
+        datosBeneficiario.desactivarUsuario(new Date());
     }
   
-    static private void desactivarUsuario(Date fecha_desactivacion){
-        /*Modificamos los datos del objeto*/
-        datosBeneficiario.Activo = 0;
-        datosBeneficiario.FechaDesac = fecha_desactivacion;
-        
-        /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(datosBeneficiario.FechaDesac.getTime());
-
-        con.conectarBD();
-        try {
-            instruccion = (Statement) con.conexion().createStatement();
-            
-            /* Desactivamos el usuario y actualizamos fecha de Baja*/
-            instruccion.executeUpdate("UPDATE Usuario SET Activo = " + datosBeneficiario.Activo + ", Fecha_Desactivacion = \""
-                    +fecha_Desac+"\" WHERE NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\"");
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
-    }
-        
     static private void modificarBeneficiario(Beneficiario nuevosDatosBeneficiario){
         
         /*Buscamos beneficiario*/
         datosBeneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /*Modificamos sus datos*/
-        cambiarDatosBeneficiario(nuevosDatosBeneficiario);
+        datosBeneficiario.cambiarDatosBeneficiario(nuevosDatosBeneficiario);
     }
 
-    
-    static public void cambiarDatosBeneficiario (Beneficiario datosBeneficiario){
-    
-
-        /* Actualizamos los datos */
-        con.conectarBD();
-
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(datosBeneficiario.FechaNac.getTime());
-        
-        try {
-            instruccion = (Statement) con.conexion().createStatement();
-
-            instruccion.executeUpdate("Update Usuario SET "
-                    + "NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\", "
-                    + "Nombre = \"" + datosBeneficiario.Nombre + "\", "                    
-                    + "Apellidos = \"" + datosBeneficiario.Apellidos + "\", "                    
-                    + "Fecha_Nacimiento_Fundacion = \"" + fecha_Nacimiento + "\", "                    
-                    + "Localidad = \"" + datosBeneficiario.Localidad + "\", "
-                    + "Email = \"" + datosBeneficiario.Email + "\", "
-                    + "Telefono = \"" + datosBeneficiario.Telefono + "\""
-                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
-         
-            instruccion.executeUpdate("Update Beneficiario SET "
-                    + "NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\", "
-                    + "Nacionalidad = \"" + datosBeneficiario.Nacionalidad + "\", "                    
-                    + "Estado_Civil = \"" + datosBeneficiario.Estado_civil + "\", "                    
-                    + "Domicilio = \"" + datosBeneficiario.Domicilio + "\", "                    
-                    + "Codigo_Postal = " + datosBeneficiario.Codigo_Postal + ", "
-                    + "Expediente = " + datosBeneficiario.Expediente + ", "
-                    + "Motivo = \"" + datosBeneficiario.Motivo + "\", "                  
-                    + "Precio_Vivienda = " + datosBeneficiario.Precio_Vivienda + ", "
-                    + "Tipo_Vivienda = \"" + datosBeneficiario.Tipo_Vivienda + "\", "
-                    + "Observaciones_Datos_Personales = \"" + datosBeneficiario.Observaciones_Datos_Personales + "\", "
-                    + "Observaciones_Familiares = \"" + datosBeneficiario.Observaciones_Familiares + "\", "
-                    + "Observaciones_Vivienda = \"" + datosBeneficiario.Observaciones_Vivienda + "\", "
-                    + "Ciudad_Nacimiento = \"" + datosBeneficiario.Ciudad_Nacimiento + "\", "
-                    + "Situacion_Economica = \"" + datosBeneficiario.Situacion_Economica + "\", "
-                    + "Nivel_Estudios = \"" + datosBeneficiario.Nivel_Estudios + "\", "
-                    + "Profesion = \"" + datosBeneficiario.Profesion + "\", "
-                    + "Experiencia_Laboral = \"" + datosBeneficiario.Experiencia_Laboral + "\" "
-                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }     
-        
-    }
-    
-    
     static public void confirmarAltaBeneficiario(){
         
         /*Crear beneficiario*/
@@ -362,6 +272,19 @@ public class Gestor_de_beneficiarios {
         
         return familiares;
     }
+    
+    static public ArrayList<Familiar> iniciarModificarFamiliar(){
+        ArrayList<Familiar> familiares;
+
+        /*Obtenemos el beneficiario*/
+        datosBeneficiario = ONG.buscarBeneficiario(NIF_Beneficiario);
+
+        /*Obtenemos la lista de familiares*/
+        familiares = consultarFamiliares();
+        
+        return familiares;
+    }
+    
     
     static public ArrayList consultarFamiliar(String Nombre_Apellidos){
 
@@ -592,7 +515,7 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = DNI_Voluntario;
         
         /*Comprobamos si el Voluntario existe */
-        return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return Gestor_de_voluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
 }

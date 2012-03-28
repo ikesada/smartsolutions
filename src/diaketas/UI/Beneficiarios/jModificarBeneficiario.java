@@ -681,13 +681,13 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         else if (Email.getText().compareTo("") != 0 && !ValidarCampos.isEmail(Email.getText()))
             JOptionPane.showMessageDialog(this, "El Email del beneficiario no es correcto.", "Email Beneficiario", JOptionPane.ERROR_MESSAGE);
         else if (Codigo_Postal.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Codigo_Postal.getText()))
-            JOptionPane.showMessageDialog(this, "El codigo postal del beneficiario no es correcto.", "Codigo postal Beneficiario", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El codigo postal no es correcto. Debe ser un numero", "Codigo postal Beneficiario", JOptionPane.ERROR_MESSAGE);
         else if (Expediente.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Expediente.getText()))
             JOptionPane.showMessageDialog(this, "El expediente del beneficiario no es correcto.", "Expediente Beneficiario", JOptionPane.ERROR_MESSAGE);
         else if (Telefono.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Telefono.getText()))
-            JOptionPane.showMessageDialog(this, "El telefono del beneficiario no es correcto.", "Telefono Beneficiario", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser de tipo numerico", "Telefono Beneficiario", JOptionPane.ERROR_MESSAGE);
         else if (Precio_Vivienda.getText().compareTo("") != 0 && !ValidarCampos.isDouble(Precio_Vivienda.getText()))
-             JOptionPane.showMessageDialog(this, "El precio de la vivienda del beneficiario no es correcto.", "Precio de la vivienda Beneficiario", JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(this, "El precio de la vivienda no es correcto. Debe ser un numero", "Precio de la vivienda Beneficiario", JOptionPane.ERROR_MESSAGE);
         else{
             
             /*---------Introducir datos del familiar---------------*/

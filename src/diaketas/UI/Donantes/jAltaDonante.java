@@ -399,7 +399,7 @@ public class jAltaDonante extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
-        UI.cl.show(UI.jPrincipal, "Socios");
+        UI.cl.show(UI.jPrincipal, "Donantes");
     }//GEN-LAST:event_botonCancelActionPerformed
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
@@ -413,11 +413,11 @@ public class jAltaDonante extends javax.swing.JPanel {
         } else if (NIF_Voluntario.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
         } else if (!ValidarCampos.isEmail(Email.getText())) {
-            JOptionPane.showMessageDialog(this, "El Email no es correcto", "Email Donante", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El Email no es correcto. Debe ser valido", "Email Invalido", JOptionPane.ERROR_MESSAGE);
         } else if (!ValidarCampos.isInteger(Telefono.getText())) {
-            JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Telefono Donante", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser un numero", "Telefono Invalido", JOptionPane.ERROR_MESSAGE);
         }else if (!ValidarCampos.isDouble(Cuantia_Donaciones.getText())) {
-            JOptionPane.showMessageDialog(this, "La cantidad debe ser un numero", "Cuantia Donaciones Donante", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La cantidad no es correcto. Debe ser un numero", "Cuantia Donaciones Invalido", JOptionPane.ERROR_MESSAGE);
         }else{
             /*
              * Si no se introducen los campos Telefono o el Tipo_Periodicidad es

@@ -47,13 +47,9 @@
                                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Fecha_Inscripcion" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Activo" min="-2" max="-2" attributes="0"/>
                                   <Component id="Telefono" min="-2" max="-2" attributes="0"/>
                                   <Component id="Email" min="-2" max="-2" attributes="0"/>
                                   <Component id="Localidad" min="-2" max="-2" attributes="0"/>
@@ -62,6 +58,11 @@
                                   <Component id="Nombre" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Apellidos" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="Fecha_Inscripcion" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -187,11 +188,6 @@
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Telefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Activo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -210,7 +206,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Socios"/>
+        <Property name="text" type="java.lang.String" value="Donantes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -348,16 +344,6 @@
     <Component class="javax.swing.JLabel" name="Cuantia_Donaciones">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cuantia"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Activo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Activo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Activo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Observaciones">

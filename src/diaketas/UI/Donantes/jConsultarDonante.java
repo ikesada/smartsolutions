@@ -4,19 +4,20 @@
  */
 package diaketas.UI.Donantes;
 
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Donante;
+import diaketas.UI.UI;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public class jConsultarDonante extends javax.swing.JPanel {
 
     JPanel panel;
     /**
-     * Creates new form jAltaBeneficiario
+     * Creates new form jConsultarDonante
      */
     public jConsultarDonante() {
         initComponents();
@@ -27,30 +28,27 @@ public class jConsultarDonante extends javax.swing.JPanel {
         
         java.text.SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yyyy");
         
-        NIF_CIF.setText(donante.NIF_CIF);
-        Nombre.setText(donante.Nombre);
-        Apellidos.setText(donante.Apellidos);
-        Fecha_Nacimiento.setText(formatoFecha.format(donante.FechaNac));
-        Localidad.setText(donante.Localidad);
-       /** if(String.valueOf(donante.Activo).compareTo("1")==0)
-            Activo.setText("Si");
-        else
-            Activo.setText("No");
-        */
-        System.out.println(donante.Activo);
-        Activo.setText(Integer.toString(donante.Activo));
-        Email.setText(donante.Email);
-        Telefono.setText(String.valueOf(donante.Telefono));
-        
-        Tipo_Donante.setText(donante.Tipo_Donante);
-        Fecha_Inscripcion.setText(formatoFecha.format(donante.Fecha_Inscripcion));
-        Observaciones.setText(donante.Observaciones);
-        Periodicidad_Donaciones.setText(String.valueOf(donante.Periodicidad_Donaciones));
-        Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
-        Tipo_Periodicidad.setText(donante.Tipo_Periodicidad);   
+        if(donante.Activo == 1){
+            NIF_CIF.setText(donante.NIF_CIF);
+            Nombre.setText(donante.Nombre);
+            Apellidos.setText(donante.Apellidos);
+            Fecha_Nacimiento.setText(formatoFecha.format(donante.FechaNac));
+            Localidad.setText(donante.Localidad);
+            
+            Email.setText(donante.Email);
+            Telefono.setText(String.valueOf(donante.Telefono));
+
+            Tipo_Donante.setText(donante.Tipo_Donante);
+            Fecha_Inscripcion.setText(formatoFecha.format(donante.Fecha_Inscripcion));
+            Observaciones.setText(donante.Observaciones);
+            Periodicidad_Donaciones.setText(String.valueOf(donante.Periodicidad_Donaciones));
+            Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
+            Tipo_Periodicidad.setText(donante.Tipo_Periodicidad);  
+        }else{
+            JOptionPane.showMessageDialog(this, "El Donante se encuentra dado de baja.", "Donante no valido", JOptionPane.CLOSED_OPTION);
+        }
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,8 +87,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
         Periodicidad_Donaciones = new javax.swing.JLabel();
         Tipo_Periodicidad = new javax.swing.JLabel();
         Cuantia_Donaciones = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        Activo = new javax.swing.JLabel();
         Observaciones = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Fecha_Inscripcion = new javax.swing.JLabel();
@@ -100,7 +96,7 @@ public class jConsultarDonante extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1100, 518));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Socios");
+        jLabel1.setText("Donantes");
 
         jLabel8.setText("Email");
 
@@ -158,10 +154,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
 
         Cuantia_Donaciones.setText("Cuantia");
 
-        jLabel9.setText("Activo");
-
-        Activo.setText("Activo");
-
         Observaciones.setText("Observaciones");
         Observaciones.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
@@ -191,20 +183,20 @@ public class jConsultarDonante extends javax.swing.JPanel {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel8)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
-                                .addGap(32, 32, 32)
+                                    .addComponent(jLabel12))
+                                .addGap(68, 68, 68)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Fecha_Inscripcion)
-                                    .addComponent(Activo)
                                     .addComponent(Telefono)
                                     .addComponent(Email)
                                     .addComponent(Localidad)
                                     .addComponent(Fecha_Nacimiento)
                                     .addComponent(NIF_CIF)
                                     .addComponent(Nombre)
-                                    .addComponent(Apellidos))))
+                                    .addComponent(Apellidos)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(32, 32, 32)
+                                .addComponent(Fecha_Inscripcion)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,10 +294,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(Telefono))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(Activo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
@@ -315,11 +303,10 @@ public class jConsultarDonante extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        UI.cl.show(UI.jPrincipal, "Socios");
+        UI.cl.show(UI.jPrincipal, "Donantes");
     }//GEN-LAST:event_botonOKActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Activo;
     private javax.swing.JLabel Apellidos;
     private javax.swing.JLabel Cuantia_Donaciones;
     private javax.swing.JLabel Email;
@@ -349,7 +336,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
