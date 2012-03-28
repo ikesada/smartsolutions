@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.Usuarios.Historial;
+package diaketas.Modelo.Gestores;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import diaketas.Modelo.ONG.Accion;

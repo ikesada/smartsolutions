@@ -2,12 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.Usuarios.Beneficiario;
+package diaketas.Modelo.Gestores;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Usuarios.Historial.Gestor_de_historiales;
 import diaketas.Modelo.ONG.ONG;
+import diaketas.Modelo.ONG.Beneficiario;
+import diaketas.Modelo.ONG.Familiar;
+import diaketas.Modelo.ONG.Parentesco;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

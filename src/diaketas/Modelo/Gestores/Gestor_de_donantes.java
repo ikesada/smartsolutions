@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.Usuarios.Donante;
+package diaketas.Modelo.Gestores;
 
 import diaketas.ConexionBD;
 import diaketas.Modelo.ONG.Accion;
-import diaketas.Usuarios.Historial.Gestor_de_historiales;
 import diaketas.Modelo.ONG.ONG;
+import diaketas.Modelo.ONG.Donante;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

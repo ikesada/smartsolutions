@@ -6,10 +6,6 @@ package diaketas.Modelo.ONG;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Usuarios.Beneficiario.Beneficiario;
-import diaketas.Usuarios.Beneficiario.Familiar;
-import diaketas.Usuarios.Donante.Donante;
-import diaketas.Usuarios.Voluntario.Voluntario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;

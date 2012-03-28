@@ -5,7 +5,7 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
-import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
 import javax.swing.JOptionPane;
 
 /**

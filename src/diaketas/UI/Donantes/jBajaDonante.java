@@ -5,7 +5,7 @@
 package diaketas.UI.Donantes;
 
 import diaketas.UI.UI;
-import diaketas.Usuarios.Donante.Gestor_de_donantes;
+import diaketas.Modelo.Gestores.Gestor_de_donantes;
 import javax.swing.JOptionPane;
 
 /**

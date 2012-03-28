@@ -8,8 +8,8 @@ import ValidarCampos.ValidarCampos;
 import diaketas.UI.UI;
 import javax.swing.JOptionPane;
 
-import diaketas.Usuarios.Voluntario.Voluntario;
-import diaketas.Usuarios.Voluntario.Gestor_de_voluntarios;
+import diaketas.Modelo.ONG.Voluntario;
+import diaketas.Modelo.Gestores.Gestor_de_voluntarios;
 import diaketas.Modelo.ONG.ONG;
 import java.awt.Color;
 import java.text.ParseException;

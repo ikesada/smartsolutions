@@ -6,7 +6,7 @@ package diaketas.UI.Voluntarios;
 
 import diaketas.UI.UI;
 import diaketas.Modelo.ONG.ONG;
-import diaketas.Usuarios.Voluntario.Voluntario;
+import diaketas.Modelo.ONG.Voluntario;
 import javax.swing.JOptionPane;
 
 /**

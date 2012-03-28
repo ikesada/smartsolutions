@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package diaketas.Usuarios.Donante;
+package diaketas.Modelo.ONG;
 
 import diaketas.Modelo.ONG.Usuarios;
 import java.util.Date;

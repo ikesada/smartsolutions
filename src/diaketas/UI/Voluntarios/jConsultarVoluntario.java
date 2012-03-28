@@ -5,7 +5,7 @@
 package diaketas.UI.Voluntarios;
 
 import diaketas.UI.UI;
-import diaketas.Usuarios.Voluntario.Voluntario;
+import diaketas.Modelo.ONG.Voluntario;
 import java.text.SimpleDateFormat;
 
 /**
