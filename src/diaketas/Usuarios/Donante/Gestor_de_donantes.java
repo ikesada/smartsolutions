@@ -122,7 +122,7 @@ public class Gestor_de_donantes {
         return ONG.buscarDonante(datosDonante.NIF_CIF);
     }
 
-        public static void confirmarFinAlta() {
+    public static void confirmarFinAlta() {
 
         /*
          * Crear Donante
