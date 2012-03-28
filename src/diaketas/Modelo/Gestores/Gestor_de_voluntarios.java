@@ -30,17 +30,17 @@ import java.util.logging.Logger;
 public class Gestor_de_voluntarios {
 
     
-    static Statement instruccion;
-    static ResultSet rs;
-    static ConexionBD con = new ConexionBD();
+    Statement instruccion;
+    ResultSet rs;
+    ConexionBD con = new ConexionBD();
     
     
     
       
     
-    static public boolean comprobarExistenciaVoluntario(String DNI){
+    public boolean comprobarExistenciaVoluntario(String DNI){
 
-        Voluntario v = ONG.buscarVoluntario(DNI);
+        Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);
         
         
         if(v!=null)
@@ -70,7 +70,7 @@ public class Gestor_de_voluntarios {
     
     
     
-    static public boolean altaVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs, String voluntarioDNI )
+    public boolean altaVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs, String voluntarioDNI )
     {
     
        
@@ -78,19 +78,19 @@ public class Gestor_de_voluntarios {
         
         
         
-        boolean existe = Gestor_de_voluntarios.comprobarExistenciaVoluntario( (String)voluntarioDNI );
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario( (String)voluntarioDNI );
         
         if(existe)
         {
-            boolean existe1 = Gestor_de_voluntarios.comprobarExistenciaVoluntario(DNI);
+            boolean existe1 = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
             
             if(!existe1)
             {
                 
                 //el constructor Date() nos devuelve la fecha actual    
-                confirma = Gestor_de_voluntarios.crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
+                confirma = diaketas.diaketas.gestorVoluntarios.crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
 
-                Gestor_de_historiales.RegistrarOperacion(voluntarioDNI, DNI, "alta voluntario");
+                diaketas.diaketas.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "alta voluntario");
                 
             }
             if(existe1)
@@ -106,7 +106,7 @@ public class Gestor_de_voluntarios {
     
     
     
-    public static boolean crearVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs)
+    public boolean crearVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs)
     {
 
         
@@ -119,7 +119,7 @@ public class Gestor_de_voluntarios {
         Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, 1, null, email, telf, 
                                         nacionalidad, direccion, codPost, new Date(), obs );
         
-        ONG.agregarNuevoVoluntario(v);
+        diaketas.diaketas.ong.agregarNuevoVoluntario(v);
        
         return confirma;
     
@@ -131,24 +131,24 @@ public class Gestor_de_voluntarios {
     
        
     
-    static public boolean bajaVoluntario( String DNI, String voluntarioDNI )
+    public boolean bajaVoluntario( String DNI, String voluntarioDNI )
     {
         
         boolean confirma=false;
         
-        boolean existe = Gestor_de_voluntarios.comprobarExistenciaVoluntario( voluntarioDNI );
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario( voluntarioDNI );
         
         if(existe)
         {
             
-            boolean existe1 = Gestor_de_voluntarios.comprobarExistenciaVoluntario(DNI);
+            boolean existe1 = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
             
             if(existe1)
             {
                 
-                Gestor_de_voluntarios.eliminarVoluntario(DNI);
+                diaketas.diaketas.gestorVoluntarios.eliminarVoluntario(DNI);
                 
-                Gestor_de_historiales.RegistrarOperacion(voluntarioDNI, DNI, "baja voluntario");
+                diaketas.diaketas.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "baja voluntario");
                
             }
             
@@ -160,11 +160,11 @@ public class Gestor_de_voluntarios {
     
     
     
-    public static boolean eliminarVoluntario(String DNI)
+    public  boolean eliminarVoluntario(String DNI)
     {
         boolean exito = false;
         //Obtenemos el voluntario
-        Voluntario v = ONG.buscarVoluntario(DNI);  
+        Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);  
 
         //Desactivamos al usuario
         //v.desactivarUsuario(new Date());
@@ -178,26 +178,26 @@ public class Gestor_de_voluntarios {
     
     
     
-    static public boolean modificarVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs, String voluntarioDNI )
+     public boolean modificarVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs, String voluntarioDNI )
     {
         
         boolean confirma=false;
         
         
         
-        boolean existe = Gestor_de_voluntarios.comprobarExistenciaVoluntario(DNI);
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
         
         if(existe)
         {
-            boolean existe1 = Gestor_de_voluntarios.comprobarExistenciaVoluntario(voluntarioDNI);
+            boolean existe1 = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(voluntarioDNI);
             
             if(existe1)
             {
                 
             
-                confirma = Gestor_de_voluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
+                confirma = diaketas.diaketas.gestorVoluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
             
-                Gestor_de_historiales.RegistrarOperacion(voluntarioDNI, DNI, "modificacion voluntario");
+                diaketas.diaketas.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "modificacion voluntario");
             }
         }
         
@@ -208,10 +208,10 @@ public class Gestor_de_voluntarios {
     
     
     
-    static public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
+     public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
     {
         
-        Voluntario v = ONG.buscarVoluntario(DNI);
+        Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);
         
         boolean exito = v.introducirDatosVoluntario( DNI, nombre, apellidos, fechaNac, poblacion, email, telf, nacionalidad, dir, codPost, obs);
         
@@ -219,10 +219,10 @@ public class Gestor_de_voluntarios {
        
     }
     
-    static public Voluntario consultarDatosVoluntario( String DNI )
+     public Voluntario consultarDatosVoluntario( String DNI )
     {
         
-        Voluntario v = ONG.buscarVoluntario(DNI);        
+        Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);        
         
         if(v!=null)
         {

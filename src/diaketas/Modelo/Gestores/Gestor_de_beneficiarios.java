@@ -21,21 +21,26 @@ import java.util.logging.Logger;
  *
  * @author kesada
  */
-public class Gestor_de_beneficiarios {
+public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     
     
-    static Beneficiario datosBeneficiario;
-    static public String NIF_Voluntario;
-    static public String NIF_Beneficiario;
-    static Familiar datosFamiliar;
-    static String NombreApellidosFamiliar;
-    static String parentesco;
+    Beneficiario datosBeneficiario;
+    public String NIF_Voluntario;
+    public String NIF_Beneficiario;
+    Familiar datosFamiliar;
+    String NombreApellidosFamiliar;
+    String parentesco;
+    Statement instruccion;
     
-    static ConexionBD con = new ConexionBD();
-    static Statement instruccion;
+    ConexionBD con = new ConexionBD();
+
+    
+    public Gestor_de_beneficiarios() {
+    }
+
     
     /*---------------------------Beneficiario----------------------------------*/
-    static public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
+    public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
         
         NIF_Beneficiario = DNI_Beneficiario;
         
@@ -43,7 +48,7 @@ public class Gestor_de_beneficiarios {
         return comprobarExistenciaBeneficiario(DNI_Beneficiario);        
     }
 
-    static public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre,
+    public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre,
             String Apellidos, Date FechaNac, String Localidad, int Activo, Date Fecha_Desac,
             String Email, int Telefono, String Nacionalidad,
             String Estado_civil, String Domicilio, int Codigo_Postal,
@@ -64,13 +69,13 @@ public class Gestor_de_beneficiarios {
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
-        return Gestor_de_voluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
-    static public Boolean comprobarExistenciaBeneficiario(String DNI){
+    public Boolean comprobarExistenciaBeneficiario(String DNI){
         
         /*Buscamos el beneficiario*/
-        Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);
+        Beneficiario beneficiario = diaketas.diaketas.ong.buscarBeneficiario(DNI);
         
         if (beneficiario !=  null)
             return (beneficiario.Activo == 1);
@@ -78,8 +83,8 @@ public class Gestor_de_beneficiarios {
             return false;
     }
     
-    static public Beneficiario consultarBeneficiario (String DNI){
-        
+    public Beneficiario consultarBeneficiario (String DNI){
+
         /*Actualimos NIF*/
         NIF_Beneficiario = DNI;
         
@@ -89,56 +94,56 @@ public class Gestor_de_beneficiarios {
         if (comprobarExistenciaBeneficiario(DNI)){
             
             /*Obtenemos los datos del beneficiario*/
-            datosBeneficiario = ONG.buscarBeneficiario(DNI);
+            datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(DNI);
         }
-        
+
         return datosBeneficiario;
     }
   
-    static private void eliminarBeneficiario(String DNI){
+    private void eliminarBeneficiario(String DNI){
 
         /*Obtenemos el beneficiario*/
-        datosBeneficiario = ONG.buscarBeneficiario(DNI);  
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(DNI);  
 
         /*Desactivamos al usuario*/
         datosBeneficiario.desactivarUsuario(new Date());
     }
   
-    static private void modificarBeneficiario(Beneficiario nuevosDatosBeneficiario){
+    private void modificarBeneficiario(Beneficiario nuevosDatosBeneficiario){
         
         /*Buscamos beneficiario*/
-        datosBeneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /*Modificamos sus datos*/
         datosBeneficiario.cambiarDatosBeneficiario(nuevosDatosBeneficiario);
     }
 
-    static public void confirmarAltaBeneficiario(){
+    public void confirmarAltaBeneficiario(){
         
         /*Crear beneficiario*/
         Beneficiario nuevoBeneficiario =  new Beneficiario(datosBeneficiario);
         
         /*Registrar Beneficiario*/
-        ONG.agregarNuevoBeneficiario(nuevoBeneficiario);
+        diaketas.diaketas.ong.agregarNuevoBeneficiario(nuevoBeneficiario);
         
         /*Registrar Operacion*/
-        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
+        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
         
         /*Registrar beneficiario*/
         /*Beneficiario ya tiene asociado Vivienda, email y telefono*/
     }
     
-    static public void confirmarBajaBeneficiario(){
+    public void confirmarBajaBeneficiario(){
         /*Registrar Operacion*/
-        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
+        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
         
         /*Eliminar beneficiario*/
-        Gestor_de_beneficiarios.eliminarBeneficiario(NIF_Beneficiario);
+        eliminarBeneficiario(NIF_Beneficiario);
     }
     
-    static public void confirmarModificacionBeneficiario(){
+    public void confirmarModificacionBeneficiario(){
          /*Registrar Operacion*/
-        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
+        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
     
         /*Modificar beneficiario*/
         modificarBeneficiario(datosBeneficiario);
@@ -146,18 +151,18 @@ public class Gestor_de_beneficiarios {
    
     /*--------------------------------Familiar---------------------------------*/
     
-    static public void seleccionarFamiliar(String Nombre_Apellidos){
+    public void seleccionarFamiliar(String Nombre_Apellidos){
         NombreApellidosFamiliar = Nombre_Apellidos;
     }
    
     /*
      * ConfirmarAltaFamiliar // ConfirmarInsercion
      */
-    static public void confirmarInsercion(){   
+    public void confirmarInsercion(){   
         Familiar familiar;
         
         /*Se busca si el familiar ya existe*/
-        familiar = ONG.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento);
+        familiar = diaketas.diaketas.ong.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento);
 
         /*Si No existe, se crea el nuevo familiar y se añade*/
         if (familiar == null){
@@ -176,10 +181,10 @@ public class Gestor_de_beneficiarios {
     /*
      * ConfirmarEliminacionFamiliar // ConfirmarEliminacion
      */
-    static public void confirmarEliminacion(){
+    public void confirmarEliminacion(){
 
         /* Buscamos Beneficiario en el sistema */
-        datosBeneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /* Buscamos el familiar del beneficiario*/
         /* buscarFamiliar  == buscarParentesco */
@@ -212,11 +217,11 @@ public class Gestor_de_beneficiarios {
         
     }
  
-    static public ArrayList<Familiar> iniciarConsultarFamiliar(){
+    public ArrayList<Familiar> iniciarConsultarFamiliar(){
         ArrayList<Familiar> familiares;
 
         /*Obtenemos el beneficiario*/
-        datosBeneficiario = ONG.buscarBeneficiario(NIF_Beneficiario);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
 
         /*Obtenemos la lista de familiares*/
         familiares = consultarFamiliares();
@@ -224,11 +229,11 @@ public class Gestor_de_beneficiarios {
         return familiares;
     }
     
-    static public ArrayList<Familiar> inicioModificarFamiliar(){
+    public ArrayList<Familiar> inicioModificarFamiliar(){
         ArrayList<Familiar> familiares;
 
         /*Obtenemos el beneficiario*/
-        datosBeneficiario = ONG.buscarBeneficiario(NIF_Beneficiario);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
 
         /*Obtenemos la lista de familiares*/
         familiares = consultarFamiliares();
@@ -236,10 +241,10 @@ public class Gestor_de_beneficiarios {
         return familiares;
     }
     
-    static public ArrayList consultarFamiliar(String Nombre_Apellidos){
+    public ArrayList consultarFamiliar(String Nombre_Apellidos){
 
         /*Obtenemos el beneficiario*/
-        datosBeneficiario = ONG.buscarBeneficiario(NIF_Beneficiario);  
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);  
 
          /*Buscamos el familiar cuyo nombre se indica*/
         datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
@@ -258,13 +263,13 @@ public class Gestor_de_beneficiarios {
         return datos_Familiar;
     }
     
-    static public void modificarDatosFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
+    public void modificarDatosFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
         actualizarFamiliar(Nombre_Apellidos, nuevosDatosFamiliar, parentesco);
     }
     
-    static private void actualizarFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
+    private void actualizarFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
         /* Buscamos Beneficiario en el sistema */
-        datosBeneficiario = ONG.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
         
         /*Buscamos el familiar*/
         datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
@@ -274,12 +279,12 @@ public class Gestor_de_beneficiarios {
                 nuevosDatosFamiliar.Ocupacion, parentesco);
     }
 
-    static public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
+    public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
         datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
         parentesco = Parentesco;
     }
 
-    static private Parentesco obtenerDatosFamiliar(){
+    private Parentesco obtenerDatosFamiliar(){
         con.conectarBD();
         
         Parentesco parentesco = null;
@@ -290,12 +295,12 @@ public class Gestor_de_beneficiarios {
             
             /*Obtenemos el parentesco del familiar con respecto al beneficiario*/
             ResultSet rs = instruccion.executeQuery("Select p.Parentesco from Parentesco p WHERE "
-                    + "DNI_CIF = \""+Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF+"\" and "
+                    + "DNI_CIF = \""+datosBeneficiario.NIF_CIF+"\" and "
                     + " Cod_Familiar="+datosFamiliar.Cod_Familiar);
          
             if (rs.next()){
                 parentesco = new Parentesco(datosFamiliar.Cod_Familiar,
-                        Gestor_de_beneficiarios.datosBeneficiario.NIF_CIF,rs.getString(1));
+                        datosBeneficiario.NIF_CIF,rs.getString(1));
             }
          }
          /*Captura de errores*/
@@ -314,7 +319,7 @@ public class Gestor_de_beneficiarios {
         return parentesco;
     }
     
-    static public ArrayList<Familiar> consultarFamiliares(){
+    public ArrayList<Familiar> consultarFamiliares(){
         con.conectarBD();
         ArrayList<Familiar> familiares = new ArrayList<Familiar>();
 
@@ -352,12 +357,12 @@ public class Gestor_de_beneficiarios {
    
     /*----------------------------------Otros----------------------------------*/
     
-    static public boolean introducirDNIVoluntario(String DNI_Voluntario){
+    public boolean introducirDNIVoluntario(String DNI_Voluntario){
         
         NIF_Voluntario = DNI_Voluntario;
         
         /*Comprobamos si el Voluntario existe */
-        return Gestor_de_voluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
 }

@@ -21,13 +21,13 @@ import java.util.logging.Logger;
  */
 public class Gestor_de_donantes {
 
-    static Statement instruccion;
-    static ResultSet tabla;
-    static ConexionBD con = new ConexionBD();
-    static Donante datosDonante;
-    static String NIF_Voluntario;
+    Statement instruccion;
+    ResultSet tabla;
+    ConexionBD con = new ConexionBD();
+    Donante datosDonante;
+    String NIF_Voluntario;
 
-    static public boolean introducirDatosDonante(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
+    public boolean introducirDatosDonante(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
             String Tipo_Donante, Date Fecha_Inscripcion, String Observaciones, int Periodicidad_Donaciones, double Cuantia_Donaciones,
             String Tipo_Periodicidad, String NIF_Vol) {
 
@@ -41,21 +41,21 @@ public class Gestor_de_donantes {
         return true;
     }
 
-    static public Boolean introducirDniDonante(String NIF_CIF) {
+    public Boolean introducirDniDonante(String NIF_CIF) {
 
         datosDonante = new Donante(NIF_CIF);
 
         return comprobarDniDonante(NIF_CIF);
     }
     
-    static public Boolean introducirDniVoluntario(String NIF_CIF) {
+    public Boolean introducirDniVoluntario(String NIF_CIF) {
 
         NIF_Voluntario = NIF_CIF;
 
-        return Gestor_de_voluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
        
-    static public Donante confimarConsulta() {
+    public Donante confimarConsulta() {
 
        /* con.conectarBD();
         
@@ -114,10 +114,10 @@ public class Gestor_de_donantes {
                 datosDonante.Observaciones, datosDonante.Periodicidad_Donaciones,
                 datosDonante.Cuantia_Donaciones, datosDonante.Tipo_Periodicidad);
 */
-        return ONG.buscarDonante(datosDonante.NIF_CIF);
+        return diaketas.diaketas.ong.buscarDonante(datosDonante.NIF_CIF);
     }
 
-    public static void confirmarFinAlta() {
+    public void confirmarFinAlta() {
 
         /*
          * Crear Donante
@@ -131,19 +131,19 @@ public class Gestor_de_donantes {
         /*
          * Registrar Donante
          */
-        ONG.agregarNuevoDonante(nuevoDonante);
+        diaketas.diaketas.ong.agregarNuevoDonante(nuevoDonante);
 
         /*
          * Registrar Operacion
          */
-        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
+        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
     }
 
-    public static Boolean comprobarDniDonante(String NIF_CIF) {
+    public Boolean comprobarDniDonante(String NIF_CIF) {
 
         Boolean existe = false;
         
-        if(ONG.buscarDonante(NIF_CIF) != null)
+        if(diaketas.diaketas.ong.buscarDonante(NIF_CIF) != null)
             existe = true;
 
         /*con.conectarBD();
@@ -173,10 +173,10 @@ public class Gestor_de_donantes {
         return existe;
     }
 
-    public static void confirmarFinModificacion() {
+    public void confirmarFinModificacion() {
 
         
-        datosDonante = ONG.buscarDonante(datosDonante.NIF_CIF);
+        datosDonante = diaketas.diaketas.ong.buscarDonante(datosDonante.NIF_CIF);
         
         con.conectarBD();
         /*Convertimos Date para trabajar*/
@@ -211,13 +211,13 @@ public class Gestor_de_donantes {
         /*
          * Registrar Operacion
          */
-        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
+        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
         
     }
     
-    public static void confirmarFinBaja(){
+    public void confirmarFinBaja(){
         
-        datosDonante = ONG.buscarDonante(datosDonante.NIF_CIF);
+        datosDonante = diaketas.diaketas.ong.buscarDonante(datosDonante.NIF_CIF);
         
         datosDonante.Activo = 0;
         datosDonante.FechaDesac = new Date();
@@ -252,7 +252,7 @@ public class Gestor_de_donantes {
         /*
          * Registrar Operacion
          */
-        Gestor_de_historiales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
+        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
         
         //datosDonante.desactivarUsuario(new Date());
         

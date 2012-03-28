@@ -19,17 +19,17 @@ import java.util.logging.Logger;
  */
 public class Gestor_de_historiales {
     
-      static Statement instruccion;
-      static ResultSet tabla;
-      static ConexionBD con = new ConexionBD();
+      Statement instruccion;
+      ResultSet tabla;
+      ConexionBD con = new ConexionBD();
     
-    static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
+    public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
   
         /*Nueva acción con Dni de voluntario y beneficiario asociado, junto con fecha actual*/
         Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
         
         /*Añadimos la acción en el sistema*/
-        ONG.agregarAccion(ac);
+        diaketas.diaketas.ong.agregarAccion(ac);
     }
 }
     
