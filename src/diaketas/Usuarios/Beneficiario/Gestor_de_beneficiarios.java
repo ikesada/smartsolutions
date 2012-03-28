@@ -69,8 +69,11 @@ public class Gestor_de_beneficiarios {
         
         /*Buscamos el beneficiario*/
         Beneficiario beneficiario = ONG.buscarBeneficiario(DNI);
-  
-        return (beneficiario != null);
+        
+        if (beneficiario !=  null)
+            return (beneficiario.Activo == 1);
+        else
+            return false;
     }
     
     static public Beneficiario consultarBeneficiario (String DNI){
