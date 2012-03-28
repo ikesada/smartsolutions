@@ -64,6 +64,7 @@ public class UI extends javax.swing.JFrame {
 
         jMenuBotones = new javax.swing.JPanel();
         botonDiaketas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         botonSocios = new javax.swing.JButton();
         botonBeneficiarios = new javax.swing.JButton();
         botonDonaciones = new javax.swing.JButton();
@@ -86,6 +87,10 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonDiaketas);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/historiales.png"))); // NOI18N
+        jButton1.setText("Historiales");
+        jMenuBotones.add(jButton1);
 
         botonSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
         botonSocios.setText("Donantes");
@@ -197,6 +202,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton botonDonaciones;
     private javax.swing.JButton botonEmpleo;
     private javax.swing.JButton botonSocios;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jMenuBotones;
     public static javax.swing.JPanel jPrincipal;
     private javax.swing.JScrollPane jPrincipalScroll;
