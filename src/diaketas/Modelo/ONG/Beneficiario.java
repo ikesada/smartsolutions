@@ -162,7 +162,7 @@ public class Beneficiario extends Usuarios{
                     + "Localidad = \"" + datosBeneficiario.Localidad + "\", "
                     + "Email = \"" + datosBeneficiario.Email + "\", "
                     + "Telefono = \"" + datosBeneficiario.Telefono + "\""
-                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
+                    + " WHERE NIF_CIF = \""+diaketas.diaketas.gestorBeneficiarios.NIF_Beneficiario+"\"");
          
             instruccion.executeUpdate("Update Beneficiario SET "
                     + "NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\", "
@@ -182,7 +182,7 @@ public class Beneficiario extends Usuarios{
                     + "Nivel_Estudios = \"" + datosBeneficiario.Nivel_Estudios + "\", "
                     + "Profesion = \"" + datosBeneficiario.Profesion + "\", "
                     + "Experiencia_Laboral = \"" + datosBeneficiario.Experiencia_Laboral + "\" "
-                    + " WHERE NIF_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
+                    + " WHERE NIF_CIF = \""+diaketas.diaketas.gestorBeneficiarios.NIF_Beneficiario+"\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }

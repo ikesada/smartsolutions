@@ -57,7 +57,7 @@ public class Familiar {
             /*Actualizamos Parentesco*/
             instruccion.executeUpdate("UPDATE  Parentesco SET Parentesco = \""
                     + Parentesco + "\" WHERE Cod_Familiar = " + Cod_Familiar + " and "
-                    + "DNI_CIF = \""+Gestor_de_beneficiarios.NIF_Beneficiario+"\"");
+                    + "DNI_CIF = \""+diaketas.diaketas.gestorBeneficiarios.NIF_Beneficiario+"\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }

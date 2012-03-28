@@ -22,7 +22,7 @@ public class ONG {
       static ConexionBD con = new ConexionBD();
        
     /****************************ACCION****************************************/
-    static public void agregarAccion(Accion ac){
+    public void agregarAccion(Accion ac){
         /*Se guarda la accion en el sistema*/
         con.conectarBD();
         /*Convertimos Date para trabajar*/
@@ -48,7 +48,7 @@ public class ONG {
         }
     }
     /**************************BENEFICIARIO*************************************/    
-    static public Beneficiario buscarBeneficiario(String DNI){
+    public Beneficiario buscarBeneficiario(String DNI){
         Beneficiario beneficiario = null;
         con.conectarBD();
 
@@ -83,7 +83,7 @@ public class ONG {
          return beneficiario;
     }
        
-    static public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
+    public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoBeneficiario.FechaNac.getTime());
@@ -123,7 +123,7 @@ public class ONG {
     }
     
     /*****************************FAMILIAR************************************/
-    static public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac){
+    public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac){
         Familiar familiar = null;
         con.conectarBD();
         /*Convertimos Date para trabajar*/
@@ -160,7 +160,7 @@ public class ONG {
     
     /*****************************DONANTE************************************/
     
-        static public void agregarNuevoDonante(Donante nuevoDonante){
+    public void agregarNuevoDonante(Donante nuevoDonante){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoDonante.FechaNac.getTime());
@@ -195,7 +195,7 @@ public class ONG {
         }        
     }
         
-        static public Donante buscarDonante(String DNI){
+    public Donante buscarDonante(String DNI){
             
             Donante donante = null;
             con.conectarBD();
@@ -232,7 +232,7 @@ public class ONG {
     
     
     /******************************VOLUNTARIO**************************/   
-    static public Voluntario buscarVoluntario(String DNI){
+    public Voluntario buscarVoluntario(String DNI){
         Voluntario v = null;
         
         con.conectarBD();
@@ -281,7 +281,7 @@ public class ONG {
     
     
     
-    static public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
+    public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoVoluntario.FechaNac.getTime());
