@@ -187,7 +187,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jLabel29.setText("Observaciones de los familiares");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Consultar a un beneficiario");
+        jLabel3.setText("Dar de alta a un beneficiario");
 
         jLabel28.setText("Tipo");
 
