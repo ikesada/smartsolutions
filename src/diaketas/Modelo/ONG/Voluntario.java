@@ -66,7 +66,7 @@ public class Voluntario extends Usuarios{
     //Modificador de voluntario
     
     //activo, fechaDesac no se pueden modificar, 
-    public void cambiarDatosVoluntario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
+    public void introducirDatosVoluntario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
                                         String Nacionalidad, String Domicilio, int Codigo_Postal, String Obs)
     {
     

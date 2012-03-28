@@ -283,7 +283,7 @@ public class ONG {
     static public boolean comprobarExistenciaVoluntario(String DNI){
         Voluntario vol = buscarVoluntario(DNI);
         
-        
+        //cambiar lo del campo activo!!
         return (vol != null);
     }
     

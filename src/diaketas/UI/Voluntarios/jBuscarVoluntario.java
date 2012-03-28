@@ -4,6 +4,7 @@
  */
 package diaketas.UI.Voluntarios;
 
+import diaketas.Modelo.Gestores.Gestor_de_voluntarios;
 import diaketas.UI.UI;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Voluntario;
@@ -129,8 +130,8 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         else
         {
 
-            //Busco al voluntario introducido
-            Voluntario v = ONG.buscarVoluntario(NIF.getText().toUpperCase());
+            //Consulto los datos del voluntario introducido
+            Voluntario v = Gestor_de_voluntarios.consultarDatosVoluntario(NIF.getText().toUpperCase());
             
             if(v==null)
             {

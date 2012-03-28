@@ -42,7 +42,7 @@ public class Gestor_de_voluntarios {
 
         Voluntario vol = ONG.buscarVoluntario(DNI);
         
-
+        //cambiar lo del campo activo!!
         return (vol != null);
     }
     
@@ -112,18 +112,7 @@ public class Gestor_de_voluntarios {
     }   
     
             
-            
-    /*
-    static public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
-  
-        //Se crea una nueva acción con Dni de voluntario y voluntario asociado, junto con fecha actual
-        Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
-        
-        //Se guarda la accion en el sistema
-        //ONG.agregarAccion(ac);
-        Gestor_de_historiales.RegistrarOperacion(DNI_Voluntario, DNI, Tipo);
-    }
-    */
+
     
        
     
@@ -156,22 +145,24 @@ public class Gestor_de_voluntarios {
     
     
     
-    public static void eliminarVoluntario(String DNI)
+    public static boolean eliminarVoluntario(String DNI)
     {
-        
+        boolean exito = false;
         //Obtenemos el voluntario
         Voluntario v = ONG.buscarVoluntario(DNI);  
 
         //Desactivamos al usuario
         //v.desactivarUsuario(new Date());
-        Gestor_de_voluntarios.desactivarVoluntario(v, new Date());         
+        exito = Gestor_de_voluntarios.desactivarVoluntario(v, new Date());   
+        
+        return exito;
     }
     
     
-    public static void desactivarVoluntario(Voluntario v, Date fecha_desactivacion)
+    public static boolean desactivarVoluntario(Voluntario v, Date fecha_desactivacion)
     {
         
-        
+        boolean exito = true;
 
         /*Modificamos los datos del objeto*/
         v.Activo = 0;
@@ -190,8 +181,14 @@ public class Gestor_de_voluntarios {
                     +fecha_Desac+"\" WHERE NIF_CIF = \"" + v.NIF_CIF + "\"");
          }
          /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
+         catch(SQLException e){ 
+             System.out.println(e); 
+             exito = false;
+         }
+         catch(Exception e){ 
+             System.out.println(e);
+             exito = false;
+         }
          /*Desconexión de la BD*/
          finally {
             if (con.hayConexionBD()) {
@@ -199,11 +196,12 @@ public class Gestor_de_voluntarios {
                     con.desconectarBD();
                 } catch (SQLException ex) {
                     Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                    exito = false;
                 }
             }
         }         
     
-        
+        return exito;
         
     }
     
@@ -244,10 +242,32 @@ public class Gestor_de_voluntarios {
         
         Voluntario v = ONG.buscarVoluntario(DNI);
         
-        /*boolean exito = */v.cambiarDatosVoluntario( DNI, nombre, apellidos, fechaNac, poblacion, email, telf, nacionalidad, dir, codPost, obs);
+        /*boolean exito = */v.introducirDatosVoluntario( DNI, nombre, apellidos, fechaNac, poblacion, email, telf, nacionalidad, dir, codPost, obs);
         
 //        return exito;
        
+    }
+    
+    static public Voluntario consultarDatosVoluntario( String DNI )
+    {
+        
+        Voluntario v = ONG.buscarVoluntario(DNI);        
+        
+        if(v!=null)
+        {
+            if( v.Activo==1 )
+            {
+                return v;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return v;
+        }
     }
     
     
