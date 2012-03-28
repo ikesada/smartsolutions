@@ -7,7 +7,7 @@ package diaketas.UI.Donantes;
 import ValidarCampos.ValidarCampos;
 import diaketas.ConexionBD;
 import diaketas.UI.UI;
-import diaketas.Usuarios.Donante.Gestor_de_donantes;
+import diaketas.Modelo.Gestores.Gestor_de_donantes;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

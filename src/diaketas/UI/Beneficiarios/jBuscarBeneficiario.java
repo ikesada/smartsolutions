@@ -5,9 +5,9 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
-import diaketas.Usuarios.Beneficiario.Beneficiario;
-import diaketas.Usuarios.Beneficiario.Familiar;
-import diaketas.Usuarios.Beneficiario.Gestor_de_beneficiarios;
+import diaketas.Modelo.ONG.Beneficiario;
+import diaketas.Modelo.ONG.Familiar;
+import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

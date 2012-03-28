@@ -5,7 +5,7 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
-import diaketas.Usuarios.Beneficiario.Beneficiario;
+import diaketas.Modelo.ONG.Beneficiario;
 import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
 
