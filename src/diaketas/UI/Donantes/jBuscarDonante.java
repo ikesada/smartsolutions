@@ -119,11 +119,11 @@ public class jBuscarDonante extends javax.swing.JPanel {
         if (jPanelSiguiente.compareTo("ConsultarDonante") ==0)
         {
             
-            if(Gestor_de_donantes.introducirDniDonante(NIF_CIF.getText())){
+            if(diaketas.diaketas.gestorDonantes.introducirDniDonante(NIF_CIF.getText())){
                 
                 //Pasamos el donante devuelto al nuevo panel
                 
-                panel = new jConsultarDonante(Gestor_de_donantes.confimarConsulta());
+                panel = new jConsultarDonante(diaketas.diaketas.gestorDonantes.confimarConsulta());
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, jPanelSiguiente);
             
@@ -132,9 +132,9 @@ public class jBuscarDonante extends javax.swing.JPanel {
             }
          }else{
             
-            if(Gestor_de_donantes.introducirDniDonante(NIF_CIF.getText())){
+            if(diaketas.diaketas.gestorDonantes.introducirDniDonante(NIF_CIF.getText())){
 
-                panel = new jModificarDonante(Gestor_de_donantes.confimarConsulta());
+                panel = new jModificarDonante(diaketas.diaketas.gestorDonantes.confimarConsulta());
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, jPanelSiguiente); 
 

@@ -143,7 +143,7 @@ public class jBajaDonante extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         if (fase == 0){
             //Buscar el dni
-            if(Gestor_de_donantes.introducirDniDonante(NIF_CIF.getText())){
+            if(diaketas.diaketas.gestorDonantes.introducirDniDonante(NIF_CIF.getText())){
                 
                 NIF_CIF.setVisible(false);
                 jLabel2.setText("¿Desea borrar el donante con NIF-CIF " + NIF_CIF.getText()+ "?");
@@ -160,7 +160,7 @@ public class jBajaDonante extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
             }else{
                 
-                if(Gestor_de_donantes.introducirDniVoluntario(NIF_Voluntario.getText())){
+                if(diaketas.diaketas.gestorDonantes.introducirDniVoluntario(NIF_Voluntario.getText())){
                     
                     botonCancel.setVisible(false);
                     NIF_Voluntario.setVisible(false);
@@ -169,7 +169,7 @@ public class jBajaDonante extends javax.swing.JPanel {
                     fase = 2;
        
                     
-                    Gestor_de_donantes.confirmarFinBaja();
+                    diaketas.diaketas.gestorDonantes.confirmarFinBaja();
                 }
             }
         }else
