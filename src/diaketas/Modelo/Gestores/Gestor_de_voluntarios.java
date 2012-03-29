@@ -32,7 +32,7 @@ public class Gestor_de_voluntarios {
     
     public Boolean introducirDNIVoluntario(String NIF_CIF) {
 
-        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_CIF);
+        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_CIF);
     }
     
     
@@ -67,19 +67,19 @@ public class Gestor_de_voluntarios {
         
         
         
-        boolean existe = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario( (String)voluntarioDNI );
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario( (String)voluntarioDNI );
         
         if(existe)
         {
-            boolean existe1 = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+            boolean existe1 = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
             
             if(!existe1)
             {
                 
                 //el constructor Date() nos devuelve la fecha actual    
-                confirma = diaketas.diaketas.ong.gestorVoluntarios.crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
+                confirma = diaketas.diaketas.gestorVoluntarios.crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
 
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "alta voluntario");
+                diaketas.diaketas.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "alta voluntario");
                 
             }
             if(existe1)
@@ -125,19 +125,19 @@ public class Gestor_de_voluntarios {
         
         boolean confirma=false;
         
-        boolean existe = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario( voluntarioDNI );
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario( voluntarioDNI );
         
         if(existe)
         {
             
-            boolean existe1 = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+            boolean existe1 = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
             
             if(existe1)
             {
                 
-                diaketas.diaketas.ong.gestorVoluntarios.eliminarVoluntario(DNI);
+                diaketas.diaketas.gestorVoluntarios.eliminarVoluntario(DNI);
                 
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "baja voluntario");
+                diaketas.diaketas.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "baja voluntario");
                
             }
             
@@ -174,19 +174,19 @@ public class Gestor_de_voluntarios {
         
         
         
-        boolean existe = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
         
         if(existe)
         {
-            boolean existe1 = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(voluntarioDNI);
+            boolean existe1 = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(voluntarioDNI);
             
             if(existe1)
             {
                 
             
-                confirma = diaketas.diaketas.ong.gestorVoluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
+                confirma = diaketas.diaketas.gestorVoluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
             
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "modificacion voluntario");
+                diaketas.diaketas.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "modificacion voluntario");
             }
         }
         
@@ -218,12 +218,12 @@ public class Gestor_de_voluntarios {
         Voluntario v = null;
         
         //si el voluntario esta desactivado, devolvera existe=false
-        boolean existe = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
         
         
         if(existe)
         {
-            v = diaketas.diaketas.ong.gestorVoluntarios.obtenerDatosVoluntario(DNI);
+            v = diaketas.diaketas.gestorVoluntarios.obtenerDatosVoluntario(DNI);
         }
         
         
