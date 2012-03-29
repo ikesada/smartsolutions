@@ -131,7 +131,7 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         {
 
             //Consulto los datos del voluntario introducido
-            Voluntario v = diaketas.diaketas.gestorVoluntarios.consultarVoluntario(NIF.getText().toUpperCase());
+            Voluntario v = diaketas.diaketas.ong.gestorVoluntarios.consultarVoluntario(NIF.getText().toUpperCase());
             
             if(v==null)
             {

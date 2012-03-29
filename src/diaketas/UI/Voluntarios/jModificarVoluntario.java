@@ -520,12 +520,12 @@ public class jModificarVoluntario extends javax.swing.JPanel {
             {
 
                 //primero compruebo si el dni del voluntario actual existe en el sistema
-                existe_vol = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
+                existe_vol = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
 
                 if(existe_vol)
                 {
                     
-                    exito = diaketas.diaketas.gestorVoluntarios.modificarVoluntario( (String)Nombre.getText(), (String)Apellidos.getText(), (String)NIF.getText().toUpperCase(), telefonoPasado, (String)Domicilio.getText(), (String)Poblacion.getText(), (String)Email.getText(), (String)Nacionalidad.getText(), Fecha_Nac, Integer.parseInt(CodPost.getText()), (String)Obs.getText(), (String)NIF1.getText().toUpperCase() );
+                    exito = diaketas.diaketas.ong.gestorVoluntarios.modificarVoluntario( (String)Nombre.getText(), (String)Apellidos.getText(), (String)NIF.getText().toUpperCase(), telefonoPasado, (String)Domicilio.getText(), (String)Poblacion.getText(), (String)Email.getText(), (String)Nacionalidad.getText(), Fecha_Nac, Integer.parseInt(CodPost.getText()), (String)Obs.getText(), (String)NIF1.getText().toUpperCase() );
 
                 }
                 else
