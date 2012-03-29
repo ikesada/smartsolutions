@@ -4,14 +4,8 @@
  */
 package diaketas;
 
-import de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import diaketas.Modelo.Gestores.Gestor_de_donantes;
-import diaketas.Modelo.Gestores.Gestor_de_historiales;
-import diaketas.Modelo.Gestores.Gestor_de_voluntarios;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
-import javax.swing.UIManager;
 
 /**
  *
@@ -28,7 +22,7 @@ public class diaketas {
            UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
-*/                ong = new ONG();
+*/      ong = new ONG();
     
 
 
