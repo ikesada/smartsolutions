@@ -7,19 +7,11 @@ package diaketas.Modelo.Gestores;
 //antes tenia este: import com.mysql.jdbc.ResultSet;
 
 //sustituido por estos dos:
-import java.sql.ResultSet;
-//import com.mysql.jdbc.ResultSet;
-
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Modelo.ONG.Accion;
-import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Voluntario;
-import java.sql.SQLException;
-import java.util.Calendar;
+import java.sql.ResultSet;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

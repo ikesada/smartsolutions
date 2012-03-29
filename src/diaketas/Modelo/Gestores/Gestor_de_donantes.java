@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author Alex
  */
-public class Gestor_de_donantes {
+public class Gestor_de_donantes implements iGestorDonantes {
 
     Statement instruccion;
     ResultSet tabla;
@@ -28,6 +28,7 @@ public class Gestor_de_donantes {
     Donante datosDonante;
     String NIF_Voluntario;
 
+    @Override
     public boolean introducirDatosDonante(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
             String Tipo_Donante, Date Fecha_Inscripcion, String Observaciones, int Periodicidad_Donaciones, double Cuantia_Donaciones,
             String Tipo_Periodicidad, String NIF_Vol) {
@@ -42,6 +43,7 @@ public class Gestor_de_donantes {
         return true;
     }
 
+    @Override
     public Boolean introducirDniDonante(String NIF_CIF) {
 
         datosDonante = new Donante(NIF_CIF);
@@ -49,18 +51,13 @@ public class Gestor_de_donantes {
         return comprobarDniDonante(NIF_CIF);
     }
     
-    public Boolean introducirDniVoluntario(String NIF_CIF) {
-
-        NIF_Voluntario = NIF_CIF;
-
-        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
-    }
-       
+    @Override
     public Donante confimarConsulta() {
 
         return diaketas.diaketas.ong.buscarDonante(datosDonante.NIF_CIF);
     }
 
+    @Override
     public void confirmarFinAlta() {
 
         /*
@@ -83,21 +80,7 @@ public class Gestor_de_donantes {
         diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
     }
 
-    public Boolean comprobarDniDonante(String NIF_CIF) {
-
-        Boolean existe = false;
-        Donante donante = diaketas.diaketas.ong.buscarDonante(NIF_CIF);
-                
-        if(donante != null){
-            //if(donante.Activo == 0)
-           //     JOptionPane.showMessageDialog(null, "El Donante se encuentra dado de baja.", "Donante no valido", JOptionPane.CLOSED_OPTION);
-           // else
-                existe = true;
-       }
-
-        return existe;
-    }
-
+    @Override
     public void confirmarFinModificacion() {
 
         
@@ -140,6 +123,7 @@ public class Gestor_de_donantes {
         
     }
     
+    @Override
     public void confirmarFinBaja(){
         
         datosDonante = diaketas.diaketas.ong.buscarDonante(datosDonante.NIF_CIF);
@@ -179,5 +163,26 @@ public class Gestor_de_donantes {
          */
         diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
         
+    }
+    
+    /* Funciones no pertenecientes a la interfaz */
+    
+    public Boolean comprobarDniDonante(String NIF_CIF) {
+
+        Boolean existe = false;
+        Donante donante = diaketas.diaketas.ong.buscarDonante(NIF_CIF);
+                
+        if(donante != null && donante.Activo == 1){
+                existe = true;
+       }
+
+        return existe;
+    }
+    
+    public Boolean introducirDniVoluntario(String NIF_CIF) {
+
+        NIF_Voluntario = NIF_CIF;
+
+        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 }
