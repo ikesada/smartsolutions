@@ -185,7 +185,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jLabel29.setText("Observaciones de los familiares");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Dar de alta a un beneficiario");
+        jLabel3.setText("Consultar a un beneficiario");
 
         jLabel28.setText("Tipo");
 
@@ -448,7 +448,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                         .addComponent(Observaciones_Familiares_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addComponent(botonOK)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

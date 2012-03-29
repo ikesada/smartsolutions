@@ -5,13 +5,8 @@
 package diaketas.UI.Beneficiarios;
 
 import ValidarCampos.ValidarCampos;
-import diaketas.ConexionBD;
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Beneficiario;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import diaketas.UI.UI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -233,7 +228,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Dar de alta a un beneficiario");
+        jLabel3.setText("Modificar a un beneficiario");
 
         jLabel28.setText("Tipo");
 
@@ -416,7 +411,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(NIF, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                        .addComponent(NIF)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel40)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
