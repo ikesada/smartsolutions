@@ -33,14 +33,12 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         initComponents();
         
         /*Inicializamos los datos*/
-        ArrayList datosFamiliar = diaketas.diaketas.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
-        Familiar familiar = (Familiar) datosFamiliar.get(0);
-        Parentesco parentesco = (Parentesco) datosFamiliar.get(1);
+        Familiar familiar = diaketas.diaketas.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
         
         /*Actualizamos los valores del formulario*/
         this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);
         this.Ocupacion.setText(familiar.Ocupacion);
-        this.Parentesco.setText(parentesco.Parentesc);
+        this.Parentesco.setText(familiar.parentesco.Parentesc);
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");

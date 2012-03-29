@@ -170,7 +170,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             if (NIF_Voluntario.getText().compareTo("") != 0){
                 
                 /*IntroducirDNIVoluntario*/
-                correcto = diaketas.diaketas.gestorBeneficiarios.introducirDNIVoluntario(NIF_Voluntario.getText());
+                correcto = diaketas.diaketas.gestorVoluntarios.introducirDNIVoluntario(NIF_Voluntario.getText());
                 
                 if (correcto == true){
                     
