@@ -17,25 +17,24 @@ import java.util.logging.Logger;
  */
 public class Familiar {
     /**
-     * 
+     * Nombre y apellidos del familiar
      */
     public String Nombre_Apellidos;
     /**
-     * 
+     * Fecha de nacimiento del familiar
      */
     public Date Fecha_Nacimiento;
     /**
-     * 
+     * Ocupacion del familiar
      */
     public String Ocupacion;
     /**
-     * 
+     * Codigo interno del familiar
      */
     public int Cod_Familiar;
     
-    /*Parentesco del familiar con respecto al Beneficiario*/
     /**
-     * 
+     * Parentesco del familiar con respecto al Beneficiario
      */
     public Parentesco parentesco;
     
@@ -44,10 +43,10 @@ public class Familiar {
 
     /*------------------------------Constructores------------------------------*/
     /**
-     * 
-     * @param Nombre_Apellidos
-     * @param Fecha_Nacimiento
-     * @param Ocupacion
+     * Crea un nuevo familiar
+     * @param Nombre_Apellidos Nombre y apellidos del familiar
+     * @param Fecha_Nacimiento Fecha de nacimiento del familiar
+     * @param Ocupacion Ocupación del familiar
      */
     public Familiar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion) {
         this.Nombre_Apellidos = Nombre_Apellidos;
@@ -58,11 +57,11 @@ public class Familiar {
     
     /*------------------------------Modificadores------------------------------*/
     /**
-     * 
-     * @param Nombre_Apellidos
-     * @param Fecha_Nacimiento
-     * @param Ocupacion
-     * @param parentesco
+     * Cambia los datos del familiar por los datos especificados
+     * @param Nombre_Apellidos Nombre y apellidos del familiar
+     * @param Fecha_Nacimiento Fecha de nacimiento del familiar
+     * @param Ocupacion Ocupación del familiar
+     * @param parentesco Relación de parentesco del familiar con respecto al beneficiario
      */
     public void cambiarDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion, Parentesco parentesco){
         /*Modificamos los datos del objeto*/
@@ -105,8 +104,8 @@ public class Familiar {
     }
     
     /**
-     * 
-     * @param parentesco
+     * Agrega un parentesco al familiar con respecto al beneficiario
+     * @param parentesco Parentesco existente entre el familiar y el beneficiario
      */
     public void agregarParentesco(Parentesco parentesco)    {
         /*Agregamos el parentesco*/
@@ -139,7 +138,7 @@ public class Familiar {
     }
 
     /**
-     * 
+     * Agrega un parentesco al familiar con respecto al beneficiario
      */
     public void eliminarParentesco(){
         parentesco = null;

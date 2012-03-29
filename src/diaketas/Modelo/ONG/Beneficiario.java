@@ -19,108 +19,107 @@ import java.util.logging.Logger;
  */
 public class Beneficiario extends Usuarios{
     /**
-     * 
+     * Nacionalidad del beneficiario
      */
     public String Nacionalidad;
     /**
-     * 
+     * Estado civil del beneficiario
      */
     public String Estado_civil;
     /**
-     * 
+     * Domicilio del beneficiario
      */
     public String Domicilio;
     /**
-     * 
+     * Codigo postal del beneficiario
      */
     public int Codigo_Postal;
     /**
-     * 
+     * Observaciones acerca de los datos personales del beneficiario
      */
     public String Observaciones_Datos_Personales;
     /**
-     * 
+     * Fecha de inscripción del beneficiario
      */
     public Date Fecha_Inscripcion;
     /**
-     * 
+     * Motivo del beneficiario
      */
     public String Motivo;
     /**
-     * 
+     * Tipo de vivienda del beneficiario
      */
     public String Tipo_Vivienda;
     /**
-     * 
+     * Precio de la vivienda del beneficiario
      */
     public Double Precio_Vivienda;
     /**
-     * 
+     * Situacion economica del beneficiario
      */
     public String Situacion_Economica;
     /**
-     * 
+     * Expediente del beneficiario
      */
     public int Expediente;
     /**
-     * 
+     * Observaciones acerca de los familiares del beneficiario
      */
     public String Observaciones_Familiares;
     /**
-     * 
+     * Observaciones acerca de la vivienda del beneficiario
      */
     public String Observaciones_Vivienda;
     /**
-     * 
+     * Nivel de estudios del beneficiario
      */
     public String Nivel_Estudios;
     /**
-     * 
+     * Profesión del beneficiario
      */
     public String Profesion;
     /**
-     * 
+     * Experiencia laboral del beneficiario
      */
     public String Experiencia_Laboral;
     /**
-     * 
+     * Ciudad de nacimiento del beneficiario
      */
     public String Ciudad_Nacimiento;
-
     /**
-     * 
+     * Lista de familiares asociados al beneficiario
      */
     public ArrayList<Familiar> familiares;
    
     /*-----------------------------Constructores-------------------------------*/
     /**
-     * 
-     * @param NIF_CIF
-     * @param Nombre
-     * @param Apellidos
-     * @param FechaNac
-     * @param Localidad
-     * @param Activo
-     * @param FechaDesac
-     * @param Email
-     * @param Telefono
-     * @param Nacionalidad
-     * @param Estado_civil
-     * @param Domicilio
-     * @param Codigo_Postal
-     * @param Fecha_Inscripcion
-     * @param Expediente
-     * @param Motivo
-     * @param Precio_Vivienda
-     * @param Tipo_Vivienda
-     * @param Observaciones_Datos_Personales
-     * @param Observaciones_Familiares
-     * @param Observaciones_Vivienda
-     * @param Ciudad_Nacimiento
-     * @param Situacion_Economica
-     * @param Nivel_Estudios
-     * @param Profesion
-     * @param Experiencia_Laboral
+     * Crea un nuevo beneficiario con los datos especificados
+     * @param NIF_CIF DNI del beneficiario
+     * @param Nombre Nombre del beneficiario
+     * @param Apellidos Apellidos del beneficiario
+     * @param FechaNac Fecha de nacimiento del beneficiario
+     * @param Localidad Localidad del beneficiario
+     * @param Activo Indica si el beneficiario esta activo (1) o no (0)
+     * @param FechaDesac Fecha de desactivación del beneficiario
+     * @param Email Email del beneficiario
+     * @param Telefono Telefono del beneficiario
+     * @param Nacionalidad Nacionalidad del beneficiario
+     * @param Estado_civil Estado civil del beneficiario
+     * @param Domicilio Domicilio del beneficiario
+     * @param Codigo_Postal Codigo postal del beneficiario
+     * @param Fecha_Inscripcion Fecha de inscripción del beneficiario
+     * @param Expediente Expediente del beneficiario
+     * @param Motivo Motivo por el que se da de alta al beneficiario
+     * @param Precio_Vivienda Precio de la vivienda del beneficiario
+     * @param Tipo_Vivienda Tipo de vivienda del beneficiario
+     * @param Observaciones_Datos_Personales Observaciones acerca de los datos personales
+     * @param Observaciones_Familiares Observaciones acerca de los familiares
+     * @param Observaciones_Vivienda Observaciones acerca de la vivienda
+     * @param Ciudad_Nacimiento Ciudad de nacimiento del beneficiario
+     * @param Situacion_Economica Situación economica del beneficiario
+     * @param Nivel_Estudios Nivel de estudios del beneficiario
+     * @param Profesion Profesion del beneficiario
+     * @param Experiencia_Laboral Experiencia laboral del beneficiario
      */
     public Beneficiario (String NIF_CIF, String Nombre,
             String Apellidos, Date FechaNac, String Localidad, int Activo,
@@ -163,8 +162,8 @@ public class Beneficiario extends Usuarios{
     }
  
     /**
-     * 
-     * @param datosBeneficiario
+     * Crea un nuevo beneficiario a partir de otro objeto Beneficiario
+     * @param datosBeneficiario Beneficiario con los que se inicializará el nuevo beneficiario
      */
     public Beneficiario (Beneficiario datosBeneficiario){    
         this.Nacionalidad = datosBeneficiario.Nacionalidad;
@@ -199,8 +198,8 @@ public class Beneficiario extends Usuarios{
     
     /*---------------------------Beneficiario----------------------------------*/
     /**
-     * 
-     * @param fecha_desactivacion
+     * Desactiva un usuario del sistema
+     * @param fecha_desactivacion Fecha en la que se produce la desactivación
      */
     public void desactivarUsuario(Date fecha_desactivacion){
         ConexionBD con = new ConexionBD();
@@ -236,8 +235,8 @@ public class Beneficiario extends Usuarios{
     }
     
     /**
-     * 
-     * @param datosBeneficiario
+     * Cambia los datos del beneficiario
+     * @param datosBeneficiario Datos del beneficiario con los que se va a actualizar el beneficiario
      */
     public void cambiarDatosBeneficiario (Beneficiario datosBeneficiario){
     
@@ -297,8 +296,8 @@ public class Beneficiario extends Usuarios{
     }
     /*----------------------------Familiares-----------------------------------*/
     /**
-     * 
-     * @param familiar
+     * Agrega un nuevo familiar a la lista de familiares del beneficiario
+     * @param familiar Familiar que se va a añadir al beneficiario
      */
     public void agregarFamiliar(Familiar familiar){
         ConexionBD con = new ConexionBD();
@@ -339,9 +338,9 @@ public class Beneficiario extends Usuarios{
     }
     
     /**
-     * 
-     * @param Nombre_Apellidos
-     * @return
+     * Busca un familiar entre los familiares de un beneficiario
+     * @param Nombre_Apellidos Nombre y apellidos del familiar que se quiere buscar
+     * @return Un objeto familiar conteniendo los datos del familiar
      */
     public Familiar buscarFamiliar(String Nombre_Apellidos){
         /*Busca el familiar cuyo nombre coincide con Nombre_Apellidos*/
@@ -352,9 +351,9 @@ public class Beneficiario extends Usuarios{
     }
     
     /**
-     * 
-     * @param Nombre_Apellidos
-     * @return
+     * Busca el parentesco entre un familiar y un beneficiario
+     * @param Nombre_Apellidos Nombre y apellidos del familiar del que se quiere conoce su parentesco
+     * @return Parentesco conteniendo la relación que hay entre el beneficiario y un familiar
      */
     public Parentesco buscarParentesco(String Nombre_Apellidos){
         
