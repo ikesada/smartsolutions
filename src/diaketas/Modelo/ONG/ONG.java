@@ -197,9 +197,10 @@ public class ONG implements iONG{
     }
     
     /*****************************FAMILIAR***********************************
-     * @param Nombre_Apellidos
-     * @param Fecha_Nac 
-     * @return  
+     * @brief Funcion que realiza la busqueda de un familiar
+     * @param Nombre_Apellidos Nombre y apellidos del familiar buscado
+     * @param Fecha_Nac Fecha de nacimiento del familiar buscado     
+     * @return Devuelve el familiar encontrado
      */
     public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac){
         Familiar familiar = null;
@@ -237,7 +238,8 @@ public class ONG implements iONG{
        
     
     /*****************************DONANTE***********************************
-     * @param nuevoDonante 
+     * @brief Agrega un nuevo donante a la BBDD
+     * @param nuevoDonante Donante que va a ser agregado
      */
     
     public void agregarNuevoDonante(Donante nuevoDonante){
@@ -277,8 +279,9 @@ public class ONG implements iONG{
         
     /**
      * 
-     * @param DNI
-     * @return
+     * @brief Busca el donante que se le ha pasado en la BBDD
+     * @param DNI Dni del donante a buscar
+     * @return Devuelve los datos del donante buscado en caso de existir
      */
     public Donante buscarDonante(String DNI){
             
@@ -317,9 +320,11 @@ public class ONG implements iONG{
     
     
     /******************************VOLUNTARIO*************************
-     * @param DNI
-     * @return  
-     */   
+     * 
+     * @brief Busca el voluntario que se le ha pasado en la BBDD
+     * @param DNI Dni del voluntario a buscar
+     * @return Devuelve los datos del voluntarios buscado en caso de existir
+     */  
     public Voluntario buscarVoluntario(String DNI){
         Voluntario v = null;
         
@@ -366,8 +371,8 @@ public class ONG implements iONG{
     }
 
     /**
-     * 
-     * @param nuevoVoluntario
+     * @brief Anyade el nuevo voluntario a la BBDD
+     * @param nuevoVoluntario Datos del voluntario a agregar
      */
     public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
         con.conectarBD();
