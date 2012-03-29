@@ -41,18 +41,14 @@ public class Gestor_de_voluntarios {
     public boolean comprobarExistenciaVoluntario(String DNI){
 
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);
-        
-        
+              
         if(v!=null)
         {
             if( v.Activo==1 )
-            {
-                return true;
-            }
+               return true;
+            
             else
-            {
-                return false;
-            }
+               return false;
         }
         else
         {
@@ -61,12 +57,6 @@ public class Gestor_de_voluntarios {
         
     }
     
-    
-    //////////////////////////////////////////////////////////////////
-    
-    
-    
-
     
     
     
@@ -208,7 +198,7 @@ public class Gestor_de_voluntarios {
     
     
     
-     public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
+    public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
     {
         
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);
@@ -219,27 +209,42 @@ public class Gestor_de_voluntarios {
        
     }
     
-     public Voluntario consultarDatosVoluntario( String DNI )
+    
+    
+    
+    
+    public Voluntario consultarVoluntario( String DNI )
+    {
+        
+        Voluntario v = null;
+        
+        //si el voluntario esta desactivado, devolvera existe=false
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+        
+        
+        if(existe)
+        {
+            v = diaketas.diaketas.gestorVoluntarios.obtenerDatosVoluntario(DNI);
+        }
+        
+        
+        return v;
+        
+        
+    }
+    
+    
+    
+    
+    public Voluntario obtenerDatosVoluntario( String DNI )
     {
         
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);        
         
-        if(v!=null)
-        {
-            if( v.Activo==1 )
-            {
-                return v;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        else
-        {
-            return v;
-        }
+        return v;
     }
+
+    
     
     
 }

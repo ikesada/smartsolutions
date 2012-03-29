@@ -28,11 +28,11 @@ public class diaketas {
     public static void main(String args[]){
         
         /*Look & Feel*/
-        try{
+/*        try{
            UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
-        
+*/        
         /*Creamos los gestores*/
         ong = new ONG();
         gestorBeneficiarios = new Gestor_de_beneficiarios();
