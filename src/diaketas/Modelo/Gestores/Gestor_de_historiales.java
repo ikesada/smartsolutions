@@ -19,7 +19,13 @@ public class Gestor_de_historiales implements iGestorHistorial{
       ResultSet tabla;
       ConexionBD con = new ConexionBD();
     
-    @Override
+      /**
+       * 
+       * @param DNI_Voluntario
+       * @param DNI
+       * @param Operacion
+       */
+      @Override
     public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Operacion){
   
         /*Nueva acción con Dni de voluntario y beneficiario asociado, junto con fecha actual*/

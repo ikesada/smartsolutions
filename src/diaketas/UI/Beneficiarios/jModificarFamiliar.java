@@ -30,6 +30,8 @@ public class jModificarFamiliar extends javax.swing.JPanel {
     String NombreApellidos;
     /**
      * Creates new form jAltaFamiliar
+     * @param jPanelSiguiente 
+     * @param Nombre_Apellidos 
      */
     public jModificarFamiliar(String jPanelSiguiente, String Nombre_Apellidos) {
         this.jPanelSiguiente = jPanelSiguiente;

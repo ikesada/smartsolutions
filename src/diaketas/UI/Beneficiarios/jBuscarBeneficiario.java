@@ -24,6 +24,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
     
     /**
      * Creates new form jBuscarBeneficiario
+     * @param jPanelSiguiente 
      */
     public jBuscarBeneficiario(String jPanelSiguiente) {
         this.jPanelSiguiente = jPanelSiguiente;

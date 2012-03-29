@@ -18,27 +18,110 @@ import java.util.logging.Logger;
  * @author kesada
  */
 public class Beneficiario extends Usuarios{
+    /**
+     * 
+     */
     public String Nacionalidad;
+    /**
+     * 
+     */
     public String Estado_civil;
+    /**
+     * 
+     */
     public String Domicilio;
+    /**
+     * 
+     */
     public int Codigo_Postal;
+    /**
+     * 
+     */
     public String Observaciones_Datos_Personales;
+    /**
+     * 
+     */
     public Date Fecha_Inscripcion;
+    /**
+     * 
+     */
     public String Motivo;
+    /**
+     * 
+     */
     public String Tipo_Vivienda;
+    /**
+     * 
+     */
     public Double Precio_Vivienda;
+    /**
+     * 
+     */
     public String Situacion_Economica;
+    /**
+     * 
+     */
     public int Expediente;
+    /**
+     * 
+     */
     public String Observaciones_Familiares;
+    /**
+     * 
+     */
     public String Observaciones_Vivienda;
+    /**
+     * 
+     */
     public String Nivel_Estudios;
+    /**
+     * 
+     */
     public String Profesion;
+    /**
+     * 
+     */
     public String Experiencia_Laboral;
+    /**
+     * 
+     */
     public String Ciudad_Nacimiento;
 
+    /**
+     * 
+     */
     public ArrayList<Familiar> familiares;
    
     /*-----------------------------Constructores-------------------------------*/
+    /**
+     * 
+     * @param NIF_CIF
+     * @param Nombre
+     * @param Apellidos
+     * @param FechaNac
+     * @param Localidad
+     * @param Activo
+     * @param FechaDesac
+     * @param Email
+     * @param Telefono
+     * @param Nacionalidad
+     * @param Estado_civil
+     * @param Domicilio
+     * @param Codigo_Postal
+     * @param Fecha_Inscripcion
+     * @param Expediente
+     * @param Motivo
+     * @param Precio_Vivienda
+     * @param Tipo_Vivienda
+     * @param Observaciones_Datos_Personales
+     * @param Observaciones_Familiares
+     * @param Observaciones_Vivienda
+     * @param Ciudad_Nacimiento
+     * @param Situacion_Economica
+     * @param Nivel_Estudios
+     * @param Profesion
+     * @param Experiencia_Laboral
+     */
     public Beneficiario (String NIF_CIF, String Nombre,
             String Apellidos, Date FechaNac, String Localidad, int Activo,
             Date FechaDesac, String Email, int Telefono, String Nacionalidad,
@@ -79,6 +162,10 @@ public class Beneficiario extends Usuarios{
         this.familiares = new ArrayList<Familiar>();
     }
  
+    /**
+     * 
+     * @param datosBeneficiario
+     */
     public Beneficiario (Beneficiario datosBeneficiario){    
         this.Nacionalidad = datosBeneficiario.Nacionalidad;
         this.Estado_civil = datosBeneficiario.Estado_civil;
@@ -111,6 +198,10 @@ public class Beneficiario extends Usuarios{
      }
     
     /*---------------------------Beneficiario----------------------------------*/
+    /**
+     * 
+     * @param fecha_desactivacion
+     */
     public void desactivarUsuario(Date fecha_desactivacion){
         ConexionBD con = new ConexionBD();
     
@@ -144,6 +235,10 @@ public class Beneficiario extends Usuarios{
         }         
     }
     
+    /**
+     * 
+     * @param datosBeneficiario
+     */
     public void cambiarDatosBeneficiario (Beneficiario datosBeneficiario){
     
         ConexionBD con = new ConexionBD();
@@ -201,6 +296,10 @@ public class Beneficiario extends Usuarios{
         }
     }
     /*----------------------------Familiares-----------------------------------*/
+    /**
+     * 
+     * @param familiar
+     */
     public void agregarFamiliar(Familiar familiar){
         ConexionBD con = new ConexionBD();
 
@@ -239,6 +338,11 @@ public class Beneficiario extends Usuarios{
         }         
     }
     
+    /**
+     * 
+     * @param Nombre_Apellidos
+     * @return
+     */
     public Familiar buscarFamiliar(String Nombre_Apellidos){
         /*Busca el familiar cuyo nombre coincide con Nombre_Apellidos*/
         for (int i = 0; i < familiares.size(); i++)
@@ -247,6 +351,11 @@ public class Beneficiario extends Usuarios{
         return null;
     }
     
+    /**
+     * 
+     * @param Nombre_Apellidos
+     * @return
+     */
     public Parentesco buscarParentesco(String Nombre_Apellidos){
         
         /*Busca el parentesco para el Familiar cuyo nombre coincide con Nombre_Apellidos*/

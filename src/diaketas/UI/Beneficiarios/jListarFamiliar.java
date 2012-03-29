@@ -25,6 +25,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
     
     /**
      * Creates new form jAltaFamiliar
+     * @param jPanelAnterior
+     * @param jPanelSiguiente  
      */
     public jListarFamiliar(String jPanelAnterior, String jPanelSiguiente) {
         this.jPanelAnterior = jPanelAnterior;

@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
  */
 public class jBajaDonante extends javax.swing.JPanel {
 
+    /**
+     * 
+     */
     public int fase;
     /**
      * Creates new form jBajaDonante

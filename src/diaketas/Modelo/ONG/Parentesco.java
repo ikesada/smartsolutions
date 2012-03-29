@@ -11,9 +11,16 @@ import java.util.ArrayList;
  * @author kesada
  */
 public class Parentesco {
+    /**
+     * 
+     */
     public String Parentesc;
     
     /*---------------------------Constructores---------------------------------*/
+    /**
+     * 
+     * @param Parentesc
+     */
     public Parentesco (String Parentesc){
         this.Parentesc = Parentesc;
     }

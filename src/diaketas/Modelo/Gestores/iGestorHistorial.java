@@ -10,6 +10,12 @@ package diaketas.Modelo.Gestores;
  */
 public interface iGestorHistorial {
     
+    /**
+     * 
+     * @param DNI_Voluntario
+     * @param DNI
+     * @param operacion
+     */
     public void RegistrarOperacion(String DNI_Voluntario, String DNI, String operacion);
     
     /*public void consultarHistorialVoluntario(String DNI_Voluntario);

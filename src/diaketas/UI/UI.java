@@ -21,6 +21,9 @@ import javax.swing.JPanel;
  */
 public class UI extends javax.swing.JFrame {
     
+    /**
+     * 
+     */
     public static CardLayout cl;
      
     /**
@@ -177,28 +180,8 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
-     * @param args the command line arguments
-     
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-/*        try{
-           UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
-        } catch (Exception e) {
-        }
-*   
-        /*
-         * Create and display the form
-         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                new UI().setVisible(true);
-            }
-        });
-    }*/
+     *
+     */
     
     @Override
     public Image getIconImage() {

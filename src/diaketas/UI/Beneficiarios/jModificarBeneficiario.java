@@ -31,6 +31,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     
     /**
      * Creates new form jAltaBeneficiario
+     * @param datosBeneficiario 
      */
     public jModificarBeneficiario(Beneficiario datosBeneficiario) {
         this.datosBeneficiario = datosBeneficiario;

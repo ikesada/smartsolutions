@@ -18,7 +18,13 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     
     
     Beneficiario datosBeneficiario;
+    /**
+     * 
+     */
     public String NIF_Voluntario;
+    /**
+     * 
+     */
     public String NIF_Beneficiario;
     Familiar datosFamiliar;
     String NombreApellidosFamiliar;
@@ -26,6 +32,11 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
 
     
     /*---------------------------Beneficiario----------------------------------*/
+    /**
+     * 
+     * @param DNI_Beneficiario
+     * @return
+     */
     public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
         
         NIF_Beneficiario = DNI_Beneficiario;
@@ -34,6 +45,37 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         return comprobarExistenciaBeneficiario(DNI_Beneficiario);        
     }
 
+    /**
+     * 
+     * @param NIF_CIF
+     * @param Nombre
+     * @param Apellidos
+     * @param FechaNac
+     * @param Localidad
+     * @param Activo
+     * @param Fecha_Desac
+     * @param Email
+     * @param Telefono
+     * @param Nacionalidad
+     * @param Estado_civil
+     * @param Domicilio
+     * @param Codigo_Postal
+     * @param Fecha_Inscripcion
+     * @param Expediente
+     * @param Motivo
+     * @param Precio_Vivienda
+     * @param Tipo_Vivienda
+     * @param Observaciones_Datos_Personales
+     * @param Observaciones_Familiares
+     * @param Observaciones_Vivienda
+     * @param Ciudad_Nacimiento
+     * @param Situacion_Economica
+     * @param Nivel_Estudios
+     * @param Profesion
+     * @param Experiencia_Laboral
+     * @param NIF_Vol
+     * @return
+     */
     public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre,
             String Apellidos, Date FechaNac, String Localidad, int Activo, Date Fecha_Desac,
             String Email, int Telefono, String Nacionalidad,
@@ -58,6 +100,11 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
+    /**
+     * 
+     * @param DNI
+     * @return
+     */
     public Boolean comprobarExistenciaBeneficiario(String DNI){
         
         /*Buscamos el beneficiario*/
@@ -69,6 +116,11 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
             return false;
     }
     
+    /**
+     * 
+     * @param DNI
+     * @return
+     */
     public Beneficiario consultarBeneficiario (String DNI){
 
         /*Actualimos NIF*/
@@ -105,6 +157,9 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         datosBeneficiario.cambiarDatosBeneficiario(nuevosDatosBeneficiario);
     }
 
+    /**
+     * 
+     */
     public void confirmarAltaBeneficiario(){
         
         /*Crear beneficiario*/
@@ -120,6 +175,9 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         /*Beneficiario ya tiene asociado Vivienda, email y telefono*/
     }
     
+    /**
+     * 
+     */
     public void confirmarBajaBeneficiario(){
         /*Registrar Operacion*/
         diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
@@ -128,6 +186,9 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         eliminarBeneficiario(NIF_Beneficiario);
     }
     
+    /**
+     * 
+     */
     public void confirmarModificacionBeneficiario(){
          /*Registrar Operacion*/
         diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
@@ -138,12 +199,19 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
    
     /*--------------------------------Familiar---------------------------------*/
     
+    /**
+     * 
+     * @param Nombre_Apellidos
+     */
     public void seleccionarFamiliar(String Nombre_Apellidos){
         NombreApellidosFamiliar = Nombre_Apellidos;
     }
    
     /*
      * ConfirmarAltaFamiliar // ConfirmarInsercion
+     */
+    /**
+     * 
      */
     public void confirmarInsercion(){   
         Familiar familiar;
@@ -172,6 +240,9 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /*
      * ConfirmarEliminacionFamiliar // ConfirmarEliminacion
      */
+    /**
+     * 
+     */
     public void confirmarEliminacion(){
 
         /* Buscamos Beneficiario en el sistema */
@@ -190,6 +261,10 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         datosBeneficiario.familiares.remove(indexFamiliar);
     }
     
+    /**
+     * 
+     * @return
+     */
     public ArrayList<Familiar> iniciarConsultarFamiliar(){
 
         /*Obtenemos el beneficiario*/
@@ -201,6 +276,10 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
 
+    /**
+     * 
+     * @return
+     */
     public ArrayList<Familiar> inicioModificarFamiliar(){
         /*Obtenemos el beneficiario*/
         //Ya es conocido
@@ -209,6 +288,11 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         return datosBeneficiario.familiares;
     }
     
+    /**
+     * 
+     * @param Nombre_Apellidos
+     * @return
+     */
     public Familiar consultarFamiliar(String Nombre_Apellidos){
         /*Obtenemos el beneficiario*/
         //Ya es conocido
@@ -218,6 +302,12 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         return datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
     }
     
+    /**
+     * 
+     * @param Nombre_Apellidos
+     * @param nuevosDatosFamiliar
+     * @param parentesco
+     */
     public void modificarDatosFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
         actualizarFamiliar(Nombre_Apellidos, nuevosDatosFamiliar, parentesco);
     }
@@ -235,6 +325,13 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
                 nuevosDatosFamiliar.Ocupacion, new Parentesco (parentesco));
     }
 
+    /**
+     * 
+     * @param Nombre_Apellidos
+     * @param Fecha_Nac
+     * @param Parentesco
+     * @param Ocupacion
+     */
     public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
         datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
         parentesco = Parentesco;

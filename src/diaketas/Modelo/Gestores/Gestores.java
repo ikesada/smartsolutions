@@ -11,12 +11,30 @@ import diaketas.Modelo.ONG.ONG;
  * @author kesada
  */
 public class Gestores {
+    /**
+     * 
+     */
     public static ONG ong;
+    /**
+     * 
+     */
     public static Gestor_de_beneficiarios gestorBeneficiarios;
+    /**
+     * 
+     */
     public static Gestor_de_historiales gestorHistoriales;
+    /**
+     * 
+     */
     public static Gestor_de_voluntarios gestorVoluntarios;
+    /**
+     * 
+     */
     public static Gestor_de_donantes gestorDonantes;
     
+    /**
+     * 
+     */
     public Gestores() {
         /*Creamos los gestores*/
         ong = new ONG();

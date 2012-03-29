@@ -30,6 +30,10 @@ public class jModificarDonante extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * 
+     * @param donante
+     */
     public jModificarDonante(Donante donante) {
         initComponents();
 

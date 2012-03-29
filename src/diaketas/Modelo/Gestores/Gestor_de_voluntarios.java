@@ -30,6 +30,11 @@ public class Gestor_de_voluntarios {
     
       
     
+    /**
+     * 
+     * @param NIF_CIF
+     * @return
+     */
     public Boolean introducirDNIVoluntario(String NIF_CIF) {
 
         return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_CIF);
@@ -37,6 +42,11 @@ public class Gestor_de_voluntarios {
     
     
     
+    /**
+     * 
+     * @param DNI
+     * @return
+     */
     public boolean comprobarExistenciaVoluntario(String DNI){
 
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);
@@ -59,6 +69,22 @@ public class Gestor_de_voluntarios {
     
     
     
+    /**
+     * 
+     * @param DNI
+     * @param nombre
+     * @param apellidos
+     * @param fechaNacim
+     * @param ciudad
+     * @param email
+     * @param telf
+     * @param nacionalidad
+     * @param direccion
+     * @param codPost
+     * @param obs
+     * @param voluntarioDNI
+     * @return
+     */
     public boolean altaVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs, String voluntarioDNI )
     {
     
@@ -95,6 +121,21 @@ public class Gestor_de_voluntarios {
     
     
     
+    /**
+     * 
+     * @param DNI
+     * @param nombre
+     * @param apellidos
+     * @param fechaNacim
+     * @param ciudad
+     * @param email
+     * @param telf
+     * @param nacionalidad
+     * @param direccion
+     * @param codPost
+     * @param obs
+     * @return
+     */
     public boolean crearVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs)
     {
 
@@ -120,6 +161,12 @@ public class Gestor_de_voluntarios {
     
        
     
+    /**
+     * 
+     * @param DNI
+     * @param voluntarioDNI
+     * @return
+     */
     public boolean bajaVoluntario( String DNI, String voluntarioDNI )
     {
         
@@ -150,6 +197,11 @@ public class Gestor_de_voluntarios {
     
     
     
+    /**
+     * 
+     * @param DNI
+     * @return
+     */
     public  boolean eliminarVoluntario(String DNI)
     {
         boolean exito = false;
@@ -168,7 +220,23 @@ public class Gestor_de_voluntarios {
     
     
     
-     public boolean modificarVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs, String voluntarioDNI )
+    /**
+     * 
+     * @param nombre
+     * @param apellidos
+     * @param DNI
+     * @param telf
+     * @param dir
+     * @param poblacion
+     * @param email
+     * @param nacionalidad
+     * @param fechaNac
+     * @param codPost
+     * @param obs
+     * @param voluntarioDNI
+     * @return
+     */
+    public boolean modificarVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs, String voluntarioDNI )
     {
         
         boolean confirma=false;
@@ -198,6 +266,21 @@ public class Gestor_de_voluntarios {
     
     
     
+    /**
+     * 
+     * @param nombre
+     * @param apellidos
+     * @param DNI
+     * @param telf
+     * @param dir
+     * @param poblacion
+     * @param email
+     * @param nacionalidad
+     * @param fechaNac
+     * @param codPost
+     * @param obs
+     * @return
+     */
     public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
     {
         
@@ -213,6 +296,11 @@ public class Gestor_de_voluntarios {
     
     
     
+    /**
+     * 
+     * @param DNI
+     * @return
+     */
     public Voluntario consultarVoluntario( String DNI )
     {
         
@@ -236,6 +324,11 @@ public class Gestor_de_voluntarios {
     
     
     
+    /**
+     * 
+     * @param DNI
+     * @return
+     */
     public Voluntario obtenerDatosVoluntario( String DNI )
     {
         

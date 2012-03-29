@@ -22,12 +22,30 @@ import java.util.logging.Logger;
 
 public class Voluntario extends Usuarios{
     
+    /**
+     * 
+     */
     public String DNI_consultado;   //es un parametro auxiliar que me servira para ver 
     
+    /**
+     * 
+     */
     public String Nacionalidad;
+    /**
+     * 
+     */
     public String Domicilio;
+    /**
+     * 
+     */
     public int Codigo_Postal;
+    /**
+     * 
+     */
     public Date Fecha_Inicio;
+    /**
+     * 
+     */
     public String Observaciones;
     
     //el voluntario tiene asociadas un conjunto de acciones
@@ -38,6 +56,23 @@ public class Voluntario extends Usuarios{
     
     
     //Constructor
+    /**
+     * 
+     * @param NIF_CIF
+     * @param Nombre
+     * @param Apellidos
+     * @param FechaNac
+     * @param Localidad
+     * @param Activo
+     * @param FechaDesac
+     * @param Email
+     * @param Telefono
+     * @param Nacionalidad
+     * @param Domicilio
+     * @param Codigo_Postal
+     * @param Fecha_Inicio
+     * @param Observaciones
+     */
     public Voluntario ( String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo,
                         Date FechaDesac, String Email, int Telefono, String Nacionalidad, String Domicilio, 
                         int Codigo_Postal, Date Fecha_Inicio, String Observaciones )
@@ -66,6 +101,21 @@ public class Voluntario extends Usuarios{
     //Modificador de voluntario
     
     //activo, fechaDesac no se pueden modificar, 
+    /**
+     * 
+     * @param NIF_CIF
+     * @param Nombre
+     * @param Apellidos
+     * @param FechaNac
+     * @param Localidad
+     * @param Email
+     * @param Telefono
+     * @param Nacionalidad
+     * @param Domicilio
+     * @param Codigo_Postal
+     * @param Obs
+     * @return
+     */
     public boolean introducirDatosVoluntario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
                                         String Nacionalidad, String Domicilio, int Codigo_Postal, String Obs)
     {
@@ -147,6 +197,12 @@ public class Voluntario extends Usuarios{
     
     
     
+    /**
+     * 
+     * @param v
+     * @param fecha_desactivacion
+     * @return
+     */
     public static boolean desactivarVoluntario(Voluntario v, Date fecha_desactivacion)
     {
         

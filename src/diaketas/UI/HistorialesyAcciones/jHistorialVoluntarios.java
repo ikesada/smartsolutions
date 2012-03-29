@@ -22,6 +22,7 @@ public class jHistorialVoluntarios extends javax.swing.JPanel {
      
     /**
      * Creates new form jAltaBeneficiario
+     * @param DNIvoluntario 
      */
     public jHistorialVoluntarios(String DNIvoluntario) {
         

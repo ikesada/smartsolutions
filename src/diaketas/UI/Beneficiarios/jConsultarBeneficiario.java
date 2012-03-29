@@ -21,6 +21,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     
     /**
      * Creates new form jAltaBeneficiario
+     * @param datosBeneficiario 
      */
     public jConsultarBeneficiario(Beneficiario datosBeneficiario) {
         this.datosBeneficiario = datosBeneficiario;

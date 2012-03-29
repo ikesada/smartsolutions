@@ -31,10 +31,16 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * 
+     */
     public void modificar(){
         consultar_modificar = false;
     }
     
+    /**
+     * 
+     */
     public void consultar(){
         consultar_modificar = true;
     }

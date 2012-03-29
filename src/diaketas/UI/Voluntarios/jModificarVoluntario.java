@@ -26,6 +26,7 @@ public class jModificarVoluntario extends javax.swing.JPanel {
     
     /**
      * Creates new form jAltaBeneficiario
+     * @param v 
      */
     public jModificarVoluntario(Voluntario v) {
         initComponents();

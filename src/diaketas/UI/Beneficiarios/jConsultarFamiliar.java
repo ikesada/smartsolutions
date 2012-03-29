@@ -22,6 +22,8 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
     
     /**
      * Creates new form jAltaFamiliar
+     * @param jPanelSiguiente 
+     * @param Nombre_Apellidos 
      */
     public jConsultarFamiliar(String jPanelSiguiente, String Nombre_Apellidos) {
         

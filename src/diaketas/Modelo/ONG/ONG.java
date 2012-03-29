@@ -27,11 +27,26 @@ public class ONG implements iONG{
       static ConexionBD con = new ConexionBD();
       
       
-    public static Gestor_de_beneficiarios gestorBeneficiarios;
+      /**
+       * 
+       */
+      public static Gestor_de_beneficiarios gestorBeneficiarios;
+    /**
+     * 
+     */
     public static Gestor_de_historiales gestorHistoriales;
+    /**
+     * 
+     */
     public static Gestor_de_voluntarios gestorVoluntarios;
+    /**
+     * 
+     */
     public static Gestor_de_donantes gestorDonantes;
 
+    /**
+     * 
+     */
     public ONG() {
     
         /*Creamos los gestores*/
@@ -45,7 +60,9 @@ public class ONG implements iONG{
     
       
 
-    /****************************ACCION****************************************/
+    /****************************ACCION***************************************
+     * @param ac 
+     */
     public void agregarAccion(Accion ac){
         /*Se guarda la accion en el sistema*/
         con.conectarBD();
@@ -71,7 +88,10 @@ public class ONG implements iONG{
             }
         }
     }
-    /**************************BENEFICIARIO*************************************/    
+    /**************************BENEFICIARIO************************************
+     * @param DNI
+     * @return  
+     */    
     public Beneficiario buscarBeneficiario(String DNI){
         Beneficiario beneficiario = null;
         con.conectarBD();
@@ -127,6 +147,10 @@ public class ONG implements iONG{
         return beneficiario;
     }
        
+    /**
+     * 
+     * @param nuevoBeneficiario
+     */
     public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
@@ -166,7 +190,11 @@ public class ONG implements iONG{
         }        
     }
     
-    /*****************************FAMILIAR************************************/
+    /*****************************FAMILIAR***********************************
+     * @param Nombre_Apellidos
+     * @param Fecha_Nac 
+     * @return  
+     */
     public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac){
         Familiar familiar = null;
         con.conectarBD();
@@ -202,7 +230,9 @@ public class ONG implements iONG{
     } 
        
     
-    /*****************************DONANTE************************************/
+    /*****************************DONANTE***********************************
+     * @param nuevoDonante 
+     */
     
     public void agregarNuevoDonante(Donante nuevoDonante){
         con.conectarBD();
@@ -239,6 +269,11 @@ public class ONG implements iONG{
         }        
     }
         
+    /**
+     * 
+     * @param DNI
+     * @return
+     */
     public Donante buscarDonante(String DNI){
             
             Donante donante = null;
@@ -275,7 +310,10 @@ public class ONG implements iONG{
             
     
     
-    /******************************VOLUNTARIO**************************/   
+    /******************************VOLUNTARIO*************************
+     * @param DNI
+     * @return  
+     */   
     public Voluntario buscarVoluntario(String DNI){
         Voluntario v = null;
         
@@ -321,6 +359,10 @@ public class ONG implements iONG{
         return v;
     }
 
+    /**
+     * 
+     * @param nuevoVoluntario
+     */
     public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/

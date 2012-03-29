@@ -17,14 +17,41 @@ import java.util.logging.Logger;
  */
 public abstract class Usuarios {
     
+    /**
+     * 
+     */
     public String NIF_CIF;
+    /**
+     * 
+     */
     public String Nombre;
+    /**
+     * 
+     */
     public String Apellidos;
+    /**
+     * 
+     */
     public Date FechaNac;
+    /**
+     * 
+     */
     public String Localidad;
+    /**
+     * 
+     */
     public int Activo;
+    /**
+     * 
+     */
     public Date FechaDesac;
+    /**
+     * 
+     */
     public String Email;
+    /**
+     * 
+     */
     public int Telefono;
 
     /*----------------------------Constructores--------------------------------*/

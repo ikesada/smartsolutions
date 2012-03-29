@@ -22,6 +22,7 @@ public class jHistorialUsuarios extends javax.swing.JPanel {
      
     /**
      * Creates new form jAltaBeneficiario
+     * @param DNIusuario 
      */
     public jHistorialUsuarios(String DNIusuario) {
         

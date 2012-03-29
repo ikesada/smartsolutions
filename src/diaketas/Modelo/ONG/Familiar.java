@@ -16,18 +16,39 @@ import java.util.logging.Logger;
  * @author kesada
  */
 public class Familiar {
+    /**
+     * 
+     */
     public String Nombre_Apellidos;
+    /**
+     * 
+     */
     public Date Fecha_Nacimiento;
+    /**
+     * 
+     */
     public String Ocupacion;
+    /**
+     * 
+     */
     public int Cod_Familiar;
     
     /*Parentesco del familiar con respecto al Beneficiario*/
+    /**
+     * 
+     */
     public Parentesco parentesco;
     
     
     ConexionBD con = new ConexionBD();
 
     /*------------------------------Constructores------------------------------*/
+    /**
+     * 
+     * @param Nombre_Apellidos
+     * @param Fecha_Nacimiento
+     * @param Ocupacion
+     */
     public Familiar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion) {
         this.Nombre_Apellidos = Nombre_Apellidos;
         this.Fecha_Nacimiento = Fecha_Nacimiento;
@@ -36,6 +57,13 @@ public class Familiar {
     }
     
     /*------------------------------Modificadores------------------------------*/
+    /**
+     * 
+     * @param Nombre_Apellidos
+     * @param Fecha_Nacimiento
+     * @param Ocupacion
+     * @param parentesco
+     */
     public void cambiarDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento, String Ocupacion, Parentesco parentesco){
         /*Modificamos los datos del objeto*/
         this.Nombre_Apellidos = Nombre_Apellidos;
@@ -76,6 +104,10 @@ public class Familiar {
         }
     }
     
+    /**
+     * 
+     * @param parentesco
+     */
     public void agregarParentesco(Parentesco parentesco)    {
         /*Agregamos el parentesco*/
         this.parentesco = parentesco;
@@ -106,6 +138,9 @@ public class Familiar {
         }       
     }
 
+    /**
+     * 
+     */
     public void eliminarParentesco(){
         parentesco = null;
               

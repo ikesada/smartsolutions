@@ -22,6 +22,10 @@ public class jConsultarDonante extends javax.swing.JPanel {
         initComponents();
     }
     
+    /**
+     * 
+     * @param donante
+     */
     public jConsultarDonante(Donante donante) {
         initComponents();
         

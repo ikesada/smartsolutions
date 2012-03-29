@@ -13,12 +13,17 @@ import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
  */
 public class jBajaFamiliar extends javax.swing.JPanel {
 
+    /**
+     * 
+     */
     public int fase;
     String jPanelAnterior;
     String NombreApellidos;
     
     /**
      * Creates new form jAltaFamiliar
+     * @param jPanelAnterior
+     * @param Nombre_Apellidos  
      */
     public jBajaFamiliar(String jPanelAnterior, String Nombre_Apellidos) {
         

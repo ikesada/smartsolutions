@@ -12,9 +12,16 @@ import diaketas.UI.UI;
  * @author kesada
  */
 public class diaketas {
+    /**
+     * 
+     */
     public static ONG ong;
     
 
+    /**
+     * 
+     * @param args
+     */
     public static void main(String args[]){
         
         /*Look & Feel*/

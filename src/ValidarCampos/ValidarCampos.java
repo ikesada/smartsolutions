@@ -13,6 +13,11 @@ import java.util.regex.Pattern;
  */
 public class ValidarCampos {
      
+    /**
+     * 
+     * @param numero
+     * @return
+     */
     static public boolean isInteger(String numero){
         try{
             Integer.parseInt(numero);
@@ -22,6 +27,11 @@ public class ValidarCampos {
         }
     }
     
+    /**
+     * 
+     * @param numero
+     * @return
+     */
     static public boolean isDouble(String numero){
         try{
             Double.parseDouble(numero);
@@ -31,6 +41,11 @@ public class ValidarCampos {
         }
     }
     
+    /**
+     * 
+     * @param email
+     * @return
+     */
     static public boolean isEmail(String email){
         
         Pattern pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");

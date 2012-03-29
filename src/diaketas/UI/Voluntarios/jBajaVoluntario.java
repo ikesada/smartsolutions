@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
  */
 public class jBajaVoluntario extends javax.swing.JPanel {
 
+    /**
+     * 
+     */
     public int fase;
     /**
      * Creates new form jAltaBeneficiario
