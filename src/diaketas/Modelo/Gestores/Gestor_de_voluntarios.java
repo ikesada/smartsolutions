@@ -105,7 +105,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
                 //el constructor Date() nos devuelve la fecha actual    
                 confirma = diaketas.diaketas.ong.gestorVoluntarios.crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
 
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "alta voluntario");
+                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Alta Voluntario");
                 
             }
             if(existe1)
@@ -184,7 +184,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
                 
                 diaketas.diaketas.ong.gestorVoluntarios.eliminarVoluntario(DNI);
                 
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "baja voluntario");
+                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Baja Voluntario");
                
             }
             
@@ -256,7 +256,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
             
                 confirma = diaketas.diaketas.ong.gestorVoluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
             
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "modificacion voluntario");
+                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Modificacion Voluntario");
             }
         }
         

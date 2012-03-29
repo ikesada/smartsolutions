@@ -172,6 +172,17 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     
+    
+    
+    private void NIFKeyTyped(java.awt.event.KeyEvent evt) {                             
+        // TODO add your handling code here:
+        
+        if (NIF.getText().length()>=9){
+            evt.consume();
+        }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF;
     private javax.swing.JButton jButton1;
