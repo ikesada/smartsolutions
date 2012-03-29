@@ -4,7 +4,6 @@
  */
 package diaketas.Modelo.ONG;
 
-import diaketas.diaketas;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import java.sql.SQLException;
@@ -60,7 +59,7 @@ public class Familiar {
             /*Actualizamos Parentesco*/
             instruccion.executeUpdate("UPDATE  Parentesco SET Parentesco = \""
                     + parentesco.Parentesc + "\" WHERE Cod_Familiar = " + Cod_Familiar + " and "
-                    + "DNI_CIF = \""+diaketas.gestorBeneficiarios.NIF_Beneficiario+"\"");
+                    + "DNI_CIF = \""+ ONG.gestorBeneficiarios.NIF_Beneficiario+"\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -88,7 +87,7 @@ public class Familiar {
             
             /*Introducimos al nuevo Familiar en el sistema*/
             instruccion.executeUpdate("INSERT INTO Parentesco "
-                    + " VALUES (\""+Cod_Familiar  + "\",\"" + diaketas.gestorBeneficiarios.NIF_Beneficiario + "\",\"" 
+                    + " VALUES (\""+Cod_Familiar  + "\",\"" + ONG.gestorBeneficiarios.NIF_Beneficiario + "\",\"" 
                     + parentesco.Parentesc + "\")");
            
           }
@@ -118,7 +117,7 @@ public class Familiar {
             /*Eliminamos el parentesco que guarda con el familiar*/
             instruccion.executeUpdate("DELETE FROM Parentesco WHERE"
                     + " Cod_Familiar = " + Cod_Familiar + " and DNI_CIF= \""
-                    + diaketas.gestorBeneficiarios.NIF_Beneficiario +"\"");
+                    + ONG.gestorBeneficiarios.NIF_Beneficiario +"\"");
         }
         /*Captura de errores*/
         catch(SQLException e){ System.out.println(e); }

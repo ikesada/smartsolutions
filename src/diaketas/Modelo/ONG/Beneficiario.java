@@ -4,12 +4,8 @@
  */
 package diaketas.Modelo.ONG;
 
-import diaketas.diaketas;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import diaketas.Modelo.ONG.ONG;
-import diaketas.Modelo.ONG.Usuarios;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -168,7 +164,7 @@ public class Beneficiario extends Usuarios{
                     + "Localidad = \"" + datosBeneficiario.Localidad + "\", "
                     + "Email = \"" + datosBeneficiario.Email + "\", "
                     + "Telefono = \"" + datosBeneficiario.Telefono + "\""
-                    + " WHERE NIF_CIF = \""+diaketas.gestorBeneficiarios.NIF_Beneficiario+"\"");
+                    + " WHERE NIF_CIF = \""+ONG.gestorBeneficiarios.NIF_Beneficiario+"\"");
          
             instruccion.executeUpdate("Update Beneficiario SET "
                     + "NIF_CIF = \"" + datosBeneficiario.NIF_CIF + "\", "
@@ -188,7 +184,7 @@ public class Beneficiario extends Usuarios{
                     + "Nivel_Estudios = \"" + datosBeneficiario.Nivel_Estudios + "\", "
                     + "Profesion = \"" + datosBeneficiario.Profesion + "\", "
                     + "Experiencia_Laboral = \"" + datosBeneficiario.Experiencia_Laboral + "\" "
-                    + " WHERE NIF_CIF = \""+diaketas.gestorBeneficiarios.NIF_Beneficiario+"\"");
+                    + " WHERE NIF_CIF = \""+ONG.gestorBeneficiarios.NIF_Beneficiario+"\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }

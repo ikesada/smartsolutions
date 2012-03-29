@@ -117,7 +117,7 @@ public class jBajaFamiliar extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         
         /*Confirmar eleiminar familiar*/
-        diaketas.diaketas.gestorBeneficiarios.confirmarEliminacion();
+        diaketas.diaketas.ong.gestorBeneficiarios.confirmarEliminacion();
         
         UI.cl.show(UI.jPrincipal, jPanelAnterior);
     }//GEN-LAST:event_botonOKActionPerformed

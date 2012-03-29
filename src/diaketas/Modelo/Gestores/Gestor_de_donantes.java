@@ -5,8 +5,6 @@
 package diaketas.Modelo.Gestores;
 
 import diaketas.ConexionBD;
-import diaketas.Modelo.ONG.Accion;
-import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Donante;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +12,6 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +36,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
 
         NIF_Voluntario = NIF_Vol;
         
-        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 
     @Override
@@ -76,7 +73,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
+        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
     }
 
     @Override
@@ -109,7 +106,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
                 try {
                     con.desconectarBD();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }        
@@ -118,7 +115,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
+        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
         
     }
     
@@ -151,7 +148,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
                 try {
                     con.desconectarBD();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }         
@@ -160,7 +157,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
+        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
         
     }
     

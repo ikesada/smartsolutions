@@ -450,12 +450,12 @@ public class jAltaDonante extends javax.swing.JPanel {
             /*
              * IntroducirDatosDonante
              */
-            boolean correcto = diaketas.diaketas.gestorDonantes.introducirDatosDonante(NIF_CIF.getText().toUpperCase(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
+            boolean correcto = diaketas.diaketas.ong.gestorDonantes.introducirDatosDonante(NIF_CIF.getText().toUpperCase(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
                     Email.getText(), Integer.parseInt(Telefono.getText()), (String) Tipo_Donante.getSelectedItem(), new Date(), Observaciones.getText(), Integer.parseInt(Periodicidad_Donaciones.getText()),
                     Double.parseDouble(Cuantia_Donaciones.getText()), (String) Tipo_Periodicidad.getSelectedItem(), NIF_Voluntario.getText());
 
             if (correcto) {
-                diaketas.diaketas.gestorDonantes.confirmarFinAlta();
+                diaketas.diaketas.ong.gestorDonantes.confirmarFinAlta();
             } else {
                 JOptionPane.showMessageDialog(this, "No se ha podido crear el nuevo Donante", "ERROR", JOptionPane.ERROR_MESSAGE);
             }

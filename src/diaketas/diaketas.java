@@ -19,10 +19,6 @@ import javax.swing.UIManager;
  */
 public class diaketas {
     public static ONG ong;
-    public static Gestor_de_beneficiarios gestorBeneficiarios;
-    public static Gestor_de_historiales gestorHistoriales;
-    public static Gestor_de_voluntarios gestorVoluntarios;
-    public static Gestor_de_donantes gestorDonantes;
     
 
     public static void main(String args[]){
@@ -32,13 +28,8 @@ public class diaketas {
            UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
-*/        
-        /*Creamos los gestores*/
-        ong = new ONG();
-        gestorBeneficiarios = new Gestor_de_beneficiarios();
-        gestorHistoriales = new Gestor_de_historiales();
-        gestorVoluntarios = new Gestor_de_voluntarios();
-        gestorDonantes = new Gestor_de_donantes();
+*/                ong = new ONG();
+    
 
 
         /*Iniciamos la interfaz*/

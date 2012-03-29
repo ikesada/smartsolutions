@@ -146,7 +146,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             if (NIF_CIF.getText().compareTo("") != 0){
                 
                 /*Introducir DNI Beneficiario*/
-                correcto = diaketas.diaketas.gestorBeneficiarios.introducirDNIBeneficiario(NIF_CIF.getText());
+                correcto = diaketas.diaketas.ong.gestorBeneficiarios.introducirDNIBeneficiario(NIF_CIF.getText());
 
                 /*Beneficiario correcto*/
                 if (correcto == true){
@@ -170,12 +170,12 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             if (NIF_Voluntario.getText().compareTo("") != 0){
                 
                 /*IntroducirDNIVoluntario*/
-                correcto = diaketas.diaketas.gestorVoluntarios.introducirDNIVoluntario(NIF_Voluntario.getText());
+                correcto = diaketas.diaketas.ong.gestorVoluntarios.introducirDNIVoluntario(NIF_Voluntario.getText());
                 
                 if (correcto == true){
                     
                     /* ConfirmarBajaBeneficiario*/
-                    diaketas.diaketas.gestorBeneficiarios.confirmarBajaBeneficiario();
+                    diaketas.diaketas.ong.gestorBeneficiarios.confirmarBajaBeneficiario();
                     
                     /*Cambios esteticos*/
                     NIF_Voluntario.setVisible(false);

@@ -124,7 +124,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         if (NIF.getText().compareTo("") != 0){
             
             /*Consultamos el beneficiario*/
-            Beneficiario datosBeneficiario = diaketas.diaketas.gestorBeneficiarios.consultarBeneficiario(NIF.getText());
+            Beneficiario datosBeneficiario = diaketas.diaketas.ong.gestorBeneficiarios.consultarBeneficiario(NIF.getText());
 
             /*Si datos != null existe*/
             if (datosBeneficiario != null){
