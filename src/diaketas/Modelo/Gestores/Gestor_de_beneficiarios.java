@@ -4,18 +4,11 @@
  */
 package diaketas.Modelo.Gestores;
 
-import com.mysql.jdbc.Statement;
-import diaketas.ConexionBD;
-import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Beneficiario;
 import diaketas.Modelo.ONG.Familiar;
 import diaketas.Modelo.ONG.Parentesco;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -29,14 +22,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     public String NIF_Beneficiario;
     Familiar datosFamiliar;
     String NombreApellidosFamiliar;
-    String parentesco;
-    Statement instruccion;
-    
-    ConexionBD con = new ConexionBD();
-
-    
-    public Gestor_de_beneficiarios() {
-    }
+    String parentesco;   
 
     
     /*---------------------------Beneficiario----------------------------------*/
@@ -75,10 +61,10 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     public Boolean comprobarExistenciaBeneficiario(String DNI){
         
         /*Buscamos el beneficiario*/
-        Beneficiario beneficiario = diaketas.diaketas.ong.buscarBeneficiario(DNI);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(DNI);
         
-        if (beneficiario !=  null)
-            return (beneficiario.Activo == 1);
+        if (datosBeneficiario !=  null)
+            return (datosBeneficiario.Activo == 1);
         else
             return false;
     }
@@ -103,7 +89,8 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     private void eliminarBeneficiario(String DNI){
 
         /*Obtenemos el beneficiario*/
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(DNI);  
+        //Ya es conocido
+        //datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
 
         /*Desactivamos al usuario*/
         datosBeneficiario.desactivarUsuario(new Date());
@@ -161,6 +148,10 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     public void confirmarInsercion(){   
         Familiar familiar;
         
+        /* Buscamos Beneficiario en el sistema */
+        //Ya es conocido
+        //datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        
         /*Se busca si el familiar ya existe*/
         familiar = diaketas.diaketas.ong.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento);
 
@@ -173,7 +164,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         }
 
         /*Se crea relacion familiar*/
-        Parentesco relacion_familiar = new Parentesco(familiar.Cod_Familiar, datosBeneficiario.NIF_CIF, parentesco);
+        Parentesco relacion_familiar = new Parentesco(parentesco);
 
         familiar.agregarParentesco(relacion_familiar);
     }    
@@ -184,85 +175,47 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     public void confirmarEliminacion(){
 
         /* Buscamos Beneficiario en el sistema */
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        //Ya es conocido
+        //datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /* Buscamos el familiar del beneficiario*/
         /* buscarFamiliar  == buscarParentesco */
         Parentesco parentesc = datosBeneficiario.buscarParentesco(NombreApellidosFamiliar);
-
-        /*Eliminamos el parentesco*/
-        con.conectarBD();
         
-        try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
-
-            /*Eliminamos el parentesco que guarda con el familiar*/
-            instruccion.executeUpdate("DELETE FROM Parentesco WHERE"
-                    + " Cod_Familiar = " + parentesc.Cod_Familiar + " and DNI_CIF= \""
-                    + parentesc.DNI_Beneficiario+"\"");
-        }
-        /*Captura de errores*/
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e);}
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
+        /*Eliminamos el parentesco al familiar*/
+        datosBeneficiario.buscarFamiliar(NombreApellidosFamiliar).eliminarParentesco();
         
+        /*Eliminamos al familiar de la lista de familiares de beneficiario*/
+        int indexFamiliar = datosBeneficiario.familiares.indexOf(datosBeneficiario.buscarFamiliar(NombreApellidosFamiliar));
+        datosBeneficiario.familiares.remove(indexFamiliar);
     }
- 
-
+    
     public ArrayList<Familiar> iniciarConsultarFamiliar(){
-        ArrayList<Familiar> familiares;
 
         /*Obtenemos el beneficiario*/
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
+        //Ya es conocido
+        //datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
 
-        /*Obtenemos la lista de familiares*/
-        familiares = consultarFamiliares();
-        
-        return familiares;
+        /*Devolvemos los familiares*/
+        return datosBeneficiario.familiares;
     }
     
 
     public ArrayList<Familiar> inicioModificarFamiliar(){
-        ArrayList<Familiar> familiares;
-
         /*Obtenemos el beneficiario*/
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
-
-        /*Obtenemos la lista de familiares*/
-        familiares = consultarFamiliares();
-        
-        return familiares;
+        //Ya es conocido
+        //datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
+       
+        return datosBeneficiario.familiares;
     }
     
-    public ArrayList consultarFamiliar(String Nombre_Apellidos){
-
+    public Familiar consultarFamiliar(String Nombre_Apellidos){
         /*Obtenemos el beneficiario*/
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);  
-
-         /*Buscamos el familiar cuyo nombre se indica*/
-        datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
-
-        /*Obtenemos los datos que faltan, parentesco*/
-        Parentesco parentescoFamiliar = obtenerDatosFamiliar();
-
-        /*Agrupamos los datos del familiar para proceder al envio
-            1. Fatos del familiar
-            2. Parentesco con el beneficiario
-            */
-        ArrayList datos_Familiar = new ArrayList();
-        datos_Familiar.add(datosFamiliar);
-        datos_Familiar.add(parentescoFamiliar);
-
-        return datos_Familiar;
+        //Ya es conocido
+        //datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
+        
+        /*Devolvemos los datos del familiar*/
+        return datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
     }
     
     public void modificarDatosFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
@@ -271,100 +224,18 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     
     private void actualizarFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
         /* Buscamos Beneficiario en el sistema */
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        //datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
         
         /*Buscamos el familiar*/
         datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
         
         /*Cambiar datos Familiar */
         datosFamiliar.cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
-                nuevosDatosFamiliar.Ocupacion, parentesco);
+                nuevosDatosFamiliar.Ocupacion, new Parentesco (parentesco));
     }
 
     public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
         datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
         parentesco = Parentesco;
-    }
-
-    private Parentesco obtenerDatosFamiliar(){
-        con.conectarBD();
-        
-        Parentesco parentesco = null;
-
-        //REVISAR
-         try {
-            instruccion = (Statement) con.conexion().createStatement();
-            
-            /*Obtenemos el parentesco del familiar con respecto al beneficiario*/
-            ResultSet rs = instruccion.executeQuery("Select p.Parentesco from Parentesco p WHERE "
-                    + "DNI_CIF = \""+datosBeneficiario.NIF_CIF+"\" and "
-                    + " Cod_Familiar="+datosFamiliar.Cod_Familiar);
-         
-            if (rs.next()){
-                parentesco = new Parentesco(datosFamiliar.Cod_Familiar,
-                        datosBeneficiario.NIF_CIF,rs.getString(1));
-            }
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        return parentesco;
-    }
-    
-    public ArrayList<Familiar> consultarFamiliares(){
-        con.conectarBD();
-        ArrayList<Familiar> familiares = new ArrayList<Familiar>();
-
-        
-        try {
-            instruccion = (Statement) con.conexion().createStatement();
-            ResultSet rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p"
-                    + " WHERE f.Cod_Familiar = p.Cod_Familiar and DNI_CIF = \""+ datosBeneficiario.NIF_CIF+"\"");
-         
-            while (rs.next()){
-                /*Creamos un familiar con los datos*/
-                Familiar familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
-                /*Indicamos su Codigo Interno*/
-                familiar.Cod_Familiar = rs.getInt(1);
-                /*Agregamos a la lista*/
-                familiares.add(familiar);
-            }
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }     
-        
-        return familiares;
-    }
-   
-    /*----------------------------------Otros----------------------------------*/
-    
-    public boolean introducirDNIVoluntario(String DNI_Voluntario){
-        
-        NIF_Voluntario = DNI_Voluntario;
-        
-        /*Comprobamos si el Voluntario existe */
-        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
-    }
-    
+    }  
 }
