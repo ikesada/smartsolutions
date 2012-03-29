@@ -25,20 +25,9 @@ public class ONG implements iONG{
       static Statement instruccion;
       static ResultSet tabla;
       static ConexionBD con = new ConexionBD();
-      public static Gestor_de_beneficiarios gestorBeneficiarios;
 
-      public static Gestor_de_historiales gestorHistoriales;
-      public static Gestor_de_voluntarios gestorVoluntarios;
-      public static Gestor_de_donantes gestorDonantes;
-       
       
 
-    public ONG() {
-        gestorBeneficiarios = new Gestor_de_beneficiarios();
-        gestorHistoriales = new Gestor_de_historiales();
-        gestorVoluntarios = new Gestor_de_voluntarios();
-        gestorDonantes = new Gestor_de_donantes();
-    }      
     /****************************ACCION****************************************/
     public void agregarAccion(Accion ac){
         /*Se guarda la accion en el sistema*/
