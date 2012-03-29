@@ -32,10 +32,9 @@ public class ValidarCampos {
     }
     
     static public boolean isEmail(String email){
-        Pattern pat = null;
-        Matcher mat = null;
-        pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
-        mat = pat.matcher(email);
+        
+        Pattern pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
+        Matcher mat = pat.matcher(email);
         if (mat.find()) {
             return true;
         }else{

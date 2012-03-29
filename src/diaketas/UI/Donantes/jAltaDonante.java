@@ -5,12 +5,7 @@
 package diaketas.UI.Donantes;
 
 import ValidarCampos.ValidarCampos;
-import diaketas.ConexionBD;
 import diaketas.UI.UI;
-import diaketas.Modelo.Gestores.Gestor_de_donantes;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,7 +28,7 @@ public class jAltaDonante extends javax.swing.JPanel {
     public jAltaDonante() {
         initComponents();
 
-        ConexionBD con;
+        /*ConexionBD con;
         Statement s;
         ResultSet rs;
 
@@ -86,7 +81,7 @@ public class jAltaDonante extends javax.swing.JPanel {
                     Logger.getLogger(jAltaDonante.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }
+        }*/
 
 
 
@@ -462,7 +457,7 @@ public class jAltaDonante extends javax.swing.JPanel {
             if (correcto) {
                 diaketas.diaketas.gestorDonantes.confirmarFinAlta();
             } else {
-                JOptionPane.showMessageDialog(this, "No se han podido realizar la inserccion de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se ha podido crear el nuevo Donante", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
             /*
              * Actualizamos la pantalla principal

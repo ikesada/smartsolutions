@@ -78,12 +78,12 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
 
         /*Si existe el beneficiario obtenemos los datos del beneficiario y la lista de familiares*/
         if (comprobarExistenciaBeneficiario(DNI)){
-            
             /*Obtenemos los datos del beneficiario*/
             datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(DNI);
+            return datosBeneficiario;
         }
 
-        return datosBeneficiario;
+        return null;
     }
   
     private void eliminarBeneficiario(String DNI){
