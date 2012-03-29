@@ -6,7 +6,6 @@ package diaketas.UI.Donantes;
 
 import diaketas.Modelo.ONG.Donante;
 import diaketas.UI.UI;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**

@@ -39,8 +39,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
 
         NIF_Voluntario = NIF_Vol;
         
-        //return ONG.comprobarExistenciaVoluntario(NIF_Voluntario);
-        return true;
+        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 
     @Override
@@ -177,12 +176,5 @@ public class Gestor_de_donantes implements iGestorDonantes {
        }
 
         return existe;
-    }
-    
-    public Boolean introducirDniVoluntario(String NIF_CIF) {
-
-        NIF_Voluntario = NIF_CIF;
-
-        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 }
