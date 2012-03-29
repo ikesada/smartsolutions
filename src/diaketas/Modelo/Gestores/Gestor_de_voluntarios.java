@@ -31,7 +31,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
       
     
     /**
-     * @brief Funcion que nos dice si el usuario existe o no
+     * Funcion que nos dice si el usuario existe o no
      * @param NIF_CIF
      * @return Devuelve True si se ha encontrado al voluntario en el sistema
      */
@@ -43,7 +43,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * @brief Funcion que comprueba si existe un voluntario en el sistema
+     * Funcion que comprueba si existe un voluntario en el sistema
      * @param DNI Dni del voluntario a buscar
      * @return Devuelve true si se encuentra al voluntario
      */
@@ -70,7 +70,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * @brief Funcion que se encarga de añadir a un Voluntario en el sistema
+     * Funcion que se encarga de añadir a un Voluntario en el sistema
      * @param DNI Dni del voluntario
      * @param nombre Nombre del voluntario
      * @param apellidos Apellidos del voluntario
@@ -122,7 +122,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * @brief Funcion que se encarga de añadir al voluntario en la BBDD
+     * Funcion que se encarga de añadir al voluntario en la BBDD
      * @param DNI Dni del voluntario
      * @param nombre Nombre del voluntario
      * @param apellidos Apellidos del voluntario
@@ -162,7 +162,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
        
     
     /**
-     * @brief Funcion que se encarga de dar de baja a un voluntario en el sistema
+     * Funcion que se encarga de dar de baja a un voluntario en el sistema
      * @param DNI Dni del voluntario a eliminar
      * @param voluntarioDNI Dni del voluntario que realiza la accion
      * @return Devuelve True o False si se ha realizado la operacion con exito o no
@@ -198,7 +198,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * @brief Funcion que se encarga de poner a inactivo un voluntario en el sistema
+     * Funcion que se encarga de poner a inactivo un voluntario en el sistema
      * @param DNI Dni del voluntario a desactivar
      * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
@@ -221,7 +221,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * @brief Funcion que se encarga de actualizar los datos asociados a un Voluntario
+     * Funcion que se encarga de actualizar los datos asociados a un Voluntario
      * @param nombre Nombre del voluntario
      * @param apellidos Apellidos del voluntario
      * @param DNI Dni del voluntario
@@ -268,7 +268,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * @brief Funcion que se encarga de actualizar los datos asociados a un Voluntario en la BD
+     * Funcion que se encarga de actualizar los datos asociados a un Voluntario en la BD
      * @param nombre Nombre del voluntario
      * @param apellidos Apellidos del voluntario
      * @param DNI Dni del voluntario
@@ -298,7 +298,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * @brief Funcion que devuelve el Voluntario asociado a ese DNI
+     * Funcion que devuelve el Voluntario asociado a ese DNI
      * @param DNI
      * @return Devuelve el Voluntario asociado a ese dni
      */
@@ -326,7 +326,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * @brief Funcion que devuelve el Voluntario asociado a ese DNI
+     * Funcion que devuelve el Voluntario asociado a ese DNI
      * @param DNI
      * @return Devuelve el Voluntario asociado a ese dni, sin comprobar si esta desactivado o no
      */

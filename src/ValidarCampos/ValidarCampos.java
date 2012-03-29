@@ -14,9 +14,9 @@ import java.util.regex.Pattern;
 public class ValidarCampos {
      
     /**
-     * 
-     * @param numero
-     * @return
+     * Funcion que comprueba si un string es un numero
+     * @param numero Cadena a comprobar
+     * @return Devuelve True o False si es un numero real o no
      */
     static public boolean isInteger(String numero){
         try{
@@ -28,9 +28,9 @@ public class ValidarCampos {
     }
     
     /**
-     * 
-     * @param numero
-     * @return
+     * Funcion que comprueba si un string es un real
+     * @param numero Cadena a comprobar
+     * @return Devuelve True o False si es un numero real o no
      */
     static public boolean isDouble(String numero){
         try{
@@ -42,9 +42,9 @@ public class ValidarCampos {
     }
     
     /**
-     * 
-     * @param email
-     * @return
+     * Funcion que comprueba si un string es un email valido
+     * @param email Email a comprobar
+     * @return Devuelve True o False si es un email valido o no
      */
     static public boolean isEmail(String email){
         

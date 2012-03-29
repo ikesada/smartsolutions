@@ -54,7 +54,7 @@ public class Voluntario extends Usuarios{
     
     //Constructor
     /**
-     * @brief Constructor de la clase Voluntario
+     * Constructor de la clase Voluntario
      * @param NIF_CIF Dni del voluntario
      * @param Nombre Nombre del voluntario
      * @param Apellidos Apellidos del voluntario
@@ -99,7 +99,7 @@ public class Voluntario extends Usuarios{
     
     //activo, fechaDesac no se pueden modificar, 
     /**
-     * @brief Funcion que actualiza los datos asociados a un voluntario
+     * Funcion que actualiza los datos asociados a un voluntario
      * @param NIF_CIF Dni del voluntario
      * @param Nombre Nombre del voluntario
      * @param Apellidos Apellidos del voluntario
@@ -196,7 +196,7 @@ public class Voluntario extends Usuarios{
     
     
     /**
-     * @brief Funcion que pone a inactivo a un voluntario del sistema
+     * Funcion que pone a inactivo a un voluntario del sistema
      * @param v Objeto voluntario a desactivar
      * @param fecha_desactivacion Fecha en que se desactiva el voluntario 
      * @return Devuelve true si la operacion se ha realizado con exito

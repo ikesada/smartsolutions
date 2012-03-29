@@ -19,17 +19,12 @@ public class diaketas {
     
 
     /**
-     * 
+     * Funcion principal de sistema
      * @param args
      */
     public static void main(String args[]){
         
-        /*Look & Feel*/
-/*        try{
-           UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
-        } catch (Exception e) {
-        }
-*/      ong = new ONG();
+       ong = new ONG();
     
 
 

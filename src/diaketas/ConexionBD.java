@@ -15,19 +15,19 @@ import java.sql.*;
  */
 public class ConexionBD{
     /**
-     * @serial 
+     * Nombre de la BBDD sobre la que se trabaja
      */
     public String bd = "diaketas";
     /**
-     * 
+     * Usuario de la BBDD
      */
     public String login = "smartsolutions";
     /**
-     * 
+     * Contrasenya de la BBDD
      */
     public String password = "solutions";
     /**
-     * 
+     * URL en la que se encuentra la BBDD
      */
     public String url = "jdbc:mysql://sql09.freemysql.net:3306/"+bd;
     //public String url = "jdbc:mysql://192.168.1.1:3306/"+bd;

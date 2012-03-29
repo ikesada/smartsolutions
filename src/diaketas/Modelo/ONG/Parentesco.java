@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Parentesco {
     /**
-     * 
+     * Tipo del parentesco del familiar
      */
     public String Parentesc;
     
