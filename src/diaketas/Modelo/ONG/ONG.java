@@ -95,8 +95,8 @@ public class ONG implements iONG{
         }
     }
     /**************************BENEFICIARIO************************************
-     * @param DNI
-     * @return  
+     * @param DNI Dni del Beneficario que buscaremos en la BBDD
+     * @return Devuelve un objteo con los datos del beneficiario
      */    
     public Beneficiario buscarBeneficiario(String DNI){
         Beneficiario beneficiario = null;
@@ -154,8 +154,8 @@ public class ONG implements iONG{
     }
        
     /**
-     * 
-     * @param nuevoBeneficiario
+     * Anyade un Beneficiario a la BBDD
+     * @param nuevoBeneficiario Beneficiario que se va a anyadir
      */
     public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
         con.conectarBD();
