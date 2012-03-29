@@ -94,6 +94,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         jLabel6.setText("Nacimiento");
 
         Fecha_Nacimiento.setColumns(9);
+        Fecha_Nacimiento.setEditable(false);
         Fecha_Nacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         Fecha_Nacimiento.setText("d/mm/aa");
 

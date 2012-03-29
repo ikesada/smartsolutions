@@ -137,6 +137,7 @@
     <Component class="javax.swing.JFormattedTextField" name="Fecha_Nacimiento">
       <Properties>
         <Property name="columns" type="int" value="9"/>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format subtype="1" type="1"/>
         </Property>
