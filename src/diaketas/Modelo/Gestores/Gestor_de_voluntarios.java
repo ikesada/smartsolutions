@@ -31,9 +31,9 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
       
     
     /**
-     * 
+     * @brief Funcion que nos dice si el usuario existe o no
      * @param NIF_CIF
-     * @return
+     * @return Devuelve True si se ha encontrado al voluntario en el sistema
      */
     public Boolean introducirDNIVoluntario(String NIF_CIF) {
 
@@ -43,9 +43,9 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * 
-     * @param DNI
-     * @return
+     * @brief Funcion que comprueba si existe un voluntario en el sistema
+     * @param DNI Dni del voluntario a buscar
+     * @return Devuelve true si se encuentra al voluntario
      */
     public boolean comprobarExistenciaVoluntario(String DNI){
 
@@ -70,20 +70,20 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * 
-     * @param DNI
-     * @param nombre
-     * @param apellidos
-     * @param fechaNacim
-     * @param ciudad
-     * @param email
-     * @param telf
-     * @param nacionalidad
-     * @param direccion
-     * @param codPost
-     * @param obs
-     * @param voluntarioDNI
-     * @return
+     * @brief Funcion que se encarga de añadir a un Voluntario en el sistema
+     * @param DNI Dni del voluntario
+     * @param nombre Nombre del voluntario
+     * @param apellidos Apellidos del voluntario
+     * @param fechaNacim Fecha de nacimiento del voluntario
+     * @param ciudad Ciudad del voluntario
+     * @param email Email del voluntario
+     * @param telf Telefono del voluntario
+     * @param nacionalidad Nacionalidad del voluntario
+     * @param direccion Direccion del voluntario
+     * @param codPost Codigo postal de la ciudad del voluntario
+     * @param obs Observaciones relacionadas con el nuevo voluntario
+     * @param voluntarioDNI Dni del voluntario que realiza el alta en el sistema
+     * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
     public boolean altaVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs, String voluntarioDNI )
     {
@@ -122,19 +122,19 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * 
-     * @param DNI
-     * @param nombre
-     * @param apellidos
-     * @param fechaNacim
-     * @param ciudad
-     * @param email
-     * @param telf
-     * @param nacionalidad
-     * @param direccion
-     * @param codPost
-     * @param obs
-     * @return
+     * @brief Funcion que se encarga de añadir al voluntario en la BBDD
+     * @param DNI Dni del voluntario
+     * @param nombre Nombre del voluntario
+     * @param apellidos Apellidos del voluntario
+     * @param fechaNacim Fecha de nacimiento del voluntario
+     * @param ciudad Ciudad del voluntario
+     * @param email Email del voluntario
+     * @param telf Telefono del voluntario
+     * @param nacionalidad Nacionalidad del voluntario
+     * @param direccion Direccion del voluntario
+     * @param codPost Codigo postal de la ciudad del voluntario
+     * @param obs Observaciones relacionadas con el voluntario
+     * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
     public boolean crearVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs)
     {
@@ -162,10 +162,10 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
        
     
     /**
-     * 
-     * @param DNI
-     * @param voluntarioDNI
-     * @return
+     * @brief Funcion que se encarga de dar de baja a un voluntario en el sistema
+     * @param DNI Dni del voluntario a eliminar
+     * @param voluntarioDNI Dni del voluntario que realiza la accion
+     * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
     public boolean bajaVoluntario( String DNI, String voluntarioDNI )
     {
@@ -198,9 +198,9 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * 
-     * @param DNI
-     * @return
+     * @brief Funcion que se encarga de poner a inactivo un voluntario en el sistema
+     * @param DNI Dni del voluntario a desactivar
+     * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
     public  boolean eliminarVoluntario(String DNI)
     {
@@ -221,21 +221,22 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * 
-     * @param nombre
-     * @param apellidos
-     * @param DNI
-     * @param telf
-     * @param dir
-     * @param poblacion
-     * @param email
-     * @param nacionalidad
-     * @param fechaNac
-     * @param codPost
-     * @param obs
-     * @param voluntarioDNI
-     * @return
+     * @brief Funcion que se encarga de actualizar los datos asociados a un Voluntario
+     * @param nombre Nombre del voluntario
+     * @param apellidos Apellidos del voluntario
+     * @param DNI Dni del voluntario
+     * @param telf Telefono del voluntario
+     * @param dir Direccion del voluntario
+     * @param poblacion Poblacion del voluntario
+     * @param email Email del voluntario
+     * @param nacionalidad Nacionalidad del voluntario
+     * @param fechaNac Fecha de nacimiento del voluntario
+     * @param codPost Codigo postal de la ciudad del voluntario
+     * @param obs Observaciones relacionadas con el voluntario
+     * @param voluntarioDNI Dni del voluntario que realiza la accion
+     * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
+
     public boolean modificarVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs, String voluntarioDNI )
     {
         
@@ -267,19 +268,19 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * 
-     * @param nombre
-     * @param apellidos
-     * @param DNI
-     * @param telf
-     * @param dir
-     * @param poblacion
-     * @param email
-     * @param nacionalidad
-     * @param fechaNac
-     * @param codPost
-     * @param obs
-     * @return
+     * @brief Funcion que se encarga de actualizar los datos asociados a un Voluntario en la BD
+     * @param nombre Nombre del voluntario
+     * @param apellidos Apellidos del voluntario
+     * @param DNI Dni del voluntario
+     * @param telf Telefono del voluntario
+     * @param dir Direccion del voluntario
+     * @param poblacion Poblacion del voluntario
+     * @param email Email del voluntario
+     * @param nacionalidad Nacionalidad del voluntario
+     * @param fechaNac Fecha de nacimiento del voluntario
+     * @param codPost Codigo postal de la ciudad del voluntario
+     * @param obs Observaciones relacionadas con el voluntario
+     * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
     public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
     {
@@ -297,9 +298,9 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * 
+     * @brief Funcion que devuelve el Voluntario asociado a ese DNI
      * @param DNI
-     * @return
+     * @return Devuelve el Voluntario asociado a ese dni
      */
     public Voluntario consultarVoluntario( String DNI )
     {
@@ -325,9 +326,9 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     
     
     /**
-     * 
+     * @brief Funcion que devuelve el Voluntario asociado a ese DNI
      * @param DNI
-     * @return
+     * @return Devuelve el Voluntario asociado a ese dni, sin comprobar si esta desactivado o no
      */
     public Voluntario obtenerDatosVoluntario( String DNI )
     {

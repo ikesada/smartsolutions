@@ -22,33 +22,30 @@ import java.util.logging.Logger;
 
 public class Voluntario extends Usuarios{
     
-    /**
-     * 
-     */
-    public String DNI_consultado;   //es un parametro auxiliar que me servira para ver 
+    
     
     /**
-     * 
+     * @param Nacionalidad Nacionalidad del voluntario
      */
     public String Nacionalidad;
     /**
-     * 
+     * @param Domicilio Domicilio del voluntario
      */
     public String Domicilio;
     /**
-     * 
+     * @param Codigo_Postal Codigo postal del voluntario
      */
     public int Codigo_Postal;
     /**
-     * 
+     * @param Fecha_Inicio Fecha en que se registro el voluntario en el sistema
      */
     public Date Fecha_Inicio;
     /**
-     * 
+     * @param Observaciones Observaciones relacionadas con el voluntario
      */
     public String Observaciones;
     
-    //el voluntario tiene asociadas un conjunto de acciones
+   
     
     ConexionBD con = new ConexionBD();
     
@@ -57,21 +54,21 @@ public class Voluntario extends Usuarios{
     
     //Constructor
     /**
-     * 
-     * @param NIF_CIF
-     * @param Nombre
-     * @param Apellidos
-     * @param FechaNac
-     * @param Localidad
-     * @param Activo
-     * @param FechaDesac
-     * @param Email
-     * @param Telefono
-     * @param Nacionalidad
-     * @param Domicilio
-     * @param Codigo_Postal
-     * @param Fecha_Inicio
-     * @param Observaciones
+     * @brief Constructor de la clase Voluntario
+     * @param NIF_CIF Dni del voluntario
+     * @param Nombre Nombre del voluntario
+     * @param Apellidos Apellidos del voluntario
+     * @param FechaNac Fecha de nacimiento del voluntario
+     * @param Localidad Localidad del voluntario
+     * @param Activo Indica si el voluntario esta activo en el sistema o no
+     * @param FechaDesac Fecha en que se desactivo voluntario en el sistema. Puede ser null.
+     * @param Email Email del voluntario
+     * @param Telefono Telefono del voluntario
+     * @param Nacionalidad Nacionalidad del voluntario
+     * @param Domicilio Domicilio del voluntario
+     * @param Codigo_Postal Codigo postal de la ciudad del voluntario
+     * @param Fecha_Inicio Fecha en la que el voluntario se registro en el sistema
+     * @param Observaciones Observaciones relacionadas con el voluntario
      */
     public Voluntario ( String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo,
                         Date FechaDesac, String Email, int Telefono, String Nacionalidad, String Domicilio, 
@@ -98,24 +95,25 @@ public class Voluntario extends Usuarios{
     
     
     
-    //Modificador de voluntario
+    
     
     //activo, fechaDesac no se pueden modificar, 
     /**
-     * 
-     * @param NIF_CIF
-     * @param Nombre
-     * @param Apellidos
-     * @param FechaNac
-     * @param Localidad
-     * @param Email
-     * @param Telefono
-     * @param Nacionalidad
-     * @param Domicilio
-     * @param Codigo_Postal
-     * @param Obs
-     * @return
+     * @brief Funcion que actualiza los datos asociados a un voluntario
+     * @param NIF_CIF Dni del voluntario
+     * @param Nombre Nombre del voluntario
+     * @param Apellidos Apellidos del voluntario
+     * @param FechaNac Fecha de nacimiento del voluntario
+     * @param Localidad Localidad del voluntario
+     * @param Email Email del voluntario
+     * @param Telefono Telefono del voluntario
+     * @param Nacionalidad Nacionalidad del voluntario
+     * @param Domicilio Domicilio del voluntario
+     * @param Codigo_Postal Codigo postal de la ciudad del voluntario
+     * @param Obs Observaciones relacionadas con el voluntario
+     * @return Devuelve true si la operacion se ha realizado con exito
      */
+                
     public boolean introducirDatosVoluntario(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
                                         String Nacionalidad, String Domicilio, int Codigo_Postal, String Obs)
     {
@@ -198,10 +196,10 @@ public class Voluntario extends Usuarios{
     
     
     /**
-     * 
-     * @param v
-     * @param fecha_desactivacion
-     * @return
+     * @brief Funcion que pone a inactivo a un voluntario del sistema
+     * @param v Objeto voluntario a desactivar
+     * @param fecha_desactivacion Fecha en que se desactiva el voluntario 
+     * @return Devuelve true si la operacion se ha realizado con exito
      */
     public static boolean desactivarVoluntario(Voluntario v, Date fecha_desactivacion)
     {

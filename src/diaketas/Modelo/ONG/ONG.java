@@ -27,6 +27,12 @@ public class ONG implements iONG{
       static ConexionBD con = new ConexionBD();
       
       
+      String Nombre;
+      String Direccion;
+      int telefon;
+      int Codigo_Postal;
+      
+      
       /**
        * 
        */
