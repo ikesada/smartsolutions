@@ -4,14 +4,18 @@
  */
 package diaketas.Modelo.Gestores;
 
-import diaketas.Modelo.ONG.Donante;
-import java.util.Date;
-
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public interface iGestorHistorial {
     
+    public void RegistrarOperacion(String DNI_Voluntario, String DNI, String operacion);
+    
+    /*public void consultarHistorialVoluntario(String DNI_Voluntario);
+    
+    public void consultarHistorialUsuario(String DNI_Usuario);
+    
+    public void generarListaUsuario(String TipoUsuario);*/
     
 }

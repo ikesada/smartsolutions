@@ -6,27 +6,24 @@ package diaketas.Modelo.Gestores;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import diaketas.Modelo.ONG.Accion;
-import diaketas.Modelo.ONG.ONG;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author kesada
  */
-public class Gestor_de_historiales {
+public class Gestor_de_historiales implements iGestorHistorial{
     
       Statement instruccion;
       ResultSet tabla;
       ConexionBD con = new ConexionBD();
     
-    public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Tipo){
+    @Override
+    public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Operacion){
   
         /*Nueva acción con Dni de voluntario y beneficiario asociado, junto con fecha actual*/
-        Accion ac = new Accion(DNI_Voluntario, DNI, Tipo, new Date());
+        Accion ac = new Accion(DNI_Voluntario, DNI, Operacion, new Date());
         
         /*Añadimos la acción en el sistema*/
         diaketas.diaketas.ong.agregarAccion(ac);

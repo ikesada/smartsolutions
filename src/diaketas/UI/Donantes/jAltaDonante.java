@@ -137,6 +137,7 @@ public class jAltaDonante extends javax.swing.JPanel {
         Tipo_Donante = new javax.swing.JComboBox();
 
         Tipo_Periodicidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Tipo_Periodicidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguna", "Días", "Meses", "Años" }));
 
         Apellidos.setColumns(30);
         Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -253,6 +254,8 @@ public class jAltaDonante extends javax.swing.JPanel {
         });
 
         jLabel7.setText("Tipo Donante");
+
+        Tipo_Donante.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Persona", "Empresa" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

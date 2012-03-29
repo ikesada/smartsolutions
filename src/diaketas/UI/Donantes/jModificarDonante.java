@@ -5,13 +5,8 @@
 package diaketas.UI.Donantes;
 
 import ValidarCampos.ValidarCampos;
-import diaketas.ConexionBD;
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Donante;
-import diaketas.Modelo.Gestores.Gestor_de_donantes;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import diaketas.UI.UI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,7 +52,7 @@ public class jModificarDonante extends javax.swing.JPanel {
             Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
             Tipo_Periodicidad.setSelectedItem(donante.Tipo_Periodicidad);
     
-        }else{
+        }/*else{
             
             JOptionPane.showMessageDialog(this, "El Donante se encuentra dado de baja.", "Donante no valido", JOptionPane.CLOSED_OPTION);
         
@@ -90,7 +85,7 @@ public class jModificarDonante extends javax.swing.JPanel {
             Cuantia_Donaciones.setEnabled(false);
             Tipo_Periodicidad.setEnabled(false);
             NIF_Voluntario.setEnabled(false);
-       }    
+       }    */
     }
 
     /**

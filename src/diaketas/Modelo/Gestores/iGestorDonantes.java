@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public interface iGestorDonantes {
     
