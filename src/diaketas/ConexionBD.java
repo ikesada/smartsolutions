@@ -15,7 +15,7 @@ import java.sql.*;
  */
 public class ConexionBD{
     /**
-     * 
+     * @serial 
      */
     public String bd = "diaketas";
     /**

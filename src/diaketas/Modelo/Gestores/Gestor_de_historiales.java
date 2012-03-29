@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public class Gestor_de_historiales implements iGestorHistorial{
     
@@ -19,12 +19,6 @@ public class Gestor_de_historiales implements iGestorHistorial{
       ResultSet tabla;
       ConexionBD con = new ConexionBD();
     
-      /**
-       * 
-       * @param DNI_Voluntario
-       * @param DNI
-       * @param Operacion
-       */
       @Override
     public void RegistrarOperacion(String DNI_Voluntario, String DNI, String Operacion){
   
