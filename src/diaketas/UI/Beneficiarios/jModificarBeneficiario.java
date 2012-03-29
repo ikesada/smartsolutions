@@ -698,7 +698,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                 Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
 
                 /*IntroducirDatosBeneficiario*/
-                boolean correcto = diaketas.diaketas.ong.gestorBeneficiarios.introducirDatosBeneficiario(
+                boolean correcto = diaketas.diaketas.gestorBeneficiarios.introducirDatosBeneficiario(
                         NIF.getText().toUpperCase(),
                         Nombre.getText(),
                         Apellidos.getText(),
@@ -730,7 +730,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                 /*finalizar() */
                 if (correcto == true){
                     /*confirmarModificacionBeneficiario*/
-                    diaketas.diaketas.ong.gestorBeneficiarios.confirmarModificacionBeneficiario();
+                    diaketas.diaketas.gestorBeneficiarios.confirmarModificacionBeneficiario();
 
                     /*Actualizamos la pantalla principal*/           
                     panel = new jFamiliar();

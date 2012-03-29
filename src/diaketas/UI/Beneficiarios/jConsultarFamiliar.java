@@ -33,7 +33,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         initComponents();
         
         /*Inicializamos los datos*/
-        Familiar familiar = diaketas.diaketas.ong.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
+        Familiar familiar = diaketas.diaketas.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
         
         /*Actualizamos los valores del formulario*/
         this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);

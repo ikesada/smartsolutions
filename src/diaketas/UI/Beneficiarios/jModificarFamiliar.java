@@ -39,7 +39,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         initComponents();
         
         /*Inicializamos los datos*/
-        Familiar familiar = diaketas.diaketas.ong.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
+        Familiar familiar = diaketas.diaketas.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
         
         /*Actualizamos los valores del formulario*/
         this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);
@@ -203,7 +203,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
                     Fecha_Nac, Ocupacion.getText());
 
             /*Modificar datos familiar*/
-            diaketas.diaketas.ong.gestorBeneficiarios.modificarDatosFamiliar(NombreApellidos,
+            diaketas.diaketas.gestorBeneficiarios.modificarDatosFamiliar(NombreApellidos,
                     nuevosDatosFamiliar, (String) Parentesco.getSelectedItem());
 
             UI.cl.show(UI.jPrincipal, jPanelSiguiente);

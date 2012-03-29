@@ -37,7 +37,7 @@ public class jListarFamiliar extends javax.swing.JPanel {
         /* inicioConsultarFamiliar()*/
         /*Mostramos inicioMostrarFamiliar*/
 
-        familiares = diaketas.diaketas.ong.gestorBeneficiarios.iniciarConsultarFamiliar();
+        familiares = diaketas.diaketas.gestorBeneficiarios.iniciarConsultarFamiliar();
 
         if(familiares.isEmpty()){
             JOptionPane.showMessageDialog(this, "No se ha encontrado ningún familiar para este beneficiario.",
@@ -156,7 +156,7 @@ public class jListarFamiliar extends javax.swing.JPanel {
                 /*Pasamos al formulario de Baja el nombre del familiar*/
                 panel = new jBajaFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
                 
-                diaketas.diaketas.ong.gestorBeneficiarios.seleccionarFamiliar((String)listaFamiliares.getSelectedValue());
+                diaketas.diaketas.gestorBeneficiarios.seleccionarFamiliar((String)listaFamiliares.getSelectedValue());
                 
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "BajaFamiliar");
