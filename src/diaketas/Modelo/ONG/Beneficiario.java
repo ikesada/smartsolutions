@@ -38,7 +38,8 @@ public class Beneficiario extends Usuarios{
     public String Profesion;
     public String Experiencia_Laboral;
     public String Ciudad_Nacimiento;
-    
+
+    public ArrayList<Familiar> familiares;
    
     /*-----------------------------Constructores-------------------------------*/
     public Beneficiario (String NIF_CIF, String Nombre,
@@ -77,6 +78,8 @@ public class Beneficiario extends Usuarios{
         this.Nivel_Estudios = Nivel_Estudios;
         this.Profesion = Profesion;
         this.Experiencia_Laboral = Experiencia_Laboral;
+        
+        this.familiares = new ArrayList<Familiar>();
     }
  
     public Beneficiario (Beneficiario datosBeneficiario){    
@@ -106,6 +109,8 @@ public class Beneficiario extends Usuarios{
         this.Nivel_Estudios = datosBeneficiario.Nivel_Estudios;
         this.Profesion = datosBeneficiario.Profesion;
         this.Experiencia_Laboral = datosBeneficiario.Experiencia_Laboral;
+        
+        this.familiares = (ArrayList<Familiar>) datosBeneficiario.familiares.clone();
      }
     
     /*---------------------------Beneficiario----------------------------------*/
@@ -218,6 +223,9 @@ public class Beneficiario extends Usuarios{
             ResultSet rs =instruccion.executeQuery("SELECT MAX(Cod_Familiar) AS Cod_Familiar FROM Familiar");
             if (rs.next())
                 familiar.Cod_Familiar = rs.getInt(1);
+            
+            /*Agregamos el familiar a la lista de familiares*/
+            familiares.add(familiar);
         }
         /*Captura de errores*/
         catch(SQLException e){ System.out.println(e); }
@@ -235,76 +243,19 @@ public class Beneficiario extends Usuarios{
     }
     
     public Familiar buscarFamiliar(String Nombre_Apellidos){
-        ConexionBD con = new ConexionBD();
-        
-        /* Actualizamos los datos */
-        con.conectarBD();
-
-        Familiar familiar = null;
-
-        
-        try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
-            ResultSet rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p "
-                    + "WHERE p.Cod_Familiar = f.Cod_Familiar and p.DNI_CIF = \""
-                    + this.NIF_CIF+"\" and f.Nombre_Apellidos =\""+Nombre_Apellidos+"\"");
-         
-            if (rs.next()){
-                /*Creamos un familiar con los datos*/
-                familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
-                /*Indicamos su Codigo Interno*/
-                familiar.Cod_Familiar = rs.getInt(1);
-            }
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }     
-        
-        return familiar;        
+        /*Busca el familiar cuyo nombre coincide con Nombre_Apellidos*/
+        for (int i = 0; i < familiares.size(); i++)
+            if(familiares.get(i).Nombre_Apellidos.compareTo(Nombre_Apellidos) == 0)
+                return familiares.get(i);
+        return null;
     }
     
     public Parentesco buscarParentesco(String Nombre_Apellidos){
-        ConexionBD con = new ConexionBD();
         
-        Parentesco parentesco = null;
-        
-        Familiar familiar = buscarFamiliar(Nombre_Apellidos);
-        con.conectarBD();
-        try {
-            Statement instruccion = (Statement) con.conexion().createStatement();
-            ResultSet rs = instruccion.executeQuery("Select Parentesco From Parentesco p "
-                    + "WHERE p.Cod_Familiar = \""+ familiar.Cod_Familiar+"\" and p.DNI_CIF = \""
-                    + this.NIF_CIF+"\"");
-         
-            if (rs.next()){
-                /*Creamos un familiar con los datos*/
-                parentesco = new Parentesco (familiar.Cod_Familiar,this.NIF_CIF,rs.getString(1));
-            }
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        
-        return parentesco;
+        /*Busca el parentesco para el Familiar cuyo nombre coincide con Nombre_Apellidos*/
+       for (int i = 0; i < familiares.size(); i++)
+            if(familiares.get(i).Nombre_Apellidos.compareTo(Nombre_Apellidos) == 0)
+                return familiares.get(i).parentesco;
+        return null;
     }
 }

@@ -4,20 +4,17 @@
  */
 package diaketas.Modelo.ONG;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author kesada
  */
 public class Parentesco {
-    public int Cod_Familiar;
     public String Parentesc;
-    public String DNI_Beneficiario;
     
     /*---------------------------Constructores---------------------------------*/
-    public Parentesco (int Cod_Familiar, String DNI_Beneficiario, String Parentesc){
-        this.Cod_Familiar = Cod_Familiar;
-        this.DNI_Beneficiario = DNI_Beneficiario;
+    public Parentesco (String Parentesc){
         this.Parentesc = Parentesc;
     }
-    
 }

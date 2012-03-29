@@ -8,6 +8,7 @@ import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,6 +66,26 @@ public class ONG implements iONG{
                                                 rs.getString(20), rs.getString(21), rs.getString(22), rs.getString(23), rs.getString(24), rs.getString(25),
                                                 rs.getString(26), rs.getString(27));
             }
+            
+            if (beneficiario != null){
+                /*Obtenemos los familiares y parentescos*/
+                beneficiario.familiares = new ArrayList<Familiar>();
+                instruccion = (Statement) con.conexion().createStatement();
+                rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p"
+                    + " WHERE f.Cod_Familiar = p.Cod_Familiar and DNI_CIF = \""+ beneficiario.NIF_CIF+"\"");
+
+                while (rs.next()){
+                    /*Creamos un familiar con los datos*/
+                    Familiar familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
+                    /*Indicamos su Codigo Interno*/
+                    familiar.Cod_Familiar = rs.getInt(1);
+                    /*Asociamos parentesco*/
+                    familiar.parentesco = new Parentesco (rs.getString(7));
+                    /*Agregamos a la lista*/
+                    beneficiario.familiares.add(familiar);
+
+                }
+            }
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -79,8 +100,8 @@ public class ONG implements iONG{
                 }
             }
         }
-         
-         return beneficiario;
+        
+        return beneficiario;
     }
        
     public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
@@ -310,7 +331,5 @@ public class ONG implements iONG{
                 }
             }
         }        
-    }
-    
-   
+    }  
 }
