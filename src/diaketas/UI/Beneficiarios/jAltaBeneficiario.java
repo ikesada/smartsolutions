@@ -610,7 +610,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                 Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
                 
                 /*1. IntroducirDatosBeneficiario(datosBeneficiario, dniVoluntario)*/
-                boolean correcto = diaketas.diaketas.gestorBeneficiarios.introducirDatosBeneficiario(
+                boolean correcto = diaketas.diaketas.ong.gestorBeneficiarios.introducirDatosBeneficiario(
                         NIF.getText().toUpperCase(),
                         Nombre.getText(),
                         Apellidos.getText(),
@@ -643,7 +643,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                 /* 2. finalizar() */
                 if (correcto == true){
                     /* 3. ConfirmarAltaBeneficiario()*/
-                    diaketas.diaketas.gestorBeneficiarios.confirmarAltaBeneficiario();
+                    diaketas.diaketas.ong.gestorBeneficiarios.confirmarAltaBeneficiario();
 
                     /*Actualizamos la pantalla principal*/
                     panel = new jFamiliar();
