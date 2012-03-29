@@ -4,9 +4,7 @@
  */
 package diaketas.Modelo.Gestores;
 
-//antes tenia este: import com.mysql.jdbc.ResultSet;
 
-//sustituido por estos dos:
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import diaketas.Modelo.ONG.Voluntario;
@@ -209,7 +207,6 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);  
 
         //Desactivamos al usuario
-        //v.desactivarUsuario(new Date());
         exito = v.desactivarVoluntario(v, new Date());   
         
         return exito;
