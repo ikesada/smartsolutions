@@ -5,6 +5,7 @@
 package diaketas.UI.Donantes;
 
 import ValidarCampos.ValidarCampos;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -392,12 +393,12 @@ public class jAltaDonante extends javax.swing.JPanel {
             /*
              * IntroducirDatosDonante
              */
-            boolean correcto = diaketas.diaketas.ong.gestorDonantes.introducirDatosDonante(NIF_CIF.getText().toUpperCase(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
+            boolean correcto = ONG.gestorDonantes.introducirDatosDonante(NIF_CIF.getText().toUpperCase(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
                     Email.getText(), Integer.parseInt(Telefono.getText()), (String) Tipo_Donante.getSelectedItem(), new Date(), Observaciones.getText(), Integer.parseInt(Periodicidad_Donaciones.getText()),
                     Double.parseDouble(Cuantia_Donaciones.getText()), (String) Tipo_Periodicidad.getSelectedItem(), NIF_Voluntario.getText());
 
             if (correcto) {
-                diaketas.diaketas.ong.gestorDonantes.confirmarFinAlta();
+                ONG.gestorDonantes.confirmarFinAlta();
             } else {
                 JOptionPane.showMessageDialog(this, "No se ha podido crear el nuevo Donante", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
