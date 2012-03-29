@@ -514,7 +514,7 @@ public class jModificarVoluntario extends javax.swing.JPanel {
 
             //llamo a la funcion que se va a encargar de hacer la modificacion del voluntario
 
- //           boolean exito=true;
+            boolean exito=true;
             boolean existe_vol=false;
             if( continuar )   //si todos los datos introducidos son correctos, llamo a las funciones
             {
@@ -525,19 +525,19 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                 if(existe_vol)
                 {
                     
-                    /*exito = */diaketas.diaketas.gestorVoluntarios.modificarVoluntario( (String)Nombre.getText(), (String)Apellidos.getText(), (String)NIF.getText().toUpperCase(), telefonoPasado, (String)Domicilio.getText(), (String)Poblacion.getText(), (String)Email.getText(), (String)Nacionalidad.getText(), Fecha_Nac, Integer.parseInt(CodPost.getText()), (String)Obs.getText(), (String)NIF1.getText().toUpperCase() );
+                    exito = diaketas.diaketas.gestorVoluntarios.modificarVoluntario( (String)Nombre.getText(), (String)Apellidos.getText(), (String)NIF.getText().toUpperCase(), telefonoPasado, (String)Domicilio.getText(), (String)Poblacion.getText(), (String)Email.getText(), (String)Nacionalidad.getText(), Fecha_Nac, Integer.parseInt(CodPost.getText()), (String)Obs.getText(), (String)NIF1.getText().toUpperCase() );
 
                 }
                 else
                 {
                     JOptionPane.showMessageDialog(this, "No se ha encontrado el DNI del voluntario actual.", "Error DNI voluntario", JOptionPane.ERROR_MESSAGE);
-//                    exito = false;
+                    exito = false;
                 }
             }
 
 
 
-            if(/*exito && */ existe_vol && continuar)    //si la operacion se ha realizado con exito y se habian introducido todos los datos
+            if(exito &&  existe_vol && continuar)    //si la operacion se ha realizado con exito y se habian introducido todos los datos
             {
                 //MODIFICACION VOLUNTARIO REALIZADA
                 confirmarModificacion = new jConfirmarModificacion();
@@ -546,11 +546,11 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                 UI.cl.show(UI.jPrincipal, "ConfirmarModificacion");
        
             }
-/*            else if(!exito)
+            else if(!exito)
             {
                 JOptionPane.showMessageDialog(this, "No se ha podido realizar correctamente la modificacion.", "Error modificacion", JOptionPane.ERROR_MESSAGE);
             }
-*/        
+        
         }//continuar
         
         ////////////////////////////////////////////////////////////////////////

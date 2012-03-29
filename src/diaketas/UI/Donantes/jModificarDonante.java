@@ -5,13 +5,8 @@
 package diaketas.UI.Donantes;
 
 import ValidarCampos.ValidarCampos;
-import diaketas.ConexionBD;
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Donante;
-import diaketas.Modelo.Gestores.Gestor_de_donantes;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import diaketas.UI.UI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,74 +35,57 @@ public class jModificarDonante extends javax.swing.JPanel {
 
         java.text.SimpleDateFormat formatoFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
 
-        ConexionBD con;
-        Statement s;
-        ResultSet rs;
+        System.out.println(donante.Activo);
 
-        //Me conecto a la BD
-        con = new ConexionBD();
-        con.conectarBD();
+        if(donante.Activo == 1){
+            NIF_CIF.setText(donante.NIF_CIF);
+            Nombre.setText(donante.Nombre);
+            Apellidos.setText(donante.Apellidos);
+            Fecha_Nacimiento.setText(formatoFecha.format(donante.FechaNac));
+            Localidad.setText(donante.Localidad);
 
-        //Para ejecutar la consulta
+            Email.setText(donante.Email);
+            Telefono.setText(String.valueOf(donante.Telefono));
+            Tipo_Donante.setSelectedItem(donante.Tipo_Donante);
+            Observaciones.setText(donante.Observaciones);
+            Periodicidad_Donaciones.setText(String.valueOf(donante.Periodicidad_Donaciones));
+            Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
+            Tipo_Periodicidad.setSelectedItem(donante.Tipo_Periodicidad);
+    
+        }/*else{
+            
+            JOptionPane.showMessageDialog(this, "El Donante se encuentra dado de baja.", "Donante no valido", JOptionPane.CLOSED_OPTION);
+        
+            
+            NIF_CIF.setText("0");
+            Nombre.setText("");
+            Apellidos.setText("");
+            Fecha_Nacimiento.setText("");
+            Localidad.setText("");
 
-        try {
-            //Crear objeto Statement para realizar queries a la base de datos
-            s = con.conexion().createStatement();
+            Email.setText("");
+            Telefono.setText("");
+            Tipo_Donante.setSelectedItem("");
+            Observaciones.setText("");
+            Periodicidad_Donaciones.setText("");
+            Cuantia_Donaciones.setText("");
+            Tipo_Periodicidad.setSelectedItem("");
+            
+            NIF_CIF.setEnabled(false);
+            Nombre.setEnabled(false);
+            Apellidos.setEnabled(false);
+            Fecha_Nacimiento.setEnabled(false);
+            Localidad.setEnabled(false);
 
-            rs = s.executeQuery("SHOW COLUMNS FROM Donante where Field = 'Tipo_Periodicidad'");
-
-            while (rs.next()) {
-                Object[] fila = new Object[3];
-                fila[0] = rs.getObject(2);
-                String[] tokens = (fila[0].toString()).split("'");
-                for (int i = 0; i < tokens.length; i++) {
-                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
-                        Tipo_Periodicidad.addItem(tokens[i]);
-                    }
-                }
-
-            }
-
-            rs = s.executeQuery("SHOW COLUMNS FROM Donante where Field = 'Tipo_Donante'");
-
-            while (rs.next()) {
-                Object[] fila = new Object[3];
-                fila[0] = rs.getObject(2);
-                String[] tokens = (fila[0].toString()).split("'");
-                for (int i = 0; i < tokens.length; i++) {
-                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
-                        Tipo_Donante.addItem(tokens[i]);
-                    }
-                }
-
-            }
-
-
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(jModificarDonante.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
-        NIF_CIF.setText(donante.NIF_CIF);
-        Nombre.setText(donante.Nombre);
-        Apellidos.setText(donante.Apellidos);
-        Fecha_Nacimiento.setText(formatoFecha.format(donante.FechaNac));
-        Localidad.setText(donante.Localidad);
-
-        Email.setText(donante.Email);
-        Telefono.setText(String.valueOf(donante.Telefono));
-        Tipo_Donante.setSelectedItem(donante.Tipo_Donante);
-        Observaciones.setText(donante.Observaciones);
-        Periodicidad_Donaciones.setText(String.valueOf(donante.Periodicidad_Donaciones));
-        Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
-        Tipo_Periodicidad.setSelectedItem(donante.Tipo_Periodicidad);
+            Email.setEnabled(false);
+            Telefono.setEnabled(false);
+            Tipo_Donante.setEnabled(false);
+            Observaciones.setEnabled(false);
+            Periodicidad_Donaciones.setEnabled(false);
+            Cuantia_Donaciones.setEnabled(false);
+            Tipo_Periodicidad.setEnabled(false);
+            NIF_Voluntario.setEnabled(false);
+       }    */
     }
 
     /**
@@ -256,6 +234,8 @@ public class jModificarDonante extends javax.swing.JPanel {
 
         jLabel7.setText("Tipo Donante");
 
+        Tipo_Donante.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Persona", "Empresa" }));
+
         jLabel13.setText("Periodicidad Donaciones");
 
         Periodicidad_Donaciones.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -267,6 +247,7 @@ public class jModificarDonante extends javax.swing.JPanel {
         jLabel17.setText("Tipo Periodicidad");
 
         Tipo_Periodicidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Tipo_Periodicidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguna", "Días", "Meses", "Años" }));
 
         jLabel18.setText("Cuantia Donaciones");
 

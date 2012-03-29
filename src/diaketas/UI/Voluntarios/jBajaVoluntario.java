@@ -177,17 +177,24 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 
                 //compruebo que el voluntario actual existe en el sistema
                 
-                boolean correcto2 = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
+                boolean existe_vol = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
+                boolean exito=true;
                 
                 //Se ha encontrado al voluntario actual en el sistema
-                if (correcto2 == true)
+                if (existe_vol)
                 {
-                    
-                    
                     //llamo a la funcion que se encarga de dar de baja al voluntario
-                    diaketas.diaketas.gestorVoluntarios.bajaVoluntario(NIF_CIF.getText().toUpperCase(), NIF_CIF_Voluntario.getText().toUpperCase());
-                    
-                    
+                    exito = diaketas.diaketas.gestorVoluntarios.bajaVoluntario(NIF_CIF.getText().toUpperCase(), NIF_CIF_Voluntario.getText().toUpperCase());
+                } 
+                
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado el DNI del voluntario actual.", "Error DNI voluntario", JOptionPane.ERROR_MESSAGE);
+                    exito = false;
+                }
+                 
+                if(existe_vol && exito)
+                {
                     //Cambios esteticos
                     botonCancel.setVisible(false);
                     NIF_CIF_Voluntario.setVisible(false);
@@ -197,10 +204,10 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                     fase = 2;
     
                 }
-                else   //No se encuentra al voluntario...
-                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
-                            "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-                
+                else if(!exito)   
+                {
+                    JOptionPane.showMessageDialog(this, "No se ha podido realizar correctamente la eliminacion.", "Error eliminacion", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }else
             UI.cl.show(UI.jPrincipal, "Diaketas");

@@ -44,9 +44,26 @@ public class jConsultarDonante extends javax.swing.JPanel {
             Periodicidad_Donaciones.setText(String.valueOf(donante.Periodicidad_Donaciones));
             Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
             Tipo_Periodicidad.setText(donante.Tipo_Periodicidad);  
-        }else{
+        }/*else{
             JOptionPane.showMessageDialog(this, "El Donante se encuentra dado de baja.", "Donante no valido", JOptionPane.CLOSED_OPTION);
-        }
+            
+            
+            NIF_CIF.setText("");
+            Nombre.setText("");
+            Apellidos.setText("");
+            Fecha_Nacimiento.setText("");
+            Localidad.setText("");
+            
+            Email.setText("");
+            Telefono.setText("");
+
+            Tipo_Donante.setText("");
+            Fecha_Inscripcion.setText("");
+            Observaciones.setText("");
+            Periodicidad_Donaciones.setText("");
+            Cuantia_Donaciones.setText("");
+            Tipo_Periodicidad.setText("");
+        }*/
     }
     
     /**

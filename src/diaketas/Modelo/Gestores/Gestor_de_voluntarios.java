@@ -7,19 +7,11 @@ package diaketas.Modelo.Gestores;
 //antes tenia este: import com.mysql.jdbc.ResultSet;
 
 //sustituido por estos dos:
-import java.sql.ResultSet;
-//import com.mysql.jdbc.ResultSet;
-
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Modelo.ONG.Accion;
-import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Voluntario;
-import java.sql.SQLException;
-import java.util.Calendar;
+import java.sql.ResultSet;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -41,18 +33,14 @@ public class Gestor_de_voluntarios {
     public boolean comprobarExistenciaVoluntario(String DNI){
 
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);
-        
-        
+              
         if(v!=null)
         {
             if( v.Activo==1 )
-            {
-                return true;
-            }
+               return true;
+            
             else
-            {
-                return false;
-            }
+               return false;
         }
         else
         {
@@ -61,12 +49,6 @@ public class Gestor_de_voluntarios {
         
     }
     
-    
-    //////////////////////////////////////////////////////////////////
-    
-    
-    
-
     
     
     
@@ -208,7 +190,7 @@ public class Gestor_de_voluntarios {
     
     
     
-     public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
+    public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
     {
         
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);
@@ -219,27 +201,42 @@ public class Gestor_de_voluntarios {
        
     }
     
-     public Voluntario consultarDatosVoluntario( String DNI )
+    
+    
+    
+    
+    public Voluntario consultarVoluntario( String DNI )
+    {
+        
+        Voluntario v = null;
+        
+        //si el voluntario esta desactivado, devolvera existe=false
+        boolean existe = diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+        
+        
+        if(existe)
+        {
+            v = diaketas.diaketas.gestorVoluntarios.obtenerDatosVoluntario(DNI);
+        }
+        
+        
+        return v;
+        
+        
+    }
+    
+    
+    
+    
+    public Voluntario obtenerDatosVoluntario( String DNI )
     {
         
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);        
         
-        if(v!=null)
-        {
-            if( v.Activo==1 )
-            {
-                return v;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        else
-        {
-            return v;
-        }
+        return v;
     }
+
+    
     
     
 }
