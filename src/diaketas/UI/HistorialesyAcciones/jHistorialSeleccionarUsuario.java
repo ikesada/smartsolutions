@@ -133,6 +133,16 @@ public class jHistorialSeleccionarUsuario extends javax.swing.JPanel {
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 
+    
+    
+    private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {                             
+        // TODO add your handling code here:
+        
+        if (NIF_CIF.getText().length()>=9){
+            evt.consume();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_CIF;
     private javax.swing.JButton botonCancel;
