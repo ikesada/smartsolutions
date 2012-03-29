@@ -427,20 +427,20 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         {
             if ( !ValidarCampos.isInteger(CodPost.getText()) )
             {
-                System.out.println("Codigo postal incorrecto\n");
+                
                 JOptionPane.showMessageDialog(this, "El codigo postal no es correcto. Debe ser un numero.", "Codigo postal Invalido", JOptionPane.ERROR_MESSAGE);
                 continuar = false;
             }
             else if( !ValidarCampos.isEmail(Email.getText()) )
             {
-                System.out.println("Email incorrecto\n");
+                
                 JOptionPane.showMessageDialog(this, "El email no es correcto.", "Email Invalido", JOptionPane.ERROR_MESSAGE);
                 continuar = false;
             }
             
             else if( !ValidarCampos.isInteger(Telefono.getText()) )
             {
-                System.out.println("Telefono incorrecto\n");
+               
                 JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser un numero.", "Telefono Invalido", JOptionPane.ERROR_MESSAGE);
                 continuar = false;
             }
@@ -469,7 +469,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
 
             Date Fecha_Nac = null;
             
-            System.out.println("fecha nacimiento: "+FechaNac.getText());
+            
             
             if ( FechaNac.getText().compareTo("d/mm/aa") != 0 && FechaNac.getText().compareTo("") != 0)   //si el campo fecha tiene escrito algo distinto de "d/mm/aa" y " "
             {
