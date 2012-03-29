@@ -19,7 +19,7 @@ import java.util.Date;
  */
 
 
-public class Gestor_de_voluntarios {
+public class Gestor_de_voluntarios implements iGestorVoluntarios {
 
     
     Statement instruccion;
