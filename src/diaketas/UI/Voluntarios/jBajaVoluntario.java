@@ -183,8 +183,11 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 //Se ha encontrado al voluntario actual en el sistema
                 if (existe_vol)
                 {
+                    System.out.println("Voy a dar de baja al voluntario\n");
                     //llamo a la funcion que se encarga de dar de baja al voluntario
                     exito = diaketas.diaketas.gestorVoluntarios.bajaVoluntario(NIF_CIF.getText().toUpperCase(), NIF_CIF_Voluntario.getText().toUpperCase());
+                
+                    System.out.println("Exito:"+exito+"\n");
                 } 
                 
                 else
