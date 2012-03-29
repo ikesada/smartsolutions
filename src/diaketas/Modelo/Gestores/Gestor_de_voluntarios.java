@@ -30,6 +30,13 @@ public class Gestor_de_voluntarios {
     
       
     
+    public Boolean introducirDNIVoluntario(String NIF_CIF) {
+
+        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_CIF);
+    }
+    
+    
+    
     public boolean comprobarExistenciaVoluntario(String DNI){
 
         Voluntario v = diaketas.diaketas.ong.buscarVoluntario(DNI);

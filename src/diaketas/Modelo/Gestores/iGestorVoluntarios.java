@@ -65,6 +65,10 @@ public interface iGestorVoluntarios {
     public Voluntario obtenerDatosVoluntario( String DNI );
   
     
+    /*
+     * //Funcion que nos dice si el usuario existe o no
+     */
+    public Boolean introducirDNIVoluntario(String NIF_CIF);
     
     
 }
