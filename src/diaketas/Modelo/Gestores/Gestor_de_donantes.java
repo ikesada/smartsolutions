@@ -77,7 +77,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
+        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
     }
 
     @Override
@@ -119,7 +119,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
+        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
         
     }
     
@@ -161,7 +161,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
+        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
         
     }
     
@@ -183,6 +183,6 @@ public class Gestor_de_donantes implements iGestorDonantes {
 
         NIF_Voluntario = NIF_CIF;
 
-        return diaketas.diaketas.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 }
