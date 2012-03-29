@@ -18,8 +18,8 @@ public class Parentesco {
     
     /*---------------------------Constructores---------------------------------*/
     /**
-     * 
-     * @param Parentesc
+     * Constructor por parametros.
+     * @param Parentesc Tipo de parentesco
      */
     public Parentesco (String Parentesc){
         this.Parentesc = Parentesc;

@@ -37,7 +37,7 @@ public class ConexionBD{
     private static Connection conn = null;
     
     /**
-     * 
+     *  Funcion conecta con la BBDD
      */
     public void conectarBD() {
         try {
@@ -53,7 +53,7 @@ public class ConexionBD{
     }
     
     /**
-     * 
+     *  Desconecta de la BBDD
      * @throws SQLException
      */
     public void desconectarBD() throws SQLException{
@@ -61,8 +61,8 @@ public class ConexionBD{
     }
     
     /**
-     * 
-     * @return
+     *  Realiza la convexion
+     * @return Devuelve la conexion a la BBDD
      */
     public Connection conexion()
     {       
@@ -70,8 +70,8 @@ public class ConexionBD{
     }
     
     /**
-     * 
-     * @return
+     *  Comprueba si hay conexion con la BBDD o no
+     * @return Devuelve True o False si la conexion existe
      */
     public boolean hayConexionBD(){
        if(conn!=null)

@@ -15,7 +15,7 @@ public interface iGestorDonantes {
     
    /**
      * 
-     * @brief Funcion que introduce en el sistema los datos para manejarlos mas tarde
+     *  Funcion que introduce en el sistema los datos para manejarlos mas tarde
      * @param NIF_CIF Dni del Donante
      * @param Nombre Nombre del Donante
      * @param Apellidos Apellidos del Donante
@@ -38,30 +38,30 @@ public interface iGestorDonantes {
 
    /**
      * 
-     * @brief Funcion que introduce en el sistema el dni del donante y lo comprueba
+     *  Funcion que introduce en el sistema el dni del donante y lo comprueba
      * @param NIF_CIF Dni del Donante a comprobar
      * @return Devuelve True o False dependiende de si el donante existe(y no esta dado de baja) o no
      */
     public Boolean introducirDniDonante(String NIF_CIF);
         
     /**
-     * @brief Funcion que prueba que la consulta es valida
+     *  Funcion que prueba que la consulta es valida
      * @return Devuelve los datos del Donante
      */
     public Donante confimarConsulta();
     
     /**
-     * @brief Funcion que finaliza la operacion de Alta Donante
+     *  Funcion que finaliza la operacion de Alta Donante
      */
     public void confirmarFinAlta();
     
     /**
-     * @brief Funcion que finaliza la operacion de Modificacion Donante
+     *  Funcion que finaliza la operacion de Modificacion Donante
      */
     public void confirmarFinBaja();
 
     /**
-     * @brief Funcion que finaliza la operacion de Baja
+     *  Funcion que finaliza la operacion de Baja
      */
     public void confirmarFinModificacion();
 }

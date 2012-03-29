@@ -27,64 +27,6 @@ public class jAltaDonante extends javax.swing.JPanel {
      */
     public jAltaDonante() {
         initComponents();
-
-        /*ConexionBD con;
-        Statement s;
-        ResultSet rs;
-
-        //Me conecto a la BD
-        con = new ConexionBD();
-        con.conectarBD();
-
-        //Para ejecutar la consulta
-
-        try {
-            //Crear objeto Statement para realizar queries a la base de datos
-            s = con.conexion().createStatement();
-
-            rs = s.executeQuery("SHOW COLUMNS FROM Donante where Field = 'Tipo_Periodicidad'");
-
-            while (rs.next()) {
-                Object[] fila = new Object[3];
-                fila[0] = rs.getObject(2);
-                String[] tokens = (fila[0].toString()).split("'");
-                for (int i = 0; i < tokens.length; i++) {
-                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
-                        Tipo_Periodicidad.addItem(tokens[i]);
-                    }
-                }
-
-            }
-
-            rs = s.executeQuery("SHOW COLUMNS FROM Donante where Field = 'Tipo_Donante'");
-
-            while (rs.next()) {
-                Object[] fila = new Object[3];
-                fila[0] = rs.getObject(2);
-                String[] tokens = (fila[0].toString()).split("'");
-                for (int i = 0; i < tokens.length; i++) {
-                    if (tokens[i].compareTo(",") != 0 && tokens[i].compareTo("enum(") != 0 && tokens[i].compareTo(")") != 0) {
-                        Tipo_Donante.addItem(tokens[i]);
-                    }
-                }
-
-            }
-
-
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(jAltaDonante.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }*/
-
-
-
     }
 
     /**

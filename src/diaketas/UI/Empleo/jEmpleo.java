@@ -8,7 +8,7 @@ import diaketas.UI.Donaciones.*;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public class jEmpleo extends javax.swing.JPanel {
 

@@ -31,8 +31,8 @@ public class jModificarDonante extends javax.swing.JPanel {
     }
 
     /**
-     * 
-     * @param donante
+     *  Funcion que permite modificar los datos de un Donante seleccionad
+     * @param donante Donante a modificar
      */
     public jModificarDonante(Donante donante) {
         initComponents();
@@ -56,40 +56,7 @@ public class jModificarDonante extends javax.swing.JPanel {
             Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
             Tipo_Periodicidad.setSelectedItem(donante.Tipo_Periodicidad);
     
-        }/*else{
-            
-            JOptionPane.showMessageDialog(this, "El Donante se encuentra dado de baja.", "Donante no valido", JOptionPane.CLOSED_OPTION);
-        
-            
-            NIF_CIF.setText("0");
-            Nombre.setText("");
-            Apellidos.setText("");
-            Fecha_Nacimiento.setText("");
-            Localidad.setText("");
-
-            Email.setText("");
-            Telefono.setText("");
-            Tipo_Donante.setSelectedItem("");
-            Observaciones.setText("");
-            Periodicidad_Donaciones.setText("");
-            Cuantia_Donaciones.setText("");
-            Tipo_Periodicidad.setSelectedItem("");
-            
-            NIF_CIF.setEnabled(false);
-            Nombre.setEnabled(false);
-            Apellidos.setEnabled(false);
-            Fecha_Nacimiento.setEnabled(false);
-            Localidad.setEnabled(false);
-
-            Email.setEnabled(false);
-            Telefono.setEnabled(false);
-            Tipo_Donante.setEnabled(false);
-            Observaciones.setEnabled(false);
-            Periodicidad_Donaciones.setEnabled(false);
-            Cuantia_Donaciones.setEnabled(false);
-            Tipo_Periodicidad.setEnabled(false);
-            NIF_Voluntario.setEnabled(false);
-       }    */
+        }
     }
 
     /**

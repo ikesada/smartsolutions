@@ -191,7 +191,7 @@ public class ONG implements iONG{
     }
     
     /*****************************FAMILIAR***********************************
-     * @brief Funcion que realiza la busqueda de un familiar
+     *  Funcion que realiza la busqueda de un familiar
      * @param Nombre_Apellidos Nombre y apellidos del familiar buscado
      * @param Fecha_Nac Fecha de nacimiento del familiar buscado     
      * @return Devuelve el familiar encontrado
@@ -232,7 +232,7 @@ public class ONG implements iONG{
        
     
     /*****************************DONANTE***********************************
-     * @brief Agrega un nuevo donante a la BBDD
+     *  Agrega un nuevo donante a la BBDD
      * @param nuevoDonante Donante que va a ser agregado
      */
     
@@ -273,7 +273,7 @@ public class ONG implements iONG{
         
     /**
      * 
-     * @brief Busca el donante que se le ha pasado en la BBDD
+     *  Busca el donante que se le ha pasado en la BBDD
      * @param DNI Dni del donante a buscar
      * @return Devuelve los datos del donante buscado en caso de existir
      */
@@ -315,7 +315,7 @@ public class ONG implements iONG{
     
     /******************************VOLUNTARIO*************************
      * 
-     * @brief Busca el voluntario que se le ha pasado en la BBDD
+     * Busca el voluntario que se le ha pasado en la BBDD
      * @param DNI Dni del voluntario a buscar
      * @return Devuelve los datos del voluntarios buscado en caso de existir
      */  
@@ -365,7 +365,7 @@ public class ONG implements iONG{
     }
 
     /**
-     * @brief Anyade el nuevo voluntario a la BBDD
+     *  Anyade el nuevo voluntario a la BBDD
      * @param nuevoVoluntario Datos del voluntario a agregar
      */
     public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){

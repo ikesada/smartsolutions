@@ -14,62 +14,61 @@ import java.util.Date;
 public class Donante extends Usuarios{
     
     /**
-     * 
+     * El donante puede ser una persona o una empresa
      */
     public String Tipo_Donante;
     /**
-     * 
+     * Fecha en la que el donante se inscribio en el sistema
      */
     public Date Fecha_Inscripcion;
     /**
-     * 
+     * Observaciones sobre el Donante
      */
     public String Observaciones;
     /**
-     * 
+     * La periodicidad de la donacion que depende del tipo de periodicidad
      */
     public int Periodicidad_Donaciones;
     /**
-     * 
+     * Sera al cantidad que se realizara en las donaciones
      */
     public double Cuantia_Donaciones;
     /**
-     * 
+     * Los tipos de periodicidad de las donaciones. Son: Ninguna, Dias, Meses y Anyos
      */
     public String Tipo_Periodicidad;
 
     /**
-     * 
+     * Constructor Por Defecto
      */
     public Donante() {
     }
     
     /**
-     * 
-     * @param NIF_CIF
+     * Constructor por parametros del Donante
+     * @param NIF_CIF Dni del donante a crear
      */
     public Donante(String NIF_CIF){
         this.NIF_CIF = NIF_CIF;
     }
         
-    /**
+   /**
      * 
-     * @param NIF_CIF
-     * @param Nombre
-     * @param Apellidos
-     * @param FechaNac
-     * @param Localidad
-     * @param Activo
-     * @param FechaDesac
-     * @param Email
-     * @param Telefono
-     * @param Tipo_Donante
-     * @param Fecha_Inscripcion
-     * @param Observaciones
-     * @param Periodicidad_Donaciones
-     * @param Cuantia_Donaciones
-     * @param Tipo_Periodicidad
-     */
+     * Constructor por parametros que introduce todos los parametros del donante
+     * @param NIF_CIF Dni del Donante
+     * @param Nombre Nombre del Donante
+     * @param Apellidos Apellidos del Donante
+     * @param FechaNac Fecha de Nacimiento del Donante
+     * @param Localidad Localidad del Donante
+     * @param Email Email del Donante 
+     * @param Telefono Telefono del Donante 
+     * @param Tipo_Donante Tipo de Donante
+     * @param Fecha_Inscripcion Fecha de Inscripcion del Donante
+     * @param Observaciones Observaciones sobre el Donante
+     * @param Periodicidad_Donaciones Periodicidad en la que se haran las donaciones
+     * @param Cuantia_Donaciones Cuantia de las donaciones del Donante
+     * @param Tipo_Periodicidad Tipo de periodicidad de las donaciones
+     */ 
     public Donante(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, int Activo, Date FechaDesac, String Email, int Telefono,
             String Tipo_Donante, Date Fecha_Inscripcion, String Observaciones, int Periodicidad_Donaciones, double Cuantia_Donaciones, String Tipo_Periodicidad) {
        
@@ -93,23 +92,24 @@ public class Donante extends Usuarios{
     
     
     
-    /**
+   /**
      * 
-     * @param NIF_CIF
-     * @param Nombre
-     * @param Apellidos
-     * @param FechaNac
-     * @param Localidad
-     * @param Email
-     * @param Telefono
-     * @param Tipo_Donante
-     * @param Fecha_Inscripcion
-     * @param Observaciones
-     * @param Periodicidad_Donaciones
-     * @param Cuantia_Donaciones
-     * @param Tipo_Periodicidad
-     * @return
-     */
+     * Funcion que crea el nuevo donante y lo devuelve para su uso
+     * @param NIF_CIF Dni del Donante
+     * @param Nombre Nombre del Donante
+     * @param Apellidos Apellidos del Donante
+     * @param FechaNac Fecha de Nacimiento del Donante
+     * @param Localidad Localidad del Donante
+     * @param Email Email del Donante 
+     * @param Telefono Telefono del Donante 
+     * @param Tipo_Donante Tipo de Donante
+     * @param Fecha_Inscripcion Fecha de Inscripcion del Donante
+     * @param Observaciones Observaciones sobre el Donante
+     * @param Periodicidad_Donaciones Periodicidad en la que se haran las donaciones
+     * @param Cuantia_Donaciones Cuantia de las donaciones del Donante
+     * @param Tipo_Periodicidad Tipo de periodicidad de las donaciones
+     * @return Devuelve el donante creado
+     */ 
     public static Donante crearDonante(String NIF_CIF, String Nombre, String Apellidos, Date FechaNac, String Localidad, String Email, int Telefono,
             String Tipo_Donante, Date Fecha_Inscripcion, String Observaciones, int Periodicidad_Donaciones, double Cuantia_Donaciones, String Tipo_Periodicidad){
         

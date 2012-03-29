@@ -12,7 +12,7 @@ public interface iGestorHistorial {
 
     /**
      *
-     * @brief Funcion que registra las acciones realizadas por los voluntarios
+     *  Funcion que registra las acciones realizadas por los voluntarios
      *
      * @param DNI_Voluntario DNI del voluntario que realizo la operacion
      * @param DNI DNI del usuario sobre el cual ser realizo la operacion
