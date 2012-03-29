@@ -66,7 +66,7 @@ public interface iGestorVoluntarios {
   
     
     /*
-     * //Funcion que nos dice si el usuario existe o no
+     * Funcion que nos dice si el usuario existe o no
      */
     public Boolean introducirDNIVoluntario(String NIF_CIF);
     
