@@ -11,13 +11,9 @@ import diaketas.UI.Donantes.jDonantes;
 import diaketas.UI.Empleo.jEmpleo;
 import diaketas.UI.HistorialesyAcciones.jHistorialyAcciones;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.AbstractButton;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -35,7 +31,7 @@ public class UI extends javax.swing.JFrame {
      */
     public UI() {
         initComponents();
-  //      jPrincipalScroll.getViewport().setView(jPrincipal);
+        jPrincipalScroll.getViewport().setView(jPrincipal);
         cl = (CardLayout)(jPrincipal.getLayout());
         
         /*Paneles acciones */
@@ -58,7 +54,6 @@ public class UI extends javax.swing.JFrame {
         
         /*Mostramos Diaketas*/
         cl.show(jPrincipal, "Diaketas");
-                
     }
 
     /**
@@ -78,16 +73,17 @@ public class UI extends javax.swing.JFrame {
         botonDonaciones = new javax.swing.JButton();
         botonEmpleo = new javax.swing.JButton();
         jPrincipal = new javax.swing.JPanel();
+        jPrincipalScroll = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diaketas");
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(1262, 628));
         setName("Principal");
+        setPreferredSize(new java.awt.Dimension(1262, 109));
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
-        botonDiaketas.setFont(new Font("Courier", Font.BOLD,18));
         botonDiaketas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Voluntario.png"))); // NOI18N
         botonDiaketas.setText("Voluntarios");
         botonDiaketas.addActionListener(new java.awt.event.ActionListener() {
@@ -96,8 +92,6 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonDiaketas);
-        botonDiaketas.setVerticalTextPosition(SwingConstants.BOTTOM);
-        botonDiaketas.setHorizontalTextPosition(SwingConstants.CENTER);
 
         botonDonantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
         botonDonantes.setText("Donantes");
@@ -107,9 +101,6 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonDonantes);
-        botonDonantes.setVerticalTextPosition(SwingConstants.BOTTOM);
-        botonDonantes.setHorizontalTextPosition(SwingConstants.CENTER);
-        botonDonantes.setFont(new Font("Courier", Font.BOLD,18));
 
         botonBeneficiarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
         botonBeneficiarios.setText("Beneficiarios");
@@ -119,9 +110,6 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonBeneficiarios);
-        botonBeneficiarios.setFont(new Font("Courier", Font.BOLD,18));
-        botonBeneficiarios.setHorizontalTextPosition(SwingConstants.CENTER);
-        botonBeneficiarios.setVerticalTextPosition(SwingConstants.BOTTOM);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/historiales.png"))); // NOI18N
         jButton1.setText("Historiales");
@@ -131,9 +119,6 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(jButton1);
-        jButton1.setFont(new Font("Courier", Font.BOLD,18));
-        jButton1.setHorizontalTextPosition(SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(SwingConstants.BOTTOM);
 
         botonDonaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
         botonDonaciones.setText("Donaciones");
@@ -144,9 +129,6 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonDonaciones);
-        botonDonaciones.setFont(new Font("Courier", Font.BOLD,18));
-        botonDonaciones.setHorizontalTextPosition(SwingConstants.CENTER);
-        botonDonaciones.setVerticalTextPosition(SwingConstants.BOTTOM);
 
         botonEmpleo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
         botonEmpleo.setText("Empleo");
@@ -157,14 +139,12 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonEmpleo);
-        botonEmpleo.setFont(new Font("Courier", Font.BOLD,18));
-        botonEmpleo.setHorizontalTextPosition(SwingConstants.CENTER);
-        botonEmpleo.setVerticalTextPosition(SwingConstants.BOTTOM);
 
         getContentPane().add(jMenuBotones, java.awt.BorderLayout.NORTH);
 
         jPrincipal.setLayout(new java.awt.CardLayout());
         getContentPane().add(jPrincipal, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPrincipalScroll, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -172,14 +152,12 @@ public class UI extends javax.swing.JFrame {
     private void botonBeneficiariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBeneficiariosActionPerformed
         /*Modificamos zona principal*/
         cl.show(jPrincipal, "Beneficiarios");
-       this.setBackground(new java.awt.Color(205,255,204));
 
     }//GEN-LAST:event_botonBeneficiariosActionPerformed
 
     private void botonDiaketasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDiaketasActionPerformed
         /*Modificamos zona principal*/
         cl.show(jPrincipal, "Diaketas");
-        this.setBackground(new java.awt.Color(255, 204, 204));
     }//GEN-LAST:event_botonDiaketasActionPerformed
 
     private void botonDonacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDonacionesActionPerformed
@@ -195,12 +173,10 @@ public class UI extends javax.swing.JFrame {
     private void botonDonantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDonantesActionPerformed
         /*Modificamos zona principal*/
         cl.show(jPrincipal, "Donantes");
-        this.setBackground(new java.awt.Color(167,223,247));
     }//GEN-LAST:event_botonDonantesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cl.show(jPrincipal, "HistorialyAcciones");
-        this.setBackground(new java.awt.Color(255,204,153));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -224,5 +200,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jMenuBotones;
     public static javax.swing.JPanel jPrincipal;
+    private javax.swing.JScrollPane jPrincipalScroll;
     // End of variables declaration//GEN-END:variables
 }

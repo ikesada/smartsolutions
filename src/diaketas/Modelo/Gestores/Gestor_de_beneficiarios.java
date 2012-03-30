@@ -34,7 +34,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     
     /*---------------------------Beneficiario----------------------------------*/
     /**
-     * @brief Introduce el DNI del beneficiario en el gestor
+     * Introduce el DNI del beneficiario en el gestor
      * @param DNI_Beneficiario
      * @return Boolean indicando si existe un beneficiario asociado a ese DNI
      */
@@ -47,7 +47,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
 
     /**
-     * @brief Introduce los datos del beneficiario en el gestor
+     * Introduce los datos del beneficiario en el gestor
      * @param NIF_CIF Nif del beneficiario
      * @param Nombre Nombre del beneficiario
      * @param Apellidos Apellidos del beneficiario
@@ -102,7 +102,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Comprueba si existe un beneficiario en el sistema con un DNI
+     * Comprueba si existe un beneficiario en el sistema con un DNI
      * @param DNI Dni del beneficiario que se quiere encontrar en el sistema
      * @return True o False indicando si se ha encontrado un beneficiario con el DNI especificado
      */
@@ -118,7 +118,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Consulta en el sistema los datos de un beneficiario
+     * Consulta en el sistema los datos de un beneficiario
      * @param DNI del beneficiario del que se quieren consultar sus datos
      * @return Un objeto Beneficiario incluyendo todos los datos del beneficiario
      */
@@ -141,7 +141,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
    /**
-     * @brief Elimina al beneficiario con el DNI especificado del sistema
+     * Elimina al beneficiario con el DNI especificado del sistema
      * @param DNI del beneficiario que se quiere eliminar del sistema
      */
     private void eliminarBeneficiario(String DNI){
@@ -155,7 +155,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
   
     /**
-     * @brief Modifica al beneficiario con el DNI especificado del sistema
+     * Modifica al beneficiario con el DNI especificado del sistema
      * @param DNI del beneficiario que se quiere modificar
      */
     private void modificarBeneficiario(Beneficiario nuevosDatosBeneficiario){
@@ -168,7 +168,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
 
     /**
-     * @brief Confirmar el alta de un beneficiario en el sistema
+     * Confirmar el alta de un beneficiario en el sistema
      */
     @Override
     public void confirmarAltaBeneficiario(){
@@ -187,7 +187,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Confirmar el baja de un beneficiario en el sistema
+     * Confirmar el baja de un beneficiario en el sistema
      */
     @Override
     public void confirmarBajaBeneficiario(){
@@ -199,7 +199,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Confirmar la modificación de los datos del beneficiario en el sistema
+     * Confirmar la modificación de los datos del beneficiario en el sistema
      */
     @Override
     public void confirmarModificacionBeneficiario(){
@@ -213,7 +213,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /*--------------------------------Familiar---------------------------------*/
     
     /**
-     * @brief Introduce el Nombre_Apellidos del familiar que se quiere consultar en el sistema
+     * Introduce el Nombre_Apellidos del familiar que se quiere consultar en el sistema
      * @param Nombre_Apellidos Nombre_Apellidos del familiar del beneficiario que se quiere consultar
      */
     public void seleccionarFamiliar(String Nombre_Apellidos){
@@ -221,7 +221,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
    
     /**
-     * @brief Confirma la inserción de un nuevo familiar al beneficiario
+     * Confirma la inserción de un nuevo familiar al beneficiario
      */
     @Override
     public void confirmarInsercion(){   
@@ -249,7 +249,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }    
     
     /**
-     * @brief Confirma la eliminacion de un familiar del beneficiario
+     * Confirma la eliminacion de un familiar del beneficiario
      */
     @Override
     public void confirmarEliminacion(){
@@ -271,7 +271,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Inicia la consulta de los familiares
+     * Inicia la consulta de los familiares
      * @return Devuelve una lista con los familiares de un beneficiario
      */
     public ArrayList<Familiar> iniciarConsultarFamiliar(){
@@ -286,7 +286,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     
 
     /**
-     * @brief Incia la modificación de los familiares
+     * Incia la modificación de los familiares
      * @return Devuelve una lista con los familiares de un beneficiario
      */ 
     public ArrayList<Familiar> inicioModificarFamiliar(){
@@ -298,7 +298,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Devuelve los datos de un familiar
+     * Devuelve los datos de un familiar
      * @param Nombre_Apellidos Nombre y Apellidos del familiar que se quiere consultar
      * @return Los datos de un familiar
      */
@@ -312,7 +312,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Modifica los datos de un familiar
+     * Modifica los datos de un familiar
      * @param Nombre_Apellidos Nombre y apellidos del familiar que se quiere modificar
      * @param nuevosDatosFamiliar Nuevos datos del familiar
      * @param parentesco Relación de parentesco entre el familiar y el beneficiario
@@ -322,7 +322,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Actualiza los datos de un familiar
+     * Actualiza los datos de un familiar
      * @param Nombre_Apellidos Nombre y apellidos del familiar que se quiere actualizar
      * @param nuevosDatosFamiliar Nuevos datos del familiar
      * @param parentesco Relación de parentesco entre el familiar y el beneficiario

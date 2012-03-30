@@ -16,7 +16,7 @@ public interface iGestorHistorial {
      *
      * @param DNI_Voluntario DNI del voluntario que realizo la operacion
      * @param DNI DNI del usuario sobre el cual ser realizo la operacion
-     * @param Operacion Definicion de la operacion realizada
+     * @param operacion Definicion de la operacion realizada
      */
     public void RegistrarOperacion(String DNI_Voluntario, String DNI, String operacion);
     /*
