@@ -25,23 +25,23 @@ public class Voluntario extends Usuarios{
     
     
     /**
-     * Nacionalidad del voluntario
+     * @param Nacionalidad Nacionalidad del voluntario
      */
     public String Nacionalidad;
     /**
-     * Domicilio del voluntario
+     * @param Domicilio Domicilio del voluntario
      */
     public String Domicilio;
     /**
-     * Codigo postal del voluntario
+     * @param Codigo_Postal Codigo postal del voluntario
      */
     public int Codigo_Postal;
     /**
-     * Fecha en que se registro el voluntario en el sistema
+     * @param Fecha_Inicio Fecha en que se registro el voluntario en el sistema
      */
     public Date Fecha_Inicio;
     /**
-     * Observaciones relacionadas con el voluntario
+     * @param Observaciones Observaciones relacionadas con el voluntario
      */
     public String Observaciones;
     

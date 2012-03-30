@@ -16,58 +16,58 @@ import java.util.Date;
 public interface iGestorBeneficiarios {
     
     /**
-     * Confirmar el alta de un beneficiario en el sistema
+     * @brief Confirmar el alta de un beneficiario en el sistema
      */
     public void confirmarAltaBeneficiario();
     
     /**
-     * Confirmar el baja de un beneficiario en el sistema
+     * @brief Confirmar el baja de un beneficiario en el sistema
      */
     public void confirmarBajaBeneficiario();
     
     /**
-     * Confirma la eliminacion de un familiar del beneficiario
+     * @brief Confirma la eliminacion de un familiar del beneficiario
      */
     public void confirmarEliminacion();
     
     /**
-     * Confirma la inserción de un nuevo familiar al beneficiario
+     * @brief Confirma la inserción de un nuevo familiar al beneficiario
      */
     public void confirmarInsercion();
     
     /**
-     * Confirmar la modificación de los datos del beneficiario en el sistema
+     * @brief Confirmar la modificación de los datos del beneficiario en el sistema
      */
     public void confirmarModificacionBeneficiario();
     
     /**
-     * Consulta en el sistema los datos de un beneficiario
-     * @param dniBeneficiario del beneficiario del que se quieren consultar sus datos
+     * @brief Consulta en el sistema los datos de un beneficiario
+     * @param DNI del beneficiario del que se quieren consultar sus datos
      * @return Un objeto Beneficiario incluyendo todos los datos del beneficiario
      */
     public Beneficiario consultarBeneficiario(String dniBeneficiario);
     
     /**
-     * Devuelve los datos de un familiar
+     * @brief Devuelve los datos de un familiar
      * @param Nombre_Apellidos Nombre y Apellidos del familiar que se quiere consultar
      * @return Los datos de un familiar
      */
     public Familiar consultarFamiliar(String Nombre_Apellidos);
 
     /**
-     * Inicia la consulta de los familiares
+     * @brief Inicia la consulta de los familiares
      * @return Devuelve una lista con los familiares de un beneficiario
      */
     public ArrayList<Familiar> iniciarConsultarFamiliar();
     
     /**
-     * Incia la modificación de los familiares
+     * @brief Incia la modificación de los familiares
      * @return Devuelve una lista con los familiares de un beneficiario
      */
     public ArrayList<Familiar> inicioModificarFamiliar();
     
     /**
-     * Introduce los datos del beneficiario en el gestor
+     * @brief Introduce los datos del beneficiario en el gestor
      * @param NIF_CIF Nif del beneficiario
      * @param Nombre Nombre del beneficiario
      * @param Apellidos Apellidos del beneficiario
@@ -108,17 +108,16 @@ public interface iGestorBeneficiarios {
             String Profesion, String Experiencia_Laboral, String NIF_Vol);
     
     /**
-     * Modifica los datos de un familiar
+     * @brief Modifica los datos de un familiar
      * @param Nombre_Apellidos Nombre y apellidos del familiar que se quiere modificar
-     * @param Fecha_Nac Nueva fecha de nacimiento para el familiar
-     * @param Parentesco Relación de parentesco entre el familiar y el beneficiario
-     * @param Ocupacion Trabajo que realiza el familiar
+     * @param nuevosDatosFamiliar Nuevos datos del familiar
+     * @param parentesco Relación de parentesco entre el familiar y el beneficiario
      */
     public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac,
             String Parentesco, String Ocupacion);
     
     /**
-     * Modifica los datos de un familiar
+     * @brief Modifica los datos de un familiar
      * @param Nombre_Apellidos Nombre y apellidos del familiar que se quiere modificar
      * @param nuevosDatosFamiliar Nuevos datos del familiar
      * @param parentesco Relación de parentesco entre el familiar y el beneficiario
