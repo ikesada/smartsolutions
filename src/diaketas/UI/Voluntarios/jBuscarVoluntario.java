@@ -61,7 +61,6 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         NIF = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -87,8 +86,6 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Voluntario.png"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,10 +101,7 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
                                     .addComponent(jSeparator3)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel1))
+                                            .addComponent(jLabel1)
                                             .addComponent(jLabel3)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
@@ -117,18 +111,14 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(108, 108, 108)
                                 .addComponent(jButton1)))
-                        .addGap(0, 179, Short.MAX_VALUE)))
+                        .addGap(0, 182, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel1)))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -141,7 +131,7 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
                     .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -203,7 +193,6 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables

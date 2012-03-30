@@ -77,7 +77,6 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         FechaNac = new javax.swing.JFormattedTextField();
         Observaciones_Datos_Personales_SB = new javax.swing.JScrollPane();
         Obs = new javax.swing.JTextArea();
-        jLabel11 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -206,8 +205,6 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         });
         Observaciones_Datos_Personales_SB.setViewportView(Obs);
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Voluntario.png"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -267,11 +264,9 @@ public class jAltaVoluntario extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel1)))
-                .addContainerGap())
+                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
@@ -287,11 +282,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel1)))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -645,7 +636,6 @@ public class jAltaVoluntario extends javax.swing.JPanel {
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;

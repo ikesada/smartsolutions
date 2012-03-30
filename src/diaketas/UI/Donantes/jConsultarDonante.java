@@ -92,9 +92,8 @@ public class jConsultarDonante extends javax.swing.JPanel {
         Fecha_Inscripcion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Observaciones = new javax.swing.JTextArea();
-        jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(211, 232, 254));
+        setBackground(new java.awt.Color(167, 223, 247));
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
         setPreferredSize(new java.awt.Dimension(1100, 518));
@@ -167,8 +166,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
         Observaciones.setRows(5);
         jScrollPane1.setViewportView(Observaciones);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,8 +174,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -239,11 +234,7 @@ public class jConsultarDonante extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1)))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -313,7 +304,7 @@ public class jConsultarDonante extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(Fecha_Inscripcion))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -351,7 +342,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator7;

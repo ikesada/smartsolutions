@@ -195,7 +195,7 @@ public class UI extends javax.swing.JFrame {
     private void botonDonantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDonantesActionPerformed
         /*Modificamos zona principal*/
         cl.show(jPrincipal, "Donantes");
-        this.setBackground(new java.awt.Color(211,232,254));
+        this.setBackground(new java.awt.Color(167,223,247));
     }//GEN-LAST:event_botonDonantesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
