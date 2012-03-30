@@ -41,6 +41,8 @@ public class jFamiliar extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         botonOK = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         botonAniadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir_familiar.png"))); // NOI18N

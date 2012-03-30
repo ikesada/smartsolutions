@@ -6,6 +6,7 @@ package diaketas.Modelo.Gestores;
 
 import diaketas.Modelo.ONG.Beneficiario;
 import diaketas.Modelo.ONG.Familiar;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Parentesco;
 import java.util.ArrayList;
 import java.util.Date;
@@ -97,7 +98,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
-        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return ONG.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
     /**
@@ -121,6 +122,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
      * @param DNI del beneficiario del que se quieren consultar sus datos
      * @return Un objeto Beneficiario incluyendo todos los datos del beneficiario
      */
+    @Override
     public Beneficiario consultarBeneficiario (String DNI){
 
         /*Actualimos NIF*/
@@ -168,6 +170,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /**
      * Confirmar el alta de un beneficiario en el sistema
      */
+    @Override
     public void confirmarAltaBeneficiario(){
         
         /*Crear beneficiario*/
@@ -177,7 +180,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         diaketas.diaketas.ong.agregarNuevoBeneficiario(nuevoBeneficiario);
         
         /*Registrar Operacion*/
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
         
         /*Registrar beneficiario*/
         /*Beneficiario ya tiene asociado Vivienda, email y telefono*/
@@ -186,9 +189,10 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /**
      * Confirmar el baja de un beneficiario en el sistema
      */
+    @Override
     public void confirmarBajaBeneficiario(){
         /*Registrar Operacion*/
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
         
         /*Eliminar beneficiario*/
         eliminarBeneficiario(NIF_Beneficiario);
@@ -197,9 +201,10 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /**
      * Confirmar la modificación de los datos del beneficiario en el sistema
      */
+    @Override
     public void confirmarModificacionBeneficiario(){
          /*Registrar Operacion*/
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
     
         /*Modificar beneficiario*/
         modificarBeneficiario(datosBeneficiario);
@@ -218,6 +223,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /**
      * Confirma la inserción de un nuevo familiar al beneficiario
      */
+    @Override
     public void confirmarInsercion(){   
         Familiar familiar;
         
@@ -245,6 +251,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /**
      * Confirma la eliminacion de un familiar del beneficiario
      */
+    @Override
     public void confirmarEliminacion(){
 
         /* Buscamos Beneficiario en el sistema */

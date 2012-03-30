@@ -108,7 +108,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta_Donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta Donante");
     }
 
 
@@ -154,7 +154,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "modificacion_donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Modificacion Donante");
         
     }
     
@@ -200,7 +200,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Baja Donante");
         
     }
     

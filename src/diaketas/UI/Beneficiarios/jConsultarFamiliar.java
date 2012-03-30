@@ -70,6 +70,8 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         Ocupacion = new javax.swing.JLabel();
         botonOK = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jLabel6.setText("Nacimiento");
 
         jLabel2.setText("Nombre y Apellidos");

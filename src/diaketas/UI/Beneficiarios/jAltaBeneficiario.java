@@ -109,6 +109,8 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         Observaciones_Vivienda = new javax.swing.JTextArea();
         Expediente = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jLabel9.setText("Domicilio");
 
         jLabel7.setText("Nacionalidad");
@@ -375,7 +377,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(NIF, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                                        .addComponent(NIF)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel40)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

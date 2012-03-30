@@ -49,6 +49,8 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         NIF = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
 

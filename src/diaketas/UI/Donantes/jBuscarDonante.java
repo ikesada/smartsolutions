@@ -45,6 +45,8 @@ public class jBuscarDonante extends javax.swing.JPanel {
         NIF_CIF = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(167, 223, 247));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Donantes");
 

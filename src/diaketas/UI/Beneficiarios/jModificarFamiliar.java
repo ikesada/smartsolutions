@@ -77,6 +77,8 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         botonOK = new javax.swing.JButton();
         botonCancel = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
 

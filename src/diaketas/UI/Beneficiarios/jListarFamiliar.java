@@ -74,6 +74,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaFamiliares = new javax.swing.JList();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
 

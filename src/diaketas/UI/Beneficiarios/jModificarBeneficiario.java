@@ -144,6 +144,8 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Precio_Vivienda = new javax.swing.JTextField();
         Expediente = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         Tipo_Vivienda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Tipo_ViviendaKeyTyped(evt);

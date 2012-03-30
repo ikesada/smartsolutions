@@ -103,6 +103,8 @@ public class jModificarDonante extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         Cuantia_Donaciones = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(167, 223, 247));
+
         jLabel2.setText("NIF");
 
         botonOK.setText("Ok");

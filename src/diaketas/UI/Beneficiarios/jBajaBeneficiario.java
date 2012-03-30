@@ -48,6 +48,8 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         NIF_Voluntario = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
 

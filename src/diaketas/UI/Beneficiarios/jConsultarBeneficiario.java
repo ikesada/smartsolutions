@@ -138,6 +138,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         Ciudad_Nacimiento = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 255, 204));
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
         setPreferredSize(new java.awt.Dimension(1100, 518));

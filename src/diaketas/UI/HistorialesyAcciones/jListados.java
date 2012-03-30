@@ -46,6 +46,8 @@ public class jListados extends javax.swing.JPanel {
         botonCancel = new javax.swing.JButton();
         listaDespleg = new javax.swing.JComboBox();
 
+        setBackground(new java.awt.Color(255, 204, 153));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Historial y Acciones");
 

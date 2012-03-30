@@ -86,6 +86,8 @@ public class jConsultarVoluntario extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         Obs = new javax.swing.JTextArea();
 
+        setBackground(new java.awt.Color(255, 204, 204));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Voluntarios");
 
@@ -148,6 +150,7 @@ public class jConsultarVoluntario extends javax.swing.JPanel {
         FechaInic.setText("Fecha inicio");
 
         Obs.setColumns(20);
+        Obs.setEditable(false);
         Obs.setRows(5);
         jScrollPane1.setViewportView(Obs);
 
