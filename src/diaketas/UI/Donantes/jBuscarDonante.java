@@ -44,8 +44,9 @@ public class jBuscarDonante extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         NIF_CIF = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(167, 223, 247));
+        setBackground(new java.awt.Color(211, 232, 254));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Donantes");
@@ -69,6 +70,8 @@ public class jBuscarDonante extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +87,10 @@ public class jBuscarDonante extends javax.swing.JPanel {
                                     .addComponent(jSeparator3)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel1))
                                             .addComponent(jLabel3)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
@@ -94,14 +100,18 @@ public class jBuscarDonante extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(176, 176, 176)
                                 .addComponent(botonConsultar)))
-                        .addGap(0, 180, Short.MAX_VALUE)))
+                        .addGap(0, 109, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(37, 37, 37)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -114,7 +124,7 @@ public class jBuscarDonante extends javax.swing.JPanel {
                     .addComponent(NIF_CIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(botonConsultar)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,6 +168,7 @@ public class jBuscarDonante extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
