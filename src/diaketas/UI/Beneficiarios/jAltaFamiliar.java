@@ -23,13 +23,16 @@ import javax.swing.JOptionPane;
  */
 public class jAltaFamiliar extends javax.swing.JPanel {
 
+    String jPanelAnterior;
+    
     /**
      * Creates new form jAltaFamiliar
      */
-    public jAltaFamiliar() {
+    public jAltaFamiliar(String panelAnterior) {
         
         /*Inicializmos la UI*/
         initComponents();
+        this.jPanelAnterior = panelAnterior;
         
      }
 
@@ -200,7 +203,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
             diaketas.diaketas.ong.gestorBeneficiarios.confirmarInsercion();
 
             /*Cambia parte principal de la aplicacion*/
-            UI.cl.show(UI.jPrincipal, "Familiar");
+            UI.cl.show(UI.jPrincipal, jPanelAnterior);
         } catch (ParseException ex) {
             Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
                JOptionPane.showMessageDialog(this, "Fecha de nacimiento de familiar incorrecta utilice formato dd/MM/yy.", "Fecha de Nacimiento de familiar", JOptionPane.ERROR_MESSAGE);
@@ -209,7 +212,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
         /*Cambia parte principal de la aplicacion*/
-        UI.cl.show(UI.jPrincipal, "Familiar");
+        UI.cl.show(UI.jPrincipal, jPanelAnterior);
         // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 

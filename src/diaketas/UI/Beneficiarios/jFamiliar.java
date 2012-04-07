@@ -141,7 +141,7 @@ public class jFamiliar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirActionPerformed
-        panel = new jAltaFamiliar();
+        panel = new jAltaFamiliar("Familiar");
 
         UI.jPrincipal.add("AltaFamiliar", panel);
         UI.cl.show(UI.jPrincipal, "AltaFamiliar");
