@@ -6,6 +6,7 @@ package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
 import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
+import diaketas.Modelo.ONG.ONG;
 import javax.swing.JOptionPane;
 
 /**
@@ -183,14 +184,14 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             }
         }else if (fase ==1){
             if (NIF_Voluntario.getText().compareTo("") != 0){
-                
+                ONG.gestorBeneficiarios.NIF_Voluntario = NIF_Voluntario.getText();
                 /*IntroducirDNIVoluntario*/
-                correcto = diaketas.diaketas.ong.gestorVoluntarios.introducirDNIVoluntario(NIF_Voluntario.getText());
+                correcto = ONG.gestorVoluntarios.introducirDNIVoluntario(NIF_Voluntario.getText());
                 
                 if (correcto == true){
                     
                     /* ConfirmarBajaBeneficiario*/
-                    diaketas.diaketas.ong.gestorBeneficiarios.confirmarBajaBeneficiario();
+                    ONG.gestorBeneficiarios.confirmarBajaBeneficiario();
                     
                     /*Cambios esteticos*/
                     NIF_Voluntario.setVisible(false);

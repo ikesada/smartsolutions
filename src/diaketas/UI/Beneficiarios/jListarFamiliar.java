@@ -4,12 +4,11 @@
  */
 package diaketas.UI.Beneficiarios;
 
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Familiar;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
+import diaketas.Modelo.ONG.ONG;
+import diaketas.UI.UI;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -49,7 +48,6 @@ public class jListarFamiliar extends javax.swing.JPanel {
             /*Mostramos los familiares*/
             DefaultListModel modelo = new DefaultListModel();
             for (int i = 0; i < familiares.size();i++){
-                System.out.println(familiares.get(i).Nombre_Apellidos);
                 modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
             listaFamiliares.setModel(modelo);
         }
@@ -169,7 +167,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
                 /*Pasamos al formulario de Baja el nombre del familiar*/
                 panel = new jBajaFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
                 
-                diaketas.diaketas.ong.gestorBeneficiarios.seleccionarFamiliar((String)listaFamiliares.getSelectedValue());
+                ONG.gestorBeneficiarios.seleccionarFamiliar(familiares.get(listaFamiliares.getSelectedIndex()).Nombre_Apellidos,
+                        familiares.get(listaFamiliares.getSelectedIndex()).Fecha_Nacimiento);
                 
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "BajaFamiliar");
@@ -177,7 +176,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
             }else if (jPanelSiguiente.compareTo("ConsultarFamiliar") ==0){
  
                 /*Pasamos al formulario de Modificar el nombre del familiar*/
-                panel = new jConsultarFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                panel = new jConsultarFamiliar(jPanelAnterior, familiares.get(listaFamiliares.getSelectedIndex()).Nombre_Apellidos,
+                        familiares.get(listaFamiliares.getSelectedIndex()).Fecha_Nacimiento);
                 
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "ConsultarFamiliar");  
@@ -185,7 +185,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
             }else{
                 
                 /*Pasamos al formulario de Modificar el nombre del familiar*/
-                panel = new jModificarFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                panel = new jModificarFamiliar(jPanelAnterior, familiares.get(listaFamiliares.getSelectedIndex()).Nombre_Apellidos,
+                        familiares.get(listaFamiliares.getSelectedIndex()).Fecha_Nacimiento);
                 
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "ModificarFamiliar");  

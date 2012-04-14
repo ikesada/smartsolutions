@@ -4,17 +4,11 @@
  */
 package diaketas.UI.Beneficiarios;
 
-import diaketas.ConexionBD;
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Familiar;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import diaketas.Modelo.ONG.Parentesco;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import diaketas.Modelo.ONG.ONG;
+import diaketas.UI.UI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +27,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
      * @param jPanelSiguiente 
      * @param Nombre_Apellidos 
      */
-    public jModificarFamiliar(String jPanelSiguiente, String Nombre_Apellidos) {
+    public jModificarFamiliar(String jPanelSiguiente, String Nombre_Apellidos, Date Fecha_Nac) {
         this.jPanelSiguiente = jPanelSiguiente;
         this.NombreApellidos = Nombre_Apellidos;
         
@@ -41,12 +35,12 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         initComponents();
         
         /*Inicializamos los datos*/
-        Familiar familiar = diaketas.diaketas.ong.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
+        Familiar familiar = ONG.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos, Fecha_Nac);
         
         /*Actualizamos los valores del formulario*/
         this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);
         this.Ocupacion.setText(familiar.Ocupacion);
-        this.Parentesco.setSelectedItem(familiar.parentesco.Parentesc);
+        this.Parentesco.setSelectedItem(familiar.parentesco);
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
@@ -210,16 +204,17 @@ public class jModificarFamiliar extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         /*Conversion de la fecha*/
         Date Fecha_Nac = null;
+        
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         try {
             Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
             /*Dato modificados de familiar*/
             Familiar nuevosDatosFamiliar = new Familiar(Nombre_Apellidos.getText(),
-                    Fecha_Nac, Ocupacion.getText());
+                    Fecha_Nac, Ocupacion.getText(), (String) Parentesco.getSelectedItem());
 
             /*Modificar datos familiar*/
-            diaketas.diaketas.ong.gestorBeneficiarios.modificarDatosFamiliar(NombreApellidos,
-                    nuevosDatosFamiliar, (String) Parentesco.getSelectedItem());
+            ONG.gestorBeneficiarios.modificarDatosFamiliar(NombreApellidos, Fecha_Nac,
+                    nuevosDatosFamiliar);
 
             UI.cl.show(UI.jPrincipal, jPanelSiguiente);
         } catch (ParseException ex) {

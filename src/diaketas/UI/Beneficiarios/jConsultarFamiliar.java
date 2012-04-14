@@ -4,12 +4,11 @@
  */
 package diaketas.UI.Beneficiarios;
 
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Familiar;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import diaketas.Modelo.ONG.Parentesco;
+import diaketas.Modelo.ONG.ONG;
+import diaketas.UI.UI;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -25,7 +24,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
      * @param jPanelSiguiente 
      * @param Nombre_Apellidos 
      */
-    public jConsultarFamiliar(String jPanelSiguiente, String Nombre_Apellidos) {
+    public jConsultarFamiliar(String jPanelSiguiente, String Nombre_Apellidos, Date Fecha_Nac) {
         
         this.jPanelSiguiente = jPanelSiguiente;
         
@@ -35,12 +34,12 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         initComponents();
         
         /*Inicializamos los datos*/
-        Familiar familiar = diaketas.diaketas.ong.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
+        Familiar familiar = ONG.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos, Fecha_Nac);
         
         /*Actualizamos los valores del formulario*/
         this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);
         this.Ocupacion.setText(familiar.Ocupacion);
-        this.Parentesco.setText(familiar.parentesco.Parentesc);
+        this.Parentesco.setText(familiar.parentesco);
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");

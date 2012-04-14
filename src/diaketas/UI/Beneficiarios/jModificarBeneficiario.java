@@ -862,7 +862,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     }//GEN-LAST:event_ProfesionKeyTyped
 
     private void Experiencia_LaboralKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Experiencia_LaboralKeyTyped
-        if (Experiencia_Laboral.getText().length() == 250) {
+        if (Experiencia_Laboral.getText().length() == 500) {
             evt.consume();
         }
     }//GEN-LAST:event_Experiencia_LaboralKeyTyped
