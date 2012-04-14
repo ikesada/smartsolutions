@@ -33,10 +33,10 @@ public class ONG implements iONG{
       int Codigo_Postal;
       
       
-      /**
-       * 
-       */
-      public static Gestor_de_beneficiarios gestorBeneficiarios;
+    /**
+    * 
+    */
+    public static Gestor_de_beneficiarios gestorBeneficiarios;
     /**
      * 
      */
@@ -69,6 +69,7 @@ public class ONG implements iONG{
     /****************************ACCION***************************************
      * @param ac 
      */
+    @Override
     public void agregarAccion(Accion ac){
         /*Se guarda la accion en el sistema*/
         con.conectarBD();
@@ -98,6 +99,7 @@ public class ONG implements iONG{
      * @param DNI Dni del Beneficario que buscaremos en la BBDD
      * @return Devuelve un objteo con los datos del beneficiario
      */    
+    @Override
     public Beneficiario buscarBeneficiario(String DNI){
         Beneficiario beneficiario = null;
         con.conectarBD();
@@ -120,16 +122,12 @@ public class ONG implements iONG{
                 /*Obtenemos los familiares y parentescos*/
                 beneficiario.familiares = new ArrayList<Familiar>();
                 instruccion = (Statement) con.conexion().createStatement();
-                rs = instruccion.executeQuery("Select * From Familiar f, Parentesco p"
-                    + " WHERE f.Cod_Familiar = p.Cod_Familiar and DNI_CIF = \""+ beneficiario.NIF_CIF+"\"");
+                rs = instruccion.executeQuery("Select * From Familiar f WHERE"
+                        + " DNI_Beneficiario = \""+ beneficiario.NIF_CIF+"\"");
 
                 while (rs.next()){
                     /*Creamos un familiar con los datos*/
-                    Familiar familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4));
-                    /*Indicamos su Codigo Interno*/
-                    familiar.Cod_Familiar = rs.getInt(1);
-                    /*Asociamos parentesco*/
-                    familiar.parentesco = new Parentesco (rs.getString(7));
+                    Familiar familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5));
                     /*Agregamos a la lista*/
                     beneficiario.familiares.add(familiar);
 
@@ -157,6 +155,7 @@ public class ONG implements iONG{
      * Anyade un Beneficiario a la BBDD
      * @param nuevoBeneficiario Beneficiario que se va a anyadir
      */
+    @Override
     public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
@@ -201,11 +200,12 @@ public class ONG implements iONG{
      * @param Nombre_Apellidos Nombre y apellidos del familiar buscado
      * @param Fecha_Nac Fecha de nacimiento del familiar buscado     
      * @return Devuelve el familiar encontrado
-     */
+     
+    @Override
     public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac){
         Familiar familiar = null;
         con.conectarBD();
-        /*Convertimos Date para trabajar*/
+        /*Convertimos Date para trabajar
         java.sql.Timestamp fecha = new java.sql.Timestamp(Fecha_Nac.getTime());
          try {
             instruccion = (Statement) con.conexion().createStatement();
@@ -219,10 +219,10 @@ public class ONG implements iONG{
                 familiar.Cod_Familiar = rs.getInt(4);
             }
          }
-         /*Captura de errores*/
+         /*Captura de errores
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
+         /*Desconexión de la BD
          finally {
             if (con.hayConexionBD()) {
                 try {
@@ -234,7 +234,7 @@ public class ONG implements iONG{
         }
          
          return familiar;
-    } 
+    } */
        
     
     /*****************************DONANTE***********************************
@@ -242,6 +242,7 @@ public class ONG implements iONG{
      * @param nuevoDonante Donante que va a ser agregado
      */
     
+    @Override
     public void agregarNuevoDonante(Donante nuevoDonante){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
@@ -283,6 +284,7 @@ public class ONG implements iONG{
      * @param DNI Dni del donante a buscar
      * @return Devuelve los datos del donante buscado en caso de existir
      */
+    @Override
     public Donante buscarDonante(String DNI){
             
             Donante donante = null;
@@ -325,6 +327,7 @@ public class ONG implements iONG{
      * @param DNI Dni del voluntario a buscar
      * @return Devuelve los datos del voluntarios buscado en caso de existir
      */  
+    @Override
     public Voluntario buscarVoluntario(String DNI){
         Voluntario v = null;
         
@@ -374,6 +377,7 @@ public class ONG implements iONG{
      *  Anyade el nuevo voluntario a la BBDD
      * @param nuevoVoluntario Datos del voluntario a agregar
      */
+    @Override
     public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/

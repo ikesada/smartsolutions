@@ -63,5 +63,5 @@ public interface iONG {
      * @param Fecha_Nac Fecha de nacimiento del familiar a buscar
      * @return Devuelve el familiar encontrado
      */
-    public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac);
+    //public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac);
 }
