@@ -181,7 +181,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         /*Crear beneficiario*/
         Beneficiario nuevoBeneficiario =  new Beneficiario(datosBeneficiario);
         
-        /*Registrar Beneficiario*/
+        /*Agregamos Beneficiario*/
         diaketas.diaketas.ong.agregarNuevoBeneficiario(nuevoBeneficiario);
         
         /*Registrar Operacion*/
@@ -206,7 +206,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     @Override
     public void confirmarModificacionBeneficiario(){
          /*Registrar Operacion*/
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), datosBeneficiario.NIF_CIF.toUpperCase(), "Modificar Beneficiario");   
     
         /*Modificar beneficiario*/
         modificarBeneficiario(datosBeneficiario);
