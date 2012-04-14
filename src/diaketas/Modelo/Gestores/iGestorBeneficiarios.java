@@ -52,7 +52,7 @@ public interface iGestorBeneficiarios {
      * @param Nombre_Apellidos Nombre y Apellidos del familiar que se quiere consultar
      * @return Los datos de un familiar
      */
-    public Familiar consultarFamiliar(String Nombre_Apellidos);
+    public Familiar consultarFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento);
 
     /**
      * Inicia la consulta de los familiares
@@ -123,6 +123,12 @@ public interface iGestorBeneficiarios {
      * @param nuevosDatosFamiliar Nuevos datos del familiar
      * @param parentesco Relación de parentesco entre el familiar y el beneficiario
      */ 
-    public void modificarDatosFamiliar (String Nombre_Apellidos,
-            Familiar nuevosDatosFamiliar, String parentesco);
+    public void modificarDatosFamiliar (String Nombre_Apellidos, Date Fecha_Nac, Familiar nuevosDatosFamiliar);
+    
+    /**
+     * Introduce el DNI del beneficiario en el gestor
+     * @param DNI_Beneficiario DNI del beneficiario
+     * @return Un boolean indicando si el Beneficiario existe o no existe
+     */
+    public boolean introducirDNIBeneficiario (String DNI_Beneficiario);
 }
