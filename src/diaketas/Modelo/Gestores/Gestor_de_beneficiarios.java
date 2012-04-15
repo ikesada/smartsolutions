@@ -192,7 +192,10 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
      * Confirmar el baja de un beneficiario en el sistema
      */
     @Override
-    public void confirmarBajaBeneficiario(){
+    public void confirmarBajaBeneficiario(String NIF_Voluntario){
+        
+        NIF_Voluntario = NIF_Voluntario;
+        
         /*Registrar Operacion*/
         ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), NIF_Beneficiario.toUpperCase(), "Baja Beneficiario");
         

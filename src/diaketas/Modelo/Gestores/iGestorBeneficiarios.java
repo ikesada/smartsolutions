@@ -23,7 +23,7 @@ public interface iGestorBeneficiarios {
     /**
      * Confirmar el baja de un beneficiario en el sistema
      */
-    public void confirmarBajaBeneficiario();
+    public void confirmarBajaBeneficiario(String NIF_Voluntario);
     
     /**
      * Confirma la eliminacion de un familiar del beneficiario
