@@ -4,8 +4,10 @@
  */
 package diaketas;
 
+import de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
+import javax.swing.UIManager;
 
 /**
  *
@@ -26,7 +28,12 @@ public class diaketas {
         
        ong = new ONG();
     
-
+        
+        /*Look & Feel*/
+        try{
+           UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
+        } catch (Exception e) {
+        }
 
         /*Iniciamos la interfaz*/
         UI ui = new UI();

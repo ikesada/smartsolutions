@@ -11,9 +11,12 @@ import diaketas.UI.Donantes.jDonantes;
 import diaketas.UI.Empleo.jEmpleo;
 import diaketas.UI.HistorialesyAcciones.jHistorialyAcciones;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -92,6 +95,9 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonDiaketas);
+        botonDiaketas.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonDiaketas.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonDiaketas.setFont(new Font("Courier", Font.BOLD,18));
 
         botonDonantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
         botonDonantes.setText("Donantes");
@@ -101,6 +107,9 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonDonantes);
+        botonDonantes.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonDonantes.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonDonantes.setFont(new Font("Courier", Font.BOLD,18));
 
         botonBeneficiarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
         botonBeneficiarios.setText("Beneficiarios");
@@ -110,6 +119,9 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(botonBeneficiarios);
+        botonBeneficiarios.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonBeneficiarios.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonBeneficiarios.setFont(new Font("Courier", Font.BOLD,18));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/historiales.png"))); // NOI18N
         jButton1.setText("Historiales");
@@ -119,6 +131,9 @@ public class UI extends javax.swing.JFrame {
             }
         });
         jMenuBotones.add(jButton1);
+        jButton1.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jButton1.setHorizontalTextPosition(SwingConstants.CENTER);
+        jButton1.setFont(new Font("Courier", Font.BOLD,18));
 
         botonDonaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
         botonDonaciones.setText("Donaciones");
@@ -172,6 +187,10 @@ public class UI extends javax.swing.JFrame {
 
     private void botonDonantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDonantesActionPerformed
         /*Modificamos zona principal*/
+        this.setBackground(new java.awt.Color(255,204,153));
+        this.jPrincipalScroll.setBackground(new java.awt.Color(255,204,153));
+        jPrincipal.setBackground(new java.awt.Color(255,204,153));
+        this.rootPane.setBackground(new java.awt.Color(255,204,153));
         cl.show(jPrincipal, "Donantes");
     }//GEN-LAST:event_botonDonantesActionPerformed
 
