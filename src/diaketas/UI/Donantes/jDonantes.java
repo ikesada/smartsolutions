@@ -45,6 +45,12 @@ public class jDonantes extends javax.swing.JPanel {
         botonModificar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+		int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+		
+        jPanel1.setMinimumSize(new java.awt.Dimension(ancho-200, alto-207));
+        jPanel1.setPreferredSize(new java.awt.Dimension(ancho-200, alto-207));
+		
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
