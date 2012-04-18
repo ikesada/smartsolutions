@@ -5,7 +5,6 @@
 package diaketas.UI.Donantes;
 
 import ValidarCampos.ValidarCampos;
-import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -73,9 +72,6 @@ public class jAltaDonante extends javax.swing.JPanel {
         Periodicidad_Donaciones = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         Tipo_Donante = new javax.swing.JComboBox();
-        jLabel9 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(211, 232, 254));
 
         Tipo_Periodicidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Tipo_Periodicidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguna", "Días", "Meses", "Años" }));
@@ -151,7 +147,6 @@ public class jAltaDonante extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Dar de alta a un donante");
 
-        jLabel1.setBackground(new java.awt.Color(211, 232, 254));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Donantes");
 
@@ -199,8 +194,6 @@ public class jAltaDonante extends javax.swing.JPanel {
 
         Tipo_Donante.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Persona", "Empresa" }));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -211,10 +204,7 @@ public class jAltaDonante extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1))
+                            .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -271,13 +261,8 @@ public class jAltaDonante extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel1)))
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +333,7 @@ public class jAltaDonante extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
                     .addComponent(botonCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -407,12 +392,12 @@ public class jAltaDonante extends javax.swing.JPanel {
             /*
              * IntroducirDatosDonante
              */
-            boolean correcto = ONG.gestorDonantes.introducirDatosDonante(NIF_CIF.getText().toUpperCase(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
+            boolean correcto = diaketas.diaketas.ong.gestorDonantes.introducirDatosDonante(NIF_CIF.getText().toUpperCase(), Nombre.getText(), Apellidos.getText(), Fecha_Nac, Localidad.getText(),
                     Email.getText(), Integer.parseInt(Telefono.getText()), (String) Tipo_Donante.getSelectedItem(), new Date(), Observaciones.getText(), Integer.parseInt(Periodicidad_Donaciones.getText()),
                     Double.parseDouble(Cuantia_Donaciones.getText()), (String) Tipo_Periodicidad.getSelectedItem(), NIF_Voluntario.getText());
 
             if (correcto) {
-                ONG.gestorDonantes.confirmarFinAlta();
+                diaketas.diaketas.ong.gestorDonantes.confirmarFinAlta();
             } else {
                 JOptionPane.showMessageDialog(this, "No se ha podido crear el nuevo Donante", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
@@ -508,7 +493,6 @@ public class jAltaDonante extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;

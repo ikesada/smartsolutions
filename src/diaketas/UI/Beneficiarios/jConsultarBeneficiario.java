@@ -137,9 +137,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         Expediente = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         Ciudad_Nacimiento = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 204));
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
         setPreferredSize(new java.awt.Dimension(1100, 518));
@@ -187,7 +185,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jLabel29.setText("Observaciones de los familiares");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Consultar a un beneficiario");
+        jLabel3.setText("Dar de alta a un beneficiario");
 
         jLabel28.setText("Tipo");
 
@@ -241,8 +239,6 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jLabel10.setText("Expediente");
 
         jLabel19.setText("en");
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -338,10 +334,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(449, 449, 449)
                         .addComponent(botonOK))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
+                    .addComponent(jLabel1))
                 .addGap(607, 607, 607))
             .addComponent(jSeparator1)
         );
@@ -349,11 +342,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel20)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1)))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -459,7 +448,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
                         .addComponent(Observaciones_Familiares_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addComponent(botonOK)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -516,7 +505,6 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;

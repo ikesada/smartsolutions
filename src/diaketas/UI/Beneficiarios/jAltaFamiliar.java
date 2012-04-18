@@ -4,12 +4,8 @@
  */
 package diaketas.UI.Beneficiarios;
 
-import diaketas.ConexionBD;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,7 +20,7 @@ import javax.swing.JOptionPane;
 public class jAltaFamiliar extends javax.swing.JPanel {
 
     String jPanelAnterior;
-    
+        
     /**
      * Creates new form jAltaFamiliar
      */
@@ -33,7 +29,6 @@ public class jAltaFamiliar extends javax.swing.JPanel {
         /*Inicializmos la UI*/
         initComponents();
         this.jPanelAnterior = panelAnterior;
-        
      }
 
     /**
@@ -59,9 +54,6 @@ public class jAltaFamiliar extends javax.swing.JPanel {
         Parentesco = new javax.swing.JComboBox();
         botonOK = new javax.swing.JButton();
         botonCancel = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Beneficiarios");
@@ -112,8 +104,6 @@ public class jAltaFamiliar extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,10 +112,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
+                    .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,18 +132,13 @@ public class jAltaFamiliar extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
-                .addContainerGap())
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel1)))
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,7 +165,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
                     .addComponent(botonCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,12 +177,12 @@ public class jAltaFamiliar extends javax.swing.JPanel {
             Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
             
             /*Introducimos los datos del familiar*/
-            diaketas.diaketas.ong.gestorBeneficiarios.introducirDatosFamiliar(Nombre_Apellidos.getText(), Fecha_Nac,
+            ONG.gestorBeneficiarios.introducirDatosFamiliar(Nombre_Apellidos.getText(), Fecha_Nac,
                     (String) Parentesco.getSelectedItem(), Ocupacion.getText());
 
             /*Confirmamos datos del familiar */
             /*ConfirmarInsercion()*/
-            diaketas.diaketas.ong.gestorBeneficiarios.confirmarInsercion();
+            ONG.gestorBeneficiarios.confirmarInsercion();
 
             /*Cambia parte principal de la aplicacion*/
             UI.cl.show(UI.jPrincipal, jPanelAnterior);
@@ -236,7 +218,6 @@ public class jAltaFamiliar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
