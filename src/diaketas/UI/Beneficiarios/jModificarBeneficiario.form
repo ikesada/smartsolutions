@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <Properties>
-    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="cc" green="ff" red="cc" type="rgb"/>
-    </Property>
-  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -21,9 +16,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -50,7 +47,7 @@
                               </Group>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="NIF" pref="112" max="32767" attributes="0"/>
+                                      <Component id="NIF" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -69,8 +66,8 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="Nivel_Estudios" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="Telefono" alignment="0" pref="115" max="32767" attributes="0"/>
-                                          <Component id="Codigo_Postal" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="Telefono" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="Codigo_Postal" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -78,21 +75,21 @@
                                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="Localidad" alignment="0" pref="141" max="32767" attributes="0"/>
-                                                  <Component id="Email" alignment="0" pref="0" max="32767" attributes="0"/>
+                                                  <Component id="Localidad" alignment="0" pref="0" max="32767" attributes="0"/>
+                                                  <Component id="Email" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="Profesion" pref="141" max="32767" attributes="0"/>
+                                              <Component id="Profesion" min="-2" pref="141" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Component id="Domicilio" alignment="0" max="32767" attributes="0"/>
                                   <Component id="Motivo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Apellidos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="Apellidos" alignment="0" min="-2" pref="348" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -100,15 +97,15 @@
                           <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jSeparator3" alignment="0" min="-2" pref="447" max="-2" attributes="0"/>
                           <Component id="Experiencia_Laboral_SB" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Observaciones_Datos_Personales_SB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Observaciones_Datos_Personales_SB" alignment="0" min="-2" pref="452" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jSeparator6" max="32767" attributes="0"/>
-                              <Component id="jBotones" alignment="1" pref="528" max="32767" attributes="0"/>
+                              <Component id="jBotones" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel29" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jSeparator4" alignment="1" pref="528" max="32767" attributes="0"/>
+                              <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -121,7 +118,7 @@
                                       <Component id="Tipo_Vivienda" min="-2" pref="128" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="Observaciones_Vivienda_SB" alignment="1" pref="528" max="32767" attributes="0"/>
+                              <Component id="Observaciones_Vivienda_SB" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
@@ -129,48 +126,34 @@
                                   <Component id="Situacion_Economica" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Observaciones_Familiares_SB" alignment="1" pref="528" max="32767" attributes="0"/>
-                              <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Observaciones_Familiares_SB" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jSeparator5" alignment="0" min="-2" pref="528" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="426" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonOK" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="NIF_Voluntario" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonCancel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="438" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonOK" alignment="1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="NIF_Voluntario" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonCancel" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="81" pref="494" max="32767" attributes="0"/>
-          </Group>
-          <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -217,7 +200,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -285,7 +268,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Observaciones_Datos_Personales_SB" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="Observaciones_Vivienda_SB" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
@@ -318,7 +301,7 @@
                   <Component id="botonOK" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -729,13 +712,6 @@
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ExpedienteKeyTyped"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel17">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/diaketas/Iconos/beneficiarios.png"/>
-        </Property>
-      </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jBotones">
       <Properties>
