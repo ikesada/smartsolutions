@@ -9,7 +9,7 @@ import diaketas.Modelo.ONG.Familiar;
 import diaketas.Modelo.ONG.ONG;
 import java.util.ArrayList;
 import java.util.Date;
-
+ 
 /**
  *
  * @author kesada
@@ -37,7 +37,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /**
      * Introduce el DNI del beneficiario en el gestor
      * @param DNI_Beneficiario
-     * @return Boolean indicando si existe un beneficiario asociado a ese DNI
+     * @return Boolean indicando si existe un beneficiario asociado al DNI
      */
     @Override
     public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
