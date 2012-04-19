@@ -220,7 +220,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -282,11 +282,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Experiencia_Laboral_SB" min="-2" pref="33" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Observaciones_Datos_Personales_SB" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="Experiencia_Laboral_SB" min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="Observaciones_Vivienda_SB" min="-2" pref="33" max="-2" attributes="0"/>
@@ -311,6 +307,10 @@
                       <Component id="jBotones" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Observaciones_Datos_Personales_SB" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="NIF_Voluntario" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -321,7 +321,7 @@
                   <Component id="botonOK" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

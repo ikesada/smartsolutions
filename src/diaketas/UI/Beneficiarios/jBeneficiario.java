@@ -38,20 +38,25 @@ public class jBeneficiario extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
+        jTitulo2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         botonAlta = new javax.swing.JButton();
         botonBaja = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel30 = new javax.swing.JLabel();
+        jTitulo1 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(223, 232, 249));
+        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                jPanel1ComponentResized(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Acciones");
+        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo2.setText("Acciones");
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -107,8 +112,8 @@ public class jBeneficiario extends javax.swing.JPanel {
         jPanel2.add(botonModificar);
         botonModificar.setVerticalTextPosition(SwingConstants.BOTTOM); botonModificar.setHorizontalTextPosition(SwingConstants.CENTER); botonModificar.setFont(new Font("Courier", Font.BOLD,14));
 
-        jLabel30.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel30.setText("Beneficiarios");
+        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTitulo1.setText("Beneficiarios");
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
 
@@ -120,7 +125,7 @@ public class jBeneficiario extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(jTitulo2)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addComponent(jSeparator1)
@@ -128,7 +133,7 @@ public class jBeneficiario extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel17)
                 .addGap(69, 69, 69)
-                .addComponent(jLabel30)
+                .addComponent(jTitulo1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,12 +142,12 @@ public class jBeneficiario extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jLabel30))
+                        .addComponent(jTitulo1))
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jTitulo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -191,17 +196,31 @@ public class jBeneficiario extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "AltaBeneficiario");
     }//GEN-LAST:event_botonAltaActionPerformed
 
+    private void jPanel1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentResized
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    }//GEN-LAST:event_jPanel1ComponentResized
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;
     private javax.swing.JButton botonBaja;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JButton botonModificar;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel jTitulo1;
+    private javax.swing.JLabel jTitulo2;
     // End of variables declaration//GEN-END:variables
 }

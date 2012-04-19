@@ -5,8 +5,8 @@
 package diaketas.UI.Beneficiarios;
 
 import diaketas.UI.UI;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
 import diaketas.Modelo.ONG.ONG;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,7 +38,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        jTitulo2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         NIF_CIF = new javax.swing.JTextField();
         botonOK = new javax.swing.JButton();
@@ -47,13 +47,18 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
         NIF_Voluntario = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel17 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
+        jTitulo1 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(223, 232, 249));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Dar de baja a un beneficiario");
+        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo2.setText("Dar de baja a un beneficiario");
 
         jLabel2.setText("DNI/NIF del beneficiario");
 
@@ -90,8 +95,8 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
 
-        jLabel30.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel30.setText("Beneficiarios");
+        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTitulo1.setText("Beneficiarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,11 +109,11 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addComponent(jLabel17)
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel30))
+                        .addComponent(jTitulo1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(jTitulo2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -134,12 +139,12 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jLabel30))
+                        .addComponent(jTitulo1))
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jTitulo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -165,7 +170,7 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
             if (NIF_CIF.getText().compareTo("") != 0){
                 
                 /*Introducir DNI Beneficiario*/
-                correcto = diaketas.diaketas.ong.gestorBeneficiarios.introducirDNIBeneficiario(NIF_CIF.getText());
+                correcto = ONG.gestorBeneficiarios.introducirDNIBeneficiario(NIF_CIF.getText());
 
                 /*Beneficiario correcto*/
                 if (correcto == true){
@@ -232,6 +237,20 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_NIF_VoluntarioKeyTyped
 
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    }//GEN-LAST:event_formComponentResized
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_CIF;
     private javax.swing.JTextField NIF_Voluntario;
@@ -239,10 +258,10 @@ public class jBajaBeneficiario extends javax.swing.JPanel {
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel jTitulo1;
+    private javax.swing.JLabel jTitulo2;
     // End of variables declaration//GEN-END:variables
 }
