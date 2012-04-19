@@ -5,13 +5,10 @@
 package diaketas.UI.Beneficiarios;
 
 import ValidarCampos.ValidarCampos;
-import diaketas.ConexionBD;
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Beneficiario;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import diaketas.Modelo.ONG.ONG;
+import diaketas.UI.UI;
+import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -28,6 +26,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
 
     JPanel panel;
     Beneficiario datosBeneficiario;
+    int fase;
     
     /**
      * Creates new form jAltaBeneficiario
@@ -39,6 +38,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         /*Iniciamos la interfaz*/
         initComponents();
                
+        fase = 0;
         
         /*Mostramos los datos de beneficiario*/
         NIF.setText(datosBeneficiario.NIF_CIF);
@@ -102,7 +102,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Nacionalidad = new javax.swing.JTextField();
         Localidad = new javax.swing.JTextField();
         Estado_Civil = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
         NIF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -144,10 +143,18 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
         Precio_Vivienda = new javax.swing.JTextField();
         Expediente = new javax.swing.JTextField();
+        jBotones = new javax.swing.JPanel();
+        botonAniadir = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+
+        setBackground(new java.awt.Color(223, 232, 249));
 
         Tipo_Vivienda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -221,9 +228,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Estado_Civil.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Estado_Civil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Casado", "Divorciado", "Soltero", "Viudo" }));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Beneficiarios");
-
         NIF.setColumns(9);
         NIF.setEditable(false);
         NIF.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -233,7 +237,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Dar de alta a un beneficiario");
+        jLabel3.setText("Modificar a un beneficiario");
 
         jLabel28.setText("Tipo");
 
@@ -385,121 +389,172 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
             }
         });
 
+        jBotones.setEnabled(false);
+        jBotones.setLayout(new java.awt.GridLayout(1, 0));
+
+        botonAniadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir_familiar.png"))); // NOI18N
+        botonAniadir.setText("Añadir");
+        botonAniadir.setEnabled(false);
+        botonAniadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAniadirActionPerformed(evt);
+            }
+        });
+        jBotones.add(botonAniadir);
+        botonAniadir.setVerticalTextPosition(SwingConstants.BOTTOM); botonAniadir.setHorizontalTextPosition(SwingConstants.CENTER); botonAniadir.setFont(new Font("Courier", Font.BOLD,14));
+
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/eliminar_familiar.png"))); // NOI18N
+        botonEliminar.setText("Eliminar");
+        botonEliminar.setEnabled(false);
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+        jBotones.add(botonEliminar);
+        botonEliminar.setVerticalTextPosition(SwingConstants.BOTTOM); botonEliminar.setHorizontalTextPosition(SwingConstants.CENTER); botonEliminar.setFont(new Font("Courier", Font.BOLD,14));
+
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/modificar_familiar.png"))); // NOI18N
+        botonModificar.setText("Modificar");
+        botonModificar.setEnabled(false);
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+        jBotones.add(botonModificar);
+        botonModificar.setVerticalTextPosition(SwingConstants.BOTTOM); botonModificar.setHorizontalTextPosition(SwingConstants.CENTER); botonModificar.setFont(new Font("Courier", Font.BOLD,14));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
+
+        jLabel30.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel30.setText("Beneficiarios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(25, 25, 25))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel24)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel22))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(NIF, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel40)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Expediente, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Fecha_Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel19)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Ciudad_Nacimiento))
-                                    .addComponent(Estado_Civil, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Nivel_Estudios)
-                                            .addComponent(Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                                            .addComponent(Codigo_Postal))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel11)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(Localidad, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                                                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
-                                            .addComponent(jLabel16)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel23)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(Profesion, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))))
-                                    .addComponent(Domicilio)
-                                    .addComponent(Motivo)
-                                    .addComponent(Apellidos)))
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel27)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Experiencia_Laboral_SB)
-                            .addComponent(Observaciones_Datos_Personales_SB))
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Observaciones_Vivienda_SB, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addGap(5, 5, 5)
-                                        .addComponent(Situacion_Economica, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel25)
-                                .addComponent(jLabel29)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel18)
-                                        .addComponent(jLabel28))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(Observaciones_Familiares_SB))))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel17)
+                .addGap(69, 69, 69)
+                .addComponent(jLabel30)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(438, 438, 438)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel20)
-                    .addComponent(botonOK, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCancel))
-                .addGap(81, 81, 81))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addGap(25, 25, 25))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel2)
+                                                    .addComponent(jLabel24)
+                                                    .addComponent(jLabel4)
+                                                    .addComponent(jLabel5)
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(jLabel7)
+                                                    .addComponent(jLabel9)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(jLabel12)
+                                                    .addComponent(jLabel22))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(NIF)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel40)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(Expediente, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(Fecha_Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel19)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(Ciudad_Nacimiento))
+                                            .addComponent(Estado_Civil, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(Nivel_Estudios)
+                                                    .addComponent(Telefono)
+                                                    .addComponent(Codigo_Postal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel11)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(jLabel16)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel23)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(Profesion, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(Domicilio)
+                                            .addComponent(Motivo)
+                                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel27)
+                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Experiencia_Laboral_SB)
+                                    .addComponent(Observaciones_Datos_Personales_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(113, 113, 113)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jSeparator6)
+                                        .addComponent(jBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSeparator4)
+                                        .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel18)
+                                                .addComponent(jLabel28))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(Observaciones_Vivienda_SB)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel15)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(Situacion_Economica))
+                                        .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Observaciones_Familiares_SB)
+                                        .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel13)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(426, 426, 426)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(484, 484, 484)
+                        .addComponent(botonOK)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonCancel)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel30))
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -522,8 +577,22 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel25)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -574,21 +643,12 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Experiencia_Laboral_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21))
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Observaciones_Datos_Personales_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel28)
-                            .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Observaciones_Vivienda_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -603,18 +663,18 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                         .addGap(1, 1, 1)
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Observaciones_Familiares_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Observaciones_Datos_Personales_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Observaciones_Familiares_SB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
                     .addComponent(botonCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -671,83 +731,119 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     }//GEN-LAST:event_NombreKeyTyped
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+        //Fase de edición
+        if (fase == 0){
+            if (NIF.getText().compareTo("") == 0)
+                JOptionPane.showMessageDialog(this, "El NIF del beneficiario no se ha introducido.", "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
+            else if (Nombre.getText().compareTo("") == 0)
+                JOptionPane.showMessageDialog(this, "El nombre del beneficiario no se ha introducido.", "Nombre Beneficiario", JOptionPane.ERROR_MESSAGE);
+            else if (NIF_Voluntario.getText().compareTo("") == 0)
+                JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+            else if (Email.getText().compareTo("") != 0 && !ValidarCampos.isEmail(Email.getText()))
+                JOptionPane.showMessageDialog(this, "El Email del beneficiario no es correcto.", "Email Beneficiario", JOptionPane.ERROR_MESSAGE);
+            else if (Codigo_Postal.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Codigo_Postal.getText()))
+                JOptionPane.showMessageDialog(this, "El codigo postal no es correcto. Debe ser un numero", "Codigo postal Beneficiario", JOptionPane.ERROR_MESSAGE);
+            else if (Expediente.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Expediente.getText()))
+                JOptionPane.showMessageDialog(this, "El expediente del beneficiario no es correcto.", "Expediente Beneficiario", JOptionPane.ERROR_MESSAGE);
+            else if (Telefono.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Telefono.getText()))
+                JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser de tipo numerico", "Telefono Beneficiario", JOptionPane.ERROR_MESSAGE);
+            else if (Precio_Vivienda.getText().compareTo("") != 0 && !ValidarCampos.isDouble(Precio_Vivienda.getText()))
+                JOptionPane.showMessageDialog(this, "El precio de la vivienda no es correcto. Debe ser un numero", "Precio de la vivienda Beneficiario", JOptionPane.ERROR_MESSAGE);
+            else{
 
-        if (NIF.getText().compareTo("") == 0)
-            JOptionPane.showMessageDialog(this, "El NIF del beneficiario no se ha introducido.", "NIF Beneficiario", JOptionPane.ERROR_MESSAGE);
-        else if (Nombre.getText().compareTo("") == 0)
-            JOptionPane.showMessageDialog(this, "El nombre del beneficiario no se ha introducido.", "Nombre Beneficiario", JOptionPane.ERROR_MESSAGE);
-        else if (NIF_Voluntario.getText().compareTo("") == 0)
-            JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-        else if (Email.getText().compareTo("") != 0 && !ValidarCampos.isEmail(Email.getText()))
-            JOptionPane.showMessageDialog(this, "El Email del beneficiario no es correcto.", "Email Beneficiario", JOptionPane.ERROR_MESSAGE);
-        else if (Codigo_Postal.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Codigo_Postal.getText()))
-            JOptionPane.showMessageDialog(this, "El codigo postal no es correcto. Debe ser un numero", "Codigo postal Beneficiario", JOptionPane.ERROR_MESSAGE);
-        else if (Expediente.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Expediente.getText()))
-            JOptionPane.showMessageDialog(this, "El expediente del beneficiario no es correcto.", "Expediente Beneficiario", JOptionPane.ERROR_MESSAGE);
-        else if (Telefono.getText().compareTo("") != 0 && !ValidarCampos.isInteger(Telefono.getText()))
-            JOptionPane.showMessageDialog(this, "El telefono no es correcto. Debe ser de tipo numerico", "Telefono Beneficiario", JOptionPane.ERROR_MESSAGE);
-        else if (Precio_Vivienda.getText().compareTo("") != 0 && !ValidarCampos.isDouble(Precio_Vivienda.getText()))
-             JOptionPane.showMessageDialog(this, "El precio de la vivienda no es correcto. Debe ser un numero", "Precio de la vivienda Beneficiario", JOptionPane.ERROR_MESSAGE);
-        else{
-            
-            /*---------Introducir datos del familiar---------------*/
+                /*---------Introducir datos del familiar---------------*/
 
-            /*Conversion de la fecha*/
-            Date Fecha_Nac = null;
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
-            try {
-                Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
+                /*Conversion de la fecha*/
+                Date Fecha_Nac = null;
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+                try {
+                    Fecha_Nac = formatoFecha.parse(Fecha_Nacimiento.getText());
 
-                /*IntroducirDatosBeneficiario*/
-                boolean correcto = diaketas.diaketas.ong.gestorBeneficiarios.introducirDatosBeneficiario(
-                        NIF.getText().toUpperCase(),
-                        Nombre.getText(),
-                        Apellidos.getText(),
-                        Fecha_Nac,
-                        Localidad.getText(),
-                        datosBeneficiario.Activo,
-                        datosBeneficiario.FechaDesac,
-                        Email.getText(),
-                        (Telefono.getText().compareTo("")==0? 0 : Integer.parseInt(Telefono.getText())),
-                        Nacionalidad.getText(),
-                        (String)Estado_Civil.getSelectedItem(),
-                        Domicilio.getText(),
-                        (Codigo_Postal.getText().compareTo("")==0? 0 : Integer.parseInt(Codigo_Postal.getText())),
-                        new Date(),
-                        (Expediente.getText().compareTo("")==0? 0 : Integer.parseInt(Expediente.getText())),
-                        Motivo.getText(),
-                        (Precio_Vivienda.getText().compareTo("")==0? 0.0 : Double.parseDouble(Precio_Vivienda.getText())),
-                        Tipo_Vivienda.getText(),
-                        Observaciones_Datos_Personales.getText(),
-                        Observaciones_Familiares.getText(),
-                        Observaciones_Vivienda.getText(),
-                        Ciudad_Nacimiento.getText(),
-                        Situacion_Economica.getText(),
-                        Nivel_Estudios.getText(),
-                        Profesion.getText(),
-                        Experiencia_Laboral.getText(),
-                        NIF_Voluntario.getText());
+                    /*IntroducirDatosBeneficiario*/
+                    boolean correcto = diaketas.diaketas.ong.gestorBeneficiarios.introducirDatosBeneficiario(
+                            NIF.getText().toUpperCase(),
+                            Nombre.getText(),
+                            Apellidos.getText(),
+                            Fecha_Nac,
+                            Localidad.getText(),
+                            datosBeneficiario.Activo,
+                            datosBeneficiario.FechaDesac,
+                            Email.getText(),
+                            (Telefono.getText().compareTo("")==0? 0 : Integer.parseInt(Telefono.getText())),
+                            Nacionalidad.getText(),
+                            (String)Estado_Civil.getSelectedItem(),
+                            Domicilio.getText(),
+                            (Codigo_Postal.getText().compareTo("")==0? 0 : Integer.parseInt(Codigo_Postal.getText())),
+                            new Date(),
+                            (Expediente.getText().compareTo("")==0? 0 : Integer.parseInt(Expediente.getText())),
+                            Motivo.getText(),
+                            (Precio_Vivienda.getText().compareTo("")==0? 0.0 : Double.parseDouble(Precio_Vivienda.getText())),
+                            Tipo_Vivienda.getText(),
+                            Observaciones_Datos_Personales.getText(),
+                            Observaciones_Familiares.getText(),
+                            Observaciones_Vivienda.getText(),
+                            Ciudad_Nacimiento.getText(),
+                            Situacion_Economica.getText(),
+                            Nivel_Estudios.getText(),
+                            Profesion.getText(),
+                            Experiencia_Laboral.getText(),
+                            NIF_Voluntario.getText());
 
-                /*finalizar() */
-                if (correcto == true){
-                    /*confirmarModificacionBeneficiario*/
-                    diaketas.diaketas.ong.gestorBeneficiarios.confirmarModificacionBeneficiario();
+                    /*finalizar() */
+                    if (correcto == true){
+                        /*confirmarModificacionBeneficiario*/
+                        ONG.gestorBeneficiarios.confirmarModificacionBeneficiario();
 
-                    /*Actualizamos la pantalla principal*/           
-                    panel = new jFamiliar();
-                    UI.jPrincipal.add("Familiar", panel);
-                    UI.cl.show(UI.jPrincipal, "Familiar");               
-                }else{
-                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
-                            "NIF Voluntario", JOptionPane.ERROR_MESSAGE);               
+                        /*Actualizamos la pantalla principal*/           
+                        //panel = new jFamiliar();
+                        //UI.jPrincipal.add("Familiar", panel);
+                        //UI.cl.show(UI.jPrincipal, "Familiar");       
+                        botonAniadir.setEnabled(true);
+                        botonEliminar.setEnabled(true);
+                        botonModificar.setEnabled(true);
+                        deshabilitarEdicion();
+                        fase = 1;
+                    }else{
+                        JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
+                                "NIF Voluntario", JOptionPane.ERROR_MESSAGE);               
+                    }
+                } catch (ParseException ex) {
+                    Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
                 }
-            } catch (ParseException ex) {
-                Logger.getLogger(jAltaBeneficiario.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Fecha de nacimiento incorrecto, utilice formato dd/MM/yy.", "Fecha de Nacimiento", JOptionPane.ERROR_MESSAGE);
             }
+        }else{
+            UI.cl.show(UI.jPrincipal, "Beneficiarios");
         }
+
     }//GEN-LAST:event_botonOKActionPerformed
 
+    public void deshabilitarEdicion(){
+        NIF.setEditable(false);
+        Nombre.setEditable(false);
+        Apellidos.setEditable(false);
+        Fecha_Nacimiento.setEditable(false);
+        Localidad.setEditable(false);
+        Email.setEditable(false);
+        Telefono.setEditable(false);
+        Nacionalidad.setEditable(false);
+        Estado_Civil.setEditable(false);
+        Domicilio.setEditable(false);
+        Codigo_Postal.setEditable(false);
+        Expediente.setEditable(false);
+        Motivo.setEditable(false);
+        Precio_Vivienda.setEditable(false);
+        Tipo_Vivienda.setEditable(false);
+        Observaciones_Datos_Personales.setEditable(false);
+        Observaciones_Familiares.setEditable(false);
+        Observaciones_Vivienda.setEditable(false);
+        Ciudad_Nacimiento.setEditable(false);
+        Situacion_Economica.setEditable(false);
+        Nivel_Estudios.setEditable(false);
+        Profesion.setEditable(false);
+        Experiencia_Laboral.setEditable(false);
+        NIF_Voluntario.setEditable(false);
+    }
     private void MotivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MotivoKeyTyped
         if (Motivo.getText().length() == 50) {
             evt.consume();
@@ -773,7 +869,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     }//GEN-LAST:event_ProfesionKeyTyped
 
     private void Experiencia_LaboralKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Experiencia_LaboralKeyTyped
-        if (Experiencia_Laboral.getText().length() == 250) {
+        if (Experiencia_Laboral.getText().length() == 500) {
             evt.consume();
         }
     }//GEN-LAST:event_Experiencia_LaboralKeyTyped
@@ -826,6 +922,27 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         } 
     }//GEN-LAST:event_ExpedienteKeyTyped
 
+    private void botonAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirActionPerformed
+        panel = new jAltaFamiliar("ModificarBeneficiario");
+
+        UI.jPrincipal.add("AltaFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "AltaFamiliar");
+    }//GEN-LAST:event_botonAniadirActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        panel = new jListarFamiliar("ModificarBeneficiario", "BajaFamiliar");
+
+        UI.jPrincipal.add("ListarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ListarFamiliar");
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        panel = new jListarFamiliar("ModificarBeneficiario", "ModificarFamiliar");
+
+        UI.jPrincipal.add("ListarFamiliar", panel);
+        UI.cl.show(UI.jPrincipal, "ListarFamiliar");
+    }//GEN-LAST:event_botonModificarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Ciudad_Nacimiento;
@@ -855,9 +972,12 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField Situacion_Economica;
     private javax.swing.JTextField Telefono;
     private javax.swing.JTextField Tipo_Vivienda;
+    private javax.swing.JButton botonAniadir;
     private javax.swing.JButton botonCancel;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonOK;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jBotones;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -865,6 +985,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -879,6 +1000,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;

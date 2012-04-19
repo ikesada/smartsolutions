@@ -4,12 +4,11 @@
  */
 package diaketas.UI.Beneficiarios;
 
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Familiar;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
+import diaketas.Modelo.ONG.ONG;
+import diaketas.UI.UI;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -38,20 +37,16 @@ public class jListarFamiliar extends javax.swing.JPanel {
         /* inicioModificarFamiliar()*/
         /* inicioConsultarFamiliar()*/
         /*Mostramos inicioMostrarFamiliar*/
+        familiares = ONG.gestorBeneficiarios.iniciarConsultarFamiliar();
 
-        familiares = diaketas.diaketas.ong.gestorBeneficiarios.iniciarConsultarFamiliar();
 
-        if(familiares.isEmpty()){
-            JOptionPane.showMessageDialog(this, "No se ha encontrado ningún familiar para este beneficiario.",
-                    "No se han encontrado familiares", JOptionPane.INFORMATION_MESSAGE);
+        /*Mostramos los familiares*/
+        DefaultListModel modelo = new DefaultListModel();
+        for (int i = 0; i < familiares.size();i++){
+            modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
+        listaFamiliares.setModel(modelo);
+        if (familiares.isEmpty()){
             botonOK.setEnabled(false);
-        }else{
-            /*Mostramos los familiares*/
-            DefaultListModel modelo = new DefaultListModel();
-            for (int i = 0; i < familiares.size();i++){
-                System.out.println(familiares.get(i).Nombre_Apellidos);
-                modelo.addElement((String)familiares.get(i).Nombre_Apellidos);}
-            listaFamiliares.setModel(modelo);
         }
     }
 
@@ -64,8 +59,6 @@ public class jListarFamiliar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -73,9 +66,11 @@ public class jListarFamiliar extends javax.swing.JPanel {
         botonCancel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaFamiliares = new javax.swing.JList();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Beneficiarios");
+        setBackground(new java.awt.Color(223, 232, 249));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Familiares");
@@ -98,40 +93,45 @@ public class jListarFamiliar extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(listaFamiliares);
 
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
+
+        jLabel30.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel30.setText("Beneficiarios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel17)
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel30))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(botonOK)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonCancel)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(197, 197, 197)
+                                .addComponent(botonOK)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonCancel)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel30))
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -146,7 +146,7 @@ public class jListarFamiliar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
                     .addComponent(botonCancel))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,7 +158,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
                 /*Pasamos al formulario de Baja el nombre del familiar*/
                 panel = new jBajaFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
                 
-                diaketas.diaketas.ong.gestorBeneficiarios.seleccionarFamiliar((String)listaFamiliares.getSelectedValue());
+                ONG.gestorBeneficiarios.seleccionarFamiliar(familiares.get(listaFamiliares.getSelectedIndex()).Nombre_Apellidos,
+                        familiares.get(listaFamiliares.getSelectedIndex()).Fecha_Nacimiento);
                 
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "BajaFamiliar");
@@ -166,7 +167,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
             }else if (jPanelSiguiente.compareTo("ConsultarFamiliar") ==0){
  
                 /*Pasamos al formulario de Modificar el nombre del familiar*/
-                panel = new jConsultarFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                panel = new jConsultarFamiliar(jPanelAnterior, familiares.get(listaFamiliares.getSelectedIndex()).Nombre_Apellidos,
+                        familiares.get(listaFamiliares.getSelectedIndex()).Fecha_Nacimiento);
                 
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "ConsultarFamiliar");  
@@ -174,7 +176,8 @@ public class jListarFamiliar extends javax.swing.JPanel {
             }else{
                 
                 /*Pasamos al formulario de Modificar el nombre del familiar*/
-                panel = new jModificarFamiliar(jPanelAnterior, (String) listaFamiliares.getSelectedValue());
+                panel = new jModificarFamiliar(jPanelAnterior, familiares.get(listaFamiliares.getSelectedIndex()).Nombre_Apellidos,
+                        familiares.get(listaFamiliares.getSelectedIndex()).Fecha_Nacimiento);
                 
                 UI.jPrincipal.add(jPanelSiguiente, panel); 
                 UI.cl.show(UI.jPrincipal, "ModificarFamiliar");  
@@ -194,9 +197,10 @@ public class jListarFamiliar extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;

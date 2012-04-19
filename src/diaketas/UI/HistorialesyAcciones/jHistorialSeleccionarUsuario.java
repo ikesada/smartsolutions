@@ -53,6 +53,11 @@ public class jHistorialSeleccionarUsuario extends javax.swing.JPanel {
         jLabel2.setText("DNI/NIF del usuario a consultar");
 
         NIF_CIF.setColumns(9);
+        NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_CIFKeyTyped(evt);
+            }
+        });
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -133,15 +138,14 @@ public class jHistorialSeleccionarUsuario extends javax.swing.JPanel {
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 
-    
-    
-    private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {                             
+    private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyTyped
         // TODO add your handling code here:
-        
         if (NIF_CIF.getText().length()>=9){
             evt.consume();
         }
-    }
+    }//GEN-LAST:event_NIF_CIFKeyTyped
+
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_CIF;

@@ -4,12 +4,11 @@
  */
 package diaketas.UI.Beneficiarios;
 
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Familiar;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import diaketas.Modelo.ONG.Parentesco;
+import diaketas.Modelo.ONG.ONG;
+import diaketas.UI.UI;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -25,7 +24,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
      * @param jPanelSiguiente 
      * @param Nombre_Apellidos 
      */
-    public jConsultarFamiliar(String jPanelSiguiente, String Nombre_Apellidos) {
+    public jConsultarFamiliar(String jPanelSiguiente, String Nombre_Apellidos, Date Fecha_Nac) {
         
         this.jPanelSiguiente = jPanelSiguiente;
         
@@ -35,12 +34,12 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         initComponents();
         
         /*Inicializamos los datos*/
-        Familiar familiar = diaketas.diaketas.ong.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos);
+        Familiar familiar = ONG.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos, Fecha_Nac);
         
         /*Actualizamos los valores del formulario*/
         this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);
         this.Ocupacion.setText(familiar.Ocupacion);
-        this.Parentesco.setText(familiar.parentesco.Parentesc);
+        this.Parentesco.setText(familiar.parentesco);
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
@@ -61,14 +60,17 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
         Nombre_Apellidos = new javax.swing.JLabel();
         Fecha_Nacimiento = new javax.swing.JLabel();
         Parentesco = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Ocupacion = new javax.swing.JLabel();
         botonOK = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+
+        setBackground(new java.awt.Color(223, 232, 249));
 
         jLabel6.setText("Nacimiento");
 
@@ -79,9 +81,6 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Consultar familiar");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Beneficiarios");
-
         jLabel7.setText("Ocupacion");
 
         botonOK.setText("Ok");
@@ -91,19 +90,29 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
             }
         });
 
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
+
+        jLabel30.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel30.setText("Beneficiarios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel17)
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel30))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(398, 398, 398))
                             .addComponent(jLabel3)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,15 +128,17 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
                                         .addComponent(Ocupacion)
                                         .addComponent(botonOK))
                                     .addGap(198, 198, 198)))
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel1))
-                        .addContainerGap(95, Short.MAX_VALUE))))
+                            .addComponent(jLabel6))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel30))
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -152,7 +163,7 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
                     .addComponent(Ocupacion))
                 .addGap(29, 29, 29)
                 .addComponent(botonOK)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -166,9 +177,10 @@ public class jConsultarFamiliar extends javax.swing.JPanel {
     private javax.swing.JLabel Ocupacion;
     private javax.swing.JLabel Parentesco;
     private javax.swing.JButton botonOK;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

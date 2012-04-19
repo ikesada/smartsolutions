@@ -6,10 +6,10 @@ package diaketas.Modelo.Gestores;
 
 import diaketas.Modelo.ONG.Beneficiario;
 import diaketas.Modelo.ONG.Familiar;
-import diaketas.Modelo.ONG.Parentesco;
+import diaketas.Modelo.ONG.ONG;
 import java.util.ArrayList;
 import java.util.Date;
-
+ 
 /**
  *
  * @author kesada
@@ -26,17 +26,20 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
      * 
      */
     public String NIF_Beneficiario;
+    
     Familiar datosFamiliar;
-    String NombreApellidosFamiliar;
-    String parentesco;   
-
+    
+    String Nombre_Apellidos_Familiar;
+    Date Fecha_Nacimiento_Familiar;
+    
     
     /*---------------------------Beneficiario----------------------------------*/
     /**
-     * @brief Introduce el DNI del beneficiario en el gestor
+     * Introduce el DNI del beneficiario en el gestor
      * @param DNI_Beneficiario
-     * @return Boolean indicando si existe un beneficiario asociado a ese DNI
+     * @return Boolean indicando si existe un beneficiario asociado al DNI
      */
+    @Override
     public boolean introducirDNIBeneficiario (String DNI_Beneficiario){
         
         NIF_Beneficiario = DNI_Beneficiario;
@@ -46,7 +49,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
 
     /**
-     * @brief Introduce los datos del beneficiario en el gestor
+     * Introduce los datos del beneficiario en el gestor
      * @param NIF_CIF Nif del beneficiario
      * @param Nombre Nombre del beneficiario
      * @param Apellidos Apellidos del beneficiario
@@ -76,6 +79,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
      * @param NIF_Vol Nif del voluntario que introduce los datos del beneficiario
      * @return Devuelve True o False indicando si el Voluntario que realiza la operación existe
      */
+    @Override
     public boolean introducirDatosBeneficiario(String NIF_CIF, String Nombre,
             String Apellidos, Date FechaNac, String Localidad, int Activo, Date Fecha_Desac,
             String Email, int Telefono, String Nacionalidad,
@@ -97,11 +101,11 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         NIF_Voluntario = NIF_Vol;
         
         /*Devuelve la existencia del voluntario*/
-        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return ONG.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
     
     /**
-     * @brief Comprueba si existe un beneficiario en el sistema con un DNI
+     * Comprueba si existe un beneficiario en el sistema con un DNI
      * @param DNI Dni del beneficiario que se quiere encontrar en el sistema
      * @return True o False indicando si se ha encontrado un beneficiario con el DNI especificado
      */
@@ -117,10 +121,11 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
     /**
-     * @brief Consulta en el sistema los datos de un beneficiario
+     * Consulta en el sistema los datos de un beneficiario
      * @param DNI del beneficiario del que se quieren consultar sus datos
      * @return Un objeto Beneficiario incluyendo todos los datos del beneficiario
      */
+    @Override
     public Beneficiario consultarBeneficiario (String DNI){
 
         /*Actualimos NIF*/
@@ -139,13 +144,15 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
     
    /**
-     * @brief Elimina al beneficiario con el DNI especificado del sistema
+     * Elimina al beneficiario con el DNI especificado del sistema
      * @param DNI del beneficiario que se quiere eliminar del sistema
      */
     private void eliminarBeneficiario(String DNI){
 
         /*Obtenemos el beneficiario*/
         //Ya es conocido
+        NIF_Beneficiario = DNI;
+        
         datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
 
         /*Desactivamos al usuario*/
@@ -153,7 +160,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
   
     /**
-     * @brief Modifica al beneficiario con el DNI especificado del sistema
+     * Modifica al beneficiario con el DNI especificado del sistema
      * @param DNI del beneficiario que se quiere modificar
      */
     private void modificarBeneficiario(Beneficiario nuevosDatosBeneficiario){
@@ -166,40 +173,43 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     }
 
     /**
-     * @brief Confirmar el alta de un beneficiario en el sistema
+     * Confirmar el alta de un beneficiario en el sistema
      */
+    @Override
     public void confirmarAltaBeneficiario(){
         
         /*Crear beneficiario*/
         Beneficiario nuevoBeneficiario =  new Beneficiario(datosBeneficiario);
         
-        /*Registrar Beneficiario*/
+        /*Agregamos Beneficiario*/
         diaketas.diaketas.ong.agregarNuevoBeneficiario(nuevoBeneficiario);
         
         /*Registrar Operacion*/
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Alta Beneficiario");
-        
-        /*Registrar beneficiario*/
-        /*Beneficiario ya tiene asociado Vivienda, email y telefono*/
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), datosBeneficiario.NIF_CIF.toUpperCase(), "Alta Beneficiario");
     }
     
     /**
-     * @brief Confirmar el baja de un beneficiario en el sistema
+     * Confirmar el baja de un beneficiario en el sistema
      */
-    public void confirmarBajaBeneficiario(){
+    @Override
+    public void confirmarBajaBeneficiario(String NIF_Voluntario){
+        
+        this.NIF_Voluntario = NIF_Voluntario;
+        
         /*Registrar Operacion*/
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, NIF_Beneficiario, "Baja Beneficiario");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), NIF_Beneficiario.toUpperCase(), "Baja Beneficiario");
         
         /*Eliminar beneficiario*/
         eliminarBeneficiario(NIF_Beneficiario);
     }
     
     /**
-     * @brief Confirmar la modificación de los datos del beneficiario en el sistema
+     * Confirmar la modificación de los datos del beneficiario en el sistema
      */
+    @Override
     public void confirmarModificacionBeneficiario(){
          /*Registrar Operacion*/
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosBeneficiario.NIF_CIF, "Modificar Beneficiario");   
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), datosBeneficiario.NIF_CIF.toUpperCase(), "Modificar Beneficiario");   
     
         /*Modificar beneficiario*/
         modificarBeneficiario(datosBeneficiario);
@@ -208,16 +218,18 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     /*--------------------------------Familiar---------------------------------*/
     
     /**
-     * @brief Introduce el Nombre_Apellidos del familiar que se quiere consultar en el sistema
+     * Introduce el Nombre_Apellidos del familiar que se quiere consultar en el sistema
      * @param Nombre_Apellidos Nombre_Apellidos del familiar del beneficiario que se quiere consultar
      */
-    public void seleccionarFamiliar(String Nombre_Apellidos){
-        NombreApellidosFamiliar = Nombre_Apellidos;
+    public void seleccionarFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento){
+        Nombre_Apellidos_Familiar = Nombre_Apellidos;
+        Fecha_Nacimiento_Familiar = Fecha_Nacimiento;
     }
    
     /**
-     * @brief Confirma la inserción de un nuevo familiar al beneficiario
+     * Confirma la inserción de un nuevo familiar al beneficiario
      */
+    @Override
     public void confirmarInsercion(){   
         Familiar familiar;
         
@@ -225,26 +237,17 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         //Ya es conocido
         datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
         
-        /*Se busca si el familiar ya existe*/
-        familiar = diaketas.diaketas.ong.buscarFamiliar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento);
-
-        /*Si No existe, se crea el nuevo familiar y se añade*/
-        if (familiar == null){
-            familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion);
+        familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion, datosFamiliar.parentesco);
             
-            /*Agregar familiar*/
-            datosBeneficiario.agregarFamiliar(familiar);
-        }
+        /*Agregar familiar*/
+        datosBeneficiario.agregarFamiliar(familiar);
 
-        /*Se crea relacion familiar*/
-        Parentesco relacion_familiar = new Parentesco(parentesco);
-
-        familiar.agregarParentesco(relacion_familiar);
     }    
     
     /**
-     * @brief Confirma la eliminacion de un familiar del beneficiario
+     * Confirma la eliminacion de un familiar del beneficiario
      */
+    @Override
     public void confirmarEliminacion(){
 
         /* Buscamos Beneficiario en el sistema */
@@ -252,21 +255,17 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
 
         /* Buscamos el familiar del beneficiario*/
-        /* buscarFamiliar  == buscarParentesco */
-        Parentesco parentesc = datosBeneficiario.buscarParentesco(NombreApellidosFamiliar);
+        Familiar f = datosBeneficiario.buscarFamiliar(Nombre_Apellidos_Familiar, Fecha_Nacimiento_Familiar);
         
-        /*Eliminamos el parentesco al familiar*/
-        datosBeneficiario.buscarFamiliar(NombreApellidosFamiliar).eliminarParentesco();
-        
-        /*Eliminamos al familiar de la lista de familiares de beneficiario*/
-        int indexFamiliar = datosBeneficiario.familiares.indexOf(datosBeneficiario.buscarFamiliar(NombreApellidosFamiliar));
-        datosBeneficiario.familiares.remove(indexFamiliar);
+        /*Eliminamos el familiar*/
+        f.destruir();
     }
     
     /**
-     * @brief Inicia la consulta de los familiares
+     * Inicia la consulta de los familiares
      * @return Devuelve una lista con los familiares de un beneficiario
      */
+    @Override
     public ArrayList<Familiar> iniciarConsultarFamiliar(){
 
         /*Obtenemos el beneficiario*/
@@ -274,63 +273,67 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
 
         /*Devolvemos los familiares*/
-        return datosBeneficiario.familiares;
+        return datosBeneficiario.consultarFamiliares();
     }
     
 
     /**
-     * @brief Incia la modificación de los familiares
+     * Incia la modificación de los familiares
      * @return Devuelve una lista con los familiares de un beneficiario
      */ 
+    @Override
     public ArrayList<Familiar> inicioModificarFamiliar(){
         /*Obtenemos el beneficiario*/
         //Ya es conocido
         datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
        
-        return datosBeneficiario.familiares;
+        /*Devolvemos los familiares*/
+        return datosBeneficiario.consultarFamiliares();
     }
     
     /**
-     * @brief Devuelve los datos de un familiar
+     * Devuelve los datos de un familiar
      * @param Nombre_Apellidos Nombre y Apellidos del familiar que se quiere consultar
      * @return Los datos de un familiar
      */
-    public Familiar consultarFamiliar(String Nombre_Apellidos){
+    @Override
+    public Familiar consultarFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento){
         /*Obtenemos el beneficiario*/
         //Ya es conocido
         datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(NIF_Beneficiario);
         
         /*Devolvemos los datos del familiar*/
-        return datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
+        return datosBeneficiario.buscarFamiliar(Nombre_Apellidos, Fecha_Nacimiento);
     }
     
     /**
-     * @brief Modifica los datos de un familiar
+     * Modifica los datos de un familiar
      * @param Nombre_Apellidos Nombre y apellidos del familiar que se quiere modificar
      * @param nuevosDatosFamiliar Nuevos datos del familiar
      * @param parentesco Relación de parentesco entre el familiar y el beneficiario
      */
-    public void modificarDatosFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
-        actualizarFamiliar(Nombre_Apellidos, nuevosDatosFamiliar, parentesco);
+    @Override
+    public void modificarDatosFamiliar (String Nombre_Apellidos, Date Fecha_Nac, Familiar nuevosDatosFamiliar){
+        actualizarFamiliar(Nombre_Apellidos, Fecha_Nac, nuevosDatosFamiliar);
     }
     
     /**
-     * @brief Actualiza los datos de un familiar
+     * Actualiza los datos de un familiar
      * @param Nombre_Apellidos Nombre y apellidos del familiar que se quiere actualizar
      * @param nuevosDatosFamiliar Nuevos datos del familiar
      * @param parentesco Relación de parentesco entre el familiar y el beneficiario
      */
-    private void actualizarFamiliar (String Nombre_Apellidos, Familiar nuevosDatosFamiliar, String parentesco){
+    private void actualizarFamiliar (String Nombre_Apellidos, Date Fecha_Nac, Familiar nuevosDatosFamiliar){
         /* Buscamos Beneficiario en el sistema */
         //Ya es conocido
         datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
         
         /*Buscamos el familiar*/
-        datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos);
+        datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos, Fecha_Nac);
         
         /*Cambiar datos Familiar */
         datosFamiliar.cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
-                nuevosDatosFamiliar.Ocupacion, new Parentesco (parentesco));
+                nuevosDatosFamiliar.Ocupacion, nuevosDatosFamiliar.parentesco);
     }
 
     /**
@@ -340,8 +343,8 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
      * @param Parentesco Parentesco del beneficiario
      * @param Ocupacion Ocupación del beneficiario
      */
+    @Override
     public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
-        datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion);
-        parentesco = Parentesco;
+        datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion,Parentesco);
     }  
 }

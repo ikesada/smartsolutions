@@ -7,11 +7,8 @@ package diaketas.Modelo.ONG;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Modelo.ONG.ONG;
-import diaketas.Modelo.ONG.Usuarios;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,23 +22,23 @@ public class Voluntario extends Usuarios{
     
     
     /**
-     * @param Nacionalidad Nacionalidad del voluntario
+     * Nacionalidad del voluntario
      */
     public String Nacionalidad;
     /**
-     * @param Domicilio Domicilio del voluntario
+     * Domicilio del voluntario
      */
     public String Domicilio;
     /**
-     * @param Codigo_Postal Codigo postal del voluntario
+     * Codigo postal del voluntario
      */
     public int Codigo_Postal;
     /**
-     * @param Fecha_Inicio Fecha en que se registro el voluntario en el sistema
+     * Fecha en que se registro el voluntario en el sistema
      */
     public Date Fecha_Inicio;
     /**
-     * @param Observaciones Observaciones relacionadas con el voluntario
+     * Observaciones relacionadas con el voluntario
      */
     public String Observaciones;
     

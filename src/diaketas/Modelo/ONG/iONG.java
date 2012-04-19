@@ -4,6 +4,7 @@
  */
 package diaketas.Modelo.ONG;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -54,8 +55,9 @@ public interface iONG {
     /**
      * Agrega un nuevo voluntario al sistema
      * @param nuevoVoluntario Voluntario a agregar
+     * @return Devuelve true si la operacion se ha realizado con exito
      */
-    public void agregarNuevoVoluntario(Voluntario nuevoVoluntario);
+    public boolean agregarNuevoVoluntario(Voluntario nuevoVoluntario);
 
     /**
      * Busca un familiar en el sistema con el nombre indicado y la fecha de nacimiento
@@ -63,5 +65,13 @@ public interface iONG {
      * @param Fecha_Nac Fecha de nacimiento del familiar a buscar
      * @return Devuelve el familiar encontrado
      */
-    public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac);
+    //public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac);
+    
+    
+    /**
+     * Funcion que devuelve un listado con todos los Voluntarios del sistema
+     * @return Devuelve un listado con todos los Voluntarios del sistema
+     */
+    public ArrayList<Voluntario> buscarVoluntarios();
+    
 }

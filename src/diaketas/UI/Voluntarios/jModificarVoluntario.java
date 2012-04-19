@@ -5,10 +5,9 @@
 package diaketas.UI.Voluntarios;
 
 import ValidarCampos.ValidarCampos;
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.ONG;
-import diaketas.Modelo.Gestores.Gestor_de_voluntarios;
 import diaketas.Modelo.ONG.Voluntario;
+import diaketas.UI.UI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -116,6 +115,11 @@ public class jModificarVoluntario extends javax.swing.JPanel {
 
         NIF1.setBackground(new java.awt.Color(255, 255, 153));
         NIF1.setColumns(20);
+        NIF1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF1KeyTyped(evt);
+            }
+        });
 
         jLabel14.setText("DNI del voluntario actual");
 
@@ -278,9 +282,8 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                                     .addComponent(FechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(FechaInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Apellidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(FechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
@@ -521,12 +524,12 @@ public class jModificarVoluntario extends javax.swing.JPanel {
             {
 
                 //primero compruebo si el dni del voluntario actual existe en el sistema
-                existe_vol = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
+                existe_vol = ONG.gestorVoluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
 
                 if(existe_vol)
                 {
                     
-                    exito = diaketas.diaketas.ong.gestorVoluntarios.modificarVoluntario( (String)Nombre.getText(), (String)Apellidos.getText(), (String)NIF.getText().toUpperCase(), telefonoPasado, (String)Domicilio.getText(), (String)Poblacion.getText(), (String)Email.getText(), (String)Nacionalidad.getText(), Fecha_Nac, Integer.parseInt(CodPost.getText()), (String)Obs.getText(), (String)NIF1.getText().toUpperCase() );
+                    exito = ONG.gestorVoluntarios.modificarVoluntario( (String)Nombre.getText(), (String)Apellidos.getText(), (String)NIF.getText().toUpperCase(), telefonoPasado, (String)Domicilio.getText(), (String)Poblacion.getText(), (String)Email.getText(), (String)Nacionalidad.getText(), Fecha_Nac, Integer.parseInt(CodPost.getText()), (String)Obs.getText(), (String)NIF1.getText().toUpperCase() );
 
                 }
                 else
@@ -641,6 +644,13 @@ public class jModificarVoluntario extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_TelefonoKeyTyped
+
+    private void NIF1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF1KeyTyped
+        // TODO add your handling code here:
+        if (NIF1.getText().length()>=9){
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIF1KeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;

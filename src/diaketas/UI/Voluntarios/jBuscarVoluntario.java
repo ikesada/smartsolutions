@@ -4,10 +4,9 @@
  */
 package diaketas.UI.Voluntarios;
 
-import diaketas.Modelo.Gestores.Gestor_de_voluntarios;
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Voluntario;
+import diaketas.UI.UI;
 import javax.swing.JOptionPane;
 
 /**
@@ -142,7 +141,7 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         {
 
             //Consulto los datos del voluntario introducido
-            Voluntario v = diaketas.diaketas.ong.gestorVoluntarios.consultarVoluntario(NIF.getText().toUpperCase());
+            Voluntario v = ONG.gestorVoluntarios.consultarVoluntario(NIF.getText().toUpperCase());
             
             if(v==null)
             {

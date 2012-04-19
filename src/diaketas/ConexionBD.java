@@ -31,9 +31,8 @@ public class ConexionBD{
      */
     public String url = "jdbc:mysql://sql09.freemysql.net:3306/"+bd;
     //public String url = "jdbc:mysql://192.168.1.1:3306/"+bd;
-    
-  
     //public String url = "jdbc:mysql://localhost:3306/"+bd;
+    
     private static Connection conn = null;
     
     /**

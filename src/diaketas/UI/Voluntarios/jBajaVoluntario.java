@@ -4,9 +4,8 @@
  */
 package diaketas.UI.Voluntarios;
 
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.ONG;
-import diaketas.Modelo.Gestores.Gestor_de_voluntarios;
+import diaketas.UI.UI;
 import javax.swing.JOptionPane;
 
 /**
@@ -59,6 +58,11 @@ public class jBajaVoluntario extends javax.swing.JPanel {
         jLabel2.setText("DNI/NIF del voluntario");
 
         NIF_CIF.setColumns(9);
+        NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_CIFKeyTyped(evt);
+            }
+        });
 
         botonOK.setText("Ok");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +82,11 @@ public class jBajaVoluntario extends javax.swing.JPanel {
 
         NIF_CIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_CIF_Voluntario.setColumns(9);
+        NIF_CIF_Voluntario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_CIF_VoluntarioKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -147,7 +156,7 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 
                 //compruebo que el voluntario que se quiere eliminar ya existe en el sistema
                 
-                boolean correcto = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario( (String)NIF_CIF.getText().toUpperCase() );
+                boolean correcto = ONG.gestorVoluntarios.comprobarExistenciaVoluntario( (String)NIF_CIF.getText().toUpperCase() );
                 
                
                 //Se ha encontrado al voluntario a eliminar
@@ -180,15 +189,15 @@ public class jBajaVoluntario extends javax.swing.JPanel {
                 
                 //compruebo que el voluntario actual existe en el sistema
                 
-                boolean existe_vol = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
+                boolean existe_vol = ONG.gestorVoluntarios.comprobarExistenciaVoluntario( NIF_CIF_Voluntario.getText().toUpperCase() );
                 boolean exito=true;
                 
                 //Se ha encontrado al voluntario actual en el sistema
                 if (existe_vol)
                 {
-                    System.out.println("Voy a dar de baja al voluntario\n");
+                    
                     //llamo a la funcion que se encarga de dar de baja al voluntario
-                    exito = diaketas.diaketas.ong.gestorVoluntarios.bajaVoluntario(NIF_CIF.getText().toUpperCase(), NIF_CIF_Voluntario.getText().toUpperCase());
+                    exito = ONG.gestorVoluntarios.bajaVoluntario(NIF_CIF.getText().toUpperCase(), NIF_CIF_Voluntario.getText().toUpperCase());
                 } 
                 
                 else
@@ -222,6 +231,20 @@ public class jBajaVoluntario extends javax.swing.JPanel {
             UI.cl.show(UI.jPrincipal, "Diaketas");
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
+
+    private void NIF_CIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyTyped
+        // TODO add your handling code here:
+        if (NIF_CIF.getText().length()>=9){
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIF_CIFKeyTyped
+
+    private void NIF_CIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIF_VoluntarioKeyTyped
+        // TODO add your handling code here:
+        if (NIF_CIF_Voluntario.getText().length()>=9){
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIF_CIF_VoluntarioKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_CIF;

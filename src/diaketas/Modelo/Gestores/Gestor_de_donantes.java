@@ -6,6 +6,7 @@ package diaketas.Modelo.Gestores;
 
 import diaketas.ConexionBD;
 import diaketas.Modelo.ONG.Donante;
+import diaketas.Modelo.ONG.ONG;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,7 +56,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
 
         NIF_Voluntario = NIF_Vol;
         
-        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
+        return ONG.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
     }
 
 
@@ -107,7 +108,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta Donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta Donante");
     }
 
 
@@ -153,7 +154,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Modificar Donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Modificacion Donante");
         
     }
     
@@ -199,7 +200,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "baja_donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Baja Donante");
         
     }
     

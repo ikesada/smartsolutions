@@ -311,14 +311,10 @@ public class Beneficiario extends Usuarios{
             Statement instruccion = (Statement) con.conexion().createStatement();
 
             /*Introducimos al nuevo Familiar en el sistema*/
-            instruccion.executeUpdate("INSERT INTO Familiar (Nombre_Apellidos, Fecha_Nacimiento, Ocupacion)"
-                    + " VALUES (\""+familiar.Nombre_Apellidos + "\",\"" + fecha_Nacimiento + "\",\"" 
-                    + familiar.Ocupacion + "\")");
-            
-            ResultSet rs =instruccion.executeQuery("SELECT MAX(Cod_Familiar) AS Cod_Familiar FROM Familiar");
-            if (rs.next())
-                familiar.Cod_Familiar = rs.getInt(1);
-            
+            instruccion.executeUpdate("INSERT INTO Familiar VALUES (\""
+                    + this.NIF_CIF + "\",\"" + familiar.Nombre_Apellidos + "\",\"" + fecha_Nacimiento + "\",\"" 
+                    + familiar.Ocupacion + "\",\"" + familiar.parentesco + "\")");
+                        
             /*Agregamos el familiar a la lista de familiares*/
             familiares.add(familiar);
         }
@@ -338,29 +334,24 @@ public class Beneficiario extends Usuarios{
     }
     
     /**
+     * Obtiene los familiares de un beneficiario
+     * @return Devuelve un listado con los familiares
+     */
+    public ArrayList<Familiar> consultarFamiliares(){
+        return this.familiares;
+    }
+    
+    /**
      * Busca un familiar entre los familiares de un beneficiario
      * @param Nombre_Apellidos Nombre y apellidos del familiar que se quiere buscar
      * @return Un objeto familiar conteniendo los datos del familiar
      */
-    public Familiar buscarFamiliar(String Nombre_Apellidos){
+    public Familiar buscarFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento){
         /*Busca el familiar cuyo nombre coincide con Nombre_Apellidos*/
         for (int i = 0; i < familiares.size(); i++)
-            if(familiares.get(i).Nombre_Apellidos.compareTo(Nombre_Apellidos) == 0)
+            if(familiares.get(i).Nombre_Apellidos.compareTo(Nombre_Apellidos) == 0 &&
+                    familiares.get(i).Fecha_Nacimiento.compareTo(Fecha_Nacimiento) == 0)
                 return familiares.get(i);
-        return null;
-    }
-    
-    /**
-     * Busca el parentesco entre un familiar y un beneficiario
-     * @param Nombre_Apellidos Nombre y apellidos del familiar del que se quiere conoce su parentesco
-     * @return Parentesco conteniendo la relación que hay entre el beneficiario y un familiar
-     */
-    public Parentesco buscarParentesco(String Nombre_Apellidos){
-        
-        /*Busca el parentesco para el Familiar cuyo nombre coincide con Nombre_Apellidos*/
-       for (int i = 0; i < familiares.size(); i++)
-            if(familiares.get(i).Nombre_Apellidos.compareTo(Nombre_Apellidos) == 0)
-                return familiares.get(i).parentesco;
         return null;
     }
 }
