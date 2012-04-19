@@ -202,7 +202,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
 
         jLabel12.setText("Telefono");
 
-        botonOK.setText("Ok");
+        botonOK.setText("Añadir");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOKActionPerformed(evt);
@@ -489,20 +489,21 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                                             .addComponent(Tipo_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(Precio_Vivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(447, 447, 447)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addComponent(jLabel17)
                                 .addGap(69, 69, 69)
                                 .addComponent(jTitulo1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(495, 495, 495)
-                                .addComponent(botonOK)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonCancel)))
+                                .addGap(447, 447, 447)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(botonOK)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(botonCancel))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );

@@ -7,6 +7,7 @@ package diaketas.UI.Beneficiarios;
 import diaketas.Modelo.ONG.Familiar;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
+import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -59,7 +60,7 @@ public class jListarFamiliar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        jTitulo2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         botonOK = new javax.swing.JButton();
@@ -67,17 +68,22 @@ public class jListarFamiliar extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaFamiliares = new javax.swing.JList();
         jLabel17 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
+        jTitulo1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(223, 232, 249));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Familiares");
+        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo2.setText("Familiares");
 
         jLabel2.setText("Seleccione un familiar");
 
-        botonOK.setText("Ok");
+        botonOK.setText("Seleccionar");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOKActionPerformed(evt);
@@ -95,34 +101,35 @@ public class jListarFamiliar extends javax.swing.JPanel {
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
 
-        jLabel30.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel30.setText("Beneficiarios");
+        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTitulo1.setText("Beneficiarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel17)
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel30))
+                        .addComponent(jTitulo1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(197, 197, 197)
-                                .addComponent(botonOK)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonCancel)))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jTitulo2, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addGap(0, 113, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(botonOK)
+                .addGap(18, 18, 18)
+                .addComponent(botonCancel)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,12 +137,12 @@ public class jListarFamiliar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jLabel30))
+                        .addComponent(jTitulo1))
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jTitulo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -194,16 +201,30 @@ public class jListarFamiliar extends javax.swing.JPanel {
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
 
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    }//GEN-LAST:event_formComponentResized
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel jTitulo1;
+    private javax.swing.JLabel jTitulo2;
     private javax.swing.JList listaFamiliares;
     // End of variables declaration//GEN-END:variables
 }

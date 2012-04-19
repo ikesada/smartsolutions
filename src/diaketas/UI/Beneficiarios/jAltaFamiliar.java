@@ -96,7 +96,7 @@ public class jAltaFamiliar extends javax.swing.JPanel {
         Parentesco.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Parentesco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Padre", "Madre", "Marido", "Mujer", "Hermano", "Hijo" }));
 
-        botonOK.setText("Ok");
+        botonOK.setText("Añadir");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOKActionPerformed(evt);

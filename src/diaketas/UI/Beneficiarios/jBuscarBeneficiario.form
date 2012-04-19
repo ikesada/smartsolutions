@@ -53,6 +53,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                               <Component id="botonConsultar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="botonCancelar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -83,7 +85,10 @@
                   <Component id="NIF" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="botonConsultar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="94" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -115,7 +120,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="botonConsultar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Consultar"/>
+        <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConsultarActionPerformed"/>
@@ -137,6 +142,14 @@
           <Image iconType="3" name="/diaketas/Iconos/beneficiarios.png"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonCancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

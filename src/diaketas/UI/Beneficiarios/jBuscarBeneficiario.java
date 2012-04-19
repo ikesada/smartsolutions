@@ -50,6 +50,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jTitulo1 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        botonCancelar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(223, 232, 249));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -70,7 +71,7 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
             }
         });
 
-        botonConsultar.setText("Consultar");
+        botonConsultar.setText("Buscar");
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConsultarActionPerformed(evt);
@@ -81,6 +82,13 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         jTitulo1.setText("Beneficiarios");
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
+
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -109,7 +117,9 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                                     .addGap(198, 198, 198)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(90, 90, 90)
-                                .addComponent(botonConsultar)))))
+                                .addComponent(botonConsultar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonCancelar)))))
                 .addGap(0, 69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,7 +141,9 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(botonConsultar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonConsultar)
+                    .addComponent(botonCancelar))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -184,8 +196,13 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
     }//GEN-LAST:event_formComponentResized
 
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        UI.cl.show(UI.jPrincipal, "Beneficiarios"); 
+    }//GEN-LAST:event_botonCancelarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF;
+    private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;

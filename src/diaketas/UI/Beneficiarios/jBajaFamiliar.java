@@ -69,7 +69,7 @@ public class jBajaFamiliar extends javax.swing.JPanel {
 
         jLabelInformativo.setText("¿Desea eliminar el familiar?");
 
-        botonOK.setText("Ok");
+        botonOK.setText("Eliminar");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOKActionPerformed(evt);

@@ -95,7 +95,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="botonOK">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ok"/>
+        <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonOKActionPerformed"/>

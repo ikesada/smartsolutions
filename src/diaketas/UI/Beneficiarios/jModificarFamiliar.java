@@ -7,6 +7,7 @@ package diaketas.UI.Beneficiarios;
 import diaketas.Modelo.ONG.Familiar;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
+import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,7 +57,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        jTitulo2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         Nombre_Apellidos = new javax.swing.JTextField();
@@ -69,13 +70,18 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         botonOK = new javax.swing.JButton();
         botonCancel = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
+        jTitulo1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(223, 232, 249));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Modificar familiar");
+        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo2.setText("Modificar familiar");
 
         jLabel2.setText("Nombre y Apellidos");
 
@@ -108,7 +114,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         Parentesco.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Parentesco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Padre", "Madre", "Marido", "Mujer", "Hermano", "Hijo" }));
 
-        botonOK.setText("Ok");
+        botonOK.setText("Modificar");
         botonOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOKActionPerformed(evt);
@@ -124,25 +130,25 @@ public class jModificarFamiliar extends javax.swing.JPanel {
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/beneficiarios.png"))); // NOI18N
 
-        jLabel30.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel30.setText("Beneficiarios");
+        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTitulo1.setText("Beneficiarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel17)
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel30))
+                        .addComponent(jTitulo1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(jTitulo2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
@@ -163,7 +169,7 @@ public class jModificarFamiliar extends javax.swing.JPanel {
                             .addComponent(jLabel6)
                             .addComponent(jLabel8)
                             .addComponent(jLabel7))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,12 +177,12 @@ public class jModificarFamiliar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jLabel30))
+                        .addComponent(jTitulo1))
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jTitulo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -238,6 +244,20 @@ public class jModificarFamiliar extends javax.swing.JPanel {
             evt.consume();
     }//GEN-LAST:event_OcupacionKeyTyped
 
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    }//GEN-LAST:event_formComponentResized
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField Fecha_Nacimiento;
     private javax.swing.JTextField Nombre_Apellidos;
@@ -247,12 +267,12 @@ public class jModificarFamiliar extends javax.swing.JPanel {
     private javax.swing.JButton botonOK;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel jTitulo1;
+    private javax.swing.JLabel jTitulo2;
     // End of variables declaration//GEN-END:variables
 }

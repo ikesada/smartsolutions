@@ -145,6 +145,11 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
         setPreferredSize(new java.awt.Dimension(1100, 518));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar_familiar.png"))); // NOI18N
         botonConsultar.setText("Consultar");
@@ -481,6 +486,23 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         UI.cl.show(UI.jPrincipal, "Beneficiarios"); 
     }//GEN-LAST:event_botonOKActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        jTitulo3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        jTitulo4.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        jTitulo5.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellidos;
