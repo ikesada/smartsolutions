@@ -21,7 +21,13 @@ public class jDonantes extends javax.swing.JPanel {
      * Creates new form jDonantes
      */
     public jDonantes() {
+        
         initComponents();
+        /*
+        int anchoV = this.panel.getHeight();
+        int altoV = this.panel.getWidth();
+        
+        System.out.println(anchoV + " " + altoV);*/
     }
 
     /**
@@ -45,13 +51,18 @@ public class jDonantes extends javax.swing.JPanel {
         botonModificar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-		int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-		
-        jPanel1.setMinimumSize(new java.awt.Dimension(ancho-200, alto-207));
-        jPanel1.setPreferredSize(new java.awt.Dimension(ancho-200, alto-207));
-		
+        setPreferredSize(new java.awt.Dimension(676, 306));
+
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setPreferredSize(new java.awt.Dimension(676, 306));
+        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                jPanel1ComponentResized(evt);
+            }
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel1ComponentShown(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Donantes");
@@ -129,7 +140,7 @@ public class jDonantes extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap())
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +160,7 @@ public class jDonantes extends javax.swing.JPanel {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -160,9 +171,7 @@ public class jDonantes extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -196,6 +205,22 @@ public class jDonantes extends javax.swing.JPanel {
         UI.jPrincipal.add("BajaDonante", panel);
         UI.cl.show(UI.jPrincipal, "BajaDonante");
     }//GEN-LAST:event_botonBajaActionPerformed
+
+    private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
+        //this.setSize(this.getSize().height, this.getSize().width);
+    }//GEN-LAST:event_jPanel1ComponentShown
+
+    private void jPanel1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentResized
+ //       System.out.println("JDONANTES");
+  //      System.out.println(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height + " " + this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width);
+        //jPanel1.setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-179));
+        //setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-179));
+      //  jPanel1.setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-179));
+        //setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-179));
+        //P.setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-179, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-18));
+        //  System.out.println(this.getSize().height + " " + this.getSize().width);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1ComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;

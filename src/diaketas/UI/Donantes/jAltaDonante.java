@@ -6,6 +6,7 @@ package diaketas.UI.Donantes;
 
 import ValidarCampos.ValidarCampos;
 import diaketas.UI.UI;
+import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,7 +22,8 @@ import javax.swing.JPanel;
 public class jAltaDonante extends javax.swing.JPanel {
 
     JPanel panel;
-    
+    int ancho, alto;
+
     /**
      * Creates new form jAltaDonante
      */
@@ -72,6 +74,15 @@ public class jAltaDonante extends javax.swing.JPanel {
         Periodicidad_Donaciones = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         Tipo_Donante = new javax.swing.JComboBox();
+
+		setBackground(new java.awt.Color(255, 204, 153));
+				
+        setPreferredSize(new java.awt.Dimension(1262, 628));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         Tipo_Periodicidad.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Tipo_Periodicidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguna", "Días", "Meses", "Años" }));
@@ -139,6 +150,9 @@ public class jAltaDonante extends javax.swing.JPanel {
 
         NIF_CIF.setColumns(9);
         NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NIF_CIFKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NIF_CIFKeyTyped(evt);
             }
@@ -333,7 +347,7 @@ public class jAltaDonante extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonOK)
                     .addComponent(botonCancel))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -462,6 +476,55 @@ public class jAltaDonante extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_ObservacionesKeyTyped
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        /*
+         * if(alto==0){
+         *
+         * ancho = this.getSize().width; alto = this.getSize().height; } int
+         * diferenciaW = ancho-this.getSize().width; int diferenciaH =
+         * alto-this.getSize().height;
+         *
+         * double raiz = Math.sqrt(Math.pow(diferenciaW, 2) +
+         * Math.pow(diferenciaH,2)); //System.out.println("Raiz: " +raiz);
+         *
+         * if(alto < this.getSize().height || ancho < this.getSize().width){
+         * if(alto > this.getSize().height) this.jLabel2.setFont(new
+         * Font("Courier", Font.BOLD,
+         * this.jLabel2.getFont().getSize()-(ancho-this.getSize().width))); else
+         * this.jLabel2.setFont(new Font("Courier", Font.BOLD,
+         * this.jLabel2.getFont().getSize()-(alto-this.getSize().height)));
+         * }else{ if(alto < this.getSize().height) this.jLabel2.setFont(new
+         * Font("Courier", Font.BOLD,
+         * this.jLabel2.getFont().getSize()-(ancho-this.getSize().width))); else
+         * this.jLabel2.setFont(new Font("Courier", Font.BOLD,
+         * this.jLabel2.getFont().getSize()-(alto-this.getSize().height))); }
+         * System.out.println(alto + " " + ancho + " " + this.getSize().height +
+         * " " + this.getSize().width);
+         * System.out.println(this.jLabel2.getFont().getSize()); //
+         * System.out.println((this.getSize().width-ancho)/10); //
+         * System.out.println((ancho-this.getSize().width)/10); //
+         * this.Observaciones.setFont(null);
+         */
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        System.out.println(this.getComponentCount());
+        double fuente = 13 + (ancho - 1262) / 30;
+        System.out.println(fuente);
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        if (fuente > 22) {
+            this.Observaciones.setFont(new Font("Courier", Font.BOLD, 22));
+            this.Tipo_Donante.setFont(new Font("Courier", Font.BOLD, 22));
+            this.Tipo_Periodicidad.setFont(new Font("Courier", Font.BOLD, 22));
+        }
+    }//GEN-LAST:event_formComponentResized
+
+    private void NIF_CIFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyPressed
+        System.out.println(this.getSize().height + " " + this.getSize().width);        // TODO add your handling code here:
+    }//GEN-LAST:event_NIF_CIFKeyPressed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Cuantia_Donaciones;

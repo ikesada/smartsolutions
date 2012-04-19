@@ -6,6 +6,7 @@ package diaketas.UI.Donantes;
 
 import diaketas.Modelo.ONG.Donante;
 import diaketas.UI.UI;
+import java.awt.Font;
 import javax.swing.JPanel;
 
 /**
@@ -92,9 +93,17 @@ public class jConsultarDonante extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         Fecha_Inscripcion = new javax.swing.JLabel();
 
+		setBackground(new java.awt.Color(255, 204, 153));
+		
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
         setPreferredSize(new java.awt.Dimension(1100, 518));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
+
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Donantes");
@@ -306,6 +315,19 @@ public class jConsultarDonante extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         UI.cl.show(UI.jPrincipal, "Donantes");
     }//GEN-LAST:event_botonOKActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+     
+        double fuente = 13 + (this.getSize().width - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        if (fuente > 22) {
+            this.Observaciones.setFont(new Font("Courier", Font.BOLD, 22));
+            this.Tipo_Donante.setFont(new Font("Courier", Font.BOLD, 22));
+            this.Tipo_Periodicidad.setFont(new Font("Courier", Font.BOLD, 22));
+        }
+    }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellidos;

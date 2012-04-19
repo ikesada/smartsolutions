@@ -7,6 +7,7 @@ package diaketas.UI.Donantes;
 import ValidarCampos.ValidarCampos;
 import diaketas.Modelo.ONG.Donante;
 import diaketas.UI.UI;
+import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -102,6 +103,15 @@ public class jModificarDonante extends javax.swing.JPanel {
         Tipo_Periodicidad = new javax.swing.JComboBox();
         jLabel18 = new javax.swing.JLabel();
         Cuantia_Donaciones = new javax.swing.JTextField();
+
+		setBackground(new java.awt.Color(255, 204, 153));
+
+		
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         jLabel2.setText("NIF");
 
@@ -522,6 +532,20 @@ public class jModificarDonante extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El telefono debe ser un numero", "Error en el telefono", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_Cuantia_DonacionesKeyReleased
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        
+        double fuente = 13 + (this.getSize().width - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        if (fuente > 22) {
+            this.Observaciones.setFont(new Font("Courier", Font.BOLD, 22));
+            this.Tipo_Donante.setFont(new Font("Courier", Font.BOLD, 22));
+            this.Tipo_Periodicidad.setFont(new Font("Courier", Font.BOLD, 22));
+        }
+    }//GEN-LAST:event_formComponentResized
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Cuantia_Donaciones;
