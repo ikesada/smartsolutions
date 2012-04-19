@@ -7,11 +7,8 @@ package diaketas.Modelo.ONG;
 
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Modelo.ONG.ONG;
-import diaketas.Modelo.ONG.Usuarios;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -5,6 +5,7 @@
 package diaketas.Modelo.Gestores;
 
 import diaketas.Modelo.ONG.Voluntario;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -116,6 +117,9 @@ public interface iGestorVoluntarios {
      * @return Devuelve True si se ha encontrado al voluntario en el sistema
      */
     public Boolean introducirDNIVoluntario(String NIF_CIF);
+    
+    
+
     
     
 }

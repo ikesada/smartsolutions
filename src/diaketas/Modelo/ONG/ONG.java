@@ -4,6 +4,7 @@
  */
 package diaketas.Modelo.ONG;
 
+import com.mysql.jdbc.ResultSetMetaData;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
@@ -378,11 +379,15 @@ public class ONG implements iONG{
      * @param nuevoVoluntario Datos del voluntario a agregar
      */
     @Override
-    public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
+    public boolean agregarNuevoVoluntario(Voluntario nuevoVoluntario){
+        
+        boolean exito = true;
+        
         con.conectarBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoVoluntario.FechaNac.getTime());
         java.sql.Timestamp fecha_Inicio = new java.sql.Timestamp(nuevoVoluntario.Fecha_Inicio.getTime());
+        
         
          try {
             instruccion = (Statement) con.conexion().createStatement();
@@ -397,8 +402,14 @@ public class ONG implements iONG{
                     + nuevoVoluntario.Nacionalidad + "\",\"" + nuevoVoluntario.Domicilio + "\",\""  + nuevoVoluntario.Codigo_Postal + "\",\""   + fecha_Inicio + "\",\"" + nuevoVoluntario.Observaciones +"\")");           
          }
          /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
+         catch(SQLException e){ 
+             System.out.println(e); 
+             exito = false;
+         }
+         catch(Exception e){ 
+             System.out.println(e);
+             exito = false;
+         }
          /*Desconexión de la BD*/
          finally {
             if (con.hayConexionBD()) {
@@ -408,6 +419,113 @@ public class ONG implements iONG{
                     Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }        
-    }  
+        }      
+         
+        return exito; 
+    }    
+    
+    
+    
+    /**
+     * Funcion que devuelve un listado con todos los Voluntarios del sistema
+     * @return Devuelve un listado con todos los Voluntarios del sistema
+     */
+    @Override
+    public ArrayList<Voluntario> buscarVoluntarios(){
+      
+        ArrayList<Voluntario> usuarios=new ArrayList<Voluntario>();
+        
+        
+        con.conectarBD();
+        
+        try{
+                
+            //Crear objeto Statement para realizar queries a la base de datos
+            Statement s = (Statement) con.conexion().createStatement();
+
+            //Un objeto ResultSet, almacena los datos de resultados de una consulta
+            ResultSet rs = s.executeQuery("select u.NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Fecha_Desactivacion, Email, Telefono, Nacionalidad, Domicilio, Codigo_Postal, Fecha_Inicio, Observaciones from Usuario u, Voluntario v where u.NIF_CIF=v.NIF_CIF");
+
+            //Obteniendo la informacion de las columnas que estan siendo consultadas
+            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
+
+            //La cantidad de columnas que tiene la consulta
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            
+            while (rs.next())   //avanzo a la siguiente tupla obtenida en la consulta (mientras haya)
+            { 
+                System.out.println("Usuario leido: \n");
+                //Para cada tupla creo un objeto Voluntario que luego introducire en el ArrayList
+                
+                //me creo una variable int auxiliar, ya que el campo "activo" es booleano en la tabla y en la clase es int
+                int act;
+                if( (Boolean)rs.getObject(6) == true )
+                    act = 1;
+                else
+                    act = 0;
+                
+                
+                Voluntario v = new Voluntario( (String) rs.getObject(1), (String)rs.getObject(2), (String)rs.getObject(3), (Date)rs.getObject(4), (String)rs.getObject(5), act, (Date)rs.getObject(7), (String)rs.getObject(8), (Integer)rs.getObject(9), (String)rs.getObject(10), (String)rs.getObject(11), (Integer)rs.getObject(12), (Date)rs.getObject(13), (String)rs.getObject(14) );
+              
+             
+                System.out.println("DATOS DEL USUARIO:\n"
+                        + (String) rs.getObject(1) + "\n"
+                        + (String)rs.getObject(2) + "\n"
+                        + (String)rs.getObject(3) + "\n"
+                        + (Date)rs.getObject(4) + "\n"
+                        + (String)rs.getObject(5) + "\n"
+                        +  act + "\n"
+                        + (Date)rs.getObject(7) + "\n"
+                        + (String)rs.getObject(8) + "\n"
+                        + (Integer)rs.getObject(9) + "\n"
+                        + (String)rs.getObject(10) + "\n"
+                        + (String)rs.getObject(11) + "\n"
+                        + (Integer)rs.getObject(12) + "\n"
+                        + (Date)rs.getObject(13) + "\n"
+                        + (String)rs.getObject(14) + "\n" + "\n" );
+                        
+                        
+                
+                
+           /*   v.NIF_CIF = (String) rs.getObject(1);
+                v.Nombre = (String)rs.getObject(2);
+                v.Apellidos = (String)rs.getObject(3);
+                v.FechaNac = (Date)rs.getObject(4);
+                v.Localidad = (String)rs.getObject(5);
+                v.Activo = (Integer)rs.getObject(6);
+                v.FechaDesac = (Date)rs.getObject(7);
+                v.Email = (String)rs.getObject(8);
+                v.Telefono = (Integer)rs.getObject(9);
+
+                v.Nacionalidad = (String)rs.getObject(10);
+                v.Domicilio = (String)rs.getObject(11);
+                v.Codigo_Postal = (Integer)rs.getObject(12);
+                v.Fecha_Inicio = (Date)rs.getObject(13);
+                v.Observaciones = (String)rs.getObject(14);
+                */
+                usuarios.add(v);
+
+            }
+
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+             
+        
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
+        
+        return usuarios;
+    }
+    
+      
 }

@@ -4,8 +4,8 @@
  */
 package diaketas.UI.Voluntarios;
 
-import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Voluntario;
+import diaketas.UI.UI;
 import java.text.SimpleDateFormat;
 
 /**
@@ -148,6 +148,7 @@ public class jConsultarVoluntario extends javax.swing.JPanel {
         FechaInic.setText("Fecha inicio");
 
         Obs.setColumns(20);
+        Obs.setEditable(false);
         Obs.setRows(5);
         jScrollPane1.setViewportView(Obs);
 

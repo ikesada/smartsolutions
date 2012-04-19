@@ -9,8 +9,10 @@ package diaketas.Modelo.Gestores;
 //sustituido por estos dos:
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Voluntario;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -35,9 +37,10 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @param NIF_CIF
      * @return Devuelve True si se ha encontrado al voluntario en el sistema
      */
+    @Override
     public Boolean introducirDNIVoluntario(String NIF_CIF) {
 
-        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_CIF);
+        return ONG.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_CIF);
     }
     
     
@@ -85,6 +88,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @param voluntarioDNI Dni del voluntario que realiza el alta en el sistema
      * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
+    @Override
     public boolean altaVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs, String voluntarioDNI )
     {
     
@@ -93,19 +97,19 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
         
         
         
-        boolean existe = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario( (String)voluntarioDNI );
+        boolean existe = ONG.gestorVoluntarios.comprobarExistenciaVoluntario( (String)voluntarioDNI );
         
         if(existe)
         {
-            boolean existe1 = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+            boolean existe1 = ONG.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
             
             if(!existe1)
             {
                 
                 //el constructor Date() nos devuelve la fecha actual    
-                confirma = diaketas.diaketas.ong.gestorVoluntarios.crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
+                confirma = ONG.gestorVoluntarios.crearVoluntario( DNI, nombre, apellidos, fechaNacim, ciudad, email, telf, nacionalidad, direccion, codPost, obs);                
 
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Alta Voluntario");
+                ONG.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Alta Voluntario");
                 
             }
             if(existe1)
@@ -136,6 +140,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @param obs Observaciones relacionadas con el voluntario
      * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
+    @Override
     public boolean crearVoluntario( String DNI, String nombre, String apellidos, Date fechaNacim, String ciudad, String email, int telf, String nacionalidad, String direccion, int codPost, String obs)
     {
 
@@ -149,7 +154,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
         Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, 1, null, email, telf, 
                                         nacionalidad, direccion, codPost, new Date(), obs );
         
-        diaketas.diaketas.ong.agregarNuevoVoluntario(v);
+        confirma = diaketas.diaketas.ong.agregarNuevoVoluntario(v);
        
         return confirma;
     
@@ -167,30 +172,30 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @param voluntarioDNI Dni del voluntario que realiza la accion
      * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
+    @Override
     public boolean bajaVoluntario( String DNI, String voluntarioDNI )
     {
         
         boolean confirma=false;
         
-        boolean existe = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario( voluntarioDNI );
+        boolean existe = ONG.gestorVoluntarios.comprobarExistenciaVoluntario( voluntarioDNI );
         
         if(existe)
         {
             
-            boolean existe1 = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+            boolean existe1 = ONG.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
             
             if(existe1)
             {
                 
-                diaketas.diaketas.ong.gestorVoluntarios.eliminarVoluntario(DNI);
+                confirma = ONG.gestorVoluntarios.eliminarVoluntario(DNI);
                 
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Baja Voluntario");
+                ONG.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Baja Voluntario");
                
             }
             
         }
         
-        System.out.println("Exito:"+confirma+"\n");
         return confirma;
     
     }
@@ -202,6 +207,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @param DNI Dni del voluntario a desactivar
      * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
+    @Override
     public  boolean eliminarVoluntario(String DNI)
     {
         boolean exito = false;
@@ -244,19 +250,19 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
         
         
         
-        boolean existe = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+        boolean existe = ONG.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
         
         if(existe)
         {
-            boolean existe1 = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(voluntarioDNI);
+            boolean existe1 = ONG.gestorVoluntarios.comprobarExistenciaVoluntario(voluntarioDNI);
             
             if(existe1)
             {
                 
             
-                confirma = diaketas.diaketas.ong.gestorVoluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
+                confirma = ONG.gestorVoluntarios.modificarDatosVoluntario(nombre, apellidos, DNI, telf, dir, poblacion, email, nacionalidad, fechaNac, codPost, obs);
             
-                diaketas.diaketas.ong.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Modificacion Voluntario");
+                ONG.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Modificacion Voluntario");
             }
         }
         
@@ -282,6 +288,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @param obs Observaciones relacionadas con el voluntario
      * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
+    @Override
     public boolean modificarDatosVoluntario( String nombre, String apellidos, String DNI, int telf, String dir, String poblacion, String email, String nacionalidad, Date fechaNac, int codPost, String obs )
     {
         
@@ -302,18 +309,19 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @param DNI
      * @return Devuelve el Voluntario asociado a ese dni
      */
+    @Override
     public Voluntario consultarVoluntario( String DNI )
     {
         
         Voluntario v = null;
         
         //si el voluntario esta desactivado, devolvera existe=false
-        boolean existe = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
+        boolean existe = ONG.gestorVoluntarios.comprobarExistenciaVoluntario(DNI);
         
         
         if(existe)
         {
-            v = diaketas.diaketas.ong.gestorVoluntarios.obtenerDatosVoluntario(DNI);
+            v = ONG.gestorVoluntarios.obtenerDatosVoluntario(DNI);
         }
         
         
@@ -330,6 +338,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @param DNI
      * @return Devuelve el Voluntario asociado a ese dni, sin comprobar si esta desactivado o no
      */
+    @Override
     public Voluntario obtenerDatosVoluntario( String DNI )
     {
         
@@ -339,6 +348,20 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
     }
 
     
+    /**
+     * Funcion que devuelve un listado con todos los Voluntarios del sistema
+     * @return Devuelve un listado con todos los Voluntarios del sistema
+     */
+    public static ArrayList<Voluntario> obtenerVoluntarios()
+    {
+        
+        ArrayList<Voluntario> usuarios = new ArrayList<Voluntario>();
+        
+        usuarios = diaketas.diaketas.ong.buscarVoluntarios();
+        
+        return usuarios;
+        
+    }
     
     
 }

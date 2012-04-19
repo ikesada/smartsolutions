@@ -28,12 +28,12 @@ public class diaketas {
     public static void main(String args[]) {
 
         ong = new ONG();
-
+/*
         try {
             UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
         }
-
+*/
         /*
          * Iniciamos la interfaz
          */
