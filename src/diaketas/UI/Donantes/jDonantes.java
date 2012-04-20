@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
  * @author Alex
  */
 public class jDonantes extends javax.swing.JPanel {
+
     JPanel panel;
     jBuscarDonante BuscarDonante;
 
@@ -21,13 +22,14 @@ public class jDonantes extends javax.swing.JPanel {
      * Creates new form jDonantes
      */
     public jDonantes() {
-        
+
         initComponents();
         /*
-        int anchoV = this.panel.getHeight();
-        int altoV = this.panel.getWidth();
-        
-        System.out.println(anchoV + " " + altoV);*/
+         * int anchoV = this.panel.getHeight(); int altoV =
+         * this.panel.getWidth();
+         *
+         * System.out.println(anchoV + " " + altoV);
+         */
     }
 
     /**
@@ -51,7 +53,13 @@ public class jDonantes extends javax.swing.JPanel {
         botonModificar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 204, 153));
         setPreferredSize(new java.awt.Dimension(676, 306));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(676, 306));
@@ -178,30 +186,30 @@ public class jDonantes extends javax.swing.JPanel {
     private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
 
         panel = new jAltaDonante();
-        
+
         UI.jPrincipal.add("AltaDonante", panel);
         UI.cl.show(UI.jPrincipal, "AltaDonante");
     }//GEN-LAST:event_botonAltaActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-       
+
         panel = new jBuscarDonante("ConsultarDonante");
-        
+
         UI.jPrincipal.add("ConsultarDonante", panel);
         UI.cl.show(UI.jPrincipal, "ConsultarDonante");
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-      
+
         panel = new jBuscarDonante("ModificarDonante");
-        
+
         UI.jPrincipal.add("ModificarDonante", panel);
         UI.cl.show(UI.jPrincipal, "ModificarDonante");
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
         panel = new jBajaDonante();
-        
+
         UI.jPrincipal.add("BajaDonante", panel);
         UI.cl.show(UI.jPrincipal, "BajaDonante");
     }//GEN-LAST:event_botonBajaActionPerformed
@@ -211,17 +219,27 @@ public class jDonantes extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel1ComponentShown
 
     private void jPanel1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentResized
- //       System.out.println("JDONANTES");
-  //      System.out.println(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height + " " + this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width);
+        //       System.out.println("JDONANTES");
+        //      System.out.println(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height + " " + this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width);
         //jPanel1.setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-179));
         //setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-179));
-      //  jPanel1.setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-179));
+        //  jPanel1.setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-179));
         //setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-18, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-179));
         //P.setSize(new java.awt.Dimension(this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().height-179, this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getSize().width-18));
         //  System.out.println(this.getSize().height + " " + this.getSize().width);
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1ComponentResized
 
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+
+        double fuente = 13 + (this.getSize().width - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jLabel1.setFont(new Font("Courier", Font.BOLD, (int) fuente + 12));
+        jLabel3.setFont(new Font("Courier", Font.BOLD, (int) fuente + 2));
+    }//GEN-LAST:event_formComponentResized
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;
     private javax.swing.JButton botonBaja;

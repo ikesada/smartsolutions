@@ -74,9 +74,9 @@ public class jAltaDonante extends javax.swing.JPanel {
         Periodicidad_Donaciones = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         Tipo_Donante = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
 
-		setBackground(new java.awt.Color(255, 204, 153));
-				
+        setBackground(new java.awt.Color(255, 204, 153));
         setPreferredSize(new java.awt.Dimension(1262, 628));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -150,14 +150,12 @@ public class jAltaDonante extends javax.swing.JPanel {
 
         NIF_CIF.setColumns(9);
         NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NIF_CIFKeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NIF_CIFKeyTyped(evt);
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 204, 153));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Dar de alta a un donante");
 
@@ -208,6 +206,8 @@ public class jAltaDonante extends javax.swing.JPanel {
 
         Tipo_Donante.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Persona", "Empresa" }));
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,7 +218,10 @@ public class jAltaDonante extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1))
                             .addComponent(jLabel3)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -276,7 +279,11 @@ public class jAltaDonante extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,11 +514,8 @@ public class jAltaDonante extends javax.swing.JPanel {
          * this.Observaciones.setFont(null);
          */
         ancho = this.getSize().width;
-        alto = this.getSize().height;
 
-        System.out.println(this.getComponentCount());
         double fuente = 13 + (ancho - 1262) / 30;
-        System.out.println(fuente);
         for (int i = 0; i < this.getComponentCount(); i++) {
             this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
         }
@@ -520,11 +524,11 @@ public class jAltaDonante extends javax.swing.JPanel {
             this.Tipo_Donante.setFont(new Font("Courier", Font.BOLD, 22));
             this.Tipo_Periodicidad.setFont(new Font("Courier", Font.BOLD, 22));
         }
+        jLabel1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jLabel3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+ 
     }//GEN-LAST:event_formComponentResized
 
-    private void NIF_CIFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_CIFKeyPressed
-        System.out.println(this.getSize().height + " " + this.getSize().width);        // TODO add your handling code here:
-    }//GEN-LAST:event_NIF_CIFKeyPressed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Cuantia_Donaciones;
@@ -556,6 +560,7 @@ public class jAltaDonante extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;

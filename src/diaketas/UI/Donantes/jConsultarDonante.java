@@ -92,9 +92,9 @@ public class jConsultarDonante extends javax.swing.JPanel {
         Observaciones = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Fecha_Inscripcion = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
-		setBackground(new java.awt.Color(255, 204, 153));
-		
+        setBackground(new java.awt.Color(255, 204, 153));
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
         setPreferredSize(new java.awt.Dimension(1100, 518));
@@ -103,7 +103,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
                 formComponentResized(evt);
             }
         });
-
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Donantes");
@@ -171,6 +170,8 @@ public class jConsultarDonante extends javax.swing.JPanel {
 
         Fecha_Inscripcion.setText("Fecha Inscripcion");
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Socios.gif"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,6 +180,8 @@ public class jConsultarDonante extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -238,7 +241,11 @@ public class jConsultarDonante extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(35, 35, 35)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -308,7 +315,7 @@ public class jConsultarDonante extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(Fecha_Inscripcion))))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -322,11 +329,13 @@ public class jConsultarDonante extends javax.swing.JPanel {
         for (int i = 0; i < this.getComponentCount(); i++) {
             this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
         }
-        if (fuente > 22) {
+     /*   if (fuente > 22) {
             this.Observaciones.setFont(new Font("Courier", Font.BOLD, 22));
             this.Tipo_Donante.setFont(new Font("Courier", Font.BOLD, 22));
             this.Tipo_Periodicidad.setFont(new Font("Courier", Font.BOLD, 22));
-        }
+        }*/
+        jLabel1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jLabel3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
     }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -359,6 +368,7 @@ public class jConsultarDonante extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
