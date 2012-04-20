@@ -5,6 +5,7 @@
 package diaketas.UI.HistorialesyAcciones;
 
 import diaketas.UI.UI;
+import java.awt.Font;
 import javax.swing.JPanel;
 
 /**
@@ -33,21 +34,25 @@ public class jHistorialyAcciones extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
+        jTitulo2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Historiales = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
+        jTitulo3 = new javax.swing.JLabel();
         Listados = new javax.swing.JButton();
+        jTitulo1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Historiales y Acciones");
+        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                jPanel1ComponentResized(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Acciones");
+        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo2.setText("Acciones");
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -59,8 +64,8 @@ public class jHistorialyAcciones extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setText("Historial");
+        jTitulo3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo3.setText("Historial");
 
         Listados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/listados.png"))); // NOI18N
         Listados.setText("Listados");
@@ -69,6 +74,11 @@ public class jHistorialyAcciones extends javax.swing.JPanel {
                 ListadosActionPerformed(evt);
             }
         });
+
+        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTitulo1.setText("Historial y Acciones");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/historiales.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,26 +90,32 @@ public class jHistorialyAcciones extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(Listados)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel4)
+                        .addComponent(jTitulo2, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jTitulo3)
                     .addComponent(Historiales, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 347, Short.MAX_VALUE))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(42, 42, 42)
+                        .addComponent(jTitulo1)))
+                .addGap(0, 228, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jTitulo1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(jTitulo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -107,7 +123,7 @@ public class jHistorialyAcciones extends javax.swing.JPanel {
                     .addComponent(Listados, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(jLabel4)
+                .addComponent(jTitulo3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,17 +161,35 @@ public class jHistorialyAcciones extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "Listados");
     }//GEN-LAST:event_ListadosActionPerformed
 
+    private void jPanel1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentResized
+        // TODO add your handling code here:
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        jTitulo3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        
+    }//GEN-LAST:event_jPanel1ComponentResized
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Historiales;
     private javax.swing.JButton Listados;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel jTitulo1;
+    private javax.swing.JLabel jTitulo2;
+    private javax.swing.JLabel jTitulo3;
     // End of variables declaration//GEN-END:variables
 }
