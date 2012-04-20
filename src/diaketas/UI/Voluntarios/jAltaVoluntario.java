@@ -641,7 +641,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
         // TODO add your handling code here:
-        System.out.println("Cambio de tamano");
+/*        System.out.println("Cambio de tamano");
         int ancho, alto;
         ancho = this.getSize().width;
         alto = this.getSize().height;
@@ -653,6 +653,7 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         
         jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+*/
     }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
