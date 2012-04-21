@@ -34,171 +34,87 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
         
         
         
-        ArrayList<Voluntario> usuarios = new ArrayList<Voluntario>();      
-        usuarios = Gestor_de_voluntarios.obtenerVoluntarios();
-        
-        //System.out.println("Numero de usuarios leidos: "+usuarios.size());
-        
-        
-        /*
-         Object [] fila = new Object[3];
-			String nom=txtNombre.getText();
-			String ape=txtApellido.getText();
-			int ed=Integer.parseInt(txtEdad.getText());
-			fila[0] = nom;
-			fila[1] = ape;
-			fila[2]	= ed;
-			modelo.addRow ( fila );
-         */
-        
+        ArrayList<Voluntario> usuarios = Gestor_de_voluntarios.obtenerVoluntarios();
+               
         //Para establecer el modelo al JTable
         DefaultTableModel modelo = new DefaultTableModel();
-        this.jTable1.setModel(modelo);
-
+        jTable1.setModel(modelo);
         
-        //PRIMERO VOY A INTENTAR MOSTRAR UNA FILA CON EL PRIMER USUARIO
-        Object[] fila = new Object[14];     //creo un objeto fila con 14 campos
+        //Creamos columnas
+        modelo.addColumn("NIF");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellidos");
+        modelo.addColumn("Fecha Nacimiento");
+        modelo.addColumn("Localidad");
+        modelo.addColumn("Activo");
+        modelo.addColumn("Fecha Desactivacion");
+        modelo.addColumn("Email");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Nacionalidad");
+        modelo.addColumn("Domicilio");
+        modelo.addColumn("Codigo Postal");
+        modelo.addColumn("Fecha Inicio");
+        modelo.addColumn("Observaciones");        
         
-        fila[0] = (Object)usuarios.get(0).NIF_CIF;
-        fila[1] = (Object)usuarios.get(0).Nombre;
-    
-
-        fila[2] = usuarios.get(0).Apellidos;
-        //fila[3] = usuarios.get(contFilas).FechaNac;
-        fila[4] = usuarios.get(0).Localidad;
-        fila[5] = usuarios.get(0).Activo;
-        //fila[6] = usuarios.get(contFilas).FechaDesac;
-        fila[7] = usuarios.get(0).Email;
-        fila[8] = usuarios.get(0).Telefono;
-        fila[9] = usuarios.get(0).Nacionalidad;
-        fila[10] = usuarios.get(0).Domicilio;
-        fila[11] = usuarios.get(0).Codigo_Postal;
-        //fila[12] = usuarios.get(contFilas).Fecha_Inicio;
-        fila[13] = usuarios.get(0).Observaciones;
-
-
-        //  El elemento jTable no permite mostrar datos del tipo Date, por ello, antes de mostrar el dato
-        //  se comprueba si es de tipo Date, y si es asi, se pasa a string para mostrarlo en la tabla.
-        //  Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
-
-
-        if( usuarios.get(0).FechaNac!=null  )
-        {
-            java.util.Date date = (java.util.Date) usuarios.get(0).FechaNac;   //primero leo el objeto fecha
-            java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-            String fecha = sdf.format(date);
-            fila[3] = fecha;                
-        }
-        else
-        {
-            fila[3] = "";
-
-        }
-
-        if( usuarios.get(0).FechaDesac!=null  )
-        {
-            java.util.Date date = (java.util.Date) usuarios.get(0).FechaDesac;   //primero leo el objeto fecha
-            java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-            String fecha = sdf.format(date);
-            fila[6] = fecha;                
-        }
-        else
-        {
-            fila[6] = "";
-
-        }
-
-        if( usuarios.get(0).Fecha_Inicio!=null  )
-        {
-            java.util.Date date = (java.util.Date) usuarios.get(0).Fecha_Inicio;   //primero leo el objeto fecha
-            java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-            String fecha = sdf.format(date);
-            fila[12] = fecha;                
-        }
-        else
-        {
-            fila[12] = "";
-
-        }
-
-        modelo.addRow(fila);
+        Object[] fila = new Object[14];
         
-/*  LO MISMO PERO PARA TODOS LOS USUARIOS CONTENIDOS EN EL ARRAYLIST        
-        int contFilas = 0;
-        while ( contFilas < usuarios.size() ) 
-        { 
-            Object[] fila = new Object[14];     //creo un objeto fila con 14 campos
-            
-            
-            System.out.println("NIF_CIF del voluntario primero:"+usuarios.get(contFilas).NIF_CIF);
-            fila[0] = usuarios.get(contFilas).NIF_CIF;
-            fila[1] = usuarios.get(contFilas).Nombre;
-            fila[2] = usuarios.get(contFilas).Apellidos;
-            //fila[3] = usuarios.get(contFilas).FechaNac;
-            fila[4] = usuarios.get(contFilas).Localidad;
-            fila[5] = usuarios.get(contFilas).Activo;
-            //fila[6] = usuarios.get(contFilas).FechaDesac;
-            fila[7] = usuarios.get(contFilas).Email;
-            fila[8] = usuarios.get(contFilas).Telefono;
-            fila[9] = usuarios.get(contFilas).Nacionalidad;
-            fila[10] = usuarios.get(contFilas).Domicilio;
-            fila[11] = usuarios.get(contFilas).Codigo_Postal;
-            //fila[12] = usuarios.get(contFilas).Fecha_Inicio;
-            fila[13] = usuarios.get(contFilas).Observaciones;
-            
-            
+        /*Obtenemos todas las filas*/
+        
+        for (int i = 0; i < usuarios.size(); i++){
+            fila[0] = usuarios.get(i).NIF_CIF;
+            fila[1] = usuarios.get(i).Nombre;
+            fila[2] = usuarios.get(i).Apellidos;
+            //fila[3] = usuarios.get(i).FechaNac;
+            fila[4] = usuarios.get(i).Localidad;
+            fila[5] = usuarios.get(i).Activo;
+            //fila[6] = usuarios.get(i).FechaDesac;
+            fila[7] = usuarios.get(i).Email;
+            fila[8] = usuarios.get(i).Telefono;
+            fila[9] = usuarios.get(i).Nacionalidad;
+            fila[10] = usuarios.get(i).Domicilio;
+            fila[11] = usuarios.get(i).Codigo_Postal;
+            //fila[12] = usuarios.get(i).Fecha_Inicio;
+            fila[13] = usuarios.get(i).Observaciones;
+
+
             //  El elemento jTable no permite mostrar datos del tipo Date, por ello, antes de mostrar el dato
-            //    se comprueba si es de tipo Date, y si es asi, se pasa a string para mostrarlo en la tabla.
-            //    Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
-            
-            
-            if( usuarios.get(contFilas).FechaNac!=null  )
+            //  se comprueba si es de tipo Date, y si es asi, se pasa a string para mostrarlo en la tabla.
+            //  Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
+
+
+            if( usuarios.get(i).FechaNac!=null  )
             {
-                java.util.Date date = (java.util.Date) usuarios.get(contFilas).FechaNac;   //primero leo el objeto fecha
+                java.util.Date date = (java.util.Date) usuarios.get(i).FechaNac;   //primero leo el objeto fecha
                 java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-                String fecha = sdf.format(date);
-                fila[3] = fecha;                
+                fila[3] = (String) sdf.format(date);          
             }
-            else
-            {
+            else{
                 fila[3] = "";
+            }
 
-            }
-            
-            if( usuarios.get(contFilas).FechaDesac!=null  )
+            if( usuarios.get(i).FechaDesac!=null  )
             {
-                java.util.Date date = (java.util.Date) usuarios.get(contFilas).FechaDesac;   //primero leo el objeto fecha
+                java.util.Date date = (java.util.Date) usuarios.get(i).FechaDesac;   //primero leo el objeto fecha
                 java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-                String fecha = sdf.format(date);
-                fila[6] = fecha;                
+                fila[6] = (String)sdf.format(date);              
             }
-            else
-            {
+            else{
                 fila[6] = "";
-
             }
-            
-            if( usuarios.get(contFilas).Fecha_Inicio!=null  )
+
+            if( usuarios.get(i).Fecha_Inicio!=null  )
             {
-                java.util.Date date = (java.util.Date) usuarios.get(contFilas).Fecha_Inicio;   //primero leo el objeto fecha
+                java.util.Date date = (java.util.Date) usuarios.get(i).Fecha_Inicio;   //primero leo el objeto fecha
                 java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-                String fecha = sdf.format(date);
-                fila[12] = fecha;                
+                fila[12] = (String) sdf.format(date);              
             }
-            else
-            {
+            else{
                 fila[12] = "";
-
             }
-            
-            modelo.addRow(fila);
 
-            contFilas++;
+            /*Añadimos la fila*/
+            modelo.addRow(fila);            
         }
-*/    
-            
-
-
     }
 
     /**
