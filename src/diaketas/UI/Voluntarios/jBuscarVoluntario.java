@@ -83,7 +83,7 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Consultar");
+        jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -128,7 +128,7 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(86, 86, 86)
                                 .addComponent(jButton1)
-                                .addGap(57, 57, 57)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton2)))
                         .addGap(0, 140, Short.MAX_VALUE)))
                 .addContainerGap())
