@@ -171,10 +171,6 @@ public class UI extends javax.swing.JFrame {
 
     private void botonBeneficiariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBeneficiariosActionPerformed
         /*Modificamos zona principal*/
-        this.setBackground(new java.awt.Color(223,232,249));
-        this.jPrincipalScroll.setBackground(new java.awt.Color(223,232,249));
-        jPrincipal.setBackground(new java.awt.Color(223,232,249));
-        this.rootPane.setBackground(new java.awt.Color(223,232,249));
         cl.show(jPrincipal, "Beneficiarios");
 
     }//GEN-LAST:event_botonBeneficiariosActionPerformed
