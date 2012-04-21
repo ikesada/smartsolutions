@@ -8,13 +8,19 @@ import diaketas.ConexionBD;
 import diaketas.Modelo.Gestores.Gestor_de_voluntarios;
 import diaketas.Modelo.ONG.Voluntario;
 import diaketas.UI.UI;
+import java.awt.Component;
 import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 
 
@@ -54,7 +60,9 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
         modelo.addColumn("Domicilio");
         modelo.addColumn("Codigo Postal");
         modelo.addColumn("Fecha Inicio");
-        modelo.addColumn("Observaciones");        
+        modelo.addColumn("Observaciones");   
+        
+
         
         Object[] fila = new Object[14];
         
@@ -113,8 +121,30 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
             }
 
             /*Añadimos la fila*/
-            modelo.addRow(fila);            
+            modelo.addRow(fila);     
         }
+        
+        /*Adjustamos el tamaño de las columnas*/
+        int numColumnas = fila.length;
+        for (int columna = 0; columna < numColumnas; columna++){          
+            
+            TableColumn tableColumn = jTable1.getColumnModel().getColumn(columna); 
+            int maxWidth =  (int)jTable1.getTableHeader().getDefaultRenderer().getTableCellRendererComponent(
+                    jTable1, tableColumn.getIdentifier() , false, false, -1, columna).getPreferredSize().getWidth();
+                    
+                       
+            /*Buscamos la mayor longitud entre los campos*/
+            for(int i = 0; i < usuarios.size(); i++)
+            {
+                Object cellValue = jTable1.getValueAt(i, columna);
+                if(cellValue != null)
+                    maxWidth = Math.max(jTable1.getCellRenderer(i, columna).getTableCellRendererComponent(jTable1, cellValue, false, false, i, columna).getPreferredSize().width + jTable1.getIntercellSpacing().width, maxWidth);
+            }
+            maxWidth++;
+            jTable1.getColumnModel().getColumn(columna).setWidth(maxWidth);
+            jTable1.getColumnModel().getColumn(columna).setMaxWidth(maxWidth);            
+        }
+
     }
 
     /**
@@ -178,6 +208,7 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jScrollPane1.setViewportView(jTable1);
 
         jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -240,7 +271,7 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
