@@ -239,6 +239,12 @@ public class jAltaFamiliar extends javax.swing.JPanel {
         
         jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        
+        Nombre_Apellidos.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Ocupacion.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Parentesco.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Fecha_Nacimiento.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        
     }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

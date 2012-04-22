@@ -194,6 +194,8 @@ public class jBuscarBeneficiario extends javax.swing.JPanel {
         
         jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        
+        NIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
