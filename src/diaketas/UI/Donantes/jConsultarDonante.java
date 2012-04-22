@@ -107,16 +107,22 @@ public class jConsultarDonante extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Donantes");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel8.setText("Email");
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel11.setText("Localidad");
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel12.setText("Telefono");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel6.setText("Nacimiento");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel4.setText("Nombre");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel5.setText("Apellidos");
 
         botonOK.setText("Ok");
@@ -129,6 +135,7 @@ public class jConsultarDonante extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Consultar a un donante");
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel18.setText("NIF");
 
         NIF_CIF.setText("NIF");
@@ -145,14 +152,19 @@ public class jConsultarDonante extends javax.swing.JPanel {
 
         Telefono.setText("Telefono");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel2.setText("Observaciones");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel7.setText("Tipo Donante");
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel13.setText("Periodicidad Donaciones");
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel17.setText("Tipo Periodicidad");
 
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel20.setText("Cuantia Donaciones");
 
         Tipo_Donante.setText("Tipo_Donante");
@@ -166,6 +178,7 @@ public class jConsultarDonante extends javax.swing.JPanel {
         Observaciones.setText("Observaciones");
         Observaciones.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel10.setText("Fecha Inscripcion");
 
         Fecha_Inscripcion.setText("Fecha Inscripcion");
@@ -246,7 +259,6 @@ public class jConsultarDonante extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(35, 35, 35)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +327,7 @@ public class jConsultarDonante extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(Fecha_Inscripcion))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -336,6 +348,21 @@ public class jConsultarDonante extends javax.swing.JPanel {
         }*/
         jLabel1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jLabel3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        
+        NIF_CIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Nombre.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Email.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Apellidos.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Localidad.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Telefono.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Fecha_Nacimiento.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Observaciones.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Fecha_Inscripcion.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Tipo_Donante.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Tipo_Periodicidad.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Periodicidad_Donaciones.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Cuantia_Donaciones.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        
     }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
