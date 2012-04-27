@@ -347,4 +347,22 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     public void introducirDatosFamiliar(String Nombre_Apellidos, Date Fecha_Nac, String Parentesco, String Ocupacion){
         datosFamiliar = new Familiar (Nombre_Apellidos,Fecha_Nac,Ocupacion,Parentesco);
     }  
+    
+    
+    
+     
+    /**
+     * Funcion que devuelve un listado con todos los Beneficiarios del sistema
+     * @return Devuelve un listado con todos los Beneficiarios del sistema
+     */
+    public static ArrayList<Beneficiario> obtenerBeneficiarios()
+    {
+        
+        ArrayList<Beneficiario> usuarios = new ArrayList<Beneficiario>();
+        
+        usuarios = diaketas.diaketas.ong.buscarBeneficiarios();
+        
+        return usuarios;
+        
+    }
 }

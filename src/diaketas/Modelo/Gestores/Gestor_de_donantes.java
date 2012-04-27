@@ -10,6 +10,7 @@ import diaketas.Modelo.ONG.ONG;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -222,4 +223,22 @@ public class Gestor_de_donantes implements iGestorDonantes {
 
         return existe;
     }
+    
+    
+    
+    /**
+     * Funcion que devuelve un listado con todos los Donantes del sistema
+     * @return Devuelve un listado con todos los Donantes del sistema
+     */
+    public static ArrayList<Donante> obtenerDonantes()
+    {
+        
+        ArrayList<Donante> usuarios = new ArrayList<Donante>();
+        
+        usuarios = diaketas.diaketas.ong.buscarDonantes();
+        
+        return usuarios;
+        
+    }
+    
 }
