@@ -74,4 +74,21 @@ public interface iONG {
      */
     public ArrayList<Voluntario> buscarVoluntarios();
     
+    
+    
+    /**
+     * Funcion que devuelve un listado con todos los Donantes del sistema
+     * @return Devuelve un listado con todos los Donantes del sistema
+     */
+    public ArrayList<Donante> buscarDonantes();
+    
+    
+    
+    
+    /**
+     * Funcion que devuelve un listado con todos los Beneficiarios del sistema
+     * @return Devuelve un listado con todos los Beneficiarios del sistema
+     */
+    public ArrayList<Beneficiario> buscarBeneficiarios();
+    
 }
