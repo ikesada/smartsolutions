@@ -5,13 +5,17 @@
 package diaketas.UI.HistorialesyAcciones;
 
 import diaketas.ConexionBD;
+import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
+import diaketas.Modelo.ONG.Beneficiario;
 import diaketas.UI.UI;
 import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 
 /**
@@ -28,83 +32,99 @@ public class jListadoBeneficiarios extends javax.swing.JPanel {
         
         initComponents();
         
+        ArrayList<Beneficiario> usuarios = Gestor_de_beneficiarios.obtenerBeneficiarios();
+               
+        //Para establecer el modelo al JTable
+        DefaultTableModel modelo = new DefaultTableModel();
+        jTable1.setModel(modelo);
         
+        //Creamos columnas
+        modelo.addColumn("NIF");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellidos");
+        modelo.addColumn("Fecha Nacimiento");        
+        modelo.addColumn("Nacionalidad");
+        modelo.addColumn("Estado Civil");
+        modelo.addColumn("Domicilio");
+        modelo.addColumn("Localidad");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Email");
+        modelo.addColumn("Fecha inscripcion");
+        modelo.addColumn("Expediente");
+        modelo.addColumn("Profesion");
+
         
-            //Para establecer el modelo al JTable
-            DefaultTableModel modelo = new DefaultTableModel();
-            this.jTable1.setModel(modelo);
+        Object[] fila = new Object[13];
+        
+        /*Obtenemos todas las filas*/
+        
+        for (int i = 0; i < usuarios.size(); i++){
+            fila[0] = usuarios.get(i).NIF_CIF;
+            fila[1] = usuarios.get(i).Nombre;
+            fila[2] = usuarios.get(i).Apellidos;
+            //fila[3] = usuarios.get(i).FechaNac;
+            fila[4] = usuarios.get(i).Nacionalidad;
+            fila[5] = usuarios.get(i).Estado_civil;
+            fila[6] = usuarios.get(i).Domicilio;
+            fila[7] = usuarios.get(i).Localidad;
+            fila[8] = usuarios.get(i).Telefono;
+            fila[9] = usuarios.get(i).Email;
+            //fila[10] = usuarios.get(i).Fecha_Inscripcion;
+            fila[11] = usuarios.get(i).Expediente;
+            fila[12] = usuarios.get(i).Profesion;
             
-            //Me conecto a la BD
-            ConexionBD con = new ConexionBD();
-            con.conectarBD();
-            
-            
-            //Para ejecutar la consulta
-            
-            try{
-                
-                //Crear objeto Statement para realizar queries a la base de datos
-                Statement s = con.conexion().createStatement();
 
-                //Un objeto ResultSet, almacena los datos de resultados de una consulta
-                //ResultSet rs = s.executeQuery("select * from Usuario u, Beneficiario b where u.NIF_CIF=b.NIF_CIF");
-                ResultSet rs = s.executeQuery("select u.NIF_CIF, Nombre, Apellidos, Fecha_Nacimiento_Fundacion, Localidad, Activo, Fecha_Desactivacion, Email, Telefono, Nacionalidad, Nacionalidad, Estado_Civil, Domicilio, Codigo_Postal, Fecha_Inscripcion, Expediente, Motivo, Precio_Vivienda, Tipo_Vivienda, Observaciones_Datos_Personales, Observaciones_Familiares, Observaciones_Vivienda, Ciudad_Nacimiento, Situacion_Economica, Nivel_Estudios, Profesion, Experiencia_Laboral from Usuario u, Beneficiario b where u.NIF_CIF=b.NIF_CIF");
-                
-                
-                //Obteniendo la informacion de las columnas que estan siendo consultadas
-                ResultSetMetaData rsMd = rs.getMetaData();
-                
-                //La cantidad de columnas que tiene la consulta
-                int cantidadColumnas = rsMd.getColumnCount();
-                
-                
-                //Establecer como cabezeras el nombre de las colimnas
-                for (int i = 1; i <= cantidadColumnas; i++) {
-                modelo.addColumn(rsMd.getColumnLabel(i));
-                }
-                
-                
-                
-                //Creando las filas para el JTable
-                while (rs.next()) 
-                {
-                    Object[] fila = new Object[cantidadColumnas];
-                    for (int i = 0; i < cantidadColumnas; i++) 
-                    {
-                        
-                        /*El elemento jTable no permite mostrar datos del tipo Date, por ello, antes de mostrar el dato
-                        se comprueba si es de tipo Date, y si es asi, se pasa a string para mostrarlo en la tabla.
-                        Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
-                        */
-                        if( rs.getMetaData().getColumnType(i+1) == 91 ) //TIPO_DATE = 91
-                        {
-                            if(rs.getObject(i+1)!=null  )
-                            {
-                                java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
-                                java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
-                                String fecha = sdf.format(date);
+            //  El elemento jTable no permite mostrar datos del tipo Date, por ello, antes de mostrar el dato
+            //  se comprueba si es de tipo Date, y si es asi, se pasa a string para mostrarlo en la tabla.
+            //  Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
 
-                                fila[i] = fecha;
-                            }
-                            else
-                            {
-                                fila[i] = "";
-                                                               
-                            }
-                        }
-                        else{
-                            fila[i]=rs.getObject(i+1);
-                        }
-                        
-                    }
-                    modelo.addRow(fila);
-                }
-            
+
+            if( usuarios.get(i).FechaNac!=null  )
+            {
+                java.util.Date date = (java.util.Date) usuarios.get(i).FechaNac;   //primero leo el objeto fecha
+                java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
+                fila[3] = (String) sdf.format(date);          
             }
-            catch(SQLException e){ System.out.println(e); }
-            catch(Exception e){ System.out.println(e); }
+            else{
+                fila[3] = "";
+            }
+
+            if( usuarios.get(i).Fecha_Inscripcion!=null  )
+            {
+                java.util.Date date = (java.util.Date) usuarios.get(i).Fecha_Inscripcion;   //primero leo el objeto fecha
+                java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
+                fila[10] = (String)sdf.format(date);              
+            }
+            else{
+                fila[10] = "";
+            }
+
+
+            /*Añadimos la fila*/
+            modelo.addRow(fila);     
+        }
+        
+        /*Adjustamos el tamaño de las columnas*/
+        int numColumnas = fila.length;
+        for (int columna = 0; columna < numColumnas; columna++){          
             
-            
+            TableColumn tableColumn = jTable1.getColumnModel().getColumn(columna); 
+            int maxWidth =  (int)jTable1.getTableHeader().getDefaultRenderer().getTableCellRendererComponent(
+                    jTable1, tableColumn.getIdentifier() , false, false, -1, columna).getPreferredSize().getWidth();
+                    
+                       
+            /*Buscamos la mayor longitud entre los campos*/
+            for(int i = 0; i < usuarios.size(); i++)
+            {
+                Object cellValue = jTable1.getValueAt(i, columna);
+                if(cellValue != null)
+                    maxWidth = Math.max(jTable1.getCellRenderer(i, columna).getTableCellRendererComponent(jTable1, cellValue, false, false, i, columna).getPreferredSize().width + jTable1.getIntercellSpacing().width, maxWidth);
+            }
+            maxWidth++;
+            jTable1.getColumnModel().getColumn(columna).setWidth(maxWidth);
+            jTable1.getColumnModel().getColumn(columna).setMaxWidth(maxWidth);            
+        }
+
 
 
     }
