@@ -791,7 +791,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         jTitulo3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
         jTitulo5.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
         
-        /*NIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        NIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Nombre.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Email.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Apellidos.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
@@ -819,7 +819,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         NIF_Voluntario.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         botonAniadir.setFont(new Font("Courier", Font.BOLD, (int) fuente));
         botonEliminar.setFont(new Font("Courier", Font.BOLD, (int) fuente));
-        botonModificar.setFont(new Font("Courier", Font.BOLD, (int) fuente));*/
+        botonModificar.setFont(new Font("Courier", Font.BOLD, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     private void Ciudad_NacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ciudad_NacimientoKeyTyped
