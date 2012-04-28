@@ -875,7 +875,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         jTitulo3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
         jTitulo5.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
         
-        NIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        /*NIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Nombre.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Email.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Apellidos.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
@@ -903,7 +903,7 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
         NIF_Voluntario.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         botonAniadir.setFont(new Font("Courier", Font.BOLD, (int) fuente));
         botonEliminar.setFont(new Font("Courier", Font.BOLD, (int) fuente));
-        botonModificar.setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        botonModificar.setFont(new Font("Courier", Font.BOLD, (int) fuente));*/
     }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
