@@ -72,6 +72,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
         Fecha_Nacimiento.setText(formatoFecha.format(datosBeneficiario.FechaNac));
+        Fecha_Inicio.setText(formatoFecha.format(datosBeneficiario.Fecha_Inscripcion));
     }
     
      /**
@@ -151,6 +152,8 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         Experiencia_Laboral = new javax.swing.JTextArea();
         jLabel28 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        Fecha_Inicio = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(223, 232, 249));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -357,7 +360,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         });
 
         jBotones.setEnabled(false);
-        jBotones.setLayout(new java.awt.GridLayout());
+        jBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         botonAniadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir_familiar.png"))); // NOI18N
         botonAniadir.setText("Añadir");
@@ -423,6 +426,13 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
 
         jLabel28.setText("Tipo");
 
+        jLabel3.setText("Inicio");
+
+        Fecha_Inicio.setColumns(9);
+        Fecha_Inicio.setEditable(false);
+        Fecha_Inicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        Fecha_Inicio.setText("d/mm/aa");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -439,7 +449,6 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTitulo2)
                     .addComponent(jLabel27)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Experiencia_Laboral_SB)
                     .addComponent(jLabel9)
                     .addGroup(layout.createSequentialGroup()
@@ -481,12 +490,16 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(NIF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel40)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Expediente, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel40)
+                                .addGap(18, 18, 18)
+                                .addComponent(Expediente, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Fecha_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Fecha_Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -498,7 +511,8 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                             .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Nacionalidad)
                             .addComponent(Domicilio)
-                            .addComponent(Estado_Civil, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Estado_Civil, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(113, 113, 113)
@@ -533,7 +547,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                                 .addComponent(jLabel20)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -557,7 +571,9 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
                             .addComponent(NIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel40)
                             .addComponent(Expediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(Fecha_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
@@ -820,6 +836,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
         botonAniadir.setFont(new Font("Courier", Font.BOLD, (int) fuente));
         botonEliminar.setFont(new Font("Courier", Font.BOLD, (int) fuente));
         botonModificar.setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        Fecha_Inicio.setFont(new Font("Courier", Font.BOLD, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     private void Ciudad_NacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ciudad_NacimientoKeyTyped
@@ -973,6 +990,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JTextField Expediente;
     private javax.swing.JTextArea Experiencia_Laboral;
     private javax.swing.JScrollPane Experiencia_Laboral_SB;
+    private javax.swing.JFormattedTextField Fecha_Inicio;
     private javax.swing.JFormattedTextField Fecha_Nacimiento;
     private javax.swing.JTextField Localidad;
     private javax.swing.JTextField Motivo;
@@ -1017,6 +1035,7 @@ public class jModificarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
