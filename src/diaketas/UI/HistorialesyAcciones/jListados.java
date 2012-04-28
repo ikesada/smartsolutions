@@ -44,10 +44,11 @@ public class jListados extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         botonOK = new javax.swing.JButton();
         botonCancel = new javax.swing.JButton();
-        listaDespleg = new javax.swing.JComboBox();
         jTitulo1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        listaDespleg = new javax.swing.JComboBox();
 
+        setBackground(new java.awt.Color(233, 246, 155));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);
@@ -73,17 +74,12 @@ public class jListados extends javax.swing.JPanel {
             }
         });
 
-        listaDespleg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Voluntarios", "Donantes", "Beneficiarios" }));
-        listaDespleg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaDesplegActionPerformed(evt);
-            }
-        });
-
         jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jTitulo1.setText("Historial y Acciones");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/historiales.png"))); // NOI18N
+
+        listaDespleg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Voluntarios", "Donantes", "Beneficiarios" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,21 +95,17 @@ public class jListados extends javax.swing.JPanel {
                                 .addComponent(jLabel4)
                                 .addGap(42, 42, 42)
                                 .addComponent(jTitulo1))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTitulo2)
-                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(listaDespleg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(173, 173, 173)
-                                    .addComponent(botonOK)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(botonCancel))))
+                            .addComponent(jTitulo2)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(listaDespleg, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(173, 173, 173)
+                                .addComponent(botonOK)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botonCancel)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -175,10 +167,6 @@ public class jListados extends javax.swing.JPanel {
             UI.cl.show(UI.jPrincipal, "HistorialyAcciones");
             // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelActionPerformed
-
-    private void listaDesplegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDesplegActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listaDesplegActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
         // TODO add your handling code here:

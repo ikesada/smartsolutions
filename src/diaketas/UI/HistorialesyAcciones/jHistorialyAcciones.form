@@ -30,6 +30,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="9b" green="f6" red="e9" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="componentResized" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanel1ComponentResized"/>
       </Events>
@@ -41,23 +46,25 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSeparator4" min="-2" pref="158" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="Listados" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="138" max="32767" attributes="0"/>
+                              <Component id="Listados" pref="158" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jTitulo2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jTitulo3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Historiales" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                      <Component id="jSeparator3" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="jTitulo1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Historiales" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jSeparator3" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="228" max="32767" attributes="0"/>
               </Group>
@@ -125,6 +132,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HistorialesActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="Historiales.setVerticalTextPosition(SwingConstants.BOTTOM); Historiales.setHorizontalTextPosition(SwingConstants.CENTER); Historiales.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator4">
         </Component>
@@ -146,6 +156,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadosActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="Listados.setVerticalTextPosition(SwingConstants.BOTTOM); Listados.setHorizontalTextPosition(SwingConstants.CENTER); Listados.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jTitulo1">
           <Properties>

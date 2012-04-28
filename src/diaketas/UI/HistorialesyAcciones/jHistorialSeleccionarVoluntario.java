@@ -46,6 +46,7 @@ public class jHistorialSeleccionarVoluntario extends javax.swing.JPanel {
         jTitulo1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(233, 246, 155));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);

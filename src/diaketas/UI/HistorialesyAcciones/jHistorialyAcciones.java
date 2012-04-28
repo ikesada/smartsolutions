@@ -7,6 +7,7 @@ package diaketas.UI.HistorialesyAcciones;
 import diaketas.UI.UI;
 import java.awt.Font;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -39,12 +40,15 @@ public class jHistorialyAcciones extends javax.swing.JPanel {
         jTitulo2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Historiales = new javax.swing.JButton();
+        Historiales.setVerticalTextPosition(SwingConstants.BOTTOM); Historiales.setHorizontalTextPosition(SwingConstants.CENTER); Historiales.setFont(new Font("Courier", Font.BOLD,14));
         jSeparator4 = new javax.swing.JSeparator();
         jTitulo3 = new javax.swing.JLabel();
         Listados = new javax.swing.JButton();
+        Listados.setVerticalTextPosition(SwingConstants.BOTTOM); Listados.setHorizontalTextPosition(SwingConstants.CENTER); Listados.setFont(new Font("Courier", Font.BOLD,14));
         jTitulo1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(233, 246, 155));
         jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 jPanel1ComponentResized(evt);
@@ -88,20 +92,21 @@ public class jHistorialyAcciones extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(Listados)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                            .addComponent(Listados, javax.swing.GroupLayout.PREFERRED_SIZE, 158, Short.MAX_VALUE)
+                            .addGap(143, 143, 143)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jTitulo2, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(jTitulo3)
-                    .addComponent(Historiales, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(42, 42, 42)
-                        .addComponent(jTitulo1)))
+                        .addComponent(jTitulo1))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Historiales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 228, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
