@@ -84,11 +84,6 @@ public class UI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1262, 628));
         setName("Principal");
         setPreferredSize(new java.awt.Dimension(1262, 109));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                formComponentResized(evt);
-            }
-        });
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -202,12 +197,6 @@ public class UI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cl.show(jPrincipal, "HistorialyAcciones");
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-System.out.println("UI");
-System.out.println(this.getSize().height + " " + this.getSize().width);// TODO add your handling code here:
-System.out.println(this.jPrincipalScroll.getSize().height + " " + this.jPrincipalScroll.getSize().width);// TODO add your handling code here:
-    }//GEN-LAST:event_formComponentResized
 
     /**
      *
