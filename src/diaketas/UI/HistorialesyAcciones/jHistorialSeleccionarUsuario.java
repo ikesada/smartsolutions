@@ -175,6 +175,8 @@ public class jHistorialSeleccionarUsuario extends javax.swing.JPanel {
         
         jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        
+        NIF_CIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     
