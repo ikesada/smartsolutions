@@ -225,10 +225,6 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
             }
         });
 
-        Tipo_Vivienda.setText("a");
-
-        Precio_Vivienda.setText("a");
-
         jLabel17.setText("Estado Civil");
 
         jLabel8.setText("Codigo Postal");
@@ -241,7 +237,7 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         jTitulo1.setText("Beneficiarios");
 
         jBotones.setEnabled(false);
-        jBotones.setLayout(new java.awt.GridLayout());
+        jBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar_familiar.png"))); // NOI18N
         botonConsultar.setText("Consultar");

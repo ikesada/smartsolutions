@@ -490,14 +490,8 @@
     <Component class="javax.swing.JLabel" name="Profesion">
     </Component>
     <Component class="javax.swing.JLabel" name="Tipo_Vivienda">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="a"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Precio_Vivienda">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="a"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Situacion_Economica">
     </Component>
