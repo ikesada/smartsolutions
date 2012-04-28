@@ -369,7 +369,19 @@ public class jAltaVoluntario extends javax.swing.JPanel {
         
         jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
-
+        
+        NIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        NIF1.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Nombre.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Apellidos.setFont(new Font("Courier", Font.PLAIN, (int) fuente));    
+        Email.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Telefono.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Poblacion.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        FechaNac.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Domicilio.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        CodPost.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Nacionalidad.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Obs.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     private void ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosKeyTyped

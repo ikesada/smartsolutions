@@ -304,7 +304,7 @@ public class jConsultarVoluntario extends javax.swing.JPanel {
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
         // TODO add your handling code here:
-/*        
+        
         System.out.println("Cambio de tamano");
         int ancho, alto;
         ancho = this.getSize().width;
@@ -317,7 +317,20 @@ public class jConsultarVoluntario extends javax.swing.JPanel {
         
         jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
-*/
+        
+        NIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        FechaInic.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Nombre.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Apellidos.setFont(new Font("Courier", Font.PLAIN, (int) fuente));    
+        Email.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Telefono.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Localidad.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        FechaNac.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Domicilio.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        CodPost.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Nacionalidad.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Obs.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+
     }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
