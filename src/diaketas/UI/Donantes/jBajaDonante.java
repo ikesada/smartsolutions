@@ -215,6 +215,8 @@ public class jBajaDonante extends javax.swing.JPanel {
         jLabel1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jLabel3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
         
+        NIF_CIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        NIF_Voluntario.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

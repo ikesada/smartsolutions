@@ -555,6 +555,22 @@ public class jModificarDonante extends javax.swing.JPanel {
         }
         jLabel1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
         jLabel3.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+        
+        NIF_CIF.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        NIF_Voluntario.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Nombre.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Email.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Apellidos.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Localidad.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Telefono.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Fecha_Nacimiento.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Observaciones.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Tipo_Donante.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Tipo_Periodicidad.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Periodicidad_Donaciones.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        Cuantia_Donaciones.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+
+        
     }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
