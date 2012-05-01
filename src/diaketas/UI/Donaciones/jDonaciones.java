@@ -4,12 +4,19 @@
  */
 package diaketas.UI.Donaciones;
 
+import diaketas.UI.UI;
+import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author kesada
  */
 public class jDonaciones extends javax.swing.JPanel {
 
+    JPanel panel;
+    
     /**
      * Creates new form jDiaketas
      */
@@ -26,68 +33,164 @@ public class jDonaciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jTitulo1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        botonCrear = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
+        botonConsultar = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
+        jTitulo2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        botonConsultar1 = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Donaciones");
+        setBackground(new java.awt.Color(233, 225, 242));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Donaciones");
+        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jTitulo1.setText("Movimientos");
 
-        botonConsultar1.setText("Operacion");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonConsultar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonConsultar1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
+        jPanel2.setLayout(new java.awt.GridLayout());
+
+        botonCrear.setText("Crear");
+        botonCrear.setMaximumSize(new java.awt.Dimension(123, 90));
+        botonCrear.setMinimumSize(new java.awt.Dimension(123, 90));
+        botonCrear.setPreferredSize(new java.awt.Dimension(123, 90));
+        botonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonCrear);
+        botonCrear.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonCrear.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonCrear.setFont(new Font("Courier", Font.BOLD,14));
+
+        botonEliminar.setText("Eliminar");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonEliminar);
+        botonEliminar.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonEliminar.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonEliminar.setFont(new Font("Courier", Font.BOLD,14));
+
+        botonConsultar.setText("Consultar");
+        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonConsultar);
+        botonConsultar.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonConsultar.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonConsultar.setFont(new Font("Courier", Font.BOLD,14));
+
+        botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonModificar);
+        botonModificar.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonModificar.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonModificar.setFont(new Font("Courier", Font.BOLD,14));
+
+        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo2.setText("Acciones");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(45, 45, 45)
+                        .addComponent(jTitulo1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTitulo2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTitulo1)
+                        .addGap(38, 38, 38)))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTitulo2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
+
+    }//GEN-LAST:event_botonCrearActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
+        panel = new jConsultarMovimiento();
+
+        UI.jPrincipal.add("ConsultarMovimiento", panel);
+        UI.cl.show(UI.jPrincipal, "ConsultarMovimiento");
+    }//GEN-LAST:event_botonConsultarActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+
+    }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    }//GEN-LAST:event_formComponentResized
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonConsultar1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonCrear;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonModificar;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel jTitulo1;
+    private javax.swing.JLabel jTitulo2;
     // End of variables declaration//GEN-END:variables
 }
