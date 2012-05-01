@@ -136,7 +136,7 @@ public class UI extends javax.swing.JFrame {
         jButton1.setFont(new Font("Courier", Font.BOLD,18));
 
         botonDonaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
-        botonDonaciones.setText("Movimientos");
+        botonDonaciones.setText("Donaciones");
         botonDonaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDonacionesActionPerformed(evt);
