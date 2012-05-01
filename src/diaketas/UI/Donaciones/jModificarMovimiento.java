@@ -12,13 +12,13 @@ import javax.swing.JPanel;
  *
  * @author Alex
  */
-public class jConsultarMovimiento extends javax.swing.JPanel {
+public class jModificarMovimiento extends javax.swing.JPanel {
 
     JPanel panel;
     /**
-     * Creates new form jConsultarMovimiento
+     * Creates new form jModificarMovimiento
      */
-    public jConsultarMovimiento() {
+    public jModificarMovimiento() {
         initComponents();
     }
     
@@ -33,31 +33,29 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        botonOK = new javax.swing.JButton();
+        botonCancel = new javax.swing.JButton();
         jTitulo2 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         Cod_Movimiento = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         Tipo = new javax.swing.JLabel();
-        Cuantia = new javax.swing.JLabel();
-        Fecha = new javax.swing.JLabel();
-        Confirmado = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         NIF_CIF_Implicado = new javax.swing.JLabel();
         NIF_CIF_Crea = new javax.swing.JLabel();
-        NIF_CIF_Confirma = new javax.swing.JLabel();
         jTitulo1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Descripcion = new javax.swing.JTextArea();
+        Cuantia = new javax.swing.JTextField();
+        botonConfirmar = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
+        Fecha = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(233, 225, 242));
         setForeground(new java.awt.Color(102, 102, 102));
@@ -69,9 +67,6 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel8.setText("Confirmado");
-
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel6.setText("Fecha");
 
@@ -81,15 +76,15 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel5.setText("Cuantia");
 
-        botonOK.setText("Ok");
-        botonOK.addActionListener(new java.awt.event.ActionListener() {
+        botonCancel.setText("Cancelar");
+        botonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonOKActionPerformed(evt);
+                botonCancelActionPerformed(evt);
             }
         });
 
         jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jTitulo2.setText("Consultar un donante");
+        jTitulo2.setText("Modificar un movimiento");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel18.setText("Codigo Movimiento");
@@ -97,12 +92,6 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
         Cod_Movimiento.setText("Cod_Movimiento");
 
         Tipo.setText("Tipo");
-
-        Cuantia.setText("Cuantia");
-
-        Fecha.setText("Fecha");
-
-        Confirmado.setText("Confirmado");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel2.setText("Descripción");
@@ -113,24 +102,41 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel13.setText("Voluntario que lo creó");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel17.setText("Voluntario que lo confirmó");
-
         NIF_CIF_Implicado.setText("Implicado");
 
         NIF_CIF_Crea.setText("Voluntario crea");
 
-        NIF_CIF_Confirma.setText("Voluntario confirma");
-
         jTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jTitulo1.setText("Movimientos");
+        jTitulo1.setText("Donaciones");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
 
         Descripcion.setColumns(20);
         Descripcion.setRows(5);
-        Descripcion.setEnabled(false);
+        Descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DescripcionKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(Descripcion);
+
+        Cuantia.setColumns(9);
+
+        botonConfirmar.setText("Confirmar");
+        botonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConfirmarActionPerformed(evt);
+            }
+        });
+
+        botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+
+        Fecha.setText("Fecha");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -140,8 +146,12 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1244, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(562, 562, 562)
-                        .addComponent(botonOK))
+                        .addGap(370, 370, 370)
+                        .addComponent(botonModificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonConfirmar)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonCancel))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)))
@@ -154,38 +164,33 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
                         .addGap(45, 45, 45)
                         .addComponent(jTitulo1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jTitulo2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTitulo2)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel18)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel5))
                                 .addGap(68, 68, 68)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Confirmado)
-                                    .addComponent(Fecha)
                                     .addComponent(Cod_Movimiento)
                                     .addComponent(Tipo)
-                                    .addComponent(Cuantia))))
+                                    .addComponent(Cuantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Fecha)))
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
                                     .addComponent(jLabel13)
                                     .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
+                                .addGap(51, 51, 51)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(NIF_CIF_Implicado, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(NIF_CIF_Confirma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(NIF_CIF_Crea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))))))
+                                    .addComponent(NIF_CIF_Crea, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -214,12 +219,11 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(NIF_CIF_Crea))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(257, 257, 257)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(NIF_CIF_Confirma))
-                        .addGap(234, 234, 234)
-                        .addComponent(botonOK))
+                            .addComponent(botonCancel)
+                            .addComponent(botonConfirmar)
+                            .addComponent(botonModificar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -229,30 +233,26 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))
+                                .addComponent(jLabel6))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Cod_Movimiento)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Tipo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Cuantia)
+                                .addComponent(Cuantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Fecha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Confirmado)))
+                                .addComponent(Fecha)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
+    private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
         UI.cl.show(UI.jPrincipal, "Donaciones");
-    }//GEN-LAST:event_botonOKActionPerformed
+    }//GEN-LAST:event_botonCancelActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
      
@@ -269,33 +269,45 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
         Tipo.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Cuantia.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Fecha.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
-        Confirmado.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         NIF_CIF_Implicado.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         NIF_CIF_Crea.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
-        NIF_CIF_Confirma.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
+
+    private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
+        panel = new jConfirmarMovimiento();
+
+        UI.jPrincipal.add("ConfirmarMovimiento", panel);
+        UI.cl.show(UI.jPrincipal, "ConfirmarMovimiento");
+    }//GEN-LAST:event_botonConfirmarActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        UI.cl.show(UI.jPrincipal, "Donaciones");
+    }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void DescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DescripcionKeyTyped
+        if (Descripcion.getText().length()==250)
+            evt.consume();
+    }//GEN-LAST:event_DescripcionKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cod_Movimiento;
-    private javax.swing.JLabel Confirmado;
-    private javax.swing.JLabel Cuantia;
+    private javax.swing.JTextField Cuantia;
     private javax.swing.JTextArea Descripcion;
     private javax.swing.JLabel Fecha;
-    private javax.swing.JLabel NIF_CIF_Confirma;
     private javax.swing.JLabel NIF_CIF_Crea;
     private javax.swing.JLabel NIF_CIF_Implicado;
     private javax.swing.JLabel Tipo;
-    private javax.swing.JButton botonOK;
+    private javax.swing.JButton botonCancel;
+    private javax.swing.JButton botonConfirmar;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator7;

@@ -37,8 +37,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jSeparator1" alignment="0" min="-2" pref="1244" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="562" max="-2" attributes="0"/>
-                      <Component id="botonOK" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="370" max="-2" attributes="0"/>
+                      <Component id="botonModificar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="botonConfirmar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="botonCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -56,48 +60,42 @@
                       <Component id="jTitulo1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTitulo2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jSeparator7" alignment="1" pref="500" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Confirmado" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Fecha" min="-2" max="-2" attributes="0"/>
                                   <Component id="Cod_Movimiento" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Tipo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Cuantia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Cuantia" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Fecha" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jSeparator7" min="-2" pref="500" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jSeparator8" min="-2" pref="525" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="NIF_CIF_Implicado" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="NIF_CIF_Confirma" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="NIF_CIF_Crea" alignment="0" pref="149" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="NIF_CIF_Crea" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -134,13 +132,12 @@
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="NIF_CIF_Crea" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="NIF_CIF_Confirma" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonConfirmar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                      <Component id="botonOK" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -152,10 +149,6 @@
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="Cod_Movimiento" min="-2" max="-2" attributes="0"/>
@@ -165,10 +158,10 @@
                               <Component id="Cuantia" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="Fecha" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Confirmado" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -180,14 +173,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="13" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Confirmado"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -213,12 +198,12 @@
         <Property name="text" type="java.lang.String" value="Cuantia"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="botonOK">
+    <Component class="javax.swing.JButton" name="botonCancel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ok"/>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonOKActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jTitulo2">
@@ -226,7 +211,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Consultar un donante"/>
+        <Property name="text" type="java.lang.String" value="Modificar un movimiento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel18">
@@ -249,21 +234,6 @@
     <Component class="javax.swing.JLabel" name="Tipo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tipo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Cuantia">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cuantia"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Fecha">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fecha"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Confirmado">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Confirmado"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -290,14 +260,6 @@
         <Property name="text" type="java.lang.String" value="Voluntario que lo cre&#xf3;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel17">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="13" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Voluntario que lo confirm&#xf3;"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="NIF_CIF_Implicado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Implicado"/>
@@ -308,17 +270,12 @@
         <Property name="text" type="java.lang.String" value="Voluntario crea"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="NIF_CIF_Confirma">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Voluntario confirma"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jTitulo1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Movimientos"/>
+        <Property name="text" type="java.lang.String" value="Donaciones"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
@@ -339,10 +296,38 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DescripcionKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="Cuantia">
+      <Properties>
+        <Property name="columns" type="int" value="9"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonConfirmar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Confirmar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConfirmarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonModificar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Fecha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

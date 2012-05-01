@@ -52,11 +52,11 @@ public class jDonaciones extends javax.swing.JPanel {
         });
 
         jTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jTitulo1.setText("Movimientos");
+        jTitulo1.setText("Donaciones");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         botonCrear.setText("Crear");
         botonCrear.setMaximumSize(new java.awt.Dimension(123, 90));
@@ -164,7 +164,10 @@ public class jDonaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        panel = new jModificarMovimiento();
 
+        UI.jPrincipal.add("ModificarMovimiento", panel);
+        UI.cl.show(UI.jPrincipal, "ModificarMovimiento");
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
