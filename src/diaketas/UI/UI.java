@@ -137,7 +137,6 @@ public class UI extends javax.swing.JFrame {
 
         botonDonaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
         botonDonaciones.setText("Donaciones");
-        botonDonaciones.setEnabled(false);
         botonDonaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDonacionesActionPerformed(evt);
