@@ -136,13 +136,14 @@ public class UI extends javax.swing.JFrame {
         jButton1.setFont(new Font("Courier", Font.BOLD,18));
 
         botonDonaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
-        botonDonaciones.setText("Donaciones");
+        botonDonaciones.setText("Movimientos");
         botonDonaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDonacionesActionPerformed(evt);
             }
         });
         jMenuBotones.add(botonDonaciones);
+        botonDonaciones.setVerticalTextPosition(SwingConstants.BOTTOM); botonDonaciones.setHorizontalTextPosition(SwingConstants.CENTER); botonDonaciones.setFont(new Font("Courier", Font.BOLD,18));
 
         botonEmpleo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
         botonEmpleo.setText("Empleo");

@@ -106,11 +106,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/diaketas/Iconos/Donaciones.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Donaciones"/>
+            <Property name="text" type="java.lang.String" value="Movimientos"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDonacionesActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonDonaciones.setVerticalTextPosition(SwingConstants.BOTTOM); botonDonaciones.setHorizontalTextPosition(SwingConstants.CENTER); botonDonaciones.setFont(new Font(&quot;Courier&quot;, Font.BOLD,18));"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="botonEmpleo">
           <Properties>
