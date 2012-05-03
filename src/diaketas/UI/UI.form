@@ -121,11 +121,13 @@
               <Image iconType="3" name="/diaketas/Iconos/empleo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Empleo"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEmpleoActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonEmpleo.setVerticalTextPosition(SwingConstants.BOTTOM); botonEmpleo.setHorizontalTextPosition(SwingConstants.CENTER); botonEmpleo.setFont(new Font(&quot;Courier&quot;, Font.BOLD,18)); "/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
