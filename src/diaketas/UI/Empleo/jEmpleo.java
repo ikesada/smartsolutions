@@ -5,6 +5,9 @@
 package diaketas.UI.Empleo;
 
 import diaketas.UI.Donaciones.*;
+import diaketas.UI.UI;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -12,9 +15,10 @@ import diaketas.UI.Donaciones.*;
  */
 public class jEmpleo extends javax.swing.JPanel {
 
-    /**
-     * Creates new form jDiaketas
-     */
+    jModificarOferta modificarOferta;
+    jConsultarOferta consultarOferta;
+    
+    
     public jEmpleo() {
         initComponents();
     }
@@ -34,18 +38,35 @@ public class jEmpleo extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        botonConsultar1 = new javax.swing.JButton();
+        botonModificarOferta = new javax.swing.JButton();
+        botonConsultarOferta = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Empleo");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Empleo");
+        jLabel3.setText("Acciones");
 
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
-        botonConsultar1.setText("Operacion");
-        jPanel3.add(botonConsultar1);
+        botonModificarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/modificar documento.png"))); // NOI18N
+        botonModificarOferta.setText("Modificar oferta");
+        botonModificarOferta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarOfertaActionPerformed(evt);
+            }
+        });
+
+        botonConsultarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar_familiar.png"))); // NOI18N
+        botonConsultarOferta.setText("Consultar oferta");
+        botonConsultarOferta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarOfertaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,17 +76,28 @@ public class jEmpleo extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel1))
                     .addComponent(jLabel3)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -73,9 +105,20 @@ public class jEmpleo extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(262, 262, 262))
         );
+
+        botonModificarOferta.setVerticalTextPosition(SwingConstants.BOTTOM); botonModificarOferta.setHorizontalTextPosition(SwingConstants.CENTER); botonModificarOferta.setFont(new Font("Courier", Font.BOLD,18));
+        botonConsultarOferta.setVerticalTextPosition(SwingConstants.BOTTOM); botonConsultarOferta.setHorizontalTextPosition(SwingConstants.CENTER); botonConsultarOferta.setFont(new Font("Courier", Font.BOLD,18));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -88,9 +131,29 @@ public class jEmpleo extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonModificarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarOfertaActionPerformed
+        // TODO add your handling code here:
+        modificarOferta = new jModificarOferta();
+        
+        UI.jPrincipal.add("ModificarOferta", modificarOferta); 
+        UI.cl.show(UI.jPrincipal, "ModificarOferta");
+        
+    }//GEN-LAST:event_botonModificarOfertaActionPerformed
+
+    private void botonConsultarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarOfertaActionPerformed
+        // TODO add your handling code here:
+        consultarOferta = new jConsultarOferta();
+        
+        UI.jPrincipal.add("ConsultarOferta", consultarOferta); 
+        UI.cl.show(UI.jPrincipal, "ConsultarOferta");
+    }//GEN-LAST:event_botonConsultarOfertaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonConsultar1;
+    private javax.swing.JButton botonConsultarOferta;
+    private javax.swing.JButton botonModificarOferta;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
