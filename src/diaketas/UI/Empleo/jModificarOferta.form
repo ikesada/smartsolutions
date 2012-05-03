@@ -70,13 +70,13 @@
                                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="Fecha" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Activada" min="-2" pref="51" max="-2" attributes="0"/>
                                           <Component id="Num_vacantes" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="Concepto" alignment="0" max="32767" attributes="0"/>
                                               <Component id="Poblacion" alignment="0" max="32767" attributes="0"/>
                                               <Component id="Cod_Oferta" alignment="0" max="32767" attributes="0"/>
                                           </Group>
+                                          <Component id="Activada" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -99,10 +99,8 @@
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="Jornada_laboral" alignment="0" max="32767" attributes="0"/>
                                           <Component id="DNI_donante" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="Req_minimos" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="Tipo_contrato" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="Req_minimos" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="Tipo_contrato" alignment="0" max="32767" attributes="0"/>
                                           <Component id="Salario" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -111,10 +109,10 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="361" max="-2" attributes="0"/>
-                      <Component id="botonOK" min="-2" pref="79" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="339" max="-2" attributes="0"/>
+                      <Component id="botonOK" min="-2" pref="101" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botonCancelar" min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="botonCancelar" min="-2" pref="118" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
