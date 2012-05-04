@@ -4,7 +4,12 @@
  */
 package diaketas.Modelo.ONG;
 
+import com.mysql.jdbc.Statement;
+import diaketas.ConexionBD;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -82,12 +87,97 @@ public class Oferta {
     
     
     
+    ConexionBD con = new ConexionBD();
+    
+    
+    
+    
+    /*------------------OPERACIONES------------------*/
     
     public Oferta obtenerDatosOferta()
     {
         return this;
     }
     
+    
+    //devuelve true si todo ha ido bien (sin errores)
+    public Boolean modificar(Oferta nuevosDatosOferta)
+    {
+        
+        int cod_oferta_antiguo = cod_oferta;    //me servira para buscar la tupla correspondiente
+        
+        cod_oferta = nuevosDatosOferta.cod_oferta;
+        concepto = nuevosDatosOferta.concepto;
+        fecha = nuevosDatosOferta.fecha;
+        activo = nuevosDatosOferta.activo;
+        poblacion = nuevosDatosOferta.poblacion;
+        numero_vacantes = nuevosDatosOferta.numero_vacantes;
+        descripcion = nuevosDatosOferta.descripcion;
+        requisitos_minimos = nuevosDatosOferta.requisitos_minimos;
+        tipo_contrato = nuevosDatosOferta.tipo_contrato;
+        jornada_laboral = nuevosDatosOferta.jornada_laboral;
+        salario = nuevosDatosOferta.salario;
+        observaciones = nuevosDatosOferta.observaciones;
+        NIF_CIF_Donante = nuevosDatosOferta.NIF_CIF_Donante;
+        
+        
+        //modifico los datos asociados en la BD:
+        Boolean exito=true;
+        
+        con.conectarBD();
+
+        //transformo los tipo Date pasados
+        java.sql.Timestamp fechaOferta = new java.sql.Timestamp( fecha.getTime() );
+        
+        
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+
+            //Actualizo la tabla de Oferta
+            instruccion.executeUpdate("Update Oferta SET "
+                    + "Cod_Oferta = \"" + cod_oferta + "\", "
+                    + "Concepto = \"" + concepto + "\", "                    
+                    + "Fecha = \"" + fechaOferta + "\", "                    
+                    + "Activo = \"" + activo + "\", "                    
+                    + "Poblacion = \"" + poblacion + "\", "
+                    + "Numero_Vacantes = \"" + numero_vacantes + "\", "
+                    + "Descripcion = \"" + descripcion + "\""
+                    + "Requisitos_Minimos = \"" + requisitos_minimos + "\""
+                    + "Tipo_Contrato = \"" + tipo_contrato + "\""
+                    + "Jornada_Laboral = \"" + jornada_laboral + "\""
+                    + "Salario = \"" + salario + "\""
+                    + "Observaciones = \"" + observaciones + "\""
+                    + "NIF_CIF_Donante = \"" + NIF_CIF_Donante + "\""
+                    + " WHERE Cod_Oferta = \""+cod_oferta_antiguo+"\"");
+         
+            
+         }
+         //Captura de errores
+         catch(SQLException e)
+         { 
+             exito=false;
+             System.out.println(e); 
+         }
+         catch(Exception e)
+         { 
+             exito=false;
+             System.out.println(e);
+         }
+         //Desconexión de la BD
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        return exito;
+        
+        
+    }
     
     
     
