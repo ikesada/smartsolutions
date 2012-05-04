@@ -83,6 +83,13 @@ public class Oferta {
     
     
     
+    public Oferta obtenerDatosOferta()
+    {
+        return this;
+    }
+    
+    
+    
     
     
 }
