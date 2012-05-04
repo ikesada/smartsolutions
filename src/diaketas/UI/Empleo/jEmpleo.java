@@ -22,6 +22,20 @@ public class jEmpleo extends javax.swing.JPanel {
     public jEmpleo() {
         initComponents();
     }
+    
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {                                      
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,8 +49,8 @@ public class jEmpleo extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jTituloEmpleo = new javax.swing.JLabel();
+        jTitulo2 = new javax.swing.JLabel();
+        jTitulo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonAsociarBeneficiarioOferta = new javax.swing.JButton();
         botonEliminarOferta = new javax.swing.JButton();
@@ -45,11 +59,11 @@ public class jEmpleo extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(233, 225, 242));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Acciones sobre las ofertas de empleo disponibles");
+        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo2.setText("Acciones");
 
-        jTituloEmpleo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jTituloEmpleo.setText("Ofertas de empleo");
+        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTitulo1.setText("Ofertas de empleo");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
 
@@ -100,10 +114,10 @@ public class jEmpleo extends javax.swing.JPanel {
                         .addGap(22, 22, 22)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTituloEmpleo))
+                        .addComponent(jTitulo1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3))
+                        .addComponent(jTitulo2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,11 +138,11 @@ public class jEmpleo extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jTituloEmpleo)))
+                        .addComponent(jTitulo1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jTitulo2)
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -199,11 +213,11 @@ public class jEmpleo extends javax.swing.JPanel {
     private javax.swing.JButton botonEliminarOferta;
     private javax.swing.JButton botonModificarOferta;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JLabel jTituloEmpleo;
+    private javax.swing.JLabel jTitulo1;
+    private javax.swing.JLabel jTitulo2;
     // End of variables declaration//GEN-END:variables
 
     private JPanel panel_siguiente;
