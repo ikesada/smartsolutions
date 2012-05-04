@@ -22,20 +22,6 @@ public class jEmpleo extends javax.swing.JPanel {
     public jEmpleo() {
         initComponents();
     }
-    
-    private void formComponentResized(java.awt.event.ComponentEvent evt) {                                      
-        int ancho, alto;
-        ancho = this.getSize().width;
-        alto = this.getSize().height;
-
-        double fuente = 13 + (ancho - 1262) / 30;
-        for (int i = 0; i < this.getComponentCount(); i++) {
-            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
-        }
-        
-        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
-        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
-    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +44,11 @@ public class jEmpleo extends javax.swing.JPanel {
         botonConsultarOferta = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(233, 225, 242));
+        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                JPanel1Resized(evt);
+            }
+        });
 
         jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jTitulo2.setText("Acciones");
@@ -206,6 +197,21 @@ public class jEmpleo extends javax.swing.JPanel {
         UI.jPrincipal.add("ListarOfertas", panel_siguiente);
         UI.cl.show(UI.jPrincipal, "ListarOfertas");        
     }//GEN-LAST:event_botonConsultarOfertaActionPerformed
+
+    private void JPanel1Resized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_JPanel1Resized
+        // TODO add your handling code here:
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    }//GEN-LAST:event_JPanel1Resized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAsociarBeneficiarioOferta;
