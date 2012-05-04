@@ -44,6 +44,7 @@ public class jEmpleo extends javax.swing.JPanel {
         botonConsultarOferta = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(233, 225, 242));
+        jPanel1.setPreferredSize(new java.awt.Dimension(811, 354));
         jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 JPanel1Resized(evt);
@@ -118,7 +119,7 @@ public class jEmpleo extends javax.swing.JPanel {
                         .addComponent(botonEliminarOferta)
                         .addGap(0, 0, 0)
                         .addComponent(botonAsociarBeneficiarioOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +143,7 @@ public class jEmpleo extends javax.swing.JPanel {
                     .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonEliminarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAsociarBeneficiarioOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         botonAsociarBeneficiarioOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -166,7 +167,7 @@ public class jEmpleo extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
