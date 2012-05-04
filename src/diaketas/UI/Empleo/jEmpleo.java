@@ -35,8 +35,8 @@ public class jEmpleo extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jTituloEmpleo = new javax.swing.JLabel();
+        jTitulo2 = new javax.swing.JLabel();
+        jTitulo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonAsociarBeneficiarioOferta = new javax.swing.JButton();
         botonEliminarOferta = new javax.swing.JButton();
@@ -44,12 +44,18 @@ public class jEmpleo extends javax.swing.JPanel {
         botonConsultarOferta = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(233, 225, 242));
+        jPanel1.setPreferredSize(new java.awt.Dimension(811, 354));
+        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                JPanel1Resized(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Acciones sobre las ofertas de empleo disponibles");
+        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo2.setText("Acciones");
 
-        jTituloEmpleo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jTituloEmpleo.setText("Ofertas de empleo");
+        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTitulo1.setText("Ofertas de empleo");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
 
@@ -100,10 +106,10 @@ public class jEmpleo extends javax.swing.JPanel {
                         .addGap(22, 22, 22)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTituloEmpleo))
+                        .addComponent(jTitulo1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3))
+                        .addComponent(jTitulo2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,7 +119,7 @@ public class jEmpleo extends javax.swing.JPanel {
                         .addComponent(botonEliminarOferta)
                         .addGap(0, 0, 0)
                         .addComponent(botonAsociarBeneficiarioOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,11 +130,11 @@ public class jEmpleo extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jTituloEmpleo)))
+                        .addComponent(jTitulo1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jTitulo2)
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -137,7 +143,7 @@ public class jEmpleo extends javax.swing.JPanel {
                     .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonEliminarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAsociarBeneficiarioOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         botonAsociarBeneficiarioOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -161,7 +167,7 @@ public class jEmpleo extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -193,17 +199,32 @@ public class jEmpleo extends javax.swing.JPanel {
         UI.cl.show(UI.jPrincipal, "ListarOfertas");        
     }//GEN-LAST:event_botonConsultarOfertaActionPerformed
 
+    private void JPanel1Resized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_JPanel1Resized
+        // TODO add your handling code here:
+        int ancho, alto;
+        ancho = this.getSize().width;
+        alto = this.getSize().height;
+
+        double fuente = 13 + (ancho - 1262) / 30;
+        for (int i = 0; i < this.getComponentCount(); i++) {
+            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
+        }
+        
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+    }//GEN-LAST:event_JPanel1Resized
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAsociarBeneficiarioOferta;
     private javax.swing.JButton botonConsultarOferta;
     private javax.swing.JButton botonEliminarOferta;
     private javax.swing.JButton botonModificarOferta;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JLabel jTituloEmpleo;
+    private javax.swing.JLabel jTitulo1;
+    private javax.swing.JLabel jTitulo2;
     // End of variables declaration//GEN-END:variables
 
     private JPanel panel_siguiente;
