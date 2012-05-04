@@ -23,22 +23,22 @@ public class Movimiento {
     /**
      * Codigo identificativo del movimiento
      */
-    int Cod_Movimiento;
+    public int Cod_Movimiento;
     
     /**
      * Tipo de movimiento
      */
-    String Tipo_Movimiento;
+    public String Tipo_Movimiento;
     
     /**
      * Cuentia del movimiento
      */
-    double cuantia;
+    public double cuantia;
     
     /**
      * Descripción del movimiento
      */
-    String descripcion;
+    public String descripcion;
     
     /**
      * Fecha de creación del movimiento
