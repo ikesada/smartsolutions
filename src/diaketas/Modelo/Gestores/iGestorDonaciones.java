@@ -15,7 +15,21 @@ import diaketas.Modelo.ONG.Movimiento;
  */
 public interface iGestorDonaciones {
     
+    /**
+    * Consulta los datos del movimiento seleccionado
+    * @return Un objeto con los datos asociados al movimiento seleccionado
+    */
     public Movimiento consultarDatosMovimiento();
     
+    /**
+     * Confirma un movimiento bajo el dni del voluntario siempre que sea valido
+     * @param dniV Dni del volntario que va a realizar la confirmación
+     * @return Un booleano indicando si el dni del voluntario es válido
+     */
     public boolean confirmarMovimiento(String dniv);
+    
+    /**
+     * Realiza una modificación sobre el movimiento seleccionado
+     */
+     public void confirmarModificacion ();
 }

@@ -16,24 +16,55 @@ import diaketas.Modelo.ONG.ONG;
  */
 public class Gestor_de_donaciones implements iGestorDonaciones {
     
+    /**
+     * Movimiento que ha sido seleccionado durante el proceso de Listar Movimiento
+     */
     Movimiento movimientoSeleccionado;
-    String dniV;
+    
+    /**
+     * Datos introducidos del movimiento
+     */
+    Movimiento datosMovimiento;
     
     
+    /**
+     * Consulta los datos del movimiento seleccionado
+     * @return Un objeto con los datos asociados al movimiento seleccionado
+     */
     @Override
     public Movimiento consultarDatosMovimiento(){
         return movimientoSeleccionado;
     }
     
+    /**
+     * Confirma un movimiento bajo el dni del voluntario siempre que sea valido
+     * @param dniV Dni del volntario que va a realizar la confirmación
+     * @return Un booleano indicando si el dni del voluntario es válido
+     */
     @Override
-    public boolean confirmarMovimiento(String dniv){
+    public boolean confirmarMovimiento(String dniV){
         
         if(ONG.gestorVoluntarios.comprobarExistenciaVoluntario(dniV)){
-            movimientoSeleccionado.confirmar(dniV);
+            confirmarConfirmacion(dniV);
             return true;
         }    
         return false;
     }
+
+    /**
+    * Realiza una modificación sobre el movimiento seleccionado
+    */
+    @Override
+    public void confirmarModificacion (){
+        movimientoSeleccionado.modificar(datosMovimiento.cuantia, datosMovimiento.descripcion);
+    }
     
-    
+
+    /**
+     * Realiza la confirmación definitiva sobre el movimiento seleccionado
+     * @param dniV Dni del voluntario que realiza la confirmacion
+     */
+    private void confirmarConfirmacion (String dniV){
+        movimientoSeleccionado.confirmar(dniV);
+    }
 }
