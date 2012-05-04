@@ -44,7 +44,7 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
         botonContinuar = new javax.swing.JButton();
         jTitulo3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listadoOfertasBeneficiario = new javax.swing.JList();
+        listadoOfertasBeneficiario = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(233, 225, 242));
 
@@ -169,13 +169,30 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        listadoOfertasBeneficiario.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Oferta1 asociada al beneficiario", "Oferta 2 asociada al beneficiario", "Oferta3 asociada al beneficiario" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+        listadoOfertasBeneficiario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Descripción", "Requisitos", "Población", "Vacantes"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        listadoOfertasBeneficiario.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        listadoOfertasBeneficiario.setFocusable(false);
+        listadoOfertasBeneficiario.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jScrollPane1.setViewportView(listadoOfertasBeneficiario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -220,10 +237,12 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panel_busqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panel_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,7 +281,7 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JLabel jTitulo1;
     private javax.swing.JLabel jTitulo2;
     private javax.swing.JLabel jTitulo3;
-    private javax.swing.JList listadoOfertasBeneficiario;
+    private javax.swing.JTable listadoOfertasBeneficiario;
     private javax.swing.JPanel panel_botones_control;
     private javax.swing.JPanel panel_busqueda;
     private javax.swing.JPanel panel_parametros_busqueda;
