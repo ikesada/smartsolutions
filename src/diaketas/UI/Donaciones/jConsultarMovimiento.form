@@ -326,6 +326,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="Descripcion">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Descripcion"/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
     </Component>
