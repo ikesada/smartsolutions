@@ -16,44 +16,52 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="form" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="form" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="form">
-      <Events>
-        <EventHandler event="componentResized" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="formComponentResized"/>
-      </Events>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="e1" red="e9" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+              <Component id="jSeparator1" max="32767" attributes="0"/>
+              <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                          <Component id="botonConsultarOferta" min="-2" pref="176" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="botonModificarOferta" min="-2" pref="236" max="-2" attributes="0"/>
+                          <Component id="jTituloEmpleo" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jTitulo1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jTitulo2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSeparator3" alignment="0" min="-2" pref="513" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="botonConsultarOferta" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="botonModificarOferta" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="botonEliminarOferta" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="botonAsociarBeneficiarioOferta" min="-2" pref="220" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="262" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -61,99 +69,125 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jTitulo1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="jTituloEmpleo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jTitulo2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jPanel3" min="-2" pref="79" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="botonConsultarOferta" alignment="3" min="-2" pref="98" max="-2" attributes="0"/>
-                              <Component id="botonModificarOferta" alignment="3" min="-2" pref="101" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="botonConsultarOferta" min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="botonModificarOferta" min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="botonEliminarOferta" min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="botonAsociarBeneficiarioOferta" min="-2" pref="79" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jTitulo1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Empleo"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator3">
         </Component>
-        <Component class="javax.swing.JLabel" name="jTitulo2">
+        <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Acciones"/>
+            <Property name="text" type="java.lang.String" value="Acciones sobre las ofertas de empleo disponibles"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel3">
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-            <Property name="columns" type="int" value="0"/>
-            <Property name="rows" type="int" value="1"/>
-          </Layout>
-        </Container>
-        <Component class="javax.swing.JButton" name="botonModificarOferta">
+        <Component class="javax.swing.JLabel" name="jTituloEmpleo">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/Iconos/modificar documento.png"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Modificar oferta"/>
+            <Property name="text" type="java.lang.String" value="Ofertas de empleo"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarOfertaActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonModificarOferta.setVerticalTextPosition(SwingConstants.BOTTOM); botonModificarOferta.setHorizontalTextPosition(SwingConstants.CENTER); botonModificarOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,18)); "/>
-          </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="botonConsultarOferta">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/Iconos/consultar_familiar.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Consultar oferta"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConsultarOfertaActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonConsultarOferta.setVerticalTextPosition(SwingConstants.BOTTOM); botonConsultarOferta.setHorizontalTextPosition(SwingConstants.CENTER); botonConsultarOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,18)); "/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/diaketas/Iconos/empleo.png"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonAsociarBeneficiarioOferta">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/Iconos/aniadir.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Asociar Beneficiario"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAsociarBeneficiarioOfertaActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonAsociarBeneficiarioOferta.setVerticalTextPosition(SwingConstants.BOTTOM);&#xa;botonAsociarBeneficiarioOferta.setHorizontalTextPosition(SwingConstants.CENTER);&#xa;botonAsociarBeneficiarioOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonEliminarOferta">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/Iconos/eliminar2.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Eliminar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarOfertaActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonEliminarOferta.setVerticalTextPosition(SwingConstants.BOTTOM);&#xa;botonEliminarOferta.setHorizontalTextPosition(SwingConstants.CENTER);&#xa;botonEliminarOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonModificarOferta">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/Iconos/modificar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Modificar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarOfertaActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonModificarOferta.setVerticalTextPosition(SwingConstants.BOTTOM);&#xa;botonModificarOferta.setHorizontalTextPosition(SwingConstants.CENTER);&#xa;botonModificarOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonConsultarOferta">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/Iconos/listados.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ver"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[123, 90]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[123, 90]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[123, 90]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConsultarOfertaActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonConsultarOferta.setVerticalTextPosition(SwingConstants.BOTTOM);&#xa;botonConsultarOferta.setHorizontalTextPosition(SwingConstants.CENTER);&#xa;botonConsultarOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

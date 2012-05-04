@@ -7,6 +7,7 @@ package diaketas.UI.Empleo;
 import diaketas.UI.Donaciones.*;
 import diaketas.UI.UI;
 import java.awt.Font;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
@@ -15,10 +16,9 @@ import javax.swing.SwingConstants;
  */
 public class jEmpleo extends javax.swing.JPanel {
 
-    jModificarOferta modificarOferta;
-    jConsultarOferta consultarOferta;
-    
-    
+    /**
+     * Creates new form jDiaketas
+     */
     public jEmpleo() {
         initComponents();
     }
@@ -32,153 +32,180 @@ public class jEmpleo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        form = new javax.swing.JPanel();
-        jTitulo1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jTitulo2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jTituloEmpleo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        botonAsociarBeneficiarioOferta = new javax.swing.JButton();
+        botonEliminarOferta = new javax.swing.JButton();
         botonModificarOferta = new javax.swing.JButton();
         botonConsultarOferta = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
-        form.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                formComponentResized(evt);
+        jPanel1.setBackground(new java.awt.Color(233, 225, 242));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText("Acciones sobre las ofertas de empleo disponibles");
+
+        jTituloEmpleo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTituloEmpleo.setText("Ofertas de empleo");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
+
+        botonAsociarBeneficiarioOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir.png"))); // NOI18N
+        botonAsociarBeneficiarioOferta.setText("Asociar Beneficiario");
+        botonAsociarBeneficiarioOferta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAsociarBeneficiarioOfertaActionPerformed(evt);
             }
         });
 
-        jTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jTitulo1.setText("Empleo");
+        botonEliminarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/eliminar2.png"))); // NOI18N
+        botonEliminarOferta.setText("Eliminar");
+        botonEliminarOferta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarOfertaActionPerformed(evt);
+            }
+        });
 
-        jTitulo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jTitulo2.setText("Acciones");
-
-        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
-
-        botonModificarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/modificar documento.png"))); // NOI18N
-        botonModificarOferta.setText("Modificar oferta");
+        botonModificarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/modificar.png"))); // NOI18N
+        botonModificarOferta.setText("Modificar");
         botonModificarOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonModificarOfertaActionPerformed(evt);
             }
         });
 
-        botonConsultarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultar_familiar.png"))); // NOI18N
-        botonConsultarOferta.setText("Consultar oferta");
+        botonConsultarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/listados.png"))); // NOI18N
+        botonConsultarOferta.setText("Ver");
+        botonConsultarOferta.setMaximumSize(new java.awt.Dimension(123, 90));
+        botonConsultarOferta.setMinimumSize(new java.awt.Dimension(123, 90));
+        botonConsultarOferta.setPreferredSize(new java.awt.Dimension(123, 90));
         botonConsultarOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConsultarOfertaActionPerformed(evt);
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
-
-        javax.swing.GroupLayout formLayout = new javax.swing.GroupLayout(form);
-        form.setLayout(formLayout);
-        formLayout.setHorizontalGroup(
-            formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
-            .addGroup(formLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(formLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSeparator3)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(formLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(39, 39, 39)
-                        .addComponent(jTitulo1))
-                    .addComponent(jTitulo2)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addComponent(jTituloEmpleo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(botonEliminarOferta)
+                        .addGap(0, 0, 0)
+                        .addComponent(botonAsociarBeneficiarioOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
-        formLayout.setVerticalGroup(
-            formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(formLayout.createSequentialGroup()
-                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(formLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jTitulo1)))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jTituloEmpleo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTitulo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(12, 12, 12)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(formLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(262, 262, 262))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEliminarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAsociarBeneficiarioOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        botonModificarOferta.setVerticalTextPosition(SwingConstants.BOTTOM); botonModificarOferta.setHorizontalTextPosition(SwingConstants.CENTER); botonModificarOferta.setFont(new Font("Courier", Font.BOLD,18));
-        botonConsultarOferta.setVerticalTextPosition(SwingConstants.BOTTOM); botonConsultarOferta.setHorizontalTextPosition(SwingConstants.CENTER); botonConsultarOferta.setFont(new Font("Courier", Font.BOLD,18));
+        botonAsociarBeneficiarioOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonAsociarBeneficiarioOferta.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonAsociarBeneficiarioOferta.setFont(new Font("Courier", Font.BOLD,14));
+        botonEliminarOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonEliminarOferta.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonEliminarOferta.setFont(new Font("Courier", Font.BOLD,14));
+        botonModificarOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonModificarOferta.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonModificarOferta.setFont(new Font("Courier", Font.BOLD,14));
+        botonConsultarOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
+        botonConsultarOferta.setHorizontalTextPosition(SwingConstants.CENTER);
+        botonConsultarOferta.setFont(new Font("Courier", Font.BOLD,14));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonAsociarBeneficiarioOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsociarBeneficiarioOfertaActionPerformed
+        panel_siguiente = new jListarOfertas(3);
+
+        UI.jPrincipal.add("ListarOfertas", panel_siguiente);
+        UI.cl.show(UI.jPrincipal, "ListarOfertas"); 
+    }//GEN-LAST:event_botonAsociarBeneficiarioOfertaActionPerformed
+
+    private void botonEliminarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarOfertaActionPerformed
+       panel_siguiente = new jListarOfertas(2);
+
+        UI.jPrincipal.add("ListarOfertas", panel_siguiente);
+        UI.cl.show(UI.jPrincipal, "ListarOfertas"); 
+    }//GEN-LAST:event_botonEliminarOfertaActionPerformed
+
     private void botonModificarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarOfertaActionPerformed
-        // TODO add your handling code here:
-        modificarOferta = new jModificarOferta();
-        
-        UI.jPrincipal.add("ModificarOferta", modificarOferta); 
-        UI.cl.show(UI.jPrincipal, "ModificarOferta");
-        
+        panel_siguiente = new jListarOfertas(1);
+
+        UI.jPrincipal.add("ListarOfertas", panel_siguiente);
+        UI.cl.show(UI.jPrincipal, "ListarOfertas");         
     }//GEN-LAST:event_botonModificarOfertaActionPerformed
 
     private void botonConsultarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarOfertaActionPerformed
-        // TODO add your handling code here:
-        consultarOferta = new jConsultarOferta();
-        
-        UI.jPrincipal.add("ConsultarOferta", consultarOferta); 
-        UI.cl.show(UI.jPrincipal, "ConsultarOferta");
+        panel_siguiente = new jListarOfertas(0);
+
+        UI.jPrincipal.add("ListarOfertas", panel_siguiente);
+        UI.cl.show(UI.jPrincipal, "ListarOfertas");        
     }//GEN-LAST:event_botonConsultarOfertaActionPerformed
 
-    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-        // TODO add your handling code here:
-        int ancho, alto;
-        ancho = this.getSize().width;
-        alto = this.getSize().height;
-
-        double fuente = 13 + (ancho - 1262) / 30;
-        for (int i = 0; i < this.getComponentCount(); i++) {
-            this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
-        }
-        
-        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
-        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
-    }//GEN-LAST:event_formComponentResized
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAsociarBeneficiarioOferta;
     private javax.swing.JButton botonConsultarOferta;
+    private javax.swing.JButton botonEliminarOferta;
     private javax.swing.JButton botonModificarOferta;
-    private javax.swing.JPanel form;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JLabel jTitulo1;
-    private javax.swing.JLabel jTitulo2;
+    private javax.swing.JLabel jTituloEmpleo;
     // End of variables declaration//GEN-END:variables
+
+    private JPanel panel_siguiente;
+
 }
