@@ -7,10 +7,7 @@ package diaketas.Modelo.ONG;
 import com.mysql.jdbc.ResultSetMetaData;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
-import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
-import diaketas.Modelo.Gestores.Gestor_de_donantes;
-import diaketas.Modelo.Gestores.Gestor_de_historiales;
-import diaketas.Modelo.Gestores.Gestor_de_voluntarios;
+import diaketas.Modelo.Gestores.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -50,6 +47,8 @@ public class ONG implements iONG{
      * 
      */
     public static Gestor_de_donantes gestorDonantes;
+    
+    public static Gestor_de_ofertas gestorOfertas;
 
     /**
      * 
@@ -57,10 +56,11 @@ public class ONG implements iONG{
     public ONG() {
     
         /*Creamos los gestores*/
-    gestorBeneficiarios = new Gestor_de_beneficiarios();
+        gestorBeneficiarios = new Gestor_de_beneficiarios();
         gestorHistoriales = new Gestor_de_historiales();
         gestorVoluntarios = new Gestor_de_voluntarios();
         gestorDonantes = new Gestor_de_donantes();
+        gestorOfertas = new Gestor_de_ofertas();
     
     }
 
@@ -628,6 +628,123 @@ public class ONG implements iONG{
         }  
         
         return usuarios;
+    }
+
+    /**
+     * Funcion que devuelve la información asociada a una oferta a partir del codigo identificativo de la misma
+     * @return Devuelve un objeto de tipo Oferta cuyo codigo coincide con el pasado como argumento.
+     */
+    @Override
+    public Oferta buscarOferta(int codOferta) {
+        Oferta oferta = null;
+        con.conectarBD();
+
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            ResultSet rs = instruccion.executeQuery("Select * From Oferta o WHERE o.Cod_Oferta = \""+ codOferta+"\"");
+
+            /*Si se ha encontrado una tupla*/
+            if (rs.next()){
+
+                oferta = new Oferta(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getInt(4),rs.getString(5), 
+                         rs.getInt(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10),new Double(rs.getDouble(11))
+                         ,rs.getString(12),rs.getString(13));
+            }
+            
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        return oferta;
+    }
+    
+    /**
+     * Funcion que obtiene la lista de ofertas que satisfacen unos criterios de búsqueda basados
+     * en el código, concepto y población de las mismas.
+     * @return Devuelve la lista de ofertas que cumple los criterios.
+     */
+
+    @Override
+    public ArrayList<Oferta> obtenerOfertas(int codigo, String concepto, String poblacion) {
+        ArrayList<Oferta> ofertas=new ArrayList<Oferta>();
+        String query = "select * from Oferta o";
+        
+        
+        con.conectarBD();
+        
+        try{
+                
+            //Crear objeto Statement para realizar queries a la base de datos
+            Statement s = (Statement) con.conexion().createStatement();
+            
+            if(codigo != -1)
+                query += "where o.Cod_Oferta = \""+codigo+"\"";
+            else {
+                if(concepto != null) {
+                    query += "where o.Concepto REGEXP \'"+concepto+"\'";
+                    
+                    if(poblacion != null)
+                        query += " and o.Poblacion = \""+poblacion+"\"";
+                }
+                else {
+                    if(poblacion != null)
+                        query += " where o.Poblacion = \""+poblacion+"\"";
+               }
+            }
+                
+
+            //Un objeto ResultSet, almacena los datos de resultados de una consulta
+            ResultSet rs = s.executeQuery(query);
+
+            //Obteniendo la informacion de las columnas que estan siendo consultadas
+            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
+
+            //La cantidad de columnas que tiene la consulta
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            
+            while (rs.next())   //avanzo a la siguiente tupla obtenida en la consulta (mientras haya)
+            { 
+               
+                if( (Boolean)rs.getObject(4) == true ) {
+
+                    Oferta o = new Oferta(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getInt(4),rs.getString(5), 
+                         rs.getInt(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10),new Double(rs.getDouble(11))
+                         ,rs.getString(12),rs.getString(13));
+                
+                    ofertas.add(o);
+                }
+
+            }
+
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+             
+        
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
+        
+        return ofertas;
     }
     
       

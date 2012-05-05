@@ -4,6 +4,7 @@
  */
 package diaketas.Modelo.ONG;
 
+import com.mysql.jdbc.ResultSetMetaData;
 import com.mysql.jdbc.Statement;
 import diaketas.ConexionBD;
 import java.sql.ResultSet;
@@ -353,5 +354,69 @@ public class Beneficiario extends Usuarios{
                     familiares.get(i).Fecha_Nacimiento.compareTo(Fecha_Nacimiento) == 0)
                 return familiares.get(i);
         return null;
+    }
+    
+    /**
+     * Consulta las ofertas que tiene asociado el beneficiario
+     * @return Devuelve la lista de las ofertas relacionadas con el beneficiario (null si no tiene ninguna)
+     */
+    
+    public ArrayList<Oferta> obtenerOfertas() {
+        ArrayList<Oferta> ofertas = null;
+        ConexionBD con = new ConexionBD();
+        
+         String query = "select Cod_Oferta, Concepto, Fecha, Activo, Poblacion,"
+                 +"Numero_Vacantes, Descripcion, Requisitos_Minimos, Tipo_Contrato,"
+                 +"Jornada Laboral, Salario, Observaciones, NIF_CIF_Donante from"
+                 +"Oferta o, Recibe r where o.Cod_Oferta = r.Cod_Oferta AND r.NIF_CIF = \""
+                 +this.NIF_CIF+"\"";
+        
+        con.conectarBD();
+        
+        try{
+                
+            //Crear objeto Statement para realizar queries a la base de datos
+            Statement s = (Statement) con.conexion().createStatement();
+            
+            //Un objeto ResultSet, almacena los datos de resultados de una consulta
+            ResultSet rs = s.executeQuery(query);
+
+            //Obteniendo la informacion de las columnas que estan siendo consultadas
+            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
+
+            //La cantidad de columnas que tiene la consulta
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            
+            while (rs.next())   //avanzo a la siguiente tupla obtenida en la consulta (mientras haya)
+            { 
+               
+                    Oferta o = new Oferta(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getInt(4),rs.getString(5), 
+                         rs.getInt(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10),new Double(rs.getDouble(11))
+                         ,rs.getString(12),rs.getString(13));
+                
+                    ofertas.add(o);
+                
+
+            }
+
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+             
+        
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } 
+        
+        
+        return ofertas;
     }
 }
