@@ -695,7 +695,7 @@ public class ONG implements iONG{
                 query += "where o.Cod_Oferta = \""+codigo+"\"";
             else {
                 if(concepto != null) {
-                    query += "where o.Concepto REGEXP \'"+concepto+"\'";
+                    query += " where o.Concepto REGEXP \'"+concepto+"\'";
                     
                     if(poblacion != null)
                         query += " and o.Poblacion = \""+poblacion+"\"";

@@ -53,6 +53,7 @@ public class jListarOfertas extends javax.swing.JPanel {
         }
         
         mensajeError.setVisible(false);
+        botonContinuar.setEnabled(false);
     }
     
     /**
@@ -341,11 +342,17 @@ public class jListarOfertas extends javax.swing.JPanel {
         // TODO add your handling code here:
         DefaultTableModel tabla = (DefaultTableModel) listadoOfertas.getModel();
         int nofertas;
+        int entradas_tabla = tabla.getRowCount();
         
         int codigo = -1;
         String codigo_aux = this.codigo_oferta_input.getText();
         String concepto = this.concepto_input.getText();
         String poblacion = this.poblacion_input.getText();
+        
+        
+        for(int i = 0 ; i < entradas_tabla ; i++)
+            tabla.removeRow(i);
+        
         
         if(codigo_aux.compareTo("") != 0)
             codigo = Integer.parseInt(codigo_aux);
@@ -373,7 +380,10 @@ public class jListarOfertas extends javax.swing.JPanel {
                 
                 tabla.addRow(fila);
             }
+            botonContinuar.setEnabled(true);
         }
+        else
+            botonContinuar.setEnabled(false);
     }//GEN-LAST:event_botonBuscarOfertasActionPerformed
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed

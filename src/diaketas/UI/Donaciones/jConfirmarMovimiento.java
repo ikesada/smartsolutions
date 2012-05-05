@@ -4,8 +4,10 @@
  */
 package diaketas.UI.Donaciones;
 
+import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,7 +45,7 @@ public class jConfirmarMovimiento extends javax.swing.JPanel {
         NIF_Voluntario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(233, 225, 242));
+        setBackground(new java.awt.Color(238, 225, 192));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);
@@ -78,6 +80,11 @@ public class jConfirmarMovimiento extends javax.swing.JPanel {
 
         NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
         NIF_Voluntario.setColumns(9);
+        NIF_Voluntario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NIF_VoluntarioActionPerformed(evt);
+            }
+        });
         NIF_Voluntario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NIF_VoluntarioKeyTyped(evt);
@@ -144,7 +151,16 @@ public class jConfirmarMovimiento extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
-        UI.cl.show(UI.jPrincipal, "Donaciones");
+        if (NIF_Voluntario.getText().compareTo("") == 0)
+              JOptionPane.showMessageDialog(this, "No se ha introducido el NIF del voluntario.",
+                                "NIF Voluntario", JOptionPane.ERROR_MESSAGE);    
+        else if (ONG.gestorDonaciones.confirmarMovimiento(NIF_Voluntario.getText()))
+            /*Confirmamos el movimiento con el NIF del voluntario*/
+           UI.cl.show(UI.jPrincipal, "Donaciones");
+        else
+          JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
+                                "NIF Voluntario", JOptionPane.ERROR_MESSAGE);        
+       
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
@@ -170,6 +186,10 @@ public class jConfirmarMovimiento extends javax.swing.JPanel {
         if (NIF_Voluntario.getText().length()==9)
             evt.consume();
     }//GEN-LAST:event_NIF_VoluntarioKeyTyped
+
+    private void NIF_VoluntarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NIF_VoluntarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NIF_VoluntarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_Voluntario;
