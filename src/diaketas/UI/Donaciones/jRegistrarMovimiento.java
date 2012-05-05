@@ -47,7 +47,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
-        tipo_movimiento = new javax.swing.JComboBox();
+        tipo = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         involucrado = new javax.swing.JTextField();
@@ -98,8 +98,8 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
         descripcion.setRows(5);
         jScrollPane1.setViewportView(descripcion);
 
-        tipo_movimiento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tipo_movimiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Donación en Efectivo", "Donación Bancaria", "Donación Material", "Ayuda en Efectivo", "Ayuda Bancaria", "Ayuda Material", "Gasto" }));
+        tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Donacion Efectiva", "Donacian Bancaria", "Donacian Material", "Ayuda Efectiva", "Ayuda Bancaria", "Ayuda Material", "Gasto" }));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Cuantía");
@@ -141,7 +141,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tipo_movimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -154,7 +154,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jScrollPane1))))
-                        .addGap(0, 11, Short.MAX_VALUE))))
+                        .addGap(0, 27, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addComponent(jLabel20)
@@ -185,7 +185,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tipo_movimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(involucrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,6 +210,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         // Comprobamos el formato de los valores introducidos
+        String _tipo = (String) tipo.getSelectedItem();
         String _cuantia = cuantia.getText();
         String _involucrado = involucrado.getText();
         String _descripcion = descripcion.getText();
@@ -225,7 +226,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El voluntario no existe en el sistema", "Voluntario donaciones inválido", JOptionPane.ERROR_MESSAGE);
         } else {
             // Hasta aqui no hay errores de formato
-            int error = ONG.gestorDonaciones.introducirMovimiento(tipo_movimiento.getSelectedIndex(), Double.valueOf(_cuantia).doubleValue(), _involucrado, _descripcion, _voluntario);
+            int error = ONG.gestorDonaciones.introducirMovimiento(_tipo, Double.valueOf(_cuantia).doubleValue(), _involucrado, _descripcion, _voluntario);
             
             if (error == 1) {
                 JOptionPane.showMessageDialog(this, "El donante involucrado no existe en el sistema", "Involucrado donante inválido", JOptionPane.ERROR_MESSAGE);
@@ -276,7 +277,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JComboBox tipo_movimiento;
+    private javax.swing.JComboBox tipo;
     private javax.swing.JTextField voluntario;
     // End of variables declaration//GEN-END:variables
 }

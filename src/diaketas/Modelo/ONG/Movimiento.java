@@ -31,9 +31,14 @@ public class Movimiento {
     public String Tipo_Movimiento;
     
     /**
-     * Cuentia del movimiento
+     * Cuantia del movimiento
      */
     public double cuantia;
+    
+    /**
+     * NIF del Involucrado 
+     */
+    public String involucrado;
     
     /**
      * Descripción del movimiento
