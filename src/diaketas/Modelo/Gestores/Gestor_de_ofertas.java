@@ -136,7 +136,6 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         existeBeneficiario[0] = existe;
         
         if(existe) {
-            System.out.println("Existe");
             Beneficiario beneficiario = diaketas.diaketas.ong.buscarBeneficiario(dniBeneficiario);
             ofertas_asociadas = beneficiario.obtenerOfertas();
         }

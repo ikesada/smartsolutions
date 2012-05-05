@@ -265,12 +265,19 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
         DefaultTableModel tabla = (DefaultTableModel) this.listadoOfertasBeneficiario.getModel();
         boolean[] existe_beneficiario = new boolean[1];
         String dni_beneficiario = this.dni_beneficiario_input.getText();
+        int entradas_tabla = tabla.getRowCount();
+        
+        for(int i = 0 ; i < entradas_tabla ; i++)
+            tabla.removeRow(i);
+        
         
         if(dni_beneficiario.compareTo("") != 0) {
             ofertasEncontradas = diaketas.diaketas.ong.gestorOfertas.obtenerListaOfertas(dni_beneficiario,existe_beneficiario);
+            int nencontradas = ofertasEncontradas.size();
+            
             if(existe_beneficiario[0]) {
                 
-                if(ofertasEncontradas != null) {
+                if(nencontradas > 0) {
                     nofertas = ofertasEncontradas.size();
                     Oferta oferta_actual;
                     Object[] fila = new Object[4];
@@ -285,17 +292,20 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
                         tabla.addRow(fila);
                     }
                 }
+                this.mensajeError.setVisible(false);
                 botonContinuar.setEnabled(true);
             }
             else {
                 this.mensajeError.setText("Error: No existe el beneficiario");
                 this.mensajeError.setVisible(true);
+                botonContinuar.setEnabled(false);
             }
                 
         }
         else {
             this.mensajeError.setText("Error: Introduzca el DNI");
             this.mensajeError.setVisible(true);
+            botonContinuar.setEnabled(false);
         }
     }//GEN-LAST:event_botonBuscarOfertasActionPerformed
 

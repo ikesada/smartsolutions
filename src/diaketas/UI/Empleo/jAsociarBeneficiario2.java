@@ -18,6 +18,8 @@ public class jAsociarBeneficiario2 extends javax.swing.JPanel {
      */
     public jAsociarBeneficiario2() {
         initComponents();
+        
+        mensajeError.setVisible(false);
     }
 
     /**

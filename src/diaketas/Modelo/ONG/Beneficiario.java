@@ -362,15 +362,16 @@ public class Beneficiario extends Usuarios{
      */
     
     public ArrayList<Oferta> obtenerOfertas() {
-        ArrayList<Oferta> ofertas = null;
+        ArrayList<Oferta> ofertas = new ArrayList();
+        
         ConexionBD con = new ConexionBD();
         
-         String query = "select Cod_Oferta, Concepto, Fecha, Activo, Poblacion,"
+         String query = "select o.Cod_Oferta, Concepto, Fecha, Activo, Poblacion,"
                  +"Numero_Vacantes, Descripcion, Requisitos_Minimos, Tipo_Contrato,"
-                 +"Jornada Laboral, Salario, Observaciones, NIF_CIF_Donante from"
-                 +"Oferta o, Recibe r where o.Cod_Oferta = r.Cod_Oferta AND r.NIF_CIF = \""
+                 +"Jornada_Laboral, Salario, Observaciones, NIF_CIF_Donante from"
+                 +" Oferta o, Recibe r where o.Cod_Oferta = r.Cod_Oferta AND r.NIF_CIF = \""
                  +this.NIF_CIF+"\"";
-        
+                 
         con.conectarBD();
         
         try{
@@ -386,12 +387,11 @@ public class Beneficiario extends Usuarios{
 
             //La cantidad de columnas que tiene la consulta
             int cantidadColumnas = rsMd.getColumnCount();
-
             
             while (rs.next())   //avanzo a la siguiente tupla obtenida en la consulta (mientras haya)
             { 
                
-                    Oferta o = new Oferta(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getInt(4),rs.getString(5), 
+                   Oferta o = new Oferta(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getInt(4),rs.getString(5), 
                          rs.getInt(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10),new Double(rs.getDouble(11))
                          ,rs.getString(12),rs.getString(13));
                 
