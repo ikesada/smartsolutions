@@ -16,6 +16,23 @@ import diaketas.Modelo.ONG.Movimiento;
 public interface iGestorDonaciones {
     
     /**
+     * Introduce los datos de un movimiento en el sistema
+     * @param tipo Tipo de movimiento. 0=D.Efectiva, 1=D.Bancaria, 2=D.Material
+     * 3=A.Efectiva, 4=A.Bancaria, 5=A.Material, 6=Gasto
+     * @param cuantia Cantidad de dinero en el movimiento
+     * @param invol Dni del involucrado
+     * @param desc Descripción del movimiento
+     * @param dniV Dni del voluntario que registra el movimiento
+     * @return Error. 1=Invol.donante erroneo, 2=Invol.beficiarion erroneo
+     */
+    public int introducirMovimiento(int tipo, double cuantia, String invol, String desc, String dniV);
+    
+    /**
+     * Procede a registrar el movimiento
+     */
+    public void finRegistrarMovimiento();
+    
+    /**
     * Consulta los datos del movimiento seleccionado
     * @return Un objeto con los datos asociados al movimiento seleccionado
     */
@@ -42,7 +59,7 @@ public interface iGestorDonaciones {
     public boolean comprobarVoluntario(String dniVoluntario);
     
     /**
-     * Procede a eliminar(desactivar) el movimiento del sistema
+     * Procede a eliminar el movimiento del sistema
      */
     public void finEliminarMovimiento();
 }

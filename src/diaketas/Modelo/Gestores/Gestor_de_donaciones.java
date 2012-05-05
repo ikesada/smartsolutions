@@ -26,6 +26,32 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     Movimiento datosMovimiento;
     
+    /**
+     * Introduce los datos de un movimiento en el sistema
+     */
+    @Override
+    public int introducirMovimiento(int tipo, double cuantia, String involucrado, String descripcion, String voluntario) {
+        if ((tipo == 0 || tipo == 1 || tipo == 2) && !ONG.gestorDonantes.comprobarDniDonante(involucrado)) {
+            return 1;
+        } else if ((tipo == 3 || tipo == 4 || tipo == 5) && !ONG.gestorBeneficiarios.comprobarExistenciaBeneficiario(involucrado)) {
+            return 2;
+        }
+        
+        // Guardamos los datosMovimiento
+        //datosMovimiento.Tipo_Movimiento = tipo;
+        datosMovimiento.cuantia = cuantia;
+        
+        
+        return 0;
+    }
+    
+    /**
+     * Procede a registrar el movimiento
+     */
+    @Override
+    public void finRegistrarMovimiento(){
+        
+    }
     
     /**
      * Consulta los datos del movimiento seleccionado
@@ -87,4 +113,5 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
         
         
     }
+
 }
