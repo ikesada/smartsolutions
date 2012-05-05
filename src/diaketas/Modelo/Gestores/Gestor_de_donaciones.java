@@ -6,6 +6,7 @@ package diaketas.Modelo.Gestores;
 
 import diaketas.Modelo.ONG.Movimiento;
 import diaketas.Modelo.ONG.ONG;
+import java.util.Date;
 
 /**
  *
@@ -69,6 +70,9 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      * Procede a confirmar el registro del movimiento
      */
     public void confirmarRegistro(){
+        Date fecha = new Date();
+        Movimiento dm = datosMovimiento;
+        Movimiento m = new Movimiento(dm.Tipo_Movimiento,dm.cuantia,dm.involucrado,dm.descripcion,fecha);
         
     }
     

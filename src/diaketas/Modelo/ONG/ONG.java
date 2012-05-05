@@ -677,7 +677,6 @@ public class ONG implements iONG{
      * en el código, concepto y población de las mismas.
      * @return Devuelve la lista de ofertas que cumple los criterios.
      */
-
     @Override
     public ArrayList<Oferta> obtenerOfertas(int codigo, String concepto, String poblacion) {
         ArrayList<Oferta> ofertas=new ArrayList<Oferta>();
@@ -750,5 +749,36 @@ public class ONG implements iONG{
         return ofertas;
     }
     
-      
+    /**
+     * Agrega un nuevo movimiento al sistema
+     */
+    @Override
+    public void agregarMovimiento(Movimiento m){
+        con = new ConexionBD();
+        con.conectarBD();
+
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            
+            /*Insertamos movimiento*/
+            instruccion.executeUpdate(
+                "Insert into Movimiento (Tipo,Cuantia,Descripcion,Fecha,NIF_CIF_Implica)"
+                +" values ('"+m.Tipo_Movimiento+"','"+String.valueOf(m.cuantia)+"','"
+                +m.descripcion+"','"+m.Fecha+"','"+m.voluntario_crea+"');"
+            );
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 }
