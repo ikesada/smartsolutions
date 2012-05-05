@@ -4,8 +4,10 @@
  */
 package diaketas.UI.Donaciones;
 
+import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -138,7 +140,14 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
-        UI.cl.show(UI.jPrincipal, "Donaciones");
+        
+        if(ONG.gestorDonaciones.comprobarVoluntario(NIF_Voluntario.getText())){
+            ONG.gestorDonaciones.finEliminarMovimiento();            
+        }else{
+            this.jLabelInformativo.setText("El DNI del Voluntario no es valido.");
+            this.jLabel4.setVisible(false);
+            this.botonConfirmar.setVisible(false);
+        }        
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed

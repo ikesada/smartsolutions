@@ -49,6 +49,8 @@ public class ONG implements iONG{
     public static Gestor_de_donantes gestorDonantes;
     
     public static Gestor_de_ofertas gestorOfertas;
+    
+    public static Gestor_de_donaciones gestorDonaciones;
 
     /**
      * 
@@ -61,6 +63,7 @@ public class ONG implements iONG{
         gestorVoluntarios = new Gestor_de_voluntarios();
         gestorDonantes = new Gestor_de_donantes();
         gestorOfertas = new Gestor_de_ofertas();
+        gestorDonaciones = new Gestor_de_donaciones();
     
     }
 

@@ -5,7 +5,6 @@
 package diaketas.Modelo.ONG;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *

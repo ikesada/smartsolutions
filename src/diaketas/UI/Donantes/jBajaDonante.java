@@ -4,7 +4,7 @@
  */
 package diaketas.UI.Donantes;
 
-import diaketas.Modelo.Gestores.Gestor_de_donantes;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
 import javax.swing.JOptionPane;
@@ -163,7 +163,7 @@ public class jBajaDonante extends javax.swing.JPanel {
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
         if (fase == 0){
             //Buscar el dni
-            if(diaketas.diaketas.ong.gestorDonantes.introducirDniDonante(NIF_CIF.getText())){
+            if(ONG.gestorDonantes.introducirDniDonante(NIF_CIF.getText())){
                 
                 NIF_CIF.setVisible(false);
                 jLabel2.setText("¿Desea borrar el donante con NIF-CIF " + NIF_CIF.getText()+ "?");
@@ -180,7 +180,7 @@ public class jBajaDonante extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
             }else{
                 
-                if(diaketas.diaketas.ong.gestorVoluntarios.introducirDNIVoluntario(NIF_Voluntario.getText())){
+                if(ONG.gestorVoluntarios.introducirDNIVoluntario(NIF_Voluntario.getText())){
                     
                     botonCancel.setVisible(false);
                     NIF_Voluntario.setVisible(false);
@@ -189,7 +189,7 @@ public class jBajaDonante extends javax.swing.JPanel {
                     fase = 2;
        
                     
-                    diaketas.diaketas.ong.gestorDonantes.confirmarFinBaja();
+                    ONG.gestorDonantes.confirmarFinBaja();
                 }
             }
         }else
