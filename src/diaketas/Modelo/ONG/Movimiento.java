@@ -43,7 +43,7 @@ public class Movimiento {
     /**
      * Fecha de creación del movimiento
      */
-    Date Fecha;
+    public Date Fecha;
     
     /**
      * Indica si el movimiento está confirmado
