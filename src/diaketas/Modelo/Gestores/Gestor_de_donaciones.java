@@ -27,21 +27,32 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     Movimiento datosMovimiento;
     
     /**
+     * DNI del responsable (voluntario) que realiza la operacion
+     */
+    private String dniV;
+    
+    /**
      * Introduce los datos de un movimiento en el sistema
      */
     @Override
-    public int introducirMovimiento(int tipo, double cuantia, String involucrado, String descripcion, String voluntario) {
-        if ((tipo == 0 || tipo == 1 || tipo == 2) && !ONG.gestorDonantes.comprobarDniDonante(involucrado)) {
+    public int introducirMovimiento(String tipo, double cuantia, String involucrado, String descripcion, String voluntario) {
+        if (("Donacion Efectiva".equals(tipo) || "Donacion Bancaria".equals(tipo) || "Donacion Material".equals(tipo)) 
+            && !ONG.gestorDonantes.comprobarDniDonante(involucrado)) {
             return 1;
-        } else if ((tipo == 3 || tipo == 4 || tipo == 5) && !ONG.gestorBeneficiarios.comprobarExistenciaBeneficiario(involucrado)) {
+        } else if (("Ayuda Efectiva".equals(tipo) || "Ayuda Bancaria".equals(tipo) || "Ayuda Material".equals(tipo))
+            && !ONG.gestorBeneficiarios.comprobarExistenciaBeneficiario(involucrado)) {
             return 2;
         }
         
-        // Guardamos los datosMovimiento
-        //datosMovimiento.Tipo_Movimiento = tipo;
+        // Guardamos en el gestor los datosMovimiento
+        datosMovimiento.Tipo_Movimiento = tipo;
         datosMovimiento.cuantia = cuantia;
+        datosMovimiento.involucrado = involucrado;
+        datosMovimiento.descripcion = descripcion;
         
-        
+        // Guardamos en el gestor el voluntario que lo registra
+        dniV = voluntario;
+
         return 0;
     }
     
@@ -50,6 +61,14 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     @Override
     public void finRegistrarMovimiento(){
+        System.out.print("Hola soy finRegistrarMovimiento");
+        confirmarRegistro();
+    }
+    
+    /**
+     * Procede a confirmar el registro del movimiento
+     */
+    public void confirmarRegistro(){
         
     }
     
@@ -82,7 +101,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     */
     @Override
     public void confirmarModificacion (){
-        movimientoSeleccionado.modificar(datosMovimiento.cuantia, datosMovimiento.descripcion);
+        movimientoSeleccionado.modificar(datosMovimiento.Tipo_Movimiento, datosMovimiento.cuantia, datosMovimiento.descripcion, datosMovimiento.involucrado);
     }
     
 
