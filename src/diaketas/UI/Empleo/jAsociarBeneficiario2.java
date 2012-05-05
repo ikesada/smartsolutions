@@ -195,10 +195,30 @@ public class jAsociarBeneficiario2 extends javax.swing.JPanel {
 
     private void botonConfirmarAsociacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarAsociacionActionPerformed
         // TODO add your handling code here:
-        panel = new jAsociarBeneficiario3();
+        
+        String dni_voluntario = this.dni_responsable_input.getText();
+        boolean autorizado = false;
+        
+        if(dni_voluntario.compareTo("") != 0) {
+            autorizado = diaketas.diaketas.ong.gestorOfertas.comprobarVoluntario(dni_voluntario);
+            
+            System.out.println(autorizado);
+            
+            if(autorizado) {
+                panel = new jAsociarBeneficiario3();
 
-       UI.jPrincipal.add("AsociarBeneficiarioOferta3", panel);
-       UI.cl.show(UI.jPrincipal, "AsociarBeneficiarioOferta3");
+                UI.jPrincipal.add("AsociarBeneficiarioOferta3", panel);
+                UI.cl.show(UI.jPrincipal, "AsociarBeneficiarioOferta3");
+            }
+            else {
+                this.mensajeError.setText("Error: No existe el voluntario");
+                this.mensajeError.setVisible(true);
+            }
+        }
+        else {
+            this.mensajeError.setText("Error: Introduzca el DNI");
+            mensajeError.setVisible(true);
+        }
     }//GEN-LAST:event_botonConfirmarAsociacionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

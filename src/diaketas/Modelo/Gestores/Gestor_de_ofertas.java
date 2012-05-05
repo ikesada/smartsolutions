@@ -4,8 +4,10 @@
  */
 package diaketas.Modelo.Gestores;
 
+import diaketas.Modelo.ONG.Beneficiario;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Oferta;
+import java.util.ArrayList;
 
 /**
  *
@@ -97,6 +99,54 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         }
         
         return hay_error;
+    }
+
+    /**
+     * Funcion que obtiene la lista de ofertas que satisfacen unos criterios de búsqueda basados
+     * en el código, concepto y población de las mismas.
+     * @return Devuelve la lista de ofertas que cumple los criterios.
+     */
+    
+    @Override
+    public ArrayList<Oferta> filtrarOfertas(int codigo, String concepto, String poblacion) {
+        return diaketas.diaketas.ong.obtenerOfertas(codigo, concepto, poblacion);
+    }
+
+    /**
+     * Funcion que indica al gestor la oferta que ha sido seleccionada por el voluntario.
+     */
+    
+    @Override
+    public void seleccionarOferta(int codOferta) {
+        O = diaketas.diaketas.ong.buscarOferta(codOferta);
+    }
+    
+    /**
+     * Funcion que obtiene las ofertas asociadas a un determinado beneficiario
+     * @return Devuelve la lista de las ofertas relacionadas con un beneficiario concreto
+     */
+
+    @Override
+    public ArrayList<Oferta> obtenerListaOfertas(String dniBeneficiario, boolean[] existeBeneficiario) {
+        ArrayList<Oferta> ofertas_asociadas = null;
+        boolean existe;
+        
+        existe = diaketas.diaketas.ong.gestorBeneficiarios.comprobarExistenciaBeneficiario(dniBeneficiario);
+        
+        existeBeneficiario[0] = existe;
+        
+        if(existe) {
+            System.out.println("Existe");
+            Beneficiario beneficiario = diaketas.diaketas.ong.buscarBeneficiario(dniBeneficiario);
+            ofertas_asociadas = beneficiario.obtenerOfertas();
+        }
+        
+        return ofertas_asociadas;
+    }
+
+    @Override
+    public boolean comprobarVoluntario(String dniVoluntario) {
+        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(dniVoluntario);
     }
     
 }

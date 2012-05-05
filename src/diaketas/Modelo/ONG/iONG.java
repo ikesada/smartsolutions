@@ -91,4 +91,24 @@ public interface iONG {
      */
     public ArrayList<Beneficiario> buscarBeneficiarios();
     
+    /**
+     * Funcion que devuelve los datos asociados a una Oferta que tiene como código
+     * el entero pasado como argumento del metodo.
+     * @param codOferta codigo identificativo de la oferta buscada
+     * @return Devuelve la oferta concreta
+     */
+    
+    public Oferta buscarOferta(int codOferta);
+    
+    /**
+     * 
+     * @param codigo codigo identificativo de la oferta
+     * @param concepto  representa la categoria de la oferta
+     * @param poblacion representa a la ciudad donde se desarrollara la oferta
+     * @return Devuelve la lista de ofertas que casan con los criterios de busqueda
+     * establecidos por los parametros de entrada al metodo.
+     */
+    
+    public ArrayList<Oferta> obtenerOfertas(int codigo,String concepto,String poblacion);
+    
 }

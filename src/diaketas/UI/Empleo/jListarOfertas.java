@@ -8,11 +8,13 @@ import diaketas.UI.UI;
 import diaketas.Modelo.ONG.Beneficiario;
 import diaketas.Modelo.ONG.Familiar;
 import diaketas.Modelo.Gestores.Gestor_de_beneficiarios;
+import diaketas.Modelo.ONG.Oferta;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,6 +24,7 @@ public class jListarOfertas extends javax.swing.JPanel {
 
     JPanel panel;
     int jPanelSiguiente;
+    ArrayList<Oferta> ofertasEncontradas = null;
     
     /**
      * Creates new form jBuscarBeneficiario
@@ -33,22 +36,24 @@ public class jListarOfertas extends javax.swing.JPanel {
         
         switch(jPanelSiguiente) {
             case 0: // Consultar
-                botonContinuar.setText("Ver");
+                botonContinuar.setText("Consultar");
                 break;
             case 1: // Modificar
                 botonContinuar.setText("Modificar");
                 break;
-            case 2: // Eliminar
+            case 2: // Crear
+                botonContinuar.setText("Crear");
+                break;
+            case 3: // Eliminar
                 botonContinuar.setText("Eliminar");
                 break;
-            case 3: // Asociar Beneficiario
+            case 4: // Asociar Beneficiario
                 botonContinuar.setText("Asociar Beneficiario");
                 break;
         }
         
         mensajeError.setVisible(false);
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,7 +83,7 @@ public class jListarOfertas extends javax.swing.JPanel {
         botonBuscarOfertas = new javax.swing.JButton();
         botonContinuar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listadoOfertas = new javax.swing.JList();
+        listadoOfertas = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(233, 225, 242));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -241,11 +246,30 @@ public class jListarOfertas extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        listadoOfertas.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Oferta1", "Oferta2", "Oferta3" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+        listadoOfertas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Concepto", "Fecha", "Población", "Salario"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        listadoOfertas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         listadoOfertas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(listadoOfertas);
 
@@ -266,7 +290,7 @@ public class jListarOfertas extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTitulo2)
                     .addComponent(panel_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1)
                 .addContainerGap())
         );
@@ -287,7 +311,7 @@ public class jListarOfertas extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel_busqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -315,46 +339,81 @@ public class jListarOfertas extends javax.swing.JPanel {
 
     private void botonBuscarOfertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarOfertasActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tabla = (DefaultTableModel) listadoOfertas.getModel();
+        int nofertas;
+        
+        int codigo = -1;
+        String codigo_aux = this.codigo_oferta_input.getText();
+        String concepto = this.concepto_input.getText();
+        String poblacion = this.poblacion_input.getText();
+        
+        if(codigo_aux.compareTo("") != 0)
+            codigo = Integer.parseInt(codigo_aux);
+        
+        if(concepto.compareTo("") == 0)
+            concepto = null;
+        
+        if(poblacion.compareTo("") == 0)
+            poblacion = null;
+        
+        ofertasEncontradas = diaketas.diaketas.ong.gestorOfertas.filtrarOfertas(codigo,concepto,poblacion);
+        
+        nofertas = ofertasEncontradas.size();
+        
+        if(nofertas != 0) {
+            Oferta oferta_actual;
+            Object[] fila = new Object[4];
+            for(int i = 0 ; i < nofertas ; i++) {
+                oferta_actual = ofertasEncontradas.get(i);
+                // ¿Accedemos directamente?
+                fila[0] = oferta_actual.concepto;
+                fila[1] = oferta_actual.fecha;
+                fila[2] = oferta_actual.poblacion;
+                fila[3] = oferta_actual.salario;
+                
+                tabla.addRow(fila);
+            }
+        }
     }//GEN-LAST:event_botonBuscarOfertasActionPerformed
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         // TODO add your handling code here:
         
-        switch(jPanelSiguiente) {
-            case 0: // Consultar
-                if(!listadoOfertas.isSelectionEmpty()) {
-                    panel = new jConsultarOferta();
-                    UI.jPrincipal.add("ConsultarOferta", panel);
-                    UI.cl.show(UI.jPrincipal, "ConsultarOferta");  
-               }
-               else {
-                   mensajeError.setVisible(true);
-               }
+        int oferta_seleccionada = listadoOfertas.getSelectedRow();
+        
+        if(oferta_seleccionada != -1) {
+            diaketas.diaketas.ong.gestorOfertas.seleccionarOferta(ofertasEncontradas.get(oferta_seleccionada).cod_oferta);
+            
+            switch(jPanelSiguiente) {
+                case 0: // Consultar
+                        panel = new jConsultarOferta();
+                        UI.jPrincipal.add("ConsultarOferta", panel);
+                        UI.cl.show(UI.jPrincipal, "ConsultarOferta");  
+               
                 break;
-            case 1: // Modificar
-                 if(!listadoOfertas.isSelectionEmpty()) {
+                case 1: // Modificar
                     panel = new jModificarOferta();
                     UI.jPrincipal.add("ModificarOferta", panel);
                     UI.cl.show(UI.jPrincipal, "ModificarOferta");  
-               }
-               else {
-                   mensajeError.setVisible(true);
-               }
+               
                 break;
-            case 2: // Eliminar
+                case 2: // Crear
                 break;
-            case 3: // Asociar Beneficiario
-               if(!listadoOfertas.isSelectionEmpty()) {
+                case 3: // Eliminar
+                break;
+                case 4: // Asociar Beneficiario
                     panel = new jAsociarBeneficiario();
                     UI.jPrincipal.add("AsociarBeneficiario", panel);
                     UI.cl.show(UI.jPrincipal, "AsociarBeneficiario");  
-               }
-               else {
-                   mensajeError.setVisible(true);
-               }
                    
                break;
+            }
         }
+        else {
+            mensajeError.setVisible(true);
+        }
+        
+        
         
     }//GEN-LAST:event_botonContinuarActionPerformed
 
@@ -372,7 +431,7 @@ public class jListarOfertas extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel jTitulo1;
     private javax.swing.JLabel jTitulo2;
-    private javax.swing.JList listadoOfertas;
+    private javax.swing.JTable listadoOfertas;
     private javax.swing.JLabel mensajeError;
     private javax.swing.JPanel panel_botones_control;
     private javax.swing.JPanel panel_busqueda;

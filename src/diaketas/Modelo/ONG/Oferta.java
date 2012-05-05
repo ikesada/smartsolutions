@@ -94,6 +94,24 @@ public class Oferta {
     
     /*------------------OPERACIONES------------------*/
     
+    public Oferta(int cod_oferta, String concepto, Date fecha, int activo, String poblacion, 
+            int numero_vacantes, String descripcion, String requisitos_minimos, String tipo_contrato
+            ,int jornada_laboral,Double salario,String observaciones, String NIF_CIF_Donante) {
+        this.cod_oferta =cod_oferta;
+        this.concepto = concepto;
+        this.fecha = fecha;
+        this.activo = activo;
+        this.poblacion = poblacion;
+        this.numero_vacantes = numero_vacantes;
+        this.descripcion = descripcion;
+        this.requisitos_minimos = requisitos_minimos;
+        this.tipo_contrato = tipo_contrato;
+        this.jornada_laboral = jornada_laboral;
+        this.salario = salario;
+        this.observaciones = observaciones;
+        this.NIF_CIF_Donante = NIF_CIF_Donante;
+    }
+    
     public Oferta obtenerDatosOferta()
     {
         return this;
