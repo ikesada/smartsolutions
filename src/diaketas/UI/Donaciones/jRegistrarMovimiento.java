@@ -214,7 +214,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
         String _cuantia = cuantia.getText();
         String _involucrado = involucrado.getText();
         String _descripcion = descripcion.getText();
-        String _voluntario = voluntario.getName();
+        String _voluntario = voluntario.getText();
         
         if (!ValidarCampos.isDouble(_cuantia)) {
             JOptionPane.showMessageDialog(this, "La Cuantia del movimiento no es correcta. Debe ser un numero", "Cuantia Movimiento inválida", JOptionPane.ERROR_MESSAGE);

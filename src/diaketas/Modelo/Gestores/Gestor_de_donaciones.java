@@ -61,7 +61,8 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     @Override
     public void finRegistrarMovimiento(){
-        
+        System.out.print("Hola soy finRegistrarMovimiento");
+        confirmarRegistro();
     }
     
     /**

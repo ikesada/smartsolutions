@@ -28,7 +28,7 @@ public interface iGestorDonaciones {
     public int introducirMovimiento(String tipo, double cuantia, String invol, String desc, String dniV);
     
     /**
-     * Procede a registrar el movimiento
+     * Procede a registrar el movimiento 
      */
     public void finRegistrarMovimiento();
     

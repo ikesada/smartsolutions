@@ -25,7 +25,7 @@ public class Movimiento {
      */
     public int Cod_Movimiento;
     
-    /**
+    /** 
      * Tipo de movimiento
      */
     public String Tipo_Movimiento;
