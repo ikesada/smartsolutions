@@ -754,6 +754,31 @@ public class ONG implements iONG{
      */
     @Override
     public void agregarMovimiento(Movimiento m){
-        
+        con = new ConexionBD();
+        con.conectarBD();
+
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            
+            /*Insertamos movimiento*/
+            instruccion.executeUpdate(
+                "Insert into Movimiento (Tipo,Cuantia,Descripcion,Fecha,NIF_CIF_Implica)"
+                +" values ('"+m.Tipo_Movimiento+"','"+String.valueOf(m.cuantia)+"','"
+                +m.descripcion+"','"+m.Fecha+"','"+m.voluntario_crea+"');"
+            );
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 }

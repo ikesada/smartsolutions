@@ -110,7 +110,7 @@ public interface iONG {
     
     /**
      * Agrega un nuevo movimiento al sistema
-     * @param m El movimiento a agregar
+     * @param m El movimiento a agregar 
      */
     public void agregarMovimiento(Movimiento m);
 }
