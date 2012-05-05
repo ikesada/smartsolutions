@@ -43,21 +43,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jSeparator1" max="32767" attributes="0"/>
-              <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="botonConsultarOferta" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="botonModificarOferta" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                          <Component id="botonCrearOferta" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="botonEliminarOferta" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="botonAsociarBeneficiarioOferta" min="-2" pref="220" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -69,7 +56,25 @@
                           <Component id="jTitulo2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                  <EmptySpace pref="483" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="botonConsultarOferta" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="botonModificarOferta" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="botonCrearOferta" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="botonEliminarOferta" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="botonAsociarBeneficiarioOferta" min="-2" pref="220" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -90,17 +95,19 @@
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTitulo2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="botonCrearOferta" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
-                      <Component id="botonAsociarBeneficiarioOferta" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
-                      <Component id="botonEliminarOferta" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
-                      <Component id="botonModificarOferta" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
-                      <Component id="botonConsultarOferta" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="botonCrearOferta" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
+                          <Component id="botonModificarOferta" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
+                          <Component id="botonConsultarOferta" alignment="3" min="-2" pref="79" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="botonEliminarOferta" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="botonAsociarBeneficiarioOferta" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="218" max="32767" attributes="0"/>
+                  <EmptySpace pref="225" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -209,7 +216,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEliminarOfertaActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonCrearOferta.setVerticalTextPosition(SwingConstants.BOTTOM);&#xa;botonCrearOferta.setHorizontalTextPosition(SwingConstants.CENTER);&#xa;botonCrearOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonEliminarOferta.setVerticalTextPosition(SwingConstants.BOTTOM); botonEliminarOferta.setHorizontalTextPosition(SwingConstants.CENTER); botonEliminarOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
           </AuxValues>
         </Component>
       </SubComponents>

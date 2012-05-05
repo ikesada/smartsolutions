@@ -19,13 +19,13 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     /**
      * Oferta sobre la que trabaja el Gestor
      */
-    Oferta O;
+    public static Oferta O;
     
     
     /**
      * NIF del Voluntario que esta trabajando actualmente sobre el sistema
      */
-    String NIF_Voluntario;  
+    public static String NIF_Voluntario;  
     
     
     
