@@ -56,6 +56,14 @@ public class Movimiento {
     boolean confirmado;
     
     
+    public Movimiento(String tipo,double cuantia, String involucrado, String descripcion, Date fecha){
+        this.Tipo_Movimiento = tipo;
+        this.cuantia = cuantia;
+        this.involucrado = involucrado;
+        this.descripcion = descripcion;
+        this.Fecha = fecha;
+    }
+    
     public void confirmar(String dniV){
         /*Confirmamos el movimiento*/
         confirmado = true;

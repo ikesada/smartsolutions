@@ -96,7 +96,6 @@ public interface iONG {
      * @param codOferta codigo identificativo de la oferta buscada
      * @return Devuelve la oferta concreta
      */
-    
     public Oferta buscarOferta(int codOferta);
     
     /**
@@ -107,7 +106,11 @@ public interface iONG {
      * @return Devuelve la lista de ofertas que casan con los criterios de busqueda
      * establecidos por los parametros de entrada al metodo.
      */
-    
     public ArrayList<Oferta> obtenerOfertas(int codigo,String concepto,String poblacion);
     
+    /**
+     * Agrega un nuevo movimiento al sistema
+     * @param m El movimiento a agregar
+     */
+    public void agregarMovimiento(Movimiento m);
 }

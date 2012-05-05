@@ -677,7 +677,6 @@ public class ONG implements iONG{
      * en el código, concepto y población de las mismas.
      * @return Devuelve la lista de ofertas que cumple los criterios.
      */
-
     @Override
     public ArrayList<Oferta> obtenerOfertas(int codigo, String concepto, String poblacion) {
         ArrayList<Oferta> ofertas=new ArrayList<Oferta>();
@@ -750,5 +749,11 @@ public class ONG implements iONG{
         return ofertas;
     }
     
-      
+    /**
+     * Agrega un nuevo movimiento al sistema
+     */
+    @Override
+    public void agregarMovimiento(Movimiento m){
+        
+    }
 }
