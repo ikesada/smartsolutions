@@ -41,6 +41,16 @@ public class Movimiento {
     public String involucrado;
     
     /**
+     * NIF del voluntario que crea
+     */
+    public String voluntario_crea;
+    
+    /**
+     * NIF del voluntario que confirma el movimiento
+     */
+    public String voluntario_confirma;
+    
+    /**
      * Descripción del movimiento
      */
     public String descripcion;
@@ -53,7 +63,7 @@ public class Movimiento {
     /**
      * Indica si el movimiento está confirmado
      */
-    boolean confirmado;
+    public boolean confirmado;
     
     
     public void confirmar(String dniV){
