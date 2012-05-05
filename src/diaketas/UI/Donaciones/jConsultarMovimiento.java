@@ -4,6 +4,8 @@
  */
 package diaketas.UI.Donaciones;
 
+import diaketas.Modelo.ONG.Movimiento;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
 import javax.swing.JPanel;
@@ -20,6 +22,11 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
      */
     public jConsultarMovimiento() {
         initComponents();
+        
+        /*Consultamos el movimiento seleccionado */
+        Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
+        
+        
     }
     
     
@@ -58,7 +65,7 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         Descripcion = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(233, 225, 242));
+        setBackground(new java.awt.Color(238, 225, 192));
         setForeground(new java.awt.Color(102, 102, 102));
         setMaximumSize(new java.awt.Dimension(32767, 500));
         setPreferredSize(new java.awt.Dimension(1100, 518));
