@@ -73,6 +73,9 @@ public class Movimiento {
         this.descripcion = descripcion;
         this.Fecha = fecha;
     }
+
+    public Movimiento() {
+    }
     
     public void confirmar(String dniV){
         /*Confirmamos el movimiento*/
@@ -85,7 +88,8 @@ public class Movimiento {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
             /*Confirmamos el movimiento*/
-            instruccion.executeUpdate("UPDATE  Movimiento SET Confirmado = 1 WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
+            instruccion.executeUpdate("UPDATE  Movimiento SET Confirmado = 1  , NIF_CIF_Confirma = \"" +
+                    dniV + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -116,8 +120,8 @@ public class Movimiento {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
             /*Actualizamos Familiar*/
-            instruccion.executeUpdate("UPDATE  Movimiento SET Tipo = \"" + tipo_movimiento +", Cuantia = \""
-                    + cuantia + "\", Descripcion = \""+descripcion+ "\", Implicado = \"" + involucrado + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
+            instruccion.executeUpdate("UPDATE  Movimiento SET Tipo = \"" + tipo_movimiento +"\" , Cuantia = \""
+                    + cuantia + "\", Descripcion = \""+descripcion+ "\", NIF_CIF_Implica = \"" + involucrado + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
