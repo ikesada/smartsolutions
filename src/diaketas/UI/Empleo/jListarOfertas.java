@@ -36,15 +36,18 @@ public class jListarOfertas extends javax.swing.JPanel {
         
         switch(jPanelSiguiente) {
             case 0: // Consultar
-                botonContinuar.setText("Ver");
+                botonContinuar.setText("Consultar");
                 break;
             case 1: // Modificar
                 botonContinuar.setText("Modificar");
                 break;
-            case 2: // Eliminar
+            case 2: // Crear
+                botonContinuar.setText("Crear");
+                break;
+            case 3: // Eliminar
                 botonContinuar.setText("Eliminar");
                 break;
-            case 3: // Asociar Beneficiario
+            case 4: // Asociar Beneficiario
                 botonContinuar.setText("Asociar Beneficiario");
                 break;
         }
@@ -378,42 +381,39 @@ public class jListarOfertas extends javax.swing.JPanel {
         
         int oferta_seleccionada = listadoOfertas.getSelectedRow();
         
-        switch(jPanelSiguiente) {
-            case 0: // Consultar
-                if(oferta_seleccionada != -1) {
-                    panel = new jConsultarOferta();
-                    UI.jPrincipal.add("ConsultarOferta", panel);
-                    UI.cl.show(UI.jPrincipal, "ConsultarOferta");  
-               }
-               else {
-                   mensajeError.setVisible(true);
-               }
+        if(oferta_seleccionada != -1) {
+            diaketas.diaketas.ong.gestorOfertas.seleccionarOferta(ofertasEncontradas.get(oferta_seleccionada).cod_oferta);
+            
+            switch(jPanelSiguiente) {
+                case 0: // Consultar
+                        panel = new jConsultarOferta();
+                        UI.jPrincipal.add("ConsultarOferta", panel);
+                        UI.cl.show(UI.jPrincipal, "ConsultarOferta");  
+               
                 break;
-            case 1: // Modificar
-                 if(oferta_seleccionada != -1) {
+                case 1: // Modificar
                     panel = new jModificarOferta();
                     UI.jPrincipal.add("ModificarOferta", panel);
                     UI.cl.show(UI.jPrincipal, "ModificarOferta");  
-               }
-               else {
-                   mensajeError.setVisible(true);
-               }
+               
                 break;
-            case 2: // Eliminar
+                case 2: // Crear
                 break;
-            case 3: // Asociar Beneficiario
-               //if(oferta_seleccionada != -1) {
-                    //diaketas.diaketas.ong.gestorOfertas.seleccionarOferta(ofertasEncontradas.get(oferta_seleccionada).cod_oferta);
+                case 3: // Eliminar
+                break;
+                case 4: // Asociar Beneficiario
                     panel = new jAsociarBeneficiario();
                     UI.jPrincipal.add("AsociarBeneficiario", panel);
                     UI.cl.show(UI.jPrincipal, "AsociarBeneficiario");  
-               //}
-               //else {
-                 //  mensajeError.setVisible(true);
-               //}
                    
                break;
+            }
         }
+        else {
+            mensajeError.setVisible(true);
+        }
+        
+        
         
     }//GEN-LAST:event_botonContinuarActionPerformed
 
