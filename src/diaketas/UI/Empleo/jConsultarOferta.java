@@ -4,8 +4,11 @@
  */
 package diaketas.UI.Empleo;
 
+import diaketas.Modelo.ONG.ONG;
+import diaketas.Modelo.ONG.Oferta;
 import diaketas.UI.UI;
 import java.awt.Font;
+import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +23,31 @@ public class jConsultarOferta extends javax.swing.JPanel {
      */
     public jConsultarOferta() {
         initComponents();
+        
+        //Ponemos por defecto los datos del voluntario a modificar
+        
+        Oferta datosOferta = ONG.gestorOfertas.consultarDatosOferta();
+        
+         
+        
+        Cod_Oferta.setText( Integer.toString(datosOferta.cod_oferta) );
+        Concepto.setText( datosOferta.concepto );
+        Activada.setText( Integer.toString(datosOferta.activo) );
+        Poblacion.setText( datosOferta.poblacion );
+        Num_vacantes.setText( Integer.toString(datosOferta.numero_vacantes) );
+        Descripcion.setText( datosOferta.descripcion );
+        Req_minimos.setText( datosOferta.requisitos_minimos );
+        Tipo_contrato.setText( datosOferta.tipo_contrato );
+        Jornada_laboral.setText( Integer.toString(datosOferta.jornada_laboral) );
+        Salario.setText( Double.toString(datosOferta.salario) );
+        DNI_donante.setText( datosOferta.NIF_CIF_Donante );
+        Observaciones.setText( datosOferta.observaciones );
+        
+        // Representamos la fecha, pasandola de tipo Date a String
+        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
+               
+        Fecha.setText(formatoFecha.format(datosOferta.fecha) );
+        
     }
     
     

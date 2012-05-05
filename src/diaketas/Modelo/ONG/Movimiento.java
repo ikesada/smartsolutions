@@ -41,6 +41,16 @@ public class Movimiento {
     public String involucrado;
     
     /**
+     * NIF del voluntario que crea
+     */
+    public String voluntario_crea;
+    
+    /**
+     * NIF del voluntario que confirma el movimiento
+     */
+    public String voluntario_confirma;
+    
+    /**
      * Descripción del movimiento
      */
     public String descripcion;
@@ -53,7 +63,7 @@ public class Movimiento {
     /**
      * Indica si el movimiento está confirmado
      */
-    boolean confirmado;
+    public boolean confirmado;
     
     
     public Movimiento(String tipo,double cuantia, String involucrado, String descripcion, Date fecha){
@@ -92,9 +102,11 @@ public class Movimiento {
         }
     }
 
-    public void modificar(double cuantia, String descripcion) {
+    public void modificar(String tipo_movimiento, double cuantia, String descripcion, String involucrado) {
         this.cuantia = cuantia;
         this.descripcion = descripcion;
+        this.Tipo_Movimiento = tipo_movimiento;
+        this.involucrado = involucrado;
         
                
         ConexionBD con = new ConexionBD();
@@ -104,8 +116,8 @@ public class Movimiento {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
             /*Actualizamos Familiar*/
-            instruccion.executeUpdate("UPDATE  Movimiento SET Cuantia = \""
-                    + cuantia + "\", Descripcion = \""+descripcion+ "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
+            instruccion.executeUpdate("UPDATE  Movimiento SET Tipo = \"" + tipo_movimiento +", Cuantia = \""
+                    + cuantia + "\", Descripcion = \""+descripcion+ "\", Implicado = \"" + involucrado + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }

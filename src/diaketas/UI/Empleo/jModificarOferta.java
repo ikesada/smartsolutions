@@ -4,19 +4,27 @@
  */
 package diaketas.UI.Empleo;
 
+import ValidarCampos.ValidarCampos;
 import diaketas.Modelo.Gestores.Gestor_de_ofertas;
 import diaketas.Modelo.ONG.ONG;
+import diaketas.Modelo.ONG.Oferta;
 import diaketas.UI.UI;
 import java.awt.Font;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- *
+ * 
  * @author Cesar
  */
 public class jModificarOferta extends javax.swing.JPanel {
 
+    jModificacionCorrecta confirmarModificacion;
     JPanel panel;
     /**
      * Creates new form jConsultarMovimiento
@@ -26,24 +34,28 @@ public class jModificarOferta extends javax.swing.JPanel {
         
         //Ponemos por defecto los datos del voluntario a modificar
         
-        Cod_Oferta.setText( Integer.toString(Gestor_de_ofertas.O.cod_oferta) );
-        Concepto.setText( Gestor_de_ofertas.O.concepto );
-        Activada.setText( Integer.toString(Gestor_de_ofertas.O.activo) );
-        Poblacion.setText( Gestor_de_ofertas.O.poblacion );
-        Num_vacantes.setText( Integer.toString(Gestor_de_ofertas.O.numero_vacantes) );
-        Descripcion.setText( Gestor_de_ofertas.O.descripcion );
-        Req_minimos.setText( Gestor_de_ofertas.O.requisitos_minimos );
-        Tipo_contrato.setText( Gestor_de_ofertas.O.tipo_contrato );
-        Jornada_laboral.setText( Integer.toString(Gestor_de_ofertas.O.jornada_laboral) );
-        Salario.setText( Double.toString(Gestor_de_ofertas.O.salario) );
-        DNI_donante.setText( Gestor_de_ofertas.O.NIF_CIF_Donante );
-        Observaciones.setText( Gestor_de_ofertas.O.observaciones );
+        Oferta datosOferta = ONG.gestorOfertas.consultarDatosOferta();
+        
+        
+        
+        Cod_Oferta.setText( Integer.toString(datosOferta.cod_oferta) );
+        Concepto.setText( datosOferta.concepto );
+        Activada.setText( Integer.toString(datosOferta.activo) );
+        Poblacion.setText( datosOferta.poblacion );
+        Num_vacantes.setText( Integer.toString(datosOferta.numero_vacantes) );
+        Descripcion.setText( datosOferta.descripcion );
+        Req_minimos.setText( datosOferta.requisitos_minimos );
+        Tipo_contrato.setText( datosOferta.tipo_contrato );
+        Jornada_laboral.setText( Integer.toString(datosOferta.jornada_laboral) );
+        Salario.setText( Double.toString(datosOferta.salario) );
+        DNI_donante.setText( datosOferta.NIF_CIF_Donante );
+        Observaciones.setText( datosOferta.observaciones );
         
         
         // Representamos la fecha, pasandola de tipo Date a String
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
                
-        Fecha.setText(formatoFecha.format(Gestor_de_ofertas.O.fecha) );
+        Fecha.setText(formatoFecha.format(datosOferta.fecha) );
 
     }
     
@@ -93,6 +105,8 @@ public class jModificarOferta extends javax.swing.JPanel {
         Salario = new javax.swing.JTextField();
         DNI_donante = new javax.swing.JTextField();
         botonCancelar = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        NIF1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(233, 225, 242));
         setForeground(new java.awt.Color(102, 102, 102));
@@ -164,39 +178,95 @@ public class jModificarOferta extends javax.swing.JPanel {
 
         Descripcion.setColumns(20);
         Descripcion.setRows(5);
+        Descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DescripcionKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(Descripcion);
 
         Observaciones.setColumns(20);
         Observaciones.setRows(5);
+        Observaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ObservacionesKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(Observaciones);
 
-        Concepto.setText("Concepto");
         Concepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConceptoActionPerformed(evt);
             }
         });
+        Concepto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ConceptoKeyTyped(evt);
+            }
+        });
 
-        Activada.setText("Activada");
+        Activada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ActivadaKeyTyped(evt);
+            }
+        });
 
-        Poblacion.setText("Poblacion");
+        Poblacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PoblacionKeyTyped(evt);
+            }
+        });
 
-        Req_minimos.setText("Req minimos");
+        Req_minimos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Req_minimosKeyTyped(evt);
+            }
+        });
 
-        Num_vacantes.setText("Numero vacantes");
+        Num_vacantes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Num_vacantesKeyTyped(evt);
+            }
+        });
 
-        Tipo_contrato.setText("Tipo contrato");
+        Tipo_contrato.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Tipo_contratoKeyTyped(evt);
+            }
+        });
 
-        Jornada_laboral.setText("Jornada laboral");
+        Jornada_laboral.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Jornada_laboralKeyTyped(evt);
+            }
+        });
 
-        Salario.setText("Salario");
+        Salario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SalarioKeyTyped(evt);
+            }
+        });
 
-        DNI_donante.setText("DNI donante");
+        DNI_donante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DNI_donanteKeyTyped(evt);
+            }
+        });
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("DNI del voluntario actual");
+
+        NIF1.setBackground(new java.awt.Color(255, 255, 153));
+        NIF1.setColumns(9);
+        NIF1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF1KeyTyped(evt);
             }
         });
 
@@ -212,16 +282,16 @@ public class jModificarOferta extends javax.swing.JPanel {
                         .addComponent(jLabel2)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3)
+                        .addGap(39, 39, 39)
+                        .addComponent(jTitulo1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(39, 39, 39)
-                                .addComponent(jTitulo1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jTitulo2, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -234,36 +304,41 @@ public class jModificarOferta extends javax.swing.JPanel {
                                             .addComponent(jLabel8))
                                         .addGap(68, 68, 68)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Cod_Oferta)
                                             .addComponent(Fecha)
-                                            .addComponent(Num_vacantes, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(Concepto, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(Poblacion, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(Cod_Oferta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(Activada, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel19)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                            .addComponent(Poblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Activada, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Concepto, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Num_vacantes, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel19))
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2)
+                                .addGap(88, 88, 88)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator8)
+                            .addComponent(jLabel9)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel15))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Jornada_laboral)
-                                            .addComponent(DNI_donante)
-                                            .addComponent(Req_minimos)
-                                            .addComponent(Tipo_contrato)
-                                            .addComponent(Salario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Tipo_contrato)
+                                    .addComponent(DNI_donante, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(Salario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                        .addComponent(Jornada_laboral, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(Req_minimos, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(339, 339, 339)
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(NIF1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84)
                         .addComponent(botonOK, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -327,9 +402,9 @@ public class jModificarOferta extends javax.swing.JPanel {
                             .addComponent(jLabel10)
                             .addComponent(Jornada_laboral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
@@ -343,16 +418,186 @@ public class jModificarOferta extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonOK)
-                    .addComponent(botonCancelar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonOK)
+                            .addComponent(botonCancelar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NIF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKActionPerformed
-        UI.cl.show(UI.jPrincipal, "Empleo");
+        
+        
+        boolean continuar = true;
+
+        //compruebo que no haya ningun campo vacio
+        if (Concepto.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el concepto.", "Concepto", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Activada.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Indica si la oferta esta activa o no.", "Activada", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Poblacion.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido la poblacion.", "Poblacion", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Num_vacantes.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el numero de plazas vacantes.", "Plazas vacantes", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Descripcion.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido la descripcion.", "Descripcion", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Req_minimos.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se han introducido los requisitos minimos.", "Requisitos minimos", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Tipo_contrato.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el tipo de contrato.", "Tipo de contrato", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Jornada_laboral.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el numero de horas de la jornada laboral.", "Jornada laboral", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Salario.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el salario.", "Salario", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (DNI_donante.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el dni del donante.", "DNI donante", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (Observaciones.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se han introducido observaciones.", "Observaciones", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } else if (NIF1.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "No se ha introducido el DNI del voluntario actual.", "DNI voluntario actual", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        } 
+        
+        if ( continuar && Activada.getText().compareTo("") != 0 ) {    //compruebo que Activada solo puede ser 1 o 0
+            
+            if( Activada.getText().compareTo("0")!=0 && Activada.getText().compareTo("1")!=0 )
+            {
+                JOptionPane.showMessageDialog(this, "Introducir 0 para desactivar y 1 para activar.", "Activada", JOptionPane.ERROR_MESSAGE);
+                continuar = false;
+            }
+        } 
+        //una vez que todos los campos han sido rellenados correctamente
+        
+        if(continuar)
+        {
+            
+            if( !ValidarCampos.isInteger(Activada.getText()) ) 
+            {
+                JOptionPane.showMessageDialog(this, "El campo activada no es correcto. Debe ser un numero.", "Activada Invalido", JOptionPane.ERROR_MESSAGE);
+                continuar = false;
+            }
+            else if (!ValidarCampos.isInteger(Num_vacantes.getText())) {
+
+                JOptionPane.showMessageDialog(this, "El numero de vacantes no es correcto. Deber ser un numero.", "Vacantes Invalido", JOptionPane.ERROR_MESSAGE);
+                continuar = false;
+            } 
+            else if (!ValidarCampos.isInteger(Jornada_laboral.getText())) {
+
+                JOptionPane.showMessageDialog(this, "El numero de horas de la jornada laboral no es correcto. Deber ser un numero.", "Jornada Invalida", JOptionPane.ERROR_MESSAGE);
+                continuar = false;
+            } 
+            else if (!ValidarCampos.isDouble(Salario.getText())) {
+
+                JOptionPane.showMessageDialog(this, "El salario no es correcto. Deber ser un numero real.", "Salario Invalido", JOptionPane.ERROR_MESSAGE);
+                continuar = false;
+            } 
+            
+            
+           
+            
+            boolean exito = false;
+
+            if (continuar) //si todos los datos introducidos son correctos, llamo a las funciones
+            {
+
+                //primero compruebo si el dni del donante existe en el sistema
+                boolean existe_don = ONG.gestorDonantes.comprobarDniDonante((String) DNI_donante.getText().toUpperCase());
+
+                if (existe_don) {
+                    
+                    boolean existe_vol = ONG.gestorVoluntarios.comprobarExistenciaVoluntario((String) NIF1.getText().toUpperCase());
+                    
+                    if (existe_vol) {   //si existen el voluntario y el donante llamo a la funcion que modifica los datos
+                        
+                        
+                        //Antes de llamar a la funcion, obtengo el tipo Date desde el String 
+                        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+                        Date FechaOf = null;
+
+                        if (Fecha.getText().compareTo("d/mm/aa") != 0 && Fecha.getText().compareTo("") != 0) //si el campo fecha tiene escrito algo distinto de "d/mm/aa" y " "
+                        {
+
+                            try {
+                                FechaOf = formatoFecha.parse(Fecha.getText());
+
+                            } catch (ParseException ex) {
+                                Logger.getLogger(jModificarOferta.class.getName()).log(Level.SEVERE, null, ex);
+                                JOptionPane.showMessageDialog(this, "Fecha de oferta incorrecta, utilice formato dd/MM/yy.", "Fecha de oferta", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } else //si la fecha esta vacia...
+                        {
+                            JOptionPane.showMessageDialog(this, "No se ha introducido la fecha de oferta.", "Fecha de oferta", JOptionPane.ERROR_MESSAGE);
+                            continuar = false;
+                        }
+                        
+                        
+                        //ahora si se llama a la funcion final
+                        boolean error = ONG.gestorOfertas.introducirOferta( Integer.parseInt(Cod_Oferta.getText()), (String)Concepto.getText(), FechaOf, Integer.parseInt(Activada.getText()), (String)Poblacion.getText(), Integer.parseInt(Num_vacantes.getText()), (String)Descripcion.getText(), (String)Req_minimos.getText(), (String)Tipo_contrato.getText(), Integer.parseInt(Jornada_laboral.getText()), Double.parseDouble(Salario.getText()), (String)DNI_donante.getText().toUpperCase(), (String)Observaciones.getText(), (String)NIF1.getText().toUpperCase() );
+                        
+                        if(!error)  //si no hay errores
+                        {
+                            exito=true;
+                            
+                            //ahora registro la operacion en el historial
+                            
+                            ONG.gestorOfertas.finModificarOferta();
+                            
+                        }
+                        else    //si hay algun error...
+                        {
+                            exito=false;
+                        }
+                        
+                                                
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No se ha encontrado el DNI del voluntario actual.", "Error DNI voluntario", JOptionPane.ERROR_MESSAGE);
+                        exito = false;
+                    }
+                    
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado el DNI del donante.", "Error DNI donante", JOptionPane.ERROR_MESSAGE);
+                    exito = false;
+                }
+            }
+
+
+
+            if (exito && continuar) //si la operacion se ha realizado con exito y se habian introducido todos los datos
+            {
+                //MODIFICACION OFERTA REALIZADA
+                confirmarModificacion = new jModificacionCorrecta();
+                UI.jPrincipal.remove(confirmarModificacion);
+                UI.jPrincipal.add("ConfirmarModificacion", confirmarModificacion);
+                UI.cl.show(UI.jPrincipal, "ConfirmarModificacion");
+            } else if (!exito) {
+                JOptionPane.showMessageDialog(this, "No se ha podido realizar correctamente la modificacion.", "Error modificacion", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            
+        }//continuar
+        
+        //UI.cl.show(UI.jPrincipal, "Empleo");
     }//GEN-LAST:event_botonOKActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
@@ -387,7 +632,94 @@ public class jModificarOferta extends javax.swing.JPanel {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // TODO add your handling code here:
+        
+        UI.cl.show(UI.jPrincipal, "Empleo");
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void DNI_donanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DNI_donanteKeyTyped
+        // TODO add your handling code here:
+        if (DNI_donante.getText().length() >= 9) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_DNI_donanteKeyTyped
+
+    private void ConceptoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ConceptoKeyTyped
+        // TODO add your handling code here:
+        
+        if (Concepto.getText().length() >= 60) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ConceptoKeyTyped
+
+    private void PoblacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PoblacionKeyTyped
+        // TODO add your handling code here:
+        if (Poblacion.getText().length() >= 30) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_PoblacionKeyTyped
+
+    private void Num_vacantesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Num_vacantesKeyTyped
+        // TODO add your handling code here:
+        if (Num_vacantes.getText().length() >= 6) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_Num_vacantesKeyTyped
+
+    private void DescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DescripcionKeyTyped
+        // TODO add your handling code here:
+        if (Descripcion.getText().length() >= 500) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_DescripcionKeyTyped
+
+    private void ActivadaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ActivadaKeyTyped
+        // TODO add your handling code here:
+        if (Activada.getText().length() >= 1) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ActivadaKeyTyped
+
+    private void Req_minimosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Req_minimosKeyTyped
+        // TODO add your handling code here:
+        if (Req_minimos.getText().length() >= 200) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_Req_minimosKeyTyped
+
+    private void Tipo_contratoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tipo_contratoKeyTyped
+        // TODO add your handling code here:
+        if (Tipo_contrato.getText().length() >= 60) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_Tipo_contratoKeyTyped
+
+    private void Jornada_laboralKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Jornada_laboralKeyTyped
+        // TODO add your handling code here:
+        if (Jornada_laboral.getText().length() >= 6) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_Jornada_laboralKeyTyped
+
+    private void SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SalarioKeyTyped
+        // TODO add your handling code here:
+        if (Salario.getText().length() >= 8) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_SalarioKeyTyped
+
+    private void ObservacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObservacionesKeyTyped
+        // TODO add your handling code here:
+        if (Observaciones.getText().length() >= 200) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ObservacionesKeyTyped
+
+    private void NIF1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF1KeyTyped
+        // TODO add your handling code here:
+        if (NIF1.getText().length() >= 9) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIF1KeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Activada;
@@ -398,6 +730,7 @@ public class jModificarOferta extends javax.swing.JPanel {
     private javax.swing.JTextArea Descripcion;
     private javax.swing.JLabel Fecha;
     private javax.swing.JTextField Jornada_laboral;
+    private javax.swing.JTextField NIF1;
     private javax.swing.JTextField Num_vacantes;
     private javax.swing.JTextArea Observaciones;
     private javax.swing.JTextField Poblacion;
@@ -411,6 +744,7 @@ public class jModificarOferta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
