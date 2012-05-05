@@ -94,9 +94,11 @@ public class Movimiento {
         }
     }
 
-    public void modificar(double cuantia, String descripcion) {
+    public void modificar(String tipo_movimiento, double cuantia, String descripcion, String involucrado) {
         this.cuantia = cuantia;
         this.descripcion = descripcion;
+        this.Tipo_Movimiento = tipo_movimiento;
+        this.involucrado = involucrado;
         
                
         ConexionBD con = new ConexionBD();
@@ -106,8 +108,8 @@ public class Movimiento {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
             /*Actualizamos Familiar*/
-            instruccion.executeUpdate("UPDATE  Movimiento SET Cuantia = \""
-                    + cuantia + "\", Descripcion = \""+descripcion+ "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
+            instruccion.executeUpdate("UPDATE  Movimiento SET Tipo = \"" + tipo_movimiento +", Cuantia = \""
+                    + cuantia + "\", Descripcion = \""+descripcion+ "\", Implicado = \"" + involucrado + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
