@@ -15,13 +15,19 @@ import javax.swing.JOptionPane;
  */
 public class jEliminarMovimiento extends javax.swing.JPanel {
 
+    int Cod_Movimiento;
     
     /**
      * Creates new form jConfirmarMovimiento
      */
-    public jEliminarMovimiento() {
+    public jEliminarMovimiento(int Cod_Movimiento) {
         /* Iniciamos componentes */
         initComponents();
+        
+        this.Cod_Movimiento = Cod_Movimiento;
+        this.cod_Movimiento.setText(String.valueOf(this.Cod_Movimiento));
+        //this.labelDNI.setVisible(false);
+        //this.NIF_Voluntario.setVisible(false);
     }
 
     /**
@@ -42,7 +48,9 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jTitulo1 = new javax.swing.JLabel();
         NIF_Voluntario = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        labelDNI = new javax.swing.JLabel();
+        labelCod = new javax.swing.JLabel();
+        cod_Movimiento = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(233, 225, 242));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -83,7 +91,11 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setText("DNI voluntario");
+        labelDNI.setText("DNI voluntario");
+
+        labelCod.setText("Cod del Movimiento");
+
+        cod_Movimiento.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -106,9 +118,13 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(botonCancel))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelDNI)
+                            .addComponent(labelCod))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NIF_Voluntario)
+                            .addComponent(cod_Movimiento))))
                 .addContainerGap(222, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -127,27 +143,41 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelInformativo)
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(labelCod)
+                    .addComponent(cod_Movimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDNI)
                     .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonConfirmar)
                     .addComponent(botonCancel))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         
-        if(ONG.gestorDonaciones.comprobarVoluntario(NIF_Voluntario.getText())){
-            ONG.gestorDonaciones.finEliminarMovimiento();            
-        }else{
-            this.jLabelInformativo.setText("El DNI del Voluntario no es valido.");
-            this.jLabel4.setVisible(false);
-            this.botonConfirmar.setVisible(false);
-        }        
+        
+        if(NIF_Voluntario.getText().compareTo("") == 0)
+            JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+        else{
+            if(ONG.gestorDonaciones.comprobarVoluntario(NIF_Voluntario.getText())){
+                ONG.gestorDonaciones.finEliminarMovimiento();
+
+                this.jLabelInformativo.setText("El movimiento ha sido eliminado correctamente");
+                this.botonCancel.setText("Aceptar");
+                
+            }else{
+                this.jLabelInformativo.setText("El DNI del Voluntario no es valido.");
+                this.labelDNI.setVisible(false);
+                this.botonConfirmar.setVisible(false);
+            }
+        }       
+        
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
@@ -178,12 +208,14 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
     private javax.swing.JTextField NIF_Voluntario;
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonConfirmar;
+    private javax.swing.JTextField cod_Movimiento;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelInformativo;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel jTitulo1;
     private javax.swing.JLabel jTitulo2;
+    private javax.swing.JLabel labelCod;
+    private javax.swing.JLabel labelDNI;
     // End of variables declaration//GEN-END:variables
 }
