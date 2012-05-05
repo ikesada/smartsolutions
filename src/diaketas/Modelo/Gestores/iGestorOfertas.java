@@ -57,4 +57,14 @@ public interface iGestorOfertas {
     
     public void finAsociar();
     
+    /**
+     * Función que registra una operación realizada relacionada con la gestion de la bolsa de trabajo
+     * asi como el responsable de la misma (voluntario)
+     * @param NIF_CIF DNI del responsable de la acción
+     * @param cod_oferta Identificador de la oferta de trabajo a la que se refiere la acción
+     * @param accion Acción realizada sobre la oferta por parte del responsable
+     */
+    
+    public void registrarOperacionOfertas(String NIF_CIF, int cod_oferta, String accion);
+    
 }

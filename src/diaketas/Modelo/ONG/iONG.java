@@ -113,4 +113,12 @@ public interface iONG {
      * @param m El movimiento a agregar 
      */
     public void agregarMovimiento(Movimiento m);
+    
+    
+    /**
+     * Registra en el sistema una nueva accion realizada por un voluntario a la hora de
+     * gestionar la bolsa de empleo.
+     * @param accion Contiene la informacion de la intervención realizada.
+     */
+    public void agregarAccionOferta(AccionOferta accion);
 }

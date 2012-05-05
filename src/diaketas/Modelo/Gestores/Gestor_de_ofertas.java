@@ -4,9 +4,7 @@
  */
 package diaketas.Modelo.Gestores;
 
-import diaketas.Modelo.ONG.Beneficiario;
-import diaketas.Modelo.ONG.ONG;
-import diaketas.Modelo.ONG.Oferta;
+import diaketas.Modelo.ONG.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -189,7 +187,29 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         // Se agrega la oferta al beneficiario
         B.AgregarOferta(O);
         // Registrar la accion por parte del voluntario
-        // registrarOperacionOferta(dniV,O.cod_oferta,'asociar beneficiario');
+        registrarOperacionOfertas(dniV,O.cod_oferta,"Asociar Beneficiario");
+    }
+
+    /**
+     * Registra una acción realizada en la gestión de la bolsa de trabajo por parte de un voluntario.
+     */
+    @Override
+    public void registrarOperacionOfertas(String NIF_CIF, int cod_oferta, String accion) {
+        Voluntario responsable;
+        Oferta oferta;
+        Date fecha_actual = new Date();
+        
+        AccionOferta accion_oferta = new AccionOferta(accion,fecha_actual);
+                
+        responsable = diaketas.diaketas.ong.buscarVoluntario(NIF_CIF);
+        oferta = diaketas.diaketas.ong.buscarOferta(cod_oferta);
+        
+        // Asociamos los objetos Responsables y oferta
+        accion_oferta.responsable = responsable;
+        accion_oferta.oferta = oferta;
+        
+        diaketas.diaketas.ong.agregarAccionOferta(accion_oferta);
+        
     }
     
 }
