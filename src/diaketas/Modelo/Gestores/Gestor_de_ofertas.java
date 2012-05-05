@@ -8,6 +8,7 @@ import diaketas.Modelo.ONG.Beneficiario;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Oferta;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -68,14 +69,16 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     }
     
     //devuelve true si ha habido algun error
-    public Boolean introducirOferta(Oferta nuevosDatosOferta, String dniV)
+    public Boolean introducirOferta( Integer Cod_Oferta, String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones, String dniV )
     {
+        
+        
         
         Boolean error=true;
         
         Boolean encontradoUsuario = false;
         
-        encontradoUsuario = ONG.gestorDonantes.comprobarDniDonante( nuevosDatosOferta.NIF_CIF_Donante );
+        encontradoUsuario = ONG.gestorDonantes.comprobarDniDonante( DNI_donante );
         
         if( encontradoUsuario )
         {
@@ -84,21 +87,27 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         
         if( encontradoUsuario ) //si ha encontrado a los dos usuarios, hago la modificacion sobre la oferta
         {
-            error = confirmarModificacion(nuevosDatosOferta);   //devuelve true si hay algun error
+            
+            //guardo en el gestor_de_ofertas cual es el usuario actual del sistema y modifico la oferta guardada
+            NIF_Voluntario = dniV;
+        
+            error = confirmarModificacion( Cod_Oferta, Concepto, FechaOf, Activada, Poblacion, Num_vacantes, Descripcion, Req_minimos, Tipo_contrato, Jornada_laboral, Salario, DNI_donante, Observaciones );   //devuelve true si hay algun error
         }
         
         return error;
+
     
     }
     
     //devuelve true si hay algun error
-    public Boolean confirmarModificacion(Oferta nuevosDatosOferta)
+    public Boolean confirmarModificacion(Integer Cod_Oferta, String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones)
     {
         
         Boolean hay_error;
         
         //la operacion "modificar" devuelve true si todo ha ido bien
-        Boolean exito = O.modificar(nuevosDatosOferta);
+        //modifico la Oferta "O" guardada en el gestor_de_ofertas
+        Boolean exito = O.modificar(Cod_Oferta, Concepto, FechaOf, Activada, Poblacion, Num_vacantes, Descripcion, Req_minimos, Tipo_contrato, Jornada_laboral, Salario, DNI_donante, Observaciones);
         
         if( exito )
         {
