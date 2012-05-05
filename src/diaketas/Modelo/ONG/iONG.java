@@ -110,4 +110,22 @@ public interface iONG {
     
     public ArrayList<Oferta> obtenerOfertas(int codigo,String concepto,String poblacion);
     
+    
+    /**
+     * Funcion que devuelve los datos asociados a un Movimiento cuyo código es igual
+     * al parámetro recibido.
+     * @param codMovimiento codigo identificativo del movimiento buscado
+     * @return Devuelve un movimiento concreto
+    */   
+    public Movimiento buscarMovimiento(int codMovimiento);
+    
+    
+    /**
+     * @return Devuelve la lista de ofertas que casan con los criterios de busqueda
+    */
+    public ArrayList<Movimiento> obtenerMovimientos(int operadorCantidad,String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String voluntario, String involucrado, int confirmado, int tipo, String tagDescripcion);
+
+    
+    
+    
 }
