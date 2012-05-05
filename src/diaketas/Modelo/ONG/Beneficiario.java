@@ -423,7 +423,7 @@ public class Beneficiario extends Usuarios{
     public void AgregarOferta(Oferta oferta) {
         ConexionBD con = new ConexionBD();
         
-        String insert = "insert into Recibe values( \""+oferta.cod_oferta+"\", "+NIF_CIF+"\")";
+        String insert = "insert into Recibe values( \""+oferta.cod_oferta+"\", \""+NIF_CIF+"\")";
                          
         con.conectarBD();
         

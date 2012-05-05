@@ -139,7 +139,7 @@ public class Gestor_de_ofertas implements iGestorOfertas{
 
     @Override
     public ArrayList<Oferta> obtenerListaOfertas(String dniBeneficiario, boolean[] existeBeneficiario) {
-        ArrayList<Oferta> ofertas_asociadas = null;
+        ArrayList<Oferta> ofertas_asociadas = new ArrayList();
         boolean existe;
         
         existe = diaketas.diaketas.ong.gestorBeneficiarios.comprobarExistenciaBeneficiario(dniBeneficiario);

@@ -206,6 +206,7 @@ public class jAsociarBeneficiario2 extends javax.swing.JPanel {
             
             if(autorizado) {
                 // Registrar la operacion y asociar al beneficiario con la oferta
+                diaketas.diaketas.ong.gestorOfertas.finAsociar();
                 panel = new jAsociarBeneficiario3();
 
                 UI.jPrincipal.add("AsociarBeneficiarioOferta3", panel);
