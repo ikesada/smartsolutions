@@ -120,8 +120,8 @@ public class Movimiento {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
             /*Actualizamos Familiar*/
-            instruccion.executeUpdate("UPDATE  Movimiento SET Tipo = \"" + tipo_movimiento +", Cuantia = \""
-                    + cuantia + "\", Descripcion = \""+descripcion+ "\", Implicado = \"" + involucrado + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
+            instruccion.executeUpdate("UPDATE  Movimiento SET Tipo = \"" + tipo_movimiento +"\" , Cuantia = \""
+                    + cuantia + "\", Descripcion = \""+descripcion+ "\", NIF_CIF_Implica = \"" + involucrado + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
