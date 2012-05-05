@@ -5,11 +5,17 @@
 package diaketas.UI.Donaciones;
 
 import ValidarCampos.ValidarCampos;
+import com.mysql.jdbc.Statement;
+import diaketas.ConexionBD;
 import diaketas.Modelo.ONG.Movimiento;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -26,8 +32,9 @@ public class jModificarMovimiento extends javax.swing.JPanel {
     public jModificarMovimiento() {
         initComponents();
         
-        /*Consultamos el movimiento seleccionado *//*
-        Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
+        /*Consultamos el movimiento seleccionado 
+         Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
+
         
         Cod_Movimiento.setText(String.valueOf(datosMovimiento.Cod_Movimiento));
         Tipo.setSelectedItem(datosMovimiento.Tipo_Movimiento);
@@ -39,9 +46,17 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
         Fecha.setText(formatoFecha.format(datosMovimiento.Fecha));
         
-        if (true){//datosMovimiento.confirmado
+        if (datosMovimiento.confirmado){
             botonConfirmar.setEnabled(false);
             botonModificar.setEnabled(false);
+            NIF_Voluntario.setEnabled(false);
+            Tipo.setEnabled(false);
+            Cuantia.setEnabled(false);
+            Descripcion.setEnabled(false);
+            NIF_Involucrado.setEnabled(false);
+            
+            JOptionPane.showMessageDialog(this, "Este movimiento ya ha sido confirmado y no puede modificarse",
+                                "Movimiento confirmado", JOptionPane.ERROR_MESSAGE);  
         }
         */
 
@@ -153,10 +168,21 @@ public class jModificarMovimiento extends javax.swing.JPanel {
 
         Fecha.setText("Fecha");
 
+        Descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DescripcionKeyTyped(evt);
+            }
+        });
+
         Tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Donacion Efectiva", "Donacian Bancaria", "Donacian Material", "Ayuda Efectiva", "Ayuda Bancaria", "Ayuda Material", "Gasto" }));
 
         NIF_Involucrado.setColumns(9);
+        NIF_Involucrado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_InvolucradoKeyTyped(evt);
+            }
+        });
 
         jLabel20.setText("NIF Voluntario");
 
@@ -197,25 +223,25 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                                             .addComponent(jLabel6)
                                             .addComponent(jLabel5))
                                         .addGap(68, 68, 68)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(Cod_Movimiento)
-                                            .addComponent(Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(Cuantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(Fecha)
-                                            .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(Descripcion)
+                                            .addComponent(Tipo, 0, 277, Short.MAX_VALUE)))
                                     .addComponent(jTitulo2)
                                     .addComponent(jSeparator7))
                                 .addGap(93, 93, 93)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel13)
                                             .addComponent(jLabel7))
                                         .addGap(50, 50, 50)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(NIF_Involucrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(NIF_CIF_Crea, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(NIF_CIF_Crea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(NIF_Involucrado)))
+                                    .addComponent(jSeparator8)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(424, 424, 424)
                         .addComponent(jLabel20)
@@ -254,7 +280,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(12, 12, 12)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6))
@@ -289,7 +315,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                     .addComponent(botonCancel)
                     .addComponent(botonConfirmar)
                     .addComponent(botonModificar))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -314,6 +340,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         Fecha.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         NIF_Involucrado.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         NIF_CIF_Crea.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        NIF_Voluntario.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
@@ -327,23 +354,26 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         int error;
         if (Cuantia.getText().compareTo("") == 0)
             Cuantia.setText("0.00");
+        if (!ValidarCampos.isDouble(Cuantia.getText()))
+           JOptionPane.showMessageDialog(this, "La cuantia no es correcta. Debe de ser un número",
+                                "Cuantia Movimiento inválida", JOptionPane.ERROR_MESSAGE);
+        else if (NIF_Voluntario.getText().compareTo("") == 0)
+           JOptionPane.showMessageDialog(this, "No se ha introducido el Nif del voluntario",
+                                "NIF Voluntario", JOptionPane.ERROR_MESSAGE);    
         
-        if (ValidarCampos.isDouble(Cuantia.getText())){
             /*Introducimos los nuevos datos del movimiento y comprobamos si el dni del voluntario existe*/
-            if ((error = ONG.gestorDonaciones.introducirMovimiento((String)Tipo.getSelectedItem(), Double.parseDouble(Cuantia.getText()),
-                    NIF_Involucrado.getText(), Descripcion.getText(), NIF_Voluntario.getText())) == 0){
+        else if ((error = ONG.gestorDonaciones.introducirMovimiento((String)Tipo.getSelectedItem(), Double.parseDouble(Cuantia.getText()),
+                    NIF_Involucrado.getText().toUpperCase(), Descripcion.getText(), NIF_Voluntario.getText().toUpperCase())) == 0){
 
                 /*Confirmamos la modificación*/
                 ONG.gestorDonaciones.confirmarModificacion();
-            }
- 
-
+                
+                UI.cl.show(UI.jPrincipal, "Donaciones");
         }else{
-            JOptionPane.showMessageDialog(this, "La cuantia no es correcta. Debe de ser un número",
-                                "Cuantia Movimiento inválida", JOptionPane.ERROR_MESSAGE);  
+            if (error == 1 || error == 2)
+               JOptionPane.showMessageDialog(this, "No se ha encontrado a ninguna persona con ese NIF",
+                                "NIF Involucrado", JOptionPane.ERROR_MESSAGE);     
         }
-        
-        UI.cl.show(UI.jPrincipal, "Donaciones");
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
@@ -351,6 +381,18 @@ public class jModificarMovimiento extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_NIF_VoluntarioKeyTyped
+
+    private void NIF_InvolucradoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_InvolucradoKeyTyped
+        if (NIF_Involucrado.getText().length() == 9) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIF_InvolucradoKeyTyped
+
+    private void DescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DescripcionKeyTyped
+        if (Descripcion.getText().length() == 40) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_DescripcionKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cod_Movimiento;

@@ -37,7 +37,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="550" max="-2" attributes="0"/>
                               <Component id="botonOK" min="-2" max="-2" attributes="0"/>
@@ -45,26 +45,24 @@
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jTitulo2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="Cuantia" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Tipo" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Cod_Movimiento" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Fecha" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Confirmado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Descripcion" alignment="0" min="-2" pref="299" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Cuantia" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Tipo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Cod_Movimiento" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Fecha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Confirmado" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Descripcion" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jSeparator7" alignment="0" min="-2" pref="496" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">

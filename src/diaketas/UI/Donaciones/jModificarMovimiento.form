@@ -63,31 +63,31 @@
                                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="Cod_Movimiento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Tipo" min="-2" max="-2" attributes="0"/>
                                           <Component id="Cuantia" min="-2" max="-2" attributes="0"/>
                                           <Component id="Fecha" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Descripcion" min="-2" pref="277" max="-2" attributes="0"/>
+                                          <Component id="Descripcion" max="32767" attributes="0"/>
+                                          <Component id="Tipo" alignment="0" pref="277" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jTitulo2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="NIF_Involucrado" min="-2" max="-2" attributes="0"/>
-                                          <Component id="NIF_CIF_Crea" min="-2" pref="149" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="NIF_CIF_Crea" max="32767" attributes="0"/>
+                                          <Component id="NIF_Involucrado" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jSeparator8" min="-2" pref="316" max="-2" attributes="0"/>
+                                  <Component id="jSeparator8" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -138,7 +138,7 @@
                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -185,7 +185,7 @@
                   <Component id="botonConfirmar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="124" max="32767" attributes="0"/>
+              <EmptySpace pref="123" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -322,6 +322,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Descripcion">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DescripcionKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="Tipo">
       <Properties>
@@ -345,6 +348,9 @@
       <Properties>
         <Property name="columns" type="int" value="9"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NIF_InvolucradoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel20">
       <Properties>

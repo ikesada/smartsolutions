@@ -4,11 +4,20 @@
  */
 package diaketas.UI.Donaciones;
 
+import com.mysql.jdbc.Statement;
+import diaketas.ConexionBD;
+import diaketas.Modelo.ONG.Beneficiario;
+import diaketas.Modelo.ONG.Familiar;
 import diaketas.Modelo.ONG.Movimiento;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -24,8 +33,10 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
     public jConsultarMovimiento() {
         initComponents();
         
-        /*Consultamos el movimiento seleccionado *//*
-        Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
+        /*Consultamos el movimiento seleccionado         
+         Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
+        
+        
         
         Cod_Movimiento.setText(String.valueOf(datosMovimiento.Cod_Movimiento));
         Tipo.setText(datosMovimiento.Tipo_Movimiento);
@@ -37,7 +48,8 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
         NIF_CIF_Confirma.setText(datosMovimiento.voluntario_confirma);
         
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
-        Fecha.setText(formatoFecha.format(datosMovimiento.Fecha));*/
+        Fecha.setText(formatoFecha.format(datosMovimiento.Fecha));
+        */
     }
     
     
@@ -155,29 +167,28 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(550, 550, 550)
                                 .addComponent(botonOK))
                             .addComponent(jLabel6)
                             .addComponent(jLabel8)
                             .addComponent(jTitulo2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel18)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel2))
-                                    .addGap(68, 68, 68)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Cuantia)
-                                        .addComponent(Tipo)
-                                        .addComponent(Cod_Movimiento)
-                                        .addComponent(Fecha)
-                                        .addComponent(Confirmado)
-                                        .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel2))
+                                .addGap(68, 68, 68)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Cuantia)
+                                    .addComponent(Tipo)
+                                    .addComponent(Cod_Movimiento)
+                                    .addComponent(Fecha)
+                                    .addComponent(Confirmado)
+                                    .addComponent(Descripcion)))
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
