@@ -67,4 +67,24 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     private void confirmarConfirmacion (String dniV){
         movimientoSeleccionado.confirmar(dniV);
     }
+    
+   /**
+     * Comprueba que el DNI del Voluntario es valido
+     * @param dniVoluntario DNI del voluntario responsable
+     * @return Un booleano indicando si el dni del voluntario es valido o no
+     */ 
+    @Override
+    public boolean comprobarVoluntario(String dniVoluntario) {
+        return ONG.gestorVoluntarios.comprobarExistenciaVoluntario(dniVoluntario);
+    }
+    
+    @Override
+    public void finEliminarMovimiento(){
+        confirmarEliminacion(movimientoSeleccionado.Cod_Movimiento);
+    }
+    
+    public void confirmarEliminacion(int Cod_Movimiento){
+        
+        
+    }
 }

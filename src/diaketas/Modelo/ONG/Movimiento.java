@@ -107,6 +107,35 @@ public class Movimiento {
                 }
             }
         }
-    }    
-}   
+    } 
+    
+    public void eliminar(int cod_Movimiento){
+        this.Cod_Movimiento = cod_Movimiento;
+       
+         ConexionBD con = new ConexionBD();
+        con.conectarBD();
+
+         try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+            
+            /*Actualizamos Familiar*/
+            instruccion.executeUpdate("DELETE FROM Movimiento "
+                    + "WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+}
+     
 

@@ -32,4 +32,17 @@ public interface iGestorDonaciones {
      * Realiza una modificación sobre el movimiento seleccionado
      */
      public void confirmarModificacion ();
+     
+     
+    /**
+     * Comprueba que el DNI del Voluntario es valido
+     * @param dniVoluntario DNI del voluntario responsable
+     * @return Un booleano indicando si el dni del voluntario es valido o no
+     */    
+    public boolean comprobarVoluntario(String dniVoluntario);
+    
+    /**
+     * Procede a eliminar(desactivar) el movimiento del sistema
+     */
+    public void finEliminarMovimiento();
 }
