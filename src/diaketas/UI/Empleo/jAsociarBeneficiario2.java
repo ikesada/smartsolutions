@@ -204,9 +204,8 @@ public class jAsociarBeneficiario2 extends javax.swing.JPanel {
         if(dni_voluntario.compareTo("") != 0) {
             autorizado = diaketas.diaketas.ong.gestorOfertas.comprobarVoluntario(dni_voluntario);
             
-            System.out.println(autorizado);
-            
             if(autorizado) {
+                // Registrar la operacion y asociar al beneficiario con la oferta
                 panel = new jAsociarBeneficiario3();
 
                 UI.jPrincipal.add("AsociarBeneficiarioOferta3", panel);

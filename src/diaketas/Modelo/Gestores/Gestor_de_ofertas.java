@@ -21,6 +21,17 @@ public class Gestor_de_ofertas implements iGestorOfertas{
      */
     public static Oferta O;
     
+    /**
+     * Beneficiario sobre el que trabaja el Gestor
+     */
+    public static Beneficiario B;
+    
+    
+    /**
+     * DNI del responsable (voluntario) que realiza la operacion
+     */
+    private String dniV;
+    
     
     /**
      * NIF del Voluntario que esta trabajando actualmente sobre el sistema
@@ -136,16 +147,40 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         existeBeneficiario[0] = existe;
         
         if(existe) {
-            Beneficiario beneficiario = diaketas.diaketas.ong.buscarBeneficiario(dniBeneficiario);
-            ofertas_asociadas = beneficiario.obtenerOfertas();
+            B = diaketas.diaketas.ong.buscarBeneficiario(dniBeneficiario);
+            ofertas_asociadas = B.obtenerOfertas();
         }
         
         return ofertas_asociadas;
     }
 
+    /**
+     * Función que comprueba si un determinado voluntario esta autorizado para realizar una operación
+     * @param dniVoluntario DNI del voluntario sobre el que se quiere consultar
+     * @return Indica si el voluntario está autorizado o no
+     */
     @Override
     public boolean comprobarVoluntario(String dniVoluntario) {
-        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(dniVoluntario);
+        boolean exito = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(dniVoluntario);
+        
+        if(exito) {
+            // Se almacena el dni del responsable
+            dniV = dniVoluntario;
+        }
+        
+        return exito;
+    }
+    
+    /**
+     * Finaliza la operación de asociar un beneficiario a una determinada oferta.
+     */
+    
+    @Override
+    public void finAsociar() {
+        // Se agrega la oferta al beneficiario
+        B.AgregarOferta(O);
+        // Registrar la accion por parte del voluntario
+        // registrarOperacionOferta(dniV,O.cod_oferta,'asociar beneficiario');
     }
     
 }

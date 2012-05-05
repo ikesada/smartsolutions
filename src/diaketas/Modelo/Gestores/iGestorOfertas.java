@@ -51,4 +51,10 @@ public interface iGestorOfertas {
     
     public boolean comprobarVoluntario(String dniVoluntario);
     
+    /**
+     * Finaliza la operación de asociar un beneficiario a una determinada oferta.
+     */
+    
+    public void finAsociar();
+    
 }

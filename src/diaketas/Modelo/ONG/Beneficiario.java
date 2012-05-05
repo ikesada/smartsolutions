@@ -419,4 +419,34 @@ public class Beneficiario extends Usuarios{
         
         return ofertas;
     }
+    
+    public void AgregarOferta(Oferta oferta) {
+        ConexionBD con = new ConexionBD();
+        
+        String insert = "insert into Recibe values( \""+oferta.cod_oferta+"\", "+NIF_CIF+"\")";
+                         
+        con.conectarBD();
+        
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+
+            instruccion.executeUpdate(insert);
+                        
+        }
+        /*Captura de errores*/
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e);}
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }         
+        
+    }
+        
 }
