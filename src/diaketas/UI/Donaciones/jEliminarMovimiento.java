@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author kesada
+ * @author Alex
  */
 public class jEliminarMovimiento extends javax.swing.JPanel {
 
@@ -26,8 +26,6 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
         
         this.Cod_Movimiento = Cod_Movimiento;
         this.cod_Movimiento.setText(String.valueOf(this.Cod_Movimiento));
-        //this.labelDNI.setVisible(false);
-        //this.NIF_Voluntario.setVisible(false);
     }
 
     /**
