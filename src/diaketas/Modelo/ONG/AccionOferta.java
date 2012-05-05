@@ -26,15 +26,22 @@ public class AccionOferta {
     
     
     /**
-     *  Identificador del Voluntario que ha realizado la accion
+     *  Voluntario que ha realizado la accion
      */
-    public String NIF_CIF;
+    public Voluntario responsable;
     
     
     /**
-     *  Identificador de la Oferta sobre la que se ha realizado la accion
+     *  Oferta sobre la que se ha realizado la operacion
      */
-    public String codOferta;
+    
+    public Oferta oferta;
+    
+    
+    public AccionOferta(String Accion, Date Fecha) {
+        this.Nombre = Accion;
+        this.Fecha = Fecha;
+    }
     
     
 }

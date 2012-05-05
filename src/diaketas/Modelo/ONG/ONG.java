@@ -781,4 +781,36 @@ public class ONG implements iONG{
             }
         }
     }
+    
+    /**
+     * Registra en el sistema una nueva accion realizada por un voluntario a la hora de
+     * gestionar la bolsa de empleo.
+     */
+
+    @Override
+    public void agregarAccionOferta(AccionOferta accion) {
+        /*Se guarda la accion en el sistema*/
+        con.conectarBD();
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha = new java.sql.Timestamp(accion.Fecha.getTime());
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            instruccion.executeUpdate("INSERT INTO AccionOferta(Nombre,Fecha,Cod_Oferta,NIF_CIF) VALUES (\""
+                                        +accion.Nombre+ "\",\"" +fecha + "\",\"" + accion.oferta.cod_oferta+"\",\""+accion.responsable.NIF_CIF+"\")");
+         }
+         
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 }
