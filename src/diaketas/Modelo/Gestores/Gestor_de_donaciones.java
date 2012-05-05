@@ -101,7 +101,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     */
     @Override
     public void confirmarModificacion (){
-        movimientoSeleccionado.modificar(datosMovimiento.cuantia, datosMovimiento.descripcion);
+        movimientoSeleccionado.modificar(datosMovimiento.Tipo_Movimiento, datosMovimiento.cuantia, datosMovimiento.descripcion, datosMovimiento.involucrado);
     }
     
 
