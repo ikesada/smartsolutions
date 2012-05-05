@@ -127,17 +127,26 @@ public class Gestor_de_ofertas implements iGestorOfertas{
      */
 
     @Override
-    public ArrayList<Oferta> obtenerListaOfertas(String dniBeneficiario, Boolean existeBeneficiario) {
+    public ArrayList<Oferta> obtenerListaOfertas(String dniBeneficiario, boolean[] existeBeneficiario) {
         ArrayList<Oferta> ofertas_asociadas = null;
+        boolean existe;
         
-        existeBeneficiario = new Boolean(diaketas.diaketas.ong.gestorBeneficiarios.comprobarExistenciaBeneficiario(dniBeneficiario));
+        existe = diaketas.diaketas.ong.gestorBeneficiarios.comprobarExistenciaBeneficiario(dniBeneficiario);
         
-        if(existeBeneficiario.booleanValue()) {
+        existeBeneficiario[0] = existe;
+        
+        if(existe) {
+            System.out.println("Existe");
             Beneficiario beneficiario = diaketas.diaketas.ong.buscarBeneficiario(dniBeneficiario);
             ofertas_asociadas = beneficiario.obtenerOfertas();
         }
         
         return ofertas_asociadas;
+    }
+
+    @Override
+    public boolean comprobarVoluntario(String dniVoluntario) {
+        return diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario(dniVoluntario);
     }
     
 }

@@ -130,7 +130,7 @@
                       <Component id="panel_parametros_busqueda" max="32767" attributes="0"/>
                       <Component id="panel_botones_control" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jTitulo3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mensajeError" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -144,7 +144,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panel_parametros_busqueda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jTitulo3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mensajeError" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Component id="panel_botones_control" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -268,7 +268,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jTitulo3">
+        <Component class="javax.swing.JLabel" name="mensajeError">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>

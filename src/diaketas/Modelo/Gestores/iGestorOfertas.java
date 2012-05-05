@@ -41,6 +41,14 @@ public interface iGestorOfertas {
      * @return Devuelve la lista de ofertas asociada al beneficiario si este existe
      */
     
-    public ArrayList<Oferta> obtenerListaOfertas(String dniBeneficiario, Boolean existeBeneficiario);
+    public ArrayList<Oferta> obtenerListaOfertas(String dniBeneficiario, boolean[] existeBeneficiario);
+    
+    /**
+     * 
+     * @param dniVoluntario DNI del voluntario responsable
+     * @return Comprueba si el voluntario esta autorizado para realizar la operación.
+     */
+    
+    public boolean comprobarVoluntario(String dniVoluntario);
     
 }

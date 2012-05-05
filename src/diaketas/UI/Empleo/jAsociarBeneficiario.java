@@ -4,8 +4,11 @@
  */
 package diaketas.UI.Empleo;
 
+import diaketas.Modelo.ONG.Oferta;
 import diaketas.UI.UI;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +21,7 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
      */
     public jAsociarBeneficiario() {
         initComponents();
+        this.mensajeError.setVisible(false);
     }
 
     /**
@@ -42,7 +46,7 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
         botonCancelar = new javax.swing.JButton();
         botonBuscarOfertas = new javax.swing.JButton();
         botonContinuar = new javax.swing.JButton();
-        jTitulo3 = new javax.swing.JLabel();
+        mensajeError = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoOfertasBeneficiario = new javax.swing.JTable();
 
@@ -139,9 +143,9 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTitulo3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jTitulo3.setForeground(new java.awt.Color(242, 9, 9));
-        jTitulo3.setText("Error: No existe ningún beneficiario");
+        mensajeError.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        mensajeError.setForeground(new java.awt.Color(242, 9, 9));
+        mensajeError.setText("Error: No existe ningún beneficiario");
 
         javax.swing.GroupLayout panel_busquedaLayout = new javax.swing.GroupLayout(panel_busqueda);
         panel_busqueda.setLayout(panel_busquedaLayout);
@@ -153,7 +157,7 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
                     .addComponent(panel_parametros_busqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel_botones_control, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panel_busquedaLayout.createSequentialGroup()
-                        .addComponent(jTitulo3)
+                        .addComponent(mensajeError)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -163,7 +167,7 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(panel_parametros_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jTitulo3)
+                .addComponent(mensajeError)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(panel_botones_control, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -257,7 +261,42 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
 
     private void botonBuscarOfertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarOfertasActionPerformed
         // TODO add your handling code here:
-        botonContinuar.setEnabled(true);
+        int nofertas;
+        DefaultTableModel tabla = (DefaultTableModel) this.listadoOfertasBeneficiario.getModel();
+        boolean[] existe_beneficiario = new boolean[1];
+        String dni_beneficiario = this.dni_beneficiario_input.getText();
+        
+        if(dni_beneficiario.compareTo("") != 0) {
+            ofertasEncontradas = diaketas.diaketas.ong.gestorOfertas.obtenerListaOfertas(dni_beneficiario,existe_beneficiario);
+            if(existe_beneficiario[0]) {
+                
+                if(ofertasEncontradas != null) {
+                    nofertas = ofertasEncontradas.size();
+                    Oferta oferta_actual;
+                    Object[] fila = new Object[4];
+                    for(int i = 0 ; i < nofertas ; i++) {
+                        oferta_actual = ofertasEncontradas.get(i);
+                        // ¿Accedemos directamente?
+                        fila[0] = oferta_actual.concepto;
+                        fila[1] = oferta_actual.fecha;
+                        fila[2] = oferta_actual.poblacion;
+                        fila[3] = oferta_actual.salario;
+                
+                        tabla.addRow(fila);
+                    }
+                }
+                botonContinuar.setEnabled(true);
+            }
+            else {
+                this.mensajeError.setText("Error: No existe el beneficiario");
+                this.mensajeError.setVisible(true);
+            }
+                
+        }
+        else {
+            this.mensajeError.setText("Error: Introduzca el DNI");
+            this.mensajeError.setVisible(true);
+        }
     }//GEN-LAST:event_botonBuscarOfertasActionPerformed
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
@@ -280,13 +319,14 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel jTitulo1;
     private javax.swing.JLabel jTitulo2;
-    private javax.swing.JLabel jTitulo3;
     private javax.swing.JTable listadoOfertasBeneficiario;
+    private javax.swing.JLabel mensajeError;
     private javax.swing.JPanel panel_botones_control;
     private javax.swing.JPanel panel_busqueda;
     private javax.swing.JPanel panel_parametros_busqueda;
     // End of variables declaration//GEN-END:variables
 
     private JPanel panel;
+    private ArrayList<Oferta> ofertasEncontradas;
 }
 
