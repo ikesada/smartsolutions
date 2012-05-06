@@ -167,6 +167,11 @@ public class jModificarMovimiento extends javax.swing.JPanel {
 
         Tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Donacion Efectiva", "Donacian Bancaria", "Donacian Material", "Ayuda Efectiva", "Ayuda Bancaria", "Ayuda Material", "Gasto" }));
+        Tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TipoActionPerformed(evt);
+            }
+        });
 
         NIF_Involucrado.setColumns(9);
         NIF_Involucrado.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -370,9 +375,20 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                 
                 UI.cl.show(UI.jPrincipal, "Donaciones");
         }else{
-            if (error == 1 || error == 2)
-               JOptionPane.showMessageDialog(this, "No se ha encontrado a ninguna persona con ese NIF",
-                                "NIF Involucrado", JOptionPane.ERROR_MESSAGE);     
+            switch (error){
+                case 1:
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún donante con ese NIF",
+                                "NIF Involucrado", JOptionPane.ERROR_MESSAGE);    
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún beneficiario con ese NIF",
+                                "NIF Involucrado", JOptionPane.ERROR_MESSAGE);  
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF",
+                                "NIF Involucrado", JOptionPane.ERROR_MESSAGE);  
+                    
+            }
         }
     }//GEN-LAST:event_botonModificarActionPerformed
 
@@ -393,6 +409,14 @@ public class jModificarMovimiento extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_DescripcionKeyTyped
+
+    private void TipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoActionPerformed
+        String seleccion = (String) Tipo.getSelectedItem();
+        if (seleccion.compareTo("Gasto") == 0)
+            NIF_Involucrado.setEnabled(false);
+        else
+            NIF_Involucrado.setEnabled(true);
+    }//GEN-LAST:event_TipoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cod_Movimiento;
