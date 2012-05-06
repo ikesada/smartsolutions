@@ -4,20 +4,8 @@
  */
 package diaketas.UI.Donaciones;
 
-import com.mysql.jdbc.Statement;
-import diaketas.ConexionBD;
-import diaketas.Modelo.ONG.Beneficiario;
-import diaketas.Modelo.ONG.Familiar;
-import diaketas.Modelo.ONG.Movimiento;
-import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
