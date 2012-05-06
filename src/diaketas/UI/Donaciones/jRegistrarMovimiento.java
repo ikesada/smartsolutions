@@ -235,6 +235,9 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
             } else {
                 // No hay errores tras introducir el movimiento, finalizamos
                 ONG.gestorDonaciones.finRegistrarMovimiento();
+                
+                // Salimos de la ventana
+                UI.cl.show(UI.jPrincipal, "Donaciones");
             }
         }
         

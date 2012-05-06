@@ -65,7 +65,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     @Override
     public void finRegistrarMovimiento(){
-        System.out.print("Hola soy finRegistrarMovimiento");
+        System.out.print("Hola soy finRegistrarMovimiento\n");
         confirmarRegistro();
     }
     
@@ -75,7 +75,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     public void confirmarRegistro(){
         Date fecha = new Date();
         Movimiento dm = datosMovimiento;
-        Movimiento m = new Movimiento(dm.Tipo_Movimiento,dm.cuantia,dm.involucrado,dm.descripcion,fecha);
+        Movimiento m = new Movimiento(dm.Tipo_Movimiento,dm.cuantia,dm.involucrado,dm.descripcion,fecha,dniV);
         diaketas.diaketas.ong.agregarMovimiento(m);
     }
     
