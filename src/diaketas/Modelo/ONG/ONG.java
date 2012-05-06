@@ -831,16 +831,16 @@ public class ONG implements iONG{
         
         switch(operadorCantidad){
             case 1: 
-                query += " and Cuantia > '"+cantidad1+"'";
+                query += " and Cuantia > "+cantidad1;
                 break;
             case 2:
-                query += " and Cuantia < '"+cantidad1+"'";
+                query += " and Cuantia < "+cantidad1;
                 break;
             case 3: 
-                query += " and Cuantia = '"+cantidad1+"'";
+                query += " and Cuantia = "+cantidad1;
                 break;
             case 4: 
-                query += " and Cuantia between("+cantidad1+","+cantidad2+")";
+                query += " and Cuantia between "+cantidad1+" and "+cantidad2;
                 break;
         }
         
@@ -855,16 +855,16 @@ public class ONG implements iONG{
                 query += " and Fecha = '"+fecha1+"'";
                 break;
             case 4: 
-                query += " and Fecha between("+fecha1+","+fecha2+")";
+                query += " and Fecha between '"+fecha1+"' and '"+fecha2+"'";
                 break;
         }       
         
         
-        if(voluntario.compareTo("") == 0){
+        if(voluntario.compareTo("") != 0){
             query += " and NIF_CIF_Crea = '"+voluntario+"'";
         }
 
-        if(involucrado.compareTo("") == 0){
+        if(involucrado.compareTo("") != 0){
             query += " and NIF_CIF_Implica = '"+involucrado+"'";
         }
         
@@ -903,9 +903,11 @@ public class ONG implements iONG{
         
         
         
-        if(tagDescripcion.compareTo("") == 0){
+        if(tagDescripcion.compareTo("") != 0){
             query += " and Descripcion like '%"+tagDescripcion+"%'";
         }
+        
+        //System.out.println(query);
         
         con.conectarBD();
         

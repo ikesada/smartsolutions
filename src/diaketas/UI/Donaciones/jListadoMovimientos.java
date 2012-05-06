@@ -102,7 +102,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -131,6 +131,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
         jLabel6.setText("Fecha");
 
         cantidad1.setText("0");
+        cantidad1.setEnabled(false);
         cantidad1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidad1ActionPerformed(evt);
@@ -138,6 +139,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
         });
 
         cantidad2.setText("0");
+        cantidad2.setEnabled(false);
         cantidad2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidad2ActionPerformed(evt);
@@ -145,6 +147,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
         });
 
         fecha1.setText("yyyy/mm/dd");
+        fecha1.setEnabled(false);
         fecha1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fecha1ActionPerformed(evt);
@@ -152,6 +155,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
         });
 
         fecha2.setText("yyyy/mm/dd");
+        fecha2.setEnabled(false);
         fecha2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fecha2ActionPerformed(evt);
@@ -384,16 +388,16 @@ public class jListadoMovimientos extends javax.swing.JPanel {
             
         }
         
-        
         movimientosEncontrados = diaketas.diaketas.ong.gestorDonaciones.filtrarMovimientos(operadorCantidad.getSelectedIndex(),cantidad1.getText(),cantidad2.getText(),operadorFecha.getSelectedIndex(),fecha1.getText(),fecha2.getText(),voluntario.getText(),involucrado.getText(),confirmado.getSelectedIndex(), tipo.getSelectedIndex(),tagDescripcion.getText());
         
         int nMovimientos = movimientosEncontrados.size();
         
         if(nMovimientos != 0) {
             //Oferta oferta_actual;
-            Object[] fila = new Object[4];
+            Object[] fila = new Object[6];
             //for(int i = 0 ; i < nMovimientos ; i++) {
                 //oferta_actual = ofertasEncontradas.get(i);
+            
             for(Movimiento m : movimientosEncontrados){
                 fila[0] = m.cuantia;
                 fila[1] = m.Fecha;
@@ -517,16 +521,11 @@ public class jListadoMovimientos extends javax.swing.JPanel {
                 UI.cl.show(UI.jPrincipal, "ModificarMovimiento");  
 
             break;
-            case 2: // Confirmar
-                panel = new jConfirmarMovimiento();
-                UI.jPrincipal.add("ConfirmarMovimiento", panel);
-                UI.cl.show(UI.jPrincipal, "ConfirmarMovimiento");                    
-            break;
-            case 3: // Eliminar
+            //case 2: // Eliminar
                 //panel = new jEliminarMovimiento();
                 //UI.jPrincipal.add("EliminarMovimiento", panel);
                 //UI.cl.show(UI.jPrincipal, "EliminarMovimiento");                    
-            break;
+            //break;
 
         }
 
