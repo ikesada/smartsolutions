@@ -99,7 +99,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
         jScrollPane1.setViewportView(descripcion);
 
         tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Donacion Efectiva", "Donacian Bancaria", "Donacian Material", "Ayuda Efectiva", "Ayuda Bancaria", "Ayuda Material", "Gasto" }));
+        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Donacion Efectiva", "Donacion Bancaria", "Donacion Material", "Ayuda Efectiva", "Ayuda Bancaria", "Ayuda Material", "Gasto" }));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Cuantía");
