@@ -43,9 +43,12 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
         } else if (("Ayuda Efectiva".equals(tipo) || "Ayuda Bancaria".equals(tipo) || "Ayuda Material".equals(tipo))
             && !ONG.gestorBeneficiarios.comprobarExistenciaBeneficiario(involucrado)) {
             return 2;
+        } else if (!ONG.gestorVoluntarios.comprobarExistenciaVoluntario(voluntario)) {
+            return 3;
         }
         
         // Guardamos en el gestor los datosMovimiento
+        datosMovimiento = new Movimiento();
         datosMovimiento.Tipo_Movimiento = tipo;
         datosMovimiento.cuantia = cuantia;
         datosMovimiento.involucrado = involucrado;
@@ -73,7 +76,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
         Date fecha = new Date();
         Movimiento dm = datosMovimiento;
         Movimiento m = new Movimiento(dm.Tipo_Movimiento,dm.cuantia,dm.involucrado,dm.descripcion,fecha);
-        
+        diaketas.diaketas.ong.agregarMovimiento(m);
     }
     
     /**
