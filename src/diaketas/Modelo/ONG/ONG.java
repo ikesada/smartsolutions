@@ -759,12 +759,13 @@ public class ONG implements iONG{
 
          try {
             instruccion = (Statement) con.conexion().createStatement();
-            
+            java.sql.Date fecha = new java.sql.Date(m.Fecha.getTime());
+                        
             /*Insertamos movimiento*/
             instruccion.executeUpdate(
-                "Insert into Movimiento (Tipo,Cuantia,Descripcion,Fecha,NIF_CIF_Implica)"
-                +" values ('"+m.Tipo_Movimiento+"','"+String.valueOf(m.cuantia)+"','"
-                +m.descripcion+"','"+m.Fecha+"','"+m.voluntario_crea+"');"
+                "Insert into Movimiento (Tipo,Cuantia,Descripcion,Fecha,NIF_CIF_Implica,NIF_CIF_Crea,Confirmado)"
+                +" values ('"+m.Tipo_Movimiento+"','"+String.valueOf(m.cuantia)+"','"+m.descripcion
+                +"','"+fecha+"','"+m.involucrado+"','"+m.voluntario_crea+"',false);"
             );
          }
          /*Captura de errores*/

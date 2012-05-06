@@ -66,12 +66,22 @@ public class Movimiento {
     public boolean confirmado;
     
     
-    public Movimiento(String tipo,double cuantia, String involucrado, String descripcion, Date fecha){
+    /**
+     * Constructor por defecto
+     */
+    public Movimiento(){
+    }
+    
+    /**
+     * Constructor de Movimiento 
+     */
+    public Movimiento(String tipo,double cuantia, String involucrado, String descripcion, Date fecha, String voluntario_crea){
         this.Tipo_Movimiento = tipo;
         this.cuantia = cuantia;
         this.involucrado = involucrado;
         this.descripcion = descripcion;
         this.Fecha = fecha;
+        this.voluntario_crea = voluntario_crea;
     }
 
     /**
