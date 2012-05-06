@@ -7,6 +7,7 @@ package diaketas.Modelo.Gestores;
 import diaketas.Modelo.ONG.Movimiento;
 import diaketas.Modelo.ONG.ONG;
 import java.util.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -129,6 +130,29 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     public boolean comprobarVoluntario(String dniVoluntario) {
         return ONG.gestorVoluntarios.comprobarExistenciaVoluntario(dniVoluntario);
     }
+    
+    
+     /**
+     * Funcion que obtiene la lista de movimientos que satisfacen el filtro indicado por los
+     * parámetros
+     * @return Devuelve la lista de movimientos que cumplen los criterios.
+     */
+    
+    @Override
+    public ArrayList<Movimiento> filtrarMovimientos(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String voluntario, String involucrado, int confirmado, int tipo, String tagDescripcion) {
+        return diaketas.diaketas.ong.obtenerMovimientos(operadorCantidad, cantidad1, cantidad2, operadorFecha, fecha1, fecha2, voluntario, involucrado, confirmado, tipo, tagDescripcion);
+    }
+
+    /**
+     * Funcion que indica al gestor el movimiento que ha sido seleccionado por el voluntario.
+     */
+    
+    @Override
+    public void seleccionarMovimiento(int codMovimiento) {
+        movimientoSeleccionado = diaketas.diaketas.ong.buscarMovimiento(codMovimiento);
+    }
+    
+    
     
     @Override
     public void finEliminarMovimiento(){

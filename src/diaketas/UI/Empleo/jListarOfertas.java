@@ -53,6 +53,7 @@ public class jListarOfertas extends javax.swing.JPanel {
         }
         
         mensajeError.setVisible(false);
+        //if (jPanelSiguiente != 2)
         botonContinuar.setEnabled(false);
     }
     
@@ -408,8 +409,14 @@ public class jListarOfertas extends javax.swing.JPanel {
                
                 break;
                 case 2: // Crear
+                    panel = new jCrearOferta();
+                    UI.jPrincipal.add("CrearOferta", panel);
+                    UI.cl.show(UI.jPrincipal, "CrearOferta"); 
                 break;
                 case 3: // Eliminar
+                    panel = new jEliminarOferta();
+                    UI.jPrincipal.add("EliminarOferta", panel);
+                    UI.cl.show(UI.jPrincipal, "EliminarOferta"); 
                 break;
                 case 4: // Asociar Beneficiario
                     panel = new jAsociarBeneficiario();

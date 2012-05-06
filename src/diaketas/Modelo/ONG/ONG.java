@@ -783,6 +783,178 @@ public class ONG implements iONG{
         }
     }
     
+    
+        @Override
+    public Movimiento buscarMovimiento(int codMovimiento) {
+        Movimiento movimiento = null;
+        con.conectarBD();
+
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            ResultSet rs = instruccion.executeQuery("Select * From Movimiento WHERE Cod_Movimiento = '"+codMovimiento+"'");
+
+            /*Si se ha encontrado una tupla*/
+            if (rs.next()){
+
+                movimiento = new Movimiento(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getDate(5),rs.getBoolean(6), 
+                        rs.getString(7),rs.getString(8),rs.getString(9));
+            }
+            
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        return movimiento;
+    }
+    
+    /**
+     * Funcion que obtiene la lista de ofertas que satisfacen unos criterios de búsqueda basados
+     * en el código, concepto y población de las mismas.
+     * @return Devuelve la lista de ofertas que cumple los criterios.
+     */
+
+    @Override
+    public ArrayList<Movimiento> obtenerMovimientos(int operadorCantidad,String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String voluntario, String involucrado, int confirmado, int tipo, String tagDescripcion) {
+        ArrayList<Movimiento> movimientos=new ArrayList<Movimiento>();
+        String query = "select * from Movimiento where true";
+        
+        switch(operadorCantidad){
+            case 1: 
+                query += " and Cuantia > '"+cantidad1+"'";
+                break;
+            case 2:
+                query += " and Cuantia < '"+cantidad1+"'";
+                break;
+            case 3: 
+                query += " and Cuantia = '"+cantidad1+"'";
+                break;
+            case 4: 
+                query += " and Cuantia between("+cantidad1+","+cantidad2+")";
+                break;
+        }
+        
+         switch(operadorFecha){
+            case 1: 
+                query += " and Fecha > '"+fecha1+"'";
+                break;
+            case 2:
+                query += " and Fecha < '"+fecha1+"'";
+                break;
+            case 3: 
+                query += " and Fecha = '"+fecha1+"'";
+                break;
+            case 4: 
+                query += " and Fecha between("+fecha1+","+fecha2+")";
+                break;
+        }       
+        
+        
+        if(voluntario.compareTo("") == 0){
+            query += " and NIF_CIF_Crea = '"+voluntario+"'";
+        }
+
+        if(involucrado.compareTo("") == 0){
+            query += " and NIF_CIF_Implica = '"+involucrado+"'";
+        }
+        
+        switch(confirmado){
+            case 1: 
+                query += " and Confirmado = 1";
+                break;
+            case 2:
+                query += " and Confirmado = 0";
+                break;
+        }
+        
+          switch(tipo){
+            case 1: 
+                query += " and Tipo = 'Donacion Efectiva'";
+                break;
+            case 2:
+                query += " and Tipo = 'Donacion Bancaria'";
+                break;
+            case 3: 
+                query += " and Tipo = 'Donacion Material'";
+                break;
+            case 4: 
+                query += " and Tipo = 'Ayuda Efectiva'";
+                break;
+            case 5: 
+                query += " and Tipo = 'Ayuda Bancaria'";
+                break;
+            case 6: 
+                query += " and Tipo = 'Ayuda Material'";
+                break;
+            case 7: 
+                query += " and Tipo = 'Gasto'";
+                break;
+          }         
+        
+        
+        
+        if(tagDescripcion.compareTo("") == 0){
+            query += " and Descripcion like '%"+tagDescripcion+"%'";
+        }
+        
+        con.conectarBD();
+        
+        try{
+                
+            //Crear objeto Statement para realizar queries a la base de datos
+            Statement s = (Statement) con.conexion().createStatement();             
+
+            //Un objeto ResultSet, almacena los datos de resultados de una consulta
+            ResultSet rs = s.executeQuery(query);
+
+            //Obteniendo la informacion de las columnas que estan siendo consultadas
+            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
+
+            //La cantidad de columnas que tiene la consulta
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            
+            while (rs.next())   //avanzo a la siguiente tupla obtenida en la consulta (mientras haya)
+            { 
+               
+                Movimiento m = new Movimiento(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getDate(5),rs.getBoolean(6), 
+                        rs.getString(7),rs.getString(8),rs.getString(9));
+
+                movimientos.add(m);
+            }
+
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+             
+        
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
+        
+        return movimientos;
+    }
+    
+    
+    
+    
     /**
      * Registra en el sistema una nueva accion realizada por un voluntario a la hora de
      * gestionar la bolsa de empleo.

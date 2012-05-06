@@ -96,7 +96,7 @@ public class Oferta {
     
     public Oferta(int cod_oferta, String concepto, Date fecha, int activo, String poblacion, 
             int numero_vacantes, String descripcion, String requisitos_minimos, String tipo_contrato
-            ,int jornada_laboral,Double salario,String observaciones, String NIF_CIF_Donante) {
+            ,int jornada_laboral,Double salario,String observaciones,String NIF_CIF_Donante) {
         this.cod_oferta =cod_oferta;
         this.concepto = concepto;
         this.fecha = fecha;
@@ -108,8 +108,8 @@ public class Oferta {
         this.tipo_contrato = tipo_contrato;
         this.jornada_laboral = jornada_laboral;
         this.salario = salario;
-        this.observaciones = observaciones;
         this.NIF_CIF_Donante = NIF_CIF_Donante;
+        this.observaciones = observaciones;
     }
     
     
@@ -124,6 +124,63 @@ public class Oferta {
         return this;
     }
     
+    
+    /**
+     * Funcion que añade la oferta y que actualiza la tupla en la BD
+     */
+    public Boolean agregar()
+    {
+        //modifico los datos asociados en la BD:
+        Boolean exito=true;
+        
+        con.conectarBD();
+
+        //transformo los tipo Date pasados
+        java.sql.Timestamp fechaOferta = new java.sql.Timestamp( fecha.getTime() );
+        
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+
+            //Actualizo la tabla de Oferta
+            instruccion.executeUpdate("INSERT INTO Oferta (Concepto, Fecha, Activo, Poblacion, Numero_Vacantes, Descripcion, Requisitos_Minimos, Tipo_Contrato, Jornada_Laboral, Salario, Observaciones, NIF_CIF_Donante) VALUES ("
+                    + "\"" + concepto + "\", "                    
+                    + "\"" + fechaOferta + "\", "                    
+                    + "\"" + activo + "\", "                    // Desactivada
+                    + "\"" + poblacion + "\", "
+                    + "\"" + numero_vacantes + "\", "
+                    + "\"" + descripcion + "\", "
+                    + "\"" + requisitos_minimos + "\", "
+                    + "\"" + tipo_contrato + "\", "
+                    + "\"" + jornada_laboral + "\", "
+                    + "\"" + salario + "\", "
+                    + "\"" + observaciones + "\", "
+                    + "\"" + NIF_CIF_Donante + "\")");
+         }
+         //Captura de errores
+         catch(SQLException e)
+         { 
+             exito=false;
+             System.out.println(e); 
+         }
+         catch(Exception e)
+         { 
+             exito=false;
+             System.out.println(e);
+         }
+         //DesconexiÃ³n de la BD
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return exito;
+        
+        
+    }
     
     
     /**
@@ -189,8 +246,8 @@ public class Oferta {
                     + "Tipo_Contrato = \"" + tipo_contrato + "\", "
                     + "Jornada_Laboral = \"" + jornada_laboral + "\", "
                     + "Salario = \"" + salario + "\", "
-                    + "Observaciones = \"" + observaciones + "\", "
                     + "NIF_CIF_Donante = \"" + NIF_CIF_Donante + "\""
+                    + "Observaciones = \"" + observaciones + "\", "
                     + " WHERE Cod_Oferta = \""+cod_oferta_antiguo+"\"");
             
             
@@ -227,7 +284,53 @@ public class Oferta {
     }
 
     
-    
+    /**
+     * Funcion que deshabilita la oferta y que actualiza la tupla en la BD
+     */
+    public Boolean eliminar()
+    {
+        //modifico los datos asociados en la BD:
+        Boolean exito=true;
+        
+        con.conectarBD();
+
+        //transformo los tipo Date pasados
+        java.sql.Timestamp fechaOferta = new java.sql.Timestamp( fecha.getTime() );
+        
+        
+        try {
+            Statement instruccion = (Statement) con.conexion().createStatement();
+
+            //Actualizo la tabla de Oferta
+            instruccion.executeUpdate("Update Oferta SET "                  
+                    + "Activo = \"" + 0 + "\""                    // Desactivada
+                    + " WHERE Cod_Oferta = \""+cod_oferta+"\"");
+         }
+         //Captura de errores
+         catch(SQLException e)
+         { 
+             exito=false;
+             System.out.println(e); 
+         }
+         catch(Exception e)
+         { 
+             exito=false;
+             System.out.println(e);
+         }
+         //DesconexiÃ³n de la BD
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return exito;
+        
+        
+    }
     
     
 }

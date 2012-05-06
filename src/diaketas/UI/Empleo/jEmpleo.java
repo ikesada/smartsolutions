@@ -133,13 +133,13 @@ public class jEmpleo extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(botonConsultarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(4, 4, 4)
                         .addComponent(botonModificarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonCrearOferta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonEliminarOferta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonAsociarBeneficiarioOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jSeparator3)))
@@ -209,65 +209,11 @@ public class jEmpleo extends javax.swing.JPanel {
     
     private void botonCrearOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearOfertaActionPerformed
 
-        con.conectarBD();
-        String prueba="77777777G";
-        int entero=1;
-        double real=1.0;
-        
-        Date f = new Date();
-        
-        java.sql.Timestamp fechaPru = new java.sql.Timestamp( f.getTime() );
-        
-         try {
-            instruccion = (Statement) con.conexion().createStatement();
-            instruccion.executeUpdate("INSERT INTO Oferta(Cod_Oferta, Concepto, Fecha, Activo, Poblacion,                             Numero_Vacantes, Descripcion, Requisitos_Minimos,         Tipo_Contrato, Jornada_Laboral,        Salario,       Observaciones,     NIF_CIF_Donante ) VALUES (\""
-                                       + entero + "\",\"" + prueba + "\",\"" + fechaPru+"\",\"" + entero + "\",\"" + prueba + "\",\"" + entero + "\",\"" + prueba + "\",\"" + prueba + "\",\"" + prueba + "\",\"" + entero + "\",\"" + real + "\",\"" + prueba + "\",\"" + prueba +"\")");
-
-
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }    
-        
-        /*
-        System.out.println("Realizada insercion, voy a mostrar todas las tuplas:\n\n");
-        try {
-            tabla = instruccion.executeQuery("Select * From Oferta");
-        } catch (SQLException ex) {
-            Logger.getLogger(jEmpleo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            if(tabla.next()){
-                System.out.println("Fila:");
-                
-                System.out.println( tabla.getObject("Cod_Oferta") );
-                        
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(jEmpleo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         */
-         
-         
-        /*
-        panel_siguiente = new jListarOfertas(2);
-
+        //panel_siguiente = new jListarOfertas(2);
+        panel_siguiente = new jCrearOferta();
         UI.jPrincipal.add("ListarOfertas", panel_siguiente);
         UI.cl.show(UI.jPrincipal, "ListarOfertas");
-        */
          
-        
     }//GEN-LAST:event_botonCrearOfertaActionPerformed
 
     private void botonModificarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarOfertaActionPerformed
