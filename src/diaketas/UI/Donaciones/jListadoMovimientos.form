@@ -255,7 +255,7 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
-                <Column editable="false" title="Cuantia" type="java.lang.Double"/>
+                <Column editable="false" title="Cuantia" type="java.lang.String"/>
                 <Column editable="false" title="Fecha" type="java.lang.String"/>
                 <Column editable="false" title="Tipo" type="java.lang.String"/>
                 <Column editable="false" title="Voluntario" type="java.lang.String"/>
@@ -381,6 +381,7 @@
     <Component class="javax.swing.JTextField" name="cantidad1">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidad1ActionPerformed"/>
@@ -389,6 +390,7 @@
     <Component class="javax.swing.JTextField" name="cantidad2">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidad2ActionPerformed"/>
@@ -397,6 +399,7 @@
     <Component class="javax.swing.JTextField" name="fecha1">
       <Properties>
         <Property name="text" type="java.lang.String" value="yyyy/mm/dd"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fecha1ActionPerformed"/>
@@ -405,6 +408,7 @@
     <Component class="javax.swing.JTextField" name="fecha2">
       <Properties>
         <Property name="text" type="java.lang.String" value="yyyy/mm/dd"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fecha2ActionPerformed"/>
