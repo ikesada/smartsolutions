@@ -5,6 +5,7 @@
 package diaketas.Modelo.Gestores;
 
 import diaketas.Modelo.ONG.Movimiento;
+import java.util.ArrayList;
 
 /**
  *
@@ -57,6 +58,24 @@ public interface iGestorDonaciones {
      * @return Un booleano indicando si el dni del voluntario es valido o no
      */    
     public boolean comprobarVoluntario(String dniVoluntario);
+    
+        /**
+     * Funcion que obtiene la lista de movimientos que satisfacen el filtro indicado por los
+     * parámetros
+     * @return Devuelve la lista de movimientos que cumplen los criterios.
+     */
+    
+    public ArrayList<Movimiento> filtrarMovimientos(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String voluntario, String involucrado, int confirmado, int tipo, String tagDescripcion);
+
+    /**
+     * Funcion que indica al gestor el movimiento que ha sido seleccionado por el voluntario.
+     */
+    
+
+    public void seleccionarMovimiento(int codMovimiento);
+     
+    
+    
     
     /**
      * Procede a eliminar el movimiento del sistema

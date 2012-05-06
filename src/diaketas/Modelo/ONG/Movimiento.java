@@ -72,6 +72,22 @@ public class Movimiento {
     public Movimiento(){
     }
     
+    
+    /* METODOS */
+    
+    public Movimiento(int Cod_Movimiento, String Tipo_Movimiento, double cuantia, String descripcion, Date Fecha, boolean confirmado,
+                    String involucrado, String voluntario_crea, String voluntario_confirma) {
+        this.Cod_Movimiento =Cod_Movimiento;
+        this.Tipo_Movimiento = Tipo_Movimiento;
+        this.cuantia = cuantia;
+        this.descripcion = descripcion;
+        this.Fecha = Fecha;
+        this.confirmado = confirmado;
+        this.involucrado = involucrado;
+        this.voluntario_crea = voluntario_crea;
+        this.voluntario_confirma = voluntario_confirma;
+    }    
+    
     /**
      * Constructor de Movimiento 
      */
