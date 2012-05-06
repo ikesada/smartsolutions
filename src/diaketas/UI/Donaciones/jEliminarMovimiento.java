@@ -20,12 +20,12 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
     /**
      * Creates new form jConfirmarMovimiento
      */
-    public jEliminarMovimiento(int Cod_Movimiento) {
+    public jEliminarMovimiento() {
         /* Iniciamos componentes */
         initComponents();
         
-        this.Cod_Movimiento = Cod_Movimiento;
-        this.cod_Movimiento.setText(String.valueOf(this.Cod_Movimiento));
+       // this.Cod_Movimiento = 
+        //this.cod_Movimiento.setText(String.valueOf(this.Cod_Movimiento));
     }
 
     /**
