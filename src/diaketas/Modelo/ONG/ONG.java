@@ -677,7 +677,6 @@ public class ONG implements iONG{
      * en el código, concepto y población de las mismas.
      * @return Devuelve la lista de ofertas que cumple los criterios.
      */
-
     @Override
     public ArrayList<Oferta> obtenerOfertas(int codigo, String concepto, String poblacion) {
         ArrayList<Oferta> ofertas=new ArrayList<Oferta>();
@@ -750,9 +749,42 @@ public class ONG implements iONG{
         return ofertas;
     }
     
-    
-    
+    /**
+     * Agrega un nuevo movimiento al sistema
+     */
     @Override
+    public void agregarMovimiento(Movimiento m){
+        con = new ConexionBD();
+        con.conectarBD();
+
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            java.sql.Date fecha = new java.sql.Date(m.Fecha.getTime());
+                        
+            /*Insertamos movimiento*/
+            instruccion.executeUpdate(
+                "Insert into Movimiento (Tipo,Cuantia,Descripcion,Fecha,NIF_CIF_Implica,NIF_CIF_Crea,Confirmado)"
+                +" values ('"+m.Tipo_Movimiento+"','"+String.valueOf(m.cuantia)+"','"+m.descripcion
+                +"','"+fecha+"','"+m.involucrado+"','"+m.voluntario_crea+"',false);"
+            );
+         }
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+    
+        @Override
     public Movimiento buscarMovimiento(int codMovimiento) {
         Movimiento movimiento = null;
         con.conectarBD();
@@ -920,5 +952,38 @@ public class ONG implements iONG{
         return movimientos;
     }
     
-      
+    
+    
+    
+    /**
+     * Registra en el sistema una nueva accion realizada por un voluntario a la hora de
+     * gestionar la bolsa de empleo.
+     */
+
+    @Override
+    public void agregarAccionOferta(AccionOferta accion) {
+        /*Se guarda la accion en el sistema*/
+        con.conectarBD();
+        /*Convertimos Date para trabajar*/
+        java.sql.Timestamp fecha = new java.sql.Timestamp(accion.Fecha.getTime());
+         try {
+            instruccion = (Statement) con.conexion().createStatement();
+            instruccion.executeUpdate("INSERT INTO AccionOferta(Nombre,Fecha,Cod_Oferta,NIF_CIF) VALUES (\""
+                                        +accion.Nombre+ "\",\"" +fecha + "\",\"" + accion.oferta.cod_oferta+"\",\""+accion.responsable.NIF_CIF+"\")");
+         }
+         
+         /*Captura de errores*/
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e);}
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 }

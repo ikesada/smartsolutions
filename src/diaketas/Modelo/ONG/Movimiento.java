@@ -66,6 +66,12 @@ public class Movimiento {
     public boolean confirmado;
     
     
+    /**
+     * Constructor por defecto
+     */
+    public Movimiento(){
+    }
+    
     
     /* METODOS */
     
@@ -80,13 +86,36 @@ public class Movimiento {
         this.involucrado = involucrado;
         this.voluntario_crea = voluntario_crea;
         this.voluntario_confirma = voluntario_confirma;
+    }    
+    
+    /**
+     * Constructor de Movimiento 
+     */
+    public Movimiento(String tipo,double cuantia, String involucrado, String descripcion, Date fecha, String voluntario_crea){
+        this.Tipo_Movimiento = tipo;
+        this.cuantia = cuantia;
+        this.involucrado = involucrado;
+        this.descripcion = descripcion;
+        this.Fecha = fecha;
+        this.voluntario_crea = voluntario_crea;
+    }
+
+    /**
+     * Obtiene los datos de un movimiento
+     * @return Devuelve el objeto movimiento
+     */
+    public Movimiento obtenerDatosMovimiento() {
+        return this;
     }
     
-    
-    
+    /**
+     * Confirma un movimiento para que no pueda volver a ser modificado
+     * @param dniV Dni del voluntario que confirma el movimiento
+     */    
     public void confirmar(String dniV){
         /*Confirmamos el movimiento*/
         confirmado = true;
+        involucrado = dniV;
         
         ConexionBD con = new ConexionBD();
         con.conectarBD();
@@ -95,7 +124,8 @@ public class Movimiento {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
             /*Confirmamos el movimiento*/
-            instruccion.executeUpdate("UPDATE  Movimiento SET Confirmado = 1 WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
+            instruccion.executeUpdate("UPDATE  Movimiento SET Confirmado = 1  , NIF_CIF_Confirma = \"" +
+                    dniV + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -112,9 +142,18 @@ public class Movimiento {
         }
     }
 
-    public void modificar(double cuantia, String descripcion) {
+    /**
+     * Modifica los datos del movimiento
+     * @param tipo_movimiento Tipo de movimiento
+     * @param cuantia Cuantia del nuevo movimiento
+     * @param descripcion Descripción del movimiento
+     * @param involucrado DNI de la persona involucrada
+     */
+    public void modificar(String tipo_movimiento, double cuantia, String descripcion, String involucrado) {
         this.cuantia = cuantia;
         this.descripcion = descripcion;
+        this.Tipo_Movimiento = tipo_movimiento;
+        this.involucrado = involucrado;
         
                
         ConexionBD con = new ConexionBD();
@@ -124,8 +163,8 @@ public class Movimiento {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
             /*Actualizamos Familiar*/
-            instruccion.executeUpdate("UPDATE  Movimiento SET Cuantia = \""
-                    + cuantia + "\", Descripcion = \""+descripcion+ "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
+            instruccion.executeUpdate("UPDATE  Movimiento SET Tipo = \"" + tipo_movimiento +"\" , Cuantia = \""
+                    + cuantia + "\", Descripcion = \""+descripcion+ "\", NIF_CIF_Implica = \"" + involucrado + "\" WHERE Cod_Movimiento = \"" + Cod_Movimiento + "\"");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }

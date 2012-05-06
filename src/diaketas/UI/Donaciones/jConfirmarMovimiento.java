@@ -154,7 +154,7 @@ public class jConfirmarMovimiento extends javax.swing.JPanel {
         if (NIF_Voluntario.getText().compareTo("") == 0)
               JOptionPane.showMessageDialog(this, "No se ha introducido el NIF del voluntario.",
                                 "NIF Voluntario", JOptionPane.ERROR_MESSAGE);    
-        else if (ONG.gestorDonaciones.confirmarMovimiento(NIF_Voluntario.getText()))
+        else if (ONG.gestorDonaciones.confirmarMovimiento(NIF_Voluntario.getText().toUpperCase()))
             /*Confirmamos el movimiento con el NIF del voluntario*/
            UI.cl.show(UI.jPrincipal, "Donaciones");
         else

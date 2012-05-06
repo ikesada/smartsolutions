@@ -222,8 +222,6 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El NIF del involucrado no se ha introducido.", "NIF Involucrado", JOptionPane.ERROR_MESSAGE);
         } else if (_voluntario.compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Involucrado", JOptionPane.ERROR_MESSAGE);
-        } else if (!ONG.gestorVoluntarios.comprobarExistenciaVoluntario(_voluntario)) {
-            JOptionPane.showMessageDialog(this, "El voluntario no existe en el sistema", "Voluntario donaciones inválido", JOptionPane.ERROR_MESSAGE);
         } else {
             // Hasta aqui no hay errores de formato
             int error = ONG.gestorDonaciones.introducirMovimiento(_tipo, Double.valueOf(_cuantia).doubleValue(), _involucrado, _descripcion, _voluntario);
@@ -232,19 +230,16 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "El donante involucrado no existe en el sistema", "Involucrado donante inválido", JOptionPane.ERROR_MESSAGE);
             } else if (error == 2) {
                 JOptionPane.showMessageDialog(this, "El beneficiario involucrado no existe en el sistema", "Involucrado beneficiario inválido", JOptionPane.ERROR_MESSAGE);
+            } else if (error == 3) {
+                JOptionPane.showMessageDialog(this, "El voluntario no existe en el sistema", "Voluntario donaciones inválido", JOptionPane.ERROR_MESSAGE);
             } else {
                 // No hay errores tras introducir el movimiento, finalizamos
                 ONG.gestorDonaciones.finRegistrarMovimiento();
+                
+                // Salimos de la ventana
+                UI.cl.show(UI.jPrincipal, "Donaciones");
             }
         }
- 
-        /*else if (tipo_movimiento.getSelectedIndex() == 0 || tipo_movimiento.getSelectedIndex() == 1 || tipo_movimiento.getSelectedIndex() == 2) {
-            if (!ONG.gestorDonantes.comprobarDniDonante(involucrado.getText())){
-            }
-        } else if (tipo_movimiento.getSelectedIndex() == 4 || tipo_movimiento.getSelectedIndex() == 5 || tipo_movimiento.getSelectedIndex() == 6) {
-            if (!ONG.gestorBeneficiarios.comprobarExistenciaBeneficiario(involucrado.getText())){
-            }
-        }*/
         
     }//GEN-LAST:event_botonOKActionPerformed
 

@@ -4,8 +4,11 @@
  */
 package diaketas.UI.Donaciones;
 
+import ValidarCampos.ValidarCampos;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -20,8 +23,37 @@ public class jModificarMovimiento extends javax.swing.JPanel {
      */
     public jModificarMovimiento() {
         initComponents();
+        
+        /*Consultamos el movimiento seleccionado 
+         Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
+
+        
+        Cod_Movimiento.setText(String.valueOf(datosMovimiento.Cod_Movimiento));
+        Tipo.setSelectedItem(datosMovimiento.Tipo_Movimiento);
+        Cuantia.setText(String.valueOf(datosMovimiento.cuantia));
+        Descripcion.setText(datosMovimiento.descripcion);
+        NIF_Involucrado.setText(datosMovimiento.involucrado);
+        NIF_CIF_Crea.setText(datosMovimiento.voluntario_crea);
+        
+        SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
+        Fecha.setText(formatoFecha.format(datosMovimiento.Fecha));
+        
+        if (datosMovimiento.confirmado){
+            botonConfirmar.setEnabled(false);
+            botonModificar.setEnabled(false);
+            NIF_Voluntario.setEnabled(false);
+            Tipo.setEnabled(false);
+            Cuantia.setEnabled(false);
+            Descripcion.setEnabled(false);
+            NIF_Involucrado.setEnabled(false);
+            
+            JOptionPane.showMessageDialog(this, "Este movimiento ya ha sido confirmado y no puede modificarse",
+                                "Movimiento confirmado", JOptionPane.ERROR_MESSAGE);  
+        }
+        */
+
+
     }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,11 +74,9 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         Cod_Movimiento = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
-        Tipo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        NIF_CIF_Implicado = new javax.swing.JLabel();
         NIF_CIF_Crea = new javax.swing.JLabel();
         jTitulo1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -55,6 +85,10 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         botonModificar = new javax.swing.JButton();
         Fecha = new javax.swing.JLabel();
         Descripcion = new javax.swing.JTextField();
+        Tipo = new javax.swing.JComboBox();
+        NIF_Involucrado = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        NIF_Voluntario = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(238, 225, 192));
         setForeground(new java.awt.Color(102, 102, 102));
@@ -90,8 +124,6 @@ public class jModificarMovimiento extends javax.swing.JPanel {
 
         Cod_Movimiento.setText("Cod_Movimiento");
 
-        Tipo.setText("Tipo");
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel2.setText("Descripción");
 
@@ -101,8 +133,6 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel13.setText("Voluntario que lo creó");
 
-        NIF_CIF_Implicado.setText("Implicado");
-
         NIF_CIF_Crea.setText("Voluntario crea");
 
         jTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -111,6 +141,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/Donaciones.png"))); // NOI18N
 
         Cuantia.setColumns(9);
+        Cuantia.setText("0.00");
 
         botonConfirmar.setText("Confirmar");
         botonConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +159,32 @@ public class jModificarMovimiento extends javax.swing.JPanel {
 
         Fecha.setText("Fecha");
 
+        Descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DescripcionKeyTyped(evt);
+            }
+        });
+
+        Tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Donacion Efectiva", "Donacian Bancaria", "Donacian Material", "Ayuda Efectiva", "Ayuda Bancaria", "Ayuda Material", "Gasto" }));
+
+        NIF_Involucrado.setColumns(9);
+        NIF_Involucrado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_InvolucradoKeyTyped(evt);
+            }
+        });
+
+        jLabel20.setText("NIF Voluntario");
+
+        NIF_Voluntario.setBackground(new java.awt.Color(255, 255, 153));
+        NIF_Voluntario.setColumns(9);
+        NIF_Voluntario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF_VoluntarioKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,51 +193,58 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1244, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(botonModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonConfirmar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonCancel))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(45, 45, 45)
-                        .addComponent(jTitulo1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTitulo2)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5))
-                                .addGap(68, 68, 68)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Descripcion, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Cod_Movimiento)
-                                    .addComponent(Tipo)
-                                    .addComponent(Cuantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Fecha))))
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel7))
-                                .addGap(51, 51, 51)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NIF_CIF_Implicado, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(NIF_CIF_Crea, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(jLabel10)
+                                .addGap(45, 45, 45)
+                                .addComponent(jTitulo1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel18)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel5))
+                                        .addGap(68, 68, 68)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(Cod_Movimiento)
+                                            .addComponent(Cuantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Fecha)
+                                            .addComponent(Descripcion)
+                                            .addComponent(Tipo, 0, 277, Short.MAX_VALUE)))
+                                    .addComponent(jTitulo2)
+                                    .addComponent(jSeparator7))
+                                .addGap(93, 93, 93)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13)
+                                            .addComponent(jLabel7))
+                                        .addGap(50, 50, 50)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(NIF_CIF_Crea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(NIF_Involucrado)))
+                                    .addComponent(jSeparator8)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(424, 424, 424)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(364, 364, 364)
+                        .addComponent(botonModificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonConfirmar)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonCancel)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -198,30 +262,33 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Cod_Movimiento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Cuantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Fecha))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Cod_Movimiento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Tipo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Cuantia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Fecha))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(NIF_CIF_Implicado))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(NIF_Involucrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(NIF_CIF_Crea))))
@@ -229,13 +296,17 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(186, 186, 186)
+                        .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonCancel)
-                            .addComponent(botonConfirmar)
-                            .addComponent(botonModificar)))
+                            .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20)))
                     .addComponent(jLabel2))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCancel)
+                    .addComponent(botonConfirmar)
+                    .addComponent(botonModificar))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -258,8 +329,9 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         Tipo.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Cuantia.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         Fecha.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
-        NIF_CIF_Implicado.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        NIF_Involucrado.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         NIF_CIF_Crea.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        NIF_Voluntario.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
@@ -270,8 +342,48 @@ public class jModificarMovimiento extends javax.swing.JPanel {
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        UI.cl.show(UI.jPrincipal, "Donaciones");
+        int error;
+        if (Cuantia.getText().compareTo("") == 0)
+            Cuantia.setText("0.00");
+        if (!ValidarCampos.isDouble(Cuantia.getText()))
+           JOptionPane.showMessageDialog(this, "La cuantia no es correcta. Debe de ser un número",
+                                "Cuantia Movimiento inválida", JOptionPane.ERROR_MESSAGE);
+        else if (NIF_Voluntario.getText().compareTo("") == 0)
+           JOptionPane.showMessageDialog(this, "No se ha introducido el Nif del voluntario",
+                                "NIF Voluntario", JOptionPane.ERROR_MESSAGE);    
+        
+            /*Introducimos los nuevos datos del movimiento y comprobamos si el dni del voluntario existe*/
+        else if ((error = ONG.gestorDonaciones.introducirMovimiento((String)Tipo.getSelectedItem(), Double.parseDouble(Cuantia.getText()),
+                    NIF_Involucrado.getText().toUpperCase(), Descripcion.getText(), NIF_Voluntario.getText().toUpperCase())) == 0){
+
+                /*Confirmamos la modificación*/
+                ONG.gestorDonaciones.confirmarModificacion();
+                
+                UI.cl.show(UI.jPrincipal, "Donaciones");
+        }else{
+            if (error == 1 || error == 2)
+               JOptionPane.showMessageDialog(this, "No se ha encontrado a ninguna persona con ese NIF",
+                                "NIF Involucrado", JOptionPane.ERROR_MESSAGE);     
+        }
     }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
+        if (NIF_Voluntario.getText().length() == 9) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIF_VoluntarioKeyTyped
+
+    private void NIF_InvolucradoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_InvolucradoKeyTyped
+        if (NIF_Involucrado.getText().length() == 9) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NIF_InvolucradoKeyTyped
+
+    private void DescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DescripcionKeyTyped
+        if (Descripcion.getText().length() == 40) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_DescripcionKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cod_Movimiento;
@@ -279,8 +391,9 @@ public class jModificarMovimiento extends javax.swing.JPanel {
     private javax.swing.JTextField Descripcion;
     private javax.swing.JLabel Fecha;
     private javax.swing.JLabel NIF_CIF_Crea;
-    private javax.swing.JLabel NIF_CIF_Implicado;
-    private javax.swing.JLabel Tipo;
+    private javax.swing.JTextField NIF_Involucrado;
+    private javax.swing.JTextField NIF_Voluntario;
+    private javax.swing.JComboBox Tipo;
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonConfirmar;
     private javax.swing.JButton botonModificar;
@@ -288,6 +401,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

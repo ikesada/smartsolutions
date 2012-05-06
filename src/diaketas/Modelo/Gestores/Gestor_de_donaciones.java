@@ -6,6 +6,7 @@ package diaketas.Modelo.Gestores;
 
 import diaketas.Modelo.ONG.Movimiento;
 import diaketas.Modelo.ONG.ONG;
+import java.util.Date;
 import java.util.ArrayList;
 
 /**
@@ -43,9 +44,12 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
         } else if (("Ayuda Efectiva".equals(tipo) || "Ayuda Bancaria".equals(tipo) || "Ayuda Material".equals(tipo))
             && !ONG.gestorBeneficiarios.comprobarExistenciaBeneficiario(involucrado)) {
             return 2;
+        } else if (!ONG.gestorVoluntarios.comprobarExistenciaVoluntario(voluntario)) {
+            return 3;
         }
         
         // Guardamos en el gestor los datosMovimiento
+        datosMovimiento = new Movimiento();
         datosMovimiento.Tipo_Movimiento = tipo;
         datosMovimiento.cuantia = cuantia;
         datosMovimiento.involucrado = involucrado;
@@ -62,7 +66,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     @Override
     public void finRegistrarMovimiento(){
-        System.out.print("Hola soy finRegistrarMovimiento");
+        System.out.print("Hola soy finRegistrarMovimiento\n");
         confirmarRegistro();
     }
     
@@ -70,7 +74,10 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      * Procede a confirmar el registro del movimiento
      */
     public void confirmarRegistro(){
-        
+        Date fecha = new Date();
+        Movimiento dm = datosMovimiento;
+        Movimiento m = new Movimiento(dm.Tipo_Movimiento,dm.cuantia,dm.involucrado,dm.descripcion,fecha,dniV);
+        diaketas.diaketas.ong.agregarMovimiento(m);
     }
     
     /**
@@ -79,7 +86,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     @Override
     public Movimiento consultarDatosMovimiento(){
-        return movimientoSeleccionado;
+        return movimientoSeleccionado.obtenerDatosMovimiento();
     }
     
     /**
@@ -102,7 +109,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     */
     @Override
     public void confirmarModificacion (){
-        movimientoSeleccionado.modificar(datosMovimiento.cuantia, datosMovimiento.descripcion);
+        movimientoSeleccionado.modificar(datosMovimiento.Tipo_Movimiento, datosMovimiento.cuantia, datosMovimiento.descripcion, datosMovimiento.involucrado);
     }
     
 

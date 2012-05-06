@@ -112,31 +112,56 @@ public class Oferta {
         this.NIF_CIF_Donante = NIF_CIF_Donante;
     }
     
+    
+    
+    
+    /**
+     * Funcion que devuelve los datos asociados a una Oferta
+     * @return Devuelve el objeto Oferta consultado
+     */
     public Oferta obtenerDatosOferta()
     {
         return this;
     }
     
     
-    //devuelve true si todo ha ido bien (sin errores)
-    public Boolean modificar(Oferta nuevosDatosOferta)
+    
+    /**
+     * Funcion que modifica los datos asociados a la Oferta y que actualiza la tupla en la BD
+     * @param Cod_Oferta Nuevo codigo a asociar a la oferta
+     * @param Concepto Nuevo concepto a asociar a la oferta
+     * @param FechaOf Nueva fecha a asociar a la oferta
+     * @param Activada Nuevo valor de activacion a asociar a la oferta
+     * @param Poblacion Nueva poblacion a asociar a la oferta 
+     * @param Num_vacantes Nuevo numero de plazas vacantes a asociar a la oferta
+     * @param Descripcion Nueva descripcion a asociar a la oferta
+     * @param Req_minimos Nuevos requisitos minimos a asociar a la oferta
+     * @param Tipo_contrato Nuevo tipo de contrato a asociar a la oferta
+     * @param Jornada_laboral Nueva jornada laboral a asociar a la oferta
+     * @param Salario Nuevo salario a asociar a la oferta
+     * @param DNI_donante Nuevo dni de Donante a asociar a la oferta
+     * @param Observaciones Nuevas observaciones a asociar a la oferta
+     * @return Devuelve true si todo ha ido bien y no ha habido ningun error
+     */
+    public Boolean modificar(Integer Cod_Oferta, String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones)
     {
+        
         
         int cod_oferta_antiguo = cod_oferta;    //me servira para buscar la tupla correspondiente
         
-        cod_oferta = nuevosDatosOferta.cod_oferta;
-        concepto = nuevosDatosOferta.concepto;
-        fecha = nuevosDatosOferta.fecha;
-        activo = nuevosDatosOferta.activo;
-        poblacion = nuevosDatosOferta.poblacion;
-        numero_vacantes = nuevosDatosOferta.numero_vacantes;
-        descripcion = nuevosDatosOferta.descripcion;
-        requisitos_minimos = nuevosDatosOferta.requisitos_minimos;
-        tipo_contrato = nuevosDatosOferta.tipo_contrato;
-        jornada_laboral = nuevosDatosOferta.jornada_laboral;
-        salario = nuevosDatosOferta.salario;
-        observaciones = nuevosDatosOferta.observaciones;
-        NIF_CIF_Donante = nuevosDatosOferta.NIF_CIF_Donante;
+        cod_oferta = Cod_Oferta;
+        concepto = Concepto;
+        fecha = FechaOf;
+        activo = Activada;
+        poblacion = Poblacion;
+        numero_vacantes = Num_vacantes;
+        descripcion = Descripcion;
+        requisitos_minimos = Req_minimos;
+        tipo_contrato = Tipo_contrato;
+        jornada_laboral = Jornada_laboral;
+        salario = Salario;
+        observaciones = Observaciones;
+        NIF_CIF_Donante = DNI_donante;
         
         
         //modifico los datos asociados en la BD:
@@ -159,14 +184,18 @@ public class Oferta {
                     + "Activo = \"" + activo + "\", "                    
                     + "Poblacion = \"" + poblacion + "\", "
                     + "Numero_Vacantes = \"" + numero_vacantes + "\", "
-                    + "Descripcion = \"" + descripcion + "\""
-                    + "Requisitos_Minimos = \"" + requisitos_minimos + "\""
-                    + "Tipo_Contrato = \"" + tipo_contrato + "\""
-                    + "Jornada_Laboral = \"" + jornada_laboral + "\""
-                    + "Salario = \"" + salario + "\""
-                    + "Observaciones = \"" + observaciones + "\""
+                    + "Descripcion = \"" + descripcion + "\", "
+                    + "Requisitos_Minimos = \"" + requisitos_minimos + "\", "
+                    + "Tipo_Contrato = \"" + tipo_contrato + "\", "
+                    + "Jornada_Laboral = \"" + jornada_laboral + "\", "
+                    + "Salario = \"" + salario + "\", "
+                    + "Observaciones = \"" + observaciones + "\", "
                     + "NIF_CIF_Donante = \"" + NIF_CIF_Donante + "\""
                     + " WHERE Cod_Oferta = \""+cod_oferta_antiguo+"\"");
+            
+            
+
+            
          
             
          }
@@ -181,7 +210,7 @@ public class Oferta {
              exito=false;
              System.out.println(e);
          }
-         //Desconexión de la BD
+         //DesconexiÃ³n de la BD
          finally {
             if (con.hayConexionBD()) {
                 try {
@@ -196,6 +225,7 @@ public class Oferta {
         
         
     }
+
     
     
     
