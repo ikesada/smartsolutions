@@ -227,8 +227,8 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="7">
             <StringItem index="0" value="Donacion Efectiva"/>
-            <StringItem index="1" value="Donacian Bancaria"/>
-            <StringItem index="2" value="Donacian Material"/>
+            <StringItem index="1" value="Donacion Bancaria"/>
+            <StringItem index="2" value="Donacion Material"/>
             <StringItem index="3" value="Ayuda Efectiva"/>
             <StringItem index="4" value="Ayuda Bancaria"/>
             <StringItem index="5" value="Ayuda Material"/>

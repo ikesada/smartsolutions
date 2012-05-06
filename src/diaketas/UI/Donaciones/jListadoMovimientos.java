@@ -33,9 +33,21 @@ public class jListadoMovimientos extends javax.swing.JPanel {
     /**
      * Creates new form jAltaBeneficiario
      */
-    public jListadoMovimientos(int jPanelSiguiente) {  
+    public jListadoMovimientos(int jPanelSiguiente) {
         this.jPanelSiguiente = jPanelSiguiente;
         initComponents();
+        
+        switch(this.jPanelSiguiente){
+            case 0:
+                titulo.setText(titulo.getText() + "  (Consultar)");
+                break;
+            case 1:
+                titulo.setText(titulo.getText() + "  (Modificar)");
+                break;
+            case 2:
+                titulo.setText(titulo.getText() + "  (Eliminar)");
+                break;
+        }
     }
 
     /**
@@ -48,7 +60,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -79,8 +91,8 @@ public class jListadoMovimientos extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         tipo = new javax.swing.JComboBox();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Listar Movimientos");
+        titulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        titulo.setText("Listar Movimientos");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
@@ -244,7 +256,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
                                 .addContainerGap()
                                 .addComponent(jLabel2)
                                 .addGap(31, 31, 31)
-                                .addComponent(jLabel1)))
+                                .addComponent(titulo)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +328,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(titulo)
                         .addGap(37, 37, 37)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -547,7 +559,6 @@ public class jListadoMovimientos extends javax.swing.JPanel {
     private javax.swing.JTextField fecha1;
     private javax.swing.JTextField fecha2;
     private javax.swing.JTextField involucrado;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -570,6 +581,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
     private javax.swing.JTextArea tagDescripcion;
     private javax.swing.JScrollPane tagDescripcionScroll;
     private javax.swing.JComboBox tipo;
+    private javax.swing.JLabel titulo;
     private javax.swing.JTextField voluntario;
     // End of variables declaration//GEN-END:variables
 }
