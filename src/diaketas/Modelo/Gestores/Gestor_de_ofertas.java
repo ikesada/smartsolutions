@@ -49,6 +49,7 @@ public class Gestor_de_ofertas implements iGestorOfertas{
      * Funcion que devuelve el objeto Oferta con el que trabaja el Gestor
      * @return Devuelve el objeto Oferta
      */ 
+    @Override
     public Oferta consultarDatosOferta()
     {
         
@@ -59,14 +60,38 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     
     
     
-    
+    /**
+     * 
+     * Funcion que registra una accion de modificacion en el historial
+     */ 
+    @Override
     public void finModificarOferta()
     {
-        //FALTA CREAR ESTA OPERACION 
-        //registrarOperacionOfertas( NIF_Voluntario, O.cod_oferta, "Modificacion Oferta" );
+        registrarOperacionOfertas( NIF_Voluntario, O.cod_oferta, "Modificacion Oferta" );
     }
     
-    //devuelve true si ha habido algun error
+    
+    
+
+    /**
+     * Funcion que modifica los datos asociados a la Oferta
+     * @param Cod_Oferta Nuevo codigo a asociar a la oferta
+     * @param Concepto Nuevo concepto a asociar a la oferta
+     * @param FechaOf Nueva fecha a asociar a la oferta
+     * @param Activada Nuevo valor de activacion a asociar a la oferta
+     * @param Poblacion Nueva poblacion a asociar a la oferta 
+     * @param Num_vacantes Nuevo numero de plazas vacantes a asociar a la oferta
+     * @param Descripcion Nueva descripcion a asociar a la oferta
+     * @param Req_minimos Nuevos requisitos minimos a asociar a la oferta
+     * @param Tipo_contrato Nuevo tipo de contrato a asociar a la oferta
+     * @param Jornada_laboral Nueva jornada laboral a asociar a la oferta
+     * @param Salario Nuevo salario a asociar a la oferta
+     * @param DNI_donante Nuevo dni de Donante a asociar a la oferta
+     * @param Observaciones Nuevas observaciones a asociar a la oferta
+     * @param dniV DNI del Voluntario que realiza la modificacion
+     * @return Devuelve true si ha habido algun error al realizar la operacion
+     */             
+    @Override
     public Boolean introducirOferta( Integer Cod_Oferta, String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones, String dniV )
     {
         
@@ -97,7 +122,28 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     
     }
     
-    //devuelve true si hay algun error
+    
+    
+    
+    
+    /**
+     * Funcion que confirma la modificacion de los datos asociados a la Oferta
+     * @param Cod_Oferta Nuevo codigo a asociar a la oferta
+     * @param Concepto Nuevo concepto a asociar a la oferta
+     * @param FechaOf Nueva fecha a asociar a la oferta
+     * @param Activada Nuevo valor de activacion a asociar a la oferta
+     * @param Poblacion Nueva poblacion a asociar a la oferta 
+     * @param Num_vacantes Nuevo numero de plazas vacantes a asociar a la oferta
+     * @param Descripcion Nueva descripcion a asociar a la oferta
+     * @param Req_minimos Nuevos requisitos minimos a asociar a la oferta
+     * @param Tipo_contrato Nuevo tipo de contrato a asociar a la oferta
+     * @param Jornada_laboral Nueva jornada laboral a asociar a la oferta
+     * @param Salario Nuevo salario a asociar a la oferta
+     * @param DNI_donante Nuevo dni de Donante a asociar a la oferta
+     * @param Observaciones Nuevas observaciones a asociar a la oferta
+     * @return Devuelve true si ha habido algun error al realizar la operacion
+     */     
+    @Override
     public Boolean confirmarModificacion(Integer Cod_Oferta, String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones)
     {
         

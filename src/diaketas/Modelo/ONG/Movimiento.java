@@ -66,20 +66,40 @@ public class Movimiento {
     public boolean confirmado;
     
     
-    public Movimiento(String tipo,double cuantia, String involucrado, String descripcion, Date fecha){
+    /**
+     * Constructor por defecto
+     */
+    public Movimiento(){
+    }
+    
+    /**
+     * Constructor de Movimiento 
+     */
+    public Movimiento(String tipo,double cuantia, String involucrado, String descripcion, Date fecha, String voluntario_crea){
         this.Tipo_Movimiento = tipo;
         this.cuantia = cuantia;
         this.involucrado = involucrado;
         this.descripcion = descripcion;
         this.Fecha = fecha;
+        this.voluntario_crea = voluntario_crea;
     }
 
-    public Movimiento() {
+    /**
+     * Obtiene los datos de un movimiento
+     * @return Devuelve el objeto movimiento
+     */
+    public Movimiento obtenerDatosMovimiento() {
+        return this;
     }
     
+    /**
+     * Confirma un movimiento para que no pueda volver a ser modificado
+     * @param dniV Dni del voluntario que confirma el movimiento
+     */    
     public void confirmar(String dniV){
         /*Confirmamos el movimiento*/
         confirmado = true;
+        involucrado = dniV;
         
         ConexionBD con = new ConexionBD();
         con.conectarBD();
@@ -106,6 +126,13 @@ public class Movimiento {
         }
     }
 
+    /**
+     * Modifica los datos del movimiento
+     * @param tipo_movimiento Tipo de movimiento
+     * @param cuantia Cuantia del nuevo movimiento
+     * @param descripcion Descripción del movimiento
+     * @param involucrado DNI de la persona involucrada
+     */
     public void modificar(String tipo_movimiento, double cuantia, String descripcion, String involucrado) {
         this.cuantia = cuantia;
         this.descripcion = descripcion;
