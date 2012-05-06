@@ -95,9 +95,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
 
         listadoMovimientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Cuantia", "Fecha", "Tipo", "Voluntario", "Implicado", "Confirmado"
