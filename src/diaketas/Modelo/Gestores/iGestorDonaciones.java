@@ -81,4 +81,10 @@ public interface iGestorDonaciones {
      * Procede a eliminar el movimiento del sistema
      */
     public void finEliminarMovimiento();
+    
+    /*
+     * Realiza la eliminacion
+     */
+    public void confirmarEliminacion(int cod_Movimiento);
+    
 }

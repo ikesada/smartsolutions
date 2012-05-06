@@ -180,7 +180,7 @@ public class Movimiento {
             }
         }
     } 
-    
+       
     public void eliminar(int cod_Movimiento){
         this.Cod_Movimiento = cod_Movimiento;
        

@@ -159,9 +159,8 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
         confirmarEliminacion(movimientoSeleccionado.Cod_Movimiento);
     }
     
-    public void confirmarEliminacion(int Cod_Movimiento){
-        
-        
+    @Override
+    public void confirmarEliminacion(int cod_Movimiento){
+        movimientoSeleccionado.eliminar(cod_Movimiento);
     }
-
 }

@@ -4,6 +4,7 @@
  */
 package diaketas.UI.Donaciones;
 
+import diaketas.Modelo.ONG.Movimiento;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
@@ -16,16 +17,26 @@ import javax.swing.JOptionPane;
 public class jEliminarMovimiento extends javax.swing.JPanel {
 
     int Cod_Movimiento;
-    
+    boolean confirmado;
+    Movimiento movimientoSeleccionado;
+
     /**
      * Creates new form jConfirmarMovimiento
      */
     public jEliminarMovimiento() {
-        /* Iniciamos componentes */
+        /*
+         * Iniciamos componentes
+         */
         initComponents();
-        
-       // this.Cod_Movimiento = 
-        //this.cod_Movimiento.setText(String.valueOf(this.Cod_Movimiento));
+
+        /*
+         * Consultamos el movimiento seleccionado
+         */
+        movimientoSeleccionado = ONG.gestorDonaciones.consultarDatosMovimiento();
+
+        this.confirmado = movimientoSeleccionado.confirmado;
+        this.Cod_Movimiento = movimientoSeleccionado.Cod_Movimiento;
+        this.cod_Movimiento.setText(String.valueOf(this.Cod_Movimiento));
     }
 
     /**
@@ -158,24 +169,30 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
-        
-        
-        if(NIF_Voluntario.getText().compareTo("") == 0)
-            JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
-        else{
-            if(ONG.gestorDonaciones.comprobarVoluntario(NIF_Voluntario.getText())){
-                ONG.gestorDonaciones.finEliminarMovimiento();
 
-                this.jLabelInformativo.setText("El movimiento ha sido eliminado correctamente");
-                this.botonCancel.setText("Aceptar");
-                
-            }else{
-                this.jLabelInformativo.setText("El DNI del Voluntario no es valido.");
-                this.labelDNI.setVisible(false);
-                this.botonConfirmar.setVisible(false);
+        if (confirmado) {
+            this.jLabelInformativo.setText("El Movimiento no puede ser eliminado ya que esta confirmado.");
+            this.labelDNI.setVisible(false);
+            this.botonConfirmar.setVisible(false);
+        } else {
+            if (NIF_Voluntario.getText().compareTo("") == 0) {
+                JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (ONG.gestorDonaciones.comprobarVoluntario(NIF_Voluntario.getText())) {
+                    ONG.gestorDonaciones.finEliminarMovimiento();
+
+                    this.jLabelInformativo.setText("El movimiento ha sido eliminado correctamente");
+                    this.botonConfirmar.setVisible(false);
+                    this.botonCancel.setText("Aceptar");
+
+                } else {
+                    this.jLabelInformativo.setText("El DNI del Voluntario no es valido.");
+                    this.labelDNI.setVisible(false);
+                    this.botonConfirmar.setVisible(false);
+                    this.NIF_Voluntario.setVisible(false);
+                }
             }
-        }       
-        
+        }
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void botonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelActionPerformed
@@ -191,17 +208,17 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
         for (int i = 0; i < this.getComponentCount(); i++) {
             this.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
         }
-        
-        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente+12));
-        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente+2));
+
+        jTitulo1.setFont(new Font("Courier", Font.BOLD, (int) fuente + 12));
+        jTitulo2.setFont(new Font("Courier", Font.BOLD, (int) fuente + 2));
         NIF_Voluntario.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     private void NIF_VoluntarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_VoluntarioKeyTyped
-        if (NIF_Voluntario.getText().length()==9)
+        if (NIF_Voluntario.getText().length() == 9) {
             evt.consume();
+        }
     }//GEN-LAST:event_NIF_VoluntarioKeyTyped
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIF_Voluntario;
     private javax.swing.JButton botonCancel;
