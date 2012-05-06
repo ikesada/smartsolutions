@@ -4,8 +4,11 @@
  */
 package diaketas.UI.Donaciones;
 
+import diaketas.Modelo.ONG.Movimiento;
+import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
+import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
 
 /**
@@ -21,7 +24,7 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
     public jConsultarMovimiento() {
         initComponents();
         
-        /*Consultamos el movimiento seleccionado         
+        /*Consultamos el movimiento seleccionado       */  
          Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
         
         
@@ -37,7 +40,7 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
         
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
         Fecha.setText(formatoFecha.format(datosMovimiento.Fecha));
-        */
+        
     }
     
     

@@ -5,9 +5,11 @@
 package diaketas.UI.Donaciones;
 
 import ValidarCampos.ValidarCampos;
+import diaketas.Modelo.ONG.Movimiento;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,7 +26,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
     public jModificarMovimiento() {
         initComponents();
         
-        /*Consultamos el movimiento seleccionado 
+        /*Consultamos el movimiento seleccionado */
          Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
 
         
@@ -46,11 +48,8 @@ public class jModificarMovimiento extends javax.swing.JPanel {
             Cuantia.setEnabled(false);
             Descripcion.setEnabled(false);
             NIF_Involucrado.setEnabled(false);
-            
-            JOptionPane.showMessageDialog(this, "Este movimiento ya ha sido confirmado y no puede modificarse",
-                                "Movimiento confirmado", JOptionPane.ERROR_MESSAGE);  
-        }
-        */
+        }else
+            jInfo.setVisible(false);
 
 
     }
@@ -89,6 +88,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         NIF_Involucrado = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         NIF_Voluntario = new javax.swing.JTextField();
+        jInfo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(238, 225, 192));
         setForeground(new java.awt.Color(102, 102, 102));
@@ -185,6 +185,9 @@ public class jModificarMovimiento extends javax.swing.JPanel {
             }
         });
 
+        jInfo.setForeground(new java.awt.Color(204, 0, 0));
+        jInfo.setText("¡Este movimiento ya ha sido confirmado!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,11 +243,14 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                         .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(364, 364, 364)
-                        .addComponent(botonModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonConfirmar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonCancel)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jInfo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonConfirmar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonCancel)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -296,7 +302,9 @@ public class jModificarMovimiento extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addGap(26, 26, 26)
+                        .addComponent(jInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(NIF_Voluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20)))
@@ -332,6 +340,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
         NIF_Involucrado.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         NIF_CIF_Crea.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
         NIF_Voluntario.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
+        jInfo.setFont(new Font("Courier", Font.PLAIN, (int) fuente));
     }//GEN-LAST:event_formComponentResized
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
@@ -397,6 +406,7 @@ public class jModificarMovimiento extends javax.swing.JPanel {
     private javax.swing.JButton botonCancel;
     private javax.swing.JButton botonConfirmar;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JLabel jInfo;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
