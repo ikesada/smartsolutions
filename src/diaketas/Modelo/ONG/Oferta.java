@@ -112,33 +112,39 @@ public class Oferta {
         this.NIF_CIF_Donante = NIF_CIF_Donante;
     }
     
+    
+    
+    
+    /**
+     * Funcion que devuelve los datos asociados a una Oferta
+     * @return Devuelve el objeto Oferta consultado
+     */
     public Oferta obtenerDatosOferta()
     {
         return this;
     }
     
     
-    //devuelve true si todo ha ido bien (sin errores)
+    
+    /**
+     * Funcion que modifica los datos asociados a la Oferta y que actualiza la tupla en la BD
+     * @param Cod_Oferta Nuevo codigo a asociar a la oferta
+     * @param Concepto Nuevo concepto a asociar a la oferta
+     * @param FechaOf Nueva fecha a asociar a la oferta
+     * @param Activada Nuevo valor de activacion a asociar a la oferta
+     * @param Poblacion Nueva poblacion a asociar a la oferta 
+     * @param Num_vacantes Nuevo numero de plazas vacantes a asociar a la oferta
+     * @param Descripcion Nueva descripcion a asociar a la oferta
+     * @param Req_minimos Nuevos requisitos minimos a asociar a la oferta
+     * @param Tipo_contrato Nuevo tipo de contrato a asociar a la oferta
+     * @param Jornada_laboral Nueva jornada laboral a asociar a la oferta
+     * @param Salario Nuevo salario a asociar a la oferta
+     * @param DNI_donante Nuevo dni de Donante a asociar a la oferta
+     * @param Observaciones Nuevas observaciones a asociar a la oferta
+     * @return Devuelve true si todo ha ido bien y no ha habido ningun error
+     */
     public Boolean modificar(Integer Cod_Oferta, String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones)
     {
-        
-        
-        
-        /*
-    public int cod_oferta;
-    public String concepto;
-    public Date fecha;
-    public int activo;
-    public String poblacion;
-    public int numero_vacantes;
-    public String descripcion;
-    public String requisitos_minimos;
-    public String tipo_contrato;
-    public int jornada_laboral;
-    public Double salario;
-    public String observaciones;
-    public String NIF_CIF_Donante;
-        */
         
         
         int cod_oferta_antiguo = cod_oferta;    //me servira para buscar la tupla correspondiente
