@@ -85,6 +85,19 @@ public interface iGestorOfertas {
      */ 
     public void finModificarOferta();
     
+    /**
+     * 
+     * Funcion que registra una accion de eliminación en el historial
+     */ 
+    public void finEliminarOferta();
+    
+    
+    /**
+     * 
+     * Funcion que registra una accion de agregación en el historial
+     */ 
+    public void finAgregarOferta();
+    
     
     /**
      * Funcion que modifica los datos asociados a la Oferta
@@ -105,6 +118,26 @@ public interface iGestorOfertas {
      * @return Devuelve true si ha habido algun error al realizar la operacion
      */             
     public Boolean introducirOferta( Integer Cod_Oferta, String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones, String dniV );
+    
+    
+    /**
+     * Funcion que crea una nueva oferta con los datos dados y la agrega
+     * @param Concepto Nuevo concepto a asociar a la oferta
+     * @param FechaOf Nueva fecha a asociar a la oferta
+     * @param Activada Nuevo valor de activacion a asociar a la oferta
+     * @param Poblacion Nueva poblacion a asociar a la oferta 
+     * @param Num_vacantes Nuevo numero de plazas vacantes a asociar a la oferta
+     * @param Descripcion Nueva descripcion a asociar a la oferta
+     * @param Req_minimos Nuevos requisitos minimos a asociar a la oferta
+     * @param Tipo_contrato Nuevo tipo de contrato a asociar a la oferta
+     * @param Jornada_laboral Nueva jornada laboral a asociar a la oferta
+     * @param Salario Nuevo salario a asociar a la oferta
+     * @param DNI_donante Nuevo dni de Donante a asociar a la oferta
+     * @param Observaciones Nuevas observaciones a asociar a la oferta
+     * @param dniV DNI del Voluntario que realiza la modificacion
+     * @return Devuelve true si ha habido algun error al realizar la operacion
+     */             
+    public Boolean crearOferta(String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones, String dniV );
 
     
     
@@ -129,5 +162,8 @@ public interface iGestorOfertas {
      */     
     public Boolean confirmarModificacion(Integer Cod_Oferta, String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones);
     
-    
+    /*
+     * Función que elimina la Oferta de empleo
+     */
+    public Boolean eliminarOferta();
 }

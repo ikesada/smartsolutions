@@ -70,7 +70,27 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         registrarOperacionOfertas( NIF_Voluntario, O.cod_oferta, "Modificacion Oferta" );
     }
     
+
+    /**
+     * 
+     * Funcion que registra una accion de eliminación en el historial
+     */ 
+    @Override
+    public void finEliminarOferta()
+    {
+        registrarOperacionOfertas( NIF_Voluntario, O.cod_oferta, "Eliminación Oferta" );
+    }
     
+    
+    /**
+     * 
+     * Funcion que registra una accion de agregación en el historial
+     */ 
+    @Override
+    public void finAgregarOferta()
+    {
+        registrarOperacionOfertas( NIF_Voluntario, O.cod_oferta, "Agregar Oferta" );
+    }
     
 
     /**
@@ -124,6 +144,57 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     
     
     
+    /**
+     * Funcion que modifica los datos asociados a la Oferta
+     * @param Cod_Oferta Nuevo codigo a asociar a la oferta
+     * @param Concepto Nuevo concepto a asociar a la oferta
+     * @param FechaOf Nueva fecha a asociar a la oferta
+     * @param Activada Nuevo valor de activacion a asociar a la oferta
+     * @param Poblacion Nueva poblacion a asociar a la oferta 
+     * @param Num_vacantes Nuevo numero de plazas vacantes a asociar a la oferta
+     * @param Descripcion Nueva descripcion a asociar a la oferta
+     * @param Req_minimos Nuevos requisitos minimos a asociar a la oferta
+     * @param Tipo_contrato Nuevo tipo de contrato a asociar a la oferta
+     * @param Jornada_laboral Nueva jornada laboral a asociar a la oferta
+     * @param Salario Nuevo salario a asociar a la oferta
+     * @param DNI_donante Nuevo dni de Donante a asociar a la oferta
+     * @param Observaciones Nuevas observaciones a asociar a la oferta
+     * @param dniV DNI del Voluntario que realiza la modificacion
+     * @return Devuelve true si ha habido algun error al realizar la operacion
+     */             
+    @Override
+    public Boolean crearOferta(String Concepto, Date FechaOf, Integer Activada, String Poblacion, Integer Num_vacantes, String Descripcion, String Req_minimos, String Tipo_contrato, Integer Jornada_laboral, Double Salario, String DNI_donante, String Observaciones, String dniV )
+    {
+        
+        Boolean error=true;
+        
+        Boolean encontradoUsuario = false;
+        encontradoUsuario = ONG.gestorDonantes.comprobarDniDonante( DNI_donante );
+        
+        if( encontradoUsuario )
+        {
+            encontradoUsuario = ONG.gestorVoluntarios.comprobarExistenciaVoluntario( dniV );
+        }
+        
+        if( encontradoUsuario ) //si ha encontrado a los dos usuarios, hago la modificacion sobre la oferta
+        {
+            error = false;
+            //guardo en el gestor_de_ofertas cual es el usuario actual del sistema y modifico la oferta guardada
+            NIF_Voluntario = dniV;
+        
+            O = new Oferta(-1, Concepto, FechaOf, Activada, Poblacion, Num_vacantes, Descripcion, Req_minimos, Tipo_contrato, Jornada_laboral, Salario, Observaciones, DNI_donante);
+            O.agregar();
+            //O.agregar(Cod_Oferta, Concepto, FechaOf, Activada, Poblacion, Num_vacantes, Descripcion, Req_minimos, Tipo_contrato, Jornada_laboral, Salario, DNI_donante, Observaciones);
+            //error = confirmarModificacion( Cod_Oferta, Concepto, FechaOf, Activada, Poblacion, Num_vacantes, Descripcion, Req_minimos, Tipo_contrato, Jornada_laboral, Salario, DNI_donante, Observaciones );   //devuelve true si hay algun error
+        }
+        
+        return error;
+
+    
+    }
+    
+    
+    
     
     
     /**
@@ -164,6 +235,32 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         
         return hay_error;
     }
+    
+  
+    
+    /*
+     * Función que elimina la Oferta de empleo
+     */
+    @Override
+    public Boolean eliminarOferta(){
+        Boolean hay_error;
+        
+        //la operacion "eliminar" devuelve true si todo ha ido bien
+        //elimino la Oferta "O" guardada en el gestor_de_ofertas
+        Boolean exito = O.eliminar();
+        
+        if( exito )
+        {
+            hay_error=false;
+        }
+        else
+        {
+            hay_error=true;
+        }
+        
+        return hay_error;
+    }
+    
 
     /**
      * Funcion que obtiene la lista de ofertas que satisfacen unos criterios de búsqueda basados
