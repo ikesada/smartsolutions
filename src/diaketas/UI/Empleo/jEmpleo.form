@@ -165,6 +165,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="botonCrearOferta.setVerticalTextPosition(SwingConstants.BOTTOM);&#xa;botonCrearOferta.setHorizontalTextPosition(SwingConstants.CENTER);&#xa;botonCrearOferta.setFont(new Font(&quot;Courier&quot;, Font.BOLD,14));"/>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="jEmpleo_botonCrearOferta"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="botonModificarOferta">
