@@ -506,7 +506,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
         
         if(movimiento_seleccionado != -1) {
             diaketas.diaketas.ong.gestorDonaciones.seleccionarMovimiento(movimientosEncontrados.get(movimiento_seleccionado).Cod_Movimiento);
-        }
+        
         
         switch(jPanelSiguiente) {
             case 0: // Consultar
@@ -529,7 +529,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
 
         }
 
-        
+        }
         
         
         
