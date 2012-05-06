@@ -521,11 +521,11 @@ public class jListadoMovimientos extends javax.swing.JPanel {
                 UI.cl.show(UI.jPrincipal, "ModificarMovimiento");  
 
             break;
-            //case 2: // Eliminar
-                //panel = new jEliminarMovimiento();
-                //UI.jPrincipal.add("EliminarMovimiento", panel);
-                //UI.cl.show(UI.jPrincipal, "EliminarMovimiento");                    
-            //break;
+            case 2: // Eliminar
+                panel = new jEliminarMovimiento();
+                UI.jPrincipal.add("EliminarMovimiento", panel);
+                UI.cl.show(UI.jPrincipal, "EliminarMovimiento");                    
+            break;
 
         }
 

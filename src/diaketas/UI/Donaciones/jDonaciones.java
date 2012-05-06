@@ -160,8 +160,9 @@ public class jDonaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        panel = new jEliminarMovimiento();
-
+       // panel = new jEliminarMovimiento();
+        panel = new jListadoMovimientos(2);
+        
         UI.jPrincipal.add("EliminarMovimiento", panel);
         UI.cl.show(UI.jPrincipal, "EliminarMovimiento");
     }//GEN-LAST:event_botonEliminarActionPerformed
