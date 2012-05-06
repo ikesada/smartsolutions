@@ -5,17 +5,9 @@
 package diaketas.UI.Donaciones;
 
 import ValidarCampos.ValidarCampos;
-import com.mysql.jdbc.Statement;
-import diaketas.ConexionBD;
-import diaketas.Modelo.ONG.Movimiento;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import java.awt.Font;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -62,7 +54,6 @@ public class jModificarMovimiento extends javax.swing.JPanel {
 
 
     }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.

@@ -44,7 +44,7 @@ public class jDonaciones extends javax.swing.JPanel {
         jTitulo2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
 
-        setBackground(new java.awt.Color(233, 225, 242));
+        setBackground(new java.awt.Color(238, 225, 192));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);
@@ -58,6 +58,7 @@ public class jDonaciones extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
+        botonCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadirMovimiento.png"))); // NOI18N
         botonCrear.setText("Crear");
         botonCrear.setMaximumSize(new java.awt.Dimension(123, 90));
         botonCrear.setMinimumSize(new java.awt.Dimension(123, 90));
@@ -72,6 +73,7 @@ public class jDonaciones extends javax.swing.JPanel {
         botonCrear.setHorizontalTextPosition(SwingConstants.CENTER);
         botonCrear.setFont(new Font("Courier", Font.BOLD,14));
 
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/borrarMovimiento.png"))); // NOI18N
         botonEliminar.setText("Eliminar");
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +85,7 @@ public class jDonaciones extends javax.swing.JPanel {
         botonEliminar.setHorizontalTextPosition(SwingConstants.CENTER);
         botonEliminar.setFont(new Font("Courier", Font.BOLD,14));
 
+        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/consultarMovimiento.png"))); // NOI18N
         botonConsultar.setText("Consultar");
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +97,7 @@ public class jDonaciones extends javax.swing.JPanel {
         botonConsultar.setHorizontalTextPosition(SwingConstants.CENTER);
         botonConsultar.setFont(new Font("Courier", Font.BOLD,14));
 
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/modificarMovimiento.png"))); // NOI18N
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

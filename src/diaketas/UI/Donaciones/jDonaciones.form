@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="f2" green="e1" red="e9" type="rgb"/>
+      <Color blue="c0" green="e1" red="ee" type="rgb"/>
     </Property>
   </Properties>
   <Events>
@@ -96,6 +96,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="botonCrear">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/Iconos/aniadirMovimiento.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Crear"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[123, 90]"/>
@@ -116,6 +119,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botonEliminar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/Iconos/borrarMovimiento.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
@@ -127,6 +133,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botonConsultar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/Iconos/consultarMovimiento.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
           <Events>
@@ -138,6 +147,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botonModificar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/diaketas/Iconos/modificarMovimiento.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
           <Events>
