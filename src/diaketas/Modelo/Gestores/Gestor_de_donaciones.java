@@ -82,7 +82,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     @Override
     public Movimiento consultarDatosMovimiento(){
-        return movimientoSeleccionado;
+        return movimientoSeleccionado.obtenerDatosMovimiento();
     }
     
     /**
