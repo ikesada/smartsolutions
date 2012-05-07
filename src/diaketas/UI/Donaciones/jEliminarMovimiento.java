@@ -174,6 +174,8 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
             this.jLabelInformativo.setText("El Movimiento no puede ser eliminado ya que esta confirmado.");
             this.labelDNI.setVisible(false);
             this.botonConfirmar.setVisible(false);
+            this.NIF_Voluntario.setVisible(false);
+            this.cod_Movimiento.setEditable(false);
         } else {
             if (NIF_Voluntario.getText().compareTo("") == 0) {
                 JOptionPane.showMessageDialog(this, "El NIF del voluntario no se ha introducido.", "NIF Voluntario", JOptionPane.ERROR_MESSAGE);
@@ -184,6 +186,8 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
                     this.jLabelInformativo.setText("El movimiento ha sido eliminado correctamente");
                     this.botonConfirmar.setVisible(false);
                     this.botonCancel.setText("Aceptar");
+                    this.NIF_Voluntario.setVisible(false);
+                    this.labelDNI.setVisible(false);
 
                 } else {
                     this.jLabelInformativo.setText("El DNI del Voluntario no es valido.");
