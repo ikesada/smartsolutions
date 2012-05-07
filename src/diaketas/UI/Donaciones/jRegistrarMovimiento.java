@@ -53,7 +53,7 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
         involucrado = new javax.swing.JTextField();
         cuantia = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(233, 225, 242));
+        setBackground(new java.awt.Color(238, 225, 192));
 
         jLabel20.setText("NIF Voluntario");
 
@@ -100,6 +100,11 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
 
         tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Donacion Efectiva", "Donacion Bancaria", "Donacion Material", "Ayuda Efectiva", "Ayuda Bancaria", "Ayuda Material", "Gasto" }));
+        tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Cuantía");
@@ -232,11 +237,14 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "El beneficiario involucrado no existe en el sistema", "Involucrado beneficiario inválido", JOptionPane.ERROR_MESSAGE);
             } else if (error == 3) {
                 JOptionPane.showMessageDialog(this, "El voluntario no existe en el sistema", "Voluntario donaciones inválido", JOptionPane.ERROR_MESSAGE);
+            } else if (error == 4) {
+                JOptionPane.showMessageDialog(this, "El involucrado en un gasto debe ser la ONG", "Gasto donaciones ONG", JOptionPane.ERROR_MESSAGE);
             } else {
                 // No hay errores tras introducir el movimiento, finalizamos
                 ONG.gestorDonaciones.finRegistrarMovimiento();
                 
                 // Salimos de la ventana
+                JOptionPane.showMessageDialog(this, "El movimiento ha sido registrado correctamente", "Movimiento registrado", JOptionPane.INFORMATION_MESSAGE);
                 UI.cl.show(UI.jPrincipal, "Donaciones");
             }
         }
@@ -254,6 +262,11 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_involucradoKeyTyped
+
+    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
+        if ("Gasto".equals((String)tipo.getSelectedItem()))
+            involucrado.setText("ONG");
+    }//GEN-LAST:event_tipoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancel;

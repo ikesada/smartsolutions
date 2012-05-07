@@ -46,7 +46,8 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
             return 2;
         } else if (!ONG.gestorVoluntarios.comprobarExistenciaVoluntario(voluntario)) {
             return 3;
-        }
+        } else if ("Gasto".equals(tipo) && !"ONG".equals(involucrado))
+            return 4;
         
         // Guardamos en el gestor los datosMovimiento
         datosMovimiento = new Movimiento();
@@ -66,7 +67,6 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     @Override
     public void finRegistrarMovimiento(){
-        System.out.print("Hola soy finRegistrarMovimiento\n");
         confirmarRegistro();
     }
     

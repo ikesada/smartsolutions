@@ -24,7 +24,8 @@ public interface iGestorDonaciones {
      * @param invol Dni del involucrado
      * @param desc Descripción del movimiento
      * @param dniV Dni del voluntario que registra el movimiento
-     * @return Error. 1=Invol.donante erroneo, 2=Invol.beficiarion erroneo
+     * @return Error. 1=Invol.donante erroneo, 2=Invol.beficiarion erroneo,
+     * 3=Voluntario creador erroneo, 4=Usuario 'ONG' erroneo para gasto
      */
     public int introducirMovimiento(String tipo, double cuantia, String invol, String desc, String dniV);
     
