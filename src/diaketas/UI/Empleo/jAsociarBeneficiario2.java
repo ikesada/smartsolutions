@@ -8,8 +8,10 @@ import diaketas.UI.UI;
 import javax.swing.JPanel;
 
 /**
- *
- * @author trabajo
+ * Formulario que se encarga de validar la identidad del voluntario que va a
+ * realizar la operación de asociar un beneficiario a la oferta seleccionada
+ * previamente.
+ * @author Miguel Jiménez López
  */
 public class jAsociarBeneficiario2 extends javax.swing.JPanel {
 

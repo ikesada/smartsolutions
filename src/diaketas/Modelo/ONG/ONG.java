@@ -635,6 +635,8 @@ public class ONG implements iONG{
 
     /**
      * Funcion que devuelve la información asociada a una oferta a partir del codigo identificativo de la misma
+     * @author Miguel Jiménez López
+     * @param codOferta Identifica a la oferta
      * @return Devuelve un objeto de tipo Oferta cuyo codigo coincide con el pasado como argumento.
      */
     @Override
@@ -675,6 +677,10 @@ public class ONG implements iONG{
     /**
      * Funcion que obtiene la lista de ofertas que satisfacen unos criterios de búsqueda basados
      * en el código, concepto y población de las mismas.
+     * @author Miguel Jiménez López
+     * @param codigo Código de la oferta buscada
+     * @param concepto Información sobre el concepto de las ofertas buscadas
+     * @param poblacion Población en la que se desarrollan las ofertas buscadas
      * @return Devuelve la lista de ofertas que cumple los criterios.
      */
     @Override
@@ -751,6 +757,7 @@ public class ONG implements iONG{
     
     /**
      * Agrega un nuevo movimiento al sistema
+     * @param m Movimiento que se quiere agregar
      */
     @Override
     public void agregarMovimiento(Movimiento m){
@@ -960,6 +967,9 @@ public class ONG implements iONG{
     /**
      * Registra en el sistema una nueva accion realizada por un voluntario a la hora de
      * gestionar la bolsa de empleo.
+     * @author Miguel Jiménez López
+     * @param accion Acción que se realizó sobre el sistema de gestión de bolsa de empleo y
+     * que se desea registrar en el sistema.
      */
 
     @Override

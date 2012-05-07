@@ -17,7 +17,9 @@ import java.util.Date;
 public interface iGestorOfertas {
 
     /**
-     * 
+     * Filtra del conjunto de ofertas aquellas que cumplan unos criterios de 
+     * búsqueda prefijados por los parámetros de entrada del método.
+     * @author Miguel Jiménez López
      * @param codigo codigo identificativo de la oferta
      * @param concepto  representa la categoria de la oferta
      * @param poblacion representa a la ciudad donde se desarrollara la oferta
@@ -29,13 +31,15 @@ public interface iGestorOfertas {
     
     /**
      * Funcion que indica al gestor la oferta que ha sido seleccionada por el voluntario.
+     * @author Miguel Jiménez López
      * @param codOferta codigo identificativo de la oferta seleccionada
      */
     
     public void seleccionarOferta(int codOferta);
     
     /**
-     * 
+     * Obtiene las ofertas de trabajo asociados a un determinado beneficiario del sistema.
+     * @author Miguel Jiménez López
      * @param dniBeneficiario DNI del beneficiario del que se desean consultar las ofertas
      * @param existeBeneficiario Permite informar si el beneficiario existe o no despues de 
      * resalizar la coprobación
@@ -54,6 +58,7 @@ public interface iGestorOfertas {
     
     /**
      * Finaliza la operación de asociar un beneficiario a una determinada oferta.
+     * @author Miguel Jiménez López
      */
     
     public void finAsociar();
@@ -61,6 +66,7 @@ public interface iGestorOfertas {
     /**
      * Función que registra una operación realizada relacionada con la gestion de la bolsa de trabajo
      * asi como el responsable de la misma (voluntario)
+     * @author Miguel Jiménez López
      * @param NIF_CIF DNI del responsable de la acción
      * @param cod_oferta Identificador de la oferta de trabajo a la que se refiere la acción
      * @param accion Acción realizada sobre la oferta por parte del responsable

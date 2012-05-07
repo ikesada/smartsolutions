@@ -17,8 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author kesada
+ * Formulario que se encarga de mostrar las ofertas de empleo existentes en el
+ * sistema y permitir al voluntario que seleccione una de ellas para realizar 
+ * una operación.
+ * @author Miguel Jiménez López
  */
 public class jListarOfertas extends javax.swing.JPanel {
 

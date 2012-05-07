@@ -82,8 +82,6 @@ public interface iONG {
     public ArrayList<Donante> buscarDonantes();
     
     
-    
-    
     /**
      * Funcion que devuelve un listado con todos los Beneficiarios del sistema
      * @return Devuelve un listado con todos los Beneficiarios del sistema
@@ -93,13 +91,16 @@ public interface iONG {
     /**
      * Funcion que devuelve los datos asociados a una Oferta que tiene como código
      * el entero pasado como argumento del metodo.
+     * @author Miguel Jiménez López
      * @param codOferta codigo identificativo de la oferta buscada
      * @return Devuelve la oferta concreta
      */
     public Oferta buscarOferta(int codOferta);
     
     /**
-     * 
+     * Busca el conjunto de ofertas de trabajo en el sistema que satisfagan
+     * unos criterios de búsqueda marcaados por los parámetros de entrada.
+     * @author Miguel Jiménez López
      * @param codigo codigo identificativo de la oferta
      * @param concepto  representa la categoria de la oferta
      * @param poblacion representa a la ciudad donde se desarrollara la oferta
@@ -118,10 +119,12 @@ public interface iONG {
     /**
      * Registra en el sistema una nueva accion realizada por un voluntario a la hora de
      * gestionar la bolsa de empleo.
+     * @author Miguel Jiménez López
      * @param accion Contiene la informacion de la intervención realizada.
      */
     public void agregarAccionOferta(AccionOferta accion);
-    
+
+
     /**
      * Funcion que devuelve los datos asociados a un Movimiento cuyo código es igual
      * al parámetro recibido.
@@ -135,9 +138,6 @@ public interface iONG {
      * @return Devuelve la lista de ofertas que casan con los criterios de busqueda
     */
     public ArrayList<Movimiento> obtenerMovimientos(int operadorCantidad,String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String voluntario, String involucrado, int confirmado, int tipo, String tagDescripcion);
-
-   
-    
     
 }
 

@@ -38,6 +38,12 @@ public class AccionOferta {
     public Oferta oferta;
     
     
+    /**
+     *  Constructor de la clase AccionOferta
+     * @author Miguel Jiménez López
+     * @param Accion Contiene el nombre de la acción realizada
+     * @param Fecha Indica la fecha en la que se realizó la acción
+     */
     public AccionOferta(String Accion, Date Fecha) {
         this.Nombre = Accion;
         this.Fecha = Fecha;

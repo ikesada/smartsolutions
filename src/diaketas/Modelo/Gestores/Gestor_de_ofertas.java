@@ -263,10 +263,15 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     
 
     /**
-     * Funcion que obtiene la lista de ofertas que satisfacen unos criterios de búsqueda basados
-     * en el código, concepto y población de las mismas.
-     * @return Devuelve la lista de ofertas que cumple los criterios.
-     */
+     * Filtra del conjunto de ofertas aquellas que cumplan unos criterios de 
+     * búsqueda prefijados por los parámetros de entrada del método.
+     * @author Miguel Jiménez López
+     * @param codigo codigo identificativo de la oferta
+     * @param concepto  representa la categoria de la oferta
+     * @param poblacion representa a la ciudad donde se desarrollara la oferta
+     * @return Devuelve la lista de ofertas que casan con los criterios de busqueda
+     * establecidos por los parametros de entrada al metodo.
+    */
     
     @Override
     public ArrayList<Oferta> filtrarOfertas(int codigo, String concepto, String poblacion) {
@@ -275,6 +280,8 @@ public class Gestor_de_ofertas implements iGestorOfertas{
 
     /**
      * Funcion que indica al gestor la oferta que ha sido seleccionada por el voluntario.
+     * @author Miguel Jiménez López
+     * @param codOferta codigo identificativo de la oferta seleccionada
      */
     
     @Override
@@ -282,9 +289,13 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         O = diaketas.diaketas.ong.buscarOferta(codOferta);
     }
     
-    /**
-     * Funcion que obtiene las ofertas asociadas a un determinado beneficiario
-     * @return Devuelve la lista de las ofertas relacionadas con un beneficiario concreto
+      /**
+     * Obtiene las ofertas de trabajo asociados a un determinado beneficiario del sistema.
+     * @author Miguel Jiménez López
+     * @param dniBeneficiario DNI del beneficiario del que se desean consultar las ofertas
+     * @param existeBeneficiario Permite informar si el beneficiario existe o no despues de 
+     * resalizar la coprobación
+     * @return Devuelve la lista de ofertas asociada al beneficiario si este existe
      */
 
     @Override
@@ -321,8 +332,9 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         return exito;
     }
     
-    /**
+   /**
      * Finaliza la operación de asociar un beneficiario a una determinada oferta.
+     * @author Miguel Jiménez López
      */
     
     @Override
@@ -333,9 +345,15 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         registrarOperacionOfertas(dniV,O.cod_oferta,"Asociar Beneficiario");
     }
 
-    /**
-     * Registra una acción realizada en la gestión de la bolsa de trabajo por parte de un voluntario.
+     /**
+     * Función que registra una operación realizada relacionada con la gestion de la bolsa de trabajo
+     * asi como el responsable de la misma (voluntario)
+     * @author Miguel Jiménez López
+     * @param NIF_CIF DNI del responsable de la acción
+     * @param cod_oferta Identificador de la oferta de trabajo a la que se refiere la acción
+     * @param accion Acción realizada sobre la oferta por parte del responsable
      */
+    
     @Override
     public void registrarOperacionOfertas(String NIF_CIF, int cod_oferta, String accion) {
         Voluntario responsable;

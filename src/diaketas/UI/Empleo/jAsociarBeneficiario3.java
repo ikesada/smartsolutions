@@ -7,8 +7,9 @@ package diaketas.UI.Empleo;
 import diaketas.UI.UI;
 
 /**
- *
- * @author trabajo
+ * Formulario que informa al voluntario de que la operación se ha realizado
+ * correctamente.
+ * @author Miguel Jiménez López
  */
 public class jAsociarBeneficiario3 extends javax.swing.JPanel {
 

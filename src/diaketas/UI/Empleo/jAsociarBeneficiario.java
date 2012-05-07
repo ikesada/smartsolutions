@@ -11,8 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author trabajo
+ * Formulario que consulta las ofertas ya asociadas al beneficiario al que se
+ * le va a agregar la oferta seleccionada previamente.
+ * @author Miguel Jiménez López
  */
 public class jAsociarBeneficiario extends javax.swing.JPanel {
 

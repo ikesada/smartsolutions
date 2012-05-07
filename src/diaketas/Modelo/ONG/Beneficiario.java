@@ -358,6 +358,7 @@ public class Beneficiario extends Usuarios{
     
     /**
      * Consulta las ofertas que tiene asociado el beneficiario
+     * @author Miguel Jiménez López
      * @return Devuelve la lista de las ofertas relacionadas con el beneficiario (null si no tiene ninguna)
      */
     
@@ -420,6 +421,11 @@ public class Beneficiario extends Usuarios{
         return ofertas;
     }
     
+    /**
+     * Agrega el beneficiario a una determinada oferta de empleo en la que está interesado.
+     * @author Miguel Jiménez López
+     * @param oferta Información de la oferta de empleo
+     */
     public void AgregarOferta(Oferta oferta) {
         ConexionBD con = new ConexionBD();
         
