@@ -412,10 +412,13 @@ public class jModificarMovimiento extends javax.swing.JPanel {
 
     private void TipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoActionPerformed
         String seleccion = (String) Tipo.getSelectedItem();
-        if (seleccion.compareTo("Gasto") == 0)
+        if (seleccion.compareTo("Gasto") == 0){
             NIF_Involucrado.setEnabled(false);
-        else
+            NIF_Involucrado.setText("ONG");
+        }else{
             NIF_Involucrado.setEnabled(true);
+            NIF_Involucrado.setText("");
+        }
     }//GEN-LAST:event_TipoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
