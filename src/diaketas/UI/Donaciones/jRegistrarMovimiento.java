@@ -266,6 +266,11 @@ public class jRegistrarMovimiento extends javax.swing.JPanel {
     private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
         if ("Gasto".equals((String)tipo.getSelectedItem()))
             involucrado.setText("ONG");
+        if (tipo.getSelectedIndex() >= 3 && tipo.getSelectedIndex() <= 6) {
+            cuantia.setText("-0.00");
+        } else {
+            cuantia.setText("0.00");
+        }
     }//GEN-LAST:event_tipoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
