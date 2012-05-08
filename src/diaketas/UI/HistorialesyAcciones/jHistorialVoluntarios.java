@@ -65,6 +65,8 @@ public class jHistorialVoluntarios extends javax.swing.JPanel {
                 
                 
                 
+                
+                
                 //Creando las filas para el JTable
                 while (rs.next()) 
                 {
@@ -107,6 +109,70 @@ public class jHistorialVoluntarios extends javax.swing.JPanel {
             
             
 
+            //ahora hago otra consulta sobre la tabla AccionOferta
+            try{
+                
+                //Crear objeto Statement para realizar queries a la base de datos
+                Statement s = con.conexion().createStatement();
+
+                //Un objeto ResultSet, almacena los datos de resultados de una consulta
+                ResultSet rs = s.executeQuery("select Nombre, Fecha, NIF_CIF from AccionOferta where NIF_CIF=\"" + DNIvoluntario +"\"  ");
+                
+                
+                //Obteniendo la informacion de las columnas que estan siendo consultadas
+                ResultSetMetaData rsMd = rs.getMetaData();
+                
+                //La cantidad de columnas que tiene la consulta
+                int cantidadColumnas = rsMd.getColumnCount();
+                
+                /*
+                //Establecer como cabezeras el nombre de las colimnas
+                for (int i = 1; i <= cantidadColumnas; i++) {
+                modelo.addColumn(rsMd.getColumnLabel(i));
+                }
+                */
+                
+                
+                //Creando las filas para el JTable
+                while (rs.next()) 
+                {
+                    Object[] fila = new Object[cantidadColumnas];
+                    for (int i = 0; i < cantidadColumnas; i++) 
+                    {
+                        
+                        
+                        /*El elemento jTable no permite mostrar datos del tipo Date, por ello, antes de mostrar el dato
+                        se comprueba si es de tipo Date, y si es asi, se pasa a string para mostrarlo en la tabla.
+                        Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
+                        */
+                        if( rs.getMetaData().getColumnType(i+1) == 91 ) //TIPO_DATE = 91
+                        {
+                            if(rs.getObject(i+1)!=null  )
+                            {
+                                java.util.Date date = (java.util.Date) rs.getObject(i+1);   //primero leo el objeto fecha
+                                java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
+                                String fecha = sdf.format(date);
+
+                                fila[i] = fecha;
+                            }
+                            else
+                            {
+                                fila[i] = "";
+                                                               
+                            }
+                        }
+                        else{
+                            fila[i]=rs.getObject(i+1);
+                        }
+                        
+                    }
+                    modelo.addRow(fila);
+                }
+            
+            }
+            catch(SQLException e){ System.out.println(e); }
+            catch(Exception e){ System.out.println(e); }
+            
 
     }
 
