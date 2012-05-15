@@ -56,21 +56,33 @@
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="observaciones_etiq" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cuantia_etiq" min="-2" max="-2" attributes="0"/>
-                                              <Component id="periodicidad_donaciones_etiq" min="-2" max="-2" attributes="0"/>
-                                              <Component id="tipo_periodicidad_etiq" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="dia_input" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="mes_input" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="anio_input" min="-2" pref="80" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cuantia_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                              <Component id="periodicidad_donaciones_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                              <Component id="tipo_periodicidad_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="cuantia_etiq" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="periodicidad_donaciones_etiq" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="tipo_periodicidad_etiq" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="cuantia_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                                      <Component id="periodicidad_donaciones_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                                      <Component id="tipo_periodicidad_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="jScrollPane4" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jScrollPane4" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -120,13 +132,6 @@
                                       <Component id="email_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                                       <Component id="telefono_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                                       <Component id="localidad_input" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="dia_input" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="mes_input" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="anio_input" min="-2" pref="70" max="-2" attributes="0"/>
-                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -138,7 +143,15 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="467" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="dia_input" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="anio_input" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="mes_input" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="207" max="32767" attributes="0"/>
                       <Component id="observaciones_etiq" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="171" max="-2" attributes="0"/>
@@ -183,14 +196,9 @@
                               <Component id="tipo_donante_input" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="tipo_donante_etiq" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="fecha_nacimiento_etiq" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="dia_input" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="mes_input" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="anio_input" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="fecha_nacimiento_etiq" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="localidad_etiq" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="localidad_input" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -210,7 +218,7 @@
                               <Component id="fecha_inscripcion_etiq" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="fecha_inscripcion_input" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="491" max="32767" attributes="0"/>
+                          <EmptySpace pref="477" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -290,6 +298,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="tipo_donante_input">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                </Property>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="0"/>
@@ -340,6 +351,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="nombre_input">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                </Property>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="0"/>
@@ -348,6 +362,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="apellidos_input">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                </Property>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="0"/>
@@ -356,10 +373,13 @@
             </Component>
             <Component class="javax.swing.JTextField" name="dni_input">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                </Property>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="0"/>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="localidad_input">
@@ -386,6 +406,9 @@
                   <Font name="Tahoma" size="18" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="telefono_inputMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="email_etiq">
               <Properties>
@@ -401,6 +424,9 @@
                   <Font name="Tahoma" size="18" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="email_inputMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="fecha_inscripcion_etiq">
               <Properties>
@@ -412,6 +438,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="fecha_inscripcion_input">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                </Property>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="0"/>
@@ -475,6 +504,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextArea" name="observaciones_input">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -530,6 +562,9 @@
                   <Font name="Tahoma" size="18" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="periodicidad_donaciones_inputMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="cuantia_input">
               <Properties>
@@ -537,6 +572,9 @@
                   <Font name="Tahoma" size="18" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cuantia_inputMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bmodificar">
               <Properties>

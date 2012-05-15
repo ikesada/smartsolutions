@@ -1,6 +1,6 @@
 package diaketas.UI.Movil;
 
-import diaketas.UI.Movil.jTeclado;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 /*
@@ -20,12 +20,14 @@ public class jSTeclado extends javax.swing.JFrame {
     public jSTeclado() {
         initComponents();
         this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
     
     public jSTeclado(JTextField t) {
         campo_texto = t;
         initComponents();
         this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
     
     public void activar() {

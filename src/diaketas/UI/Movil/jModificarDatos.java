@@ -17,7 +17,7 @@ public class jModificarDatos extends javax.swing.JPanel {
      */
     public jModificarDatos() {
         initComponents();
-        teclado_virtual = new jSTeclado();
+        teclado_virtual = new jSTeclado(localidad_input);
     }
 
     /**
@@ -77,20 +77,24 @@ public class jModificarDatos extends javax.swing.JPanel {
         anio_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         anio_input.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040" }));
 
+        tipo_donante_input.setBackground(new java.awt.Color(255, 204, 204));
         tipo_donante_input.setEditable(false);
         tipo_donante_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         dia_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         dia_input.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
+        nombre_input.setBackground(new java.awt.Color(255, 204, 204));
         nombre_input.setEditable(false);
         nombre_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        apellidos_input.setBackground(new java.awt.Color(255, 204, 204));
         apellidos_input.setEditable(false);
         apellidos_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        dni_input.setBackground(new java.awt.Color(255, 204, 204));
+        dni_input.setEditable(false);
         dni_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        dni_input.setEnabled(false);
 
         localidad_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         localidad_input.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,15 +107,26 @@ public class jModificarDatos extends javax.swing.JPanel {
         telefono_etiq.setText("Telefono:");
 
         telefono_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        telefono_input.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                telefono_inputMouseClicked(evt);
+            }
+        });
 
         email_etiq.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         email_etiq.setText("Email:");
 
         email_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        email_input.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                email_inputMouseClicked(evt);
+            }
+        });
 
         fecha_inscripcion_etiq.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         fecha_inscripcion_etiq.setText("Fecha inscripción:");
 
+        fecha_inscripcion_input.setBackground(new java.awt.Color(255, 204, 204));
         fecha_inscripcion_input.setEditable(false);
         fecha_inscripcion_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -133,6 +148,7 @@ public class jModificarDatos extends javax.swing.JPanel {
         apellidos_etiq.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         apellidos_etiq.setText("Apellidos:");
 
+        observaciones_input.setBackground(new java.awt.Color(255, 204, 204));
         observaciones_input.setColumns(20);
         observaciones_input.setEditable(false);
         observaciones_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -152,8 +168,18 @@ public class jModificarDatos extends javax.swing.JPanel {
         tipo_periodicidad_input.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguna", "Días", "Meses", "Años" }));
 
         periodicidad_donaciones_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        periodicidad_donaciones_input.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                periodicidad_donaciones_inputMouseClicked(evt);
+            }
+        });
 
         cuantia_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cuantia_input.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cuantia_inputMouseClicked(evt);
+            }
+        });
 
         bmodificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bmodificar.setText("Modificar");
@@ -171,18 +197,27 @@ public class jModificarDatos extends javax.swing.JPanel {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(observaciones_etiq)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cuantia_etiq)
-                                        .addComponent(periodicidad_donaciones_etiq)
-                                        .addComponent(tipo_periodicidad_etiq))
-                                    .addGap(32, 32, 32)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cuantia_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(periodicidad_donaciones_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tipo_periodicidad_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jScrollPane4)))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(dia_input, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(mes_input, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(anio_input, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(cuantia_etiq)
+                                                .addComponent(periodicidad_donaciones_etiq)
+                                                .addComponent(tipo_periodicidad_etiq))
+                                            .addGap(32, 32, 32)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(cuantia_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(periodicidad_donaciones_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(tipo_periodicidad_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jScrollPane4)))))))
                 .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -218,19 +253,19 @@ public class jModificarDatos extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(email_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(telefono_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(localidad_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(dia_input, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(mes_input, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(anio_input, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(localidad_input, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addContainerGap(34, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(467, Short.MAX_VALUE)
+                .addGap(216, 216, 216)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dia_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(anio_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(mes_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                 .addComponent(observaciones_etiq)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,13 +302,9 @@ public class jModificarDatos extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(tipo_donante_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(tipo_donante_etiq))
-                    .addGap(24, 24, 24)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fecha_nacimiento_etiq)
-                        .addComponent(dia_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(mes_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(anio_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(23, 23, 23)
+                    .addGap(28, 28, 28)
+                    .addComponent(fecha_nacimiento_etiq)
+                    .addGap(27, 27, 27)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(localidad_etiq)
                         .addComponent(localidad_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,7 +320,7 @@ public class jModificarDatos extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(fecha_inscripcion_etiq)
                         .addComponent(fecha_inscripcion_input, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(491, Short.MAX_VALUE)))
+                    .addContainerGap(477, Short.MAX_VALUE)))
         );
 
         jScrollPane2.setViewportView(jPanel2);
@@ -311,6 +342,30 @@ public class jModificarDatos extends javax.swing.JPanel {
         teclado_virtual.asociarCampo(localidad_input);
         teclado_virtual.activar();
     }//GEN-LAST:event_localidad_inputMouseClicked
+
+    private void telefono_inputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_inputMouseClicked
+        // TODO add your handling code here:
+        teclado_virtual.asociarCampo(telefono_input);
+        teclado_virtual.activar();
+    }//GEN-LAST:event_telefono_inputMouseClicked
+
+    private void email_inputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_email_inputMouseClicked
+        // TODO add your handling code here:
+        teclado_virtual.asociarCampo(email_input);
+        teclado_virtual.activar();
+    }//GEN-LAST:event_email_inputMouseClicked
+
+    private void periodicidad_donaciones_inputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_periodicidad_donaciones_inputMouseClicked
+        // TODO add your handling code here:
+        teclado_virtual.asociarCampo(periodicidad_donaciones_input);
+        teclado_virtual.activar();
+    }//GEN-LAST:event_periodicidad_donaciones_inputMouseClicked
+
+    private void cuantia_inputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuantia_inputMouseClicked
+        // TODO add your handling code here:
+        teclado_virtual.asociarCampo(cuantia_input);
+        teclado_virtual.activar();
+    }//GEN-LAST:event_cuantia_inputMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox anio_input;
