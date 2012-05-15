@@ -9,12 +9,15 @@ package diaketas.UI.Movil;
  * @author klyone
  */
 public class jModificarDatos extends javax.swing.JPanel {
+    
+    jSTeclado teclado_virtual = null;
 
     /**
      * Creates new form jModificarDatos
      */
     public jModificarDatos() {
         initComponents();
+        teclado_virtual = new jSTeclado();
     }
 
     /**
@@ -90,6 +93,11 @@ public class jModificarDatos extends javax.swing.JPanel {
         dni_input.setEnabled(false);
 
         localidad_input.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        localidad_input.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                localidad_inputMouseClicked(evt);
+            }
+        });
 
         telefono_etiq.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         telefono_etiq.setText("Telefono:");
@@ -297,6 +305,12 @@ public class jModificarDatos extends javax.swing.JPanel {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void localidad_inputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localidad_inputMouseClicked
+        // TODO add your handling code here:
+        teclado_virtual.asociarCampo(localidad_input);
+        teclado_virtual.activar();
+    }//GEN-LAST:event_localidad_inputMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox anio_input;

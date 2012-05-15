@@ -1,4 +1,6 @@
+package diaketas.UI.Movil;
 
+import diaketas.UI.Movil.jTeclado;
 import javax.swing.JTextField;
 
 /*
