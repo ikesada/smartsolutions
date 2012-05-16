@@ -43,11 +43,12 @@ public class ConexionBD{
     public void conectarBD() {
        try {
         Statement stmt = conn.createStatement();
-        System.out.println("Conexion cerrada...Abriendo");
+        
         ResultSet rs = stmt.executeQuery("SELECT 1 FROM Dual");
         if (rs.next()) {
         }
         }catch (SQLException e) {
+            System.out.println("Conexion cerrada...Abriendo");
             realizarConexionBD();
         }
     }
