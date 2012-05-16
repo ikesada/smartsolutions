@@ -82,16 +82,7 @@ public class Familiar {
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
     }
     
     public void destruir(){
@@ -110,15 +101,6 @@ public class Familiar {
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
     }
 }

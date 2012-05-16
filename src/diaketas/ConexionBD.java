@@ -8,9 +8,10 @@ package diaketas;
  *
  * @author kesada
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import com.mysql.jdbc.exceptions.MySQLNonTransientConnectionException;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * 
  * @author Alex
@@ -36,10 +37,23 @@ public class ConexionBD{
     private static Connection conn = null;
     
     /**
-     *  Funcion conecta con la BBDD
+     *  Funcion que comprueba si existe conexión a la BBDD.
+     *  En caso negativo lanza de nuevo la conexión.
      */
     public void conectarBD() {
-        try {
+       try {
+        Statement stmt = conn.createStatement();
+        System.out.println("Conexion cerrada...Abriendo");
+        ResultSet rs = stmt.executeQuery("SELECT 1 FROM Dual");
+        if (rs.next()) {
+        }
+        }catch (SQLException e) {
+            realizarConexionBD();
+        }
+    }
+
+    public void realizarConexionBD(){
+          try {
             Class.forName("org.gjt.mm.mysql.Driver");
             conn = DriverManager.getConnection(url, login, password);
         }
@@ -49,14 +63,16 @@ public class ConexionBD{
         catch(ClassNotFoundException ex) {
             System.out.println(ex);
         }
+
     }
+       
     
     /**
      *  Desconecta de la BBDD
      * @throws SQLException
      */
-    public void desconectarBD() throws SQLException{
-        conn.close();
+    public void realizarDesconexionBD() throws SQLException{
+       conn.close();
     }
     
     /**

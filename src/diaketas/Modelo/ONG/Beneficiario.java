@@ -223,16 +223,7 @@ public class Beneficiario extends Usuarios{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
+
     }
     
     /**
@@ -284,16 +275,7 @@ public class Beneficiario extends Usuarios{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
     }
     /*----------------------------Familiares-----------------------------------*/
     /**
@@ -322,16 +304,7 @@ public class Beneficiario extends Usuarios{
         /*Captura de errores*/
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e);}
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
+      
     }
     
     /**
@@ -404,18 +377,7 @@ public class Beneficiario extends Usuarios{
         }
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }
-             
-        
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } 
+
         
         
         return ofertas;
@@ -442,16 +404,7 @@ public class Beneficiario extends Usuarios{
         /*Captura de errores*/
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e);}
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
+     
         
     }
         

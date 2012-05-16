@@ -4,10 +4,8 @@
  */
 package diaketas;
 
-import de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
-import javax.swing.UIManager;
 
 /**
  *
@@ -32,12 +30,16 @@ public class diaketas {
         try {
             UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         } catch (Exception e) {
-        }
-*/
-        /*
-         * Iniciamos la interfaz
-         */
+        }*/
+
+        /*Creamos la conexión de la BBDD*/
+        ConexionBD con = new ConexionBD(); 
+        con.realizarConexionBD();
+
+        
+        /* Iniciamos la interfaz */
         UI ui = new UI();
         ui.setVisible(true);
+     
     }
 }
