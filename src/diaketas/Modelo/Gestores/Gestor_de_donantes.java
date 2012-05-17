@@ -242,6 +242,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         
     }
     
+    @Override
     /**
      *  Función que comprueba si los datos de un donante que intenta acceder por móvil
      *  son correctos
