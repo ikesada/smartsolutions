@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.text.*;
 
 /**
  *
@@ -241,4 +242,52 @@ public class Gestor_de_donantes implements iGestorDonantes {
         
     }
     
+    /**
+     *  Función que comprueba si los datos de un donante que intenta acceder por móvil
+     *  son correctos
+     * @param dni DNI del donante que intenta identificarse
+     * @param password Contraseña del donante que intenta identificarse (1º apellido
+     * seguido de la fecha de nacimiento en formato DDMMYYYY
+     */
+    public boolean identificarse(String dni, String password){
+        boolean identificado = comprobarDniDonante(dni);
+        Date fecha = null;
+        String strFecha, apellido;
+        
+        if(identificado){
+            Donante d = diaketas.diaketas.ong.buscarDonante(dni);
+            //obtener datos
+            strFecha = password.substring(password.length()-8,password.length());
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+            try {
+                fecha = formatoFecha.parse(
+                        strFecha.substring(0,2)+"/"
+                        +strFecha.substring(2,4)+"/"
+                        +strFecha.substring(4,8)
+                        );
+            } catch (ParseException ex) {}
+            
+            apellido = (d.Apellidos.split(" ")[0]).toLowerCase();
+            apellido=apellido.replaceAll("á", "a");
+            apellido=apellido.replaceAll("é", "e");
+            apellido=apellido.replaceAll("í", "i");
+            apellido=apellido.replaceAll("ó", "o");
+            apellido=apellido.replaceAll("ú", "u");
+            apellido=apellido.replaceAll("à", "a");
+            apellido=apellido.replaceAll("è", "e");
+            apellido=apellido.replaceAll("ì", "i");
+            apellido=apellido.replaceAll("ò", "o");
+            apellido=apellido.replaceAll("ù", "u");
+            apellido=apellido.replaceAll("ä", "a");
+            apellido=apellido.replaceAll("ë", "e");
+            apellido=apellido.replaceAll("ï", "i");
+            apellido=apellido.replaceAll("ö", "o");
+            apellido=apellido.replaceAll("ü", "u");
+            
+            
+            identificado = fecha.equals(d.FechaNac) && password.substring(0,password.length()-8).equals(apellido);
+        }
+       
+        return identificado;
+    }
 }

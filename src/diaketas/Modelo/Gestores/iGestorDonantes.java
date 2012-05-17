@@ -64,4 +64,13 @@ public interface iGestorDonantes {
      *  Funcion que finaliza la operacion de Baja
      */
     public void confirmarFinModificacion();
+    
+    /**
+     *  Función que comprueba si los datos de un donante que intenta acceder por móvil
+     *  son correctos
+     * @param dni DNI del donante que intenta identificarse
+     * @param password Contraseña del donante que intenta identificarse (1º apellido
+     * seguido de la fecha de nacimiento en formato DDMMYYYY
+     */
+    public boolean identificarse(String dni, String password);
 }
