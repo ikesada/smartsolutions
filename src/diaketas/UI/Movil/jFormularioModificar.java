@@ -58,10 +58,8 @@ public class jFormularioModificar extends javax.swing.JPanel {
         periodicidad_donaciones_input3 = new javax.swing.JTextField();
         cuantia_etiq3 = new javax.swing.JLabel();
         cuantia_input3 = new javax.swing.JTextField();
-        bmodificar3 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(689, 1773));
-        setPreferredSize(null);
 
         dni_etiq3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         dni_etiq3.setText("DNI:");
@@ -182,17 +180,18 @@ public class jFormularioModificar extends javax.swing.JPanel {
             }
         });
 
-        bmodificar3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bmodificar3.setText("Modificar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(apellidos_etiq3)
+                        .addGap(166, 166, 166)
+                        .addComponent(apellidos_input3))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(periodicidad_donaciones_etiq3)
                             .addComponent(cuantia_etiq3))
@@ -200,19 +199,15 @@ public class jFormularioModificar extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cuantia_input3)
                             .addComponent(periodicidad_donaciones_input3)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(apellidos_etiq3)
-                        .addGap(166, 166, 166)
-                        .addComponent(apellidos_input3))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(nombre_etiq3)
                         .addGap(174, 174, 174)
                         .addComponent(nombre_input3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(dni_etiq3)
                         .addGap(205, 205, 205)
                         .addComponent(dni_input3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tipo_donante_etiq3)
                             .addComponent(fecha_nacimiento_etiq3)
@@ -229,17 +224,16 @@ public class jFormularioModificar extends javax.swing.JPanel {
                             .addComponent(tipo_periodicidad_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(dia_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(42, 42, 42)
-                                .addComponent(mes_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(44, 44, 44)
+                                .addComponent(mes_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(42, 42, 42)
                                 .addComponent(anio_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(tipo_donante_input3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
                             .addComponent(localidad_input3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(telefono_input3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(email_input3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(fecha_inscripcion_input3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane7)))
-                    .addComponent(bmodificar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane7))))
                 .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
@@ -249,28 +243,25 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dni_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                     .addComponent(dni_etiq3))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(nombre_etiq3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(nombre_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)))
-                .addGap(62, 62, 62)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(apellidos_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(apellidos_etiq3))
-                .addGap(54, 54, 54)
+                    .addComponent(nombre_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre_etiq3))
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipo_donante_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                    .addComponent(apellidos_etiq3)
+                    .addComponent(apellidos_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipo_donante_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tipo_donante_etiq3))
-                .addGap(82, 82, 82)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dia_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mes_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(anio_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fecha_nacimiento_etiq3))
-                .addGap(60, 60, 60)
+                .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(localidad_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .addComponent(localidad_etiq3))
@@ -289,7 +280,7 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(observaciones_etiq3)))
@@ -305,8 +296,6 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cuantia_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                     .addComponent(cuantia_etiq3))
-                .addGap(72, 72, 72)
-                .addComponent(bmodificar3, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -348,7 +337,6 @@ public class jFormularioModificar extends javax.swing.JPanel {
     private javax.swing.JComboBox anio_input3;
     private javax.swing.JLabel apellidos_etiq3;
     private javax.swing.JTextField apellidos_input3;
-    private javax.swing.JButton bmodificar3;
     private javax.swing.JLabel cuantia_etiq3;
     private javax.swing.JTextField cuantia_input3;
     private javax.swing.JComboBox dia_input3;
