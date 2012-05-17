@@ -251,13 +251,18 @@ public class Gestor_de_donantes implements iGestorDonantes {
      * seguido de la fecha de nacimiento en formato DDMMYYYY
      */
     public boolean identificarse(String dni, String password){
+        if(password.length() < 8)
+            return false;
+        
         boolean identificado = comprobarDniDonante(dni);
         Date fecha = null;
         String strFecha, apellido;
         
         if(identificado){
             Donante d = diaketas.diaketas.ong.buscarDonante(dni);
-            //obtener datos
+            
+            datosDonante = d;
+            
             strFecha = password.substring(password.length()-8,password.length());
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
             try {
@@ -285,7 +290,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
             apellido=apellido.replaceAll("ö", "o");
             apellido=apellido.replaceAll("ü", "u");
             
-            
+            System.out.println(fecha.equals(d.FechaNac)+""+password.substring(0,password.length()-8).equals(apellido));
             identificado = fecha.equals(d.FechaNac) && password.substring(0,password.length()-8).equals(apellido);
         }
        
