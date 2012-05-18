@@ -41,6 +41,11 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+        setForeground(new java.awt.Color(204, 255, 204));
+        setMaximumSize(new java.awt.Dimension(409, 350));
+        setMinimumSize(new java.awt.Dimension(409, 350));
+
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel1.setText("Cuantia");
 
