@@ -200,6 +200,11 @@ public class jBuscarAportesM extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        String involucrado = "";
+        
+        diaketas.diaketas.ong.gestorDonaciones.filtrarMovimientosM(codigoCuantia.getSelectedIndex(),cantidad1.getText(),cantidad2.getText(),codigoFecha.getSelectedIndex(),fecha1.getText(),fecha2.getText(),involucrado , codigoTipo.getSelectedIndex());
+        
+        
         JPanel panel = new jListarAportesM();
         diaketas.UI.Movil.UI.jPrincipal.add("ListarAportes", panel);
         diaketas.UI.Movil.UI.cl.show(diaketas.UI.Movil.UI.jPrincipal, "ListarAportes");

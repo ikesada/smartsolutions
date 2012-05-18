@@ -142,6 +142,17 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     public ArrayList<Movimiento> filtrarMovimientos(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String voluntario, String involucrado, int confirmado, int tipo, String tagDescripcion) {
         return diaketas.diaketas.ong.obtenerMovimientos(operadorCantidad, cantidad1, cantidad2, operadorFecha, fecha1, fecha2, voluntario, involucrado, confirmado, tipo, tagDescripcion);
     }
+    
+       /**
+     * Funcion que obtiene la lista de movimientos que satisfacen el filtro indicado por los
+     * parámetros
+     * @return Devuelve la lista de movimientos que cumplen los criterios.
+     */
+    
+    //@Override
+    public ArrayList<Movimiento> filtrarMovimientosM(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String involucrado, int tipo) {
+        return diaketas.diaketas.ong.obtenerMovimientosM(operadorCantidad, cantidad1, cantidad2, operadorFecha, fecha1, fecha2, involucrado, tipo);
+    }  
 
     /**
      * Funcion que indica al gestor el movimiento que ha sido seleccionado por el voluntario.

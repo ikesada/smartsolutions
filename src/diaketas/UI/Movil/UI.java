@@ -4,11 +4,13 @@
  */
 package diaketas.UI.Movil;
 
+import diaketas.Modelo.ONG.Movimiento;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -22,6 +24,8 @@ public class UI extends javax.swing.JFrame {
      * 
      */
     public static CardLayout cl;
+    
+    ArrayList<Movimiento> movimientosEncontrados = null;
      
     /**
      * Creates new form Main
