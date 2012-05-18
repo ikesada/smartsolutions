@@ -25,7 +25,7 @@ public class UI extends javax.swing.JFrame {
      */
     public static CardLayout cl;
     
-    ArrayList<Movimiento> movimientosEncontrados = null;
+    public static ArrayList<Movimiento> movimientosEncontrados = null;
      
     /**
      * Creates new form Main

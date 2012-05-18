@@ -31,6 +31,32 @@ public class jListarAportesM extends javax.swing.JPanel {
      */
     public jListarAportesM() {
         initComponents();
+        
+        DefaultTableModel tabla = (DefaultTableModel) listadoMovimiento.getModel();
+        tabla.setRowCount(0);
+        
+        int nMovimientos = diaketas.UI.Movil.UI.movimientosEncontrados.size();
+        
+        if(nMovimientos != 0) {
+            //Oferta oferta_actual;
+            Object[] fila = new Object[6];
+            //for(int i = 0 ; i < nMovimientos ; i++) {
+                //oferta_actual = ofertasEncontradas.get(i);
+            
+            for(Movimiento m : diaketas.UI.Movil.UI.movimientosEncontrados){
+                fila[0] = m.cuantia;
+                fila[1] = m.Fecha;
+                fila[2] = m.Tipo_Movimiento;
+                fila[4] = m.involucrado;
+
+                
+                tabla.addRow(fila);
+            }
+
+        }
+
+        
+        
     }
 
     /**
@@ -44,7 +70,8 @@ public class jListarAportesM extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        listadoMovimiento = new javax.swing.JTable();
+        salir = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 102));
         setMaximumSize(new java.awt.Dimension(409, 350));
@@ -57,7 +84,7 @@ public class jListarAportesM extends javax.swing.JPanel {
         jScrollPane1.setMinimumSize(new java.awt.Dimension(409, 350));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(409, 350));
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        listadoMovimiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,7 +95,15 @@ public class jListarAportesM extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabla);
+        jScrollPane1.setViewportView(listadoMovimiento);
+
+        salir.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,7 +116,10 @@ public class jListarAportesM extends javax.swing.JPanel {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,13 +128,23 @@ public class jListarAportesM extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+
+        diaketas.UI.Movil.UI.cl.show(diaketas.UI.Movil.UI.jPrincipal, "SeleccionarOpcion");
+    }//GEN-LAST:event_salirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla;
+    private javax.swing.JTable listadoMovimiento;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
