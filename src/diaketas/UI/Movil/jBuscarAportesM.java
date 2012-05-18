@@ -27,11 +27,15 @@ import javax.swing.table.DefaultTableModel;
 
 public class jBuscarAportesM extends javax.swing.JPanel {
 
+    jSTeclado tv = null;
+    
     /**
      * Creates new form jBuscarAportesM
      */
     public jBuscarAportesM() {
-        initComponents();
+        initComponents();      
+        
+        tv = new jSTeclado(cantidad1);
     }
 
     /**
@@ -91,6 +95,11 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         });
 
         codigoFecha.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Mayor", "Menor", "Igual", "Entre" }));
+        codigoFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codigoFechaActionPerformed(evt);
+            }
+        });
 
         codigoTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cualquiera", "Donacion Efectiva", "Donacion Bancaria", "Donacion Material" }));
 
@@ -191,7 +200,57 @@ public class jBuscarAportesM extends javax.swing.JPanel {
 
     private void codigoCuantiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoCuantiaActionPerformed
         // TODO add your handling code here:
+        
+        switch(codigoCuantia.getSelectedIndex()){
+            case 0:
+                cantidad1.setEnabled(false);
+                cantidad2.setEnabled(false);
+                break;
+            case 1:
+                cantidad1.setEnabled(true);
+                cantidad2.setEnabled(false);
+                break;
+            case 2:
+                cantidad1.setEnabled(true);
+                cantidad2.setEnabled(false);
+                break;
+            case 3:
+                cantidad1.setEnabled(true);
+                cantidad2.setEnabled(false);
+                break;
+            case 4:
+                cantidad1.setEnabled(true);
+                cantidad2.setEnabled(true);
+                break;
+        }
     }//GEN-LAST:event_codigoCuantiaActionPerformed
+
+    private void codigoFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoFechaActionPerformed
+        // TODO add your handling code here:
+        
+        switch(codigoFecha.getSelectedIndex()){
+            case 0:
+                fecha1.setEnabled(false);
+                fecha2.setEnabled(false);
+                break;
+            case 1:
+                fecha1.setEnabled(true);
+                fecha2.setEnabled(false);
+                break;
+            case 2:
+                fecha1.setEnabled(true);
+                fecha2.setEnabled(false);
+                break;
+            case 3:
+                fecha1.setEnabled(true);
+                fecha2.setEnabled(false);
+                break;
+            case 4:
+                fecha1.setEnabled(true);
+                fecha2.setEnabled(true);
+                break;
+        }
+    }//GEN-LAST:event_codigoFechaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cantidad1;
