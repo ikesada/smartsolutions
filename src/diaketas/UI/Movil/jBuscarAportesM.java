@@ -24,6 +24,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.awt.CardLayout;
+
+
 
 public class jBuscarAportesM extends javax.swing.JPanel {
 
@@ -196,6 +199,11 @@ public class jBuscarAportesM extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        JPanel panel = new jListarAportesM();
+        diaketas.UI.Movil.UI.jPrincipal.add("ListarAportes", panel);
+        diaketas.UI.Movil.UI.cl.show(diaketas.UI.Movil.UI.jPrincipal, "ListarAportes");
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void codigoCuantiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoCuantiaActionPerformed
