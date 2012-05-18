@@ -50,18 +50,18 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField2" pref="145" max="32767" attributes="0"/>
-                                  <Component id="jTextField3" max="32767" attributes="0"/>
-                                  <Component id="jTextField4" max="32767" attributes="0"/>
-                                  <Component id="jTextField1" max="32767" attributes="0"/>
+                                  <Component id="cantidad2" max="32767" attributes="0"/>
+                                  <Component id="fecha1" max="32767" attributes="0"/>
+                                  <Component id="fecha2" pref="145" max="32767" attributes="0"/>
+                                  <Component id="cantidad1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jComboBox1" pref="99" max="32767" attributes="0"/>
-                                  <Component id="jComboBox2" max="32767" attributes="0"/>
+                                  <Component id="codigoCuantia" pref="99" max="32767" attributes="0"/>
+                                  <Component id="codigoFecha" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jComboBox3" max="32767" attributes="0"/>
+                          <Component id="codigoTipo" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -82,13 +82,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="cantidad1" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField2" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="cantidad2" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jTextField3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="fecha1" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField4" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="fecha2" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -98,7 +98,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="codigoCuantia" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jComboBox2" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="codigoFecha" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -121,7 +121,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="codigoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -163,58 +163,66 @@
         <Property name="text" type="java.lang.String" value="Tipo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="cantidad1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="cantidad2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="fecha1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField3"/>
+        <Property name="text" type="java.lang.String" value="dd/mm/yy"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="fecha2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField4"/>
+        <Property name="text" type="java.lang.String" value="dd/mm/yy"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="codigoCuantia">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Ninguno"/>
+            <StringItem index="1" value="Mayor"/>
+            <StringItem index="2" value="Menor"/>
+            <StringItem index="3" value="Igual"/>
+            <StringItem index="4" value="Entre"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="codigoCuantiaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="codigoFecha">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="Ninguno"/>
+            <StringItem index="1" value="Mayor"/>
+            <StringItem index="2" value="Menor"/>
+            <StringItem index="3" value="Igual"/>
+            <StringItem index="4" value="Entre"/>
           </StringArray>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="codigoTipo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox3">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+            <StringItem index="0" value="Cualquiera"/>
+            <StringItem index="1" value="Donacion Efectiva"/>
+            <StringItem index="2" value="Donacion Bancaria"/>
+            <StringItem index="3" value="Donacion Material"/>
           </StringArray>
         </Property>
       </Properties>
