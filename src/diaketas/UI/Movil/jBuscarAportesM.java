@@ -92,6 +92,11 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         jLabel4.setText("Tipo");
 
         cantidad1.setText("0");
+        cantidad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidad1ActionPerformed(evt);
+            }
+        });
 
         cantidad2.setText("0");
 
@@ -284,6 +289,15 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_codigoFechaActionPerformed
 
+    private void cantidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidad1ActionPerformed
+
+    private void cantidad1localidad_inputMouseClicked(java.awt.event.MouseEvent evt) {                                                             
+        // TODO add your handling code here:
+        tv.asociarCampo(cantidad1);
+        tv.activar();
+    }   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cantidad1;
     private javax.swing.JTextField cantidad2;
