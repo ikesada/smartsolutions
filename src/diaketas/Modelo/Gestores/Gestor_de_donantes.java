@@ -290,7 +290,6 @@ public class Gestor_de_donantes implements iGestorDonantes {
             apellido=apellido.replaceAll("ö", "o");
             apellido=apellido.replaceAll("ü", "u");
             
-            System.out.println(fecha.equals(d.FechaNac)+""+password.substring(0,password.length()-8).equals(apellido));
             identificado = fecha.equals(d.FechaNac) && password.substring(0,password.length()-8).equals(apellido);
         }
        
