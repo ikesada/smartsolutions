@@ -226,6 +226,13 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         
         String involucrado = "77777777G";
      
+        try{
+            Float.parseFloat(cantidad1.getText());
+            Float.parseFloat(cantidad2.getText());
+        }catch(NumberFormatException n){
+            
+        }
+        
         diaketas.UI.Movil.UI.movimientosEncontrados = diaketas.diaketas.ong.gestorDonaciones.filtrarMovimientosM(codigoCuantia.getSelectedIndex(),cantidad1.getText(),cantidad2.getText(),codigoFecha.getSelectedIndex(),fecha1.getText(),fecha2.getText(),involucrado , codigoTipo.getSelectedIndex());
         
         
