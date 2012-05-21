@@ -49,9 +49,9 @@ public class jMovil extends javax.swing.JFrame {
         dniText = new javax.swing.JTextField();
         dniLabel = new javax.swing.JLabel();
         passLabel = new javax.swing.JLabel();
-        passText = new javax.swing.JTextField();
         cabecera = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
+        passText = new javax.swing.JPasswordField();
 
         jTextField2.setText("jTextField2");
 
@@ -60,7 +60,6 @@ public class jMovil extends javax.swing.JFrame {
         setAutoRequestFocus(false);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(512, 384));
-        setPreferredSize(new java.awt.Dimension(512, 384));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);
@@ -97,14 +96,14 @@ public class jMovil extends javax.swing.JFrame {
         passLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         passLabel.setText("Contraseña");
 
+        cabecera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cabecera.setText("Introduzca sus datos");
+
         passText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 passTextMouseClicked(evt);
             }
         });
-
-        cabecera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cabecera.setText("Introduzca sus datos");
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -121,16 +120,16 @@ public class jMovil extends javax.swing.JFrame {
                     .addComponent(passLabel)
                     .addComponent(dniLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dniText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dniText, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                    .addComponent(passText))
                 .addGap(91, 91, 91))
             .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,20 +143,17 @@ public class jMovil extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dniText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(passLabel))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passLabel))
+                .addGap(25, 25, 25)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,16 +219,16 @@ public class jMovil extends javax.swing.JFrame {
         teclado_virtual.activar();
     }//GEN-LAST:event_dniTextMouseClicked
 
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_cancelarActionPerformed
+
     private void passTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTextMouseClicked
         // TODO add your handling code here:
         teclado_virtual.asociarCampo(passText);
         teclado_virtual.activar();
     }//GEN-LAST:event_passTextMouseClicked
-
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_cancelarActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -244,7 +240,7 @@ public class jMovil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel panel;
     private javax.swing.JLabel passLabel;
-    private javax.swing.JTextField passText;
+    private javax.swing.JPasswordField passText;
     private javax.swing.JSeparator separador;
     // End of variables declaration//GEN-END:variables
 
@@ -255,8 +251,5 @@ public class jMovil extends javax.swing.JFrame {
 
 
         return retValue;
-    }
-
-    private void setAutoRequestFocus(boolean b) {
     }
 }
