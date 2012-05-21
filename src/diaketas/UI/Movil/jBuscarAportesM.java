@@ -10,6 +10,7 @@ package diaketas.UI.Movil;
  */
 
 import diaketas.ConexionBD;
+import diaketas.Modelo.ONG.Donante;
 import diaketas.Modelo.ONG.Movimiento;
 import diaketas.UI.UI;
 import java.sql.ResultSet;
@@ -30,7 +31,8 @@ import java.awt.CardLayout;
 
 public class jBuscarAportesM extends javax.swing.JPanel {
 
-    jSTeclado tv = null;
+    protected jSTeclado tv;
+    Donante donante = null;
     
     /**
      * Creates new form jBuscarAportesM
@@ -39,7 +41,8 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         initComponents();      
         
         tv = new jSTeclado(cantidad1);
-        fallos.append(fecha1.getText());  
+        donante = diaketas.diaketas.ong.gestorDonantes.obtenerDatosDonante();
+       
     }
 
     /**
@@ -67,8 +70,6 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        fallos = new javax.swing.JTextArea();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -128,10 +129,6 @@ public class jBuscarAportesM extends javax.swing.JPanel {
             }
         });
 
-        fallos.setColumns(20);
-        fallos.setRows(5);
-        jScrollPane2.setViewportView(fallos);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,9 +164,7 @@ public class jBuscarAportesM extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(182, 182, 182))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,14 +192,11 @@ public class jBuscarAportesM extends javax.swing.JPanel {
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14)
@@ -224,7 +216,7 @@ public class jBuscarAportesM extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        String involucrado = "77777777G";
+        String involucrado = donante.obtenerNIFCIF();
      
         diaketas.UI.Movil.UI.movimientosEncontrados = diaketas.diaketas.ong.gestorDonaciones.filtrarMovimientosM(codigoCuantia.getSelectedIndex(),cantidad1.getText(),cantidad2.getText(),codigoFecha.getSelectedIndex(),fecha1.getText(),fecha2.getText(),involucrado , codigoTipo.getSelectedIndex());
         
@@ -293,7 +285,7 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidad1ActionPerformed
 
-    private void cantidad1localidad_inputMouseClicked(java.awt.event.MouseEvent evt) {                                                             
+    private void cantidad1MouseClicked(java.awt.event.MouseEvent evt) {                                                             
         // TODO add your handling code here:
         tv.asociarCampo(cantidad1);
         tv.activar();
@@ -304,7 +296,6 @@ public class jBuscarAportesM extends javax.swing.JPanel {
     private javax.swing.JComboBox codigoCuantia;
     private javax.swing.JComboBox codigoFecha;
     private javax.swing.JComboBox codigoTipo;
-    private javax.swing.JTextArea fallos;
     private javax.swing.JTextField fecha1;
     private javax.swing.JTextField fecha2;
     private javax.swing.JButton jButton1;
@@ -313,7 +304,6 @@ public class jBuscarAportesM extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextArea jTextArea1;

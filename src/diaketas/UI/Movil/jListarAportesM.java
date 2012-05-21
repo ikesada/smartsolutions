@@ -47,7 +47,7 @@ public class jListarAportesM extends javax.swing.JPanel {
                 fila[0] = m.obtenerCuantia();
                 fila[1] = m.obtenerFecha();
                 fila[2] = m.obtenerTipoMovimiento();
-                fila[4] = m.obtenerInvolucrado();
+                //fila[4] = m.obtenerInvolucrado();
 
                 
                 tabla.addRow(fila);
@@ -95,6 +95,7 @@ public class jListarAportesM extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        listadoMovimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(listadoMovimiento);
 
         salir.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
