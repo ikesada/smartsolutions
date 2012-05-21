@@ -49,6 +49,11 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
 
         bguardar.setBackground(new java.awt.Color(102, 153, 255));
         bguardar.setText("Guardar");
+        bguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bguardarActionPerformed(evt);
+            }
+        });
 
         bvolver.setBackground(new java.awt.Color(255, 102, 102));
         bvolver.setText("Volver");
@@ -108,6 +113,14 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
         // TODO add your handling code here:
        UI.cl.show(UI.jPrincipal,"SeleccionarOpcion");
     }//GEN-LAST:event_bvolverActionPerformed
+
+    private void bguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bguardarActionPerformed
+        // TODO add your handling code here:
+        diaketas.diaketas.ong.gestorDonantes.guardarDatosDonante();
+        
+        UI.jPrincipal.add("FinModificar",new jModificarCorrecto());
+        UI.cl.show(UI.jPrincipal,"FinModificar");
+    }//GEN-LAST:event_bguardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bguardar;

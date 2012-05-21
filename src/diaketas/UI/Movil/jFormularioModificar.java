@@ -4,6 +4,10 @@
  */
 package diaketas.UI.Movil;
 
+import diaketas.Modelo.ONG.Donante;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author klyone
@@ -11,6 +15,7 @@ package diaketas.UI.Movil;
 public class jFormularioModificar extends javax.swing.JPanel {
 
     jSTeclado tv = null;
+    Donante donante = null;
     /**
      * Creates new form jFormularioModificar
      */
@@ -18,6 +23,26 @@ public class jFormularioModificar extends javax.swing.JPanel {
         initComponents();
         
         tv = new jSTeclado(localidad_input3);
+        
+        
+        donante = diaketas.diaketas.ong.gestorDonantes.obtenerDatosDonante();
+        
+        dni_input3.setText(donante.obtenerNIFCIF());
+        nombre_input3.setText(donante.obtenerNombre());
+        apellidos_input3.setText(donante.obtenerApellidos());
+        tipo_donante_input3.setText(donante.obtenerTipoDonante());
+        dia_input3.setSelectedItem(new Integer(donante.obtenerFechaNac().getDay()));
+        mes_input3.setSelectedItem(new Integer(donante.obtenerFechaNac().getMonth()));
+        anio_input3.setSelectedItem(new Integer(donante.obtenerFechaNac().getYear()));
+        localidad_input3.setText(donante.obtenerLocalidad());
+        telefono_input3.setText(String.valueOf(donante.obtenerTelefono()));
+        email_input3.setText(donante.obtenerEmail());
+        fecha_inscripcion_input3.setText(donante.obtenerFechaInscripcion().toString());
+        observaciones_input3.setText(donante.obtenerObservaciones());
+        tipo_periodicidad_input3.setSelectedItem(donante.obtenerTipoPeriodicidad());
+        periodicidad_donaciones_input3.setText(String.valueOf(donante.obtenerPeriodicidadDonaciones()));
+        cuantia_input3.setText(String.valueOf(donante.obtenerCuantiaDonaciones()));
+        
     }
 
     /**
@@ -58,6 +83,8 @@ public class jFormularioModificar extends javax.swing.JPanel {
         periodicidad_donaciones_input3 = new javax.swing.JTextField();
         cuantia_etiq3 = new javax.swing.JLabel();
         cuantia_input3 = new javax.swing.JTextField();
+        bmodificarFecha = new javax.swing.JToggleButton();
+        bmodificartperiodicidad = new javax.swing.JToggleButton();
 
         setMinimumSize(new java.awt.Dimension(689, 1773));
 
@@ -67,7 +94,7 @@ public class jFormularioModificar extends javax.swing.JPanel {
         dni_input3.setBackground(new java.awt.Color(255, 204, 204));
         dni_input3.setEditable(false);
         dni_input3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        dni_input3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        dni_input3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         dni_input3.setMaximumSize(new java.awt.Dimension(220, 50));
         dni_input3.setMinimumSize(new java.awt.Dimension(50, 30));
         dni_input3.setPreferredSize(null);
@@ -116,6 +143,11 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 localidad_input3localidad_inputMouseClicked(evt);
             }
         });
+        localidad_input3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                localidad_input3ActionPerformed(evt);
+            }
+        });
 
         telefono_etiq3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         telefono_etiq3.setText("Telefono:");
@@ -126,6 +158,11 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 telefono_input3telefono_inputMouseClicked(evt);
             }
         });
+        telefono_input3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefono_input3ActionPerformed(evt);
+            }
+        });
 
         email_etiq3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         email_etiq3.setText("Email:");
@@ -134,6 +171,11 @@ public class jFormularioModificar extends javax.swing.JPanel {
         email_input3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 email_input3email_inputMouseClicked(evt);
+            }
+        });
+        email_input3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                email_input3ActionPerformed(evt);
             }
         });
 
@@ -169,6 +211,11 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 periodicidad_donaciones_input3periodicidad_donaciones_inputMouseClicked(evt);
             }
         });
+        periodicidad_donaciones_input3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                periodicidad_donaciones_input3ActionPerformed(evt);
+            }
+        });
 
         cuantia_etiq3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cuantia_etiq3.setText("Cuantía:");
@@ -177,6 +224,27 @@ public class jFormularioModificar extends javax.swing.JPanel {
         cuantia_input3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cuantia_input3cuantia_inputMouseClicked(evt);
+            }
+        });
+        cuantia_input3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuantia_input3ActionPerformed(evt);
+            }
+        });
+
+        bmodificarFecha.setBackground(new java.awt.Color(153, 153, 255));
+        bmodificarFecha.setText("Modificar");
+        bmodificarFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bmodificarFechaActionPerformed(evt);
+            }
+        });
+
+        bmodificartperiodicidad.setBackground(new java.awt.Color(153, 153, 255));
+        bmodificartperiodicidad.setText("Modificar");
+        bmodificartperiodicidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bmodificartperiodicidadActionPerformed(evt);
             }
         });
 
@@ -221,20 +289,25 @@ public class jFormularioModificar extends javax.swing.JPanel {
                             .addComponent(tipo_periodicidad_etiq3))
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipo_periodicidad_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(dia_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(44, 44, 44)
-                                .addComponent(mes_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(42, 42, 42)
-                                .addComponent(anio_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(tipo_donante_input3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                            .addComponent(tipo_donante_input3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(localidad_input3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(telefono_input3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(email_input3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(fecha_inscripcion_input3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane7))))
-                .addGap(30, 30, 30))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(dia_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(mes_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(anio_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bmodificarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tipo_periodicidad_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bmodificartperiodicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,13 +328,18 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipo_donante_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tipo_donante_etiq3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dia_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mes_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(anio_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fecha_nacimiento_etiq3))
-                .addGap(90, 90, 90)
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(anio_input3)
+                    .addComponent(mes_input3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(dia_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                                .addComponent(fecha_nacimiento_etiq3))
+                            .addComponent(bmodificarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(localidad_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .addComponent(localidad_etiq3))
@@ -287,8 +365,9 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipo_periodicidad_etiq3)
-                    .addComponent(tipo_periodicidad_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
-                .addGap(72, 72, 72)
+                    .addComponent(tipo_periodicidad_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                    .addComponent(bmodificartperiodicidad, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(periodicidad_donaciones_etiq3)
                     .addComponent(periodicidad_donaciones_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
@@ -333,10 +412,81 @@ public class jFormularioModificar extends javax.swing.JPanel {
         tv.activar();
     }//GEN-LAST:event_cuantia_input3cuantia_inputMouseClicked
 
+    private void localidad_input3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localidad_input3ActionPerformed
+        // TODO add your handling code here:
+        Object localidad = localidad_input3.getText();
+        
+        if(((String) localidad).compareTo("") != 0)
+            diaketas.diaketas.ong.gestorDonantes.modificarElemento(localidad, 1);
+        else
+            JOptionPane.showMessageDialog(this, "No se ha introducido una localidad", "Localidad", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_localidad_input3ActionPerformed
+
+    private void telefono_input3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefono_input3ActionPerformed
+        // TODO add your handling code here:
+        Object telefono = new Integer(Integer.parseInt(telefono_input3.getText()));
+        
+        
+        if(((Integer) telefono).toString().length() == 9)
+            diaketas.diaketas.ong.gestorDonantes.modificarElemento(telefono,2);
+        else
+            JOptionPane.showMessageDialog(this, "El telefono introducido no es correcto", "Telefono", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_telefono_input3ActionPerformed
+
+    private void email_input3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_input3ActionPerformed
+        // TODO add your handling code here:
+        Object email = email_input3.getText();
+        
+        if(ValidarCampos.ValidarCampos.isEmail((String) email))
+            diaketas.diaketas.ong.gestorDonantes.modificarElemento(email,3);
+        else
+            JOptionPane.showMessageDialog(this, "El email introducido no es correcto", "Email", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_email_input3ActionPerformed
+
+    private void bmodificarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmodificarFechaActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+        Object fecha_nac;
+        try
+            {
+            fecha_nac = formateador.parse(String.valueOf((Integer)dia_input3.getSelectedItem())+"/"+String.valueOf((Integer)mes_input3.getSelectedItem())+"/"+String.valueOf((Integer)anio_input3.getSelectedItem()));
+            diaketas.diaketas.ong.gestorDonantes.modificarElemento(fecha_nac,0);
+        }catch(Exception e) {}
+   }//GEN-LAST:event_bmodificarFechaActionPerformed
+
+    private void bmodificartperiodicidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmodificartperiodicidadActionPerformed
+        // TODO add your handling code here:
+        Object tperiodicidad = tipo_periodicidad_input3.getSelectedItem().toString();
+        
+        diaketas.diaketas.ong.gestorDonantes.modificarElemento(tperiodicidad,4);
+    }//GEN-LAST:event_bmodificartperiodicidadActionPerformed
+
+    private void periodicidad_donaciones_input3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodicidad_donaciones_input3ActionPerformed
+        // TODO add your handling code here:
+        Object periodicidad = new Integer(Integer.parseInt(periodicidad_donaciones_input3.getText()));
+        
+        if(((Integer) periodicidad).intValue() > 0)
+            diaketas.diaketas.ong.gestorDonantes.modificarElemento(periodicidad,5);
+        else
+            JOptionPane.showMessageDialog(this, "La periodicidad no se ha introducido correctamente. Debe ser mayor que 0.", "Periodicidad", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_periodicidad_donaciones_input3ActionPerformed
+
+    private void cuantia_input3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuantia_input3ActionPerformed
+        // TODO add your handling code here:
+        Object cuantia = new Double(Double.parseDouble(cuantia_input3.getText()));
+        
+        if(((Double) cuantia).doubleValue() > 0)
+            diaketas.diaketas.ong.gestorDonantes.modificarElemento(cuantia,6);
+        else
+            JOptionPane.showMessageDialog(this, "La cuantia de las donaciones introducida no es correcta. Debe ser mayor que 0.", "Cuantia", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_cuantia_input3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox anio_input3;
     private javax.swing.JLabel apellidos_etiq3;
     private javax.swing.JTextField apellidos_input3;
+    private javax.swing.JToggleButton bmodificarFecha;
+    private javax.swing.JToggleButton bmodificartperiodicidad;
     private javax.swing.JLabel cuantia_etiq3;
     private javax.swing.JTextField cuantia_input3;
     private javax.swing.JComboBox dia_input3;

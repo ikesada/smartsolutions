@@ -34,25 +34,25 @@ public class jModificarVoluntario extends javax.swing.JPanel {
                 
         //Ponemos por defecto los datos del voluntario a modificar
         
-        NIF.setText(v.NIF_CIF);
-        Nombre.setText(v.Nombre);
-        Apellidos.setText(v.Apellidos);        
-        Nacionalidad.setText(v.Nacionalidad);
+        NIF.setText(v.obtenerNIFCIF());
+        Nombre.setText(v.obtenerNombre());
+        Apellidos.setText(v.obtenerApellidos());        
+        Nacionalidad.setText(v.obtenerNacionalidad());
         
-        Poblacion.setText(v.Domicilio);
-        Domicilio.setText(v.Domicilio);
-        Email.setText(v.Email);
-        Obs.setText(v.Observaciones);
+        Poblacion.setText(v.obtenerDomicilio());
+        Domicilio.setText(v.obtenerDomicilio());
+        Email.setText(v.obtenerEmail());
+        Obs.setText(v.obtenerObservaciones());
         
-        CodPost.setText( Integer.toString(v.Codigo_Postal) );
-        Telefono.setText(Integer.toString(v.Telefono));
+        CodPost.setText( Integer.toString(v.obtenerCodigoPostal()) );
+        Telefono.setText(Integer.toString(v.obtenerTelefono()));
         
 
 // Representamos la fecha, pasandola de tipo Date a String, como Fecha_Inicio y FechaDesac no pueden ser null, no tendremos problemas
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
                
-        FechaInicio.setText(formatoFecha.format(v.Fecha_Inicio));
-        FechaNac.setText(formatoFecha.format(v.FechaNac));
+        FechaInicio.setText(formatoFecha.format(v.obtenerFechaInicio()));
+        FechaNac.setText(formatoFecha.format(v.obtenerFechaNac()));
 
     }
 

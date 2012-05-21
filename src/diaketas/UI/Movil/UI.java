@@ -45,7 +45,7 @@ public class UI extends javax.swing.JFrame {
         jPrincipal.add("ModificarDonante", modificar);
         
         
-        /*Mostramos Diaketas*/
+        /*Mostramos el panel principal*/
         cl.show(jPrincipal, "SeleccionarOpcion");
     }
 
@@ -74,12 +74,6 @@ public class UI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        UI ui = new UI();
-        ui.setVisible(true);
-    }
-
-   
         
         
     // Variables declaration - do not modify//GEN-BEGIN:variables

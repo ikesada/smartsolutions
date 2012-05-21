@@ -30,23 +30,23 @@ public class jConsultarOferta extends javax.swing.JPanel {
         
          
         
-        Cod_Oferta.setText( Integer.toString(datosOferta.cod_oferta) );
-        Concepto.setText( datosOferta.concepto );
-        Activada.setText( Integer.toString(datosOferta.activo) );
-        Poblacion.setText( datosOferta.poblacion );
-        Num_vacantes.setText( Integer.toString(datosOferta.numero_vacantes) );
-        Descripcion.setText( datosOferta.descripcion );
-        Req_minimos.setText( datosOferta.requisitos_minimos );
-        Tipo_contrato.setText( datosOferta.tipo_contrato );
-        Jornada_laboral.setText( Integer.toString(datosOferta.jornada_laboral) );
-        Salario.setText( Double.toString(datosOferta.salario) );
-        DNI_donante.setText( datosOferta.NIF_CIF_Donante );
-        Observaciones.setText( datosOferta.observaciones );
+        Cod_Oferta.setText( Integer.toString(datosOferta.obtenerCodOferta()) );
+        Concepto.setText( datosOferta.obtenerConcepto());
+        Activada.setText( Integer.toString(datosOferta.obtenerActivo()) );
+        Poblacion.setText( datosOferta.obtenerPoblacion());
+        Num_vacantes.setText( Integer.toString(datosOferta.obtenerNumeroVacantes()) );
+        Descripcion.setText( datosOferta.obtenerDescripcion());
+        Req_minimos.setText( datosOferta.obtenerRequisitosMinimos() );
+        Tipo_contrato.setText( datosOferta.obtenerTipoContrato());
+        Jornada_laboral.setText( Integer.toString(datosOferta.obtenerJornadaLaboral()) );
+        Salario.setText( Double.toString(datosOferta.obtenerSalario()) );
+        DNI_donante.setText( datosOferta.obtenerNIFCIFDonante() );
+        Observaciones.setText( datosOferta.obtenerObservaciones() );
         
         // Representamos la fecha, pasandola de tipo Date a String
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
                
-        Fecha.setText(formatoFecha.format(datosOferta.fecha) );
+        Fecha.setText(formatoFecha.format(datosOferta.obtenerFecha()) );
         
     }
     

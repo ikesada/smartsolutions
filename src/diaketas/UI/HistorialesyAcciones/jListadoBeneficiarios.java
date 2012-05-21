@@ -59,19 +59,19 @@ public class jListadoBeneficiarios extends javax.swing.JPanel {
         /*Obtenemos todas las filas*/
         
         for (int i = 0; i < usuarios.size(); i++){
-            fila[0] = usuarios.get(i).NIF_CIF;
-            fila[1] = usuarios.get(i).Nombre;
-            fila[2] = usuarios.get(i).Apellidos;
+            fila[0] = usuarios.get(i).obtenerNIFCIF();
+            fila[1] = usuarios.get(i).obtenerNombre();
+            fila[2] = usuarios.get(i).obtenerApellidos();
             //fila[3] = usuarios.get(i).FechaNac;
-            fila[4] = usuarios.get(i).Nacionalidad;
-            fila[5] = usuarios.get(i).Estado_civil;
-            fila[6] = usuarios.get(i).Domicilio;
-            fila[7] = usuarios.get(i).Localidad;
-            fila[8] = usuarios.get(i).Telefono;
-            fila[9] = usuarios.get(i).Email;
+            fila[4] = usuarios.get(i).obtenerNacionalidad();
+            fila[5] = usuarios.get(i).obtenerEstadoCivil();
+            fila[6] = usuarios.get(i).obtenerDomicilio();
+            fila[7] = usuarios.get(i).obtenerLocalidad();
+            fila[8] = usuarios.get(i).obtenerTelefono();
+            fila[9] = usuarios.get(i).obtenerEmail();
             //fila[10] = usuarios.get(i).Fecha_Inscripcion;
-            fila[11] = usuarios.get(i).Expediente;
-            fila[12] = usuarios.get(i).Profesion;
+            fila[11] = usuarios.get(i).obtenerExpediente();
+            fila[12] = usuarios.get(i).obtenerProfesion();
             
 
             //  El elemento jTable no permite mostrar datos del tipo Date, por ello, antes de mostrar el dato
@@ -79,9 +79,9 @@ public class jListadoBeneficiarios extends javax.swing.JPanel {
             //  Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
 
 
-            if( usuarios.get(i).FechaNac!=null  )
+            if( usuarios.get(i).obtenerFechaNac()!=null  )
             {
-                java.util.Date date = (java.util.Date) usuarios.get(i).FechaNac;   //primero leo el objeto fecha
+                java.util.Date date = (java.util.Date) usuarios.get(i).obtenerFechaNac();   //primero leo el objeto fecha
                 java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
                 fila[3] = (String) sdf.format(date);          
             }
@@ -89,9 +89,9 @@ public class jListadoBeneficiarios extends javax.swing.JPanel {
                 fila[3] = "";
             }
 
-            if( usuarios.get(i).Fecha_Inscripcion!=null  )
+            if( usuarios.get(i).obtenerFechaInscripcion()!=null  )
             {
-                java.util.Date date = (java.util.Date) usuarios.get(i).Fecha_Inscripcion;   //primero leo el objeto fecha
+                java.util.Date date = (java.util.Date) usuarios.get(i).obtenerFechaInscripcion();   //primero leo el objeto fecha
                 java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
                 fila[10] = (String)sdf.format(date);              
             }

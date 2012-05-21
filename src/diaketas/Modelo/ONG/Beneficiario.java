@@ -19,78 +19,228 @@ import java.util.logging.Logger;
  * @author kesada
  */
 public class Beneficiario extends Usuarios{
+
     /**
      * Nacionalidad del beneficiario
      */
-    public String Nacionalidad;
+    private String Nacionalidad;
     /**
      * Estado civil del beneficiario
      */
-    public String Estado_civil;
+    private String Estado_civil;
     /**
      * Domicilio del beneficiario
      */
-    public String Domicilio;
+    private String Domicilio;
     /**
      * Codigo postal del beneficiario
      */
-    public int Codigo_Postal;
+    private int Codigo_Postal;
     /**
      * Observaciones acerca de los datos personales del beneficiario
      */
-    public String Observaciones_Datos_Personales;
+    private String Observaciones_Datos_Personales;
     /**
      * Fecha de inscripción del beneficiario
      */
-    public Date Fecha_Inscripcion;
+    private Date Fecha_Inscripcion;
     /**
      * Motivo del beneficiario
      */
-    public String Motivo;
+    private String Motivo;
     /**
      * Tipo de vivienda del beneficiario
      */
-    public String Tipo_Vivienda;
+    private String Tipo_Vivienda;
     /**
      * Precio de la vivienda del beneficiario
      */
-    public Double Precio_Vivienda;
+    private Double Precio_Vivienda;
     /**
      * Situacion economica del beneficiario
      */
-    public String Situacion_Economica;
+    private String Situacion_Economica;
     /**
      * Expediente del beneficiario
      */
-    public int Expediente;
+    private int Expediente;
     /**
      * Observaciones acerca de los familiares del beneficiario
      */
-    public String Observaciones_Familiares;
+    private String Observaciones_Familiares;
     /**
      * Observaciones acerca de la vivienda del beneficiario
      */
-    public String Observaciones_Vivienda;
+    private String Observaciones_Vivienda;
     /**
      * Nivel de estudios del beneficiario
      */
-    public String Nivel_Estudios;
+    private String Nivel_Estudios;
     /**
      * Profesión del beneficiario
      */
-    public String Profesion;
+    private String Profesion;
     /**
      * Experiencia laboral del beneficiario
      */
-    public String Experiencia_Laboral;
+    private String Experiencia_Laboral;
     /**
      * Ciudad de nacimiento del beneficiario
      */
-    public String Ciudad_Nacimiento;
+    private String Ciudad_Nacimiento;
     /**
      * Lista de familiares asociados al beneficiario
      */
-    public ArrayList<Familiar> familiares;
+    private ArrayList<Familiar> familiares;
+    
+    
+    // ------------------------------------------- CONSULTORES ------------------------------------- //
+    
+public String obtenerCiudadNacimiento() {
+        return Ciudad_Nacimiento;
+    }
+
+    public int obtenerCodigoPostal() {
+        return Codigo_Postal;
+    }
+
+    public String obtenerDomicilio() {
+        return Domicilio;
+    }
+
+    public String obtenerEstadoCivil() {
+        return Estado_civil;
+    }
+
+    public int obtenerExpediente() {
+        return Expediente;
+    }
+
+    public String obtenerExperienciaLaboral() {
+        return Experiencia_Laboral;
+    }
+
+    public Date obtenerFechaInscripcion() {
+        return Fecha_Inscripcion;
+    }
+
+    public String obtenerMotivo() {
+        return Motivo;
+    }
+
+    public String obtenerNacionalidad() {
+        return Nacionalidad;
+    }
+
+    public String obtenerNivelEstudios() {
+        return Nivel_Estudios;
+    }
+
+    public String obtenerObservacionesDatosPersonales() {
+        return Observaciones_Datos_Personales;
+    }
+
+    public String obtenerObservacionesFamiliares() {
+        return Observaciones_Familiares;
+    }
+
+    public String obtenerObservacionesVivienda() {
+        return Observaciones_Vivienda;
+    }
+
+    public Double obtenerPrecioVivienda() {
+        return Precio_Vivienda;
+    }
+
+    public String obtenerProfesion() {
+        return Profesion;
+    }
+
+    public String obtenerSituacionEconomica() {
+        return Situacion_Economica;
+    }
+
+    public String obtenerTipoVivienda() {
+        return Tipo_Vivienda;
+    }
+
+    public ArrayList<Familiar> obtenerFamiliares() {
+        return familiares;
+    }    
+   
+    // -------------------------------------- MODIFICADORES ----------------------------------//
+
+    public void modificarCiudadNacimiento(String Ciudad_Nacimiento) {
+        this.Ciudad_Nacimiento = Ciudad_Nacimiento;
+    }
+
+    public void modificarCodigoPostal(int Codigo_Postal) {
+        this.Codigo_Postal = Codigo_Postal;
+    }
+
+    public void modificarDomicilio(String Domicilio) {
+        this.Domicilio = Domicilio;
+    }
+
+    public void modificarEstadoCivil(String Estado_civil) {
+        this.Estado_civil = Estado_civil;
+    }
+
+    public void modificarExpediente(int Expediente) {
+        this.Expediente = Expediente;
+    }
+
+    public void modificarExperienciaLaboral(String Experiencia_Laboral) {
+        this.Experiencia_Laboral = Experiencia_Laboral;
+    }
+
+    public void modificarFechaInscripcion(Date Fecha_Inscripcion) {
+        this.Fecha_Inscripcion = Fecha_Inscripcion;
+    }
+
+    public void modificarMotivo(String Motivo) {
+        this.Motivo = Motivo;
+    }
+
+    public void modificarNacionalidad(String Nacionalidad) {
+        this.Nacionalidad = Nacionalidad;
+    }
+
+    public void modificarNivelEstudios(String Nivel_Estudios) {
+        this.Nivel_Estudios = Nivel_Estudios;
+    }
+
+    public void modificarObservacionesDatosPersonales(String Observaciones_Datos_Personales) {
+        this.Observaciones_Datos_Personales = Observaciones_Datos_Personales;
+    }
+
+    public void modificarObservacionesFamiliares(String Observaciones_Familiares) {
+        this.Observaciones_Familiares = Observaciones_Familiares;
+    }
+
+    public void modificarObservacionesVivienda(String Observaciones_Vivienda) {
+        this.Observaciones_Vivienda = Observaciones_Vivienda;
+    }
+
+    public void modificarPrecioVivienda(Double Precio_Vivienda) {
+        this.Precio_Vivienda = Precio_Vivienda;
+    }
+
+    public void modificarProfesion(String Profesion) {
+        this.Profesion = Profesion;
+    }
+
+    public void modificarSituacionEconomica(String Situacion_Economica) {
+        this.Situacion_Economica = Situacion_Economica;
+    }
+
+    public void modificarTipoVivienda(String Tipo_Vivienda) {
+        this.Tipo_Vivienda = Tipo_Vivienda;
+    }
+
+    public void modificarFamiliares(ArrayList<Familiar> familiares) {
+        this.familiares = familiares;
+    }
    
     /*-----------------------------Constructores-------------------------------*/
     /**
@@ -306,15 +456,15 @@ public class Beneficiario extends Usuarios{
         con.conectarBD();
         /*Agregamos el nuevo familiar al sistema*/
         /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(familiar.Fecha_Nacimiento.getTime());
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(familiar.obtenerFechaNacimiento().getTime());
 
         try {
             Statement instruccion = (Statement) con.conexion().createStatement();
 
             /*Introducimos al nuevo Familiar en el sistema*/
             instruccion.executeUpdate("INSERT INTO Familiar VALUES (\""
-                    + this.NIF_CIF + "\",\"" + familiar.Nombre_Apellidos + "\",\"" + fecha_Nacimiento + "\",\"" 
-                    + familiar.Ocupacion + "\",\"" + familiar.parentesco + "\")");
+                    + this.NIF_CIF + "\",\"" + familiar.obtenerNombreApellidos() + "\",\"" + fecha_Nacimiento + "\",\"" 
+                    + familiar.obtenerOcupacion() + "\",\"" + familiar.obtenerParentesco() + "\")");
                         
             /*Agregamos el familiar a la lista de familiares*/
             familiares.add(familiar);
@@ -350,8 +500,8 @@ public class Beneficiario extends Usuarios{
     public Familiar buscarFamiliar(String Nombre_Apellidos, Date Fecha_Nacimiento){
         /*Busca el familiar cuyo nombre coincide con Nombre_Apellidos*/
         for (int i = 0; i < familiares.size(); i++)
-            if(familiares.get(i).Nombre_Apellidos.compareTo(Nombre_Apellidos) == 0 &&
-                    familiares.get(i).Fecha_Nacimiento.compareTo(Fecha_Nacimiento) == 0)
+            if(familiares.get(i).obtenerNombreApellidos().compareTo(Nombre_Apellidos) == 0 &&
+                    familiares.get(i).obtenerFechaNacimiento().compareTo(Fecha_Nacimiento) == 0)
                 return familiares.get(i);
         return null;
     }
@@ -429,7 +579,7 @@ public class Beneficiario extends Usuarios{
     public void AgregarOferta(Oferta oferta) {
         ConexionBD con = new ConexionBD();
         
-        String insert = "insert into Recibe values( \""+oferta.cod_oferta+"\", \""+NIF_CIF+"\")";
+        String insert = "insert into Recibe values( \""+oferta.obtenerCodOferta()+"\", \""+NIF_CIF+"\")";
                          
         con.conectarBD();
         

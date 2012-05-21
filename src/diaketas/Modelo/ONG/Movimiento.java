@@ -23,47 +23,126 @@ public class Movimiento {
     /**
      * Codigo identificativo del movimiento
      */
-    public int Cod_Movimiento;
+    private int Cod_Movimiento;
     
     /** 
      * Tipo de movimiento
      */
-    public String Tipo_Movimiento;
+    private String Tipo_Movimiento;
     
     /**
      * Cuantia del movimiento
      */
-    public double cuantia;
+    private double cuantia;
     
     /**
      * NIF del Involucrado 
      */
-    public String involucrado;
+    private String involucrado;
     
     /**
      * NIF del voluntario que crea
      */
-    public String voluntario_crea;
+    private String voluntario_crea;
     
     /**
      * NIF del voluntario que confirma el movimiento
      */
-    public String voluntario_confirma;
+    private String voluntario_confirma;
     
     /**
      * Descripción del movimiento
      */
-    public String descripcion;
+    private String descripcion;
     
     /**
      * Fecha de creación del movimiento
      */
-    public Date Fecha;
+    private Date Fecha;
     
     /**
      * Indica si el movimiento está confirmado
      */
-    public boolean confirmado;
+    private boolean confirmado;
+    
+    // ------------------------------- CONSULTORES --------------------------------- //
+
+    public int obtenerCodMovimiento() {
+        return Cod_Movimiento;
+    }
+
+    public Date obtenerFecha() {
+        return Fecha;
+    }
+
+    public String obtenerTipoMovimiento() {
+        return Tipo_Movimiento;
+    }
+
+    public boolean estaConfirmado() {
+        return confirmado;
+    }
+
+    public double obtenerCuantia() {
+        return cuantia;
+    }
+
+    public String obtenerDescripcion() {
+        return descripcion;
+    }
+
+    public String obtenerInvolucrado() {
+        return involucrado;
+    }
+
+    public String obtenerVoluntarioConfirma() {
+        return voluntario_confirma;
+    }
+
+    public String obtenerVoluntarioCrea() {
+        return voluntario_crea;
+    }
+    
+    // ------------------------------- MODIFICADORES ------------------------------- //
+    
+
+    public void modificarCodMovimiento(int Cod_Movimiento) {
+        this.Cod_Movimiento = Cod_Movimiento;
+    }
+
+    public void modificarFecha(Date Fecha) {
+        this.Fecha = Fecha;
+    }
+
+    public void modificarTipoMovimiento(String Tipo_Movimiento) {
+        this.Tipo_Movimiento = Tipo_Movimiento;
+    }
+
+    public void modificarConfirmado(boolean confirmado) {
+        this.confirmado = confirmado;
+    }
+
+    public void modificarCuantia(double cuantia) {
+        this.cuantia = cuantia;
+    }
+
+    public void modificarDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void modificarInvolucrado(String involucrado) {
+        this.involucrado = involucrado;
+    }
+
+    public void modificarVoluntarioConfirma(String voluntario_confirma) {
+        this.voluntario_confirma = voluntario_confirma;
+    }
+
+    public void modificarVoluntarioCrea(String voluntario_crea) {
+        this.voluntario_crea = voluntario_crea;
+    }
+    
+    
     
     
     /**

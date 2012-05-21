@@ -192,7 +192,7 @@
                   <Component id="botonConfirmar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="123" max="32767" attributes="0"/>
+              <EmptySpace pref="127" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

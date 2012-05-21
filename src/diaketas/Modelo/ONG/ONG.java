@@ -78,12 +78,12 @@ public class ONG implements iONG{
         /*Se guarda la accion en el sistema*/
         con.conectarBD();
         /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha = new java.sql.Timestamp(ac.Fecha.getTime());
+        java.sql.Timestamp fecha = new java.sql.Timestamp(ac.obtenerFecha().getTime());
          try {
             instruccion = (Statement) con.conexion().createStatement();
             instruccion.executeUpdate("INSERT INTO Accion(Nombre, Fecha,"
                                         + "NIF_CIF_Voluntario, NIF_CIF_Usuario) VALUES (\""
-                                        + ac.tipo + "\",\"" + fecha + "\",\"" + ac.DNI_Voluntario+"\",\""+ac.DNI_Usuario+"\")");
+                                        + ac.obtenerTipo() + "\",\"" + fecha + "\",\"" + ac.obtenerDNIVoluntario()+"\",\""+ac.obtenerDNIUsuario()+"\")");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -105,6 +105,7 @@ public class ONG implements iONG{
      */    
     @Override
     public Beneficiario buscarBeneficiario(String DNI){
+        ArrayList<Familiar> familiares = null;
         Beneficiario beneficiario = null;
         con.conectarBD();
 
@@ -123,19 +124,21 @@ public class ONG implements iONG{
             }
             
             if (beneficiario != null){
+                
                 /*Obtenemos los familiares y parentescos*/
-                beneficiario.familiares = new ArrayList<Familiar>();
+                familiares = new ArrayList<Familiar>();
                 instruccion = (Statement) con.conexion().createStatement();
                 rs = instruccion.executeQuery("Select * From Familiar f WHERE"
-                        + " DNI_Beneficiario = \""+ beneficiario.NIF_CIF+"\"");
+                        + " DNI_Beneficiario = \""+ beneficiario.obtenerNIFCIF()+"\"");
 
                 while (rs.next()){
                     /*Creamos un familiar con los datos*/
                     Familiar familiar = new Familiar (rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5));
                     /*Agregamos a la lista*/
-                    beneficiario.familiares.add(familiar);
+                    familiares.add(familiar);
 
                 }
+                beneficiario.modificarFamiliares(familiares);
             }
          }
          /*Captura de errores*/
@@ -163,26 +166,26 @@ public class ONG implements iONG{
     public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoBeneficiario.FechaNac.getTime());
-        java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoBeneficiario.Fecha_Inscripcion.getTime());
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoBeneficiario.obtenerFechaNac().getTime());
+        java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoBeneficiario.obtenerFechaInscripcion().getTime());
         
          try {
             instruccion = (Statement) con.conexion().createStatement();
             
             /*Introducimos la parte de Usuario*/
-            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
-                    + nuevoBeneficiario.Nombre + "\",\"" + nuevoBeneficiario.Apellidos + "\",\""  + fecha_Nacimiento
-                    + "\",\"" + nuevoBeneficiario.Localidad + "\",\""   + nuevoBeneficiario.Activo + "\", NULL, \"" + nuevoBeneficiario.Email + "\",\"" + nuevoBeneficiario.Telefono + "\")");
+            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoBeneficiario.obtenerNIFCIF() + "\",\""
+                    + nuevoBeneficiario.obtenerNombre() + "\",\"" + nuevoBeneficiario.obtenerApellidos() + "\",\""  + fecha_Nacimiento
+                    + "\",\"" + nuevoBeneficiario.obtenerLocalidad() + "\",\""   + nuevoBeneficiario.obtenerActivo() + "\", NULL, \"" + nuevoBeneficiario.Email + "\",\"" + nuevoBeneficiario.Telefono + "\")");
             
             /*Introducimos la parte de Beneficiario*/
-             instruccion.executeUpdate("INSERT INTO Beneficiario VALUES (\""+nuevoBeneficiario.NIF_CIF + "\",\""
-                    + nuevoBeneficiario.Nacionalidad + "\",\"" + nuevoBeneficiario.Estado_civil + "\",\""  + nuevoBeneficiario.Domicilio
-                    + "\",\"" + nuevoBeneficiario.Codigo_Postal + "\",\""  + fecha_Activacion + "\",\"" +  nuevoBeneficiario.Expediente
-                    + "\",\"" + nuevoBeneficiario.Motivo + "\",\"" + nuevoBeneficiario.Precio_Vivienda + "\",\"" + nuevoBeneficiario.Tipo_Vivienda
-                    + "\",\"" + nuevoBeneficiario.Observaciones_Datos_Personales + "\",\"" + nuevoBeneficiario.Observaciones_Familiares
-                    + "\",\"" + nuevoBeneficiario.Observaciones_Vivienda + "\",\"" + nuevoBeneficiario.Ciudad_Nacimiento
-                    + "\",\"" + nuevoBeneficiario.Situacion_Economica + "\",\"" + nuevoBeneficiario.Nivel_Estudios
-                    + "\",\"" + nuevoBeneficiario.Profesion + "\",\"" + nuevoBeneficiario.Experiencia_Laboral +"\")");           
+             instruccion.executeUpdate("INSERT INTO Beneficiario VALUES (\""+nuevoBeneficiario.obtenerNIFCIF() + "\",\""
+                    + nuevoBeneficiario.obtenerNacionalidad() + "\",\"" + nuevoBeneficiario.obtenerEstadoCivil() + "\",\""  + nuevoBeneficiario.obtenerDomicilio()
+                    + "\",\"" + nuevoBeneficiario.obtenerCodigoPostal() + "\",\""  + fecha_Activacion + "\",\"" +  nuevoBeneficiario.obtenerExpediente()
+                    + "\",\"" + nuevoBeneficiario.obtenerMotivo() + "\",\"" + nuevoBeneficiario.obtenerPrecioVivienda() + "\",\"" + nuevoBeneficiario.obtenerTipoVivienda()
+                    + "\",\"" + nuevoBeneficiario.obtenerObservacionesDatosPersonales() + "\",\"" + nuevoBeneficiario.obtenerObservacionesFamiliares()
+                    + "\",\"" + nuevoBeneficiario.obtenerObservacionesVivienda() + "\",\"" + nuevoBeneficiario.obtenerCiudadNacimiento()
+                    + "\",\"" + nuevoBeneficiario.obtenerSituacionEconomica() + "\",\"" + nuevoBeneficiario.obtenerNivelEstudios()
+                    + "\",\"" + nuevoBeneficiario.obtenerProfesion() + "\",\"" + nuevoBeneficiario.obtenerExperienciaLaboral() +"\")");           
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -250,22 +253,22 @@ public class ONG implements iONG{
     public void agregarNuevoDonante(Donante nuevoDonante){
         con.conectarBD();
         /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoDonante.FechaNac.getTime());
-        java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoDonante.Fecha_Inscripcion.getTime());
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoDonante.obtenerFechaNac().getTime());
+        java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoDonante.obtenerFechaInscripcion().getTime());
         
          try {
             instruccion = (Statement) con.conexion().createStatement();
             /*Introducimos la parte de Usuario*/
 
-            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoDonante.NIF_CIF + "\",\""
-                    + nuevoDonante.Nombre + "\",\"" + nuevoDonante.Apellidos + "\",\""  + fecha_Nacimiento
-                    + "\",\"" + nuevoDonante.Localidad + "\",\""   + nuevoDonante.Activo + "\", NULL, \"" + nuevoDonante.Email + "\",\"" + nuevoDonante.Telefono + "\")");
+            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoDonante.obtenerNIFCIF() + "\",\""
+                    + nuevoDonante.obtenerNombre() + "\",\"" + nuevoDonante.obtenerApellidos() + "\",\""  + fecha_Nacimiento
+                    + "\",\"" + nuevoDonante.obtenerLocalidad() + "\",\""   + nuevoDonante.obtenerActivo() + "\", NULL, \"" + nuevoDonante.obtenerEmail() + "\",\"" + nuevoDonante.obtenerTelefono() + "\")");
             
             /*Introducimos la parte de Donante*/
-             instruccion.executeUpdate("INSERT INTO Donante VALUES (\""+nuevoDonante.NIF_CIF + "\",\""
-                    + nuevoDonante.Tipo_Donante + "\",\"" + fecha_Activacion + "\",\""  + nuevoDonante.Observaciones
-                    + "\",\"" + nuevoDonante.Periodicidad_Donaciones + "\",\""   + nuevoDonante.Cuantia_Donaciones
-                    + "\",\"" + nuevoDonante.Tipo_Periodicidad+"\")");           
+             instruccion.executeUpdate("INSERT INTO Donante VALUES (\""+nuevoDonante.obtenerNIFCIF() + "\",\""
+                    + nuevoDonante.obtenerTipoDonante() + "\",\"" + fecha_Activacion + "\",\""  + nuevoDonante.obtenerObservaciones()
+                    + "\",\"" + nuevoDonante.obtenerPeriodicidadDonaciones() + "\",\""   + nuevoDonante.obtenerCuantiaDonaciones()
+                    + "\",\"" + nuevoDonante.obtenerTipoPeriodicidad()+"\")");           
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -387,21 +390,21 @@ public class ONG implements iONG{
         
         con.conectarBD();
         /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoVoluntario.FechaNac.getTime());
-        java.sql.Timestamp fecha_Inicio = new java.sql.Timestamp(nuevoVoluntario.Fecha_Inicio.getTime());
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoVoluntario.obtenerFechaNac().getTime());
+        java.sql.Timestamp fecha_Inicio = new java.sql.Timestamp(nuevoVoluntario.obtenerFechaInicio().getTime());
         
         
          try {
             instruccion = (Statement) con.conexion().createStatement();
             
             /*Introducimos la parte de Usuario*/
-            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoVoluntario.NIF_CIF + "\",\""
-                    + nuevoVoluntario.Nombre + "\",\"" + nuevoVoluntario.Apellidos + "\",\""  + fecha_Nacimiento
-                    + "\",\"" + nuevoVoluntario.Localidad + "\",\""   + nuevoVoluntario.Activo + "\", NULL, \"" + nuevoVoluntario.Email + "\",\"" + nuevoVoluntario.Telefono + "\")");
+            instruccion.executeUpdate("INSERT INTO Usuario VALUES (\""+nuevoVoluntario.obtenerNIFCIF() + "\",\""
+                    + nuevoVoluntario.obtenerNombre() + "\",\"" + nuevoVoluntario.obtenerApellidos() + "\",\""  + fecha_Nacimiento
+                    + "\",\"" + nuevoVoluntario.obtenerLocalidad() + "\",\""   + nuevoVoluntario.obtenerActivo() + "\", NULL, \"" + nuevoVoluntario.obtenerEmail() + "\",\"" + nuevoVoluntario.obtenerTelefono() + "\")");
             
             /*Introducimos la parte de Voluntario*/
-             instruccion.executeUpdate("INSERT INTO Voluntario VALUES (\""+nuevoVoluntario.NIF_CIF + "\",\""
-                    + nuevoVoluntario.Nacionalidad + "\",\"" + nuevoVoluntario.Domicilio + "\",\""  + nuevoVoluntario.Codigo_Postal + "\",\""   + fecha_Inicio + "\",\"" + nuevoVoluntario.Observaciones +"\")");           
+             instruccion.executeUpdate("INSERT INTO Voluntario VALUES (\""+nuevoVoluntario.obtenerNIFCIF() + "\",\""
+                    + nuevoVoluntario.obtenerNacionalidad() + "\",\"" + nuevoVoluntario.obtenerDomicilio() + "\",\""  + nuevoVoluntario.obtenerCodigoPostal() + "\",\""   + fecha_Inicio + "\",\"" + nuevoVoluntario.obtenerObservaciones() +"\")");           
          }
          /*Captura de errores*/
          catch(SQLException e){ 
@@ -766,13 +769,13 @@ public class ONG implements iONG{
 
          try {
             instruccion = (Statement) con.conexion().createStatement();
-            java.sql.Date fecha = new java.sql.Date(m.Fecha.getTime());
+            java.sql.Date fecha = new java.sql.Date(m.obtenerFecha().getTime());
                         
             /*Insertamos movimiento*/
             instruccion.executeUpdate(
                 "Insert into Movimiento (Tipo,Cuantia,Descripcion,Fecha,NIF_CIF_Implica,NIF_CIF_Crea,Confirmado)"
-                +" values ('"+m.Tipo_Movimiento+"','"+String.valueOf(m.cuantia)+"','"+m.descripcion
-                +"','"+fecha+"','"+m.involucrado+"','"+m.voluntario_crea+"',false);"
+                +" values ('"+m.obtenerTipoMovimiento()+"','"+String.valueOf(m.obtenerCuantia())+"','"+m.obtenerDescripcion()
+                +"','"+fecha+"','"+m.obtenerInvolucrado()+"','"+m.obtenerVoluntarioCrea()+"',false);"
             );
          }
          /*Captura de errores*/
@@ -1084,11 +1087,11 @@ public class ONG implements iONG{
         /*Se guarda la accion en el sistema*/
         con.conectarBD();
         /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha = new java.sql.Timestamp(accion.Fecha.getTime());
+        java.sql.Timestamp fecha = new java.sql.Timestamp(accion.obtenerFecha().getTime());
          try {
             instruccion = (Statement) con.conexion().createStatement();
             instruccion.executeUpdate("INSERT INTO AccionOferta(Nombre,Fecha,Cod_Oferta,NIF_CIF) VALUES (\""
-                                        +accion.Nombre+ "\",\"" +fecha + "\",\"" + accion.oferta.cod_oferta+"\",\""+accion.responsable.NIF_CIF+"\")");
+                                        +accion.obtenerNombre()+ "\",\"" +fecha + "\",\"" + accion.obtenerOferta().obtenerCodOferta()+"\",\""+accion.obtenerResponsable().obtenerNIFCIF()+"\")");
          }
          
          /*Captura de errores*/

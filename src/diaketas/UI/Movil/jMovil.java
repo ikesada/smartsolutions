@@ -30,7 +30,6 @@ public class jMovil extends javax.swing.JFrame {
             panel.getComponent(i).setFont(new Font("Courier", Font.BOLD, (int) fuente));
         }
         
-        
         this.setSize(512,384);
     }
 
@@ -178,8 +177,7 @@ public class jMovil extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         if(diaketas.diaketas.ong.gestorDonantes.identificarse(dniText.getText(),passText.getText())){
-            d = diaketas.diaketas.ong.buscarDonante(dniText.getText());
-            UI ui = new UI(/*d(Constructor con donante)*/);
+            UI ui = new UI();
             ui.setVisible(true);
             dispose();
         }
@@ -236,47 +234,7 @@ public class jMovil extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(jMovil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(jMovil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(jMovil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(jMovil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /*
-         * Create and display the form
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new jMovil().setVisible(true);
-            }
-        });
-    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JLabel cabecera;
@@ -297,5 +255,8 @@ public class jMovil extends javax.swing.JFrame {
 
 
         return retValue;
+    }
+
+    private void setAutoRequestFocus(boolean b) {
     }
 }

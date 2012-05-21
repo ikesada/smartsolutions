@@ -24,25 +24,70 @@ public class Voluntario extends Usuarios{
     /**
      * Nacionalidad del voluntario
      */
-    public String Nacionalidad;
+    private String Nacionalidad;
     /**
      * Domicilio del voluntario
      */
-    public String Domicilio;
+    private String Domicilio;
     /**
      * Codigo postal del voluntario
      */
-    public int Codigo_Postal;
+    private int Codigo_Postal;
     /**
      * Fecha en que se registro el voluntario en el sistema
      */
-    public Date Fecha_Inicio;
+    private Date Fecha_Inicio;
     /**
      * Observaciones relacionadas con el voluntario
      */
-    public String Observaciones;
+    private String Observaciones;
     
-   
+    
+    // ------------------------------------- CONSULTORES --------------------------- //
+
+    public int obtenerCodigoPostal() {
+        return Codigo_Postal;
+    }
+
+    public String obtenerDomicilio() {
+        return Domicilio;
+    }
+
+    public Date obtenerFechaInicio() {
+        return Fecha_Inicio;
+    }
+
+    public String obtenerNacionalidad() {
+        return Nacionalidad;
+    }
+
+    public String obtenerObservaciones() {
+        return Observaciones;
+    }
+
+    
+    // ------------------------------------- MODIFICADORES ------------------------- //
+
+    public void modificarCodigoPostal(int Codigo_Postal) {
+        this.Codigo_Postal = Codigo_Postal;
+    }
+
+    public void modificarDomicilio(String Domicilio) {
+        this.Domicilio = Domicilio;
+    }
+
+    public void modificarFechaInicio(Date Fecha_Inicio) {
+        this.Fecha_Inicio = Fecha_Inicio;
+    }
+
+    public void modificarNacionalidad(String Nacionalidad) {
+        this.Nacionalidad = Nacionalidad;
+    }
+
+    public void modificarObservaciones(String Observaciones) {
+        this.Observaciones = Observaciones;
+    }
+    
     
     ConexionBD con = new ConexionBD();
     

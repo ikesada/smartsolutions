@@ -51,10 +51,10 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
         
         // Guardamos en el gestor los datosMovimiento
         datosMovimiento = new Movimiento();
-        datosMovimiento.Tipo_Movimiento = tipo;
-        datosMovimiento.cuantia = cuantia;
-        datosMovimiento.involucrado = involucrado;
-        datosMovimiento.descripcion = descripcion;
+        datosMovimiento.modificarTipoMovimiento(tipo);
+        datosMovimiento.modificarCuantia(cuantia);
+        datosMovimiento.modificarInvolucrado(involucrado);
+        datosMovimiento.modificarDescripcion(descripcion);
         
         // Guardamos en el gestor el voluntario que lo registra
         dniV = voluntario;
@@ -76,7 +76,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     public void confirmarRegistro(){
         Date fecha = new Date();
         Movimiento dm = datosMovimiento;
-        Movimiento m = new Movimiento(dm.Tipo_Movimiento,dm.cuantia,dm.involucrado,dm.descripcion,fecha,dniV);
+        Movimiento m = new Movimiento(dm.obtenerTipoMovimiento(),dm.obtenerCuantia(),dm.obtenerInvolucrado(),dm.obtenerDescripcion(),fecha,dniV);
         diaketas.diaketas.ong.agregarMovimiento(m);
     }
     
@@ -109,7 +109,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     */
     @Override
     public void confirmarModificacion (){
-        movimientoSeleccionado.modificar(datosMovimiento.Tipo_Movimiento, datosMovimiento.cuantia, datosMovimiento.descripcion, datosMovimiento.involucrado);
+        movimientoSeleccionado.modificar(datosMovimiento.obtenerTipoMovimiento(), datosMovimiento.obtenerCuantia(), datosMovimiento.obtenerDescripcion(), datosMovimiento.obtenerInvolucrado());
     }
     
 
@@ -167,7 +167,7 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     
     @Override
     public void finEliminarMovimiento(){
-        confirmarEliminacion(movimientoSeleccionado.Cod_Movimiento);
+        confirmarEliminacion(movimientoSeleccionado.obtenerCodMovimiento());
     }
     
     @Override

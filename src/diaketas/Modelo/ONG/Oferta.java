@@ -21,69 +21,179 @@ public class Oferta {
     /**
      * Codigo asociado a la oferta
      */
-    public int cod_oferta;
+    private int cod_oferta;
     
     /**
      * Tipo de oferta
      */
-    public String concepto;
+    private String concepto;
     
     /**
      * Fecha en que se emitio la oferta
      */
-    public Date fecha;
+    private Date fecha;
 
     /**
      * Indica si la oferta sigue en pie o no
      */
-    public int activo;
+    private int activo;
     
     /**
      * Lugar en el que se ofrece el puesto de trabajo
      */
-    public String poblacion;
+    private String poblacion;
     
     /**
      * Total de vacantes disponibles para una oferta
      */
-    public int numero_vacantes;
+    private int numero_vacantes;
     
     /**
      * Breve resumen de los aspectos principales de la oferta
      */
-    public String descripcion;
+    private String descripcion;
     
     /**
      * Estudios o experiencia laboral mínimos requeridos
      */
-    public String requisitos_minimos;
+    private String requisitos_minimos;
     
     /**
      * Especifica la clase de contrato ofrecido
      */
-    public String tipo_contrato;
+    private String tipo_contrato;
     
     /**
      * Número de horas diarias de trabajo del puesto ofrecido
      */
-    public int jornada_laboral;
+    private int jornada_laboral;
     
     /**
      * Cantidad a cobrar (mensual) por el puesto ofrecido
      */
-    public Double salario;
+    private Double salario;
     
     /**
      * Notas adicionales sobre la oferta
      */
-    public String observaciones;
+    private String observaciones;
     
     
     
     /**
      * DNI del donante que ha facilitado la oferta
      */
-    public String NIF_CIF_Donante;
+    private String NIF_CIF_Donante;
+    
+    
+    // ------------------------------ CONSULTORES ----------------------------------- //
+
+    public String obtenerNIFCIFDonante() {
+        return NIF_CIF_Donante;
+    }
+
+    public int obtenerActivo() {
+        return activo;
+    }
+
+    public int obtenerCodOferta() {
+        return cod_oferta;
+    }
+
+    public String obtenerConcepto() {
+        return concepto;
+    }
+
+    public String obtenerDescripcion() {
+        return descripcion;
+    }
+
+    public Date obtenerFecha() {
+        return fecha;
+    }
+
+    public int obtenerJornadaLaboral() {
+        return jornada_laboral;
+    }
+
+    public int obtenerNumeroVacantes() {
+        return numero_vacantes;
+    }
+
+    public String obtenerObservaciones() {
+        return observaciones;
+    }
+
+    public String obtenerPoblacion() {
+        return poblacion;
+    }
+
+    public String obtenerRequisitosMinimos() {
+        return requisitos_minimos;
+    }
+
+    public Double obtenerSalario() {
+        return salario;
+    }
+
+    public String obtenerTipoContrato() {
+        return tipo_contrato;
+    }
+    
+    // ------------------------------ MODIFICADORES --------------------------------- //
+    
+
+    public void modificarNIFCIFDonante(String NIF_CIF_Donante) {
+        this.NIF_CIF_Donante = NIF_CIF_Donante;
+    }
+
+    public void modificarActivo(int activo) {
+        this.activo = activo;
+    }
+
+    public void modificarCodOferta(int cod_oferta) {
+        this.cod_oferta = cod_oferta;
+    }
+
+    public void modificarConcepto(String concepto) {
+        this.concepto = concepto;
+    }
+
+    public void modificarDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void modificarFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public void modificarJornadaLaboral(int jornada_laboral) {
+        this.jornada_laboral = jornada_laboral;
+    }
+
+    public void modificarNumeroVacantes(int numero_vacantes) {
+        this.numero_vacantes = numero_vacantes;
+    }
+
+    public void modificarObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public void modificarPoblacion(String poblacion) {
+        this.poblacion = poblacion;
+    }
+
+    public void modificarRequisitosMinimos(String requisitos_minimos) {
+        this.requisitos_minimos = requisitos_minimos;
+    }
+
+    public void modificarSalario(Double salario) {
+        this.salario = salario;
+    }
+
+    public void modificarTipoContrato(String tipo_contrato) {
+        this.tipo_contrato = tipo_contrato;
+    }
     
     
     

@@ -27,6 +27,10 @@ public class Gestor_de_donantes implements iGestorDonantes {
     ConexionBD con = new ConexionBD();
     Donante datosDonante;
     String NIF_Voluntario;
+    
+    String NIF_Donante_Movil;
+    Donante datosDonanteMovil;
+    
 
     @Override
    /**
@@ -83,7 +87,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
      */    
     public Donante confimarConsulta() {
 
-        return diaketas.diaketas.ong.buscarDonante(datosDonante.NIF_CIF);
+        return diaketas.diaketas.ong.buscarDonante(datosDonante.obtenerNIFCIF());
     }
 
 
@@ -92,15 +96,14 @@ public class Gestor_de_donantes implements iGestorDonantes {
      *  Funcion que finaliza la operacion de Alta Donante
      */   
     public void confirmarFinAlta() {
-
         /*
          * Crear Donante
          */
-        Donante nuevoDonante = Donante.crearDonante(datosDonante.NIF_CIF, datosDonante.Nombre,
-                datosDonante.Apellidos, datosDonante.FechaNac, datosDonante.Localidad, datosDonante.Email,
-                datosDonante.Telefono, datosDonante.Tipo_Donante, datosDonante.Fecha_Inscripcion,
-                datosDonante.Observaciones, datosDonante.Periodicidad_Donaciones,
-                datosDonante.Cuantia_Donaciones, datosDonante.Tipo_Periodicidad);
+        Donante nuevoDonante = Donante.crearDonante(datosDonante.obtenerNIFCIF(), datosDonante.obtenerNombre(),
+                datosDonante.obtenerApellidos(), datosDonante.obtenerFechaNac(), datosDonante.obtenerLocalidad(), datosDonante.obtenerEmail(),
+                datosDonante.obtenerTelefono(), datosDonante.obtenerTipoDonante(), datosDonante.obtenerFechaInscripcion(),
+                datosDonante.obtenerObservaciones(), datosDonante.obtenerPeriodicidadDonaciones(),
+                datosDonante.obtenerCuantiaDonaciones(), datosDonante.obtenerTipoPeriodicidad());
 
         /*
          * Registrar Donante
@@ -110,7 +113,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Alta Donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.obtenerNIFCIF(), "Alta Donante");
     }
 
 
@@ -121,22 +124,22 @@ public class Gestor_de_donantes implements iGestorDonantes {
     public void confirmarFinModificacion() {
 
         
-        datosDonante = diaketas.diaketas.ong.buscarDonante(datosDonante.NIF_CIF);
+        datosDonante = diaketas.diaketas.ong.buscarDonante(datosDonante.obtenerNIFCIF());
         
         con.conectarBD();
         /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(datosDonante.FechaNac.getTime());
+        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(datosDonante.obtenerFechaNac().getTime());
         
          try {
             instruccion = (com.mysql.jdbc.Statement) con.conexion().createStatement();
     
             /*Actualizamos la parte de Usuario*/
-            instruccion.executeUpdate("UPDATE Usuario SET Nombre = \"" + datosDonante.Nombre + "\", Apellidos = \"" + datosDonante.Apellidos + "\", Fecha_Nacimiento_Fundacion = \""  + fecha_Nacimiento
-                    + "\", Localidad = \"" + datosDonante.Localidad + "\", Email = \"" + datosDonante.Email + "\", Telefono = " + datosDonante.Telefono + " WHERE NIF_CIF = \"" + datosDonante.NIF_CIF+"\" LIMIT 1");
+            instruccion.executeUpdate("UPDATE Usuario SET Nombre = \"" + datosDonante.obtenerNombre() + "\", Apellidos = \"" + datosDonante.obtenerApellidos() + "\", Fecha_Nacimiento_Fundacion = \""  + fecha_Nacimiento
+                    + "\", Localidad = \"" + datosDonante.obtenerLocalidad() + "\", Email = \"" + datosDonante.obtenerEmail() + "\", Telefono = " + datosDonante.obtenerTelefono() + " WHERE NIF_CIF = \"" + datosDonante.obtenerNIFCIF()+"\" LIMIT 1");
             /*Introducimos la parte de Donante*/
-            instruccion.executeUpdate("UPDATE Donante SET Tipo_Donante = \"" + datosDonante.Tipo_Donante + "\", Observaciones = \""  + datosDonante.Observaciones
-                    + "\", Periodicidad_Donaciones = \"" + datosDonante.Periodicidad_Donaciones + "\", Cuantia_Donaciones = \""   + datosDonante.Cuantia_Donaciones
-                    + "\", Tipo_Periodicidad = \"" + datosDonante.Tipo_Periodicidad+"\" WHERE NIF_CIF = \"" + datosDonante.NIF_CIF + "\"  LIMIT 1");           
+            instruccion.executeUpdate("UPDATE Donante SET Tipo_Donante = \"" + datosDonante.obtenerTipoDonante() + "\", Observaciones = \""  + datosDonante.obtenerObservaciones()
+                    + "\", Periodicidad_Donaciones = \"" + datosDonante.obtenerPeriodicidadDonaciones() + "\", Cuantia_Donaciones = \""   + datosDonante.obtenerCuantiaDonaciones()
+                    + "\", Tipo_Periodicidad = \"" + datosDonante.obtenerTipoPeriodicidad()+"\" WHERE NIF_CIF = \"" + datosDonante.obtenerNIFCIF() + "\"  LIMIT 1");           
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -156,7 +159,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Modificacion Donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.obtenerNIFCIF(), "Modificacion Donante");
         
     }
     
@@ -166,14 +169,14 @@ public class Gestor_de_donantes implements iGestorDonantes {
      *  Funcion que finaliza la operacion de Baja
      */
     public void confirmarFinBaja(){
+                
+        datosDonante = diaketas.diaketas.ong.buscarDonante(datosDonante.obtenerNIFCIF());
         
-        datosDonante = diaketas.diaketas.ong.buscarDonante(datosDonante.NIF_CIF);
-        
-        datosDonante.Activo = 0;
-        datosDonante.FechaDesac = new Date();
+        datosDonante.modificarActivo(0);
+        datosDonante.modificarFechaDesac(new Date());
         
         /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(datosDonante.FechaDesac.getTime());
+        java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(datosDonante.obtenerFechaDesac().getTime());
 
         ConexionBD con = new ConexionBD();
         con.conectarBD();
@@ -181,8 +184,8 @@ public class Gestor_de_donantes implements iGestorDonantes {
             com.mysql.jdbc.Statement instruccion = (com.mysql.jdbc.Statement) con.conexion().createStatement();
             
             /* Desactivamos el usuario y actualizamos fecha de Baja*/
-            instruccion.executeUpdate("UPDATE Usuario SET Activo = " + datosDonante.Activo + ", Fecha_Desactivacion = \""
-                    +fecha_Desac+"\" WHERE NIF_CIF = \"" + datosDonante.NIF_CIF + "\" LIMIT 1");
+            instruccion.executeUpdate("UPDATE Usuario SET Activo = " + datosDonante.obtenerActivo() + ", Fecha_Desactivacion = \""
+                    +fecha_Desac+"\" WHERE NIF_CIF = \"" + datosDonante.obtenerNIFCIF() + "\" LIMIT 1");
          }
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
@@ -202,7 +205,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         /*
          * Registrar Operacion
          */
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.NIF_CIF, "Baja Donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.obtenerNIFCIF(), "Baja Donante");
         
     }
     
@@ -218,7 +221,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         Boolean existe = false;
         Donante donante = diaketas.diaketas.ong.buscarDonante(NIF_CIF);
                 
-        if(donante != null && donante.Activo == 1){
+        if(donante != null && donante.obtenerActivo() == 1){
                 existe = true;
        }
 
@@ -259,6 +262,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         String strFecha, apellido;
         
         if(identificado){
+            NIF_Donante_Movil = dni;
             Donante d = diaketas.diaketas.ong.buscarDonante(dni);
             
             datosDonante = d;
@@ -273,7 +277,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
                         );
             } catch (ParseException ex) {}
             
-            apellido = (d.Apellidos.split(" ")[0]).toLowerCase();
+            apellido = (d.obtenerApellidos().split(" ")[0]).toLowerCase();
             apellido=apellido.replaceAll("á", "a");
             apellido=apellido.replaceAll("é", "e");
             apellido=apellido.replaceAll("í", "i");
@@ -289,10 +293,57 @@ public class Gestor_de_donantes implements iGestorDonantes {
             apellido=apellido.replaceAll("ï", "i");
             apellido=apellido.replaceAll("ö", "o");
             apellido=apellido.replaceAll("ü", "u");
-            
-            identificado = fecha.equals(d.FechaNac) && password.substring(0,password.length()-8).equals(apellido);
+           
+            identificado = fecha.equals(d.obtenerFechaNac()) && password.substring(0,password.length()-8).equals(apellido);
         }
        
         return identificado;
+    }
+
+    @Override
+    public Donante obtenerDatosDonante() {
+        datosDonanteMovil = diaketas.diaketas.ong.buscarDonante(NIF_Donante_Movil);
+        return datosDonanteMovil;
+    }
+
+    @Override
+    public void guardarDatosDonante() {
+       datosDonanteMovil.registrarCambios();
+    }
+
+    @Override
+    public void modificarElemento(Object valor, int indice) {
+        switch(indice) {
+            case 0: //fecha
+                datosDonanteMovil.modificarFechaNac((Date)valor);
+            break;
+                
+            case 1: //localidad
+                datosDonanteMovil.modificarLocalidad(((String)valor));
+            break;
+                
+            case 2: //telefono
+                datosDonanteMovil.modificarTelefono(((Integer)valor).intValue());
+            break;
+                
+            case 3: //email
+                datosDonanteMovil.modificarEmail(((String)valor));
+            break;
+                
+            case 4: //Tipo periodicidad
+                datosDonanteMovil.modificarTipoPeriodicidad(((String)valor));
+            break;
+                
+            case 5: //Periodicidad
+                datosDonanteMovil.modificarPeriodicidadDonaciones(((Integer)valor).intValue());
+            break;
+                
+            case 6: //Cuantia
+                datosDonanteMovil.modificarCuantiaDonaciones(((Double) valor).doubleValue());
+            break;
+                
+            default: //No hacer nada
+            break;
+        }
     }
 }

@@ -29,17 +29,17 @@ public class jConsultarMovimiento extends javax.swing.JPanel {
         
         
         
-        Cod_Movimiento.setText(String.valueOf(datosMovimiento.Cod_Movimiento));
-        Tipo.setText(datosMovimiento.Tipo_Movimiento);
-        Cuantia.setText(String.valueOf(datosMovimiento.cuantia));
-        Confirmado.setText(((datosMovimiento.confirmado)? "Si" : "No"));
-        Descripcion.setText(datosMovimiento.descripcion);
-        NIF_CIF_Implicado.setText(datosMovimiento.involucrado);
-        NIF_CIF_Crea.setText(datosMovimiento.voluntario_crea);
-        NIF_CIF_Confirma.setText(datosMovimiento.voluntario_confirma);
+        Cod_Movimiento.setText(String.valueOf(datosMovimiento.obtenerCodMovimiento()));
+        Tipo.setText(datosMovimiento.obtenerTipoMovimiento());
+        Cuantia.setText(String.valueOf(datosMovimiento.obtenerCuantia()));
+        Confirmado.setText(((datosMovimiento.estaConfirmado())? "Si" : "No"));
+        Descripcion.setText(datosMovimiento.obtenerDescripcion());
+        NIF_CIF_Implicado.setText(datosMovimiento.obtenerInvolucrado());
+        NIF_CIF_Crea.setText(datosMovimiento.obtenerVoluntarioCrea());
+        NIF_CIF_Confirma.setText(datosMovimiento.obtenerVoluntarioConfirma());
         
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
-        Fecha.setText(formatoFecha.format(datosMovimiento.Fecha));
+        Fecha.setText(formatoFecha.format(datosMovimiento.obtenerFecha()));
         
     }
     

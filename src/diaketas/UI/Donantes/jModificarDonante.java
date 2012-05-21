@@ -40,22 +40,22 @@ public class jModificarDonante extends javax.swing.JPanel {
 
         java.text.SimpleDateFormat formatoFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
 
-        System.out.println(donante.Activo);
+        System.out.println(donante.obtenerActivo());
 
-        if(donante.Activo == 1){
-            NIF_CIF.setText(donante.NIF_CIF);
-            Nombre.setText(donante.Nombre);
-            Apellidos.setText(donante.Apellidos);
-            Fecha_Nacimiento.setText(formatoFecha.format(donante.FechaNac));
-            Localidad.setText(donante.Localidad);
+        if(donante.obtenerActivo() == 1){
+            NIF_CIF.setText(donante.obtenerNIFCIF());
+            Nombre.setText(donante.obtenerNombre());
+            Apellidos.setText(donante.obtenerApellidos());
+            Fecha_Nacimiento.setText(formatoFecha.format(donante.obtenerFechaNac()));
+            Localidad.setText(donante.obtenerLocalidad());
 
-            Email.setText(donante.Email);
-            Telefono.setText(String.valueOf(donante.Telefono));
-            Tipo_Donante.setSelectedItem(donante.Tipo_Donante);
-            Observaciones.setText(donante.Observaciones);
-            Periodicidad_Donaciones.setText(String.valueOf(donante.Periodicidad_Donaciones));
-            Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
-            Tipo_Periodicidad.setSelectedItem(donante.Tipo_Periodicidad);
+            Email.setText(donante.obtenerEmail());
+            Telefono.setText(String.valueOf(donante.obtenerTelefono()));
+            Tipo_Donante.setSelectedItem(donante.obtenerTipoDonante());
+            Observaciones.setText(donante.obtenerObservaciones());
+            Periodicidad_Donaciones.setText(String.valueOf(donante.obtenerPeriodicidadDonaciones()));
+            Cuantia_Donaciones.setText(String.valueOf(donante.obtenerCuantiaDonaciones()));
+            Tipo_Periodicidad.setSelectedItem(donante.obtenerTipoPeriodicidad());
     
         }
     }

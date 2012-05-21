@@ -285,10 +285,10 @@ public class jAsociarBeneficiario extends javax.swing.JPanel {
                     for(int i = 0 ; i < nofertas ; i++) {
                         oferta_actual = ofertasEncontradas.get(i);
                         // ¿Accedemos directamente?
-                        fila[0] = oferta_actual.concepto;
-                        fila[1] = oferta_actual.fecha;
-                        fila[2] = oferta_actual.poblacion;
-                        fila[3] = oferta_actual.salario;
+                        fila[0] = oferta_actual.obtenerConcepto();
+                        fila[1] = oferta_actual.obtenerFecha();
+                        fila[2] = oferta_actual.obtenerPoblacion();
+                        fila[3] = oferta_actual.obtenerSalario();
                 
                         tabla.addRow(fila);
                     }

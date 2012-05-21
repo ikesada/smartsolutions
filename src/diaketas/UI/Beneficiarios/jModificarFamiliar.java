@@ -39,13 +39,13 @@ public class jModificarFamiliar extends javax.swing.JPanel {
         Familiar familiar = ONG.gestorBeneficiarios.consultarFamiliar(Nombre_Apellidos, Fecha_Nac);
         
         /*Actualizamos los valores del formulario*/
-        this.Nombre_Apellidos.setText(familiar.Nombre_Apellidos);
-        this.Ocupacion.setText(familiar.Ocupacion);
-        this.Parentesco.setSelectedItem(familiar.parentesco);
+        this.Nombre_Apellidos.setText(familiar.obtenerNombreApellidos());
+        this.Ocupacion.setText(familiar.obtenerOcupacion());
+        this.Parentesco.setSelectedItem(familiar.obtenerParentesco());
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
-        this.Fecha_Nacimiento.setText(formatoFecha.format(familiar.Fecha_Nacimiento));
+        this.Fecha_Nacimiento.setText(formatoFecha.format(familiar.obtenerFechaNacimiento()));
     }
 
     /**

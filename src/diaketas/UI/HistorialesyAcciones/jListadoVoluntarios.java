@@ -69,20 +69,20 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
         /*Obtenemos todas las filas*/
         
         for (int i = 0; i < usuarios.size(); i++){
-            fila[0] = usuarios.get(i).NIF_CIF;
-            fila[1] = usuarios.get(i).Nombre;
-            fila[2] = usuarios.get(i).Apellidos;
+            fila[0] = usuarios.get(i).obtenerNIFCIF();
+            fila[1] = usuarios.get(i).obtenerNombre();
+            fila[2] = usuarios.get(i).obtenerApellidos();
             //fila[3] = usuarios.get(i).FechaNac;
-            fila[4] = usuarios.get(i).Localidad;
-            fila[5] = usuarios.get(i).Activo;
+            fila[4] = usuarios.get(i).obtenerLocalidad();
+            fila[5] = usuarios.get(i).obtenerActivo();
             //fila[6] = usuarios.get(i).FechaDesac;
-            fila[7] = usuarios.get(i).Email;
-            fila[8] = usuarios.get(i).Telefono;
-            fila[9] = usuarios.get(i).Nacionalidad;
-            fila[10] = usuarios.get(i).Domicilio;
-            fila[11] = usuarios.get(i).Codigo_Postal;
+            fila[7] = usuarios.get(i).obtenerEmail();
+            fila[8] = usuarios.get(i).obtenerTelefono();
+            fila[9] = usuarios.get(i).obtenerNacionalidad();
+            fila[10] = usuarios.get(i).obtenerDomicilio();
+            fila[11] = usuarios.get(i).obtenerCodigoPostal();
             //fila[12] = usuarios.get(i).Fecha_Inicio;
-            fila[13] = usuarios.get(i).Observaciones;
+            fila[13] = usuarios.get(i).obtenerObservaciones();
 
 
             //  El elemento jTable no permite mostrar datos del tipo Date, por ello, antes de mostrar el dato
@@ -90,9 +90,9 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
             //  Primero se lee el tipo Date, y despues con las dos ultimas instrucciones se transforma a String
 
 
-            if( usuarios.get(i).FechaNac!=null  )
+            if( usuarios.get(i).obtenerFechaNac()!=null  )
             {
-                java.util.Date date = (java.util.Date) usuarios.get(i).FechaNac;   //primero leo el objeto fecha
+                java.util.Date date = (java.util.Date) usuarios.get(i).obtenerFechaNac();   //primero leo el objeto fecha
                 java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
                 fila[3] = (String) sdf.format(date);          
             }
@@ -100,9 +100,9 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 fila[3] = "";
             }
 
-            if( usuarios.get(i).FechaDesac!=null  )
+            if( usuarios.get(i).obtenerFechaDesac()!=null  )
             {
-                java.util.Date date = (java.util.Date) usuarios.get(i).FechaDesac;   //primero leo el objeto fecha
+                java.util.Date date = (java.util.Date) usuarios.get(i).obtenerFechaDesac();   //primero leo el objeto fecha
                 java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
                 fila[6] = (String)sdf.format(date);              
             }
@@ -110,9 +110,9 @@ public class jListadoVoluntarios extends javax.swing.JPanel {
                 fila[6] = "";
             }
 
-            if( usuarios.get(i).Fecha_Inicio!=null  )
+            if( usuarios.get(i).obtenerFechaInicio()!=null  )
             {
-                java.util.Date date = (java.util.Date) usuarios.get(i).Fecha_Inicio;   //primero leo el objeto fecha
+                java.util.Date date = (java.util.Date) usuarios.get(i).obtenerFechaInicio();   //primero leo el objeto fecha
                 java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
                 fila[12] = (String) sdf.format(date);              
             }

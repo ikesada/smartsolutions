@@ -73,4 +73,26 @@ public interface iGestorDonantes {
      * seguido de la fecha de nacimiento en formato DDMMYYYY
      */
     public boolean identificarse(String dni, String password);
+    
+    
+    /**
+     * Función que obtiene los datos del donante que se encuentra identificado en el dispositivo
+     * móvil.
+     * @return Los datos del donante identificado 
+     */
+    public Donante obtenerDatosDonante();
+    
+    /**
+     * Funcion que modifica el atributo del donante indicado por indice con el valor que se para como parámetro.
+     * @param valor Valor nuevo
+     * @param indice Identifica al atributo que se quiere modificar
+     */
+    
+    public void modificarElemento(Object valor, int indice);
+    
+    
+    /**
+     * Confirma los datos modificados del donante y procede a grabarlos definitivamente
+     */
+    public void guardarDatosDonante();
 }

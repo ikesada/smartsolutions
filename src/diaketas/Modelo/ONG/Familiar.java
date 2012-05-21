@@ -19,23 +19,60 @@ public class Familiar {
     /**
      * Nombre y apellidos del familiar
      */
-    public String Nombre_Apellidos;
+    private String Nombre_Apellidos;
     /**
      * Fecha de nacimiento del familiar
      */
-    public Date Fecha_Nacimiento;
+    private Date Fecha_Nacimiento;
     /**
      * Ocupacion del familiar
      */
-    public String Ocupacion;
+    private String Ocupacion;
     
     /**
      * Parentesco del familiar con respecto al Beneficiario
      */
-    public String parentesco;
+    private String parentesco;
        
     ConexionBD con = new ConexionBD();
+    
+    // --------------------------------- CONSULTORES ----------------------------- //
 
+    public Date obtenerFechaNacimiento() {
+        return Fecha_Nacimiento;
+    }
+
+    public String obtenerNombreApellidos() {
+        return Nombre_Apellidos;
+    }
+
+    public String obtenerOcupacion() {
+        return Ocupacion;
+    }
+
+    public String obtenerParentesco() {
+        return parentesco;
+    }
+        
+    // --------------------------------- MODIFICADORES --------------------------- //
+
+    public void modificarFechaNacimiento(Date Fecha_Nacimiento) {
+        this.Fecha_Nacimiento = Fecha_Nacimiento;
+    }
+
+    public void modificarNombreApellidos(String Nombre_Apellidos) {
+        this.Nombre_Apellidos = Nombre_Apellidos;
+    }
+
+    public void modificarOcupacion(String Ocupacion) {
+        this.Ocupacion = Ocupacion;
+    }
+
+    public void modificarParentesco(String parentesco) {
+        this.parentesco = parentesco;
+    }
+    
+    
     /*------------------------------Constructores------------------------------*/
     /**
      * Crea un nuevo familiar

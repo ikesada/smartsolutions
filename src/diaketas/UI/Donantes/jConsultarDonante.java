@@ -32,22 +32,22 @@ public class jConsultarDonante extends javax.swing.JPanel {
         
         java.text.SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yyyy");
         
-        if(donante.Activo == 1){
-            NIF_CIF.setText(donante.NIF_CIF);
-            Nombre.setText(donante.Nombre);
-            Apellidos.setText(donante.Apellidos);
-            Fecha_Nacimiento.setText(formatoFecha.format(donante.FechaNac));
-            Localidad.setText(donante.Localidad);
+        if(donante.obtenerActivo() == 1){
+            NIF_CIF.setText(donante.obtenerNIFCIF());
+            Nombre.setText(donante.obtenerNombre());
+            Apellidos.setText(donante.obtenerApellidos());
+            Fecha_Nacimiento.setText(formatoFecha.format(donante.obtenerFechaNac()));
+            Localidad.setText(donante.obtenerLocalidad());
             
-            Email.setText(donante.Email);
-            Telefono.setText(String.valueOf(donante.Telefono));
+            Email.setText(donante.obtenerEmail());
+            Telefono.setText(String.valueOf(donante.obtenerTelefono()));
 
-            Tipo_Donante.setText(donante.Tipo_Donante);
-            Fecha_Inscripcion.setText(formatoFecha.format(donante.Fecha_Inscripcion));
-            Observaciones.setText(donante.Observaciones);
-            Periodicidad_Donaciones.setText(String.valueOf(donante.Periodicidad_Donaciones));
-            Cuantia_Donaciones.setText(String.valueOf(donante.Cuantia_Donaciones));
-            Tipo_Periodicidad.setText(donante.Tipo_Periodicidad);  
+            Tipo_Donante.setText(donante.obtenerTipoDonante());
+            Fecha_Inscripcion.setText(formatoFecha.format(donante.obtenerFechaInscripcion()));
+            Observaciones.setText(donante.obtenerObservaciones());
+            Periodicidad_Donaciones.setText(String.valueOf(donante.obtenerPeriodicidadDonaciones()));
+            Cuantia_Donaciones.setText(String.valueOf(donante.obtenerCuantiaDonaciones()));
+            Tipo_Periodicidad.setText(donante.obtenerTipoPeriodicidad());  
         }
     }
     

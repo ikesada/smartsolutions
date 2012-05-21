@@ -414,12 +414,12 @@ public class jListadoMovimientos extends javax.swing.JPanel {
                 //oferta_actual = ofertasEncontradas.get(i);
             
             for(Movimiento m : movimientosEncontrados){
-                fila[0] = m.cuantia;
-                fila[1] = m.Fecha;
-                fila[2] = m.Tipo_Movimiento;
-                fila[3] = m.voluntario_crea;
-                fila[4] = m.involucrado;
-                fila[5] = (m.confirmado ? "Si" : "No");
+                fila[0] = m.obtenerCuantia();
+                fila[1] = m.obtenerFecha();
+                fila[2] = m.obtenerTipoMovimiento();
+                fila[3] = m.obtenerVoluntarioCrea();
+                fila[4] = m.obtenerInvolucrado();
+                fila[5] = (m.estaConfirmado() ? "Si" : "No");
                 
                 tabla.addRow(fila);
             }
@@ -520,7 +520,7 @@ public class jListadoMovimientos extends javax.swing.JPanel {
         int movimiento_seleccionado = listadoMovimientos.getSelectedRow();
         
         if(movimiento_seleccionado != -1) {
-            diaketas.diaketas.ong.gestorDonaciones.seleccionarMovimiento(movimientosEncontrados.get(movimiento_seleccionado).Cod_Movimiento);
+            diaketas.diaketas.ong.gestorDonaciones.seleccionarMovimiento(movimientosEncontrados.get(movimiento_seleccionado).obtenerCodMovimiento());
         
         
         switch(jPanelSiguiente) {

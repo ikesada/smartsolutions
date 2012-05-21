@@ -14,19 +14,59 @@ public class Accion {
     /**
      *  Dni del Voluntario que realiza la accion
      */
-    public String DNI_Voluntario;
+    private String DNI_Voluntario;
     /**
      *  Dni del usuario sobre el cual se realiza la accion
      */
-    public String DNI_Usuario;
+    private String DNI_Usuario;
     /**
      *  Fecha en la que se realiza la accion
      */
-    public Date Fecha;
+    private Date Fecha;
     /**
      *  Cadena que indica el tipo de accion
      */
-    public String tipo;
+    private String tipo;
+    
+    
+// -------------------------------------- CONSULTORES ------------------------------------------ //
+
+    public String obtenerDNIUsuario() {
+        return DNI_Usuario;
+    }
+
+    public String obtenerDNIVoluntario() {
+        return DNI_Voluntario;
+    }
+
+    public Date obtenerFecha() {
+        return Fecha;
+    }
+
+    public String obtenerTipo() {
+        return tipo;
+    }
+
+
+// -------------------------------------- MODIFICADORES ---------------------------------------- //
+
+    public void modificarDNIUsuario(String DNI_Usuario) {
+        this.DNI_Usuario = DNI_Usuario;
+    }
+
+    public void modificarDNIVoluntario(String DNI_Voluntario) {
+        this.DNI_Voluntario = DNI_Voluntario;
+    }
+
+    public void modificarFecha(Date Fecha) {
+        this.Fecha = Fecha;
+    }
+
+    public void modificarTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
 
     /**
      * 

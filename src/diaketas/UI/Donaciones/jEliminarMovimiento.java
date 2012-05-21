@@ -34,8 +34,8 @@ public class jEliminarMovimiento extends javax.swing.JPanel {
          */
         movimientoSeleccionado = ONG.gestorDonaciones.consultarDatosMovimiento();
 
-        this.confirmado = movimientoSeleccionado.confirmado;
-        this.Cod_Movimiento = movimientoSeleccionado.Cod_Movimiento;
+        this.confirmado = movimientoSeleccionado.estaConfirmado();
+        this.Cod_Movimiento = movimientoSeleccionado.obtenerCodMovimiento();
         this.cod_Movimiento.setText(String.valueOf(this.Cod_Movimiento));
     }
 

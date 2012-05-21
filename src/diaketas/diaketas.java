@@ -8,6 +8,7 @@ import de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import javax.swing.UIManager;
+import diaketas.UI.Movil.*;
 
 /**
  *
@@ -39,5 +40,8 @@ public class diaketas {
          */
         UI ui = new UI();
         ui.setVisible(true);
+        
+        jMovil movil = new jMovil();
+        movil.setVisible(true);
     }
 }

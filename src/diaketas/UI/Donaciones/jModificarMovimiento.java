@@ -30,17 +30,17 @@ public class jModificarMovimiento extends javax.swing.JPanel {
          Movimiento datosMovimiento = ONG.gestorDonaciones.consultarDatosMovimiento();
 
         
-        Cod_Movimiento.setText(String.valueOf(datosMovimiento.Cod_Movimiento));
-        Tipo.setSelectedItem(datosMovimiento.Tipo_Movimiento);
-        Cuantia.setText(String.valueOf(datosMovimiento.cuantia));
-        Descripcion.setText(datosMovimiento.descripcion);
-        NIF_Involucrado.setText(datosMovimiento.involucrado);
-        NIF_CIF_Crea.setText(datosMovimiento.voluntario_crea);
+        Cod_Movimiento.setText(String.valueOf(datosMovimiento.obtenerCodMovimiento()));
+        Tipo.setSelectedItem(datosMovimiento.obtenerTipoMovimiento());
+        Cuantia.setText(String.valueOf(datosMovimiento.obtenerCuantia()));
+        Descripcion.setText(datosMovimiento.obtenerDescripcion());
+        NIF_Involucrado.setText(datosMovimiento.obtenerInvolucrado());
+        NIF_CIF_Crea.setText(datosMovimiento.obtenerVoluntarioCrea());
         
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
-        Fecha.setText(formatoFecha.format(datosMovimiento.Fecha));
+        Fecha.setText(formatoFecha.format(datosMovimiento.obtenerFecha()));
         
-        if (datosMovimiento.confirmado){
+        if (datosMovimiento.estaConfirmado()){
             botonConfirmar.setEnabled(false);
             botonModificar.setEnabled(false);
             NIF_Voluntario.setEnabled(false);

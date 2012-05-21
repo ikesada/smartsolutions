@@ -44,10 +44,10 @@ public class jListarAportesM extends javax.swing.JPanel {
                 //oferta_actual = ofertasEncontradas.get(i);
             
             for(Movimiento m : diaketas.UI.Movil.UI.movimientosEncontrados){
-                fila[0] = m.cuantia;
-                fila[1] = m.Fecha;
-                fila[2] = m.Tipo_Movimiento;
-                fila[4] = m.involucrado;
+                fila[0] = m.obtenerCuantia();
+                fila[1] = m.obtenerFecha();
+                fila[2] = m.obtenerTipoMovimiento();
+                fila[4] = m.obtenerInvolucrado();
 
                 
                 tabla.addRow(fila);

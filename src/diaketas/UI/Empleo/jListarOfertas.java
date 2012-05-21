@@ -376,10 +376,10 @@ public class jListarOfertas extends javax.swing.JPanel {
             for(int i = 0 ; i < nofertas ; i++) {
                 oferta_actual = ofertasEncontradas.get(i);
                 // ¿Accedemos directamente?
-                fila[0] = oferta_actual.concepto;
-                fila[1] = oferta_actual.fecha;
-                fila[2] = oferta_actual.poblacion;
-                fila[3] = oferta_actual.salario;
+                fila[0] = oferta_actual.obtenerConcepto();
+                fila[1] = oferta_actual.obtenerFecha();
+                fila[2] = oferta_actual.obtenerPoblacion();
+                fila[3] = oferta_actual.obtenerSalario();
                 
                 tabla.addRow(fila);
             }
@@ -395,7 +395,7 @@ public class jListarOfertas extends javax.swing.JPanel {
         int oferta_seleccionada = listadoOfertas.getSelectedRow();
         
         if(oferta_seleccionada != -1) {
-            diaketas.diaketas.ong.gestorOfertas.seleccionarOferta(ofertasEncontradas.get(oferta_seleccionada).cod_oferta);
+            diaketas.diaketas.ong.gestorOfertas.seleccionarOferta(ofertasEncontradas.get(oferta_seleccionada).obtenerCodOferta());
             
             switch(jPanelSiguiente) {
                 case 0: // Consultar

@@ -33,39 +33,38 @@ public class jConsultarBeneficiario extends javax.swing.JPanel {
         initComponents();
         
         /*Mostramos los datos de beneficiario*/
-        NIF.setText(datosBeneficiario.NIF_CIF);
-        Nombre.setText(datosBeneficiario.Nombre);
-        Email.setText(datosBeneficiario.Email);
-        Apellidos.setText(datosBeneficiario.Apellidos);
+        NIF.setText(datosBeneficiario.obtenerNIFCIF());
+        Nombre.setText(datosBeneficiario.obtenerNombre());
+        Email.setText(datosBeneficiario.obtenerEmail());
+        Apellidos.setText(datosBeneficiario.obtenerApellidos());
         
-        Nacionalidad.setText(datosBeneficiario.Nacionalidad);
-        Estado_Civil.setText(datosBeneficiario.Estado_civil);
-        Domicilio.setText(datosBeneficiario.Domicilio);
-        if (datosBeneficiario.Expediente != 0)
-            Expediente.setText(Integer.toString(datosBeneficiario.Expediente));
-        if (datosBeneficiario.Codigo_Postal != 0)
-            Codigo_Postal.setText(Integer.toString(datosBeneficiario.Codigo_Postal));
-        Localidad.setText(datosBeneficiario.Localidad);
-        if (datosBeneficiario.Telefono != 0)
-            Telefono.setText(Integer.toString(datosBeneficiario.Telefono));
-        Tipo_Vivienda.setText(datosBeneficiario.Tipo_Vivienda);
-        if (datosBeneficiario.Precio_Vivienda != 0.0)
-            Precio_Vivienda.setText(Double.toString(datosBeneficiario.Precio_Vivienda));
-        Motivo.setText(datosBeneficiario.Motivo);
-        Tipo_Vivienda.setText(datosBeneficiario.Observaciones_Datos_Personales);
-        Experiencia_Laboral.setText(datosBeneficiario.Experiencia_Laboral);
-        Observaciones_Datos_Personales.setText(datosBeneficiario.Observaciones_Datos_Personales);
-        Observaciones_Familiares.setText(datosBeneficiario.Observaciones_Familiares);        
-        Observaciones_Vivienda.setText(datosBeneficiario.Observaciones_Vivienda);
-        Ciudad_Nacimiento.setText(datosBeneficiario.Ciudad_Nacimiento);
-        Situacion_Economica.setText(datosBeneficiario.Situacion_Economica);
-        Nivel_Estudios.setText(datosBeneficiario.Nivel_Estudios);
-        Profesion.setText(datosBeneficiario.Profesion);
+        Nacionalidad.setText(datosBeneficiario.obtenerNacionalidad());
+        Estado_Civil.setText(datosBeneficiario.obtenerEstadoCivil());
+        Domicilio.setText(datosBeneficiario.obtenerDomicilio());
+        if (datosBeneficiario.obtenerExpediente() != 0)
+            Expediente.setText(Integer.toString(datosBeneficiario.obtenerExpediente()));
+        if (datosBeneficiario.obtenerCodigoPostal() != 0)
+            Codigo_Postal.setText(Integer.toString(datosBeneficiario.obtenerCodigoPostal()));
+        Localidad.setText(datosBeneficiario.obtenerLocalidad());
+        if (datosBeneficiario.obtenerTelefono() != 0)
+            Telefono.setText(Integer.toString(datosBeneficiario.obtenerTelefono()));
+        Tipo_Vivienda.setText(datosBeneficiario.obtenerTipoVivienda());
+        if (datosBeneficiario.obtenerPrecioVivienda() != 0.0)
+            Precio_Vivienda.setText(Double.toString(datosBeneficiario.obtenerPrecioVivienda()));
+        Motivo.setText(datosBeneficiario.obtenerMotivo());
+        Experiencia_Laboral.setText(datosBeneficiario.obtenerExperienciaLaboral());
+        Observaciones_Datos_Personales.setText(datosBeneficiario.obtenerObservacionesDatosPersonales());
+        Observaciones_Familiares.setText(datosBeneficiario.obtenerObservacionesFamiliares());        
+        Observaciones_Vivienda.setText(datosBeneficiario.obtenerObservacionesVivienda());
+        Ciudad_Nacimiento.setText(datosBeneficiario.obtenerCiudadNacimiento());
+        Situacion_Economica.setText(datosBeneficiario.obtenerSituacionEconomica());
+        Nivel_Estudios.setText(datosBeneficiario.obtenerNivelEstudios());
+        Profesion.setText(datosBeneficiario.obtenerProfesion());
         
         /* Representamos la fecha*/
         SimpleDateFormat formatoFecha=new java.text.SimpleDateFormat("dd/MM/yy");
-        Fecha_Nacimiento.setText(formatoFecha.format(datosBeneficiario.FechaNac));
-        Fecha_Inicio.setText(formatoFecha.format(datosBeneficiario.Fecha_Inscripcion));
+        Fecha_Nacimiento.setText(formatoFecha.format(datosBeneficiario.obtenerFechaNac()));
+        Fecha_Inicio.setText(formatoFecha.format(datosBeneficiario.obtenerFechaInscripcion()));
     }
 
     /**

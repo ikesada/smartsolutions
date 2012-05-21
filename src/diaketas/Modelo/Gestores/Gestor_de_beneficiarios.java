@@ -115,7 +115,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(DNI);
         
         if (datosBeneficiario !=  null)
-            return (datosBeneficiario.Activo == 1);
+            return (datosBeneficiario.obtenerActivo() == 1);
         else
             return false;
     }
@@ -166,7 +166,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     private void modificarBeneficiario(Beneficiario nuevosDatosBeneficiario){
         
         /*Buscamos beneficiario*/
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.obtenerNIFCIF());
 
         /*Modificamos sus datos*/
         datosBeneficiario.cambiarDatosBeneficiario(nuevosDatosBeneficiario);
@@ -185,7 +185,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         diaketas.diaketas.ong.agregarNuevoBeneficiario(nuevoBeneficiario);
         
         /*Registrar Operacion*/
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), datosBeneficiario.NIF_CIF.toUpperCase(), "Alta Beneficiario");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), datosBeneficiario.obtenerNIFCIF().toUpperCase(), "Alta Beneficiario");
     }
     
     /**
@@ -209,7 +209,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     @Override
     public void confirmarModificacionBeneficiario(){
          /*Registrar Operacion*/
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), datosBeneficiario.NIF_CIF.toUpperCase(), "Modificar Beneficiario");   
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario.toUpperCase(), datosBeneficiario.obtenerNIFCIF().toUpperCase(), "Modificar Beneficiario");   
     
         /*Modificar beneficiario*/
         modificarBeneficiario(datosBeneficiario);
@@ -235,9 +235,9 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
         
         /* Buscamos Beneficiario en el sistema */
         //Ya es conocido
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.obtenerNIFCIF());
         
-        familiar = new Familiar(datosFamiliar.Nombre_Apellidos, datosFamiliar.Fecha_Nacimiento, datosFamiliar.Ocupacion, datosFamiliar.parentesco);
+        familiar = new Familiar(datosFamiliar.obtenerNombreApellidos(), datosFamiliar.obtenerFechaNacimiento(), datosFamiliar.obtenerOcupacion(), datosFamiliar.obtenerParentesco());
             
         /*Agregar familiar*/
         datosBeneficiario.agregarFamiliar(familiar);
@@ -252,7 +252,7 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
 
         /* Buscamos Beneficiario en el sistema */
         //Ya es conocido
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.obtenerNIFCIF());
 
         /* Buscamos el familiar del beneficiario*/
         Familiar f = datosBeneficiario.buscarFamiliar(Nombre_Apellidos_Familiar, Fecha_Nacimiento_Familiar);
@@ -326,14 +326,14 @@ public class Gestor_de_beneficiarios implements iGestorBeneficiarios{
     private void actualizarFamiliar (String Nombre_Apellidos, Date Fecha_Nac, Familiar nuevosDatosFamiliar){
         /* Buscamos Beneficiario en el sistema */
         //Ya es conocido
-        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.NIF_CIF);
+        datosBeneficiario = diaketas.diaketas.ong.buscarBeneficiario(datosBeneficiario.obtenerNIFCIF());
         
         /*Buscamos el familiar*/
         datosFamiliar = datosBeneficiario.buscarFamiliar(Nombre_Apellidos, Fecha_Nac);
         
         /*Cambiar datos Familiar */
-        datosFamiliar.cambiarDatosFamiliar(nuevosDatosFamiliar.Nombre_Apellidos, nuevosDatosFamiliar.Fecha_Nacimiento,
-                nuevosDatosFamiliar.Ocupacion, nuevosDatosFamiliar.parentesco);
+        datosFamiliar.cambiarDatosFamiliar(nuevosDatosFamiliar.obtenerNombreApellidos(), nuevosDatosFamiliar.obtenerFechaNacimiento(),
+                nuevosDatosFamiliar.obtenerOcupacion(), nuevosDatosFamiliar.obtenerParentesco());
     }
 
     /**

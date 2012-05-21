@@ -54,7 +54,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
               
         if(v!=null)
         {
-            if( v.Activo==1 )
+            if( v.obtenerActivo()==1 )
                return true;
             
             else

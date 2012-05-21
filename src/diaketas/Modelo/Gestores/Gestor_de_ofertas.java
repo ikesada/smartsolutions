@@ -67,7 +67,7 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     @Override
     public void finModificarOferta()
     {
-        registrarOperacionOfertas( NIF_Voluntario, O.cod_oferta, "Modificacion Oferta" );
+        registrarOperacionOfertas(NIF_Voluntario, O.obtenerCodOferta(), "Modificacion Oferta" );
     }
     
 
@@ -78,7 +78,7 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     @Override
     public void finEliminarOferta()
     {
-        registrarOperacionOfertas( NIF_Voluntario, O.cod_oferta, "Eliminación Oferta" );
+        registrarOperacionOfertas( NIF_Voluntario, O.obtenerCodOferta(), "Eliminación Oferta" );
     }
     
     
@@ -89,7 +89,7 @@ public class Gestor_de_ofertas implements iGestorOfertas{
     @Override
     public void finAgregarOferta()
     {
-        registrarOperacionOfertas( NIF_Voluntario, O.cod_oferta, "Agregar Oferta" );
+        registrarOperacionOfertas( NIF_Voluntario, O.obtenerCodOferta(), "Agregar Oferta" );
     }
     
 
@@ -342,7 +342,7 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         // Se agrega la oferta al beneficiario
         B.AgregarOferta(O);
         // Registrar la accion por parte del voluntario
-        registrarOperacionOfertas(dniV,O.cod_oferta,"Asociar Beneficiario");
+        registrarOperacionOfertas(dniV,O.obtenerCodOferta(),"Asociar Beneficiario");
     }
 
      /**
@@ -366,8 +366,8 @@ public class Gestor_de_ofertas implements iGestorOfertas{
         oferta = diaketas.diaketas.ong.buscarOferta(cod_oferta);
         
         // Asociamos los objetos Responsables y oferta
-        accion_oferta.responsable = responsable;
-        accion_oferta.oferta = oferta;
+        accion_oferta.modificarResponsable(responsable);
+        accion_oferta.modificarOferta(oferta);
         
         diaketas.diaketas.ong.agregarAccionOferta(accion_oferta);
         
