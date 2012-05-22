@@ -42,6 +42,11 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         
         tv = new jSTeclado(cantidad1);
         donante = diaketas.diaketas.ong.gestorDonantes.obtenerDatosDonante();
+        
+        fecha1.setEnabled(false);
+        fecha2.setEnabled(false);
+        cantidad1.setEnabled(false);
+        cantidad2.setEnabled(false);
        
     }
 
@@ -92,18 +97,34 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel4.setText("Tipo");
 
-        cantidad1.setText("0");
+        cantidad1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cantidad1MouseClicked(evt);
+            }
+        });
         cantidad1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidad1ActionPerformed(evt);
             }
         });
 
-        cantidad2.setText("0");
+        cantidad2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cantidad2MouseClicked(evt);
+            }
+        });
 
-        fecha1.setText("dd/mm/yy");
+        fecha1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fecha1MouseClicked(evt);
+            }
+        });
 
-        fecha2.setText("dd/mm/yy");
+        fecha2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fecha2MouseClicked(evt);
+            }
+        });
 
         codigoCuantia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Mayor", "Menor", "Igual", "Entre" }));
         codigoCuantia.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +181,7 @@ public class jBuscarAportesM extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(codigoCuantia, 0, 99, Short.MAX_VALUE)
                                         .addComponent(codigoFecha, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addComponent(codigoTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(codigoTipo, 0, 262, Short.MAX_VALUE)))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -285,11 +306,31 @@ public class jBuscarAportesM extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidad1ActionPerformed
 
-    private void cantidad1MouseClicked(java.awt.event.MouseEvent evt) {                                                             
+    private void cantidad1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cantidad1MouseClicked
         // TODO add your handling code here:
         tv.asociarCampo(cantidad1);
         tv.activar();
-    }   
+    }//GEN-LAST:event_cantidad1MouseClicked
+
+    private void cantidad2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cantidad2MouseClicked
+        // TODO add your handling code here:
+        tv.asociarCampo(cantidad2);
+        tv.activar();
+    }//GEN-LAST:event_cantidad2MouseClicked
+
+    private void fecha1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha1MouseClicked
+        // TODO add your handling code here:
+        tv.asociarCampo(fecha1);
+        tv.activar();
+    }//GEN-LAST:event_fecha1MouseClicked
+
+    private void fecha2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha2MouseClicked
+        // TODO add your handling code here:
+        tv.asociarCampo(fecha2);
+        tv.activar();
+    }//GEN-LAST:event_fecha2MouseClicked
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cantidad1;
     private javax.swing.JTextField cantidad2;
