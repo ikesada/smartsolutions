@@ -277,16 +277,7 @@ public class Oferta {
              exito=false;
              System.out.println(e);
          }
-         //DesconexiÃ³n de la BD
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         return exito;
         
         
@@ -377,16 +368,7 @@ public class Oferta {
              exito=false;
              System.out.println(e);
          }
-         //DesconexiÃ³n de la BD
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         
         return exito;
         
@@ -427,16 +409,7 @@ public class Oferta {
              exito=false;
              System.out.println(e);
          }
-         //DesconexiÃ³n de la BD
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         return exito;
         
         
