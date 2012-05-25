@@ -88,7 +88,16 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
     /**************************BENEFICIARIO************************************
      * @param DNI Dni del Beneficario que buscaremos en la BBDD
@@ -135,7 +144,16 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         
         return beneficiario;
     }
@@ -172,7 +190,16 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-        
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
     }
     
     /*****************************FAMILIAR***********************************
@@ -246,7 +273,16 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-       
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
     }
         
     /**
@@ -277,7 +313,15 @@ public class ONG implements iONG{
             Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         
         return donante;
         }
@@ -322,7 +366,16 @@ public class ONG implements iONG{
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }        
         
-  
+        /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
         return v;
     }
 
@@ -362,7 +415,16 @@ public class ONG implements iONG{
              System.out.println(e);
              exito = false;
          }
-     
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }      
          
         return exito; 
     }    
@@ -420,7 +482,16 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-  
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
         
         return usuarios;
     }
@@ -479,7 +550,16 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-  
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
         
         return usuarios;
     }
@@ -542,7 +622,16 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-  
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
         
         return usuarios;
     }
@@ -574,7 +663,16 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         
         return oferta;
     }
@@ -646,7 +744,16 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-  
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
         
         return ofertas;
     }
@@ -674,7 +781,16 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
     
     
@@ -698,7 +814,16 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         
         return movimiento;
     }
@@ -825,7 +950,16 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
- 
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
         
         return movimientos;
     }
@@ -925,7 +1059,16 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-
+        /*Desconexión de la BD*/
+        finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }  
         
         return movimientos;
     }
@@ -954,6 +1097,15 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 }

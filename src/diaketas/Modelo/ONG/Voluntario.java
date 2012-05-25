@@ -220,7 +220,16 @@ public class Voluntario extends Usuarios{
              exito=false;
              System.out.println(e);
          }
-
+         //Desconexión de la BD
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         
         return exito;
         
@@ -264,7 +273,17 @@ public class Voluntario extends Usuarios{
              System.out.println(e);
              exito = false;
          }
-        
+         /*Desconexión de la BD*/
+         finally {
+            if (con.hayConexionBD()) {
+                try {
+                    con.desconectarBD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
+                    exito = false;
+                }
+            }
+        }         
     
         return exito;
         
