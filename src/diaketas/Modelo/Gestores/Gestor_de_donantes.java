@@ -59,7 +59,6 @@ public class Gestor_de_donantes implements iGestorDonantes {
         datosDonante = new Donante(NIF_CIF, Nombre, Apellidos, FechaNac, Localidad, 1, new Date(), Email, Telefono, Tipo_Donante, Fecha_Inscripcion,
                 Observaciones, Periodicidad_Donaciones, Cuantia_Donaciones, Tipo_Periodicidad);
 
-
         NIF_Voluntario = NIF_Vol;
         
         return ONG.gestorVoluntarios.comprobarExistenciaVoluntario(NIF_Voluntario);
@@ -123,43 +122,19 @@ public class Gestor_de_donantes implements iGestorDonantes {
      */
     public void confirmarFinModificacion() {
 
+        Donante d = diaketas.diaketas.ong.buscarDonante(datosDonante.obtenerNIFCIF());
+
+        d.modificarDatos(d.obtenerNIFCIF(), datosDonante.obtenerNombre(), datosDonante.obtenerApellidos(), new java.sql.Timestamp(datosDonante.obtenerFechaNac().getTime()),
+                datosDonante.obtenerLocalidad(), datosDonante.obtenerActivo(), null, datosDonante.obtenerEmail(), datosDonante.obtenerTelefono(),
+                datosDonante.obtenerTipoDonante(), new java.sql.Timestamp(datosDonante.obtenerFechaInscripcion().getTime()), datosDonante.obtenerObservaciones(),
+                datosDonante.obtenerPeriodicidadDonaciones(), datosDonante.obtenerCuantiaDonaciones(), datosDonante.obtenerTipoPeriodicidad());
         
-        datosDonante = diaketas.diaketas.ong.buscarDonante(datosDonante.obtenerNIFCIF());
-        
-        con.conectarBD();
-        /*Convertimos Date para trabajar*/
-        java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(datosDonante.obtenerFechaNac().getTime());
-        
-         try {
-            instruccion = (com.mysql.jdbc.Statement) con.conexion().createStatement();
-    
-            /*Actualizamos la parte de Usuario*/
-            instruccion.executeUpdate("UPDATE Usuario SET Nombre = \"" + datosDonante.obtenerNombre() + "\", Apellidos = \"" + datosDonante.obtenerApellidos() + "\", Fecha_Nacimiento_Fundacion = \""  + fecha_Nacimiento
-                    + "\", Localidad = \"" + datosDonante.obtenerLocalidad() + "\", Email = \"" + datosDonante.obtenerEmail() + "\", Telefono = " + datosDonante.obtenerTelefono() + " WHERE NIF_CIF = \"" + datosDonante.obtenerNIFCIF()+"\" LIMIT 1");
-            /*Introducimos la parte de Donante*/
-            instruccion.executeUpdate("UPDATE Donante SET Tipo_Donante = \"" + datosDonante.obtenerTipoDonante() + "\", Observaciones = \""  + datosDonante.obtenerObservaciones()
-                    + "\", Periodicidad_Donaciones = \"" + datosDonante.obtenerPeriodicidadDonaciones() + "\", Cuantia_Donaciones = \""   + datosDonante.obtenerCuantiaDonaciones()
-                    + "\", Tipo_Periodicidad = \"" + datosDonante.obtenerTipoPeriodicidad()+"\" WHERE NIF_CIF = \"" + datosDonante.obtenerNIFCIF() + "\"  LIMIT 1");           
-         }
-         /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }        
-        
+        d.registrarCambios();
         
         /*
          * Registrar Operacion
          */
-        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, datosDonante.obtenerNIFCIF(), "Modificacion Donante");
+        ONG.gestorHistoriales.RegistrarOperacion(NIF_Voluntario, d.obtenerNIFCIF(), "Modificacion Donante");
         
     }
     
