@@ -9,9 +9,6 @@ import diaketas.Modelo.ONG.ONG;
 import diaketas.UI.UI;
 import javax.swing.UIManager;
 import diaketas.UI.Movil.*;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -38,10 +35,6 @@ public class diaketas {
         } catch (Exception e) {
         }
 */
-        /*Realizamos la conexión a la BBDD*/
-        ConexionBD con = new ConexionBD();
-        con.realizarConexionBD();
-
         /*
          * Iniciamos la interfaz
          */
