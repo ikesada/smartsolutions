@@ -8,8 +8,10 @@ package diaketas;
  *
  * @author kesada
  */
+import com.mysql.jdbc.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
  * 
@@ -35,10 +37,8 @@ public class ConexionBD{
     
     private static Connection conn = null;
     
-    /**
-     *  Funcion conecta con la BBDD
-     */
-    public void conectarBD() {
+    
+    public void realizarConexionBD(){
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
             conn = DriverManager.getConnection(url, login, password);
@@ -48,17 +48,28 @@ public class ConexionBD{
         }
         catch(ClassNotFoundException ex) {
             System.out.println(ex);
-        }
+        }        
     }
     
     /**
-     *  Desconecta de la BBDD
-     * @throws SQLException
+     *  Funcion conecta con la BBDD
      */
-    public void desconectarBD() throws SQLException{
-        conn.close();
+    public void conectarBD() {
+      try {
+        Statement stmt = (Statement) conn.createStatement();
+        
+        ResultSet rs = stmt.executeQuery("SELECT 1 FROM Dual");
+        if (rs.next()) {
+        }
+        }catch (SQLException e) {
+            System.out.println("Conexion cerrada...Abriendo");
+            realizarConexionBD();
+        }
     }
     
+    public void realizarDesconexionBD() throws SQLException{
+        conn.close();
+    }
     /**
      *  Realiza la convexion
      * @return Devuelve la conexion a la BBDD
@@ -68,14 +79,4 @@ public class ConexionBD{
         return(conn);
     }
     
-    /**
-     *  Comprueba si hay conexion con la BBDD o no
-     * @return Devuelve True o False si la conexion existe
-     */
-    public boolean hayConexionBD(){
-       if(conn!=null)
-          return true;
-       else
-          return false;        
-    }
 }
