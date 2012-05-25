@@ -4,7 +4,6 @@
  */
 package diaketas.UI;
 
-import diaketas.ConexionBD;
 import diaketas.UI.Beneficiarios.jBeneficiario;
 import diaketas.UI.Voluntarios.jVoluntarios;
 import diaketas.UI.Donaciones.jDonaciones;
@@ -16,9 +15,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -88,11 +84,6 @@ public class UI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1262, 628));
         setName("Principal");
         setPreferredSize(new java.awt.Dimension(1262, 109));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                desconectarBD(evt);
-            }
-        });
 
         jMenuBotones.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -206,15 +197,6 @@ public class UI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cl.show(jPrincipal, "HistorialyAcciones");
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void desconectarBD(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_desconectarBD
-        ConexionBD con = new ConexionBD();
-        try {
-            con.realizarDesconexionBD();
-        } catch (SQLException ex) {
-            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_desconectarBD
 
     /**
      *
