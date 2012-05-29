@@ -31,6 +31,25 @@ public class Gestor_de_donantes implements iGestorDonantes {
     String NIF_Donante_Movil;
     Donante datosDonanteMovil;
     
+    
+    Date fecha_nac_donante_movil;
+    String localidad_donante_movil;
+    int telefono_donante_movil;
+    String email_donante_movil;
+    String tperiodicidad_donante_movil;
+    int nperiodiciodad_donante_movil;
+    double cuantia_donante_movil;
+    
+    boolean fecha_nac_donante_movil_modificado;
+    boolean localidad_donante_movil_modificado;
+    boolean telefono_donante_movil_modificado;
+    boolean email_donante_movil_modificado;
+    boolean tperiodicidad_donante_movil_modificado;
+    boolean nperiodiciodad_donante_movil_modificado;
+    boolean cuantia_donante_movil_modificado;
+    
+    
+    
 
     @Override
    /**
@@ -282,6 +301,14 @@ public class Gestor_de_donantes implements iGestorDonantes {
     
     @Override
     public Donante obtenerDatosDonante() {
+        fecha_nac_donante_movil_modificado = false;
+        localidad_donante_movil_modificado = false;
+        telefono_donante_movil_modificado = false;
+        email_donante_movil_modificado = false;
+        tperiodicidad_donante_movil_modificado = false;
+        nperiodiciodad_donante_movil_modificado = false;
+        cuantia_donante_movil_modificado = false;
+        
         datosDonanteMovil = diaketas.diaketas.ong.buscarDonante(NIF_Donante_Movil);
         return datosDonanteMovil;
     }
@@ -292,6 +319,31 @@ public class Gestor_de_donantes implements iGestorDonantes {
     
     @Override
     public void guardarDatosDonante() {
+        if(!fecha_nac_donante_movil_modificado)
+            fecha_nac_donante_movil = datosDonanteMovil.obtenerFechaNac();
+        
+        if(!localidad_donante_movil_modificado)
+            this.localidad_donante_movil = datosDonanteMovil.obtenerLocalidad();
+        
+        if(!email_donante_movil_modificado)
+            email_donante_movil = datosDonanteMovil.obtenerEmail();
+       
+        if(!telefono_donante_movil_modificado)
+            telefono_donante_movil = datosDonanteMovil.obtenerTelefono();
+        
+        if(!nperiodiciodad_donante_movil_modificado)
+            nperiodiciodad_donante_movil = datosDonanteMovil.obtenerPeriodicidadDonaciones();
+        
+        if(!cuantia_donante_movil_modificado)
+            cuantia_donante_movil = datosDonanteMovil.obtenerCuantiaDonaciones();
+        
+        if(!tperiodicidad_donante_movil_modificado)
+            tperiodicidad_donante_movil = datosDonanteMovil.obtenerTipoPeriodicidad();
+        
+       datosDonanteMovil.modificarDatos(datosDonanteMovil.obtenerNIFCIF(),datosDonanteMovil.obtenerNombre(),datosDonanteMovil.obtenerApellidos(),
+               fecha_nac_donante_movil,localidad_donante_movil,datosDonanteMovil.obtenerActivo(),datosDonanteMovil.obtenerFechaDesac(),
+               email_donante_movil,telefono_donante_movil,datosDonanteMovil.obtenerTipoDonante(),datosDonanteMovil.obtenerFechaInscripcion(),
+               datosDonanteMovil.obtenerObservaciones(),nperiodiciodad_donante_movil,cuantia_donante_movil,tperiodicidad_donante_movil);
        datosDonanteMovil.registrarCambios();
     }
 
@@ -305,31 +357,45 @@ public class Gestor_de_donantes implements iGestorDonantes {
     public void modificarElemento(Object valor, int indice) {
         switch(indice) {
             case 0: //fecha
-                datosDonanteMovil.modificarFechaNac((Date)valor);
+                fecha_nac_donante_movil_modificado = true;
+                fecha_nac_donante_movil = (Date) valor;
+                //datosDonanteMovil.modificarFechaNac((Date)valor);
             break;
                 
             case 1: //localidad
-                datosDonanteMovil.modificarLocalidad(((String)valor));
+                localidad_donante_movil_modificado = true;
+                localidad_donante_movil = (String) valor;
+                //datosDonanteMovil.modificarLocalidad(((String)valor));
             break;
                 
             case 2: //telefono
-                datosDonanteMovil.modificarTelefono(((Integer)valor).intValue());
+                telefono_donante_movil_modificado = true;
+                telefono_donante_movil = (((Integer)valor).intValue());
+                //datosDonanteMovil.modificarTelefono(((Integer)valor).intValue());
             break;
                 
             case 3: //email
-                datosDonanteMovil.modificarEmail(((String)valor));
+                email_donante_movil_modificado = true;
+                email_donante_movil = (String) valor;
+                //datosDonanteMovil.modificarEmail(((String)valor));
             break;
                 
             case 4: //Tipo periodicidad
-                datosDonanteMovil.modificarTipoPeriodicidad(((String)valor));
+                tperiodicidad_donante_movil_modificado = true;
+                tperiodicidad_donante_movil = (String) valor;
+                //datosDonanteMovil.modificarTipoPeriodicidad(((String)valor));
             break;
                 
             case 5: //Periodicidad
-                datosDonanteMovil.modificarPeriodicidadDonaciones(((Integer)valor).intValue());
+                nperiodiciodad_donante_movil_modificado = true;
+                nperiodiciodad_donante_movil = (((Integer)valor).intValue());
+                //datosDonanteMovil.modificarPeriodicidadDonaciones(((Integer)valor).intValue());
             break;
                 
             case 6: //Cuantia
-                datosDonanteMovil.modificarCuantiaDonaciones(((Double) valor).doubleValue());
+                cuantia_donante_movil_modificado = true;
+                cuantia_donante_movil = (((Double) valor).doubleValue());
+                //datosDonanteMovil.modificarCuantiaDonaciones(((Double) valor).doubleValue());
             break;
                 
             default: //No hacer nada
