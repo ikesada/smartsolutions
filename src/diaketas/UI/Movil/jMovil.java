@@ -253,7 +253,7 @@ public class jMovil extends javax.swing.JFrame {
         return retValue;
     }
 
-    private void setAutoRequestFocus(boolean b) {
-        //sergio feo
+    public void setAutoRequestFocus(boolean b) {
+        // quesada maricon
     }
 }
