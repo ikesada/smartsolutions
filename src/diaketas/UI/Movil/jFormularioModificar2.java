@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 /**
  *
  * @author klyone
+ * 
+ * Formulario que contiene tanto al formulario de modificacion de los datos del donante como a los botones de confirmación de modificacion y
+ * de cancelacion (en caso de abortar la operacion)
+ * 
  */
 public class jFormularioModificar2 extends javax.swing.JPanel {
 
@@ -48,6 +52,7 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
         pformulario = new javax.swing.JPanel();
 
         bguardar.setBackground(new java.awt.Color(102, 153, 255));
+        bguardar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         bguardar.setText("Guardar");
         bguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +61,7 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
         });
 
         bvolver.setBackground(new java.awt.Color(255, 102, 102));
+        bvolver.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         bvolver.setText("Volver");
         bvolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,10 +83,10 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
         panelbotonesLayout.setVerticalGroup(
             panelbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelbotonesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bvolver, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                    .addComponent(bguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(panelbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bguardar, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(bvolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -103,8 +109,8 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelbotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents

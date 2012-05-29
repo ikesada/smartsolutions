@@ -10,6 +10,9 @@ import javax.swing.JTextField;
 /**
  *
  * @author klyone
+ * 
+ * Contiene el panel compuesto por las letras.
+ * 
  */
 public class jTecladoLetras extends javax.swing.JPanel {
 

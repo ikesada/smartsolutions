@@ -14,6 +14,10 @@ import java.awt.AWTEvent;
 /**
  *
  * @author klyone
+ * 
+ * Contiene los paneles principales del teclado junto con los botones de control del mismo.
+ * Es usado por jSTeclado que es la ventana donde estara contenido.
+ * 
  */
 public class jTeclado extends javax.swing.JPanel {
 

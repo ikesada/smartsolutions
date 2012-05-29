@@ -10,6 +10,9 @@ import javax.swing.JTextField;
 /**
  *
  * @author klyone
+ * 
+ * Contiene el panel con los principales caracteres simbólicos que no son letras.
+ * 
  */
 public class jTecladoSimbolos extends javax.swing.JPanel {
 

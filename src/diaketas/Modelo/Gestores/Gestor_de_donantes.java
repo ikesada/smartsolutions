@@ -275,17 +275,32 @@ public class Gestor_de_donantes implements iGestorDonantes {
         return identificado;
     }
 
+    /**
+     * Obtiene los datos del donantes a partir del DNI del mismo (especificado cuando este se autentico desde su dispositivo movil)
+     * @return Un objeto donante con todos los datos asociados
+     */
+    
     @Override
     public Donante obtenerDatosDonante() {
         datosDonanteMovil = diaketas.diaketas.ong.buscarDonante(NIF_Donante_Movil);
         return datosDonanteMovil;
     }
 
+    /**
+     * Guarda de manera efectiva las modificaciones realizadas en los datos del donante. (Hace cambios en la BD)
+     */
+    
     @Override
     public void guardarDatosDonante() {
        datosDonanteMovil.registrarCambios();
     }
 
+    /**
+     * Almacena temporalmente un cambio realizado sobre un atributo del donante
+     * @param valor Nuevo valor del atributo
+     * @param indice Indica a que atributo se refiere
+     */
+    
     @Override
     public void modificarElemento(Object valor, int indice) {
         switch(indice) {

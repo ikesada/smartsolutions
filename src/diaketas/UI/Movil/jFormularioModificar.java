@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author klyone
+ * 
+ * Formulario principal con los datos del donante y permite a este modificarlos.
+ * 
  */
 public class jFormularioModificar extends javax.swing.JPanel {
 
@@ -23,7 +26,6 @@ public class jFormularioModificar extends javax.swing.JPanel {
         initComponents();
         
         tv = new jSTeclado(localidad_input3);
-        
         
         donante = diaketas.diaketas.ong.gestorDonantes.obtenerDatosDonante();
         
@@ -86,7 +88,8 @@ public class jFormularioModificar extends javax.swing.JPanel {
         bmodificarFecha = new javax.swing.JToggleButton();
         bmodificartperiodicidad = new javax.swing.JToggleButton();
 
-        setMinimumSize(new java.awt.Dimension(689, 1773));
+        setMaximumSize(null);
+        setMinimumSize(null);
 
         dni_etiq3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         dni_etiq3.setText("DNI:");
@@ -218,7 +221,7 @@ public class jFormularioModificar extends javax.swing.JPanel {
         });
 
         cuantia_etiq3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cuantia_etiq3.setText("Cuantía:");
+        cuantia_etiq3.setText("Importe:");
 
         cuantia_input3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cuantia_input3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -233,6 +236,7 @@ public class jFormularioModificar extends javax.swing.JPanel {
         });
 
         bmodificarFecha.setBackground(new java.awt.Color(153, 153, 255));
+        bmodificarFecha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bmodificarFecha.setText("Modificar");
         bmodificarFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,6 +245,7 @@ public class jFormularioModificar extends javax.swing.JPanel {
         });
 
         bmodificartperiodicidad.setBackground(new java.awt.Color(153, 153, 255));
+        bmodificartperiodicidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bmodificartperiodicidad.setText("Modificar");
         bmodificartperiodicidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,57 +261,72 @@ public class jFormularioModificar extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(apellidos_etiq3)
-                        .addGap(166, 166, 166)
-                        .addComponent(apellidos_input3))
+                        .addComponent(tipo_periodicidad_etiq3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tipo_periodicidad_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bmodificartperiodicidad)
+                        .addGap(18, 18, 18)
+                        .addComponent(periodicidad_donaciones_etiq3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(periodicidad_donaciones_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cuantia_etiq3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cuantia_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(periodicidad_donaciones_etiq3)
-                            .addComponent(cuantia_etiq3))
-                        .addGap(142, 142, 142)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cuantia_input3)
-                            .addComponent(periodicidad_donaciones_input3)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(nombre_etiq3)
-                        .addGap(174, 174, 174)
-                        .addComponent(nombre_input3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(dni_etiq3)
-                        .addGap(205, 205, 205)
-                        .addComponent(dni_input3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(fecha_nacimiento_etiq3)
+                        .addGap(18, 18, 18)
+                        .addComponent(dia_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(22, 22, 22)
+                        .addComponent(mes_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(anio_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(80, 80, 80)
+                        .addComponent(bmodificarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(apellidos_etiq3)
+                                .addGap(18, 18, 18)
+                                .addComponent(apellidos_input3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(dni_etiq3)
+                                .addGap(18, 18, 18)
+                                .addComponent(dni_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(nombre_etiq3)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipo_donante_etiq3)
-                            .addComponent(fecha_nacimiento_etiq3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tipo_donante_etiq3)
+                                .addGap(27, 27, 27)
+                                .addComponent(tipo_donante_input3))
+                            .addComponent(nombre_input3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(email_etiq3)
+                                .addGap(18, 18, 18)
+                                .addComponent(email_input3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(localidad_etiq3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(email_etiq3)
-                                    .addComponent(telefono_etiq3)))
-                            .addComponent(fecha_inscripcion_etiq3)
-                            .addComponent(observaciones_etiq3)
-                            .addComponent(tipo_periodicidad_etiq3))
-                        .addGap(100, 100, 100)
+                                .addGap(18, 18, 18)
+                                .addComponent(localidad_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipo_donante_input3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(localidad_input3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(telefono_input3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(email_input3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fecha_inscripcion_input3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(dia_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(mes_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(anio_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(telefono_etiq3)
                                 .addGap(18, 18, 18)
-                                .addComponent(bmodificarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(telefono_input3))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tipo_periodicidad_input3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fecha_inscripcion_etiq3)
                                 .addGap(18, 18, 18)
-                                .addComponent(bmodificartperiodicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(fecha_inscripcion_input3))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(observaciones_etiq3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane7)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -314,67 +334,48 @@ public class jFormularioModificar extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dni_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(dni_etiq3))
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre_etiq3))
-                .addGap(73, 73, 73)
+                    .addComponent(dni_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dni_etiq3)
+                    .addComponent(nombre_etiq3)
+                    .addComponent(nombre_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidos_etiq3)
-                    .addComponent(apellidos_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
-                .addGap(69, 69, 69)
+                    .addComponent(apellidos_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipo_donante_etiq3)
+                    .addComponent(tipo_donante_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipo_donante_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipo_donante_etiq3))
-                .addGap(97, 97, 97)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(anio_input3)
+                    .addComponent(fecha_nacimiento_etiq3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dia_input3)
                     .addComponent(mes_input3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(dia_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                                .addComponent(fecha_nacimiento_etiq3))
-                            .addComponent(bmodificarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(85, 85, 85)
+                    .addComponent(anio_input3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bmodificarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(localidad_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(localidad_etiq3))
-                .addGap(53, 53, 53)
+                    .addComponent(localidad_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(localidad_etiq3)
+                    .addComponent(telefono_etiq3)
+                    .addComponent(telefono_input3))
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(telefono_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(telefono_etiq3))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(email_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                    .addComponent(email_etiq3))
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha_inscripcion_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                    .addComponent(fecha_inscripcion_etiq3))
+                    .addComponent(email_etiq3)
+                    .addComponent(email_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fecha_inscripcion_etiq3)
+                    .addComponent(fecha_inscripcion_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(observaciones_etiq3)))
-                .addGap(69, 69, 69)
+                    .addComponent(observaciones_etiq3)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bmodificartperiodicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tipo_periodicidad_etiq3)
-                    .addComponent(tipo_periodicidad_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(bmodificartperiodicidad, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(periodicidad_donaciones_etiq3)
-                    .addComponent(periodicidad_donaciones_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cuantia_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(cuantia_etiq3))
+                    .addComponent(periodicidad_donaciones_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cuantia_etiq3)
+                    .addComponent(tipo_periodicidad_input3)
+                    .addComponent(cuantia_input3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -443,17 +444,6 @@ public class jFormularioModificar extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El email introducido no es correcto", "Email", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_email_input3ActionPerformed
 
-    private void bmodificarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmodificarFechaActionPerformed
-        // TODO add your handling code here:
-        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
-        Object fecha_nac;
-        try
-            {
-            fecha_nac = formateador.parse(String.valueOf((Integer)dia_input3.getSelectedItem())+"/"+String.valueOf((Integer)mes_input3.getSelectedItem())+"/"+String.valueOf((Integer)anio_input3.getSelectedItem()));
-            diaketas.diaketas.ong.gestorDonantes.modificarElemento(fecha_nac,0);
-        }catch(Exception e) {}
-   }//GEN-LAST:event_bmodificarFechaActionPerformed
-
     private void bmodificartperiodicidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmodificartperiodicidadActionPerformed
         // TODO add your handling code here:
         Object tperiodicidad = tipo_periodicidad_input3.getSelectedItem().toString();
@@ -480,6 +470,17 @@ public class jFormularioModificar extends javax.swing.JPanel {
         else
             JOptionPane.showMessageDialog(this, "La cuantia de las donaciones introducida no es correcta. Debe ser mayor que 0.", "Cuantia", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_cuantia_input3ActionPerformed
+
+    private void bmodificarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmodificarFechaActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+        Object fecha_nac;
+        try {
+            fecha_nac = formateador.parse(String.valueOf((Integer) dia_input3.getSelectedItem()) + "/" + String.valueOf((Integer) mes_input3.getSelectedItem()) + "/" + String.valueOf((Integer) anio_input3.getSelectedItem()));
+            diaketas.diaketas.ong.gestorDonantes.modificarElemento(fecha_nac, 0);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bmodificarFechaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox anio_input3;

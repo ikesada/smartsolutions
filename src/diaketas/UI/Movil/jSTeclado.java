@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 /**
  *
  * @author klyone
+ * 
+ * Clase que implementa el teclado virtual.
+ * 
  */
 public class jSTeclado extends javax.swing.JFrame {
 

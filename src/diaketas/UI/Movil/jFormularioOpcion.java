@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 /**
  *
  * @author klyone
+ * 
+ * Formulario que permite al donante selecciona la operacion que desea realizar.
+ * 
  */
 public class jFormularioOpcion extends javax.swing.JPanel {
 
@@ -30,10 +33,13 @@ public class jFormularioOpcion extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(400, 300));
+        setMaximumSize(null);
+        setPreferredSize(new java.awt.Dimension(245, 181));
         setLayout(new java.awt.GridLayout(3, 0, 20, 20));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -43,23 +49,31 @@ public class jFormularioOpcion extends javax.swing.JPanel {
         jLabel2.setText("Acciones");
         add(jLabel2);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton3.setText("Listar Aportaciones");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        add(jButton3);
-
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton4.setText("Modificar Datos");
+        jButton4.setPreferredSize(new java.awt.Dimension(250, 60));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4);
+        jPanel1.add(jButton4);
+
+        add(jPanel1);
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton3.setText("Listar Aportaciones");
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setInheritsPopupMenu(true);
+        jButton3.setPreferredSize(new java.awt.Dimension(250, 60));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3);
+
+        add(jPanel2);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -79,5 +93,7 @@ public class jFormularioOpcion extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
