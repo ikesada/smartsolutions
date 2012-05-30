@@ -177,7 +177,7 @@ public class Voluntario extends Usuarios{
         
         
         // Actualizamos los datos 
-        con.conectarBD();
+        con.comprobarConexionBD();
 
         //transformo los tipo Date pasados
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(this.FechaNac.getTime());
@@ -220,16 +220,7 @@ public class Voluntario extends Usuarios{
              exito=false;
              System.out.println(e);
          }
-         //Desconexión de la BD
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         
         return exito;
         
@@ -256,7 +247,7 @@ public class Voluntario extends Usuarios{
         java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(v.FechaDesac.getTime());
 
         ConexionBD con = new ConexionBD();
-        con.conectarBD();
+        con.comprobarConexionBD();
         try {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
@@ -273,17 +264,7 @@ public class Voluntario extends Usuarios{
              System.out.println(e);
              exito = false;
          }
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                    exito = false;
-                }
-            }
-        }         
+         
     
         return exito;
         

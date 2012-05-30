@@ -362,7 +362,7 @@ public String obtenerCiudadNacimiento() {
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(FechaDesac.getTime());
 
-        con.conectarBD();
+        con.comprobarConexionBD();
         try {
             Statement instruccion = (Statement) con.conexion().createStatement();
             
@@ -373,16 +373,7 @@ public String obtenerCiudadNacimiento() {
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
+       
     }
     
     /**
@@ -394,7 +385,7 @@ public String obtenerCiudadNacimiento() {
         ConexionBD con = new ConexionBD();
         
         /* Actualizamos los datos */
-        con.conectarBD();
+        con.comprobarConexionBD();
 
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(datosBeneficiario.FechaNac.getTime());
         
@@ -434,16 +425,7 @@ public String obtenerCiudadNacimiento() {
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
     }
     /*----------------------------Familiares-----------------------------------*/
     /**
@@ -453,7 +435,7 @@ public String obtenerCiudadNacimiento() {
     public void agregarFamiliar(Familiar familiar){
         ConexionBD con = new ConexionBD();
 
-        con.conectarBD();
+        con.comprobarConexionBD();
         /*Agregamos el nuevo familiar al sistema*/
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(familiar.obtenerFechaNacimiento().getTime());
@@ -472,16 +454,7 @@ public String obtenerCiudadNacimiento() {
         /*Captura de errores*/
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e);}
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
+         
     }
     
     /**
@@ -523,7 +496,7 @@ public String obtenerCiudadNacimiento() {
                  +" Oferta o, Recibe r where o.Cod_Oferta = r.Cod_Oferta AND r.NIF_CIF = \""
                  +this.NIF_CIF+"\"";
                  
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try{
                 
@@ -554,18 +527,7 @@ public String obtenerCiudadNacimiento() {
         }
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }
-             
-        
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } 
+
         
         
         return ofertas;
@@ -581,7 +543,7 @@ public String obtenerCiudadNacimiento() {
         
         String insert = "insert into Recibe values( \""+oferta.obtenerCodOferta()+"\", \""+NIF_CIF+"\")";
                          
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try {
             Statement instruccion = (Statement) con.conexion().createStatement();
@@ -592,16 +554,7 @@ public String obtenerCiudadNacimiento() {
         /*Captura de errores*/
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e);}
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
+         
         
     }
         

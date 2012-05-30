@@ -76,7 +76,7 @@ public class ONG implements iONG{
     @Override
     public void agregarAccion(Accion ac){
         /*Se guarda la accion en el sistema*/
-        con.conectarBD();
+        con.comprobarConexionBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha = new java.sql.Timestamp(ac.obtenerFecha().getTime());
          try {
@@ -88,16 +88,6 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
     }
     /**************************BENEFICIARIO************************************
      * @param DNI Dni del Beneficario que buscaremos en la BBDD
@@ -107,7 +97,7 @@ public class ONG implements iONG{
     public Beneficiario buscarBeneficiario(String DNI){
         ArrayList<Familiar> familiares = null;
         Beneficiario beneficiario = null;
-        con.conectarBD();
+        con.comprobarConexionBD();
 
          try {
             instruccion = (Statement) con.conexion().createStatement();
@@ -144,16 +134,7 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         
         return beneficiario;
     }
@@ -164,7 +145,7 @@ public class ONG implements iONG{
      */
     @Override
     public void agregarNuevoBeneficiario(Beneficiario nuevoBeneficiario){
-        con.conectarBD();
+        con.comprobarConexionBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoBeneficiario.obtenerFechaNac().getTime());
         java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoBeneficiario.obtenerFechaInscripcion().getTime());
@@ -190,59 +171,8 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }        
-    }
-    
-    /*****************************FAMILIAR***********************************
-     *  Funcion que realiza la busqueda de un familiar
-     * @param Nombre_Apellidos Nombre y apellidos del familiar buscado
-     * @param Fecha_Nac Fecha de nacimiento del familiar buscado     
-     * @return Devuelve el familiar encontrado
-     
-    @Override
-    public Familiar buscarFamiliar (String Nombre_Apellidos, Date Fecha_Nac){
-        Familiar familiar = null;
-        con.conectarBD();
-        /*Convertimos Date para trabajar
-        java.sql.Timestamp fecha = new java.sql.Timestamp(Fecha_Nac.getTime());
-         try {
-            instruccion = (Statement) con.conexion().createStatement();
-            ResultSet rs = instruccion.executeQuery("Select f.Nombre_Apellidos, f.Fecha_Nacimiento, f.Ocupacion, f.Cod_Familiar"
-                    + " From Familiar f WHERE Nombre_Apellidos = \""
-                    + Nombre_Apellidos+"\" and Fecha_Nacimiento=\""+fecha+"\"");
-         
-            if (rs.next()){
-                familiar = new Familiar (rs.getString(1),rs.getDate(2),rs.getString(3));
-                //Indicamos su Codigo Interno
-                familiar.Cod_Familiar = rs.getInt(4);
-            }
-         }
-         /*Captura de errores
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-         
-         return familiar;
-    } */
        
+    }     
     
     /*****************************DONANTE***********************************
      *  Agrega un nuevo donante a la BBDD
@@ -251,7 +181,7 @@ public class ONG implements iONG{
     
     @Override
     public void agregarNuevoDonante(Donante nuevoDonante){
-        con.conectarBD();
+        con.comprobarConexionBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoDonante.obtenerFechaNac().getTime());
         java.sql.Timestamp fecha_Activacion = new java.sql.Timestamp(nuevoDonante.obtenerFechaInscripcion().getTime());
@@ -273,16 +203,7 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }        
+        
     }
         
     /**
@@ -295,7 +216,7 @@ public class ONG implements iONG{
     public Donante buscarDonante(String DNI){
             
             Donante donante = null;
-            con.conectarBD();
+            con.comprobarConexionBD();
         
         try {
             instruccion = (Statement) con.conexion().createStatement();
@@ -313,15 +234,7 @@ public class ONG implements iONG{
             Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         
         return donante;
         }
@@ -338,7 +251,7 @@ public class ONG implements iONG{
     public Voluntario buscarVoluntario(String DNI){
         Voluntario v = null;
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try {
             
@@ -366,16 +279,7 @@ public class ONG implements iONG{
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }        
         
-        /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }  
+  
         return v;
     }
 
@@ -388,7 +292,7 @@ public class ONG implements iONG{
         
         boolean exito = true;
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoVoluntario.obtenerFechaNac().getTime());
         java.sql.Timestamp fecha_Inicio = new java.sql.Timestamp(nuevoVoluntario.obtenerFechaInicio().getTime());
@@ -415,16 +319,7 @@ public class ONG implements iONG{
              System.out.println(e);
              exito = false;
          }
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }      
+      
          
         return exito; 
     }    
@@ -441,7 +336,7 @@ public class ONG implements iONG{
         ArrayList<Voluntario> usuarios=new ArrayList<Voluntario>();
         
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try{
                 
@@ -482,16 +377,7 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }  
+ 
         
         return usuarios;
     }
@@ -509,7 +395,7 @@ public class ONG implements iONG{
         ArrayList<Donante> usuarios=new ArrayList<Donante>();
         
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try{
                 
@@ -550,16 +436,7 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }  
+  
         
         return usuarios;
     }
@@ -581,7 +458,7 @@ public class ONG implements iONG{
         ArrayList<Beneficiario> usuarios=new ArrayList<Beneficiario>();
         
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try{
                 
@@ -622,16 +499,7 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }  
+  
         
         return usuarios;
     }
@@ -645,7 +513,7 @@ public class ONG implements iONG{
     @Override
     public Oferta buscarOferta(int codOferta) {
         Oferta oferta = null;
-        con.conectarBD();
+        con.comprobarConexionBD();
 
          try {
             instruccion = (Statement) con.conexion().createStatement();
@@ -663,16 +531,7 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         
         return oferta;
     }
@@ -692,7 +551,7 @@ public class ONG implements iONG{
         String query = "select * from Oferta o";
         
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try{
                 
@@ -744,16 +603,7 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }  
+
         
         return ofertas;
     }
@@ -765,7 +615,7 @@ public class ONG implements iONG{
     @Override
     public void agregarMovimiento(Movimiento m){
         con = new ConexionBD();
-        con.conectarBD();
+        con.comprobarConexionBD();
 
          try {
             instruccion = (Statement) con.conexion().createStatement();
@@ -781,23 +631,14 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
     }
     
     
         @Override
     public Movimiento buscarMovimiento(int codMovimiento) {
         Movimiento movimiento = null;
-        con.conectarBD();
+        con.comprobarConexionBD();
 
          try {
             instruccion = (Statement) con.conexion().createStatement();
@@ -814,16 +655,7 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         
         return movimiento;
     }
@@ -919,7 +751,7 @@ public class ONG implements iONG{
         
         //System.out.println(query);
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try{
                 
@@ -950,16 +782,7 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }  
+  
         
         return movimientos;
     }
@@ -1028,7 +851,7 @@ public class ONG implements iONG{
         
         //System.out.println(query);
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         try{
                 
@@ -1059,16 +882,7 @@ public class ONG implements iONG{
         catch(Exception e){ System.out.println(e); }
              
         
-        /*Desconexión de la BD*/
-        finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }  
+  
         
         return movimientos;
     }
@@ -1085,7 +899,7 @@ public class ONG implements iONG{
     @Override
     public void agregarAccionOferta(AccionOferta accion) {
         /*Se guarda la accion en el sistema*/
-        con.conectarBD();
+        con.comprobarConexionBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha = new java.sql.Timestamp(accion.obtenerFecha().getTime());
          try {
@@ -1097,15 +911,6 @@ public class ONG implements iONG{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
     }
 }

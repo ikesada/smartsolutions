@@ -105,7 +105,7 @@ public class Familiar {
         /*Convertimos fecha*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(Fecha_Nacimiento.getTime());
 
-        con.conectarBD();
+        con.comprobarConexionBD();
 
          try {
             Statement instruccion = (Statement) con.conexion().createStatement();
@@ -119,20 +119,11 @@ public class Familiar {
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
     }
     
     public void destruir(){
-        con.conectarBD();
+        con.comprobarConexionBD();
         
         /*Convertimos fecha*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(Fecha_Nacimiento.getTime());
@@ -147,15 +138,5 @@ public class Familiar {
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Familiar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
     }
 }

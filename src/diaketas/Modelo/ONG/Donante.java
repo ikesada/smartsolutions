@@ -225,7 +225,7 @@ public class Donante extends Usuarios{
         ConexionBD con = new ConexionBD();
         Statement instruccion;
         
-        con.conectarBD();
+        con.comprobarConexionBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(FechaNac.getTime());
         
@@ -243,15 +243,6 @@ public class Donante extends Usuarios{
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }   
+  
     }
 }

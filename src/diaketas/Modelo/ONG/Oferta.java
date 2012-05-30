@@ -243,7 +243,7 @@ public class Oferta {
         //modifico los datos asociados en la BD:
         Boolean exito=true;
         
-        con.conectarBD();
+        con.comprobarConexionBD();
 
         //transformo los tipo Date pasados
         java.sql.Timestamp fechaOferta = new java.sql.Timestamp( fecha.getTime() );
@@ -277,16 +277,7 @@ public class Oferta {
              exito=false;
              System.out.println(e);
          }
-         //DesconexiÃ³n de la BD
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         return exito;
         
         
@@ -334,7 +325,7 @@ public class Oferta {
         //modifico los datos asociados en la BD:
         Boolean exito=true;
         
-        con.conectarBD();
+        con.comprobarConexionBD();
 
         //transformo los tipo Date pasados
         java.sql.Timestamp fechaOferta = new java.sql.Timestamp( fecha.getTime() );
@@ -377,16 +368,7 @@ public class Oferta {
              exito=false;
              System.out.println(e);
          }
-         //DesconexiÃ³n de la BD
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         
         return exito;
         
@@ -402,7 +384,7 @@ public class Oferta {
         //modifico los datos asociados en la BD:
         Boolean exito=true;
         
-        con.conectarBD();
+        con.comprobarConexionBD();
 
         //transformo los tipo Date pasados
         java.sql.Timestamp fechaOferta = new java.sql.Timestamp( fecha.getTime() );
@@ -427,16 +409,7 @@ public class Oferta {
              exito=false;
              System.out.println(e);
          }
-         //DesconexiÃ³n de la BD
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+
         return exito;
         
         
