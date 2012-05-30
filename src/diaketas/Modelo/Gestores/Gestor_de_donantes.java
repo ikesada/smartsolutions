@@ -173,7 +173,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
         java.sql.Timestamp fecha_Desac = new java.sql.Timestamp(datosDonante.obtenerFechaDesac().getTime());
 
         ConexionBD con = new ConexionBD();
-        con.conectarBD();
+        con.comprobarConexionBD();
         try {
             com.mysql.jdbc.Statement instruccion = (com.mysql.jdbc.Statement) con.conexion().createStatement();
             
@@ -184,16 +184,7 @@ public class Gestor_de_donantes implements iGestorDonantes {
          /*Captura de errores*/
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e);}
-         /*Desconexión de la BD*/
-         finally {
-            if (con.hayConexionBD()) {
-                try {
-                    con.desconectarBD();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Gestor_de_donantes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }         
+       
     
         
         /*
