@@ -37,7 +37,7 @@ public class jHistorialUsuarios extends javax.swing.JPanel {
             
             //Me conecto a la BD
             ConexionBD con = new ConexionBD();
-            con.conectarBD();
+            con.comprobarConexionBD();
             
             
             //Para ejecutar la consulta
