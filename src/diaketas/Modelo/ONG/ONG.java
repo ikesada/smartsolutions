@@ -700,7 +700,7 @@ public class ONG implements iONG{
             Statement s = (Statement) con.conexion().createStatement();
             
             if(codigo != -1)
-                query += "where o.Cod_Oferta = \""+codigo+"\"";
+                query += " where o.Cod_Oferta = \""+codigo+"\"";
             else {
                 if(concepto != null) {
                     query += " where o.Concepto REGEXP \'"+concepto+"\'";
