@@ -69,65 +69,77 @@ public class jEmpleo extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
 
-        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         botonConsultarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/maletin-consultar.png"))); // NOI18N
         botonConsultarOferta.setText("Consultar");
-        botonConsultarOferta.setMaximumSize(new java.awt.Dimension(123, 90));
-        botonConsultarOferta.setMinimumSize(new java.awt.Dimension(123, 90));
-        botonConsultarOferta.setPreferredSize(new java.awt.Dimension(123, 90));
+        botonConsultarOferta.setMaximumSize(new java.awt.Dimension(160, 79));
+        botonConsultarOferta.setMinimumSize(new java.awt.Dimension(160, 79));
+        botonConsultarOferta.setPreferredSize(new java.awt.Dimension(160, 79));
         botonConsultarOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConsultarOfertaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonConsultarOferta);
+        jPanel2.add(botonConsultarOferta, new java.awt.GridBagConstraints());
         botonConsultarOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
         botonConsultarOferta.setHorizontalTextPosition(SwingConstants.CENTER);
         botonConsultarOferta.setFont(new Font("Courier", Font.BOLD,14));
 
         botonModificarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/maletin_modificar.png"))); // NOI18N
         botonModificarOferta.setText("Modificar");
+        botonModificarOferta.setMaximumSize(new java.awt.Dimension(160, 79));
+        botonModificarOferta.setMinimumSize(new java.awt.Dimension(160, 79));
+        botonModificarOferta.setPreferredSize(new java.awt.Dimension(160, 79));
         botonModificarOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonModificarOfertaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonModificarOferta);
+        jPanel2.add(botonModificarOferta, new java.awt.GridBagConstraints());
         botonModificarOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
         botonModificarOferta.setHorizontalTextPosition(SwingConstants.CENTER);
         botonModificarOferta.setFont(new Font("Courier", Font.BOLD,14));
 
         botonCrearOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/maletin_aniadir.png"))); // NOI18N
         botonCrearOferta.setText("Crear");
+        botonCrearOferta.setMaximumSize(new java.awt.Dimension(160, 79));
+        botonCrearOferta.setMinimumSize(new java.awt.Dimension(160, 79));
+        botonCrearOferta.setPreferredSize(new java.awt.Dimension(160, 79));
         botonCrearOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCrearOfertaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonCrearOferta);
+        jPanel2.add(botonCrearOferta, new java.awt.GridBagConstraints());
         botonCrearOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
         botonCrearOferta.setHorizontalTextPosition(SwingConstants.CENTER);
         botonCrearOferta.setFont(new Font("Courier", Font.BOLD,14));
 
         botonEliminarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/maletin_borrar.png"))); // NOI18N
         botonEliminarOferta.setText("Eliminar");
+        botonEliminarOferta.setMaximumSize(new java.awt.Dimension(160, 79));
+        botonEliminarOferta.setMinimumSize(new java.awt.Dimension(160, 79));
+        botonEliminarOferta.setPreferredSize(new java.awt.Dimension(160, 79));
         botonEliminarOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarOfertaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonEliminarOferta);
+        jPanel2.add(botonEliminarOferta, new java.awt.GridBagConstraints());
         botonEliminarOferta.setVerticalTextPosition(SwingConstants.BOTTOM); botonEliminarOferta.setHorizontalTextPosition(SwingConstants.CENTER); botonEliminarOferta.setFont(new Font("Courier", Font.BOLD,14));
 
         botonAsociarBeneficiarioOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aniadir.png"))); // NOI18N
         botonAsociarBeneficiarioOferta.setText("Asociar Beneficiario");
+        botonAsociarBeneficiarioOferta.setMaximumSize(new java.awt.Dimension(234, 79));
+        botonAsociarBeneficiarioOferta.setMinimumSize(new java.awt.Dimension(234, 79));
+        botonAsociarBeneficiarioOferta.setPreferredSize(new java.awt.Dimension(234, 79));
         botonAsociarBeneficiarioOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAsociarBeneficiarioOfertaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonAsociarBeneficiarioOferta);
+        jPanel2.add(botonAsociarBeneficiarioOferta, new java.awt.GridBagConstraints());
         botonAsociarBeneficiarioOferta.setVerticalTextPosition(SwingConstants.BOTTOM);
         botonAsociarBeneficiarioOferta.setHorizontalTextPosition(SwingConstants.CENTER);
         botonAsociarBeneficiarioOferta.setFont(new Font("Courier", Font.BOLD,14));
@@ -151,7 +163,7 @@ public class jEmpleo extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 912, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator3))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
