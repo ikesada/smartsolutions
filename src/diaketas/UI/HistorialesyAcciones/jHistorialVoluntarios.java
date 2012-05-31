@@ -59,9 +59,10 @@ public class jHistorialVoluntarios extends javax.swing.JPanel {
                 
                 
                 //Establecer como cabezeras el nombre de las colimnas
-                for (int i = 1; i <= cantidadColumnas; i++) {
+                for (int i = 1; i <= cantidadColumnas-1; i++) {
                 modelo.addColumn(rsMd.getColumnLabel(i));
                 }
+                modelo.addColumn("NIF/Codigo oferta");
                 
                 
                 
@@ -116,7 +117,7 @@ public class jHistorialVoluntarios extends javax.swing.JPanel {
                 Statement s = con.conexion().createStatement();
 
                 //Un objeto ResultSet, almacena los datos de resultados de una consulta
-                ResultSet rs = s.executeQuery("select Nombre, Fecha, NIF_CIF from AccionOferta where NIF_CIF=\"" + DNIvoluntario +"\"  ");
+                ResultSet rs = s.executeQuery("select Nombre, Fecha, Cod_Oferta from AccionOferta where NIF_CIF=\"" + DNIvoluntario +"\"  ");
                 
                 
                 //Obteniendo la informacion de las columnas que estan siendo consultadas
