@@ -132,7 +132,7 @@
             <Component class="javax.swing.JButton" name="botonConsultarOferta">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/diaketas/Iconos/listados.png"/>
+                  <Image iconType="3" name="/diaketas/Iconos/maletin-consultar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

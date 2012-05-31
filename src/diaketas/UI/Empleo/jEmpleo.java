@@ -69,9 +69,9 @@ public class jEmpleo extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/empleo.png"))); // NOI18N
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        botonConsultarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/listados.png"))); // NOI18N
+        botonConsultarOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/maletin-consultar.png"))); // NOI18N
         botonConsultarOferta.setText("Consultar");
         botonConsultarOferta.setMaximumSize(new java.awt.Dimension(123, 90));
         botonConsultarOferta.setMinimumSize(new java.awt.Dimension(123, 90));
