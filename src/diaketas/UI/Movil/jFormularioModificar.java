@@ -492,14 +492,80 @@ public class jFormularioModificar extends javax.swing.JPanel {
     private void bmodificarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmodificarFechaActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+        String fechan = new String("");
+        String dian = (String) dia_input3.getSelectedItem();
+        String mesn = (String) mes_input3.getSelectedItem();
+        String anion = (String) anio_input3.getSelectedItem();
+        int dia_ent = Integer.parseInt(dian);
+        int mes_ent = Integer.parseInt(mesn);
+        int anio_ent = Integer.parseInt(anion);
+        boolean error_dia = false;
+        boolean anio_bisiesto = false;
         Object fecha_nac;
-        try {
-            fecha_nac = formateador.parse(String.valueOf((Integer) dia_input3.getSelectedItem()) + "/" + String.valueOf((Integer) mes_input3.getSelectedItem()) + "/" + String.valueOf((Integer) anio_input3.getSelectedItem()));
-            diaketas.diaketas.ong.gestorDonantes.modificarElemento(fecha_nac, 0);
-        } catch (Exception e) {
+        
+        switch(mes_ent) {
+            case 2:
+                anio_bisiesto = esBisiesto(anio_ent);
+                if(anio_bisiesto) {
+                    if(dia_ent > 29) {
+                        error_dia = true;
+                    }
+                }
+                else {
+                    if(dia_ent > 28) {
+                        error_dia = true;
+                    }
+                }
+            break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if(dia_ent > 30) {
+                    error_dia = true;
+                }
+                
         }
+        
+        if(!error_dia) {
+            try {
+                fechan = fechan + dian+"/";
+                fechan = fechan + mesn+"/";
+                fechan = fechan + anion;
+            
+                fecha_nac = formateador.parse(fechan);
+                diaketas.diaketas.ong.gestorDonantes.modificarElemento(fecha_nac, 0);
+            } catch (Exception e) {
+                System.out.println("Error: La fecha formada no es correcta");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "La fecha de nacimiento introducida no es correcta", "Fecha nacimiento", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_bmodificarFechaActionPerformed
 
+    /**
+     * Calcula si un año es bisiesto
+     * @param anio Año que se quiere comprobar
+     * @return Devuelve true si es bisiesto y false en caso contrario
+     */
+   private boolean esBisiesto(int anio) {
+        int bisiesto1 = 1900;
+        boolean b = false;
+        int fin = 2400;
+        
+        while(bisiesto1 <= fin) {
+            if(bisiesto1 == anio) {
+                b = true;
+                break;
+            }
+            bisiesto1 += 4;
+        }
+        
+        return b;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox anio_input3;
     private javax.swing.JLabel apellidos_etiq3;
