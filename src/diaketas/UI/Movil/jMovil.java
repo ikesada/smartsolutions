@@ -70,7 +70,6 @@ public class jMovil extends javax.swing.JFrame {
             }
         });
 
-        panel.setBackground(new java.awt.Color(255, 204, 153));
         panel.setMinimumSize(new java.awt.Dimension(512, 384));
         panel.setPreferredSize(new java.awt.Dimension(512, 384));
 
@@ -94,10 +93,10 @@ public class jMovil extends javax.swing.JFrame {
             }
         });
 
-        dniLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        dniLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         dniLabel.setText("DNI");
 
-        passLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        passLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passLabel.setText("Contraseña");
 
         cabecera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -120,7 +119,7 @@ public class jMovil extends javax.swing.JFrame {
                 .addContainerGap(233, Short.MAX_VALUE))
             .addGroup(panelLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passLabel)
                     .addComponent(dniLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,13 +139,10 @@ public class jMovil extends javax.swing.JFrame {
             .addGroup(panelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(cabecera)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(dniLabel))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dniText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dniText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dniLabel))
                 .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
