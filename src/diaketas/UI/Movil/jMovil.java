@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import diaketas.Modelo.ONG.*;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -31,6 +33,8 @@ public class jMovil extends javax.swing.JFrame {
         }
         
         this.setSize(512,384);
+        
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
