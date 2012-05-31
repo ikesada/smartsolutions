@@ -6,6 +6,7 @@ package diaketas.UI.Movil;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -35,8 +36,12 @@ public class jFormularioOpcion extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jButton4.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jButton4.setHorizontalTextPosition(SwingConstants.CENTER);
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        jButton3.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jButton3.setHorizontalTextPosition(SwingConstants.CENTER);
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(245, 181));
@@ -49,23 +54,32 @@ public class jFormularioOpcion extends javax.swing.JPanel {
         jLabel2.setText("Acciones");
         add(jLabel2);
 
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/modificar.png"))); // NOI18N
         jButton4.setText("Modificar Datos");
-        jButton4.setPreferredSize(new java.awt.Dimension(250, 60));
+        jButton4.setMaximumSize(new java.awt.Dimension(268, 99));
+        jButton4.setMinimumSize(new java.awt.Dimension(268, 99));
+        jButton4.setPreferredSize(new java.awt.Dimension(268, 99));
+        jButton4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
+        jPanel1.add(jButton4, new java.awt.GridBagConstraints());
 
         add(jPanel1);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/listados.png"))); // NOI18N
         jButton3.setText("Listar Aportaciones");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setInheritsPopupMenu(true);
-        jButton3.setPreferredSize(new java.awt.Dimension(250, 60));
+        jButton3.setMaximumSize(new java.awt.Dimension(268, 99));
+        jButton3.setMinimumSize(new java.awt.Dimension(268, 99));
+        jButton3.setPreferredSize(new java.awt.Dimension(268, 99));
+        jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
