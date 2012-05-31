@@ -255,6 +255,7 @@ public class jFormularioModificar extends javax.swing.JPanel {
 
         bmodificarFecha.setBackground(new java.awt.Color(153, 153, 255));
         bmodificarFecha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bmodificarFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/lazpiz_modificar_peke.png"))); // NOI18N
         bmodificarFecha.setText("Modificar");
         bmodificarFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +265,7 @@ public class jFormularioModificar extends javax.swing.JPanel {
 
         bmodificartperiodicidad.setBackground(new java.awt.Color(153, 153, 255));
         bmodificartperiodicidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bmodificartperiodicidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/lazpiz_modificar_peke.png"))); // NOI18N
         bmodificartperiodicidad.setText("Modificar");
         bmodificartperiodicidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,7 +293,7 @@ public class jFormularioModificar extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(cuantia_etiq3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cuantia_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
+                        .addComponent(cuantia_input3, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(fecha_nacimiento_etiq3)
                         .addGap(18, 18, 18)

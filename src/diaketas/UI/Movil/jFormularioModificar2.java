@@ -53,6 +53,7 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
 
         bguardar.setBackground(new java.awt.Color(102, 153, 255));
         bguardar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        bguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aceptar.png"))); // NOI18N
         bguardar.setText("Guardar");
         bguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +63,7 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
 
         bvolver.setBackground(new java.awt.Color(255, 102, 102));
         bvolver.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        bvolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/cancelar.png"))); // NOI18N
         bvolver.setText("Volver");
         bvolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,9 +77,9 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
             panelbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelbotonesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bguardar, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(bguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(62, 62, 62)
-                .addComponent(bvolver, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                .addComponent(bvolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelbotonesLayout.setVerticalGroup(
@@ -85,7 +87,7 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelbotonesLayout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(panelbotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bguardar, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(bguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bvolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -109,7 +111,7 @@ public class jFormularioModificar2 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelbotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );

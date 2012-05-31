@@ -37,7 +37,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="cuantia_etiq3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cuantia_input3" pref="55" max="32767" attributes="0"/>
+                      <Component id="cuantia_input3" pref="26" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="fecha_nacimiento_etiq3" min="-2" max="-2" attributes="0"/>
@@ -1022,6 +1022,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/diaketas/Iconos/lazpiz_modificar_peke.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
       <Events>
@@ -1035,6 +1038,9 @@
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/diaketas/Iconos/lazpiz_modificar_peke.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
