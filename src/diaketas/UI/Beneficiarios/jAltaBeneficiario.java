@@ -692,6 +692,10 @@ public class jAltaBeneficiario extends javax.swing.JPanel {
                         botonEliminar.setEnabled(true);
                         botonModificar.setEnabled(true);
                         deshabilitarEdicion();
+                        jLabel20.setVisible(false);
+                        NIF_Voluntario.setVisible(false);
+                        botonCancel.setVisible(false);
+                        botonOK.setText("Salir");
                         fase = 1;
                     }else{
                         JOptionPane.showMessageDialog(this, "No se ha encontrado ningún voluntario con ese NIF.",
