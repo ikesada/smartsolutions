@@ -73,6 +73,7 @@ public class jMovil extends javax.swing.JFrame {
         panel.setMinimumSize(new java.awt.Dimension(512, 384));
         panel.setPreferredSize(new java.awt.Dimension(512, 384));
 
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/aceptar.png"))); // NOI18N
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +81,7 @@ public class jMovil extends javax.swing.JFrame {
             }
         });
 
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diaketas/Iconos/cancelar.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
