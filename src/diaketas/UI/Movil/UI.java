@@ -61,7 +61,6 @@ public class UI extends javax.swing.JFrame {
         jPrincipal = new javax.swing.JPanel();
         jPrincipalScroll = new javax.swing.JScrollPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diaketas");
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(800, 600));
