@@ -97,7 +97,7 @@
         <Component class="javax.swing.JButton" name="botonCrear">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/Iconos/aniadirMovimiento.png"/>
+              <Image iconType="3" name="/diaketas/Iconos/donacion_crear.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crear"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -120,7 +120,7 @@
         <Component class="javax.swing.JButton" name="botonEliminar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/Iconos/borrarMovimiento.png"/>
+              <Image iconType="3" name="/diaketas/Iconos/donacion_eliminar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
@@ -134,7 +134,7 @@
         <Component class="javax.swing.JButton" name="botonConsultar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/Iconos/consultarMovimiento.png"/>
+              <Image iconType="3" name="/diaketas/Iconos/donacion_consultar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
@@ -148,7 +148,7 @@
         <Component class="javax.swing.JButton" name="botonModificar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/diaketas/Iconos/modificarMovimiento.png"/>
+              <Image iconType="3" name="/diaketas/Iconos/donacion_modificar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
