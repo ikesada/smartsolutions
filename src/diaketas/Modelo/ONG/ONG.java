@@ -794,9 +794,12 @@ public class ONG implements iONG{
      */
     
     //@Override
-    public ArrayList<Movimiento> obtenerMovimientosM(int operadorCantidad,String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String involucrado, int tipo) {
+    public ArrayList<Movimiento> obtenerMovimientosDonante(int operadorCantidad,String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, int tipo) {
         ArrayList<Movimiento> movimientos=new ArrayList<Movimiento>();
         String query = "select * from Movimiento where true";
+        
+        Donante donante = diaketas.diaketas.ong.gestorDonantes.obtenerDatosDonante();
+        String involucrado = donante.obtenerNIFCIF();
         
         switch(operadorCantidad){
             case 1: 

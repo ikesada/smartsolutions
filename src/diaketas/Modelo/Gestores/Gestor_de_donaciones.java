@@ -150,8 +150,8 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
      */
     
     //@Override
-    public ArrayList<Movimiento> filtrarMovimientosM(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String involucrado, int tipo) {
-        return diaketas.diaketas.ong.obtenerMovimientosM(operadorCantidad, cantidad1, cantidad2, operadorFecha, fecha1, fecha2, involucrado, tipo);
+    public ArrayList<Movimiento> filtrarMovimientosDonante(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, int tipo) {
+        return diaketas.diaketas.ong.obtenerMovimientosDonante(operadorCantidad, cantidad1, cantidad2, operadorFecha, fecha1, fecha2, tipo);
     }  
 
     /**
@@ -173,5 +173,10 @@ public class Gestor_de_donaciones implements iGestorDonaciones {
     @Override
     public void confirmarEliminacion(int cod_Movimiento){
         movimientoSeleccionado.eliminar(cod_Movimiento);
+    }
+
+    @Override
+    public ArrayList<Movimiento> filtrarMovimientosM(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String involucrado, int tipo) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

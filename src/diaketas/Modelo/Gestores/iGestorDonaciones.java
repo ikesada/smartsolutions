@@ -68,6 +68,14 @@ public interface iGestorDonaciones {
     
     public ArrayList<Movimiento> filtrarMovimientos(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String voluntario, String involucrado, int confirmado, int tipo, String tagDescripcion);
 
+      /**
+     * Funcion que obtiene la lista de movimientos que satisfacen el filtro indicado por los
+     * parámetros
+     * @return Devuelve la lista de movimientos que cumplen los criterios.
+     */
+    
+    public ArrayList<Movimiento> filtrarMovimientosM(int operadorCantidad, String cantidad1, String cantidad2, int operadorFecha, String fecha1, String fecha2, String involucrado, int tipo);
+    
     /**
      * Funcion que indica al gestor el movimiento que ha sido seleccionado por el voluntario.
      */
