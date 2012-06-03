@@ -89,6 +89,7 @@ public class jMovil extends javax.swing.JFrame {
             }
         });
 
+        dniText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         dniText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dniTextMouseClicked(evt);
