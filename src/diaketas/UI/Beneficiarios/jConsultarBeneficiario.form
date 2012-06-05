@@ -108,7 +108,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jSeparator4" pref="440" max="32767" attributes="0"/>
@@ -134,7 +134,7 @@
                   </Group>
                   <Component id="botonOK" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="147" max="32767" attributes="0"/>
+              <EmptySpace pref="146" max="32767" attributes="0"/>
           </Group>
           <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
@@ -362,7 +362,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Dar de alta a un beneficiario"/>
+        <Property name="text" type="java.lang.String" value="Consultar un beneficiario"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel28">

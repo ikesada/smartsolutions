@@ -178,6 +178,7 @@ public class jModificarDonante extends javax.swing.JPanel {
         jLabel5.setText("Apellidos");
 
         NIF_CIF.setColumns(9);
+        NIF_CIF.setEditable(false);
         NIF_CIF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NIF_CIFKeyTyped(evt);
